@@ -1,5 +1,6 @@
 import type { AlgorithmDefinition, GraphNode, GraphEdge } from "@/types";
 import { registry } from "@/registry";
+import { ALGORITHM_ID } from "@/utils/constants";
 
 import { breadthFirstSearch } from "./bfs";
 import type { AdjacencyList } from "./bfs";
@@ -61,7 +62,7 @@ const defaultInput: BfsInput = {
 
 const bfsDefinition: AlgorithmDefinition<BfsInput> = {
   meta: {
-    id: "bfs",
+    id: ALGORITHM_ID.BFS,
     name: "Breadth-First Search",
     category: "graph",
     description:

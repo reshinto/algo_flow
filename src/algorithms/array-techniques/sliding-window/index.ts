@@ -4,6 +4,7 @@
  */
 import type { AlgorithmDefinition } from "@/types";
 import { registry } from "@/registry";
+import { ALGORITHM_ID } from "@/utils/constants";
 
 import { maxSumSubarray } from "./sliding-window";
 import { generateSlidingWindowSteps } from "./step-generator";
@@ -20,7 +21,7 @@ interface SlidingWindowInput {
 
 const slidingWindowDefinition: AlgorithmDefinition<SlidingWindowInput> = {
   meta: {
-    id: "sliding-window",
+    id: ALGORITHM_ID.SLIDING_WINDOW,
     name: "Sliding Window (Max Sum)",
     category: "array-techniques",
     description:

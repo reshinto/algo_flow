@@ -4,6 +4,7 @@
  */
 import type { AlgorithmDefinition } from "@/types";
 import { registry } from "@/registry";
+import { ALGORITHM_ID } from "@/utils/constants";
 
 import { fibonacciTabulation } from "./fibonacci";
 import { generateFibonacciSteps } from "./step-generator";
@@ -19,7 +20,7 @@ interface FibonacciInput {
 
 const fibonacciDefinition: AlgorithmDefinition<FibonacciInput> = {
   meta: {
-    id: "fibonacci",
+    id: ALGORITHM_ID.FIBONACCI,
     name: "Fibonacci (Tabulation)",
     category: "dynamic-programming",
     description:

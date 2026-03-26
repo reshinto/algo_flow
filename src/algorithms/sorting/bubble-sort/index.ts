@@ -5,6 +5,7 @@
  */
 import type { AlgorithmDefinition } from "@/types";
 import { registry } from "@/registry";
+import { ALGORITHM_ID } from "@/utils/constants";
 
 import { bubbleSort } from "./bubble-sort";
 import { generateBubbleSortSteps } from "./step-generator";
@@ -16,7 +17,7 @@ import javaSource from "./sources/BubbleSort.java?raw";
 
 const bubbleSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
-    id: "bubble-sort",
+    id: ALGORITHM_ID.BUBBLE_SORT,
     name: "Bubble Sort",
     category: "sorting",
     description:

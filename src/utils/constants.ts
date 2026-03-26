@@ -30,6 +30,22 @@ export const MONACO_LANGUAGE_MAP: Record<SupportedLanguage, string> = {
   java: "java",
 };
 
+/**
+ * Algorithm identifiers — derived from source display filenames (sources/*.ts).
+ * This is the single source of truth for all algorithm IDs across the codebase.
+ * The values match the stem of each TypeScript source file in the sources/ directory.
+ */
+export const ALGORITHM_ID = {
+  BUBBLE_SORT: "bubble-sort",
+  BINARY_SEARCH: "binary-search",
+  BFS: "bfs",
+  DIJKSTRA: "dijkstra",
+  FIBONACCI: "fibonacci",
+  SLIDING_WINDOW: "sliding-window",
+} as const;
+
+export type AlgorithmId = (typeof ALGORITHM_ID)[keyof typeof ALGORITHM_ID];
+
 /** Algorithm category display labels */
 export const CATEGORY_LABELS: Record<string, string> = {
   sorting: "Sorting",

@@ -1,9 +1,10 @@
 import type { ExecutionStep } from "@/types";
 import { SearchingTracker } from "@/trackers";
+import { ALGORITHM_ID } from "@/utils/constants";
 import { buildLineMapFromSources } from "@/utils/source-loader";
 
 /* Line map is built dynamically from @step markers in the source files */
-const BINARY_SEARCH_LINE_MAP = buildLineMapFromSources("binary-search");
+const BINARY_SEARCH_LINE_MAP = buildLineMapFromSources(ALGORITHM_ID.BINARY_SEARCH);
 
 export function generateBinarySearchSteps(input: {
   sortedArray: number[];

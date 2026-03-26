@@ -1,6 +1,6 @@
 import type { AlgorithmDefinition, GridCell } from "@/types";
 import { registry } from "@/registry";
-import { GRID_DEFAULTS } from "@/utils/constants";
+import { ALGORITHM_ID, GRID_DEFAULTS } from "@/utils/constants";
 
 import { dijkstra } from "./dijkstra";
 import { generateDijkstraSteps } from "./step-generator";
@@ -77,7 +77,7 @@ const defaultGrid = createDefaultGrid();
 
 const dijkstraDefinition: AlgorithmDefinition<DijkstraInput> = {
   meta: {
-    id: "dijkstra",
+    id: ALGORITHM_ID.DIJKSTRA,
     name: "Dijkstra's Algorithm",
     category: "pathfinding",
     description:
