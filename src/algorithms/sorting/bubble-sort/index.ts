@@ -17,7 +17,7 @@ import javaSource from "./sources/BubbleSort.java?raw";
 
 const bubbleSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
-    id: ALGORITHM_ID.BUBBLE_SORT,
+    id: ALGORITHM_ID.BUBBLE_SORT!,
     name: "Bubble Sort",
     category: "sorting",
     description:

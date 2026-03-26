@@ -13,7 +13,7 @@ export interface BfsInput {
 }
 
 /* Line map is built dynamically from @step markers in the source files */
-const BFS_LINE_MAP = buildLineMapFromSources(ALGORITHM_ID.BFS);
+const BFS_LINE_MAP = buildLineMapFromSources(ALGORITHM_ID.BFS!);
 
 export function generateBfsSteps(input: BfsInput): ExecutionStep[] {
   const { adjacencyList, startNodeId, nodes, edges } = input;

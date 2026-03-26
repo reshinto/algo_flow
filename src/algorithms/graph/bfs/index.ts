@@ -62,7 +62,7 @@ const defaultInput: BfsInput = {
 
 const bfsDefinition: AlgorithmDefinition<BfsInput> = {
   meta: {
-    id: ALGORITHM_ID.BFS,
+    id: ALGORITHM_ID.BFS!,
     name: "Breadth-First Search",
     category: "graph",
     description:

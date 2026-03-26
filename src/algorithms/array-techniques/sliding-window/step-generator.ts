@@ -4,7 +4,7 @@ import { ALGORITHM_ID } from "@/utils/constants";
 import { buildLineMapFromSources } from "@/utils/source-loader";
 
 /* Line map is built dynamically from @step markers in the source files */
-const SLIDING_WINDOW_LINE_MAP = buildLineMapFromSources(ALGORITHM_ID.SLIDING_WINDOW);
+const SLIDING_WINDOW_LINE_MAP = buildLineMapFromSources(ALGORITHM_ID.SLIDING_WINDOW!);
 
 interface SlidingWindowInput {
   inputArray: number[];

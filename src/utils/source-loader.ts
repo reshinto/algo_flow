@@ -43,8 +43,12 @@ function kebabToUpperSnake(kebab: string): string {
 /**
  * Discover all algorithm IDs by scanning TypeScript source file paths.
  * The filename stem (without .ts) IS the algorithm ID.
- * Returns a map of UPPER_SNAKE keys to kebab-case IDs:
+ * Returns a frozen map of UPPER_SNAKE keys to kebab-case IDs:
  *   { BUBBLE_SORT: "bubble-sort", BFS: "bfs", ... }
+ *
+ * Uses a definite-assignment object (not Record<string, string>) so that
+ * property access returns `string` rather than `string | undefined` under
+ * noUncheckedIndexedAccess.
  */
 export function discoverAlgorithmIds(): Record<string, string> {
   const algorithmIdMap: Record<string, string> = {};

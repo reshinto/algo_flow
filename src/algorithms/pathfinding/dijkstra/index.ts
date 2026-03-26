@@ -77,7 +77,7 @@ const defaultGrid = createDefaultGrid();
 
 const dijkstraDefinition: AlgorithmDefinition<DijkstraInput> = {
   meta: {
-    id: ALGORITHM_ID.DIJKSTRA,
+    id: ALGORITHM_ID.DIJKSTRA!,
     name: "Dijkstra's Algorithm",
     category: "pathfinding",
     description:

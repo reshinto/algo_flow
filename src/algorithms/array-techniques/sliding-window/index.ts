@@ -21,7 +21,7 @@ interface SlidingWindowInput {
 
 const slidingWindowDefinition: AlgorithmDefinition<SlidingWindowInput> = {
   meta: {
-    id: ALGORITHM_ID.SLIDING_WINDOW,
+    id: ALGORITHM_ID.SLIDING_WINDOW!,
     name: "Sliding Window (Max Sum)",
     category: "array-techniques",
     description:

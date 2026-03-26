@@ -25,12 +25,12 @@ export const GroupedOptions: Story = {
   args: {
     label: "Algorithm",
     options: [
-      { value: ALGORITHM_ID.BUBBLE_SORT, label: "Bubble Sort", group: "Sorting" },
-      { value: ALGORITHM_ID.BINARY_SEARCH, label: "Binary Search", group: "Searching" },
-      { value: ALGORITHM_ID.BFS, label: "BFS", group: "Graph" },
-      { value: ALGORITHM_ID.DIJKSTRA, label: "Dijkstra", group: "Pathfinding" },
-      { value: ALGORITHM_ID.FIBONACCI, label: "Fibonacci", group: "Dynamic Programming" },
-      { value: ALGORITHM_ID.SLIDING_WINDOW, label: "Sliding Window", group: "Array Techniques" },
+      { value: ALGORITHM_ID.BUBBLE_SORT!, label: "Bubble Sort", group: "Sorting" },
+      { value: ALGORITHM_ID.BINARY_SEARCH!, label: "Binary Search", group: "Searching" },
+      { value: ALGORITHM_ID.BFS!, label: "BFS", group: "Graph" },
+      { value: ALGORITHM_ID.DIJKSTRA!, label: "Dijkstra", group: "Pathfinding" },
+      { value: ALGORITHM_ID.FIBONACCI!, label: "Fibonacci", group: "Dynamic Programming" },
+      { value: ALGORITHM_ID.SLIDING_WINDOW!, label: "Sliding Window", group: "Array Techniques" },
     ],
   },
 };

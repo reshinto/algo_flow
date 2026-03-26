@@ -19,7 +19,7 @@ const binarySearchDefinition: AlgorithmDefinition<{
   targetValue: number;
 }> = {
   meta: {
-    id: ALGORITHM_ID.BINARY_SEARCH,
+    id: ALGORITHM_ID.BINARY_SEARCH!,
     name: "Binary Search",
     category: "searching",
     description:

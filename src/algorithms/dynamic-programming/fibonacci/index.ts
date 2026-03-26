@@ -20,7 +20,7 @@ interface FibonacciInput {
 
 const fibonacciDefinition: AlgorithmDefinition<FibonacciInput> = {
   meta: {
-    id: ALGORITHM_ID.FIBONACCI,
+    id: ALGORITHM_ID.FIBONACCI!,
     name: "Fibonacci (Tabulation)",
     category: "dynamic-programming",
     description:

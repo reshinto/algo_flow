@@ -4,7 +4,7 @@ import { ALGORITHM_ID } from "@/utils/constants";
 import { buildLineMapFromSources } from "@/utils/source-loader";
 
 /* Line map is built dynamically from @step markers in the source files */
-const FIBONACCI_LINE_MAP = buildLineMapFromSources(ALGORITHM_ID.FIBONACCI);
+const FIBONACCI_LINE_MAP = buildLineMapFromSources(ALGORITHM_ID.FIBONACCI!);
 
 interface FibonacciInput {
   targetIndex: number;
