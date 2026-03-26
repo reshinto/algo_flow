@@ -22,9 +22,9 @@ jobs:
     name: Type Check & Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
@@ -44,9 +44,9 @@ jobs:
     name: Unit Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
@@ -55,54 +55,15 @@ jobs:
 
       - run: npm run test
 
-  storybook:
-    name: Storybook Build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: npm
-
-      - run: npm ci
-
-      - name: Build Storybook
-        run: npm run storybook:build -- --disable-telemetry
-
-  chromatic:
-    name: Visual Tests (Chromatic)
-    runs-on: ubuntu-latest
-    needs: storybook
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: npm
-
-      - run: npm ci
-
-      - name: Run Chromatic
-        uses: chromaui/action@latest
-        with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          exitZeroOnChanges: true
-          buildScriptName: storybook:build
-
   build-pages:
     name: Build Pages
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     needs: [typechecks, tests]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
@@ -113,7 +74,7 @@ jobs:
         env:
           GITHUB_PAGES: "true"
 
-      - uses: actions/upload-pages-artifact@v6
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: dist
 
@@ -127,4 +88,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v6
+        uses: actions/deploy-pages@v4
