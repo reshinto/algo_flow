@@ -35,6 +35,31 @@ export function getAllSourcePaths(): string[] {
   return Object.keys(sourceModules);
 }
 
+/** Convert kebab-case to UPPER_SNAKE_CASE (e.g. "bubble-sort" → "BUBBLE_SORT") */
+function kebabToUpperSnake(kebab: string): string {
+  return kebab.replace(/-/g, "_").toUpperCase();
+}
+
+/**
+ * Discover all algorithm IDs by scanning TypeScript source file paths.
+ * The filename stem (without .ts) IS the algorithm ID.
+ * Returns a map of UPPER_SNAKE keys to kebab-case IDs:
+ *   { BUBBLE_SORT: "bubble-sort", BFS: "bfs", ... }
+ */
+export function discoverAlgorithmIds(): Record<string, string> {
+  const algorithmIdMap: Record<string, string> = {};
+
+  for (const filePath of Object.keys(sourceModules)) {
+    if (!filePath.endsWith(".ts")) continue;
+    const filename = filePath.split("/").pop()!;
+    const algorithmId = filename.replace(".ts", "");
+    const enumKey = kebabToUpperSnake(algorithmId);
+    algorithmIdMap[enumKey] = algorithmId;
+  }
+
+  return algorithmIdMap;
+}
+
 /**
  * Parse @step markers from a raw source string and build a map of
  * step key → line numbers. Markers are trailing comments like:

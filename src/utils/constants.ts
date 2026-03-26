@@ -1,4 +1,5 @@
 import type { SupportedLanguage } from "@/types";
+import { discoverAlgorithmIds } from "@/utils/source-loader";
 
 /** Playback speed multipliers */
 export const PLAYBACK_SPEEDS = [0.25, 0.5, 1, 2, 4] as const;
@@ -31,20 +32,13 @@ export const MONACO_LANGUAGE_MAP: Record<SupportedLanguage, string> = {
 };
 
 /**
- * Algorithm identifiers — derived from source display filenames (sources/*.ts).
- * This is the single source of truth for all algorithm IDs across the codebase.
- * The values match the stem of each TypeScript source file in the sources/ directory.
+ * Algorithm identifiers — auto-discovered from TypeScript source display filenames.
+ * The filename stem (e.g. "bubble-sort" from sources/bubble-sort.ts) IS the algorithm ID.
+ * Keys are UPPER_SNAKE_CASE, values are the kebab-case IDs.
  */
-export const ALGORITHM_ID = {
-  BUBBLE_SORT: "bubble-sort",
-  BINARY_SEARCH: "binary-search",
-  BFS: "bfs",
-  DIJKSTRA: "dijkstra",
-  FIBONACCI: "fibonacci",
-  SLIDING_WINDOW: "sliding-window",
-} as const;
+export const ALGORITHM_ID = discoverAlgorithmIds();
 
-export type AlgorithmId = (typeof ALGORITHM_ID)[keyof typeof ALGORITHM_ID];
+export type AlgorithmId = string;
 
 /** Algorithm category display labels */
 export const CATEGORY_LABELS: Record<string, string> = {
