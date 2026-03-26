@@ -1,23 +1,25 @@
 public class BubbleSort {
-    public static int[] bubbleSort(int[] inputArray) {
-        int[] sortedArray = inputArray.clone();
-        int arrayLength = sortedArray.length;
+    public static int[] bubbleSort(int[] inputArray) { // @step:initialize
+        int[] sortedArray = inputArray.clone(); // @step:initialize
+        int arrayLength = sortedArray.length; // @step:initialize
 
-        for (int outerIndex = 0; outerIndex < arrayLength - 1; outerIndex++) {
-            boolean swappedThisPass = false;
+        for (int outerIndex = 0; outerIndex < arrayLength - 1; outerIndex++) { // @step:outer-loop,mark-sorted
+            boolean swappedThisPass = false; // @step:outer-loop
 
-            for (int innerIndex = 0; innerIndex < arrayLength - 1 - outerIndex; innerIndex++) {
-                if (sortedArray[innerIndex] > sortedArray[innerIndex + 1]) {
-                    int temporaryValue = sortedArray[innerIndex];
-                    sortedArray[innerIndex] = sortedArray[innerIndex + 1];
-                    sortedArray[innerIndex + 1] = temporaryValue;
-                    swappedThisPass = true;
+            // Each pass bubbles the next-largest element into position
+            for (int innerIndex = 0; innerIndex < arrayLength - 1 - outerIndex; innerIndex++) { // @step:inner-loop
+                if (sortedArray[innerIndex] > sortedArray[innerIndex + 1]) { // @step:compare
+                    int temporaryValue = sortedArray[innerIndex]; // @step:swap
+                    sortedArray[innerIndex] = sortedArray[innerIndex + 1]; // @step:swap
+                    sortedArray[innerIndex + 1] = temporaryValue; // @step:swap
+                    swappedThisPass = true; // @step:swap
                 }
             }
 
-            if (!swappedThisPass) break;
+            // No swaps means already sorted — exit early
+            if (!swappedThisPass) break; // @step:early-exit
         }
 
-        return sortedArray;
+        return sortedArray; // @step:complete
     }
 }
