@@ -1,10 +1,14 @@
 ## Workflow Rules
 
-### Branch Strategy
+### Branch Strategy (MANDATORY — cannot be skipped unless user explicitly says so)
 
-- Always work on a unique task-related branch, never directly on main
-- Branch names: `<type>/<short-description>` (e.g., `feat/bubble-sort`, `fix/grid-editor`)
-- Pre-session hook verifies branch safety
+- **Every new task MUST start on a new branch created from main.** This is non-negotiable.
+- Before any code changes, ALWAYS run: `git checkout main && git pull && git checkout -b <type>/<short-description>`
+- Branch names: `<type>/<short-description>` (e.g., `feat/bubble-sort`, `fix/grid-editor`, `chore/update-deps`)
+- A "new task" means any new user request that is not a direct continuation of the current in-progress PR
+- Never reuse an existing feature branch for a different task
+- Pre-session hook blocks working on main/master
+- PreToolUse hook blocks commits and pushes on main/master
 
 ### Development Flow
 
