@@ -6,6 +6,7 @@
  * This keeps algorithm-specific input logic out of the visualization panel
  * while letting each category define its own editing UX.
  */
+import { useState, useEffect } from "react";
 import { useAppStore } from "@/store";
 
 import ArrayInputEditor from "./ArrayInputEditor";
@@ -156,6 +157,12 @@ function DPInputEditor({
   input: { targetIndex: number };
   onChange: (value: unknown) => void;
 }) {
+  const [localValue, setLocalValue] = useState(String(input.targetIndex));
+
+  useEffect(() => {
+    setLocalValue(String(input.targetIndex));
+  }, [input.targetIndex]);
+
   return (
     <div className="flex items-center gap-2 border-b border-[var(--color-border-default)] px-3 py-2">
       <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">
@@ -165,8 +172,10 @@ function DPInputEditor({
         type="number"
         min={0}
         max={30}
-        value={input.targetIndex}
+        value={localValue}
         onChange={(event) => {
+          setLocalValue(event.target.value);
+          if (event.target.value === "") return;
           const targetIndex = parseInt(event.target.value, 10);
           if (!isNaN(targetIndex) && targetIndex >= 0 && targetIndex <= 30) {
             onChange({ targetIndex });
