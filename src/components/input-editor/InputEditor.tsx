@@ -10,7 +10,6 @@ import { useState, useEffect } from "react";
 import { useAppStore } from "@/store";
 
 import ArrayInputEditor from "./ArrayInputEditor";
-import GridInputEditor from "./GridInputEditor";
 
 /** Dispatches to the correct input editor based on the algorithm's category. */
 export default function InputEditor() {
@@ -52,7 +51,7 @@ export default function InputEditor() {
       return <DPInputEditor input={input as { targetIndex: number }} onChange={setInput} />;
 
     case "pathfinding":
-      return <GridInputEditor />;
+      return null;
 
     default:
       return null;
