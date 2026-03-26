@@ -1,0 +1,14 @@
+node_modules
+dist
+storybook-static
+coverage
+.git
+.github
+.claude
+.storybook
+e2e
+playwright-results
+test-results
+*.md
+.env*
+.DS_Store

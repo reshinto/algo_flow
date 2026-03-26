@@ -1,0 +1,41 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+dist-ssr
+
+# Test coverage
+coverage
+
+# Storybook
+storybook-static
+
+# Playwright
+playwright-results
+test-results
+
+# Environment
+.env
+.env.local
+.env.*.local
+*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
