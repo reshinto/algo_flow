@@ -16,11 +16,11 @@ export const dijkstraEducational: EducationalContent = {
     "### Priority Targeting Visualized\n\n" +
     "```mermaid\n" +
     "graph LR\n" +
-    "    A((Start)) --\"Cost 5\"--> B((B))\n" +
-    "    A --\"Cost 2\"--> C((C))\n" +
-    "    C --\"Cost 1\"--> B\n" +
-    "    B --\"Cost 10\"--> D((Target))\n" +
-    "    C --\"Cost 8\"--> D\n" +
+    '    A((Start)) --"Cost 5"--> B((B))\n' +
+    '    A --"Cost 2"--> C((C))\n' +
+    '    C --"Cost 1"--> B\n' +
+    '    B --"Cost 10"--> D((Target))\n' +
+    '    C --"Cost 8"--> D\n' +
     "    \n" +
     "    style A fill:#06b6d4,stroke:#0891b2\n" +
     "    style C fill:#10b981,stroke:#059669\n" +
@@ -42,22 +42,22 @@ export const dijkstraEducational: EducationalContent = {
     "**Navigation Satellites (GPS):** Core structural blueprint underlying Map Routing applications parsing geometric terrain vectors mathematically.",
     "**Internet Topology (OSPF):** The baseline implementation routing discrete UDP sequence packets optimizing paths around live dead-zoned server routers globally.",
     "**Industrial Robotics:** Directing self-driving chassis units away from mathematical collision gradients around simulated 2D blueprint arrays.",
-    "**Algorithmic High-Frequency Arbitrage:** Flagging ultra-fractional optimal micro-routes mapping FX currency triangular valuation paths."
+    "**Algorithmic High-Frequency Arbitrage:** Flagging ultra-fractional optimal micro-routes mapping FX currency triangular valuation paths.",
   ],
 
   strengthsAndLimitations: {
     strengths: [
       "Rigidly mathematical completion proving unassailable shortest-path guarantees ensuring completely optimal solutions natively.",
       "Parses gracefully natively supporting both strict directional arrays and un-coupled bidirectional network hubs.",
-      "Easily computes every single optimal path spanning outward iteratively terminating simultaneously across entire map sets."
+      "Easily computes every single optimal path spanning outward iteratively terminating simultaneously across entire map sets.",
     ],
     limitations: [
       "Catastrophically vulnerable directly failing entirely against algorithmic negative edge weights. (Mandates `Bellman-Ford` fallback).",
       "Scans fully homogeneously completely blind without spatial vector heuristics (Unlike `A*` Pathfinding).",
-      "Necessarily requires statically accessing the fully mapped topology strictly ahead of runtime processing triggers."
-    ]
+      "Necessarily requires statically accessing the fully mapped topology strictly ahead of runtime processing triggers.",
+    ],
   },
 
   whenToUseIt:
-    "Mandate **Dijkstra's** core runtime entirely when architectural constraints demand securing the absolutely optimal numeric mathematical pathing string bridging disparate topologies heavily mapped with differing edge resistance sizes.\n\nRefuse usage globally however upon networks explicitly featuring known negative node penalties, or if vector-heavily prioritized heuristic hunting (`A* Search`) natively yields radically superior target locking."
+    "Mandate **Dijkstra's** core runtime entirely when architectural constraints demand securing the absolutely optimal numeric mathematical pathing string bridging disparate topologies heavily mapped with differing edge resistance sizes.\n\nRefuse usage globally however upon networks explicitly featuring known negative node penalties, or if vector-heavily prioritized heuristic hunting (`A* Search`) natively yields radically superior target locking.",
 };

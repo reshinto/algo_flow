@@ -53,7 +53,7 @@ export const bubbleSortEducational: EducationalContent = {
     "**Educational Academia:** The definitive baseline algorithm students build from scratch to inherently grasp array manipulation and iterative control flow.",
     "**Diagnostic Systems:** Phenomenally fast `O(n)` validation to instantaneously confirm if a dataset is already pristine.",
     "**Embedded Devices:** Extreme logic simplicity translates exceptionally well onto microcontrollers facing starkly constrained kilobyte constraints over nano-second speed requirements.",
-    "**Graphics Pipelines:** Handling Z-index relative re-sorting where objects rarely leapfrog extensively."
+    "**Graphics Pipelines:** Handling Z-index relative re-sorting where objects rarely leapfrog extensively.",
   ],
 
   strengthsAndLimitations: {
@@ -61,15 +61,15 @@ export const bubbleSortEducational: EducationalContent = {
       "Universally simple structural comprehension and trivial implementation difficulty.",
       "**Stable sort:** Guarantees it inherently preserves the absolute original insertion order of matching duplicate elements.",
       "**In-place permutation:** Mandates bare absolute minimum `O(1)` memory overhead.",
-      "Hyper-adaptive processing yields early termination speeds seamlessly on nearly-sorted data vectors."
+      "Hyper-adaptive processing yields early termination speeds seamlessly on nearly-sorted data vectors.",
     ],
     limitations: [
       "Mathematically indefensible `O(n²)` average processing completely disqualifies usage across scaled big-data volumes.",
       "Vastly outclassed globally by native engine sorts like `V8 Timsort`, Merge Sort, or optimized Quick Sort deployments.",
-      "Shatters horribly under reversed structural payloads."
+      "Shatters horribly under reversed structural payloads.",
     ],
   },
 
   whenToUseIt:
-    "Deploy **Bubble Sort** only when operating across tightly bounded micro-arrays (Under ~50 discrete elements), actively processing data with high physical likelihood of near-perfection, or when constrained severely by code footprint allowances instead of sheer CPU horsepower.\n\nOtherwise, completely omit in favor of `O(n log n)` paradigms like **Merge Sort**."
+    "Deploy **Bubble Sort** only when operating across tightly bounded micro-arrays (Under ~50 discrete elements), actively processing data with high physical likelihood of near-perfection, or when constrained severely by code footprint allowances instead of sheer CPU horsepower.\n\nOtherwise, completely omit in favor of `O(n log n)` paradigms like **Merge Sort**.",
 };

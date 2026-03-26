@@ -47,22 +47,22 @@ export const bfsEducational: EducationalContent = {
     "**Social Network Maps:** Uncovering granular generic 'degrees of separation' linkages between separated network users.",
     "**Web Crawling Scripts:** Systematically traversing arbitrary HTTP document hyperlinks cascading cleanly outward level by level from the root URL.",
     "**P2P Network Broadcasting:** Propagating secure validation protocol handshakes cleanly among all immediate peer nodes level-by-layer.",
-    "**Algorithmic GC Scavengers:** Bootstrapping the initial mark-phase mapping arrays utilized universally in V8/JVM background runtime garbage collectors."
+    "**Algorithmic GC Scavengers:** Bootstrapping the initial mark-phase mapping arrays utilized universally in V8/JVM background runtime garbage collectors.",
   ],
 
   strengthsAndLimitations: {
     strengths: [
       "Mathematically natively guarantees finding the absolute shortest logical path across explicitly unweighted graphic topologies.",
       "Strict logical completeness guarantees locating the termination node safely if any singular permutation mathematically exists mapping to it.",
-      "Sprawls homogeneously strictly level by level yielding mathematically identical proximity boundaries globally."
+      "Sprawls homogeneously strictly level by level yielding mathematically identical proximity boundaries globally.",
     ],
     limitations: [
       "Drastic `O(V)` auxiliary storage footprint routinely forces massive out-of-memory structural failures when analyzing billion-node infinite domains.",
       "Utterly crippled and practically useless when executing atop mathematically weighted topographies (Requires Dijkstra).",
-      "Expends huge processing payload scanning massive broad networks fully before traveling deep toward known centralized targets."
-    ]
+      "Expends huge processing payload scanning massive broad networks fully before traveling deep toward known centralized targets.",
+    ],
   },
 
   whenToUseIt:
-    "Trigger **Breadth-First Search** deployment specifically when isolated logical distance directly determines target hierarchy significance, or strictly when guaranteeing the universally shortest path on an un-weighted mapping matters flawlessly. \n\nConversely, pivot decisively off BFS in favor of **Depth-First Search (DFS)** whenever systemic memory constraints threaten payload caps, or pivot explicitly to **Dijkstra** if mapped nodal edges begin requiring dynamic integer weights."
+    "Trigger **Breadth-First Search** deployment specifically when isolated logical distance directly determines target hierarchy significance, or strictly when guaranteeing the universally shortest path on an un-weighted mapping matters flawlessly. \n\nConversely, pivot decisively off BFS in favor of **Depth-First Search (DFS)** whenever systemic memory constraints threaten payload caps, or pivot explicitly to **Dijkstra** if mapped nodal edges begin requiring dynamic integer weights.",
 };

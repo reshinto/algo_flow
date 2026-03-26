@@ -17,9 +17,9 @@ export const binarySearchEducational: EducationalContent = {
     "```mermaid\n" +
     "graph TD\n" +
     "    subgraph Finding Target: 23\n" +
-    "    A[\"Array: [2 ... 91]\"] -->|\"Mid=16 :: (16<23)\"| B[\"Search Right: [23 ... 91]\"]\n" +
-    "    B -->|\"Mid=56 :: (56>23)\"| C[\"Search Left: [23 ... 38]\"]\n" +
-    "    C -->|\"Mid=23 :: (23==23)\"| D[\"Target Locked!\"]\n" +
+    '    A["Array: [2 ... 91]"] -->|"Mid=16 :: (16<23)"| B["Search Right: [23 ... 91]"]\n' +
+    '    B -->|"Mid=56 :: (56>23)"| C["Search Left: [23 ... 38]"]\n' +
+    '    C -->|"Mid=23 :: (23==23)"| D["Target Locked!"]\n' +
     "    end\n" +
     "    style D fill:#10b981,stroke:#059669\n" +
     "```",
@@ -39,22 +39,22 @@ export const binarySearchEducational: EducationalContent = {
     "**Production Databases:** Indexing internal system tree hierarchies (`B-Trees`) powering backend database `WHERE` queries seamlessly.",
     "**OS Memory Compilers:** Sifting enormous loaded application symbol definitions natively isolating memory mapping execution failures dynamically.",
     "**Algorithmic Version Control:** Native commands fundamentally deploy Binary validation locating exactly the single committed codebase differential actively inserting regression errors.",
-    "**Internet DNS Routing:** Backend core routing topology parsing effectively matches native IP string subnet domains rapidly linking protocol transmissions globally."
+    "**Internet DNS Routing:** Backend core routing topology parsing effectively matches native IP string subnet domains rapidly linking protocol transmissions globally.",
   ],
 
   strengthsAndLimitations: {
     strengths: [
       "Monumentally superior algorithmic search mapping parsing million-node domain spaces sequentially generating fewer than ~20 native evaluations.",
       "Strict logical code formulation ensures absolutely trivial physical code implementation native tracking sequences.",
-      "Flawlessly natively implements purely generic constant spatial arrays bypassing dangerous infinite recursion risks globally."
+      "Flawlessly natively implements purely generic constant spatial arrays bypassing dangerous infinite recursion risks globally.",
     ],
     limitations: [
       "Structurally strictly requires active natively pre-sorted node array schemas triggering massive expensive `O(n log n)` layout dependencies originally.",
       "Utterly handicapped searching extremely small trivial payloads natively losing structural edge specifically against direct brute memory mapping.",
-      "Severely fails directly interacting over strictly dynamic un-cacheable lists or mutating linked lists where memory allocations lack static addressing mapping."
-    ]
+      "Severely fails directly interacting over strictly dynamic un-cacheable lists or mutating linked lists where memory allocations lack static addressing mapping.",
+    ],
   },
 
   whenToUseIt:
-    "Routinely employ **Binary Search** deployments mapping enormous structural read-heavy arrays specifically completely retaining pre-processed sequential sort statuses specifically where standard loops mathematically guarantee system hang states.\n\nDo practically NOT deploy structural sequences natively against hyper-active write-dependent mutating array blocks, nor highly truncated array mapping bounds generally explicitly faster bypassing validation directly utilizing raw primitive loops entirely."
+    "Routinely employ **Binary Search** deployments mapping enormous structural read-heavy arrays specifically completely retaining pre-processed sequential sort statuses specifically where standard loops mathematically guarantee system hang states.\n\nDo practically NOT deploy structural sequences natively against hyper-active write-dependent mutating array blocks, nor highly truncated array mapping bounds generally explicitly faster bypassing validation directly utilizing raw primitive loops entirely.",
 };

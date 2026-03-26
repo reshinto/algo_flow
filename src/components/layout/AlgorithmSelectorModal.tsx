@@ -1,19 +1,32 @@
+/**
+ * @file AlgorithmSelectorModal.tsx
+ * @module components/layout/AlgorithmSelectorModal
+ *
+ * Command Palette architectural component overriding traditional DOM <select> dropdown constraints.
+ * Mounts a full-screen blurred backdrop isolating the User while providing lightning-fast search capabilities mapped to keyboard hooks.
+ */
 import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSearch, FiX } from "react-icons/fi";
 import { IconButton } from "@/components/shared";
 
+/** Generic structural map converting a complex AlgorithmDefinition back into standard Form constraints. */
 interface Option {
   value: string;
   label: string;
   group: string;
 }
 
+/** Formal Component Property Binding constraints ensuring types are securely validated natively layout configurations. */
 interface Props {
+  /** Governs absolute rendering injection into DOM `AnimatePresence` layouts. */
   isOpen: boolean;
+  /** Explicit callback triggering dismounting from the DOM. */
   onClose: () => void;
   options: Option[];
+  /** Fires upon user confirmation clicking a button definitively mutating the Zustand Store payload explicitly. */
   onSelect: (id: string) => void;
+  /** Evaluates currently active state rendering highlighting strictly against identical DOM references natively. */
   selectedId: string | null;
 }
 
@@ -24,12 +37,17 @@ export default function AlgorithmSelectorModal({
   onSelect,
   selectedId,
 }: Props) {
+  // Localized form payload tracking user keyboard string manipulation
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Lock body scroll to prevent interacting with the background while modal is open
+  // Lock body scroll and reset search when modal opens
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      // Reset search and autofocus on open — valid setState for prop-driven reset
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setSearchQuery("");
+      setTimeout(() => document.getElementById("algo-search-input")?.focus(), 50);
     } else {
       document.body.style.overflow = "unset";
     }
@@ -38,20 +56,14 @@ export default function AlgorithmSelectorModal({
     };
   }, [isOpen]);
 
-  // Focus input on mount so users can instantly type to search
-  useEffect(() => {
-    if (isOpen) {
-      setSearchQuery("");
-      setTimeout(() => document.getElementById("algo-search-input")?.focus(), 50);
-    }
-  }, [isOpen]);
-
+  // Filter Pipeline: Condense vast arrays of Algorithm strings explicitly against user inputs optimally securely.
   const groupedOptions = useMemo(() => {
     const q = searchQuery.toLowerCase();
     const filtered = options.filter(
-      (o) => o.label.toLowerCase().includes(q) || o.group.toLowerCase().includes(q)
+      (o) => o.label.toLowerCase().includes(q) || o.group.toLowerCase().includes(q),
     );
 
+    // Reconstruct structural map natively aligning the Array back into grouped categories explicitly identifying `Sorting`, `Graphs`, etc.
     const groups = new Map<string, Option[]>();
     for (const option of filtered) {
       const group = groups.get(option.group) ?? [];
@@ -69,7 +81,7 @@ export default function AlgorithmSelectorModal({
           role="dialog"
           aria-modal="true"
         >
-          {/* Backdrop with a premium blur effect */}
+          {/* Framer Motion Backdrop with a premium blur effect directly overlaying entire DOM environments inherently. */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -78,7 +90,7 @@ export default function AlgorithmSelectorModal({
             className="fixed inset-0 bg-black/60 backdrop-blur-sm"
           />
 
-          {/* Modal Container */}
+          {/* Core Interactive Modal Container physically mounting search results. */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -86,7 +98,7 @@ export default function AlgorithmSelectorModal({
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="relative flex max-h-[80vh] w-full max-w-2xl flex-col overflow-hidden rounded-xl border border-[var(--color-border-default)] bg-[var(--color-surface-secondary)] shadow-2xl"
           >
-            {/* Search Header */}
+            {/* Search Top Header Container isolated definitively. */}
             <div className="flex items-center gap-3 border-b border-[var(--color-border-default)] bg-[var(--color-surface-primary)] p-4">
               <FiSearch className="shrink-0 text-[var(--color-text-muted)]" size={20} />
               <input
@@ -102,7 +114,7 @@ export default function AlgorithmSelectorModal({
               </IconButton>
             </div>
 
-            {/* Scrolling List */}
+            {/* Scrolling Result List natively evaluating Array Maps automatically mapping visual boundaries securely. */}
             <div className="flex-1 overflow-y-auto p-2">
               {groupedOptions.length === 0 ? (
                 <div className="py-12 text-center text-[var(--color-text-muted)]">

@@ -10,12 +10,12 @@ export const fibonacciEducational: EducationalContent = {
     "Notice how calculating just `F(5)` forces us to compute `F(3)` twice, and `F(2)` three times. This is why the naive approach is so slow! \n\n" +
     "```mermaid\n" +
     "graph TD\n" +
-    "    F5[\"F(5)\"] --> F4[\"F(4)\"]\n" +
-    "    F5 --> F3A[\"F(3)\"]\n" +
-    "    F4 --> F3B[\"F(3)\"]\n" +
-    "    F4 --> F2A[\"F(2)\"]\n" +
-    "    F3A --> F2B[\"F(2)\"]\n" +
-    "    F3A --> F1A[\"F(1)\"]\n" +
+    '    F5["F(5)"] --> F4["F(4)"]\n' +
+    '    F5 --> F3A["F(3)"]\n' +
+    '    F4 --> F3B["F(3)"]\n' +
+    '    F4 --> F2A["F(2)"]\n' +
+    '    F3A --> F2B["F(2)"]\n' +
+    '    F3A --> F1A["F(1)"]\n' +
     "    \n" +
     "    style F5 fill:#0a192f,stroke:#26d0ce\n" +
     "    style F4 fill:#1a365d,stroke:#3b82f6\n" +
@@ -52,21 +52,21 @@ export const fibonacciEducational: EducationalContent = {
     "**Algorithm Education:** The gold standard introductory mechanism for demystifying recursive overlap and DP Tabulation.",
     "**Financial Modeling:** Traders utilize Fibonacci mathematical intervals (*Retracement levels*) to predict chart support/resistance lines on stock and crypto tickers.",
     "**Biology & Nature:** The exact spiral ratio mathematically maps directly onto sunflower seed alignments, pinecones, and Nautilus shells.",
-    "**Data Structures:** Heavily leveraged in internal complex architectures, like the widely known *Fibonacci Heap*."
+    "**Data Structures:** Heavily leveraged in internal complex architectures, like the widely known *Fibonacci Heap*.",
   ],
 
   strengthsAndLimitations: {
     strengths: [
       "Flattens the dangerous `O(2^n)` exponential recursive explosion directly into an ultra-fast `O(n)` operation.",
       "Tabulation structurally eradicates recursive overhead, fully avoiding `Maximum call stack size exceeded` errors native to JavaScript.",
-      "Trivially verifiable edge cases and mathematical logic."
+      "Trivially verifiable edge cases and mathematical logic.",
     ],
     limitations: [
       "For monumental numbers (`F(100+)`), native primitive integers overflow their memory limits requiring `BigInt` wrappers to maintain accuracy.",
-      "Without `O(1)` Space pruning, huge tables reserve unneeded allocated JS heap blocks holding deeply stale calculation histories."
+      "Without `O(1)` Space pruning, huge tables reserve unneeded allocated JS heap blocks holding deeply stale calculation histories.",
     ],
   },
 
   whenToUseIt:
-    "Opt for **Tabulation** (Bottom-Up) when processing extremely large sequential requirements where recursive depth limits pose structural threats. \n\nSelect **Memoization** (Top-Down) for multidimensional logic puzzles where calculating the *entire* state array isn't guaranteed to be necessary, minimizing needless mathematical processing."
+    "Opt for **Tabulation** (Bottom-Up) when processing extremely large sequential requirements where recursive depth limits pose structural threats. \n\nSelect **Memoization** (Top-Down) for multidimensional logic puzzles where calculating the *entire* state array isn't guaranteed to be necessary, minimizing needless mathematical processing.",
 };

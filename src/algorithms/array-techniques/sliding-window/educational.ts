@@ -15,10 +15,10 @@ export const slidingWindowEducational: EducationalContent = {
     "### Visualizing a Window Slide (`k=3`)\n\n" +
     "```mermaid\n" +
     "flowchart LR\n" +
-    "    subgraph W1[\"Window 1: Sum = 8\"]\n" +
+    '    subgraph W1["Window 1: Sum = 8"]\n' +
     "    A[2] --- B[1] --- C[5]\n" +
     "    end\n" +
-    "    subgraph W2[\"Window 2: Sum = 7\"]\n" +
+    '    subgraph W2["Window 2: Sum = 7"]\n' +
     "    D[1] --- E[5] --- F[1]\n" +
     "    end\n" +
     "    \n" +
@@ -47,7 +47,7 @@ export const slidingWindowEducational: EducationalContent = {
     "**Financial FinTech:** Calculating rolling averages, aggregate moving sums, and sliding `min`/`max` momentum metrics for high-frequency stock parsing.",
     "**Genomic Sequencing:** Rapidly locating anomaly structures in DNA sequences by sliding a rigid nucleotide window across massive genome strands.",
     "**Streaming Telemetry:** Maintaining running statistics over the most recent `k` events in low-latency real-time diagnostic systems.",
-    "**NLP Processing:** Resolving the densest abstract substring of a given fixed algorithmic length in document heuristic analysis."
+    "**NLP Processing:** Resolving the densest abstract substring of a given fixed algorithmic length in document heuristic analysis.",
   ],
 
   strengthsAndLimitations: {
@@ -56,15 +56,15 @@ export const slidingWindowEducational: EducationalContent = {
       "Phenomenally memory efficient requiring pure `O(1)` architectural space.",
       "Trivially simple to structure code around once the two-pointer paradigm is recognized.",
       "Dynamically adaptable to swap aggregate targets seamlessly (e.g., `sum`, `max`, `min`, `average`).",
-      "Functions immaculately against live streaming buffer data where node blocks arrive one by one."
+      "Functions immaculately against live streaming buffer data where node blocks arrive one by one.",
     ],
     limitations: [
       "Strictly handcuffed to problem-sets resolving contiguous adjacent elements or unbroken structural substrings.",
       "The Fixed-Size variant severely fails on problems where optimal window span lengths are entirely unknown initially.",
-      "For dynamic conditionals, upgrading to the Variable-Size sliding variant drastically injects complex `while` loop implementation traps."
-    ]
+      "For dynamic conditionals, upgrading to the Variable-Size sliding variant drastically injects complex `while` loop implementation traps.",
+    ],
   },
 
   whenToUseIt:
-    "Routinely default to the **Sliding Window** paradigm whenever architectural requests trigger phrasing searching for optimizations among *all contiguous sub-arrays* of a fixed length. \n\nSignals include phrases like 'maximum sum subarray of size k', or 'longest distinct substring length'. However, if the target explicitly permits non-contiguous element leaps, completely abandon Sliding Window in favor of Dynamic Programming!"
+    "Routinely default to the **Sliding Window** paradigm whenever architectural requests trigger phrasing searching for optimizations among *all contiguous sub-arrays* of a fixed length. \n\nSignals include phrases like 'maximum sum subarray of size k', or 'longest distinct substring length'. However, if the target explicitly permits non-contiguous element leaps, completely abandon Sliding Window in favor of Dynamic Programming!",
 };

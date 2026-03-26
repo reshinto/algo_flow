@@ -1,3 +1,10 @@
+/**
+ * @file Header.tsx
+ * @module components/layout/Header
+ *
+ * Top-level application persistent visual bar.
+ * Controls the Command Palette initialization flow and the underlying Education Drawer accessibility toggle.
+ */
 import { useState, useMemo } from "react";
 import { FiBookOpen, FiChevronDown } from "react-icons/fi";
 
@@ -8,15 +15,20 @@ import { IconButton } from "@/components/shared";
 
 import AlgorithmSelectorModal from "./AlgorithmSelectorModal";
 
-/** Sticky header bar with algorithm selection and educational drawer toggle. */
+/**
+ * Sticky header bar displaying the literal application branding, active algorithm, and documentation hooks.
+ */
 export default function Header() {
+  // Bind directly to global store variables to ensure the text label precisely matches the backend graph logic
   const selectedId = useAppStore((state) => state.selectedId);
   const selectAlgorithm = useAppStore((state) => state.selectAlgorithm);
   const reset = useAppStore((state) => state.reset);
   const toggleEducationalDrawer = useAppStore((state) => state.toggleEducationalDrawer);
 
+  // Local React state solely gating whether the massive Framer Motion structural overlay renders on screen
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Aggressively cache the registry output to avoid continuously tearing down Memory matrices while rendering
   const algorithmOptions = useMemo(() => {
     return registry.getAll().map((definition) => ({
       value: definition.meta.id,
@@ -31,7 +43,7 @@ export default function Header() {
   return (
     <>
       <header className="flex h-14 shrink-0 items-center gap-3 border-b border-[var(--color-border-default)] bg-[var(--color-surface-secondary)] px-4 md:h-12">
-        {/* Hide title on mobile to maximize room for the custom selector */}
+        {/* Hide literal text title entirely on mobile devices to strictly maximize tapping real-estate for the custom selector logic */}
         <h1 className="hidden shrink-0 text-lg font-semibold text-[var(--color-text-primary)] sm:block">
           AlgoFlow
         </h1>
@@ -57,6 +69,7 @@ export default function Header() {
         </IconButton>
       </header>
 
+      {/* Floating Framer Motion overlay completely disjointed from standard flow semantics */}
       <AlgorithmSelectorModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -64,6 +77,7 @@ export default function Header() {
         selectedId={selectedId}
         onSelect={(id) => {
           selectAlgorithm(id);
+          // Hard wipe the engine whenever an algorithm pivots to prevent legacy values corrupting visualization traces
           reset();
         }}
       />

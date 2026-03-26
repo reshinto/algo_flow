@@ -1,30 +1,38 @@
+/**
+ * @file constants.ts
+ * @module utils/constants
+ *
+ * Global application constants.
+ * Centralizing UI constraints, timing variables, and mapping structures ensures that changes
+ * to fundamental values (like breakpoints or speeds) immediately reflect everywhere without hunting for magic numbers.
+ */
 import type { SupportedLanguage } from "@/types";
 import { discoverAlgorithmIds } from "@/utils/source-loader";
 
-/** Playback speed multipliers */
+/** Configurable velocity multipliers bound to user transport controls (0.25x -> 4.0x) */
 export const PLAYBACK_SPEEDS = [0.25, 0.5, 1, 2, 4] as const;
 export type PlaybackSpeed = (typeof PLAYBACK_SPEEDS)[number];
 
-/** Default playback interval in milliseconds (at 1x speed) */
+/** Global heartbeat timing for algorithm progression (1x = 500 milliseconds per tick) */
 export const BASE_PLAYBACK_INTERVAL_MS = 500;
 
-/** Responsive breakpoints in pixels */
+/** Pixel boundary values used by Framer Motion and `useResponsiveLayout` for rigid layout shifting */
 export const BREAKPOINTS = {
   mobile: 768,
   tablet: 1024,
 } as const;
 
-/** Supported languages for code display */
+/** Rigidly typed array defining valid Monaco parsing environments */
 export const SUPPORTED_LANGUAGES: SupportedLanguage[] = ["typescript", "python", "java"];
 
-/** Display labels for languages */
+/** Human-readable string mappings for the UI language dropdown selectors */
 export const LANGUAGE_LABELS: Record<SupportedLanguage, string> = {
   typescript: "TypeScript",
   python: "Python",
   java: "Java",
 };
 
-/** Monaco editor language identifiers */
+/** Precise parser identification strings required by the underlying Monaco Editor component */
 export const MONACO_LANGUAGE_MAP: Record<SupportedLanguage, string> = {
   typescript: "typescript",
   python: "python",
@@ -32,15 +40,17 @@ export const MONACO_LANGUAGE_MAP: Record<SupportedLanguage, string> = {
 };
 
 /**
- * Algorithm identifiers — auto-discovered from TypeScript source display filenames.
- * The filename stem (e.g. "bubble-sort" from sources/bubble-sort.ts) IS the algorithm ID.
- * Keys are UPPER_SNAKE_CASE, values are the kebab-case IDs.
+ * Intelligent Algorithm Registry auto-discovery map.
+ * This dynamically invokes the `source-loader` Vite meta generator to automatically
+ * construct valid enumeration identifiers from the underlying file system.
+ *
+ * E.g., Adding a file `quick-sort.ts` instantly generates `{ QUICK_SORT: "quick-sort" }` globally!
  */
 export const ALGORITHM_ID = discoverAlgorithmIds();
 
 export type AlgorithmId = string;
 
-/** Algorithm category display labels */
+/** Header categories utilized by the Command Palette Modal and top-level Drawer filtering */
 export const CATEGORY_LABELS: Record<string, string> = {
   sorting: "Sorting",
   searching: "Searching",
@@ -50,12 +60,14 @@ export const CATEGORY_LABELS: Record<string, string> = {
   "array-techniques": "Array Techniques",
 };
 
-/** Pathfinding grid defaults */
+/** Structural bounding limits enforcing that Pathfinding Grid instances render optimally on mobile/desktop without overflow */
 export const GRID_DEFAULTS = {
   rows: 15,
   cols: 30,
   maxRows: 30,
   maxCols: 30,
+  /** Pre-defined [row, col] origin for algorithms like Dijkstra */
   startPosition: [1, 1] as [number, number],
+  /** Pre-defined [row, col] destination */
   endPosition: [13, 28] as [number, number],
 } as const;
