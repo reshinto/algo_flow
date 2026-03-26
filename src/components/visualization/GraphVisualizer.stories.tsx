@@ -1,3 +1,4 @@
+/** Storybook stories for the GraphVisualizer component. */
 import type { Meta, StoryObj } from "@storybook/react";
 import type { GraphVisualState } from "@/types";
 import GraphVisualizer from "./GraphVisualizer";

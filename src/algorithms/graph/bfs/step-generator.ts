@@ -1,5 +1,8 @@
+/** Step generator for BFS — produces ExecutionStep[] using GraphTracker. */
+
 import type { ExecutionStep, GraphNode, GraphEdge } from "@/types";
 import { GraphTracker } from "@/trackers";
+import { ALGORITHM_ID } from "@/utils/constants";
 import { buildLineMapFromSources } from "@/utils/source-loader";
 
 import type { AdjacencyList } from "./bfs";
@@ -12,7 +15,7 @@ export interface BfsInput {
 }
 
 /* Line map is built dynamically from @step markers in the source files */
-const BFS_LINE_MAP = buildLineMapFromSources("bfs");
+const BFS_LINE_MAP = buildLineMapFromSources(ALGORITHM_ID.BFS!);
 
 export function generateBfsSteps(input: BfsInput): ExecutionStep[] {
   const { adjacencyList, startNodeId, nodes, edges } = input;

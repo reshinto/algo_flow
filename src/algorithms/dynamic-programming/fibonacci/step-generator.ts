@@ -1,9 +1,12 @@
+/** Step generator for Fibonacci (tabulation) — produces ExecutionStep[] using DPTracker. */
+
 import type { ExecutionStep } from "@/types";
 import { DPTracker } from "@/trackers";
+import { ALGORITHM_ID } from "@/utils/constants";
 import { buildLineMapFromSources } from "@/utils/source-loader";
 
 /* Line map is built dynamically from @step markers in the source files */
-const FIBONACCI_LINE_MAP = buildLineMapFromSources("fibonacci");
+const FIBONACCI_LINE_MAP = buildLineMapFromSources(ALGORITHM_ID.FIBONACCI!);
 
 interface FibonacciInput {
   targetIndex: number;

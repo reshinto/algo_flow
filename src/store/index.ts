@@ -1,3 +1,7 @@
+/* Root store — composes four Zustand slices (algorithm, playback, editor, UI)
+   into a single unified store via the slice pattern. Each slice is independently
+   defined and tested; this file merges them into one shared state atom. */
+
 import { create } from "zustand";
 
 import type { AlgorithmSlice } from "./algorithm-slice";

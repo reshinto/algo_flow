@@ -1,9 +1,12 @@
+/** Step generator for Dijkstra's Algorithm — produces ExecutionStep[] using PathfindingTracker. */
+
 import type { ExecutionStep, GridCell } from "@/types";
 import { PathfindingTracker } from "@/trackers";
+import { ALGORITHM_ID } from "@/utils/constants";
 import { buildLineMapFromSources } from "@/utils/source-loader";
 
 /* Line map is built dynamically from @step markers in the source files */
-const DIJKSTRA_LINE_MAP = buildLineMapFromSources("dijkstra");
+const DIJKSTRA_LINE_MAP = buildLineMapFromSources(ALGORITHM_ID.DIJKSTRA!);
 
 interface DijkstraInput {
   grid: GridCell[][];

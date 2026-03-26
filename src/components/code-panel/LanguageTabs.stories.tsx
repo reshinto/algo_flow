@@ -1,3 +1,4 @@
+/** Storybook stories for the LanguageTabs component. */
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
 import LanguageTabs from "./LanguageTabs";

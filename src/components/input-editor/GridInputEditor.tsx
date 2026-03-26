@@ -1,3 +1,15 @@
+/**
+ * Interactive pathfinding grid editor.
+ *
+ * Allows the user to place walls (click empty cells), remove walls
+ * (click existing walls), and drag the start/end nodes to new positions.
+ * All edits are temporary -- they live in Zustand state and reset on
+ * algorithm switch or page reload (no persistence).
+ *
+ * Interaction is driven by a drag-mode state machine (see DragMode).
+ * On mousedown the mode is determined by the cell under the cursor;
+ * subsequent mouseenter events apply that same mode until mouseup.
+ */
 import { useCallback, useState } from "react";
 import { FiRotateCcw } from "react-icons/fi";
 
@@ -6,6 +18,14 @@ import { GRID_DEFAULTS } from "@/utils/constants";
 import { IconButton } from "@/components/shared";
 import type { GridCell } from "@/types";
 
+/**
+ * Drag-mode state machine:
+ *   null   -> idle (no drag in progress)
+ *   "wall" -> mousedown was on an empty cell; paint walls while dragging
+ *   "clear"-> mousedown was on a wall; erase walls while dragging
+ *   "start"-> mousedown was on the start node; reposition it while dragging
+ *   "end"  -> mousedown was on the end node; reposition it while dragging
+ */
 type DragMode = "wall" | "clear" | "start" | "end" | null;
 
 export default function GridInputEditor() {
@@ -79,6 +99,11 @@ export default function GridInputEditor() {
     [grid, input.startPosition, input.endPosition, setInput],
   );
 
+  /**
+   * Determine drag mode from the initial cell the user clicks.
+   * Start/end clicks only set the mode (actual repositioning happens on drag).
+   * Wall/clear clicks also apply immediately so single-click toggling works.
+   */
   const handleCellMouseDown = (row: number, col: number) => {
     const cellRow = grid[row];
     const cell = cellRow?.[col];
@@ -97,11 +122,13 @@ export default function GridInputEditor() {
     }
   };
 
+  /** Continue applying the active drag mode as the cursor moves across cells. */
   const handleCellMouseEnter = (row: number, col: number) => {
     if (!dragMode) return;
     updateCell(row, col, dragMode);
   };
 
+  /** End the drag interaction and reset to idle. */
   const handleMouseUp = () => {
     setDragMode(null);
   };

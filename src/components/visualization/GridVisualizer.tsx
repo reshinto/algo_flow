@@ -1,3 +1,12 @@
+/**
+ * Pathfinding grid visualizer.
+ *
+ * Renders the grid as a CSS grid of animated cells. Each cell is colored
+ * based on a two-layer priority system: structural type (wall, start, end)
+ * takes precedence over algorithmic state (open, closed, path, current).
+ * Framer Motion animates color transitions to produce a wave-like
+ * expansion effect during frontier exploration.
+ */
 import { motion } from "framer-motion";
 
 import type { GridVisualState, GridCellType, GridCellState } from "@/types";
@@ -8,13 +17,14 @@ interface GridVisualizerProps {
 
 type CellAppearance = GridCellType | GridCellState;
 
+/** Maps both structural cell types and algorithmic states to CSS color variables. */
 const CELL_COLORS: Record<CellAppearance, string> = {
-  /* Cell types */
+  /* Cell types (structural, always take priority) */
   empty: "var(--color-surface-panel)",
   wall: "var(--color-text-muted)",
   start: "var(--color-viz-found)",
   end: "var(--color-viz-swapping)",
-  /* Cell states */
+  /* Cell states (algorithmic, shown only for empty cells) */
   default: "var(--color-surface-panel)",
   open: "var(--color-viz-comparing)",
   closed: "var(--color-viz-visiting)",
@@ -22,6 +32,11 @@ const CELL_COLORS: Record<CellAppearance, string> = {
   current: "var(--color-viz-current)",
 };
 
+/**
+ * Resolves cell color with type-over-state priority.
+ * Structural types (wall/start/end) always win; otherwise the
+ * algorithmic state determines color, falling back to empty.
+ */
 function getCellColor(type: GridCellType, state: GridCellState): string {
   if (type === "wall") return CELL_COLORS.wall;
   if (type === "start") return CELL_COLORS.start;

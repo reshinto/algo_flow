@@ -1,3 +1,5 @@
+# AlgoFlow git ignores: build outputs, test artifacts, environment files, editor configs, and OS files.
+
 # Dependencies
 node_modules
 

@@ -1,5 +1,9 @@
+/* BFS algorithm registration — assembles the definition (meta, execute, steps,
+   educational, sources) and self-registers with the algorithm registry. */
+
 import type { AlgorithmDefinition, GraphNode, GraphEdge } from "@/types";
 import { registry } from "@/registry";
+import { ALGORITHM_ID } from "@/utils/constants";
 
 import { breadthFirstSearch } from "./bfs";
 import type { AdjacencyList } from "./bfs";
@@ -16,6 +20,7 @@ const CIRCLE_RADIUS = 150;
 const CENTER_X = 200;
 const CENTER_Y = 200;
 
+/** Distributes nodes evenly around a circle for the default graph layout. */
 function circlePosition(index: number, totalNodes: number): { x: number; y: number } {
   const angle = (2 * Math.PI * index) / totalNodes - Math.PI / 2;
   return {
@@ -61,7 +66,7 @@ const defaultInput: BfsInput = {
 
 const bfsDefinition: AlgorithmDefinition<BfsInput> = {
   meta: {
-    id: "bfs",
+    id: ALGORITHM_ID.BFS!,
     name: "Breadth-First Search",
     category: "graph",
     description:

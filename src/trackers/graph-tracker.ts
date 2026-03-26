@@ -1,3 +1,8 @@
+/**
+ * Graph traversal tracker — builds execution steps for BFS/DFS algorithms.
+ * Maintains mutable copies of node and edge arrays, updating their visual
+ * states (queued, current, visited, traversing) as the algorithm progresses.
+ */
 import type {
   GraphEdge,
   GraphEdgeState,
@@ -21,6 +26,7 @@ export class GraphTracker extends BaseTracker {
     this.edges = edges.map((edge) => ({ ...edge }));
   }
 
+  /** Deep-copy the current node/edge state for an immutable step snapshot. */
   private snapshot(): GraphVisualState {
     return {
       kind: "graph",
@@ -31,11 +37,13 @@ export class GraphTracker extends BaseTracker {
     };
   }
 
+  /** Mutate the visual state of a single node by its ID. */
   private setNodeState(nodeId: string, state: GraphNodeState): void {
     const node = this.nodes.find((existingNode) => existingNode.id === nodeId);
     if (node) node.state = state;
   }
 
+  /** Mutate the visual state of a directed edge between two nodes. */
   private setEdgeState(sourceId: string, targetId: string, state: GraphEdgeState): void {
     const edge = this.edges.find(
       (existingEdge) => existingEdge.source === sourceId && existingEdge.target === targetId,

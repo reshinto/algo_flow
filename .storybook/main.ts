@@ -1,3 +1,7 @@
+/**
+ * Storybook configuration for AlgoFlow.
+ * Uses the React-Vite framework, discovers stories from src/, and includes Chromatic addon.
+ */
 import type { StorybookConfig } from "@storybook/react-vite";
 
 const config: StorybookConfig = {

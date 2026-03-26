@@ -1,6 +1,15 @@
+/**
+ * Step-by-step explanation panel.
+ *
+ * Displays the current execution step's description, live metrics
+ * (comparisons, swaps, visits, etc.), and a snapshot of algorithm
+ * variables. All data comes from the pre-computed ExecutionStep array
+ * -- this panel is purely presentational with no algorithm-specific logic.
+ */
 import { useAppStore } from "@/store";
 import { Badge } from "@/components/shared";
 
+/** Renders the explanation sidebar for the active execution step. */
 export default function ExplanationPanel() {
   const steps = useAppStore((state) => state.steps);
   const currentStepIndex = useAppStore((state) => state.currentStepIndex);

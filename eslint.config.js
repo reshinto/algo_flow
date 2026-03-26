@@ -1,3 +1,8 @@
+/**
+ * ESLint flat config for AlgoFlow.
+ * Extends recommended JS, TypeScript-ESLint, React Hooks, and React Refresh rules.
+ * Prettier integration disables formatting-related rules. Algorithm source files are ignored.
+ */
 import js from "@eslint/js";
 import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";

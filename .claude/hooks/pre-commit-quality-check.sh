@@ -24,7 +24,7 @@ cd "$PROJECT_DIR"
 echo "Running pre-commit quality checks..." >&2
 
 echo "  TypeScript type check..." >&2
-if ! npx tsc --noEmit 2>&1; then
+if ! npx tsc -b --noEmit 2>&1; then
   echo "BLOCKED: TypeScript type check failed. Fix errors before committing." >&2
   exit 2
 fi

@@ -1,3 +1,7 @@
+/* Playback slice — manages step-through execution state (current index, play/pause,
+   speed). Playback is a pointer into the pre-computed ExecutionStep[] array; this
+   slice owns that pointer and all transport controls. */
+
 import type { StateCreator } from "zustand";
 
 import type { PlaybackSpeed } from "@/utils/constants";

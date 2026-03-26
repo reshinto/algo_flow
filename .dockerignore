@@ -1,3 +1,4 @@
+# Exclude non-production files from the Docker build context to reduce image size.
 node_modules
 dist
 storybook-static

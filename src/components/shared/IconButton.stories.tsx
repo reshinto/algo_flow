@@ -1,3 +1,4 @@
+/** Storybook stories for the IconButton component. */
 import type { Meta, StoryObj } from "@storybook/react";
 import { FiPlay, FiPause, FiChevronRight } from "react-icons/fi";
 import IconButton from "./IconButton";

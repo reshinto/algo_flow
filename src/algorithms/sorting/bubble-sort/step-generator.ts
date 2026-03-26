@@ -1,9 +1,12 @@
+/** Step generator for Bubble Sort — produces ExecutionStep[] using SortingTracker. */
+
 import type { ExecutionStep } from "@/types";
 import { SortingTracker } from "@/trackers";
+import { ALGORITHM_ID } from "@/utils/constants";
 import { buildLineMapFromSources } from "@/utils/source-loader";
 
 /* Line map is built dynamically from @step markers in the source files */
-const BUBBLE_SORT_LINE_MAP = buildLineMapFromSources("bubble-sort");
+const BUBBLE_SORT_LINE_MAP = buildLineMapFromSources(ALGORITHM_ID.BUBBLE_SORT!);
 
 export function generateBubbleSortSteps(inputArray: number[]): ExecutionStep[] {
   const tracker = new SortingTracker([...inputArray], BUBBLE_SORT_LINE_MAP);

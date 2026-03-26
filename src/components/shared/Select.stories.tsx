@@ -1,4 +1,6 @@
+/** Storybook stories for the Select component. */
 import type { Meta, StoryObj } from "@storybook/react";
+import { ALGORITHM_ID } from "@/utils/constants";
 import Select from "./Select";
 
 const meta: Meta<typeof Select> = {
@@ -24,12 +26,12 @@ export const GroupedOptions: Story = {
   args: {
     label: "Algorithm",
     options: [
-      { value: "bubble-sort", label: "Bubble Sort", group: "Sorting" },
-      { value: "binary-search", label: "Binary Search", group: "Searching" },
-      { value: "bfs", label: "BFS", group: "Graph" },
-      { value: "dijkstra", label: "Dijkstra", group: "Pathfinding" },
-      { value: "fibonacci", label: "Fibonacci", group: "Dynamic Programming" },
-      { value: "sliding-window", label: "Sliding Window", group: "Array Techniques" },
+      { value: ALGORITHM_ID.BUBBLE_SORT!, label: "Bubble Sort", group: "Sorting" },
+      { value: ALGORITHM_ID.BINARY_SEARCH!, label: "Binary Search", group: "Searching" },
+      { value: ALGORITHM_ID.BFS!, label: "BFS", group: "Graph" },
+      { value: ALGORITHM_ID.DIJKSTRA!, label: "Dijkstra", group: "Pathfinding" },
+      { value: ALGORITHM_ID.FIBONACCI!, label: "Fibonacci", group: "Dynamic Programming" },
+      { value: ALGORITHM_ID.SLIDING_WINDOW!, label: "Sliding Window", group: "Array Techniques" },
     ],
   },
 };

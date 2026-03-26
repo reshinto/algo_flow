@@ -1,3 +1,4 @@
+/** Storybook stories for the ArrayVisualizer component. */
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ArrayVisualState } from "@/types";
 import ArrayVisualizer from "./ArrayVisualizer";

@@ -1,3 +1,13 @@
+/**
+ * Top-level application shell and responsive layout orchestrator.
+ *
+ * Wires together the three main content panels (code, visualization,
+ * explanation), the playback controls, and the educational drawer.
+ * Delegates to PanelLayout (desktop/tablet 3-panel resizable) or
+ * MobileLayout (single-panel tab switcher) based on viewport width.
+ * Also initializes cross-cutting concerns: playback engine tick loop,
+ * keyboard shortcuts, and auto-selection of the first algorithm.
+ */
 import { useEffect } from "react";
 
 import { usePlaybackEngine } from "@/hooks/usePlaybackEngine";
@@ -15,6 +25,7 @@ import Header from "./Header";
 import PanelLayout from "./PanelLayout";
 import MobileLayout from "./MobileLayout";
 
+/** Root layout component -- mounts hooks, picks layout mode, auto-selects first algorithm. */
 export default function AppShell() {
   usePlaybackEngine();
   useKeyboardShortcuts();

@@ -1,3 +1,7 @@
+/* Singleton registry for algorithm definitions. Algorithms self-register at import
+   time via registry.register(), and the UI queries this registry to discover
+   available algorithms without any algorithm-specific coupling. */
+
 import type { AlgorithmCategory, AlgorithmDefinition } from "@/types";
 
 class AlgorithmRegistry {

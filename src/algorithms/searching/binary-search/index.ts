@@ -4,6 +4,7 @@
  */
 import type { AlgorithmDefinition } from "@/types";
 import { registry } from "@/registry";
+import { ALGORITHM_ID } from "@/utils/constants";
 
 import { binarySearch } from "./binary-search";
 import { generateBinarySearchSteps } from "./step-generator";
@@ -18,7 +19,7 @@ const binarySearchDefinition: AlgorithmDefinition<{
   targetValue: number;
 }> = {
   meta: {
-    id: "binary-search",
+    id: ALGORITHM_ID.BINARY_SEARCH!,
     name: "Binary Search",
     category: "searching",
     description:
