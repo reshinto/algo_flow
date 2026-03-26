@@ -20,8 +20,10 @@
 - Quality gate: lint + format + typecheck + unit tests + storybook build
 - Commit messages: imperative mood, no AI/assistant references
 - No force pushes to main
+- Commits and pushes on main/master are blocked by PreToolUse hooks
 
 ### PR Requirements
 
 - All CI checks must pass
+- A PR must always be created after pushing a feature branch (enforced by PostToolUse hook)
 - Review confirmations from senior-engineer and qa-tester agents
