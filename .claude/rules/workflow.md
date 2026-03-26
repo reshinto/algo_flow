@@ -2,8 +2,9 @@
 
 ### Branch Strategy (MANDATORY — cannot be skipped unless user explicitly says so)
 
-- **Every new task MUST start on a new branch created from main.** This is non-negotiable.
+- **Every new task MUST start on a new branch rebased from main.** This is non-negotiable.
 - Before any code changes, ALWAYS run: `git checkout main && git pull && git checkout -b <type>/<short-description>`
+- If the branch already exists and main has new commits, rebase: `git rebase main`
 - Branch names: `<type>/<short-description>` (e.g., `feat/bubble-sort`, `fix/grid-editor`, `chore/update-deps`)
 - A "new task" means any new user request that is not a direct continuation of the current in-progress PR
 - Never reuse an existing feature branch for a different task

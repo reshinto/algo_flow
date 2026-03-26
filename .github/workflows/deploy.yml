@@ -72,7 +72,7 @@ jobs:
 
       - run: npm run build
         env:
-          GITHUB_PAGES: "true"
+          BASE_URL: /${{ github.event.repository.name }}/
 
       - uses: actions/upload-pages-artifact@v4
         with:
