@@ -2,6 +2,10 @@
  * Playback transport bar with play/pause, step, reset, rerun controls,
  * a scrubbable progress bar, and a speed selector.
  * Keyboard shortcuts are handled at a higher level; this component owns the click UI.
+ *
+ * Touch targets are 44px minimum (WCAG 2.5.5 AAA) on mobile, scaling down
+ * to 36px on desktop. The play/pause button uses an accent fill to establish
+ * visual hierarchy as the primary action.
  */
 import {
   FiChevronsLeft,
@@ -38,8 +42,14 @@ export default function PlaybackControls() {
 
   return (
     <div className="flex flex-col gap-1 border-t border-[var(--color-border-default)] bg-[var(--color-surface-secondary)] px-4 py-2">
-      {/* Invisible range input overlays the visible bar for scrubbing */}
-      <div className="relative h-1.5 w-full cursor-pointer rounded-full bg-[var(--color-surface-tertiary)]">
+      {/* Progress bar — outer h-5 gives a 20px touch zone while the visible track stays slim */}
+      <div className="relative flex h-5 w-full cursor-pointer items-center">
+        <div className="relative h-1.5 w-full rounded-full bg-[var(--color-surface-tertiary)]">
+          <div
+            className="h-full rounded-full bg-[var(--color-accent-cyan)] transition-[width] duration-100"
+            style={{ width: `${progressPercent}%` }}
+          />
+        </div>
         <input
           type="range"
           min={0}
@@ -50,38 +60,57 @@ export default function PlaybackControls() {
           aria-label="Playback progress"
           disabled={!hasSteps}
         />
-        <div
-          className="h-full rounded-full bg-[var(--color-accent-cyan)] transition-[width] duration-100"
-          style={{ width: `${progressPercent}%` }}
-        />
       </div>
 
-      {/* Controls row */}
-      <div className="flex items-center gap-1">
-        <IconButton label="Reset" onClick={reset} disabled={isAtStart} size="sm">
-          <FiChevronsLeft size={16} />
+      {/* Controls row — gap-2 on mobile for fat-finger spacing, gap-1 on desktop */}
+      <div className="flex items-center justify-between gap-1 sm:justify-start sm:gap-2 md:gap-1">
+        {/* Secondary controls use lg (44px) on mobile, md (36px) on desktop */}
+        <IconButton
+          label="Reset"
+          onClick={reset}
+          disabled={isAtStart}
+          size="lg"
+          className="md:h-9 md:w-9"
+        >
+          <FiChevronsLeft size={18} />
         </IconButton>
 
-        <IconButton label="Step backward" onClick={stepBackward} disabled={isAtStart} size="sm">
-          <FiChevronLeft size={16} />
+        <IconButton
+          label="Step backward"
+          onClick={stepBackward}
+          disabled={isAtStart}
+          size="lg"
+          className="md:h-9 md:w-9"
+        >
+          <FiChevronLeft size={18} />
         </IconButton>
 
+        {/* Play/Pause — primary action with accent fill and larger icon */}
         <IconButton
           label={isPlaying ? "Pause" : "Play"}
           onClick={isPlaying ? pause : play}
           disabled={!hasSteps || isAtEnd}
-          size="sm"
+          size="lg"
+          className="bg-[var(--color-accent-cyan)] text-[var(--color-surface-primary)] hover:bg-[var(--color-accent-cyan)] hover:opacity-90 md:h-9 md:w-9"
         >
-          {isPlaying ? <FiPause size={16} /> : <FiPlay size={16} />}
+          {isPlaying ? (
+            <FiPause size={20} />
+          ) : (
+            /* pl-0.5 optically centers the triangular play icon */
+            <span className="pl-0.5">
+              <FiPlay size={20} />
+            </span>
+          )}
         </IconButton>
 
         <IconButton
           label="Step forward"
           onClick={() => stepForward(totalSteps)}
           disabled={isAtEnd}
-          size="sm"
+          size="lg"
+          className="md:h-9 md:w-9"
         >
-          <FiChevronRight size={16} />
+          <FiChevronRight size={18} />
         </IconButton>
 
         <IconButton
@@ -91,21 +120,24 @@ export default function PlaybackControls() {
             play();
           }}
           disabled={!hasSteps}
-          size="sm"
+          size="lg"
+          className="md:h-9 md:w-9"
         >
-          <FiRotateCcw size={16} />
+          <FiRotateCcw size={18} />
         </IconButton>
 
-        <span className="ml-2 font-mono text-xs text-[var(--color-text-muted)]">
+        {/* Step counter — hidden on narrow screens to prevent overflow */}
+        <span className="ml-1 hidden whitespace-nowrap font-mono text-xs text-[var(--color-text-muted)] sm:inline">
           {hasSteps ? `${currentStepIndex + 1} / ${totalSteps}` : "0 / 0"}
         </span>
 
         <div className="flex-1" />
 
+        {/* Speed selector — 44px tall on mobile, 28px on desktop */}
         <select
           value={speed}
           onChange={(event) => setSpeed(Number(event.target.value) as PlaybackSpeed)}
-          className="h-7 rounded border border-[var(--color-border-default)] bg-[var(--color-surface-tertiary)] px-1 font-mono text-xs text-[var(--color-text-secondary)]"
+          className="h-11 w-16 rounded border border-[var(--color-border-default)] bg-[var(--color-surface-tertiary)] px-1 font-mono text-xs text-[var(--color-text-secondary)] sm:w-auto sm:px-2 md:h-7 md:px-1"
           aria-label="Playback speed"
         >
           {PLAYBACK_SPEEDS.map((speedOption) => (

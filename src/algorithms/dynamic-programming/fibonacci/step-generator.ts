@@ -1,3 +1,5 @@
+/** Step generator for Fibonacci (tabulation) — produces ExecutionStep[] using DPTracker. */
+
 import type { ExecutionStep } from "@/types";
 import { DPTracker } from "@/trackers";
 import { ALGORITHM_ID } from "@/utils/constants";

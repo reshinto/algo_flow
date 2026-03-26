@@ -1,3 +1,8 @@
+/**
+ * Vite configuration for AlgoFlow.
+ * Configures React (SWC), Tailwind CSS v4 plugin, @/ path alias,
+ * BASE_URL env var for GitHub Pages deployment, and Vitest (jsdom).
+ */
 /// <reference types="vitest/config" />
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";

@@ -1,3 +1,4 @@
+/** Storybook stories for the Select component. */
 import type { Meta, StoryObj } from "@storybook/react";
 import { ALGORITHM_ID } from "@/utils/constants";
 import Select from "./Select";

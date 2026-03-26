@@ -1,3 +1,5 @@
+/** Step generator for Sliding Window (Max Sum) — produces ExecutionStep[] using ArrayTracker. */
+
 import type { ExecutionStep } from "@/types";
 import { ArrayTracker } from "@/trackers";
 import { ALGORITHM_ID } from "@/utils/constants";

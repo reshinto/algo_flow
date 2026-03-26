@@ -1,3 +1,5 @@
+/** Step generator for Binary Search — produces ExecutionStep[] using SearchingTracker. */
+
 import type { ExecutionStep } from "@/types";
 import { SearchingTracker } from "@/trackers";
 import { ALGORITHM_ID } from "@/utils/constants";

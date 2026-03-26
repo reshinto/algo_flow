@@ -1,3 +1,5 @@
+/** Step generator for BFS — produces ExecutionStep[] using GraphTracker. */
+
 import type { ExecutionStep, GraphNode, GraphEdge } from "@/types";
 import { GraphTracker } from "@/trackers";
 import { ALGORITHM_ID } from "@/utils/constants";

@@ -1,3 +1,11 @@
+/**
+ * Reusable comma-separated array input editor.
+ *
+ * Maintains a local text buffer so the user can freely type without
+ * triggering upstream state changes on every keystroke. The parsed
+ * numeric array is committed on blur or Enter. All edits are temporary
+ * and reset on algorithm switch or page reload.
+ */
 import { useState } from "react";
 
 interface ArrayInputEditorProps {

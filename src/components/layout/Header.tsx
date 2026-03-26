@@ -36,18 +36,24 @@ export default function Header() {
 
   return (
     <header className="flex h-12 shrink-0 items-center gap-3 border-b border-[var(--color-border-default)] bg-[var(--color-surface-secondary)] px-4">
-      <h1 className="mr-2 text-lg font-semibold text-[var(--color-text-primary)]">AlgoFlow</h1>
+      <h1 className="shrink-0 text-lg font-semibold text-[var(--color-text-primary)]">AlgoFlow</h1>
 
-      <Select
-        label="Select algorithm"
-        options={algorithmOptions}
-        value={selectedId ?? ""}
-        onChange={handleAlgorithmChange}
-      />
+      {/* min-w-0 allows the select to shrink below its content width on mobile */}
+      <div className="min-w-0 flex-1">
+        <Select
+          label="Select algorithm"
+          options={algorithmOptions}
+          value={selectedId ?? ""}
+          onChange={handleAlgorithmChange}
+          className="w-full max-w-xs"
+        />
+      </div>
 
-      <div className="flex-1" />
-
-      <IconButton label="Toggle learning content" onClick={toggleEducationalDrawer}>
+      <IconButton
+        label="Toggle learning content"
+        onClick={toggleEducationalDrawer}
+        className="shrink-0"
+      >
         <FiBookOpen size={18} />
       </IconButton>
     </header>

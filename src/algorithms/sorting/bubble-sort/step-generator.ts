@@ -1,3 +1,5 @@
+/** Step generator for Bubble Sort — produces ExecutionStep[] using SortingTracker. */
+
 import type { ExecutionStep } from "@/types";
 import { SortingTracker } from "@/trackers";
 import { ALGORITHM_ID } from "@/utils/constants";

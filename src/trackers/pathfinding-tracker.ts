@@ -1,3 +1,9 @@
+/**
+ * Pathfinding tracker — builds execution steps for grid-based shortest-path
+ * algorithms (Dijkstra, A*). Manages a mutable copy of the grid, updating
+ * cell states (open, closed, path) and optional cost annotations as the
+ * algorithm explores the frontier.
+ */
 import type { GridCell, GridCellState, GridVisualState } from "@/types";
 
 import { BaseTracker } from "./base-tracker";
@@ -21,6 +27,7 @@ export class PathfindingTracker extends BaseTracker {
     this.endPos = endPos;
   }
 
+  /** Deep-copy the current grid state for an immutable step snapshot. */
   private snapshot(): GridVisualState {
     return {
       kind: "grid",
@@ -31,6 +38,7 @@ export class PathfindingTracker extends BaseTracker {
     };
   }
 
+  /** Mutate the visual state of a single grid cell by row/col position. */
   private setCellState(row: number, col: number, state: GridCellState): void {
     const cellRow = this.cells[row];
     if (cellRow) {

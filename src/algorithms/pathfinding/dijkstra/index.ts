@@ -10,6 +10,7 @@ import typescriptSource from "./sources/dijkstra.ts?raw";
 import pythonSource from "./sources/dijkstra.py?raw";
 import javaSource from "./sources/Dijkstra.java?raw";
 
+/** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
   const { rows, cols, startPosition, endPosition } = GRID_DEFAULTS;
   const grid: GridCell[][] = [];

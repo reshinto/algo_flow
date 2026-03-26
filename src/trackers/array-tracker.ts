@@ -1,3 +1,8 @@
+/**
+ * Array techniques tracker — builds execution steps for sliding window and
+ * similar array algorithms. Tracks a movable window range and element states,
+ * highlighting the active window region in each step's visual state.
+ */
 import type { ArrayElement, ArrayElementState, ArrayVisualState } from "@/types";
 
 import { BaseTracker } from "./base-tracker";
@@ -16,6 +21,7 @@ export class ArrayTracker extends BaseTracker {
     }));
   }
 
+  /** Deep-copy elements with window overlay applied for an immutable step snapshot. */
   private snapshot(pointers?: Record<string, number>): ArrayVisualState {
     const elements = this.elements.map((element, elementIndex) => ({
       ...element,

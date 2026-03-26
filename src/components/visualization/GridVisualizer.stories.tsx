@@ -1,3 +1,4 @@
+/** Storybook stories for the GridVisualizer component. */
 import type { Meta, StoryObj } from "@storybook/react";
 import type { GridVisualState, GridCell } from "@/types";
 import GridVisualizer from "./GridVisualizer";

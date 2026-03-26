@@ -1,8 +1,17 @@
+/**
+ * Category-dispatch input editor.
+ *
+ * Reads the active algorithm's category from the registry definition and
+ * delegates to the appropriate category-specific editor (array, grid, etc.).
+ * This keeps algorithm-specific input logic out of the visualization panel
+ * while letting each category define its own editing UX.
+ */
 import { useAppStore } from "@/store";
 
 import ArrayInputEditor from "./ArrayInputEditor";
 import GridInputEditor from "./GridInputEditor";
 
+/** Dispatches to the correct input editor based on the algorithm's category. */
 export default function InputEditor() {
   const definition = useAppStore((state) => state.definition);
   const input = useAppStore((state) => state.input);

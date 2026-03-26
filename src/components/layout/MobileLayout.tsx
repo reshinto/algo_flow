@@ -34,7 +34,7 @@ export default function MobileLayout({
           <button
             key={tab.key}
             onClick={() => setActivePanel(tab.key)}
-            className={`flex-1 px-3 py-2 text-xs font-medium transition-colors ${
+            className={`flex-1 px-3 py-3 text-sm font-medium transition-colors ${
               activePanel === tab.key
                 ? "border-b-2 border-[var(--color-accent-cyan)] text-[var(--color-text-primary)]"
                 : "text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]"

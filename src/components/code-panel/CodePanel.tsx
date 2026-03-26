@@ -16,6 +16,7 @@ export default function CodePanel() {
   const steps = useAppStore((state) => state.steps);
 
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
+  /** Holds the active decorations collection so we can clear it before each update. */
   const decorationsRef = useRef<editor.IEditorDecorationsCollection | null>(null);
 
   const sourceCode = definition?.sources[activeLanguage] ?? "";
@@ -30,7 +31,14 @@ export default function CodePanel() {
     return lineHighlight?.lines ?? [];
   }, [currentStep, activeLanguage]);
 
-  /* Update decorations whenever highlighted lines change */
+  /*
+   * Sync Monaco decorations with the current step's highlighted lines.
+   *
+   * Monaco uses a "decorations collection" model: we hold a single
+   * collection ref and replace its contents on every step change.
+   * Clearing then recreating avoids stale highlights from the previous step.
+   * After updating decorations, auto-scroll to keep the highlighted line visible.
+   */
   useEffect(() => {
     const editorInstance = editorRef.current;
     if (!editorInstance) return;
@@ -49,9 +57,11 @@ export default function CodePanel() {
       },
     }));
 
+    /* Clear previous decorations before applying new ones */
     if (decorationsRef.current) {
       decorationsRef.current.clear();
     }
+    /* Create a fresh collection so Monaco tracks these as the active set */
     decorationsRef.current = editorInstance.createDecorationsCollection(decorations);
 
     /* Scroll to first highlighted line */

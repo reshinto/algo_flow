@@ -1,3 +1,9 @@
+/**
+ * Dynamic programming tracker — builds execution steps for DP algorithms.
+ * Maintains a mutable DP table with per-cell states (default, computing,
+ * computed, reading-cache) and an optional call stack for memoization
+ * visualizations.
+ */
 import type { DPCell, DPCellState, DPTableVisualState } from "@/types";
 
 import { BaseTracker } from "./base-tracker";
@@ -18,6 +24,7 @@ export class DPTracker extends BaseTracker {
     }));
   }
 
+  /** Deep-copy the current table and call stack for an immutable step snapshot. */
   private snapshot(): DPTableVisualState {
     return {
       kind: "dp-table",

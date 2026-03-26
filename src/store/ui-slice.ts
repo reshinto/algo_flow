@@ -1,3 +1,7 @@
+/* UI slice — manages layout and drawer state across responsive breakpoints.
+   Tracks mobile drawer visibility, educational panel toggle, and the active
+   panel for the single-panel mobile layout. */
+
 import type { StateCreator } from "zustand";
 
 export interface UISlice {

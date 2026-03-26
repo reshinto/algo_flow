@@ -1,3 +1,4 @@
+# Exclude build artifacts, dependencies, coverage, and minified files from Prettier formatting.
 dist
 node_modules
 coverage

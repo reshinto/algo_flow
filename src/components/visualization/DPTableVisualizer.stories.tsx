@@ -1,3 +1,4 @@
+/** Storybook stories for the DPTableVisualizer component. */
 import type { Meta, StoryObj } from "@storybook/react";
 import type { DPTableVisualState } from "@/types";
 import DPTableVisualizer from "./DPTableVisualizer";

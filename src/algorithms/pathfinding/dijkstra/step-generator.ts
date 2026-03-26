@@ -1,3 +1,5 @@
+/** Step generator for Dijkstra's Algorithm — produces ExecutionStep[] using PathfindingTracker. */
+
 import type { ExecutionStep, GridCell } from "@/types";
 import { PathfindingTracker } from "@/trackers";
 import { ALGORITHM_ID } from "@/utils/constants";
