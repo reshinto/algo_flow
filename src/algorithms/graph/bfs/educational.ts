@@ -1,70 +1,68 @@
-/**
- * Educational content for Breadth-First Search (BFS).
- * Provides learner-facing explanations, complexity analysis, and usage guidance
- * displayed in the explanation panel during visualization.
- */
 import type { EducationalContent } from "@/types";
 
-/** Structured educational material covering all required sections for BFS. */
 export const bfsEducational: EducationalContent = {
   overview:
-    "Breadth-First Search (BFS) is a graph traversal algorithm that explores all vertices at the present depth level before moving on to vertices at the next depth level. It uses a queue data structure to keep track of which node to visit next, ensuring that nodes are visited in order of their distance from the starting node.",
+    "**Breadth-First Search (BFS)** is a foundational graph traversal algorithm that explores all vertices at the immediate present depth level entirely before moving outward to adjacent vertices at the next depth level.\n\nIt utilizes a **Queue (FIFO)** data structure to logically retain track of which exact node requires visitation next, rigidly ensuring that all nodes are verified explicitly in hierarchical order of their physical distance from the root starting node.",
 
   howItWorks:
-    "1. Start at the chosen source node and mark it as visited\n" +
-    "2. Add the source node to a queue\n" +
-    "3. While the queue is not empty:\n" +
-    "   a. Remove the front node from the queue (dequeue)\n" +
-    "   b. Process/visit the dequeued node\n" +
-    "   c. For each unvisited neighbor of the dequeued node:\n" +
-    "      - Mark the neighbor as visited\n" +
-    "      - Add the neighbor to the queue (enqueue)\n" +
-    "4. Repeat until the queue is empty\n\n" +
-    "Example with graph A-B, A-C, B-D, C-E, D-F:\n" +
-    "- Start at A: queue=[A], visited=[A]\n" +
-    "- Visit A, enqueue B,C: queue=[B,C], visited=[A,B,C]\n" +
-    "- Visit B, enqueue D: queue=[C,D], visited=[A,B,C,D]\n" +
-    "- Visit C, enqueue E: queue=[D,E], visited=[A,B,C,D,E]\n" +
-    "- Visit D, enqueue F: queue=[E,F], visited=[A,B,C,D,E,F]\n" +
-    "- Visit E, visit F: done!",
+    "1. Start at the chosen source node and permanently mark it sequentially as **visited**.\n" +
+    "2. Push the root node sequentially into an active queue array.\n" +
+    "3. While the live Queue is not absolutely empty:\n" +
+    "   * Immediately remove the *first* front node off the queue *(dequeue)*.\n" +
+    "   * Register a visit upon the newly dequeued target.\n" +
+    "   * Parse every single unvisited neighbor connected to this dequeued node.\n" +
+    "   * Mark the neighbors as visited and append them to the trailing back of the queue.\n" +
+    "4. Repeat cleanly until the queue is completely drained.\n\n" +
+    "### Visualizing Layer Expansion\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    A((A)) --> B((B))\n" +
+    "    A --> C((C))\n" +
+    "    B --> D((D))\n" +
+    "    C --> E((E))\n" +
+    "    D --> F((F))\n" +
+    "    \n" +
+    "    style A fill:#06b6d4,stroke:#0891b2\n" +
+    "    style B fill:#3b82f6,stroke:#2563eb\n" +
+    "    style C fill:#3b82f6,stroke:#2563eb\n" +
+    "    style D fill:#6366f1,stroke:#4f46e5\n" +
+    "    style E fill:#6366f1,stroke:#4f46e5\n" +
+    "```\n\n" +
+    "- **Level 1 (Cyan):** Node `A`\n" +
+    "- **Level 2 (Blue):** Nodes `B`, `C`\n" +
+    "- **Level 3 (Indigo):** Nodes `D`, `E`",
 
   timeAndSpaceComplexity:
-    "**Time Complexity:**\n" +
-    "- Best case: O(V + E) — must examine every vertex and edge reachable from the start\n" +
-    "- Average case: O(V + E) — performance is consistent regardless of graph structure\n" +
-    "- Worst case: O(V + E) — where V is the number of vertices and E is the number of edges\n\n" +
-    "**Space Complexity:** O(V) — the queue and visited set can each hold up to V vertices in the worst case",
+    "**Time Complexity: `O(V + E)`**\n\n" +
+    "- **Best / Average / Worst Case:** The traversal engine mandates examining every single vertex `V` and systematically indexing every respective edge `E` reachable from the root. Regardless of topological maps, performance yields predictably at `O(V + E)`.\n\n" +
+    "**Space Complexity: `O(V)`**\n\n" +
+    "The required active tracking Queue and the static Visited Array can each theoretically balloon to hold up to absolute maximum `V` vertices simultaneously in the worst-case structural scenario (e.g. a wide star-graph layout).",
 
   bestAndWorstCase:
-    "**Best case** still requires O(V + E) time because BFS must explore all reachable vertices and edges systematically. Even if the target is found early, the overall complexity class remains the same.\n\n" +
-    "**Worst case** occurs when the graph is densely connected or when the target node (if searching for one) is the last node discovered. In a complete graph, E = V(V-1)/2, making the time complexity O(V²).",
+    "**Best case** persistently requires fixed `O(V + E)` elapsed time because strict BFS logic forces comprehensive exploration of all reachable structural parameters. Even if your search target resolves favorably early, the fundamental algorithm class scales universally identical.\n\n" +
+    "**Worst case** structural degradation materializes explicitly when resolving wildly interconnected dense topologies or if the target requested node is literally the final indexed vertex. In entirely saturated mathematical graphs, `E = V(V-1)/2`, artificially forcing the raw temporal complexity overhead into quadratic `O(V²)`.",
 
   realWorldUses: [
-    "Finding the shortest path in unweighted graphs — GPS navigation for minimum hops",
-    "Social network analysis — finding degrees of separation between users",
-    "Web crawling — systematically visiting all pages reachable from a starting URL",
-    "Network broadcasting — propagating messages to all reachable nodes level by level",
-    "Puzzle solving — finding minimum moves in games like sliding puzzles or Rubik's cube",
-    "Garbage collection — mark phase of mark-and-sweep algorithms in programming languages",
+    "**GPS Telemetry:** Resolving the definitive shortest unweighted road topography maps for literal driving navigation hops.",
+    "**Social Network Maps:** Uncovering granular generic 'degrees of separation' linkages between separated network users.",
+    "**Web Crawling Scripts:** Systematically traversing arbitrary HTTP document hyperlinks cascading cleanly outward level by level from the root URL.",
+    "**P2P Network Broadcasting:** Propagating secure validation protocol handshakes cleanly among all immediate peer nodes level-by-layer.",
+    "**Algorithmic GC Scavengers:** Bootstrapping the initial mark-phase mapping arrays utilized universally in V8/JVM background runtime garbage collectors.",
   ],
 
   strengthsAndLimitations: {
     strengths: [
-      "Guarantees finding the shortest path in unweighted graphs",
-      "Complete algorithm — will find a solution if one exists",
-      "Explores nodes level by level, giving a natural 'distance' ordering",
-      "Simple to implement with a queue data structure",
-      "Works well for finding all nodes within a certain distance",
+      "Mathematically natively guarantees finding the absolute shortest logical path across explicitly unweighted graphic topologies.",
+      "Strict logical completeness guarantees locating the termination node safely if any singular permutation mathematically exists mapping to it.",
+      "Sprawls homogeneously strictly level by level yielding mathematically identical proximity boundaries globally.",
     ],
     limitations: [
-      "O(V) space complexity can be prohibitive for very large graphs",
-      "Not optimal for weighted graphs — use Dijkstra's algorithm instead",
-      "Explores all nodes at each depth before going deeper, which can be wasteful if the target is deep",
-      "Does not work directly on infinite or very large implicit graphs without modification",
-      "Less memory-efficient than DFS for deep, narrow graphs",
+      "Drastic `O(V)` auxiliary storage footprint routinely forces massive out-of-memory structural failures when analyzing billion-node infinite domains.",
+      "Utterly crippled and practically useless when executing atop mathematically weighted topographies (Requires Dijkstra).",
+      "Expends huge processing payload scanning massive broad networks fully before traveling deep toward known centralized targets.",
     ],
   },
 
   whenToUseIt:
-    "Use BFS when you need the shortest path in an unweighted graph, when you want to explore nodes in order of their distance from a source, or when you need to find all nodes within a certain number of hops. Prefer DFS when memory is a concern and shortest path is not required. Use Dijkstra's algorithm when edges have varying weights.",
+    "Trigger **Breadth-First Search** deployment specifically when isolated logical distance directly determines target hierarchy significance, or strictly when guaranteeing the universally shortest path on an un-weighted mapping matters flawlessly. \n\nConversely, pivot decisively off BFS in favor of **Depth-First Search (DFS)** whenever systemic memory constraints threaten payload caps, or pivot explicitly to **Dijkstra** if mapped nodal edges begin requiring dynamic integer weights.",
 };

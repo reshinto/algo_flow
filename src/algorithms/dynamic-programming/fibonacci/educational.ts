@@ -1,69 +1,72 @@
-/**
- * Educational content for Fibonacci (dynamic programming).
- * Covers both tabulation (bottom-up) and memoization (top-down) approaches,
- * with complexity analysis and usage guidance for the explanation panel.
- */
 import type { EducationalContent } from "@/types";
 
-/** Structured educational material covering all required sections for Fibonacci. */
 export const fibonacciEducational: EducationalContent = {
   overview:
-    "The Fibonacci sequence is a classic problem in dynamic programming where each number is the sum of the two preceding ones: F(0) = 0, F(1) = 1, F(n) = F(n-1) + F(n-2). While the naive recursive approach has exponential time complexity due to redundant computations, dynamic programming techniques — tabulation (bottom-up) and memoization (top-down) — reduce this to linear time by storing and reusing previously computed results.",
+    "The **Fibonacci sequence** is a classic problem in dynamic programming where each number is the sum of the two preceding ones: `F(0) = 0`, `F(1) = 1`, and `F(n) = F(n-1) + F(n-2)`.\n\nWhile the naive recursive approach has **exponential time complexity** `O(2^n)` due to computing the exact same subproblems repeatedly, dynamic programming techniques—such as tabulation (bottom-up) and memoization (top-down)—reduce this to **linear time** `O(n)` by storing and reusing previously computed results.",
 
   howItWorks:
-    "**Tabulation (Bottom-Up) Approach:**\n" +
-    "1. Create a table (array) of size n+1 to store Fibonacci values\n" +
-    "2. Set the base cases: table[0] = 0 and table[1] = 1\n" +
-    "3. Iterate from index 2 to n\n" +
-    "4. For each index, compute table[i] = table[i-1] + table[i-2]\n" +
-    "5. Return table[n] as the final answer\n\n" +
-    "**Memoization (Top-Down) Approach:**\n" +
-    "1. Define a recursive function F(n) with a cache (hash map)\n" +
-    "2. If n is 0 or 1, return n (base cases)\n" +
-    "3. If F(n) is already in the cache, return the cached value\n" +
-    "4. Otherwise, compute F(n) = F(n-1) + F(n-2), store in cache, and return\n\n" +
-    "Example: F(5) = 5\n" +
-    "- Table fills: [0, 1, 1, 2, 3, 5]\n" +
-    "- Each cell depends only on the two previous cells",
+    "Dynamic Programming speeds up the naive recursive solution drastically by ensuring each sub-problem `F(i)` is computed **only once**.\n\n" +
+    "### The Subproblem Overlap (Naive Approach)\n\n" +
+    "Notice how calculating just `F(5)` forces us to compute `F(3)` twice, and `F(2)` three times. This is why the naive approach is so slow! \n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '    F5["F(5)"] --> F4["F(4)"]\n' +
+    '    F5 --> F3A["F(3)"]\n' +
+    '    F4 --> F3B["F(3)"]\n' +
+    '    F4 --> F2A["F(2)"]\n' +
+    '    F3A --> F2B["F(2)"]\n' +
+    '    F3A --> F1A["F(1)"]\n' +
+    "    \n" +
+    "    style F5 fill:#0a192f,stroke:#26d0ce\n" +
+    "    style F4 fill:#1a365d,stroke:#3b82f6\n" +
+    "    style F3A fill:#7f1d1d,stroke:#ef4444,stroke-width:2px\n" +
+    "    style F3B fill:#7f1d1d,stroke:#ef4444,stroke-width:2px\n" +
+    "```\n\n" +
+    "### 1. Tabulation (Bottom-Up) Approach\n" +
+    "We build the solution iteratively from the ground up.\n" +
+    "1. Create an array `table` of size `n + 1` to store Fibonacci values.\n" +
+    "2. Set the base cases: `table[0] = 0` and `table[1] = 1`.\n" +
+    "3. Iterate from index `2` up to `n`.\n" +
+    "4. For each step, add the two previous array cells: `table[i] = table[i-1] + table[i-2]`.\n" +
+    "5. Return `table[n]`.\n\n" +
+    "### 2. Memoization (Top-Down) Approach\n" +
+    "We use recursion, but we save the answers to a cache object as we go.\n" +
+    "1. Define the recursive function `F(n)` with a globally accessible `cache`.\n" +
+    "2. If `n` is `0` or `1`, return `n` *(Base Case)*.\n" +
+    "3. **Check Cache:** If `F(n)` lies inside `cache`, return it immediately! *(Hit!)*\n" +
+    "4. Let `val = F(n-1) + F(n-2)`. Store `val` into `cache`, then return it.",
 
   timeAndSpaceComplexity:
-    "**Time Complexity (Tabulation):**\n" +
-    "- Best case: O(n) — always iterates through all values from 2 to n\n" +
-    "- Average case: O(n) — single linear pass through the table\n" +
-    "- Worst case: O(n) — same linear pass regardless of input\n\n" +
-    "**Time Complexity (Memoization):**\n" +
-    "- O(n) — each subproblem is computed exactly once and cached\n\n" +
-    "**Space Complexity:** O(n) — the table or cache stores n+1 values. Note: tabulation can be optimized to O(1) space by only keeping the last two values, but the standard implementation uses O(n) for clarity.",
+    "**Time Complexity: `O(n)`**\n\n" +
+    "- **Tabulation:** We run a single linear, non-nested `for` loop starting from `2` up to `n`, performing exactly `O(1)` operations per step.\n" +
+    "- **Memoization:** Although recursive, each unique subproblem `F(i)` is evaluated fully only once. Further requests for `F(i)` hit the `O(1)` cache.\n\n" +
+    "**Space Complexity: `O(n)`**\n\n" +
+    "Our Tabulation approach stores `n + 1` values inside the dynamic array. \n\n" +
+    "> Note: Tabulation for Fibonacci can be trivially optimized to `O(1)` spatial complexity by storing only the previous `two` values dynamically instead of calculating the entire array history, but our explicit `O(n)` array visualization serves as a stronger teaching instrument for DP grid concepts.",
 
   bestAndWorstCase:
-    "**Best case** for tabulation is the same as the worst case: O(n). The algorithm always fills the entire table from 0 to n. There is no early termination or input that changes the number of operations.\n\n" +
-    "**Worst case** is also O(n). Unlike the naive recursive approach which has O(2^n) worst case due to overlapping subproblems, both DP approaches ensure each value is computed exactly once. The naive recursive tree for F(5) makes 15 calls, while tabulation makes exactly 4 additions (for indices 2 through 5).",
+    "The **Best case**, **Average case**, and **Worst case** for our DP implementation are functionally identical: `O(n)`.\n\n" +
+    "Because calculation relies directly upon computing all preceding numbers sequentially, the DP grid completely flattens execution pathways. Whether you request `F(4)` or `F(50)`, algorithm execution is rigorously predictable and scales strictly linearly. There is no such thing as a 'lucky' shortcut.",
 
   realWorldUses: [
-    "Algorithm design education — the canonical example for learning dynamic programming and memoization",
-    "Financial modeling — Fibonacci retracement levels are used in technical stock market analysis",
-    "Nature and biology modeling — Fibonacci numbers appear in phyllotaxis (leaf arrangement), flower petals, and spiral patterns",
-    "Computer science theory — analysis of the Euclidean algorithm's worst case uses Fibonacci numbers",
-    "Data structures — Fibonacci heaps use the sequence in their amortized complexity analysis",
+    "**Algorithm Education:** The gold standard introductory mechanism for demystifying recursive overlap and DP Tabulation.",
+    "**Financial Modeling:** Traders utilize Fibonacci mathematical intervals (*Retracement levels*) to predict chart support/resistance lines on stock and crypto tickers.",
+    "**Biology & Nature:** The exact spiral ratio mathematically maps directly onto sunflower seed alignments, pinecones, and Nautilus shells.",
+    "**Data Structures:** Heavily leveraged in internal complex architectures, like the widely known *Fibonacci Heap*.",
   ],
 
   strengthsAndLimitations: {
     strengths: [
-      "Reduces exponential O(2^n) naive recursion to linear O(n) time",
-      "Tabulation avoids call stack overhead and risk of stack overflow",
-      "Clearly demonstrates the power of storing and reusing subproblem solutions",
-      "Simple and intuitive — excellent for building DP intuition before tackling harder problems",
-      "Tabulation can be further optimized to O(1) space using only two variables",
+      "Flattens the dangerous `O(2^n)` exponential recursive explosion directly into an ultra-fast `O(n)` operation.",
+      "Tabulation structurally eradicates recursive overhead, fully avoiding `Maximum call stack size exceeded` errors native to JavaScript.",
+      "Trivially verifiable edge cases and mathematical logic.",
     ],
     limitations: [
-      "For very large n, integer overflow becomes an issue without big integer support",
-      "The O(n) space version stores values that are only needed temporarily",
-      "Memoization relies on recursion, which can hit stack depth limits for large n",
-      "Not directly applicable to most real-world problems without adaptation",
-      "Matrix exponentiation can compute F(n) in O(log n) time, making DP not the theoretically fastest approach",
+      "For monumental numbers (`F(100+)`), native primitive integers overflow their memory limits requiring `BigInt` wrappers to maintain accuracy.",
+      "Without `O(1)` Space pruning, huge tables reserve unneeded allocated JS heap blocks holding deeply stale calculation histories.",
     ],
   },
 
   whenToUseIt:
-    "Use the tabulation approach when you need to compute Fibonacci numbers iteratively without recursion overhead, or when building up a full table of values for further analysis. Use memoization when you prefer the top-down recursive style or when you only need specific values rather than the full table. For extremely large n where O(n) is too slow, consider the matrix exponentiation method which runs in O(log n) time.",
+    "Opt for **Tabulation** (Bottom-Up) when processing extremely large sequential requirements where recursive depth limits pose structural threats. \n\nSelect **Memoization** (Top-Down) for multidimensional logic puzzles where calculating the *entire* state array isn't guaranteed to be necessary, minimizing needless mathematical processing.",
 };

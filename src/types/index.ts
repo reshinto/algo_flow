@@ -1,6 +1,9 @@
 /**
+ * @file index.ts
+ * @module types/index
+ *
  * Barrel re-exports for all shared type definitions.
- * Import from `@/types` instead of reaching into individual modules.
+ * Import strictly from `@/types` instead of reaching directly into individual modules to prevent circular dependencies.
  */
 
 export type {

@@ -12,7 +12,13 @@ import eslintConfigPrettier from "eslint-config-prettier";
 import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
-  globalIgnores(["dist", "storybook-static", "coverage", "src/algorithms/**/sources/**"]),
+  globalIgnores([
+    "dist",
+    "storybook-static",
+    "coverage",
+    "src/algorithms/**/sources/**",
+    ".claude/worktrees",
+  ]),
   {
     files: ["**/*.{ts,tsx}"],
     extends: [
