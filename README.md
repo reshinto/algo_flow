@@ -36,21 +36,21 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## Scripts
 
-| Command                  | Description                               |
-| ------------------------ | ----------------------------------------- |
-| `npm run dev`            | Start development server with HMR         |
-| `npm run build`          | Type-check and build for production       |
-| `npm run preview`        | Preview production build locally          |
-| `npm run lint`           | Run ESLint                                |
-| `npm run lint:fix`       | Run ESLint with auto-fix                  |
-| `npm run format`         | Format all files with Prettier            |
-| `npm run format:check`   | Check formatting without writing          |
-| `npm run typecheck`      | TypeScript type checking                  |
-| `npm run test`           | Run unit tests (Vitest)                   |
-| `npm run test:watch`     | Run tests in watch mode                   |
-| `npm run test:coverage`  | Run tests with coverage report            |
-| `npm run storybook`      | Start Storybook development server        |
-| `npm run storybook:build`| Build Storybook for static deployment     |
+| Command                   | Description                           |
+| ------------------------- | ------------------------------------- |
+| `npm run dev`             | Start development server with HMR     |
+| `npm run build`           | Type-check and build for production   |
+| `npm run preview`         | Preview production build locally      |
+| `npm run lint`            | Run ESLint                            |
+| `npm run lint:fix`        | Run ESLint with auto-fix              |
+| `npm run format`          | Format all files with Prettier        |
+| `npm run format:check`    | Check formatting without writing      |
+| `npm run typecheck`       | TypeScript type checking              |
+| `npm run test`            | Run unit tests (Vitest)               |
+| `npm run test:watch`      | Run tests in watch mode               |
+| `npm run test:coverage`   | Run tests with coverage report        |
+| `npm run storybook`       | Start Storybook development server    |
+| `npm run storybook:build` | Build Storybook for static deployment |
 
 ## Docker
 
@@ -121,38 +121,49 @@ Visual regression testing is powered by [Chromatic](https://www.chromatic.com/).
 #### Setting up Chromatic
 
 **1. Get a project token:**
+
 - Sign up at [chromatic.com](https://www.chromatic.com/) and create a project (or link your GitHub repo)
 - Copy the project token from the project settings page
 
 **2. Add the token to `.env` for local use:**
+
 ```bash
 cp .env.example .env
 ```
+
 Then open `.env` and paste your token:
+
 ```
 CHROMATIC_PROJECT_TOKEN=chpt_your_token_here
 ```
+
 The `.env` file is gitignored and will not be committed.
 
 **3. Add the token to GitHub Secrets for CI:**
+
 ```bash
 # Using GitHub CLI
 gh secret set CHROMATIC_PROJECT_TOKEN --repo <owner>/<repo> --body "<your-token>"
 ```
+
 Or manually: GitHub repo > Settings > Secrets and variables > Actions > New repository secret > Name: `CHROMATIC_PROJECT_TOKEN`, Value: your token.
 
 #### Running visual tests
 
 **CLI (headless):**
+
 ```bash
 npm run chromatic
 ```
+
 Builds Storybook, uploads snapshots to Chromatic, and prints a dashboard URL with results. The token is auto-loaded from `.env` via `dotenv-cli`.
 
 **Storybook GUI (interactive):**
+
 ```bash
 npm run storybook
 ```
+
 Open http://localhost:6006 in your browser, select any story, then click the **"Visual tests"** tab in the bottom panel. Sign in with Chromatic on first use (one-time OAuth). After that, you can run and review visual tests directly inside Storybook.
 
 **CI (automatic):**
