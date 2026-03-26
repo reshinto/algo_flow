@@ -105,18 +105,58 @@ npm run storybook
 # Build static Storybook
 npm run storybook:build
 
-# Run Chromatic visual tests (requires CHROMATIC_PROJECT_TOKEN)
+# Run Chromatic visual tests (auto-loads token from .env)
 npm run chromatic
 ```
 
-**15 story files** organized into:
+**15 story files** (51 snapshots) organized into:
 
 - **Shared Primitives**: Button, Badge, IconButton, Select
 - **Code Panel**: LanguageTabs
 - **Individual Visualizers**: ArrayVisualizer, GraphVisualizer, GridVisualizer, DPTableVisualizer — with mock data showing different visual states
 - **Algorithm Pipelines**: Bubble Sort, Binary Search, BFS, Dijkstra, Fibonacci DP, Sliding Window — using real step generators to show initial, mid-execution, and final states
 
-Visual regression testing is powered by [Chromatic](https://www.chromatic.com/). Every story is automatically snapshot-tested on each push. To enable in CI, add a `CHROMATIC_PROJECT_TOKEN` repository secret.
+Visual regression testing is powered by [Chromatic](https://www.chromatic.com/). Every story is automatically snapshot-tested. Chromatic captures pixel-perfect screenshots in cloud browsers and flags visual differences for review.
+
+#### Setting up Chromatic
+
+**1. Get a project token:**
+- Sign up at [chromatic.com](https://www.chromatic.com/) and create a project (or link your GitHub repo)
+- Copy the project token from the project settings page
+
+**2. Add the token to `.env` for local use:**
+```bash
+cp .env.example .env
+```
+Then open `.env` and paste your token:
+```
+CHROMATIC_PROJECT_TOKEN=chpt_your_token_here
+```
+The `.env` file is gitignored and will not be committed.
+
+**3. Add the token to GitHub Secrets for CI:**
+```bash
+# Using GitHub CLI
+gh secret set CHROMATIC_PROJECT_TOKEN --repo <owner>/<repo> --body "<your-token>"
+```
+Or manually: GitHub repo > Settings > Secrets and variables > Actions > New repository secret > Name: `CHROMATIC_PROJECT_TOKEN`, Value: your token.
+
+#### Running visual tests
+
+**CLI (headless):**
+```bash
+npm run chromatic
+```
+Builds Storybook, uploads snapshots to Chromatic, and prints a dashboard URL with results. The token is auto-loaded from `.env` via `dotenv-cli`.
+
+**Storybook GUI (interactive):**
+```bash
+npm run storybook
+```
+Open http://localhost:6006 in your browser, select any story, then click the **"Visual tests"** tab in the bottom panel. Sign in with Chromatic on first use (one-time OAuth). After that, you can run and review visual tests directly inside Storybook.
+
+**CI (automatic):**
+The CI workflows run Chromatic automatically on every push to `main` and on pull requests when `CHROMATIC_PROJECT_TOKEN` is configured as a repository secret.
 
 ## Tech Stack
 
