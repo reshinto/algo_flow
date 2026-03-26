@@ -8,6 +8,28 @@
             "type": "command",
             "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/block-ai-attribution.sh",
             "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/block-main-branch-commits.sh",
+            "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/pre-commit-quality-check.sh",
+            "timeout": 120000
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/auto-pr-after-push.sh",
+            "timeout": 10000
           }
         ]
       }

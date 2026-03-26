@@ -17,8 +17,9 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
+    "build-storybook": "storybook build",
     "storybook:test": "test-storybook",
-    "chromatic": "chromatic --exit-zero-on-changes"
+    "chromatic": "dotenv -- chromatic --exit-zero-on-changes --build-script-name=storybook:build"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
@@ -50,6 +51,7 @@
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/coverage-v8": "^4.1.1",
     "chromatic": "^16.0.0",
+    "dotenv-cli": "^11.0.0",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-hooks": "^7.0.1",

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Session start hook: verify we're on a task-related branch, not main/master.
-# Outputs a warning message to stderr if on a protected branch.
+# Session start hook: block working directly on main/master.
+# Forces creation of a task-related feature branch.
 
 set -euo pipefail
 
@@ -15,9 +15,10 @@ PROTECTED_BRANCHES="main master"
 
 for PROTECTED in $PROTECTED_BRANCHES; do
   if [ "$CURRENT_BRANCH" = "$PROTECTED" ]; then
-    echo "BRANCH SAFETY: Currently on '$CURRENT_BRANCH'. Create a feature branch before making changes." >&2
-    echo "Suggested: git checkout -b feat/<task-description>" >&2
-    exit 0
+    echo "BLOCKED: Currently on '$CURRENT_BRANCH'. You must create a feature branch before making changes." >&2
+    echo "Run: git checkout -b <type>/<short-description>" >&2
+    echo "Examples: feat/add-merge-sort, fix/grid-editor-drag, chore/update-deps" >&2
+    exit 2
   fi
 done
 
