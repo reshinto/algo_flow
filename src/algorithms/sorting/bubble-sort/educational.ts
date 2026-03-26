@@ -8,55 +8,68 @@ import type { EducationalContent } from "@/types";
 /** Structured educational material covering all required sections for Bubble Sort. */
 export const bubbleSortEducational: EducationalContent = {
   overview:
-    "Bubble Sort is a comparison-based sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. It gets its name because smaller elements 'bubble' to the top of the list.",
+    "**Bubble Sort** is a comparison-based sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. \n\nThe pass through the list is repeated until the list is sorted. It gets its name because smaller elements iteratively **'bubble'** to the top of the list (or conversely, the largest items sink to the bottom) during each pass.",
 
   howItWorks:
-    "1. Start at the beginning of the array\n" +
-    "2. Compare the first two adjacent elements\n" +
-    "3. If the first element is greater than the second, swap them\n" +
-    "4. Move to the next pair of adjacent elements and repeat\n" +
-    "5. After one complete pass, the largest element is at the end\n" +
-    "6. Repeat the process for the remaining unsorted portion\n" +
-    "7. If no swaps occurred during a pass, the array is sorted (early exit)\n\n" +
-    "Example with [5, 3, 8, 1]:\n" +
-    "- Pass 1: [3, 5, 1, 8] → 8 bubbles to the end\n" +
-    "- Pass 2: [3, 1, 5, 8] → 5 reaches its position\n" +
-    "- Pass 3: [1, 3, 5, 8] → sorted!",
+    "Bubble sort algorithm is incredibly simple but structurally inefficient for large sets.\n\n" +
+    "### Step-by-Step Execution\n" +
+    "1. Start at index `0` of the array.\n" +
+    "2. Compare the element with the adjacent element to its right.\n" +
+    "3. **Swap** them if the left element is mathematically strictly greater than the right.\n" +
+    "4. Move one position to the right and repeat until the end of the array.\n" +
+    "5. After the first complete pass, the largest element is guaranteed to have *bubbled* to the final index.\n" +
+    "6. Repeat `n - 1` times for the remaining unsorted portion.\n" +
+    "7. **Early Exit Optimization**: If absolutely no swaps occurred during a full pass, the array is strictly sorted and the loop terminates early.\n\n" +
+    "### Visualizing a Swap Pass ([5, 3, 8, 1])\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph Compare 5 and 3\n" +
+    "    A[5] -.->|Swap| B[3]\n" +
+    "    end\n" +
+    "    subgraph New Array State\n" +
+    "    C[3] --- D[5] --- E[8] --- F[1]\n" +
+    "    end\n" +
+    "    \n" +
+    "    style A fill:#7f1d1d,stroke:#ef4444,stroke-width:2px\n" +
+    "    style B fill:#1a365d,stroke:#3b82f6\n" +
+    "```\n\n" +
+    "- **Pass 1:** `[3, 5, 1, 8]` → The `8` bubbles all the way to the end.\n" +
+    "- **Pass 2:** `[3, 1, 5, 8]` → The `5` reaches its final locked position.\n" +
+    "- **Pass 3:** `[1, 3, 5, 8]` → Fully sorted!",
 
   timeAndSpaceComplexity:
-    "**Time Complexity:**\n" +
-    "- Best case: O(n) — when the array is already sorted, only one pass with no swaps is needed\n" +
-    "- Average case: O(n²) — on average, each element needs to be compared with many others\n" +
-    "- Worst case: O(n²) — when the array is sorted in reverse order, every pair must be swapped\n\n" +
-    "**Space Complexity:** O(1) — sorts in-place, only uses a single temporary variable for swapping",
+    "**Time Complexity: `O(n²)`**\n\n" +
+    "- **Best Case:** `O(n)` — when the array is already perfectly sorted, only one pass `(n)` is needed to confirm 0 swaps occurred.\n" +
+    "- **Average Case:** `O(n²)` — elements generally need to be compared against almost every other element.\n" +
+    "- **Worst Case:** `O(n²)` — the array is in perfectly reversed order and maximum exhaustive swapping must physically take place on every pass.\n\n" +
+    "**Space Complexity: `O(1)`**\n\n" +
+    "Strictly performs **in-place** sorting. It only uses a single momentary temporary variable to juggle swapped pairs, requiring virtually zero extra auxiliary heap allocations.",
 
   bestAndWorstCase:
-    "**Best case** occurs when the input array is already sorted. The algorithm makes one pass through the array, detects no swaps were needed, and terminates early. This gives O(n) performance.\n\n" +
-    "**Worst case** occurs when the input array is sorted in reverse order (e.g., [5, 4, 3, 2, 1]). Every adjacent pair needs to be swapped on every pass, resulting in the maximum number of comparisons and swaps: n(n-1)/2.",
+    "**Best case** occurs when the input array is already sorted `[1, 2, 3, 4, 5]`. The iterator performs exactly one sweeping pass, detects no permutations were necessary, and gracefully yields a linear `O(n)` turnaround.\n\n" +
+    "**Worst case** surfaces heavily when inputs arrive severely backward `[5, 4, 3, 2, 1]`. Every consecutive element strictly forces a discrete memory write swap across exhaustive nested loops, hitting terminal bounds `n(n-1)/2` comparisons.",
 
   realWorldUses: [
-    "Teaching sorting fundamentals — its simplicity makes it ideal for introducing sorting concepts",
-    "Nearly sorted data detection — can quickly verify and fix almost-sorted datasets with O(n) performance",
-    "Small dataset sorting in embedded systems where code simplicity matters more than performance",
-    "Graphics rendering pipelines where objects need to be re-sorted after small position changes each frame",
+    "**Educational Academia:** The definitive baseline algorithm students build from scratch to inherently grasp array manipulation and iterative control flow.",
+    "**Diagnostic Systems:** Phenomenally fast `O(n)` validation to instantaneously confirm if a dataset is already pristine.",
+    "**Embedded Devices:** Extreme logic simplicity translates exceptionally well onto microcontrollers facing starkly constrained kilobyte constraints over nano-second speed requirements.",
+    "**Graphics Pipelines:** Handling Z-index relative re-sorting where objects rarely leapfrog extensively."
   ],
 
   strengthsAndLimitations: {
     strengths: [
-      "Extremely simple to understand and implement",
-      "Stable sort — preserves the relative order of equal elements",
-      "In-place — requires only O(1) additional memory",
-      "Adaptive — performs well on nearly sorted data with early termination",
-      "Easy to detect if the input is already sorted",
+      "Universally simple structural comprehension and trivial implementation difficulty.",
+      "**Stable sort:** Guarantees it inherently preserves the absolute original insertion order of matching duplicate elements.",
+      "**In-place permutation:** Mandates bare absolute minimum `O(1)` memory overhead.",
+      "Hyper-adaptive processing yields early termination speeds seamlessly on nearly-sorted data vectors."
     ],
     limitations: [
-      "O(n²) average and worst-case time complexity makes it impractical for large datasets",
-      "Significantly slower than Merge Sort, Quick Sort, and other O(n log n) algorithms",
-      "Performs poorly on reverse-sorted input",
-      "Not suitable for datasets larger than a few hundred elements in practice",
+      "Mathematically indefensible `O(n²)` average processing completely disqualifies usage across scaled big-data volumes.",
+      "Vastly outclassed globally by native engine sorts like `V8 Timsort`, Merge Sort, or optimized Quick Sort deployments.",
+      "Shatters horribly under reversed structural payloads."
     ],
   },
 
   whenToUseIt:
-    "Use Bubble Sort when you need a simple, easy-to-implement sorting algorithm for small datasets (under ~50 elements), when the data is already nearly sorted, or in educational contexts to understand sorting fundamentals. Prefer Merge Sort or Quick Sort for larger datasets, and Insertion Sort for small datasets where a simple but slightly faster algorithm is acceptable.",
+    "Deploy **Bubble Sort** only when operating across tightly bounded micro-arrays (Under ~50 discrete elements), actively processing data with high physical likelihood of near-perfection, or when constrained severely by code footprint allowances instead of sheer CPU horsepower.\n\nOtherwise, completely omit in favor of `O(n log n)` paradigms like **Merge Sort**."
 };

@@ -1,66 +1,63 @@
-/**
- * Educational content for Dijkstra's Algorithm.
- * Provides learner-facing explanations, complexity analysis, and usage guidance
- * displayed in the explanation panel during visualization.
- */
 import type { EducationalContent } from "@/types";
 
-/** Structured educational material covering all required sections for Dijkstra's Algorithm. */
 export const dijkstraEducational: EducationalContent = {
   overview:
-    "Dijkstra's Algorithm is a graph search algorithm that finds the shortest path between a source node and all other nodes in a weighted graph with non-negative edge weights. Invented by Edsger W. Dijkstra in 1956, it is one of the most fundamental algorithms in computer science and forms the basis of many routing and navigation systems.",
+    "**Dijkstra's Algorithm** is the definitive graph search protocol solving the foundational 'single-source shortest path' problem across directed or undirected networks bearing exclusively non-negative mathematical weightings.\n\nInvented by Edsger W. Dijkstra in 1956, it greedily parses outward, utilizing a Priority Queue to continuously isolate the most mathematically 'affordable' node available, locking in its strict cheapest path before proceeding universally outward.",
 
   howItWorks:
-    "1. Assign a tentative distance of 0 to the start node and Infinity to all others\n" +
-    "2. Set the start node as the current node and add it to the open set\n" +
-    "3. For the current node, examine all unvisited neighbors\n" +
-    "4. Calculate the tentative distance through the current node to each neighbor\n" +
-    "5. If this distance is less than the previously recorded distance, update it\n" +
-    "6. Mark the current node as visited (closed) so it won't be checked again\n" +
-    "7. Select the unvisited node with the smallest tentative distance as the new current node\n" +
-    "8. Repeat steps 3-7 until the destination is reached or the open set is empty\n\n" +
-    "Example on a 5x5 grid with a wall:\n" +
-    "- Start at (0,0), target is (4,4)\n" +
-    "- Algorithm explores outward in all directions from the start\n" +
-    "- Nodes closer to the start are explored first\n" +
-    "- When the target is reached, trace back through parent pointers to reconstruct the path",
+    "1. For the starting node, forcibly assign a tentative structural distance of `0`. Assign `Infinity` globally to all remote others.\n" +
+    "2. Add the start node to a live Priority Queue tracking unvisited terrain.\n" +
+    "3. **Pop** the absolute computationally cheapest unvisited node directly off the Queue.\n" +
+    "4. Iteratively scan all neighboring connected edges tethered to this current node.\n" +
+    "5. Calculate the total tentative distance mathematically required passing through this vector.\n" +
+    "6. If the newly calculated sum is mathematically smaller than the old recorded node boundary, rigidly **Overwrite** it.\n" +
+    "7. Mark the host node irreversibly as *Closed*.\n" +
+    "8. Repeat recursively until the absolute lowest destination node is reached.\n\n" +
+    "### Priority Targeting Visualized\n\n" +
+    "```mermaid\n" +
+    "graph LR\n" +
+    "    A((Start)) --\"Cost 5\"--> B((B))\n" +
+    "    A --\"Cost 2\"--> C((C))\n" +
+    "    C --\"Cost 1\"--> B\n" +
+    "    B --\"Cost 10\"--> D((Target))\n" +
+    "    C --\"Cost 8\"--> D\n" +
+    "    \n" +
+    "    style A fill:#06b6d4,stroke:#0891b2\n" +
+    "    style C fill:#10b981,stroke:#059669\n" +
+    "```\n\n" +
+    "> *Instead of taking the direct `Cost 5` route to B, Dijkstra utilizes the Priority Queue to cleanly determine navigating through C takes only `2 + 1 = 3` total mathematical cost!*",
 
   timeAndSpaceComplexity:
-    "**Time Complexity:**\n" +
-    "- With a binary heap/priority queue: O((V + E) log V), where V is the number of vertices and E is the number of edges\n" +
-    "- With a simple array (as used here): O(V^2) due to linear scan for the minimum distance node\n" +
-    "- On a grid of R rows and C columns: V = R*C and E = ~4*V\n\n" +
-    "**Space Complexity:** O(V) — stores the distance array, parent pointers, visited set, and priority queue, all proportional to the number of vertices",
+    "**Time Complexity: `O((V + E) log V)`**\n\n" +
+    "- Leveraging a structurally integrated Binary Heap Priority Queue gracefully executes pathing at `O((V + E) log V)`, where `V` signifies overall vertices and `E` defines mathematical edges.\n" +
+    "- If implemented weakly using base naive un-indexed Arrays, raw latency dangerously cascades down to `O(V²)` forcing crippling sequential linear scans.\n\n" +
+    "**Space Complexity: `O(V)`**\n\n" +
+    "Forces `O(V)` requirements natively to house the respective nested tracking structures (Global Distance Maps, Reversing Parent Logs, Closed Sets, and live Priority Queues).",
 
   bestAndWorstCase:
-    "**Best case** occurs when the start and end nodes are adjacent or very close, and the algorithm finds the path after exploring only a few nodes. The time is still O((V + E) log V) in big-O terms, but practically very few iterations are needed.\n\n" +
-    "**Worst case** occurs when the end node is unreachable or is the last node discovered. The algorithm must explore every reachable vertex and edge before concluding. On a grid with no walls, this means visiting all R*C cells.",
+    "**Best case** surfaces elegantly when processing maps housing tightly clustered neighboring start/end hubs. The target natively forces rapid target confirmation triggering early termination, executing technically closer to `O(E)` practically regarding speed.\n\n" +
+    "**Worst case** mathematically degrades heavily on networks where un-linked nodes mandate verifying millions of irrelevant mathematical nodes before exhausting search potential finding dead-ends on the literal final Queue pop.",
 
   realWorldUses: [
-    "GPS navigation systems — finding the shortest driving route between two locations",
-    "Network routing protocols (OSPF, IS-IS) — determining optimal packet forwarding paths",
-    "Robotics path planning — navigating a robot through an environment with obstacles",
-    "Social network analysis — finding the shortest connection chain between two people",
-    "Game AI — computing optimal movement paths for characters across a map",
+    "**Navigation Satellites (GPS):** Core structural blueprint underlying Map Routing applications parsing geometric terrain vectors mathematically.",
+    "**Internet Topology (OSPF):** The baseline implementation routing discrete UDP sequence packets optimizing paths around live dead-zoned server routers globally.",
+    "**Industrial Robotics:** Directing self-driving chassis units away from mathematical collision gradients around simulated 2D blueprint arrays.",
+    "**Algorithmic High-Frequency Arbitrage:** Flagging ultra-fractional optimal micro-routes mapping FX currency triangular valuation paths."
   ],
 
   strengthsAndLimitations: {
     strengths: [
-      "Guarantees the shortest path when all edge weights are non-negative",
-      "Works on both directed and undirected graphs",
-      "Can compute shortest paths from a source to all reachable nodes in one run",
-      "Well-suited for sparse graphs when implemented with a priority queue",
-      "Simple to implement and understand compared to other shortest path algorithms",
+      "Rigidly mathematical completion proving unassailable shortest-path guarantees ensuring completely optimal solutions natively.",
+      "Parses gracefully natively supporting both strict directional arrays and un-coupled bidirectional network hubs.",
+      "Easily computes every single optimal path spanning outward iteratively terminating simultaneously across entire map sets."
     ],
     limitations: [
-      "Cannot handle negative edge weights — use Bellman-Ford for that case",
-      "Explores in all directions equally, unlike A* which uses a heuristic to focus the search",
-      "With a simple array-based priority queue, performance degrades to O(V^2)",
-      "Not ideal for very large graphs where only a single target is needed — A* is often faster",
-      "Requires the entire graph to be known in advance (not suitable for online/streaming scenarios)",
-    ],
+      "Catastrophically vulnerable directly failing entirely against algorithmic negative edge weights. (Mandates `Bellman-Ford` fallback).",
+      "Scans fully homogeneously completely blind without spatial vector heuristics (Unlike `A*` Pathfinding).",
+      "Necessarily requires statically accessing the fully mapped topology strictly ahead of runtime processing triggers."
+    ]
   },
 
   whenToUseIt:
-    "Use Dijkstra's Algorithm when you need to find the shortest path in a graph with non-negative edge weights. It is the go-to choice for general shortest path problems in road networks, game maps, and network routing. If you need better performance toward a specific target, consider A* with an admissible heuristic. For graphs with negative weights, use Bellman-Ford instead.",
+    "Mandate **Dijkstra's** core runtime entirely when architectural constraints demand securing the absolutely optimal numeric mathematical pathing string bridging disparate topologies heavily mapped with differing edge resistance sizes.\n\nRefuse usage globally however upon networks explicitly featuring known negative node penalties, or if vector-heavily prioritized heuristic hunting (`A* Search`) natively yields radically superior target locking."
 };
