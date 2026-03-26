@@ -35,7 +35,7 @@ export default function Select({ options, label, className = "", ...rest }: Sele
   return (
     <select
       aria-label={label}
-      className={`h-9 rounded-md border border-[var(--color-border-default)] bg-[var(--color-surface-secondary)] px-3 text-sm text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent-cyan)] ${className}`}
+      className={`h-11 md:h-9 rounded-md border border-[var(--color-border-default)] bg-[var(--color-surface-secondary)] px-3 text-sm text-[var(--color-text-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent-cyan)] ${className}`}
       {...rest}
     >
       {ungrouped.map((option) => (

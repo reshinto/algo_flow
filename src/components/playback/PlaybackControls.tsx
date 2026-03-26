@@ -42,8 +42,8 @@ export default function PlaybackControls() {
 
   return (
     <div className="flex flex-col gap-1 border-t border-[var(--color-border-default)] bg-[var(--color-surface-secondary)] px-4 py-2">
-      {/* Progress bar — outer h-5 gives a 20px touch zone while the visible track stays slim */}
-      <div className="relative flex h-5 w-full cursor-pointer items-center">
+      {/* Progress bar — outer h-11 gives a 44px touch zone on mobile while the visible track stays slim */}
+      <div className="relative flex h-11 w-full cursor-pointer items-center md:h-5">
         <div className="relative h-1.5 w-full rounded-full bg-[var(--color-surface-tertiary)]">
           <div
             className="h-full rounded-full bg-[var(--color-accent-cyan)] transition-[width] duration-100"

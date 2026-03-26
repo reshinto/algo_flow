@@ -35,7 +35,7 @@ export default function Header() {
   );
 
   return (
-    <header className="flex h-12 shrink-0 items-center gap-3 border-b border-[var(--color-border-default)] bg-[var(--color-surface-secondary)] px-4">
+    <header className="flex h-14 md:h-12 shrink-0 items-center gap-3 border-b border-[var(--color-border-default)] bg-[var(--color-surface-secondary)] px-4">
       <h1 className="shrink-0 text-lg font-semibold text-[var(--color-text-primary)]">AlgoFlow</h1>
 
       {/* min-w-0 allows the select to shrink below its content width on mobile */}
@@ -52,7 +52,8 @@ export default function Header() {
       <IconButton
         label="Toggle learning content"
         onClick={toggleEducationalDrawer}
-        className="shrink-0"
+        size="lg"
+        className="shrink-0 md:h-9 md:w-9"
       >
         <FiBookOpen size={18} />
       </IconButton>

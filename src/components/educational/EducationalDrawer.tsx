@@ -52,7 +52,7 @@ export default function EducationalDrawer() {
                   </div>
                 )}
               </div>
-              <IconButton label="Close" onClick={toggleEducationalDrawer}>
+              <IconButton label="Close" onClick={toggleEducationalDrawer} size="lg" className="md:h-9 md:w-9">
                 <FiX size={20} />
               </IconButton>
             </div>

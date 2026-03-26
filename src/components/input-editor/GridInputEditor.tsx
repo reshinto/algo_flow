@@ -160,7 +160,7 @@ export default function GridInputEditor() {
           Click to add walls, drag start/end nodes
         </span>
         <div className="flex-1" />
-        <IconButton label="Reset grid" onClick={handleReset} size="sm">
+        <IconButton label="Reset grid" onClick={handleReset} size="lg" className="md:h-7 md:w-7">
           <FiRotateCcw size={12} />
         </IconButton>
       </div>
