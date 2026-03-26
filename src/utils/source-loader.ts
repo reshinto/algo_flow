@@ -34,3 +34,69 @@ export function loadSource(algorithmId: string, language: SupportedLanguage): st
 export function getAllSourcePaths(): string[] {
   return Object.keys(sourceModules);
 }
+
+/**
+ * Parse @step markers from a raw source string and build a map of
+ * step key → line numbers. Markers are trailing comments like:
+ *   // @step:initialize   (TypeScript/Java)
+ *   # @step:initialize    (Python)
+ *
+ * A single line can carry multiple markers separated by commas:
+ *   // @step:compare,inner-loop
+ */
+export function parseStepMarkers(source: string): Record<string, number[]> {
+  const stepMap: Record<string, number[]> = {};
+  const sourceLines = source.split("\n");
+
+  for (let lineIndex = 0; lineIndex < sourceLines.length; lineIndex++) {
+    const line = sourceLines[lineIndex]!;
+    const markerMatch = line.match(/@step:([^\s*/)#]+)/);
+    if (!markerMatch) continue;
+
+    const stepKeys = markerMatch[1]!.split(",");
+    for (const stepKey of stepKeys) {
+      const trimmedKey = stepKey.trim();
+      if (!trimmedKey) continue;
+      (stepMap[trimmedKey] ??= []).push(lineIndex + 1);
+    }
+  }
+
+  return stepMap;
+}
+
+/**
+ * Build a full LineMap for an algorithm by loading all language source files,
+ * parsing their @step markers, and combining them into a single lookup table.
+ */
+export function buildLineMapFromSources(
+  algorithmId: string,
+): Record<string, Record<SupportedLanguage, number[]>> {
+  const languages: SupportedLanguage[] = ["typescript", "python", "java"];
+  const allStepKeys = new Set<string>();
+  const perLanguage: Record<SupportedLanguage, Record<string, number[]>> = {
+    typescript: {},
+    python: {},
+    java: {},
+  };
+
+  for (const language of languages) {
+    const source = loadSource(algorithmId, language);
+    if (!source) continue;
+    const markers = parseStepMarkers(source);
+    perLanguage[language] = markers;
+    for (const key of Object.keys(markers)) {
+      allStepKeys.add(key);
+    }
+  }
+
+  const lineMap: Record<string, Record<SupportedLanguage, number[]>> = {};
+  for (const stepKey of allStepKeys) {
+    lineMap[stepKey] = {
+      typescript: perLanguage.typescript[stepKey] ?? [],
+      python: perLanguage.python[stepKey] ?? [],
+      java: perLanguage.java[stepKey] ?? [],
+    };
+  }
+
+  return lineMap;
+}

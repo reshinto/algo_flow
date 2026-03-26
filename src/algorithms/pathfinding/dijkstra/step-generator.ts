@@ -1,54 +1,9 @@
 import type { ExecutionStep, GridCell } from "@/types";
 import { PathfindingTracker } from "@/trackers";
-import type { LineMap } from "@/trackers";
+import { buildLineMapFromSources } from "@/utils/source-loader";
 
-/*
- * Line mapping: step type → source file line numbers per language.
- *
- * Dijkstra's Algorithm finds the shortest path on a weighted grid using
- * a priority queue (sorted array here, giving O(V^2)). All edge weights
- * are uniform (1). Distance is initialised to Infinity for every cell
- * except the start (0). Parent pointers enable path reconstruction once
- * the end cell is reached.
- */
-const DIJKSTRA_LINE_MAP: LineMap = {
-  /* Build distance, parent, openSet, and visitedSet data structures */
-  initialize: {
-    typescript: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    python: [5, 6, 7, 8, 9, 10, 11, 12, 13],
-    java: [3, 4, 5, 6, 7, 8, 9, 10, 11],
-  },
-  /* Seed the frontier with the start cell */
-  "open-node": {
-    typescript: [11, 12],
-    python: [14, 15, 16],
-    java: [13, 14],
-  },
-  /* Extract minimum-distance node; skip if already visited; mark visited */
-  "close-node": {
-    typescript: [15, 16, 17, 18],
-    python: [19, 20, 21, 22],
-    java: [20, 21, 22, 23, 24, 25],
-  },
-  /* Relax the edge: update distance if a shorter path is found */
-  "update-cost": {
-    typescript: [36, 37, 38],
-    python: [40, 41, 42, 43, 44],
-    java: [39, 40, 41, 42, 43],
-  },
-  /* End cell reached — reconstruct the shortest path via parent pointers */
-  "trace-path": {
-    typescript: [20, 21],
-    python: [24, 25],
-    java: [27, 28],
-  },
-  /* Open set exhausted without reaching end — no path exists */
-  complete: {
-    typescript: [44],
-    python: [46],
-    java: [48],
-  },
-};
+/* Line map is built dynamically from @step markers in the source files */
+const DIJKSTRA_LINE_MAP = buildLineMapFromSources("dijkstra");
 
 interface DijkstraInput {
   grid: GridCell[][];

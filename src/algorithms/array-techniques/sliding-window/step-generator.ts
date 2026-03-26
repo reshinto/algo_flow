@@ -1,52 +1,9 @@
 import type { ExecutionStep } from "@/types";
 import { ArrayTracker } from "@/trackers";
-import type { LineMap } from "@/trackers";
+import { buildLineMapFromSources } from "@/utils/source-loader";
 
-/*
- * Line mapping: step type → source file line numbers per language.
- *
- * Sliding Window avoids recomputing the window sum from scratch each step.
- * Instead it subtracts the element leaving the window and adds the one
- * entering it, reducing the brute-force O(n*k) approach to O(n).
- */
-const SLIDING_WINDOW_LINE_MAP: LineMap = {
-  /* Validate inputs and guard against empty/invalid arguments */
-  initialize: {
-    typescript: [1, 2, 3],
-    python: [1, 2],
-    java: [2, 3, 4],
-  },
-  /* Compute the sum of the first window as the baseline */
-  "move-window": {
-    typescript: [6, 7, 8],
-    python: [5, 6, 7],
-    java: [7, 8, 9],
-  },
-  /* Subtract the element leaving the left edge of the window */
-  "shrink-window": {
-    typescript: [14],
-    python: [13],
-    java: [16],
-  },
-  /* Add the element entering the right edge of the window */
-  "expand-window": {
-    typescript: [15],
-    python: [14],
-    java: [17],
-  },
-  /* Check if the new window sum beats the current maximum */
-  compare: {
-    typescript: [17, 18, 19],
-    python: [16, 17, 18],
-    java: [19, 20, 21],
-  },
-  /* Return the best sum and starting index */
-  complete: {
-    typescript: [22],
-    python: [20],
-    java: [25],
-  },
-};
+/* Line map is built dynamically from @step markers in the source files */
+const SLIDING_WINDOW_LINE_MAP = buildLineMapFromSources("sliding-window");
 
 interface SlidingWindowInput {
   inputArray: number[];

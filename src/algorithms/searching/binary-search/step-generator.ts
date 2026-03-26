@@ -1,47 +1,9 @@
 import type { ExecutionStep } from "@/types";
 import { SearchingTracker } from "@/trackers";
-import type { LineMap } from "@/trackers";
+import { buildLineMapFromSources } from "@/utils/source-loader";
 
-/*
- * Line mapping: step type → source file line numbers per language.
- *
- * Binary Search halves the search range on each iteration by comparing
- * the middle element to the target. If mid < target the lower half is
- * discarded; if mid > target the upper half is discarded. Returns -1
- * when the range is exhausted without finding the target.
- */
-const BINARY_SEARCH_LINE_MAP: LineMap = {
-  /* Set low/high pointers to the full array bounds */
-  initialize: {
-    typescript: [1, 2, 3],
-    python: [1, 2, 3],
-    java: [2, 3, 4],
-  },
-  /* Compute midIndex and read midValue for comparison */
-  compare: {
-    typescript: [6, 7, 9],
-    python: [6, 7, 9],
-    java: [7, 8, 10],
-  },
-  /* Discard the half that cannot contain the target */
-  eliminate: {
-    typescript: [11, 12, 13, 14],
-    python: [11, 12, 13, 14],
-    java: [12, 13, 14, 15],
-  },
-  /* midValue matches targetValue — return the index */
-  found: {
-    typescript: [9, 10],
-    python: [9, 10],
-    java: [10, 11],
-  },
-  /* Search range exhausted — target not in array */
-  complete: {
-    typescript: [18],
-    python: [16],
-    java: [19],
-  },
-};
+/* Line map is built dynamically from @step markers in the source files */
+const BINARY_SEARCH_LINE_MAP = buildLineMapFromSources("binary-search");
 
 export function generateBinarySearchSteps(input: {
   sortedArray: number[];

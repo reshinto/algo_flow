@@ -1,46 +1,9 @@
 import type { ExecutionStep } from "@/types";
 import { DPTracker } from "@/trackers";
-import type { LineMap } from "@/trackers";
+import { buildLineMapFromSources } from "@/utils/source-loader";
 
-/*
- * Line mapping: step type → source file line numbers per language.
- *
- * Fibonacci tabulation builds the DP table iteratively from base cases
- * (F(0)=0, F(1)=1) to the target index. Each cell is the sum of the
- * two preceding cells, giving O(n) time and O(n) space.
- */
-const FIBONACCI_LINE_MAP: LineMap = {
-  /* Declare function, handle base case, allocate table */
-  initialize: {
-    typescript: [1, 2, 3],
-    python: [1, 2, 3],
-    java: [2, 3],
-  },
-  /* Seed the table: dpTable[0]=0, dpTable[1]=1 */
-  "fill-table": {
-    typescript: [3, 4],
-    python: [4, 5],
-    java: [4, 5],
-  },
-  /* Read previously computed values from the table */
-  "read-cache": {
-    typescript: [6],
-    python: [7],
-    java: [7],
-  },
-  /* Compute current cell as sum of two predecessors */
-  "compute-cell": {
-    typescript: [5, 6],
-    python: [6, 7],
-    java: [6, 7],
-  },
-  /* Return the final Fibonacci number */
-  complete: {
-    typescript: [8],
-    python: [8],
-    java: [9],
-  },
-};
+/* Line map is built dynamically from @step markers in the source files */
+const FIBONACCI_LINE_MAP = buildLineMapFromSources("fibonacci");
 
 interface FibonacciInput {
   targetIndex: number;
