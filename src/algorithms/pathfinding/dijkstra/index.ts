@@ -1,8 +1,8 @@
 import type { AlgorithmDefinition, GridCell } from "@/types";
 import { registry } from "@/registry";
-import { ALGORITHM_ID, GRID_DEFAULTS } from "@/utils/constants";
+import { ALGORITHM_ID, CATEGORY, GRID_DEFAULTS } from "@/utils/constants";
 
-import { dijkstra } from "./dijkstra";
+import { dijkstra } from "./sources/dijkstra.ts?fn";
 import { generateDijkstraSteps } from "./step-generator";
 import { dijkstraEducational } from "./educational";
 
@@ -80,7 +80,7 @@ const dijkstraDefinition: AlgorithmDefinition<DijkstraInput> = {
   meta: {
     id: ALGORITHM_ID.DIJKSTRA!,
     name: "Dijkstra's Algorithm",
-    category: "pathfinding",
+    category: CATEGORY.PATHFINDING!,
     description:
       "A shortest-path algorithm that finds the optimal route between two nodes in a weighted graph with non-negative edges",
     timeComplexity: {

@@ -25,7 +25,10 @@
 
 ### E2E (Playwright)
 
-- Full user journeys: algorithm selection, playback, input editing
+- The E2E test suite lives in `e2e/algoflow_e2e.mjs` at the project root
+- Run manually: `npm run e2e` (headless/CI) or `npm run e2e:headed` (visible browser)
+- The `session-end-e2e-check.sh` Stop hook runs the suite automatically in headless mode whenever any `.tsx`, `.css`, `.html`, or `e2e/algoflow_e2e.mjs` file is modified — it starts the dev server if one is not already running and blocks git operations on failure
+- When adding a new algorithm or visualizer component, add it to the `algorithms` array in `e2e/algoflow_e2e.mjs` with all 14 checks (select, playback ×6, language tabs ×3, keyboard ×3, educational drawer ×2) plus an entry in `inputTests` if it has an input editor
 - Test at 3 viewports: desktop (1280), tablet (768), mobile (375)
 - Assert on visual elements, not implementation details
 

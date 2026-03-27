@@ -11,6 +11,7 @@
  */
 import { useState } from "react";
 import { useAppStore } from "@/store";
+import { CATEGORY } from "@/utils/constants";
 
 import ArrayInputEditor from "./ArrayInputEditor";
 
@@ -31,7 +32,7 @@ export default function InputEditor() {
    * Strict Router implicitly casting un-typed generic Store boundaries into physically strict typing natively dynamically thoroughly successfully flawlessly instinctively.
    */
   switch (category) {
-    case "sorting":
+    case CATEGORY.SORTING:
       return (
         <ArrayInputEditor
           // Sorting implicitly guarantees 1-Dimensional Array primitive structures explicitly exclusively definitively completely inherently reliably intrinsically strictly absolutely natively implicitly strictly safely definitively purely
@@ -41,7 +42,7 @@ export default function InputEditor() {
         />
       );
 
-    case "searching":
+    case CATEGORY.SEARCHING:
       return (
         <SearchingInputEditor
           // Searching intrinsically mandates a dual-primitive Tuple distinctly carrying a needle/haystack relationship perfectly cleanly actively.
@@ -50,7 +51,7 @@ export default function InputEditor() {
         />
       );
 
-    case "array-techniques":
+    case CATEGORY.ARRAYS:
       return (
         <SlidingWindowInputEditor
           input={input as { inputArray: number[]; windowSize: number }}
@@ -58,7 +59,7 @@ export default function InputEditor() {
         />
       );
 
-    case "dynamic-programming":
+    case CATEGORY.DYNAMIC_PROGRAMMING:
       return (
         <DPInputEditor
           key={(input as { targetIndex: number }).targetIndex}
@@ -67,9 +68,71 @@ export default function InputEditor() {
         />
       );
 
-    case "pathfinding":
+    case CATEGORY.PATHFINDING:
       // Explicit deliberate override: Pathfinding explicitly binds natively intrinsically exclusively exactly mapped onto the grid component logically interactively cleanly explicitly elegantly deeply uniquely perfectly flawlessly inherently effectively.
       return null;
+
+    case CATEGORY.TREES:
+      return null;
+
+    case CATEGORY.STACKS_QUEUES:
+      return (
+        <StringInputEditor
+          value={(input as { inputString: string }).inputString}
+          onChange={(inputString: string) => setInput({ inputString })}
+          label="Brackets string"
+        />
+      );
+
+    case CATEGORY.HEAPS:
+      return (
+        <ArrayInputEditor
+          values={(input as { array: number[] }).array}
+          onChange={(array) => setInput({ array })}
+          label="Array values (comma-separated)"
+        />
+      );
+
+    case CATEGORY.LINKED_LISTS:
+      return (
+        <ArrayInputEditor
+          values={(input as { values: number[] }).values}
+          onChange={(values) => setInput({ values })}
+          label="List values (comma-separated)"
+        />
+      );
+
+    case CATEGORY.SETS:
+      return (
+        <SetIntersectionInputEditor
+          input={input as { arrayA: number[]; arrayB: number[] }}
+          onChange={setInput}
+        />
+      );
+
+    case CATEGORY.MATRICES:
+      return (
+        <MatrixInputEditor
+          matrix={(input as { matrix: number[][] }).matrix}
+          onChange={(matrix) => setInput({ matrix })}
+        />
+      );
+
+    case CATEGORY.STRINGS:
+      return (
+        <KmpSearchInputEditor
+          input={input as { text: string; pattern: string }}
+          onChange={setInput}
+        />
+      );
+
+    case CATEGORY.HASH_MAPS:
+      return (
+        <TwoSumInputEditor
+          input={input as { numbers: number[]; target: number }}
+          onChange={setInput}
+        />
+      );
 
     default:
       return null;
@@ -164,6 +227,185 @@ function SlidingWindowInputEditor({
             }
           }}
           className="w-16 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+        />
+      </div>
+    </div>
+  );
+}
+
+function StringInputEditor({
+  value,
+  onChange,
+  label,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  label: string;
+}) {
+  return (
+    <div className="flex items-center gap-2 border-b border-[var(--color-border-default)] px-3 py-2">
+      <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">{label}:</label>
+      <input
+        type="text"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+      />
+    </div>
+  );
+}
+
+function SetIntersectionInputEditor({
+  input,
+  onChange,
+}: {
+  input: { arrayA: number[]; arrayB: number[] };
+  onChange: (value: unknown) => void;
+}) {
+  return (
+    <div className="flex flex-col gap-2 border-b border-[var(--color-border-default)] px-3 py-2">
+      <div className="flex items-center gap-2">
+        <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">Array A:</label>
+        <input
+          type="text"
+          value={input.arrayA.join(", ")}
+          onChange={(event) => {
+            const parsed = event.target.value
+              .split(",")
+              .map((str) => parseInt(str.trim(), 10))
+              .filter((num) => !isNaN(num));
+            if (parsed.length > 0) {
+              onChange({ ...input, arrayA: parsed });
+            }
+          }}
+          className="min-w-0 flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+        />
+      </div>
+      <div className="flex items-center gap-2">
+        <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">Array B:</label>
+        <input
+          type="text"
+          value={input.arrayB.join(", ")}
+          onChange={(event) => {
+            const parsed = event.target.value
+              .split(",")
+              .map((str) => parseInt(str.trim(), 10))
+              .filter((num) => !isNaN(num));
+            if (parsed.length > 0) {
+              onChange({ ...input, arrayB: parsed });
+            }
+          }}
+          className="min-w-0 flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+        />
+      </div>
+    </div>
+  );
+}
+
+function MatrixInputEditor({
+  matrix,
+  onChange,
+}: {
+  matrix: number[][];
+  onChange: (matrix: number[][]) => void;
+}) {
+  return (
+    <div className="flex flex-col gap-2 border-b border-[var(--color-border-default)] px-3 py-2">
+      <label className="text-[10px] text-[var(--color-text-muted)]">
+        Matrix rows (comma-separated values per row, one row per line):
+      </label>
+      <textarea
+        rows={matrix.length}
+        value={matrix.map((row) => row.join(", ")).join("\n")}
+        onChange={(event) => {
+          const parsed = event.target.value
+            .split("\n")
+            .map((line) =>
+              line
+                .split(",")
+                .map((str) => parseInt(str.trim(), 10))
+                .filter((num) => !isNaN(num)),
+            )
+            .filter((row) => row.length > 0);
+          if (parsed.length > 0) {
+            onChange(parsed);
+          }
+        }}
+        className="rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+      />
+    </div>
+  );
+}
+
+function KmpSearchInputEditor({
+  input,
+  onChange,
+}: {
+  input: { text: string; pattern: string };
+  onChange: (value: unknown) => void;
+}) {
+  return (
+    <div className="flex flex-col gap-2 border-b border-[var(--color-border-default)] px-3 py-2">
+      <div className="flex items-center gap-2">
+        <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">Text:</label>
+        <input
+          type="text"
+          value={input.text}
+          onChange={(event) => onChange({ ...input, text: event.target.value })}
+          className="min-w-0 flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+        />
+      </div>
+      <div className="flex items-center gap-2">
+        <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">Pattern:</label>
+        <input
+          type="text"
+          value={input.pattern}
+          onChange={(event) => onChange({ ...input, pattern: event.target.value })}
+          className="min-w-0 flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+        />
+      </div>
+    </div>
+  );
+}
+
+function TwoSumInputEditor({
+  input,
+  onChange,
+}: {
+  input: { numbers: number[]; target: number };
+  onChange: (value: unknown) => void;
+}) {
+  return (
+    <div className="flex flex-col gap-2 border-b border-[var(--color-border-default)] px-3 py-2">
+      <div className="flex items-center gap-2">
+        <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">Numbers:</label>
+        <input
+          type="text"
+          value={input.numbers.join(", ")}
+          onChange={(event) => {
+            const parsed = event.target.value
+              .split(",")
+              .map((str) => parseInt(str.trim(), 10))
+              .filter((num) => !isNaN(num));
+            if (parsed.length > 0) {
+              onChange({ ...input, numbers: parsed });
+            }
+          }}
+          className="min-w-0 flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+        />
+      </div>
+      <div className="flex items-center gap-2">
+        <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">Target:</label>
+        <input
+          type="number"
+          value={input.target}
+          onChange={(event) => {
+            const target = parseInt(event.target.value, 10);
+            if (!isNaN(target)) {
+              onChange({ ...input, target });
+            }
+          }}
+          className="w-20 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
         />
       </div>
     </div>

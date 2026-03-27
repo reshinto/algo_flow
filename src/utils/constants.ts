@@ -6,8 +6,8 @@
  * Centralizing UI constraints, timing variables, and mapping structures ensures that changes
  * to fundamental values (like breakpoints or speeds) immediately reflect everywhere without hunting for magic numbers.
  */
-import type { SupportedLanguage } from "@/types";
-import { discoverAlgorithmIds } from "@/utils/source-loader";
+import type { AlgorithmCategory, SupportedLanguage } from "@/types";
+import { discoverAlgorithmIds, discoverCategoryLabels } from "@/utils/source-loader";
 
 /** Configurable velocity multipliers bound to user transport controls (0.25x -> 4.0x) */
 export const PLAYBACK_SPEEDS = [0.25, 0.5, 1, 2, 4] as const;
@@ -22,9 +22,6 @@ export const BREAKPOINTS = {
   tablet: 1024,
 } as const;
 
-/** Rigidly typed array defining valid Monaco parsing environments */
-export const SUPPORTED_LANGUAGES: SupportedLanguage[] = ["typescript", "python", "java"];
-
 /** Human-readable string mappings for the UI language dropdown selectors */
 export const LANGUAGE_LABELS: Record<SupportedLanguage, string> = {
   typescript: "TypeScript",
@@ -32,12 +29,13 @@ export const LANGUAGE_LABELS: Record<SupportedLanguage, string> = {
   java: "Java",
 };
 
-/** Precise parser identification strings required by the underlying Monaco Editor component */
-export const MONACO_LANGUAGE_MAP: Record<SupportedLanguage, string> = {
-  typescript: "typescript",
-  python: "python",
-  java: "java",
-};
+/** Derived from LANGUAGE_LABELS keys — single source of truth for supported languages */
+export const SUPPORTED_LANGUAGES = Object.keys(LANGUAGE_LABELS) as SupportedLanguage[];
+
+/** Derived from LANGUAGE_LABELS values lowercased — Monaco parser identifiers */
+export const MONACO_LANGUAGE_MAP = Object.fromEntries(
+  Object.entries(LANGUAGE_LABELS).map(([key, label]) => [key, label.toLowerCase()]),
+) as Record<SupportedLanguage, string>;
 
 /**
  * Intelligent Algorithm Registry auto-discovery map.
@@ -50,15 +48,21 @@ export const ALGORITHM_ID = discoverAlgorithmIds();
 
 export type AlgorithmId = string;
 
-/** Header categories utilized by the Command Palette Modal and top-level Drawer filtering */
-export const CATEGORY_LABELS: Record<string, string> = {
-  sorting: "Sorting",
-  searching: "Searching",
-  graph: "Graph Traversal",
-  pathfinding: "Pathfinding",
-  "dynamic-programming": "Dynamic Programming",
-  "array-techniques": "Array Techniques",
-};
+/**
+ * Auto-discovered category labels from the algorithms directory structure.
+ * Adding a new `src/algorithms/<category>/` folder automatically generates its label.
+ * Labels are Title Case versions of the directory name (e.g. "dynamic-programming" → "Dynamic Programming").
+ */
+export const CATEGORY_LABELS: Record<string, string> = discoverCategoryLabels();
+
+/**
+ * Typed category key constants derived from CATEGORY_LABELS — single source of truth.
+ * Keys are UPPER_SNAKE_CASE versions of the category id.
+ * Usage: CATEGORY.DYNAMIC_PROGRAMMING → "dynamic-programming"
+ */
+export const CATEGORY = Object.fromEntries(
+  Object.keys(CATEGORY_LABELS).map((key) => [key.toUpperCase().replaceAll("-", "_"), key]),
+) as Record<string, AlgorithmCategory>;
 
 /** Structural bounding limits enforcing that Pathfinding Grid instances render optimally on mobile/desktop without overflow */
 export const GRID_DEFAULTS = {

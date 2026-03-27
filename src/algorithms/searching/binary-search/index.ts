@@ -4,9 +4,9 @@
  */
 import type { AlgorithmDefinition } from "@/types";
 import { registry } from "@/registry";
-import { ALGORITHM_ID } from "@/utils/constants";
+import { ALGORITHM_ID, CATEGORY } from "@/utils/constants";
 
-import { binarySearch } from "./binary-search";
+import { binarySearch } from "./sources/binary-search.ts?fn";
 import { generateBinarySearchSteps } from "./step-generator";
 import { binarySearchEducational } from "./educational";
 
@@ -21,7 +21,7 @@ const binarySearchDefinition: AlgorithmDefinition<{
   meta: {
     id: ALGORITHM_ID.BINARY_SEARCH!,
     name: "Binary Search",
-    category: "searching",
+    category: CATEGORY.SEARCHING!,
     description:
       "An efficient divide-and-conquer algorithm that finds a target value in a sorted array by repeatedly halving the search range",
     timeComplexity: {

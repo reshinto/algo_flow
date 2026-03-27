@@ -5,7 +5,7 @@ import { GraphTracker } from "@/trackers";
 import { ALGORITHM_ID } from "@/utils/constants";
 import { buildLineMapFromSources } from "@/utils/source-loader";
 
-import type { AdjacencyList } from "./bfs";
+type AdjacencyList = Record<string, string[]>;
 
 export interface BfsInput {
   adjacencyList: AdjacencyList;
