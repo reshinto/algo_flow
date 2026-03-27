@@ -5,7 +5,7 @@
  * Command Palette architectural component overriding traditional DOM <select> dropdown constraints.
  * Mounts a full-screen blurred backdrop isolating the User while providing lightning-fast search capabilities mapped to keyboard hooks.
  */
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiSearch, FiX } from "react-icons/fi";
 import { IconButton } from "@/components/shared";
@@ -37,17 +37,15 @@ export default function AlgorithmSelectorModal({
   onSelect,
   selectedId,
 }: Props) {
-  // Localized form payload tracking user keyboard string manipulation
   const [searchQuery, setSearchQuery] = useState("");
+  const selectedRef = useRef<HTMLButtonElement>(null);
 
-  // Lock body scroll and reset search when modal opens
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      // Reset search and autofocus on open — valid setState for prop-driven reset
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setSearchQuery("");
-      setTimeout(() => document.getElementById("algo-search-input")?.focus(), 50);
+      requestAnimationFrame(() => {
+        selectedRef.current?.scrollIntoView({ block: "center" });
+      });
     } else {
       document.body.style.overflow = "unset";
     }
@@ -107,6 +105,7 @@ export default function AlgorithmSelectorModal({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search algorithms..."
+                autoFocus
                 className="flex-1 bg-transparent text-lg text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] outline-none"
               />
               <IconButton label="Close command palette" onClick={onClose} className="shrink-0">
@@ -130,6 +129,7 @@ export default function AlgorithmSelectorModal({
                       {groupOptions.map((option) => (
                         <button
                           key={option.value}
+                          ref={selectedId === option.value ? selectedRef : undefined}
                           onClick={() => {
                             onSelect(option.value);
                             onClose();

@@ -3,10 +3,11 @@
 
 import type { AlgorithmDefinition, GraphNode, GraphEdge } from "@/types";
 import { registry } from "@/registry";
-import { ALGORITHM_ID } from "@/utils/constants";
+import { ALGORITHM_ID, CATEGORY } from "@/utils/constants";
 
-import { breadthFirstSearch } from "./bfs";
-import type { AdjacencyList } from "./bfs";
+import { breadthFirstSearch } from "./sources/bfs.ts?fn";
+
+type AdjacencyList = Record<string, string[]>;
 import { generateBfsSteps } from "./step-generator";
 import type { BfsInput } from "./step-generator";
 import { bfsEducational } from "./educational";
@@ -68,7 +69,7 @@ const bfsDefinition: AlgorithmDefinition<BfsInput> = {
   meta: {
     id: ALGORITHM_ID.BFS!,
     name: "Breadth-First Search",
-    category: "graph",
+    category: CATEGORY.GRAPH!,
     description:
       "A graph traversal algorithm that explores all neighbors at the current depth before moving to the next level",
     timeComplexity: {

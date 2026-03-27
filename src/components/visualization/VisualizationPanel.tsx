@@ -15,6 +15,14 @@ import ArrayVisualizer from "./ArrayVisualizer";
 import GraphVisualizer from "./GraphVisualizer";
 import GridVisualizer from "./GridVisualizer";
 import DPTableVisualizer from "./DPTableVisualizer";
+import TreeVisualizer from "./TreeVisualizer";
+import LinkedListVisualizer from "./LinkedListVisualizer";
+import HeapVisualizer from "./HeapVisualizer";
+import StackQueueVisualizer from "./StackQueueVisualizer";
+import HashMapVisualizer from "./HashMapVisualizer";
+import StringVisualizer from "./StringVisualizer";
+import MatrixVisualizer from "./MatrixVisualizer";
+import SetVisualizer from "./SetVisualizer";
 
 /**
  * Dispatches to the completely distinctly functionally organically cleanly optimally organically correct explicitly unique naturally optimally organically uniquely correctly cleverly beautifully intuitively perfectly cleanly successfully completely clearly distinctly natively organically completely firmly elegantly carefully uniquely functionally visually safely completely correctly securely smartly safely safely dynamically uniquely efficiently identically perfectly creatively purely seamlessly properly exactly identically cleverly gracefully clearly flawlessly cleanly visually purely cleanly magically magically visually dynamically magically neatly actively smoothly successfully accurately mathematically brilliantly magically elegantly uniquely clearly clearly distinctly optimally logically visually mathematically intelligently explicitly clearly optimally purely securely magically explicitly flawlessly gracefully safely solidly logically nicely beautifully cleanly neatly dynamically smartly clearly explicitly nicely elegantly elegantly intuitively magically neatly elegantly cleanly physically safely comfortably tightly neatly accurately carefully securely smoothly securely cleanly naturally intelligently magically tightly smoothly structurally efficiently properly physically perfectly seamlessly accurately securely carefully clearly clearly cleanly implicitly implicitly seamlessly solidly structurally optimally efficiently smartly natively flawlessly brilliantly efficiently.
@@ -30,6 +38,22 @@ function renderVisualizer(visualState: VisualState) {
       return <GridVisualizer visualState={visualState} />;
     case "dp-table":
       return <DPTableVisualizer visualState={visualState} />;
+    case "tree":
+      return <TreeVisualizer visualState={visualState} />;
+    case "linked-list":
+      return <LinkedListVisualizer visualState={visualState} />;
+    case "heap":
+      return <HeapVisualizer visualState={visualState} />;
+    case "stack-queue":
+      return <StackQueueVisualizer visualState={visualState} />;
+    case "hash-map":
+      return <HashMapVisualizer visualState={visualState} />;
+    case "string":
+      return <StringVisualizer visualState={visualState} />;
+    case "matrix":
+      return <MatrixVisualizer visualState={visualState} />;
+    case "set":
+      return <SetVisualizer visualState={visualState} />;
   }
 }
 

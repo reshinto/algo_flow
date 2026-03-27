@@ -66,6 +66,12 @@
             "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-end-comments-check.sh",
             "timeout": 10000,
             "once": true
+          },
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-end-e2e-check.sh",
+            "timeout": 300000,
+            "once": true
           }
         ]
       }

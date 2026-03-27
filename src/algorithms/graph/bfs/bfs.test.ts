@@ -1,7 +1,8 @@
 import { describe, it, expect } from "vitest";
 
-import { breadthFirstSearch } from "./bfs";
-import type { AdjacencyList } from "./bfs";
+import { breadthFirstSearch } from "./sources/bfs.ts?fn";
+
+type AdjacencyList = Record<string, string[]>;
 
 describe("breadthFirstSearch", () => {
   it("traverses a linear graph in order", () => {

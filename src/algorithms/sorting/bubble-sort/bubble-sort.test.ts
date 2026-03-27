@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { bubbleSort } from "./bubble-sort";
+import { bubbleSort } from "./sources/bubble-sort.ts?fn";
 
 describe("bubbleSort", () => {
   it("sorts an unsorted array", () => {

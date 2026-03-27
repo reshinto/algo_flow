@@ -61,6 +61,44 @@ function kebabToUpperSnake(kebab: string): string {
 }
 
 /**
+ * Converts a kebab-case directory name to a Title Case human-readable label.
+ * "dynamic-programming" → "Dynamic Programming", "bfs" → "Bfs"
+ */
+function kebabToTitleCase(kebab: string): string {
+  return kebab
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+/**
+ * Auto-discovers all category directory names from the Vite source paths
+ * and generates human-readable labels by converting kebab-case to Title Case.
+ * Adding a new `src/algorithms/<category>/` folder automatically produces a label.
+ *
+ * @example
+ * // Output format:
+ * { sorting: "Sorting", "dynamic-programming": "Dynamic Programming" }
+ */
+export function discoverCategoryLabels(): Record<string, string> {
+  const categoryMap: Record<string, string> = {};
+
+  for (const filePath of Object.keys(sourceModules)) {
+    // Paths follow the pattern: /src/algorithms/<category>/<algorithm>/sources/<file>
+    const pathParts = filePath.split("/");
+    const algorithmsIndex = pathParts.indexOf("algorithms");
+    if (algorithmsIndex === -1) continue;
+
+    const categoryId = pathParts[algorithmsIndex + 1];
+    if (!categoryId || categoryId in categoryMap) continue;
+
+    categoryMap[categoryId] = kebabToTitleCase(categoryId);
+  }
+
+  return categoryMap;
+}
+
+/**
  * Automagic Identifier Bootstrap.
  * Dynamically traverses the TypeScript `sources` paths mapped by Vite.
  * Reads the literal filename `[algorithmId].ts` and generates a universal Constant lookup map.

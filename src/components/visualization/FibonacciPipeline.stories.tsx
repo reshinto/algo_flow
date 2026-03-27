@@ -1,17 +1,17 @@
 /**
- * Storybook stories for the Fibonacci DP algorithm pipeline.
+ * Storybook stories for the Fibonacci Tabulation DP algorithm pipeline.
  * Uses the real step generator to compute F(8) via tabulation,
  * rendering the DPTableVisualizer at key computation states.
  */
 import type { Meta, StoryObj } from "@storybook/react";
 import type { DPTableVisualState } from "@/types";
-import { generateFibonacciSteps } from "@/algorithms/dynamic-programming/fibonacci/step-generator";
+import { generateFibonacciTabulationSteps } from "@/algorithms/dynamic-programming/fibonacci-tabulation/step-generator";
 import DPTableVisualizer from "./DPTableVisualizer";
 
-const steps = generateFibonacciSteps({ targetIndex: 8 });
+const steps = generateFibonacciTabulationSteps({ targetIndex: 8 });
 
 const meta: Meta<typeof DPTableVisualizer> = {
-  title: "Algorithm Pipelines/Fibonacci DP",
+  title: "Algorithm Pipelines/Fibonacci Tabulation",
   component: DPTableVisualizer,
   decorators: [
     (Story) => (

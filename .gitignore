@@ -38,6 +38,9 @@ npm-debug.log*
 *.sln
 *.sw?
 
+# Plans
+.plans
+
 # OS
 .DS_Store
 Thumbs.db

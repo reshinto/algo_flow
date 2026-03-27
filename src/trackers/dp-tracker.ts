@@ -88,11 +88,24 @@ export class DPTracker extends BaseTracker {
     this.table[index]!.state = "computed";
   }
 
-  pushCallStack(label: string): void {
+  pushCallStack(label: string, variables: Record<string, unknown> = {}): void {
     this.callStack.push(label);
+    this.pushStep({
+      type: "push-call",
+      description: `Call ${label}`,
+      variables,
+      visualState: this.snapshot(),
+    });
   }
 
-  popCallStack(): void {
+  popCallStack(variables: Record<string, unknown> = {}): void {
+    const label = this.callStack[this.callStack.length - 1] ?? "";
+    this.pushStep({
+      type: "pop-call",
+      description: `Return from ${label}`,
+      variables,
+      visualState: this.snapshot(),
+    });
     this.callStack.pop();
   }
 

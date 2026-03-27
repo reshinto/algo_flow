@@ -5,7 +5,7 @@
  */
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ArrayVisualState } from "@/types";
-import { generateSlidingWindowSteps } from "@/algorithms/array-techniques/sliding-window/step-generator";
+import { generateSlidingWindowSteps } from "@/algorithms/arrays/sliding-window/step-generator";
 import ArrayVisualizer from "./ArrayVisualizer";
 
 const steps = generateSlidingWindowSteps({

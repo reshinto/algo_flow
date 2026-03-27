@@ -1,17 +1,30 @@
 // Dijkstra's Algorithm — find shortest path on a weighted grid
+interface GridCell {
+  row: number;
+  col: number;
+  type: "empty" | "wall" | "start" | "end";
+  state: string;
+}
+
+interface DijkstraResult {
+  path: [number, number][];
+  visited: [number, number][];
+}
+
 function dijkstra(
   grid: GridCell[][],
   start: [number, number],
   end: [number, number],
 ): DijkstraResult {
   const rowCount = grid.length; // @step:initialize
-  const colCount = grid[0].length; // @step:initialize
+  const colCount = grid[0]?.length ?? 0; // @step:initialize
   const distance = Array.from({ length: rowCount }, () => new Array(colCount).fill(Infinity)); // @step:initialize
   distance[start[0]][start[1]] = 0; // @step:initialize
   const parent = Array.from({ length: rowCount }, () => new Array(colCount).fill(null)); // @step:initialize
   // Seed the frontier with the start cell
   const openSet = [{ row: start[0], col: start[1], dist: 0 }]; // @step:initialize,open-node
   const visitedSet = Array.from({ length: rowCount }, () => new Array(colCount).fill(false)); // @step:initialize,open-node
+  const visited: [number, number][] = []; // @step:initialize
 
   while (openSet.length > 0) {
     // Extract the node with the smallest tentative distance
@@ -19,11 +32,12 @@ function dijkstra(
     const current = openSet.shift()!; // @step:close-node
     if (visitedSet[current.row][current.col]) continue; // @step:close-node
     visitedSet[current.row][current.col] = true; // @step:close-node
+    visited.push([current.row, current.col]); // @step:close-node
 
     // Check if we reached the end — reconstruct path via parent pointers
     if (current.row === end[0] && current.col === end[1]) {
       // @step:trace-path
-      return { path: reconstructPath(parent, end), visited: [] }; // @step:trace-path
+      return { path: reconstructPath(parent, end), visited }; // @step:trace-path
     }
 
     // Explore 4-directional neighbors (up, down, left, right)
@@ -49,5 +63,18 @@ function dijkstra(
       }
     }
   }
-  return { path: [], visited: [] }; // @step:complete
+  return { path: [], visited }; // @step:complete
+}
+
+function reconstructPath(
+  parent: ([number, number] | null)[][],
+  end: [number, number],
+): [number, number][] {
+  const path: [number, number][] = [];
+  let current: [number, number] | null = end;
+  while (current !== null) {
+    path.unshift(current);
+    current = parent[current[0]][current[1]];
+  }
+  return path;
 }

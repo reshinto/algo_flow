@@ -4,26 +4,34 @@ Algorithm visualization web app for learners. Step through algorithms with synch
 
 ## Features
 
-- **6 Algorithm Categories**: Sorting, Searching, Graph Traversal, Pathfinding, Dynamic Programming, Array Techniques
+- **14 Algorithm Categories**: Sorting, Searching, Graph, Pathfinding, Dynamic Programming, Arrays, Trees, Linked Lists, Heaps, Stacks & Queues, Hash Maps, Strings, Matrices, Sets
 - **Multi-Language Code Display**: TypeScript, Python, and Java source files with synchronized line highlighting via Monaco Editor
-- **Interactive Visualizations**: Animated bar charts, SVG graph rendering, CSS grid pathfinding, DP table cells
+- **Interactive Visualizations**: Animated bar charts, SVG graph/tree rendering, CSS grid pathfinding, DP table cells, heap tree + array dual view, stack/queue animations, hash map table, string + failure-table view, matrix spiral, set membership display
 - **Step-by-Step Playback**: Play, pause, step forward/backward, scrub, adjustable speed (0.25x–4x)
-- **Input Editors**: Editable arrays for sorting/searching/sliding-window, target index for DP, interactive grid for pathfinding (click walls, drag start/end)
+- **Input Editors**: Category-specific editors for every algorithm — arrays, sorted array + target, sliding window, DP index, KMP text + pattern, two-sum array + target, two array inputs, matrix textarea, interactive pathfinding grid
 - **Pathfinding Grid Editing**: Click to place walls, drag start/end nodes, reset grid, run Dijkstra in real-time
 - **Educational Content**: Slide-over drawer with overview, complexity analysis, real-world uses, strengths/limitations, and trade-offs for every algorithm
 - **Responsive Layout**: 3-panel resizable IDE-style layout on desktop; tab-based single-panel switcher on mobile/tablet (<1024px)
-- **Storybook Visual Testing**: Component stories for shared primitives, individual visualizers, and full algorithm pipelines (42 stories across 15 files)
+- **Storybook Visual Testing**: Component stories for shared primitives, individual visualizers, and full algorithm pipelines
 
 ## Algorithms
 
-| Category            | Algorithm                | Visualizer                       |
-| ------------------- | ------------------------ | -------------------------------- |
-| Sorting             | Bubble Sort              | Animated bar chart               |
-| Searching           | Binary Search            | Bar chart with pointer narrowing |
-| Graph               | Breadth-First Search     | SVG node + edge graph            |
-| Pathfinding         | Dijkstra's Algorithm     | CSS grid with wavefront          |
-| Dynamic Programming | Fibonacci (Tabulation)   | DP table cells + call stack      |
-| Array Techniques    | Sliding Window (Max Sum) | Bar chart with window range      |
+| Category            | Algorithm                | Visualizer                                 |
+| ------------------- | ------------------------ | ------------------------------------------ |
+| Sorting             | Bubble Sort              | Animated bar chart                         |
+| Searching           | Binary Search            | Bar chart with pointer narrowing           |
+| Graph               | Breadth-First Search     | SVG node + edge graph                      |
+| Pathfinding         | Dijkstra's Algorithm     | CSS grid with wavefront                    |
+| Dynamic Programming | Fibonacci (Tab + Memo)   | DP table cells + call stack                |
+| Arrays              | Sliding Window (Max Sum) | Bar chart with window range                |
+| Trees               | BST In-Order Traversal   | SVG binary tree with traversal order       |
+| Linked Lists        | Reverse Linked List      | SVG node chain with pointer animation      |
+| Heaps               | Build Min Heap           | SVG tree + array dual-view with sift-down  |
+| Stacks & Queues     | Valid Parentheses        | Stack push/pop with input character states |
+| Hash Maps           | Two Sum                  | Input array + key→value table              |
+| Strings             | KMP Search               | Text row, pattern row, failure table       |
+| Matrices            | Spiral Order Traversal   | CSS grid with boundary shrink animation    |
+| Sets                | Set Intersection         | Array A, array B, hash set, result panels  |
 
 ## Quick Start
 
@@ -51,6 +59,8 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 | `npm run test:coverage`   | Run tests with coverage report        |
 | `npm run storybook`       | Start Storybook development server    |
 | `npm run storybook:build` | Build Storybook for static deployment |
+| `npm run e2e`             | Run E2E browser tests (headless/CI)   |
+| `npm run e2e:headed`      | Run E2E browser tests (headed)        |
 
 ## Docker
 
@@ -84,7 +94,7 @@ Three GitHub Actions workflows are included in `.github/workflows/`:
 ### Unit Tests
 
 ```bash
-# Run all 137 unit tests
+# Run all unit tests
 npm run test
 
 # Run with coverage
@@ -94,7 +104,26 @@ npm run test:coverage
 npm run test:watch
 ```
 
-Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 6 algorithms.
+Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all algorithms.
+
+### E2E Browser Tests (Playwright)
+
+```bash
+# Run headless (CI / automated)
+npm run e2e
+
+# Run with a visible browser (development)
+npm run e2e:headed
+```
+
+The E2E suite lives in `e2e/algoflow_e2e.mjs` at the project root. It uses Playwright with Chromium and simulates a real user session — selecting all 15 algorithms via the command palette, exercising playback controls (play, pause, step, reset, rerun), switching language tabs (TypeScript / Python / Java), editing every input editor, scrubbing the progress bar, testing all keyboard shortcuts (Space, ArrowRight, ArrowLeft, R, L, Escape, 1–5), and verifying zero browser console errors.
+
+The suite is automatically enforced by the `session-end-e2e-check.sh` Stop hook: whenever any `.tsx`, `.css`, `.html`, or `e2e/algoflow_e2e.mjs` file is modified during a Claude session, the hook runs the suite in headless mode before allowing any git operations. If no dev server is running, the hook starts one automatically and stops it after the tests complete.
+
+When adding a new algorithm or visualizer component, update `e2e/algoflow_e2e.mjs`:
+
+1. Add the algorithm name to the `algorithms` array — all 14 per-algorithm checks run automatically
+2. Add an entry to `inputTests` if the algorithm has an input editor
 
 ### Storybook & Visual Regression Testing
 
@@ -114,7 +143,7 @@ npm run chromatic
 - **Shared Primitives**: Button, Badge, IconButton, Select
 - **Code Panel**: LanguageTabs
 - **Individual Visualizers**: ArrayVisualizer, GraphVisualizer, GridVisualizer, DPTableVisualizer — with mock data showing different visual states
-- **Algorithm Pipelines**: Bubble Sort, Binary Search, BFS, Dijkstra, Fibonacci DP, Sliding Window — using real step generators to show initial, mid-execution, and final states
+- **Algorithm Pipelines**: Bubble Sort, Binary Search, BFS, Dijkstra, Fibonacci DP, Sliding Window, BST In-Order, Reverse Linked List, Build Min Heap, Valid Parentheses, Two Sum, KMP Search, Spiral Order, Set Intersection — using real step generators to show initial, mid-execution, and final states
 
 Visual regression testing is powered by [Chromatic](https://www.chromatic.com/). Every story is automatically snapshot-tested. Chromatic captures pixel-perfect screenshots in cloud browsers and flags visual differences for review.
 
@@ -186,7 +215,7 @@ AlgoFlow uses a **registry-driven** architecture with **pre-computed execution s
 1. Each algorithm self-registers via `registry.register(definition)` at import time
 2. `generateSteps(input)` produces a full `ExecutionStep[]` array eagerly
 3. Playback is just an index pointer into the step array — instant scrubbing, deterministic replay
-4. Category-specific **trackers** (SortingTracker, PathfindingTracker, etc.) build steps with correct visual state and per-language line mappings
+4. Category-specific **trackers** (one per category: SortingTracker, SearchingTracker, GraphTracker, PathfindingTracker, DPTracker, ArrayTracker, TreeTracker, LinkedListTracker, HeapTracker, StackQueueTracker, HashMapTracker, StringTracker, MatrixTracker, SetTracker) build steps with correct visual state and per-language line mappings
 5. A discriminated union on `VisualState.kind` dispatches to the matching visualizer component
 
 All UI components are generic — no algorithm-specific logic in the view layer.
@@ -202,9 +231,16 @@ Each algorithm category has a tailored input editor rendered above the visualiza
 
 - **Sorting**: Comma-separated array text input
 - **Searching**: Sorted array + target value inputs
-- **Sliding Window**: Array + window size inputs
+- **Arrays**: Array + window size inputs
 - **Dynamic Programming**: Target index number input
 - **Pathfinding**: Interactive mini-grid with click-to-add walls, drag start/end nodes, reset button
+- **Heaps**: Comma-separated array input
+- **Linked Lists**: Comma-separated values input
+- **Stacks & Queues**: Bracket string input
+- **Hash Maps**: Array + target number inputs
+- **Strings**: Text string + pattern string inputs
+- **Matrices**: Textarea with one row per line, comma-separated values
+- **Sets**: Two comma-separated array inputs (A and B)
 
 ### Educational Drawer
 
@@ -252,29 +288,38 @@ All input edits are **temporary and non-persistent**:
 ## Project Structure
 
 ```
+e2e/                        # E2E browser tests (Playwright)
 src/
-├── algorithms/          # Self-registering algorithm definitions
-│   ├── sorting/         # Bubble Sort
-│   ├── searching/       # Binary Search
-│   ├── graph/           # BFS
-│   ├── pathfinding/     # Dijkstra
-│   ├── dynamic-programming/ # Fibonacci
-│   └── array-techniques/    # Sliding Window
+├── algorithms/              # Self-registering algorithm definitions
+│   ├── sorting/             # Bubble Sort
+│   ├── searching/           # Binary Search
+│   ├── graph/               # BFS
+│   ├── pathfinding/         # Dijkstra
+│   ├── dynamic-programming/ # Fibonacci (Tabulation + Memoization)
+│   ├── arrays/              # Sliding Window
+│   ├── trees/               # BST In-Order Traversal
+│   ├── linked-lists/        # Reverse Linked List
+│   ├── heaps/               # Build Min Heap
+│   ├── stacks-queues/       # Valid Parentheses
+│   ├── hash-maps/           # Two Sum
+│   ├── strings/             # KMP Search
+│   ├── matrices/            # Spiral Order Traversal
+│   └── sets/                # Set Intersection
 ├── components/
-│   ├── code-panel/      # Monaco editor with language tabs
-│   ├── educational/     # Slide-over educational drawer
-│   ├── explanation-panel/ # Step details, metrics, variables
-│   ├── input-editor/    # Category-specific input editors
-│   ├── layout/          # AppShell, Header, PanelLayout, MobileLayout
-│   ├── playback/        # PlaybackControls with progress bar
-│   ├── shared/          # Button, Badge, IconButton, Select
-│   └── visualization/   # ArrayVisualizer, GraphVisualizer, GridVisualizer, DPTableVisualizer
-├── hooks/               # usePlaybackEngine, useKeyboardShortcuts, useResponsiveLayout
-├── registry/            # AlgorithmRegistry singleton
-├── store/               # Zustand slices (algorithm, playback, editor, UI)
-├── trackers/            # Category-specific step trackers (Sorting, Searching, Graph, Pathfinding, DP, Array)
-├── types/               # TypeScript type definitions
-└── utils/               # Constants, source file loader
+│   ├── code-panel/          # Monaco editor with language tabs
+│   ├── educational/         # Slide-over educational drawer
+│   ├── explanation-panel/   # Step details, metrics, variables
+│   ├── input-editor/        # Category-specific input editors
+│   ├── layout/              # AppShell, Header, PanelLayout, MobileLayout
+│   ├── playback/            # PlaybackControls with progress bar
+│   ├── shared/              # Button, Badge, IconButton, Select
+│   └── visualization/       # All visualizer components + pipeline stories
+├── hooks/                   # usePlaybackEngine, useKeyboardShortcuts, useResponsiveLayout
+├── registry/                # AlgorithmRegistry singleton
+├── store/                   # Zustand slices (algorithm, playback, editor, UI)
+├── trackers/                # Category-specific step trackers (one per category)
+├── types/                   # TypeScript type definitions
+└── utils/                   # Constants, source file loader
 ```
 
 ## Session Hooks
@@ -285,6 +330,7 @@ The project uses Claude session hooks (`.claude/settings.json`) to enforce quali
 - **Stop**: Quality gate — lint, format, typecheck, and unit tests must pass
 - **Stop**: README check — verifies README.md is updated when source/infra/config files change
 - **Stop**: Comments check — verifies all modified TypeScript files have code comments
+- **Stop**: E2E check — runs `e2e/algoflow_e2e.mjs` in headless Chromium when any `.tsx`, `.css`, `.html`, or `e2e/algoflow_e2e.mjs` file changes; starts the dev server automatically if needed
 
 ## Development Plan
 

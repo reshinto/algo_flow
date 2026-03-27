@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-import { binarySearch } from "./binary-search";
+import { binarySearch } from "./sources/binary-search.ts?fn";
 
 describe("binarySearch", () => {
   it("finds a value present in the array", () => {

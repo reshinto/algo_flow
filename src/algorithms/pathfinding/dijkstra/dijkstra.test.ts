@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import type { GridCell } from "@/types";
-import { dijkstra } from "./dijkstra";
+import { dijkstra } from "./sources/dijkstra.ts?fn";
 
 function createEmptyGrid(rows: number, cols: number): GridCell[][] {
   return Array.from({ length: rows }, (_, rowIndex) =>

@@ -5,9 +5,9 @@
  */
 import type { AlgorithmDefinition } from "@/types";
 import { registry } from "@/registry";
-import { ALGORITHM_ID } from "@/utils/constants";
+import { ALGORITHM_ID, CATEGORY } from "@/utils/constants";
 
-import { bubbleSort } from "./bubble-sort";
+import { bubbleSort } from "./sources/bubble-sort.ts?fn";
 import { generateBubbleSortSteps } from "./step-generator";
 import { bubbleSortEducational } from "./educational";
 
@@ -19,7 +19,7 @@ const bubbleSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
     id: ALGORITHM_ID.BUBBLE_SORT!,
     name: "Bubble Sort",
-    category: "sorting",
+    category: CATEGORY.SORTING!,
     description:
       "A simple comparison-based sorting algorithm that repeatedly swaps adjacent elements",
     timeComplexity: {

@@ -10,15 +10,11 @@ import type { EducationalContent } from "./educational";
 import type { ExecutionStep } from "./execution";
 
 /**
- * Supported algorithm categories that drive Sidebar grouping and Command Palette filtering.
+ * Algorithm category identifier — matches the directory name under `src/algorithms/`.
+ * Categories are auto-discovered from the filesystem via `discoverCategoryLabels()`.
+ * Use the `CATEGORY` constant from `@/utils/constants` for type-safe access.
  */
-export type AlgorithmCategory =
-  | "sorting"
-  | "searching"
-  | "graph"
-  | "pathfinding"
-  | "dynamic-programming"
-  | "array-techniques";
+export type AlgorithmCategory = string;
 
 /**
  * Programming Languages natively supported by the internal Vite AST source-loader parser.

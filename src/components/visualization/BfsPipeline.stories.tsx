@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { GraphVisualState, GraphNode, GraphEdge } from "@/types";
 import { generateBfsSteps } from "@/algorithms/graph/bfs/step-generator";
-import type { AdjacencyList } from "@/algorithms/graph/bfs/bfs";
+type AdjacencyList = Record<string, string[]>;
 import GraphVisualizer from "./GraphVisualizer";
 
 /** Compute circular layout positions for graph nodes */
