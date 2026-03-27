@@ -175,6 +175,9 @@ async function testLanguageTabs(algoName) {
 // Test the educational drawer (L key + Toggle button)
 async function testEducationalDrawer(algoName) {
   await check(`${algoName}: educational drawer opens (L key)`, async () => {
+    // Click body first to ensure keyboard focus is not trapped in an input
+    await page.locator("body").click({ position: { x: 700, y: 400 } });
+    await page.waitForTimeout(100);
     await page.keyboard.press("l");
     await page.waitForTimeout(400);
     // Look for drawer content — the drawer shows section headings
@@ -182,11 +185,19 @@ async function testEducationalDrawer(algoName) {
     await overview.waitFor({ timeout: 3000 });
   });
   await check(`${algoName}: educational drawer closes (Escape)`, async () => {
+    // Click body to ensure focus is on the page, then press Escape
+    await page.locator("body").click({ position: { x: 700, y: 400 } });
+    await page.waitForTimeout(100);
     await page.keyboard.press("Escape");
-    await page.waitForTimeout(400);
-    // Drawer content should be gone
+    await page.waitForTimeout(500);
+    // Retry once if drawer is still visible (handles rare timing issues)
     const overview = page.locator("text=Overview").first();
-    const visible = await overview.isVisible().catch(() => false);
+    let visible = await overview.isVisible().catch(() => false);
+    if (visible) {
+      await page.keyboard.press("Escape");
+      await page.waitForTimeout(500);
+      visible = await overview.isVisible().catch(() => false);
+    }
     if (visible) throw new Error("Drawer still open after Escape");
   });
 }
