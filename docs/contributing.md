@@ -7,6 +7,7 @@ This guide walks you through everything you need to set up, understand, and exte
 ## Contents
 
 - [Prerequisites](#prerequisites)
+  - [Plugin Installation](#plugin-installation)
 - [Getting Started](#getting-started)
 - [Branch Strategy](#branch-strategy)
 - [Quality Gate](#quality-gate)
@@ -24,6 +25,29 @@ This guide walks you through everything you need to set up, understand, and exte
 | Node.js     | 22+     | Use `nvm use` — the repo includes an `.nvmrc` |
 | npm         | 10+     | Ships with Node 22                            |
 | Git         | 2.30+   | Required for branch workflow                  |
+| Claude Code | Latest  | CLI or IDE extension                          |
+
+### Plugin Installation
+
+The project uses 17 Claude Code plugins for development workflow automation. Plugins are enabled in `.claude/settings.json` and are installed automatically when Claude Code loads the project. To manually enable a plugin:
+
+```bash
+claude plugins install <plugin-name>
+```
+
+Key plugins that enhance the development experience:
+
+| Plugin              | What It Does                                           | When You'll Use It                                              |
+| ------------------- | ------------------------------------------------------ | --------------------------------------------------------------- |
+| `superpowers`       | Planning, brainstorming, TDD, debugging, verification  | Starting any feature, debugging issues, pre-commit verification |
+| `feature-dev`       | Guided feature development with codebase understanding | Building new algorithms or components                           |
+| `pr-review-toolkit` | Comprehensive PR review with specialized agents        | Before creating or reviewing PRs                                |
+| `code-simplifier`   | Simplifies code for clarity and maintainability        | After implementing a feature                                    |
+| `context7`          | Real-time library documentation lookup                 | When using React, Tailwind, Zustand, Framer Motion APIs         |
+| `playwright`        | Browser automation for E2E testing                     | Running or debugging E2E tests                                  |
+| `commit-commands`   | Git commit, push, and PR automation                    | Committing and pushing changes                                  |
+
+All plugins are pre-configured in the project's `settings.json`. No manual setup is required beyond having Claude Code installed. See [docs/architecture.md](architecture.md#plugins-17) for the full plugin list and which project agents/skills wrap them.
 
 > [!TIP]
 > The `.npmrc` file sets `legacy-peer-deps=true` to resolve React 19 peer dependency conflicts. You do not need to pass any extra flags to `npm install`.

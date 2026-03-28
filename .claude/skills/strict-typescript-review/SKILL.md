@@ -53,6 +53,13 @@ Review code changes for strict TypeScript compliance, proper type patterns, and 
 - Type guards at system boundaries: external data → validated internal types
 - No trusting `JSON.parse()` output without validation
 
+### Type Design Quality
+
+- **Encapsulation**: Types expose only what consumers need — internal state is private
+- **Invariant expression**: Types enforce constraints at compile time (e.g., `VisualState.kind` discriminant prevents invalid state combinations)
+- **Usefulness**: Each type serves a clear purpose — no redundant or unused type definitions
+- **Enforcement**: Type constraints are enforced by the compiler, not by runtime checks or conventions
+
 ## Output Format
 
 - PASS: [file:line] - correct usage

@@ -81,6 +81,13 @@ Content structure:
 - Concise — detailed rules in `.claude/rules/`, not here
 - No outdated references to removed features or changed conventions
 
+## CLAUDE.md Quality Audit
+
+- **Quality scoring**: Rate CLAUDE.md sections for accuracy, completeness, and token efficiency
+- **Template adherence**: Verify structure matches the project's established format (Tech Stack, Architecture, Key Paths, Rules, Testing, Workflow)
+- **Targeted improvements**: Suggest specific edits to improve signal density without increasing length
+- **Drift detection**: Compare CLAUDE.md claims against actual codebase state
+
 ## Audit Procedure
 
 When running a full audit:
@@ -91,6 +98,7 @@ When running a full audit:
 4. Verify PLAN.md directory listing matches actual files
 5. Verify CLAUDE.md key paths exist in the filesystem
 6. Check rules for contradictions with each other and with CLAUDE.md
+7. Score CLAUDE.md quality and suggest improvements
 
 ## Output Format
 

@@ -21,26 +21,55 @@ AlgoFlow uses a **registry-driven** architecture with **pre-computed execution s
 
 The `.claude/` directory defines the project's agentic development system: agents, skills, and session hooks.
 
-### Agents (8)
+### Agents (11)
 
-| Agent                           | Role                                                   |
-| ------------------------------- | ------------------------------------------------------ |
-| `tech-lead-architect`           | Architectural reviews and structural decisions         |
-| `senior-engineer-code-reviewer` | Code quality, standards enforcement, PR review         |
-| `qa-tester`                     | Test coverage, E2E validation, security checks         |
-| `ui-ux-designer`                | Visual design, responsive layout, accessibility        |
-| `product-strategist`            | Learner engagement, feature alignment                  |
-| `technical-writer`              | Documentation accuracy, educational content quality    |
-| `marketing-engine`              | README discoverability, content positioning            |
-| `claude-system-architect`       | `.claude/` system integrity, hook and skill governance |
+| Agent                           | Role                                                                            |
+| ------------------------------- | ------------------------------------------------------------------------------- |
+| `tech-lead-architect`           | Architectural reviews and structural decisions                                  |
+| `senior-engineer-code-reviewer` | Code quality, standards enforcement, PR review                                  |
+| `qa-tester`                     | Test coverage, E2E validation, security checks                                  |
+| `ui-ux-designer`                | Visual design, responsive layout, accessibility                                 |
+| `product-strategist`            | Learner engagement, feature alignment                                           |
+| `technical-writer`              | Documentation accuracy, educational content quality                             |
+| `marketing-engine`              | README discoverability, content positioning                                     |
+| `claude-system-architect`       | `.claude/` system integrity, hook and skill governance                          |
+| `silent-failure-hunter`         | Silent failure detection in step generation, glob imports, union exhaustiveness |
+| `code-simplifier`               | Code simplification while preserving architectural contracts                    |
+| `code-explorer`                 | Execution path tracing through registry pipeline                                |
 
-### Skills (14)
+### Skills (18)
 
-Reusable prompt modules invoked via `/skill-name`: `algorithm-learning-content`, `accessibility-audit`, `architecture-review`, `branch-safety-check`, `cifix`, `claude-system-management`, `documentation-review`, `implementation-planning`, `learner-engagement-review`, `pathfinding-scenario-editing`, `readme-optimization`, `repository-quality-gate`, `security-coverage-audit`, `strict-typescript-review`.
+Reusable prompt modules invoked via `/skill-name`: `algorithm-learning-content`, `accessibility-audit`, `architecture-review`, `branch-safety-check`, `cifix`, `claude-system-management`, `debugging`, `documentation-review`, `feature-dev`, `implementation-planning`, `learner-engagement-review`, `pathfinding-scenario-editing`, `readme-optimization`, `repository-quality-gate`, `security-coverage-audit`, `strict-typescript-review`, `tdd`, `verification`.
 
 ### Session Hooks (13)
 
 Hooks run automatically during development sessions — see the [Session Hooks section in README](../README.md#session-hooks) for the full list with descriptions.
+
+### Plugins (17)
+
+Claude Code plugins provide system-level capabilities that extend the development workflow. They are enabled in `.claude/settings.json` under `enabledPlugins` and are available globally without project-specific configuration files.
+
+| Plugin                 | Purpose                                                                            | Project Wrapper                                                                                                                                           |
+| ---------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `superpowers`          | Planning, brainstorming, TDD, debugging, verification, parallel agents             | `tdd`, `verification`, `debugging` skills                                                                                                                 |
+| `feature-dev`          | Guided feature development, code exploration, architecture                         | `feature-dev` skill, `code-explorer` agent                                                                                                                |
+| `pr-review-toolkit`    | PR review, silent failure hunting, code simplification, test analysis, type design | `silent-failure-hunter` agent; merged into `senior-engineer-code-reviewer`, `strict-typescript-review`, `security-coverage-audit`, `documentation-review` |
+| `code-simplifier`      | Code quality and clarity refinement                                                | `code-simplifier` agent                                                                                                                                   |
+| `code-review`          | Pull request code review                                                           | Used directly                                                                                                                                             |
+| `commit-commands`      | Git commit, push, PR automation                                                    | Covered by project hooks                                                                                                                                  |
+| `claude-md-management` | CLAUDE.md auditing and updates                                                     | Merged into `claude-system-management` skill                                                                                                              |
+| `frontend-design`      | Production-grade UI component generation                                           | Used directly                                                                                                                                             |
+| `playground`           | Interactive HTML playground generation                                             | Used directly                                                                                                                                             |
+| `figma`                | Figma design-to-code integration                                                   | Used directly                                                                                                                                             |
+| `context7`             | Real-time library documentation lookup                                             | Used directly                                                                                                                                             |
+| `playwright`           | Browser automation and E2E testing                                                 | Used directly                                                                                                                                             |
+| `github`               | GitHub issues, PRs, branches                                                       | Used directly                                                                                                                                             |
+| `skill-creator`        | Create and measure custom skills                                                   | Used directly                                                                                                                                             |
+| `claude-code-setup`    | Automation recommendations                                                         | Used directly                                                                                                                                             |
+| `ralph-loop`           | Recurring task execution                                                           | Used directly                                                                                                                                             |
+| `security-guidance`    | Security analysis and guidance                                                     | Used directly                                                                                                                                             |
+
+**Plugin vs. project wrapper**: Plugins provide generic capabilities. Project wrappers (agents/skills in `.claude/`) inject AlgoFlow-specific context — registry patterns, step generation conventions, educational content requirements, Zustand slice boundaries — so the plugin's methodology is applied with project awareness. Where no wrapper exists, the plugin is used directly.
 
 ---
 
@@ -209,9 +238,9 @@ All hooks are in `src/hooks/`.
 
 ```
 .claude/
-├── agents/                  # 8 subagent role definitions
+├── agents/                  # 11 subagent role definitions
 ├── hooks/                   # 13 session hook scripts
-├── skills/                  # 14 reusable prompt skill modules
+├── skills/                  # 18 reusable prompt skill modules
 └── rules/                   # Coding standards, architecture constraints, workflow rules
 e2e/                        # E2E browser tests (Playwright)
 docs/                       # Documentation

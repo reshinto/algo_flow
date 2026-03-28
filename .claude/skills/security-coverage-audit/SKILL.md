@@ -47,6 +47,13 @@ Run a combined security and test coverage audit to verify the project meets qual
 - Flag any dependency with critical or high severity
 - Verify no unnecessary runtime dependencies (dev deps not in production bundle)
 
+### 6. Test Quality Analysis
+
+- **Edge case gaps**: Identify missing edge case tests (empty inputs, boundary values, error conditions)
+- **Test quality scoring**: Evaluate tests beyond coverage % — are assertions meaningful? Do tests verify behavior or just structure?
+- **Critical path coverage**: Ensure the most important execution paths (algorithm correctness, step generation, playback flow) have thorough test coverage
+- **Mutation resistance**: Would the tests catch a subtle bug (e.g., off-by-one, wrong comparison operator)?
+
 ## Rules
 
 - Do not suppress security findings without documenting the exception

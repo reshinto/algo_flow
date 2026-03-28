@@ -60,6 +60,13 @@ Verify all 7 sections are present and complete:
 - Same formatting conventions (headings, code blocks, tables)
 - No contradictions between docs and `.claude/rules/`
 
+### Comment Quality
+
+- **Accuracy**: Comments accurately describe what the code does — no stale comments that contradict the code
+- **Comment rot**: Identify comments that were accurate when written but no longer match the current implementation
+- **Maintainability**: Comments explain "why" not "what" — code should be self-documenting for the "what"
+- **Completeness**: Exported functions and types have JSDoc comments
+
 ## Rules
 
 - Accuracy trumps readability — never simplify to the point of being wrong

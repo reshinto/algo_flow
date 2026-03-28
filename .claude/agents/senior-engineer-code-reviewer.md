@@ -29,6 +29,8 @@ Review code changes for quality, correctness, and adherence to project standards
 - **Vite + React 19**: SPA patterns, `?raw` imports, `React.lazy` + `Suspense`
 - **Strict TypeScript**: `noUncheckedIndexedAccess`, tuple types, discriminated unions
 - **Runtime validation**: Type guards at boundaries — see `strict-typescript-review` skill for detailed checklist
+- **Bug detection**: Logic error pattern recognition, confidence-based filtering (HIGH/MEDIUM/LOW) to report only high-priority issues
+- **Plan adherence**: Verify implementation matches the approved plan and coding standards
 
 ## Constraints
 

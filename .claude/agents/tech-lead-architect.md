@@ -28,6 +28,8 @@ Evaluate architectural decisions and ensure the system is maintainable and scala
 - **Zustand store architecture**: Slice isolation, immer middleware, selector memoization
 - **Vite build optimization**: Code splitting, glob imports, tree-shaking
 - **Security-by-Design**: XSS prevention, CSP compliance — see `architecture-review` skill for detailed checklist
+- **Implementation blueprints**: Generate detailed file-by-file implementation plans with component designs, data flows, and build sequences
+- **Data flow mapping**: Trace data from user input through store slices to visualization rendering
 
 ## Constraints
 

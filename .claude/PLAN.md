@@ -90,7 +90,10 @@ algo_flow/
 │   │   ├── product-strategist.md
 │   │   ├── technical-writer.md
 │   │   ├── marketing-engine.md
-│   │   └── claude-system-architect.md
+│   │   ├── claude-system-architect.md
+│   │   ├── silent-failure-hunter.md
+│   │   ├── code-simplifier.md
+│   │   └── code-explorer.md
 │   ├── skills/
 │   │   ├── implementation-planning/SKILL.md
 │   │   ├── algorithm-learning-content/SKILL.md
@@ -105,7 +108,11 @@ algo_flow/
 │   │   ├── learner-engagement-review/SKILL.md
 │   │   ├── documentation-review/SKILL.md
 │   │   ├── readme-optimization/SKILL.md
-│   │   └── claude-system-management/SKILL.md
+│   │   ├── claude-system-management/SKILL.md
+│   │   ├── tdd/SKILL.md
+│   │   ├── verification/SKILL.md
+│   │   ├── feature-dev/SKILL.md
+│   │   └── debugging/SKILL.md
 │   └── hooks/
 │       ├── session-start-branch-check.sh
 │       ├── session-end-quality-gate.sh
