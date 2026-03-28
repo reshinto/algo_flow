@@ -2,7 +2,16 @@
 
 # Testing
 
-AlgoFlow uses three layers of testing: unit tests (Vitest), E2E browser tests (Playwright), and visual regression testing (Storybook + Chromatic).
+AlgoFlow uses three layers of testing to ensure algorithm correctness, visual consistency, and end-to-end reliability. This guide covers setup, conventions, and coverage targets for each layer.
+
+> [!NOTE]
+> **Prerequisites:** Read the [Contributing guide](contributing.md) for quality gate requirements and branch workflow. See the [Glossary](glossary.md) for terms like ExecutionStep and StepType.
+
+## Contents
+
+- [Unit Tests](#unit-tests)
+- [E2E Browser Tests (Playwright)](#e2e-browser-tests-playwright)
+- [Storybook & Visual Regression Testing](#storybook--visual-regression-testing)
 
 ## Unit Tests
 
@@ -182,3 +191,5 @@ Or manually: GitHub repo → Settings → Secrets and variables → Actions → 
 - [Contributing](contributing.md) — adding algorithms, test file conventions, troubleshooting
 - [Architecture](architecture.md) — tech stack, data flow, project structure
 - [Deployment](deployment.md) — Docker, CI/CD pipelines
+- [Debugging](debugging.md) — troubleshooting step generation, line mapping, and E2E failures
+- [Glossary](glossary.md) — key terms and type definitions
