@@ -15,70 +15,9 @@ Algorithm visualization web app for learners. Step through algorithms with synch
 
 ## Algorithms
 
-<details>
-<summary><strong>58 Algorithms across 14 Categories</strong> (click to expand)</summary>
+**58 algorithms across 14 categories**: Sorting, Searching, Graph, Pathfinding, Dynamic Programming, Arrays (44 algorithms with technique subcategories), Trees, Linked Lists, Heaps, Stacks & Queues, Hash Maps, Strings, Matrices, and Sets.
 
-| Category            | Algorithm                         | Visualizer                                     |
-| ------------------- | --------------------------------- | ---------------------------------------------- |
-| Sorting             | Bubble Sort                       | Animated bar chart                             |
-| Searching           | Binary Search                     | Bar chart with pointer narrowing               |
-| Graph               | Breadth-First Search              | SVG node + edge graph                          |
-| Pathfinding         | Dijkstra's Algorithm              | CSS grid with wavefront                        |
-| Dynamic Programming | Fibonacci (Tab + Memo)            | DP table cells + call stack                    |
-| Arrays              | Sliding Window (Max Sum)          | Bar chart with window range                    |
-| Arrays              | Sliding Window (Min Sum)          | Bar chart with window range                    |
-| Arrays              | Kadane's Algorithm (Max Subarray) | Bar chart with extend/restart window           |
-| Arrays              | Minimum Subarray Sum              | Bar chart with inverted Kadane's window        |
-| Arrays              | Max Product Subarray              | Bar chart with dual min/max tracking           |
-| Arrays              | Best Time Buy/Sell Stock          | Bar chart with min-price pointer               |
-| Arrays              | Best Time Buy/Sell (Unlimited)    | Bar chart with greedy profit highlights        |
-| Arrays              | Boyer-Moore Voting (Majority)     | Bar chart with candidate tracking              |
-| Arrays              | Move Zeros to End                 | Bar chart with fast/slow pointers              |
-| Arrays              | Remove Duplicates (Sorted)        | Bar chart with write/read pointers             |
-| Arrays              | Two Sum (Sorted, Two Pointer)     | Bar chart with converging pointers             |
-| Arrays              | Three Sum (Zero Triplets)         | Bar chart with anchor + two pointers           |
-| Arrays              | Four Sum                          | Bar chart with four pointers                   |
-| Arrays              | Container With Most Water         | Bar chart with converging pointers             |
-| Arrays              | Trapping Rain Water               | Bar chart with two-pointer water calculation   |
-| Arrays              | Dutch National Flag               | Bar chart with 3-way partition pointers        |
-| Arrays              | Lomuto Partition                  | Bar chart with pivot + boundary pointer        |
-| Arrays              | Quickselect (K-th Smallest)       | Bar chart with partition narrowing             |
-| Arrays              | Rotate Array (Reversal)           | Bar chart with three-pass reversal             |
-| Arrays              | Rotate Array (Cyclic)             | Bar chart with cycle-following swaps           |
-| Arrays              | Cyclic Sort                       | Bar chart with index-placement swaps           |
-| Arrays              | Find Missing Number (XOR)         | Bar chart with running XOR highlight           |
-| Arrays              | Single Number (XOR)               | Bar chart with pair-cancellation highlight     |
-| Arrays              | Find All Duplicates               | Bar chart with sign-negation marking           |
-| Arrays              | First Missing Positive            | Bar chart with placement + scan phases         |
-| Arrays              | Next Greater Element              | Bar chart with monotonic stack resolution      |
-| Arrays              | Previous Smaller Element          | Bar chart with monotonic stack (left scan)     |
-| Arrays              | Daily Temperatures                | Bar chart with distance-based stack resolution |
-| Arrays              | Largest Rectangle in Histogram    | Bar chart (histogram) with monotonic stack     |
-| Arrays              | Sliding Window Maximum (Deque)    | Bar chart with deque-based max tracking        |
-| Arrays              | Min Size Subarray Sum             | Bar chart with variable window                 |
-| Arrays              | Subarray Product < K              | Bar chart with product-based variable window   |
-| Arrays              | Max Consecutive Ones III          | Bar chart with zero-flip window                |
-| Arrays              | Count Anagram Windows             | Bar chart with frequency-matching window       |
-| Arrays              | First Negative in Window          | Bar chart with deque-tracked negatives         |
-| Arrays              | Longest K-Distinct Subarray       | Bar chart with distinct-count window           |
-| Arrays              | Prefix Sum (Range Query)          | Dual bar chart (original + prefix sum)         |
-| Arrays              | Subarray Sum Equals K             | Bar chart with prefix sum + hash map           |
-| Arrays              | Product of Array Except Self      | Bar chart with two-pass prefix/suffix          |
-| Arrays              | Difference Array (Range Update)   | Dual bar chart (diff array + result)           |
-| Arrays              | XOR Range Query                   | Dual bar chart (original + prefix XOR)         |
-| Arrays              | Merge Two Sorted Arrays           | Dual bar chart (inputs + merged result)        |
-| Arrays              | Counting Sort                     | Dual bar chart (input + count array)           |
-| Arrays              | Floyd's Cycle Detection           | Bar chart with tortoise/hare pointers          |
-| Trees               | BST In-Order Traversal            | SVG binary tree with traversal order           |
-| Linked Lists        | Reverse Linked List               | SVG node chain with pointer animation          |
-| Heaps               | Build Min Heap                    | SVG tree + array dual-view with sift-down      |
-| Stacks & Queues     | Valid Parentheses                 | Stack push/pop with input character states     |
-| Hash Maps           | Two Sum                           | Input array + key→value table                  |
-| Strings             | KMP Search                        | Text row, pattern row, failure table           |
-| Matrices            | Spiral Order Traversal            | CSS grid with boundary shrink animation        |
-| Sets                | Set Intersection                  | Array A, array B, hash set, result panels      |
-
-</details>
+See the [full Algorithm Catalog](docs/algorithms-catalog.md) for the complete listing with visualizer descriptions and technique subcategories.
 
 ## Quick Start
 
@@ -100,12 +39,18 @@ See [docs/architecture.md](docs/architecture.md) for tech stack, data flow diagr
 
 ## Documentation Guide
 
-| If you want to...            | Start here                                                  |
-| ---------------------------- | ----------------------------------------------------------- |
-| Understand how the app works | [Architecture](docs/architecture.md)                        |
-| Add a new algorithm          | [Contributing](docs/contributing.md#adding-a-new-algorithm) |
-| Write or run tests           | [Testing](docs/testing.md)                                  |
-| Deploy or understand CI      | [Deployment](docs/deployment.md)                            |
+| If you want to...                 | Start here                                                     |
+| --------------------------------- | -------------------------------------------------------------- |
+| Look up a term or concept         | [Glossary](docs/glossary.md)                                   |
+| Understand how the app works      | [Architecture](docs/architecture.md)                           |
+| Add a new algorithm               | [Contributing](docs/contributing.md#adding-a-new-algorithm)    |
+| Write or run tests                | [Testing](docs/testing.md)                                     |
+| Deploy or understand CI           | [Deployment](docs/deployment.md)                               |
+| Debug a step generation issue     | [Debugging](docs/debugging.md)                                 |
+| Work on UI or styling             | [Design System](docs/design-system.md)                         |
+| Write educational content         | [Educational Content Guide](docs/educational-content-guide.md) |
+| Browse all algorithms             | [Algorithm Catalog](docs/algorithms-catalog.md)                |
+| Understand agents, hooks, plugins | [Development System](docs/claude-system.md)                    |
 
 > [!TIP]
 > First-time contributors: read the [Contributing guide](docs/contributing.md) end-to-end. It covers setup, branch workflow, the full algorithm walkthrough, and troubleshooting.
@@ -194,35 +139,9 @@ See [docs/deployment.md](docs/deployment.md) for Docker build internals and per-
 
 ## Session Hooks
 
-The project uses session hooks (`.claude/settings.json`) to enforce code quality, safety, and consistency automatically during development sessions.
+The project uses 13 session hooks (`.claude/settings.json`) to enforce code quality, safety, and consistency automatically during development sessions — including branch protection, pre-commit quality gates, post-edit warnings, and session-end verification.
 
-**SessionStart**
-
-- `session-start-branch-check.sh` — Warns if working directly on `main` at session open.
-
-**PreToolUse (Bash)**
-
-- `block-ai-attribution.sh` — Blocks commits that include Co-Authored-By or AI attribution in the message.
-- `block-main-branch-commits.sh` — Blocks `git commit` and `git push` directly to `main`.
-- `pre-commit-quality-check.sh` — Runs typecheck, ESLint, and Prettier before every `git commit`; blocks the commit if any check fails.
-
-**PostToolUse (Edit | Write)**
-
-- `post-edit-typescript-check.sh` — Warns (non-blocking) on TypeScript anti-patterns in edited `.ts`/`.tsx` files: `any` types, bare `@ts-ignore`, unsafe type assertions, and `number[][]` instead of tuple types.
-- `post-edit-accessibility-check.sh` — Warns (non-blocking) on accessibility issues in edited `.tsx` files: raw hex colors, interactive elements without `aria-label`, `outline:none` without focus replacement, and Framer Motion usage without reduced-motion support.
-
-**PostToolUse (Bash)**
-
-- `auto-pr-after-push.sh` — Automatically opens a pull request after pushing a feature branch.
-
-**Stop**
-
-- `session-end-quality-gate.sh` — Lint, format, typecheck, and unit tests must all pass; blocks git operations on failure.
-- `session-end-readme-check.sh` — Verifies README.md and `docs/` are updated when source, infra, config, or hook files change; provides targeted guidance on which doc to update.
-- `session-end-comments-check.sh` — Verifies all modified TypeScript files contain code comments.
-- `session-end-e2e-check.sh` — Runs `e2e/algoflow_e2e.mjs` in headless Chromium when any `.tsx`, `.css`, `.html`, or `e2e/algoflow_e2e.mjs` file changes; starts the dev server automatically if needed.
-- `session-end-security-check.sh` — Scans `src/` for unsafe patterns (`eval`, `innerHTML`, `dangerouslySetInnerHTML`), runs `npm audit` at high/critical level (non-blocking warn), and verifies test coverage thresholds (80/75/80/80); blocks git operations on hard failures.
-- `session-end-claude-system-check.sh` — Validates `.claude/` configuration consistency when `.claude/` files change: agent and skill frontmatter, hook script references in `settings.json`, and orphaned hook detection.
+See [Development System](docs/claude-system.md#session-hooks-13) for the full hook list with descriptions.
 
 ## Development Plan
 

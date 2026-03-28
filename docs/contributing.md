@@ -4,6 +4,9 @@
 
 This guide walks you through everything you need to set up, understand, and extend AlgoFlow — from first clone to merged PR.
 
+> [!NOTE]
+> **Prerequisites:** Familiarity with TypeScript, React, and Git. See the [Glossary](glossary.md) for AlgoFlow-specific terms like Registry, Tracker, and ExecutionStep.
+
 ## Contents
 
 - [Prerequisites](#prerequisites)
@@ -47,7 +50,7 @@ Key plugins that enhance the development experience:
 | `playwright`        | Browser automation for E2E testing                     | Running or debugging E2E tests                                  |
 | `commit-commands`   | Git commit, push, and PR automation                    | Committing and pushing changes                                  |
 
-All plugins are pre-configured in the project's `settings.json`. No manual setup is required beyond having Claude Code installed. See [docs/architecture.md](architecture.md#plugins-17) for the full plugin list and which project agents/skills wrap them.
+All plugins are pre-configured in the project's `settings.json`. No manual setup is required beyond having Claude Code installed. See [Development System](claude-system.md#plugins-17) for the full plugin list and which project agents/skills wrap them.
 
 > [!TIP]
 > The `.npmrc` file sets `legacy-peer-deps=true` to resolve React 19 peer dependency conflicts. You do not need to pass any extra flags to `npm install`.
@@ -439,3 +442,7 @@ Formatting (double quotes, 2-space indent, trailing commas, semicolons, 100-char
 - [Architecture](architecture.md) — tech stack, data flow, state management, project structure
 - [Testing](testing.md) — unit tests, E2E, Storybook, Chromatic setup
 - [Deployment](deployment.md) — Docker, CI/CD pipelines
+- [Debugging](debugging.md) — troubleshooting step generation, line mapping, and visualizer issues
+- [Glossary](glossary.md) — key terms and type definitions
+- [Design System](design-system.md) — colors, typography, component patterns
+- [Educational Content Guide](educational-content-guide.md) — how to write learning content

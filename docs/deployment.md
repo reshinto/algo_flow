@@ -2,7 +2,15 @@
 
 # Deployment
 
-AlgoFlow can be deployed via Docker or GitHub Pages. Two GitHub Actions workflows handle CI and deployment.
+How to build, deploy, and serve AlgoFlow in production. Covers Docker containerization and GitHub Actions CI/CD pipelines.
+
+> [!NOTE]
+> **Prerequisites:** Read [Architecture](architecture.md) for tech stack context and [Testing](testing.md) to understand what the CI jobs verify.
+
+## Contents
+
+- [Docker](#docker)
+- [CI/CD Pipelines](#cicd-pipelines)
 
 ## Docker
 
@@ -71,5 +79,6 @@ The deploy jobs only run on push/dispatch events (not PRs). Requires `pages: wri
 ## See Also
 
 - [Architecture](architecture.md) — tech stack, data flow, project structure
-- [Testing](testing.md) — unit tests, E2E, Storybook, Chromatic
+- [Testing](testing.md) — unit tests, E2E, Storybook, Chromatic (what the CI jobs verify)
 - [Contributing](contributing.md) — adding algorithms, branch workflow, quality gate
+- [Development System](claude-system.md) — session hooks that enforce quality gates
