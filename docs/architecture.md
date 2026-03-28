@@ -4,6 +4,18 @@
 
 AlgoFlow uses a **registry-driven** architecture with **pre-computed execution steps**.
 
+## Contents
+
+- [Tech Stack](#tech-stack)
+- [Data Flow](#data-flow)
+- [Core Pattern](#core-pattern)
+- [State Management](#state-management)
+- [Custom Hooks](#custom-hooks)
+- [Responsive Design](#responsive-design)
+- [Input Editors](#input-editors)
+- [Educational Drawer](#educational-drawer)
+- [Project Structure](#project-structure)
+
 ## Tech Stack
 
 | Layer       | Technology                             | Purpose                                       |
@@ -42,22 +54,47 @@ flowchart LR
 > [!NOTE]
 > All UI components are generic — no algorithm-specific logic in the view layer. Adding a new algorithm requires zero changes to any component.
 
+### ExecutionStep
+
+The central data type for playback. Each step is an immutable snapshot:
+
+| Field              | Type                      | Purpose                                       |
+| ------------------ | ------------------------- | --------------------------------------------- |
+| `index`            | `number`                  | Position in the step array                    |
+| `type`             | `StepType`                | Categorizes the step for line-map resolution  |
+| `description`      | `string`                  | Human-readable text for the explanation panel |
+| `highlightedLines` | `LineHighlight[]`         | Per-language source lines to highlight        |
+| `variables`        | `Record<string, unknown>` | Runtime variable snapshot at this step        |
+| `visualState`      | `VisualState`             | Discriminated union consumed by visualizers   |
+| `metrics`          | `StepMetrics`             | Cumulative operation counts                   |
+
+Defined in `src/types/execution.ts`.
+
 ### Trackers
 
 Each algorithm category has a dedicated tracker that extends `BaseTracker`. Trackers provide domain-specific methods (e.g., `compare`, `swap` for sorting) that internally call `pushStep()` to record an `ExecutionStep` with the correct visual state.
+
+All trackers extend `BaseTracker` (`src/trackers/base-tracker.ts`), which provides:
+
+| Member            | Visibility  | Purpose                                                  |
+| ----------------- | ----------- | -------------------------------------------------------- |
+| `pushStep(input)` | `protected` | Records an `ExecutionStep` with resolved line highlights |
+| `getSteps()`      | `public`    | Returns the accumulated `ExecutionStep[]`                |
+| `getMetrics()`    | `public`    | Returns a snapshot of cumulative `StepMetrics`           |
+| `lineMap`         | `protected` | Maps step keys to per-language line numbers              |
+| `metrics`         | `protected` | Running operation counts (comparisons, swaps, etc.)      |
+
+Constructor: `new BaseTracker(lineMap: LineMap)` where `LineMap = Record<string, Record<SupportedLanguage, number[]>>`.
 
 See [contributing.md](contributing.md#available-trackers) for the full tracker table with methods per category.
 
 ### Source Files & Line Mapping
 
-Algorithm source files (`sources/*.ts`, `*.py`, `*.java`) serve a dual purpose through custom Vite plugins:
+Algorithm source files (`sources/*.ts`, `*.py`, `*.java`) support two Vite import suffixes — `?raw` for Monaco display and `?fn` for executable tests. The `?fn` suffix is powered by `vite-plugin-fn-import.ts` at the project root, a custom Vite plugin that strips `@step:` markers and transpiles TypeScript source files into executable ESM modules.
 
-| Import Suffix | What You Get                                            | Use For                       |
-| ------------- | ------------------------------------------------------- | ----------------------------- |
-| `?raw`        | Raw string with `@step:` markers intact                 | Monaco code display           |
-| `?fn`         | Executable ESM module (markers stripped, TS transpiled) | Algorithm execution and tests |
+The `buildLineMapFromSources(algorithmId)` utility (`src/utils/source-loader.ts`) parses `@step:` markers from all language source files for a given algorithm and returns a `LineMap` mapping each step key to per-language line numbers. Step generators pass this to their tracker constructor.
 
-The `@step:` annotation system enables synchronized line highlighting across languages. See the [full annotation guide](contributing.md#the-step-annotation-system) in the contributing docs.
+See the [full annotation guide](contributing.md#the-step-annotation-system) and [import conventions](contributing.md#step-1-write-the-source-files) in the contributing docs.
 
 ## State Management
 
@@ -93,8 +130,13 @@ const selectAlgorithm = useAppStore((state) => state.selectAlgorithm);
 
 ## Responsive Design
 
-- **Desktop** (>=1024px): 3-panel resizable layout with code, visualization, and explanation panels side by side
-- **Mobile/Tablet** (<1024px): Tab-based single-panel switcher ("Visualize", "Code", "Details") using `useSyncExternalStore` for viewport-aware rendering
+| Tier        | Breakpoint   | Layout                                                           |
+| ----------- | ------------ | ---------------------------------------------------------------- |
+| **Desktop** | >= 1024px    | 3-panel resizable layout (code, visualization, explanation)      |
+| **Tablet**  | 768 – 1023px | Tab-based single-panel switcher ("Visualize", "Code", "Details") |
+| **Mobile**  | < 768px      | Tab-based single-panel switcher (compact controls)               |
+
+Breakpoint values are defined in `BREAKPOINTS` (`src/utils/constants.ts`). Layout switching uses `useResponsiveLayout` with `useSyncExternalStore` for tear-free viewport-aware rendering.
 
 ## Input Editors
 
@@ -121,6 +163,16 @@ Each algorithm category has a tailored input editor rendered above the visualiza
 ## Educational Drawer
 
 A slide-over drawer (toggled via "L" key or header button) displays 7 sections of learning content per algorithm: Overview, How It Works, Time & Space Complexity, Best & Worst Case, Real-World Uses, Strengths & Limitations, When to Use It.
+
+## Custom Hooks
+
+| Hook                   | Purpose                                                                             |
+| ---------------------- | ----------------------------------------------------------------------------------- |
+| `usePlaybackEngine`    | Manages play/pause interval, speed changes, and timed step advancement              |
+| `useKeyboardShortcuts` | Binds global keyboard events to playback and UI actions                             |
+| `useResponsiveLayout`  | Returns viewport tier via `useSyncExternalStore` for breakpoint-based layout shifts |
+
+All hooks are in `src/hooks/`.
 
 ## Project Structure
 

@@ -4,6 +4,19 @@
 
 This guide walks you through everything you need to set up, understand, and extend AlgoFlow — from first clone to merged PR.
 
+## Contents
+
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+- [Branch Strategy](#branch-strategy)
+- [Quality Gate](#quality-gate)
+- [Commit Messages](#commit-messages)
+- [Pull Request Checklist](#pull-request-checklist)
+- [Adding a New Algorithm](#adding-a-new-algorithm) (Steps 1–6)
+- [Adding a New Language](#adding-a-new-language)
+- [Common Pitfalls & Troubleshooting](#common-pitfalls--troubleshooting)
+- [Coding Standards](#coding-standards)
+
 ## Prerequisites
 
 | Requirement | Version | Notes                                         |
@@ -63,6 +76,9 @@ npm run test         # Vitest unit tests
 
 If any check fails, fix the issue before committing. Do **not** bypass hooks.
 
+> [!TIP]
+> For full CI parity before opening a PR, also run `npm run e2e` (if UI files changed) and `npm run storybook:build` (if components changed).
+
 ## Commit Messages
 
 - Use imperative mood: "Add binary search" not "Added binary search"
@@ -73,7 +89,7 @@ If any check fails, fix the issue before committing. Do **not** bypass hooks.
 - [ ] All quality gate checks pass
 - [ ] E2E tests pass if UI files changed (`npm run e2e`)
 - [ ] Storybook builds if components changed (`npm run storybook:build`)
-- [ ] New algorithm? Added to `e2e/algoflow_e2e.mjs` (see [E2E updates](#updating-e2e-tests))
+- [ ] New algorithm with input editor? Added entry to `inputTests` in `e2e/algoflow_e2e.mjs` (see [E2E updates](#updating-e2e-tests))
 
 ---
 
@@ -85,10 +101,11 @@ This is the most common contribution. Each algorithm lives in its own directory 
 
 ```
 src/algorithms/<category>/<algorithm>/
-├── <algorithm>.ts              # Pure implementation (via sources/)
 ├── step-generator.ts           # Produces ExecutionStep[] using a tracker
 ├── educational.ts              # 7 learning sections
 ├── index.ts                    # AlgorithmDefinition + registry.register()
+├── <algorithm>.test.ts         # Algorithm correctness tests
+├── step-generator.test.ts      # Step generation tests
 └── sources/
     ├── <algorithm>.ts          # TypeScript source with @step: markers
     ├── <algorithm>.py          # Python source with @step: markers
@@ -188,6 +205,9 @@ export function generateMyAlgorithmSteps(input: number[]): ExecutionStep[] {
 }
 ```
 
+> [!NOTE]
+> The `variables` object passed to tracker methods is included in each `ExecutionStep` and displayed in the explanation panel. Include values that help learners understand the algorithm's state: loop indices, comparison results, running totals, etc.
+
 #### Available Trackers
 
 | Category            | Tracker              | Key Methods                                                                                                                                                                            |
@@ -227,7 +247,23 @@ export const myAlgorithmEducational: EducationalContent = {
 };
 ```
 
-Markdown formatting is supported (bold, headers, code blocks, lists, Mermaid diagrams).
+Markdown formatting is supported (bold, headers, code blocks, lists, Mermaid diagrams). Example with rich formatting:
+
+```typescript
+howItWorks: `
+### Phase 1: Build
+Iterate through the array and **compare adjacent elements**.
+
+### Phase 2: Swap
+If elements are out of order, swap them:
+
+| Pass | Comparisons | Swaps |
+|------|-------------|-------|
+| 1    | n - 1       | up to n - 1 |
+
+> Repeat until no swaps occur in a full pass.
+`,
+```
 
 ### Step 4: Write the Registration Module
 
@@ -268,7 +304,7 @@ registry.register(definition);
 
 ### Step 5: Register and Add Stories
 
-1. Add your algorithm's constants to `src/utils/constants.ts` (ALGORITHM_ID and CATEGORY entries)
+1. Add your algorithm's constants to `src/utils/constants.ts`. `ALGORITHM_ID` is auto-generated from directory names (e.g., `ALGORITHM_ID.MY_ALGORITHM` maps to `"my-algorithm"`). `CATEGORY` is derived from `CATEGORY_LABELS` (e.g., `CATEGORY.SORTING` maps to `"sorting"`). If adding a new category, add its display label to `CATEGORY_LABELS` first.
 2. Import the new algorithm in `src/algorithms/index.ts` — this triggers self-registration
 3. Add Storybook pipeline stories in `src/components/visualization/<Algorithm>Pipeline.stories.tsx`
 
@@ -286,10 +322,7 @@ See `src/algorithms/sorting/bubble-sort/` for reference test files.
 
 ### Updating E2E Tests
 
-When adding a new algorithm, update `e2e/algoflow_e2e.mjs`:
-
-1. Add the algorithm name to the `algorithms` array — all 14 per-algorithm checks run automatically
-2. Add an entry to `inputTests` if the algorithm has an input editor
+The E2E suite auto-discovers algorithms from the filesystem via `discoverAlgorithms()`. No manual array update is needed for basic smoke testing (select + step generation). You only need to update `e2e/algoflow_e2e.mjs` if the algorithm has a custom input editor — add an entry to the `inputTests` object.
 
 ---
 
@@ -304,12 +337,8 @@ When adding a new algorithm, update `e2e/algoflow_e2e.mjs`:
 
 ## Common Pitfalls & Troubleshooting
 
-<details>
-<summary><strong>Algorithm doesn't appear in the UI</strong></summary>
-
-You forgot to import it in `src/algorithms/index.ts`. The registry only fires when the module is imported.
-
-</details>
+> [!WARNING]
+> **Algorithm doesn't appear in the UI?** You forgot to import it in `src/algorithms/index.ts`. The registry only fires when the module is imported.
 
 <details>
 <summary><strong>Line highlighting doesn't work / shows wrong lines</strong></summary>
@@ -358,15 +387,15 @@ This is expected. The `.npmrc` file sets `legacy-peer-deps=true` due to React 19
 
 ## Coding Standards
 
+Key rules to know before writing code:
+
 | Rule                              | Details                                                               |
 | --------------------------------- | --------------------------------------------------------------------- |
 | **No single-character variables** | Use `elementIndex`, `outerIndex`, `currentNode` — never `i`, `j`, `k` |
-| **Double quotes**                 | Enforced by Prettier                                                  |
-| **2-space indent**                | Enforced by Prettier                                                  |
 | **No `any` types**                | Use `unknown` with type narrowing                                     |
 | **`const` over `let`**            | Never use `var`                                                       |
-| **Import order**                  | External libs → `@/` paths → relative paths                           |
-| **Type imports**                  | Use `import type { ... }` for type-only imports                       |
+
+Formatting (double quotes, 2-space indent, trailing commas, semicolons, 100-char print width) and import ordering (external libs → `@/` paths → relative paths) are enforced automatically by Prettier and ESLint. Use `import type { ... }` for type-only imports.
 
 ## See Also
 

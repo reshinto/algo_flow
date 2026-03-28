@@ -12,7 +12,10 @@ npm run test:coverage   # Run with coverage report
 npm run test:watch      # Watch mode during development
 ```
 
-Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 15 algorithms (14 categories, with Fibonacci having both Tabulation and Memoization variants).
+Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 58 algorithms in 14 categories.
+
+> [!TIP]
+> Run a subset of tests with `npx vitest --filter <pattern>` (e.g., `npx vitest --filter bubble-sort`).
 
 ### What to Test for Each Algorithm
 
@@ -26,6 +29,36 @@ Additionally verify:
 - Educational content is non-empty for all 7 sections
 - Source files exist for all supported languages (TypeScript, Python, Java)
 
+#### Example: Algorithm Correctness Test
+
+```typescript
+import { describe, expect, it } from "vitest";
+import { bubbleSort } from "./sources/bubble-sort.ts?fn";
+
+describe("bubbleSort", () => {
+  it("sorts an unsorted array", () => {
+    expect(bubbleSort([5, 3, 8, 1])).toEqual([1, 3, 5, 8]);
+  });
+
+  it("handles an already-sorted array", () => {
+    expect(bubbleSort([1, 2, 3])).toEqual([1, 2, 3]);
+  });
+
+  it("handles a single-element array", () => {
+    expect(bubbleSort([1])).toEqual([1]);
+  });
+});
+```
+
+### Beyond Algorithm Tests
+
+| Area     | What to Test                             | Location        |
+| -------- | ---------------------------------------- | --------------- |
+| Trackers | Step output shape, metric increments     | `src/trackers/` |
+| Store    | Slice actions, state transitions         | `src/store/`    |
+| Registry | Registration, lookup, duplicate handling | `src/registry/` |
+| Hooks    | Use `renderHook` from Testing Library    | `src/hooks/`    |
+
 ### Coverage Thresholds
 
 | Metric     | Threshold |
@@ -34,6 +67,9 @@ Additionally verify:
 | Branches   | 75%       |
 | Functions  | 80%       |
 | Lines      | 80%       |
+
+> [!WARNING]
+> These thresholds are documentation targets. They are not currently enforced in the Vite config. Running `npm run test:coverage` generates a report (open `coverage/index.html` for line-by-line details) but does not fail the build on threshold violations.
 
 ## E2E Browser Tests (Playwright)
 
@@ -44,13 +80,13 @@ npm run e2e:headed  # Run with a visible browser (development)
 
 The E2E suite lives in `e2e/algoflow_e2e.mjs`. It uses Playwright with Chromium and simulates a real user session:
 
-- Selects all 58 algorithms via the command palette
-- Exercises playback controls (play, pause, step, reset, rerun)
-- Switches language tabs (TypeScript / Python / Java)
-- Edits every input editor
-- Scrubs the progress bar
-- Tests all keyboard shortcuts (Space, ArrowRight, ArrowLeft, R, L, Escape, 1–5)
-- Verifies zero browser console errors
+The suite uses a **tiered approach**:
+
+- **Smoke tests** (all 58 algorithms): select via command palette, verify step generation is non-zero
+- **Full suite** (one representative per category): playback controls, language tabs, keyboard shortcuts, educational drawer
+- **Input editors**: algorithms in `inputTests` get additional input interaction tests
+- **Grid tests**: Dijkstra's Algorithm receives dedicated grid cell and wavefront tests
+- **Cross-cutting**: progress bar scrubbing, speed controls, zero browser console errors
 
 ### Automatic Enforcement
 
@@ -59,29 +95,27 @@ The E2E suite lives in `e2e/algoflow_e2e.mjs`. It uses Playwright with Chromium 
 
 ### Adding Algorithms to E2E
 
-When adding a new algorithm or visualizer component, update `e2e/algoflow_e2e.mjs`:
-
-1. Add the algorithm name to the `algorithms` array — all per-algorithm checks run automatically
-2. Add an entry to `inputTests` if the algorithm has an input editor
+New algorithms are auto-discovered — no manual update needed for basic smoke testing. See [Updating E2E Tests](contributing.md#updating-e2e-tests) in the contributing guide for details on input editor entries.
 
 ## Storybook & Visual Regression Testing
 
 ```bash
 npm run storybook       # Start Storybook dev server (http://localhost:6006)
 npm run storybook:build # Build static Storybook
+npm run storybook:test  # Run @storybook/test-runner (requires Storybook running)
 npm run chromatic       # Run Chromatic visual tests
 ```
 
 ### Story Inventory
 
-**58 story files** organized into:
+**63 story files** organized into:
 
-| Category                   | Stories                                                                                 |
-| -------------------------- | --------------------------------------------------------------------------------------- |
-| **Shared Primitives**      | Button, Badge, IconButton, Select                                                       |
-| **Code Panel**             | LanguageTabs                                                                            |
-| **Individual Visualizers** | ArrayVisualizer, GraphVisualizer, GridVisualizer, DPTableVisualizer                     |
-| **Algorithm Pipelines**    | All 58 algorithms — initial, mid-execution, and final states using real step generators |
+| Category                   | Stories                                                                                      |
+| -------------------------- | -------------------------------------------------------------------------------------------- |
+| **Shared Primitives**      | Button, Badge, IconButton, Select                                                            |
+| **Code Panel**             | LanguageTabs                                                                                 |
+| **Individual Visualizers** | ArrayVisualizer, GraphVisualizer, GridVisualizer, DPTableVisualizer                          |
+| **Algorithm Pipelines**    | 54 algorithm pipelines — initial, mid-execution, and final states using real step generators |
 
 ### Chromatic Visual Regression
 

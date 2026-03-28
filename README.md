@@ -4,9 +4,6 @@
 
 Algorithm visualization web app for learners. Step through algorithms with synchronized code highlighting, animated visualizations, and educational content.
 
-<!-- TODO: Add screenshot — replace with actual screenshot path when available -->
-<!-- ![AlgoFlow screenshot](docs/assets/screenshot.png) -->
-
 ## Features
 
 - **58 Algorithms across 14 Categories** with interactive visualizations (bar charts, SVG graphs/trees, CSS grids, DP tables, and more)
@@ -17,6 +14,9 @@ Algorithm visualization web app for learners. Step through algorithms with synch
 - **Responsive Layout**: 3-panel resizable IDE-style layout on desktop; tab-based switcher on mobile/tablet
 
 ## Algorithms
+
+<details>
+<summary><strong>58 Algorithms across 14 Categories</strong> (click to expand)</summary>
 
 | Category            | Algorithm                         | Visualizer                                     |
 | ------------------- | --------------------------------- | ---------------------------------------------- |
@@ -78,6 +78,8 @@ Algorithm visualization web app for learners. Step through algorithms with synch
 | Matrices            | Spiral Order Traversal            | CSS grid with boundary shrink animation        |
 | Sets                | Set Intersection                  | Array A, array B, hash set, result panels      |
 
+</details>
+
 ## Quick Start
 
 > [!NOTE]
@@ -95,6 +97,18 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 AlgoFlow uses a registry-driven architecture with pre-computed execution steps. Algorithms self-register, trackers build `ExecutionStep[]` arrays, and a discriminated union on `VisualState.kind` dispatches to generic visualizer components.
 
 See [docs/architecture.md](docs/architecture.md) for tech stack, data flow diagrams, state management, and project structure.
+
+## Documentation Guide
+
+| If you want to...            | Start here                                                  |
+| ---------------------------- | ----------------------------------------------------------- |
+| Understand how the app works | [Architecture](docs/architecture.md)                        |
+| Add a new algorithm          | [Contributing](docs/contributing.md#adding-a-new-algorithm) |
+| Write or run tests           | [Testing](docs/testing.md)                                  |
+| Deploy or understand CI      | [Deployment](docs/deployment.md)                            |
+
+> [!TIP]
+> First-time contributors: read the [Contributing guide](docs/contributing.md) end-to-end. It covers setup, branch workflow, the full algorithm walkthrough, and troubleshooting.
 
 ## Contributing
 
@@ -123,8 +137,7 @@ See the [full walkthrough](docs/contributing.md#adding-a-new-algorithm) for step
 > [!IMPORTANT]
 > All input edits are **temporary and non-persistent**. Edits reset on algorithm switch or page reload. No localStorage, URL state, or server persistence.
 
-- Array inputs, graph configurations, and grid layouts reset on algorithm switch or page reload
-- Pathfinding grid edits (walls, start/end node positions) are stored in Zustand only — click to toggle walls, drag to reposition start/end nodes, reset to restore defaults
+See [Input Editors](docs/architecture.md#input-editors) for per-category editor types and pathfinding grid editing details.
 
 ## Keyboard Shortcuts
 
@@ -174,15 +187,14 @@ docker run -p 3000:80 algoflow
 
 Two GitHub Actions workflows in `.github/workflows/`:
 
-- **ci.yml** — Runs on all pull requests. Jobs: typecheck, lint, format, unit tests, E2E tests, Storybook build, Chromatic visual tests.
+- **ci.yml** — Runs on all pull requests. Jobs: type-check-and-lint (typecheck + ESLint + Prettier in one job), unit tests, E2E tests, Storybook build, Chromatic visual tests.
 - **deploy.yml** — Runs on push to `main`. Runs CI checks, then builds and deploys to GitHub Pages.
 
 See [docs/deployment.md](docs/deployment.md) for Docker build internals and per-job pipeline details.
 
-<details>
-<summary><strong>Session Hooks (quality gates)</strong></summary>
+## Session Hooks
 
-The project uses session hooks (`.claude/settings.json`) to enforce quality:
+The project uses session hooks (`.claude/settings.json`) to enforce code quality and branch safety automatically during development sessions:
 
 - **SessionStart**: Branch safety check — warns if working directly on `main`
 - **Stop**: Quality gate — lint, format, typecheck, and unit tests must pass
@@ -191,8 +203,6 @@ The project uses session hooks (`.claude/settings.json`) to enforce quality:
 - **Stop**: E2E check — runs `e2e/algoflow_e2e.mjs` in headless Chromium when any `.tsx`, `.css`, `.html`, or `e2e/algoflow_e2e.mjs` file changes; starts the dev server automatically if needed
 - **PreToolUse**: Blocks commits and pushes directly to `main`
 - **PostToolUse**: Automatically creates a PR after pushing a feature branch
-
-</details>
 
 ## Development Plan
 
