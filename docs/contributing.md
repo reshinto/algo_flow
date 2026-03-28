@@ -65,7 +65,7 @@ Branch name prefixes:
 
 ## Quality Gate
 
-Four checks must pass before any commit. The session Stop hook enforces this automatically:
+The following checks must pass before any commit. Two session Stop hooks enforce this automatically: `session-end-quality-gate.sh` (lint, format, typecheck, tests) and `session-end-security-check.sh` (unsafe pattern scan, npm audit, coverage thresholds):
 
 ```bash
 npm run typecheck    # TypeScript strict mode
@@ -76,8 +76,17 @@ npm run test         # Vitest unit tests
 
 If any check fails, fix the issue before committing. Do **not** bypass hooks.
 
+### Mid-Session Warnings (PostToolUse)
+
+Two hooks run automatically after every file edit and emit non-blocking warnings to help catch issues early:
+
+- **`post-edit-typescript-check.sh`** — Warns on `any` types, unexplained `@ts-ignore`/`@ts-expect-error`, type assertions (prefer type guards), and `number[][]` instead of tuple types. Applies to `.ts` and `.tsx` files.
+- **`post-edit-accessibility-check.sh`** — Warns on raw hex colors (use CSS custom properties), interactive elements missing `aria-label`, `outline: none` without a focus-visible replacement, and Framer Motion imports without `useReducedMotion`. Applies to `.tsx` files only.
+
+These hooks always exit 0 — they warn but never block. Fix the flagged patterns before committing to keep the quality gate clean.
+
 > [!TIP]
-> For full CI parity before opening a PR, also run `npm run e2e` (if UI files changed) and `npm run storybook:build` (if components changed).
+> For full CI parity before opening a PR, also run `npm run e2e` (if UI files changed), `npm run storybook:build` (if components changed), and `npm audit --audit-level=high` (always).
 
 ## Commit Messages
 

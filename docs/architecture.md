@@ -6,6 +6,7 @@ AlgoFlow uses a **registry-driven** architecture with **pre-computed execution s
 
 ## Contents
 
+- [Claude Agentic System](#claude-agentic-system)
 - [Tech Stack](#tech-stack)
 - [Data Flow](#data-flow)
 - [Core Pattern](#core-pattern)
@@ -15,6 +16,33 @@ AlgoFlow uses a **registry-driven** architecture with **pre-computed execution s
 - [Input Editors](#input-editors)
 - [Educational Drawer](#educational-drawer)
 - [Project Structure](#project-structure)
+
+## Claude Agentic System
+
+The `.claude/` directory defines the project's agentic development system: agents, skills, and session hooks.
+
+### Agents (8)
+
+| Agent                           | Role                                                   |
+| ------------------------------- | ------------------------------------------------------ |
+| `tech-lead-architect`           | Architectural reviews and structural decisions         |
+| `senior-engineer-code-reviewer` | Code quality, standards enforcement, PR review         |
+| `qa-tester`                     | Test coverage, E2E validation, security checks         |
+| `ui-ux-designer`                | Visual design, responsive layout, accessibility        |
+| `product-strategist`            | Learner engagement, feature alignment                  |
+| `technical-writer`              | Documentation accuracy, educational content quality    |
+| `marketing-engine`              | README discoverability, content positioning            |
+| `claude-system-architect`       | `.claude/` system integrity, hook and skill governance |
+
+### Skills (14)
+
+Reusable prompt modules invoked via `/skill-name`: `algorithm-learning-content`, `accessibility-audit`, `architecture-review`, `branch-safety-check`, `cifix`, `claude-system-management`, `documentation-review`, `implementation-planning`, `learner-engagement-review`, `pathfinding-scenario-editing`, `readme-optimization`, `repository-quality-gate`, `security-coverage-audit`, `strict-typescript-review`.
+
+### Session Hooks (13)
+
+Hooks run automatically during development sessions — see the [Session Hooks section in README](../README.md#session-hooks) for the full list with descriptions.
+
+---
 
 ## Tech Stack
 
@@ -180,6 +208,11 @@ All hooks are in `src/hooks/`.
 > All UI is generic — algorithm-specific logic lives exclusively in `src/algorithms/` and `src/trackers/`.
 
 ```
+.claude/
+├── agents/                  # 8 subagent role definitions
+├── hooks/                   # 13 session hook scripts
+├── skills/                  # 14 reusable prompt skill modules
+└── rules/                   # Coding standards, architecture constraints, workflow rules
 e2e/                        # E2E browser tests (Playwright)
 docs/                       # Documentation
 src/

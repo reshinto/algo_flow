@@ -31,6 +31,18 @@
             "command": "FILE=$(jq -r '.tool_input.file_path // empty'); if [ -n \"$FILE\" ]; then cd \"${CLAUDE_PROJECT_DIR}\" && npx eslint --fix \"$FILE\" 2>/dev/null; npx prettier --write \"$FILE\" 2>/dev/null; npx tsc -b --noEmit 2>/dev/null; fi",
             "timeout": 60000,
             "statusMessage": "Linting, formatting, and typechecking..."
+          },
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/post-edit-typescript-check.sh",
+            "timeout": 10000,
+            "statusMessage": "Checking strict TypeScript patterns..."
+          },
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/post-edit-accessibility-check.sh",
+            "timeout": 10000,
+            "statusMessage": "Checking accessibility patterns..."
           }
         ]
       },
@@ -82,6 +94,18 @@
             "type": "command",
             "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-end-e2e-check.sh",
             "timeout": 300000,
+            "once": true
+          },
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-end-security-check.sh",
+            "timeout": 60000,
+            "once": true
+          },
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-end-claude-system-check.sh",
+            "timeout": 10000,
             "once": true
           }
         ]

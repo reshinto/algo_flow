@@ -68,8 +68,13 @@ describe("bubbleSort", () => {
 | Functions  | 80%       |
 | Lines      | 80%       |
 
-> [!WARNING]
-> These thresholds are documentation targets. They are not currently enforced in the Vite config. Running `npm run test:coverage` generates a report (open `coverage/index.html` for line-by-line details) but does not fail the build on threshold violations.
+> [!NOTE]
+> These thresholds are not enforced in the Vite config (running `npm run test:coverage` generates a report but does not fail the build). However, the `session-end-security-check.sh` Stop hook enforces these same thresholds at session end and blocks git operations when they are not met.
+
+### Automatic Coverage and Security Enforcement
+
+> [!TIP]
+> Coverage thresholds are verified automatically by the `session-end-security-check.sh` Stop hook whenever `src/` files change. The same hook scans for unsafe patterns (`eval`, `innerHTML`, `dangerouslySetInnerHTML`, `new Function`) and runs `npm audit --audit-level=high`. Violations block git operations for the session.
 
 ## E2E Browser Tests (Playwright)
 

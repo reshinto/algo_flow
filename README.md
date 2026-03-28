@@ -194,15 +194,35 @@ See [docs/deployment.md](docs/deployment.md) for Docker build internals and per-
 
 ## Session Hooks
 
-The project uses session hooks (`.claude/settings.json`) to enforce code quality and branch safety automatically during development sessions:
+The project uses session hooks (`.claude/settings.json`) to enforce code quality, safety, and consistency automatically during development sessions.
 
-- **SessionStart**: Branch safety check — warns if working directly on `main`
-- **Stop**: Quality gate — lint, format, typecheck, and unit tests must pass
-- **Stop**: Docs check — verifies README.md and docs/ files are updated when source, infra, config, or hook files change (with targeted guidance on which doc to update)
-- **Stop**: Comments check — verifies all modified TypeScript files have code comments
-- **Stop**: E2E check — runs `e2e/algoflow_e2e.mjs` in headless Chromium when any `.tsx`, `.css`, `.html`, or `e2e/algoflow_e2e.mjs` file changes; starts the dev server automatically if needed
-- **PreToolUse**: Blocks commits and pushes directly to `main`
-- **PostToolUse**: Automatically creates a PR after pushing a feature branch
+**SessionStart**
+
+- `session-start-branch-check.sh` — Warns if working directly on `main` at session open.
+
+**PreToolUse (Bash)**
+
+- `block-ai-attribution.sh` — Blocks commits that include Co-Authored-By or AI attribution in the message.
+- `block-main-branch-commits.sh` — Blocks `git commit` and `git push` directly to `main`.
+- `pre-commit-quality-check.sh` — Runs typecheck, ESLint, and Prettier before every `git commit`; blocks the commit if any check fails.
+
+**PostToolUse (Edit | Write)**
+
+- `post-edit-typescript-check.sh` — Warns (non-blocking) on TypeScript anti-patterns in edited `.ts`/`.tsx` files: `any` types, bare `@ts-ignore`, unsafe type assertions, and `number[][]` instead of tuple types.
+- `post-edit-accessibility-check.sh` — Warns (non-blocking) on accessibility issues in edited `.tsx` files: raw hex colors, interactive elements without `aria-label`, `outline:none` without focus replacement, and Framer Motion usage without reduced-motion support.
+
+**PostToolUse (Bash)**
+
+- `auto-pr-after-push.sh` — Automatically opens a pull request after pushing a feature branch.
+
+**Stop**
+
+- `session-end-quality-gate.sh` — Lint, format, typecheck, and unit tests must all pass; blocks git operations on failure.
+- `session-end-readme-check.sh` — Verifies README.md and `docs/` are updated when source, infra, config, or hook files change; provides targeted guidance on which doc to update.
+- `session-end-comments-check.sh` — Verifies all modified TypeScript files contain code comments.
+- `session-end-e2e-check.sh` — Runs `e2e/algoflow_e2e.mjs` in headless Chromium when any `.tsx`, `.css`, `.html`, or `e2e/algoflow_e2e.mjs` file changes; starts the dev server automatically if needed.
+- `session-end-security-check.sh` — Scans `src/` for unsafe patterns (`eval`, `innerHTML`, `dangerouslySetInnerHTML`), runs `npm audit` at high/critical level (non-blocking warn), and verifies test coverage thresholds (80/75/80/80); blocks git operations on hard failures.
+- `session-end-claude-system-check.sh` — Validates `.claude/` configuration consistency when `.claude/` files change: agent and skill frontmatter, hook script references in `settings.json`, and orphaned hook detection.
 
 ## Development Plan
 

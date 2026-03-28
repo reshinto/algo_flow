@@ -8,10 +8,7 @@ Vite + React 19 + TypeScript (strict) + Tailwind CSS v4 + Zustand + Monaco Edito
 
 ## Architecture
 
-- **Registry-driven**: Algorithms self-register via `registry.register()`. All UI is generic.
-- **Pre-computed steps**: `generateSteps(input)` produces `ExecutionStep[]` eagerly. Playback = index pointer.
-- **Tracker abstraction**: Category-specific trackers build steps with correct visual state + per-language line maps.
-- **Discriminated union**: `VisualState.kind` dispatches to the correct visualizer component.
+Registry-driven, pre-computed steps, tracker abstraction, discriminated `VisualState` union — see `.claude/rules/architecture.md`.
 
 ## Key Paths
 
@@ -25,12 +22,13 @@ Vite + React 19 + TypeScript (strict) + Tailwind CSS v4 + Zustand + Monaco Edito
 
 ## Rules
 
-Detailed rules are in `.claude/rules/`. Key constraints:
+See `.claude/rules/` for full constraints. Most commonly violated:
 
-- No single-character variable names
-- Double quotes, 2-space indent, trailing whitespace removal (Prettier enforced)
-- Unit tests target actual algorithm implementations, not only step generators
-- Educational content required for every algorithm
+- No single-char variable names, no `any` types — use `unknown` with narrowing
+- `@/` path alias required for all src-relative imports
+- `noUncheckedIndexedAccess` enabled — use tuple types (`[number, number][]`) for coordinate arrays
+- Pipeline stories (`*.Pipeline.stories.tsx`) live in algorithm directories, not `src/components/`
+- Branch-per-task mandatory — every new task starts on a fresh branch from main
 - All edits to input and pathfinding grids are temporary (non-persistent)
 
 ## General Guidelines
@@ -42,13 +40,13 @@ Detailed rules are in `.claude/rules/`. Key constraints:
 
 ## Testing
 
-- After making code changes, always run the full test suite (`npm test`) and fix any failures before considering the task complete
-- For E2E tests, the dev server starts automatically via hooks — do not start it manually
 - Run CI checks in sequence and fix iteratively until all pass green: `npm run lint` → `npm run format` → `npm run typecheck` → `npm test`
 - Do not stop after fixing just one category — keep going until everything is clean
+- For E2E tests, the dev server starts automatically via hooks — do not start it manually
+- Every new algorithm needs: correctness tests + step generation tests + pipeline story in algorithm directory + E2E registration — see `.claude/rules/testing.md`
 
 ## Workflow
 
-1. Pre-session branch check (hook)
-2. Implement in feature branches
-3. Post-session quality gate: lint, format, test must pass before git operations
+1. Branch-per-task mandatory before any changes
+2. Quality gate: lint + format + typecheck + unit tests + storybook build
+3. See `.claude/rules/workflow.md` for full 7-step development flow with agent roles

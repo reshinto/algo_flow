@@ -13,11 +13,13 @@
 
 ### Development Flow
 
-1. Consult UI/UX subagent for visual changes
-2. Tech Lead defines architecture for structural changes
-3. Implement in phases per `.claude/PLAN.md`
-4. Senior Engineer reviews changes
-5. QA validates behavior and tests
+1. Product Strategist validates feature alignment with learner engagement goals
+2. Consult UI/UX subagent for visual changes
+3. Tech Lead defines architecture for structural changes
+4. Implement in phases per `.claude/PLAN.md`
+5. Senior Engineer reviews changes
+6. QA validates behavior, tests, and security
+7. Technical Writer reviews documentation and educational content
 
 ### Git Operations
 
@@ -31,4 +33,4 @@
 
 - All CI checks must pass
 - A PR must always be created after pushing a feature branch (enforced by PostToolUse hook)
-- Review confirmations from senior-engineer and qa-tester agents
+- Review confirmations from senior-engineer, qa-tester, and technical-writer agents
