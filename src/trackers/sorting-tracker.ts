@@ -74,9 +74,12 @@ export class SortingTracker extends BaseTracker {
   ): void {
     this.metrics = { ...this.metrics, swaps: this.metrics.swaps + 1 };
 
-    const tempValue = this.elements[firstIndex]!.value;
-    this.elements[firstIndex]!.value = this.elements[secondIndex]!.value;
-    this.elements[secondIndex]!.value = tempValue;
+    const elementA = this.elements[firstIndex];
+    const elementB = this.elements[secondIndex];
+    if (!elementA || !elementB) return;
+    const tempValue = elementA.value;
+    elementA.value = elementB.value;
+    elementB.value = tempValue;
 
     this.pushStep({
       type: "swap",
@@ -91,7 +94,9 @@ export class SortingTracker extends BaseTracker {
 
   /** Permanently mark an element as in its final sorted position. */
   markSorted(sortedIndex: number, variables: Record<string, unknown>): void {
-    this.elements[sortedIndex]!.state = "sorted";
+    const element = this.elements[sortedIndex];
+    if (!element) return;
+    element.state = "sorted";
     this.pushStep({
       type: "mark-sorted",
       description: `Element at index ${sortedIndex} is in its final sorted position`,

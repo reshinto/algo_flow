@@ -50,42 +50,48 @@ export class DPTracker extends BaseTracker {
     description?: string,
   ): void {
     this.currentIndex = index;
-    this.table[index]!.value = value;
-    this.table[index]!.state = "computing";
+    const cell = this.table[index];
+    if (!cell) return;
+    cell.value = value;
+    cell.state = "computing";
     this.pushStep({
       type: "compute-cell",
       description: description ?? `Compute F(${index}) = ${value}`,
       variables,
       visualState: this.snapshot(),
     });
-    this.table[index]!.state = "computed";
+    cell.state = "computed";
   }
 
   readCache(index: number, variables: Record<string, unknown>): void {
     this.metrics = { ...this.metrics, cacheHits: this.metrics.cacheHits + 1 };
     this.currentIndex = index;
-    const previousState = this.table[index]!.state;
-    this.table[index]!.state = "reading-cache";
+    const cell = this.table[index];
+    if (!cell) return;
+    const previousState = cell.state;
+    cell.state = "reading-cache";
     this.pushStep({
       type: "read-cache",
-      description: `Read cached value F(${index}) = ${this.table[index]!.value}`,
+      description: `Read cached value F(${index}) = ${cell.value}`,
       variables,
       visualState: this.snapshot(),
     });
-    this.table[index]!.state = previousState;
+    cell.state = previousState;
   }
 
   fillTable(index: number, value: number, variables: Record<string, unknown>): void {
     this.currentIndex = index;
-    this.table[index]!.value = value;
-    this.table[index]!.state = "computing";
+    const tableCell = this.table[index];
+    if (!tableCell) return;
+    tableCell.value = value;
+    tableCell.state = "computing";
     this.pushStep({
       type: "fill-table",
       description: `Fill table[${index}] = ${value}`,
       variables,
       visualState: this.snapshot(),
     });
-    this.table[index]!.state = "computed";
+    tableCell.state = "computed";
   }
 
   pushCallStack(label: string, variables: Record<string, unknown> = {}): void {

@@ -131,8 +131,9 @@ export class ArrayTracker extends BaseTracker {
     variables: Record<string, unknown>,
     description?: string,
   ): void {
-    const elementA = this.elements[indexA]!;
-    const elementB = this.elements[indexB]!;
+    const elementA = this.elements[indexA];
+    const elementB = this.elements[indexB];
+    if (!elementA || !elementB) return;
     const tempValue = elementA.value;
     elementA.value = elementB.value;
     elementB.value = tempValue;
@@ -159,8 +160,11 @@ export class ArrayTracker extends BaseTracker {
     variables: Record<string, unknown>,
     description?: string,
   ): void {
-    this.elements[indexA]!.state = "comparing";
-    this.elements[indexB]!.state = "comparing";
+    const elementA = this.elements[indexA];
+    const elementB = this.elements[indexB];
+    if (!elementA || !elementB) return;
+    elementA.state = "comparing";
+    elementB.state = "comparing";
     this.metrics = { ...this.metrics, comparisons: this.metrics.comparisons + 1 };
 
     this.pushStep({
@@ -170,8 +174,8 @@ export class ArrayTracker extends BaseTracker {
       visualState: this.snapshot({ left: indexA, right: indexB }),
     });
 
-    this.elements[indexA]!.state = "default";
-    this.elements[indexB]!.state = "default";
+    elementA.state = "default";
+    elementB.state = "default";
   }
 
   /** Mark a single element with an arbitrary state and emit a step. */
@@ -182,7 +186,9 @@ export class ArrayTracker extends BaseTracker {
     description?: string,
     stepType?: StepType,
   ): void {
-    this.elements[index]!.state = state;
+    const element = this.elements[index];
+    if (!element) return;
+    element.state = state;
 
     this.pushStep({
       type: stepType ?? "visit",
