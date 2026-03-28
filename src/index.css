@@ -1,20 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Black-first color palette */
-  --color-surface-primary: #09090b;
-  --color-surface-secondary: #18181b;
-  --color-surface-tertiary: #27272a;
-  --color-surface-elevated: #3f3f46;
-
-  --color-border-default: #3f3f46;
-  --color-border-subtle: #27272a;
-
-  --color-text-primary: #fafafa;
-  --color-text-secondary: #a1a1aa;
-  --color-text-muted: #71717a;
-
-  /* Accent colors for algorithm states */
+  /* Accent colors for algorithm states — theme-invariant */
   --color-accent-emerald: #34d399;
   --color-accent-cyan: #22d3ee;
   --color-accent-amber: #fbbf24;
@@ -22,7 +9,7 @@
   --color-accent-violet: #a78bfa;
   --color-accent-blue: #60a5fa;
 
-  /* Visualization state colors */
+  /* Visualization state colors — theme-invariant */
   --color-viz-comparing: #22d3ee;
   --color-viz-swapping: #fbbf24;
   --color-viz-sorted: #34d399;
@@ -34,7 +21,18 @@
   --color-viz-wall: #3f3f46;
   --color-viz-current: #fb7185;
   --color-viz-window: rgba(34, 211, 238, 0.3);
-  --color-viz-default: #52525b;
+  --color-viz-default: #71717a;
+
+  /* Surface/text/border tokens — values set per theme in @layer base */
+  --color-surface-primary: #09090b;
+  --color-surface-secondary: #18181b;
+  --color-surface-tertiary: #27272a;
+  --color-surface-elevated: #3f3f46;
+  --color-border-default: #3f3f46;
+  --color-border-subtle: #27272a;
+  --color-text-primary: #fafafa;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
 
   /* Fonts */
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -42,6 +40,36 @@
 
   /* Spacing tokens */
   --spacing-panel-gap: 4px;
+}
+
+@layer base {
+  /* Dark theme (default) */
+  :root {
+    --color-surface-primary: #09090b;
+    --color-surface-secondary: #18181b;
+    --color-surface-tertiary: #27272a;
+    --color-surface-elevated: #3f3f46;
+    --color-border-default: #3f3f46;
+    --color-border-subtle: #27272a;
+    --color-text-primary: #fafafa;
+    --color-text-secondary: #a1a1aa;
+    --color-text-muted: #71717a;
+    --color-viz-default: #71717a;
+  }
+
+  /* Light theme */
+  :root[data-theme="light"] {
+    --color-surface-primary: #f4f4f5;
+    --color-surface-secondary: #ffffff;
+    --color-surface-tertiary: #e4e4e7;
+    --color-surface-elevated: #d4d4d8;
+    --color-border-default: #d4d4d8;
+    --color-border-subtle: #e4e4e7;
+    --color-text-primary: #09090b;
+    --color-text-secondary: #52525b;
+    --color-text-muted: #71717a;
+    --color-viz-default: #a1a1aa;
+  }
 }
 
 *,
@@ -52,6 +80,10 @@
 
 html {
   color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
 }
 
 body {
@@ -72,6 +104,10 @@ body {
 /* Monaco editor line highlighting */
 .highlighted-line {
   background-color: rgba(34, 211, 238, 0.12) !important;
+}
+
+[data-theme="light"] .highlighted-line {
+  background-color: rgba(34, 211, 238, 0.2) !important;
 }
 
 .highlighted-line-gutter {

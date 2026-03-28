@@ -33,6 +33,7 @@
 - When adding a new algorithm or visualizer component, add it to the `algorithms` array in `e2e/algoflow_e2e.mjs` with all 14 checks (select, playback ×6, language tabs ×3, keyboard ×3, educational drawer ×2) plus an entry in `inputTests` if it has an input editor
 - Test at 3 viewports: desktop (1280), tablet (768), mobile (375)
 - Assert on visual elements, not implementation details
+- NEVER use hardcoded delays (`waitForTimeout`, `sleep`, `setTimeout`-based waits) — always wait for a specific element, selector, or DOM condition using `waitFor`, `waitForSelector`, or `waitForFunction`. Hardcoded waits degrade performance and create flaky tests. Enforced by PostToolUse hook `ban-hardcoded-waits.sh`
 
 ### What to Test for Each Algorithm
 

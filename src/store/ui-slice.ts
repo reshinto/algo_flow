@@ -1,46 +1,62 @@
 /**
- * @file ui-slice.ts
- * @module store/ui-slice
- *
- * Generic UI Layout Architecture slice.
- * Manages overarching layout rendering decisions specifically handling Mobile interface components.
- * Tracks global drawer states and determines precisely which physical pane currently commands viewport focus.
+ * UI Layout slice — manages drawers, active panel, and theme state.
  */
 import type { StateCreator } from "zustand";
 
-/**
- * Interface mapping global layout structural visibility.
- */
-export interface UISlice {
-  /** Responsive layout "Command Palette" visibility state */
-  isMobileDrawerOpen: boolean;
-  /** Right-hand side Educational Explainer library tracking */
-  educationalDrawerOpen: boolean;
-  /** For constrained Mobile Viewports, determines the singular active tab structure. */
-  activePanel: "code" | "visualization" | "explanation";
+export type AppTheme = "dark" | "light" | "system";
 
-  /** Inverts the layout state for the Mobile Algorithm Selector menu */
+export interface UISlice {
+  isMobileDrawerOpen: boolean;
+  educationalDrawerOpen: boolean;
+  activePanel: "code" | "visualization" | "explanation";
+  theme: AppTheme;
+
   toggleMobileDrawer: () => void;
-  /** Acknowledges selections by forcefully dismissing the Drawer overlay */
   closeMobileDrawer: () => void;
-  /** Inverts the Educational Reading context Drawer tab wrapper */
   toggleEducationalDrawer: () => void;
-  /** Mounts explicit components statically (e.g. rendering Monaco versus Grid graphs) on small devices */
   setActivePanel: (panel: "code" | "visualization" | "explanation") => void;
+  setTheme: (theme: AppTheme) => void;
+  toggleTheme: () => void;
 }
+
+const THEME_STORAGE_KEY = "algoflow-theme";
+
+function resolveSystemTheme(): "dark" | "light" {
+  if (typeof window === "undefined") return "dark";
+  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+}
+
+function applyTheme(theme: AppTheme): void {
+  if (typeof document === "undefined") return;
+  const resolved = theme === "system" ? resolveSystemTheme() : theme;
+  if (resolved === "light") {
+    document.documentElement.setAttribute("data-theme", "light");
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+  }
+}
+
+function getStoredTheme(): AppTheme {
+  if (typeof localStorage === "undefined") return "dark";
+  const stored = localStorage.getItem(THEME_STORAGE_KEY);
+  if (stored === "dark" || stored === "light" || stored === "system") return stored;
+  return "dark";
+}
+
+const initialTheme = getStoredTheme();
+applyTheme(initialTheme);
 
 export const createUISlice: StateCreator<UISlice> = (set, get) => ({
   isMobileDrawerOpen: false,
   educationalDrawerOpen: false,
-  // By default, Algorithmic Visualizations are given structural priority on fresh loads
   activePanel: "visualization",
+  theme: initialTheme,
 
   toggleMobileDrawer: () => {
     set({ isMobileDrawerOpen: !get().isMobileDrawerOpen });
   },
 
   closeMobileDrawer: () => {
-    // Specifically fired universally `onEscape` configurations as a safety net
     set({ isMobileDrawerOpen: false });
   },
 
@@ -50,5 +66,19 @@ export const createUISlice: StateCreator<UISlice> = (set, get) => ({
 
   setActivePanel: (panel) => {
     set({ activePanel: panel });
+  },
+
+  setTheme: (theme) => {
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+    applyTheme(theme);
+    set({ theme });
+  },
+
+  toggleTheme: () => {
+    const current = get().theme;
+    const next: AppTheme = current === "dark" ? "light" : current === "light" ? "system" : "dark";
+    localStorage.setItem(THEME_STORAGE_KEY, next);
+    applyTheme(next);
+    set({ theme: next });
   },
 });

@@ -1,6 +1,6 @@
 /** CSS grid visualizer for pathfinding algorithms with cell-state coloring and wave-expansion animations. */
 import { useState, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { FiRotateCcw } from "react-icons/fi";
 
 import { useAppStore } from "@/store";
@@ -37,6 +37,7 @@ function getCellColor(type: GridCellType, state: GridCellState): string {
 type DragMode = "wall" | "clear" | "start" | "end" | null;
 
 export default function GridVisualizer({ visualState }: GridVisualizerProps) {
+  const shouldReduceMotion = useReducedMotion();
   const input = useAppStore((state) => state.input) as {
     grid: GridCell[][];
     startPosition: [number, number];
@@ -166,7 +167,7 @@ export default function GridVisualizer({ visualState }: GridVisualizerProps) {
               key={`${cell.row}-${cell.col}`}
               className="relative flex items-center justify-center rounded-[1px] cursor-pointer"
               animate={{ backgroundColor: color }}
-              transition={{ duration: 0.15 }}
+              transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.15 }}
               title={`(${cell.row}, ${cell.col})${cell.type === "wall" ? " - wall" : ""}${cell.fCost != null ? ` f=${cell.fCost}` : ""}`}
               onMouseDown={() => handleCellMouseDown(cell.row, cell.col)}
               onMouseEnter={() => handleCellMouseEnter(cell.row, cell.col)}

@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 import type { HashMapVisualState, HashMapEntryState, HashMapInputElementState } from "@/types";
 
@@ -21,6 +21,7 @@ const ENTRY_COLORS: Record<HashMapEntryState, string> = {
 };
 
 export default function HashMapVisualizer({ visualState }: HashMapVisualizerProps) {
+  const shouldReduceMotion = useReducedMotion();
   const { entries, inputElements, lookupKey, resultPair } = visualState;
 
   return (
@@ -34,7 +35,7 @@ export default function HashMapVisualizer({ visualState }: HashMapVisualizerProp
               key={element.index}
               className="flex h-9 w-9 items-center justify-center rounded font-mono text-sm font-bold"
               animate={{ backgroundColor: INPUT_ELEMENT_COLORS[element.state] }}
-              transition={{ duration: 0.25 }}
+              transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.25 }}
               style={{
                 border: "1px solid var(--color-border-subtle)",
                 color: "var(--color-text-primary)",
@@ -90,13 +91,13 @@ export default function HashMapVisualizer({ visualState }: HashMapVisualizerProp
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -12 }}
-                transition={{ duration: 0.2 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2 }}
                 className="flex gap-1"
               >
                 <motion.div
                   className="flex h-9 w-24 items-center justify-center rounded font-mono text-sm font-bold"
                   animate={{ backgroundColor: ENTRY_COLORS[entry.state] }}
-                  transition={{ duration: 0.25 }}
+                  transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.25 }}
                   style={{
                     border: "1px solid var(--color-border-subtle)",
                     color: "var(--color-text-primary)",
@@ -107,7 +108,7 @@ export default function HashMapVisualizer({ visualState }: HashMapVisualizerProp
                 <motion.div
                   className="flex h-9 w-24 items-center justify-center rounded font-mono text-sm"
                   animate={{ backgroundColor: ENTRY_COLORS[entry.state] }}
-                  transition={{ duration: 0.25 }}
+                  transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.25 }}
                   style={{
                     border: "1px solid var(--color-border-subtle)",
                     color: "var(--color-text-primary)",

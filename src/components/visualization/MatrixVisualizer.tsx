@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import type { MatrixVisualState, MatrixCellState } from "@/types";
 
@@ -21,6 +21,7 @@ const DIRECTION_LABEL: Record<string, string> = {
 };
 
 export default function MatrixVisualizer({ visualState }: MatrixVisualizerProps) {
+  const shouldReduceMotion = useReducedMotion();
   const { cells, collectedOrder, direction, boundaries } = visualState;
 
   return (
@@ -61,7 +62,7 @@ export default function MatrixVisualizer({ visualState }: MatrixVisualizerProps)
                     key={colIdx}
                     className="flex h-12 w-12 items-center justify-center rounded font-mono text-sm font-bold"
                     animate={{ backgroundColor: CELL_COLORS[cell.state] }}
-                    transition={{ duration: 0.2 }}
+                    transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2 }}
                     style={{
                       border: `1px solid ${borderColor}`,
                       color: "var(--color-text-primary)",

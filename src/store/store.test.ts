@@ -1,9 +1,24 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 
 import type { AlgorithmDefinition, ExecutionStep } from "@/types";
 import { registry } from "@/registry";
 
 import { useAppStore } from "./index";
+
+// Mock matchMedia for theme tests
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  value: vi.fn().mockImplementation((query: string) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+});
 
 const MOCK_STEPS: ExecutionStep[] = [
   {
@@ -234,6 +249,29 @@ describe("AppStore", () => {
     it("sets active panel", () => {
       useAppStore.getState().setActivePanel("code");
       expect(useAppStore.getState().activePanel).toBe("code");
+    });
+
+    it("sets theme to light", () => {
+      useAppStore.getState().setTheme("light");
+      expect(useAppStore.getState().theme).toBe("light");
+    });
+
+    it("sets theme to system", () => {
+      useAppStore.getState().setTheme("system");
+      expect(useAppStore.getState().theme).toBe("system");
+    });
+
+    it("toggles theme dark → light → system → dark", () => {
+      useAppStore.setState({ theme: "dark" });
+
+      useAppStore.getState().toggleTheme();
+      expect(useAppStore.getState().theme).toBe("light");
+
+      useAppStore.getState().toggleTheme();
+      expect(useAppStore.getState().theme).toBe("system");
+
+      useAppStore.getState().toggleTheme();
+      expect(useAppStore.getState().theme).toBe("dark");
     });
   });
 });

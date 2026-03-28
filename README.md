@@ -4,6 +4,8 @@
 
 Algorithm visualization web app for learners. Step through algorithms with synchronized code highlighting, animated visualizations, and educational content.
 
+![AlgoFlow Demo](docs/assets/demo.gif)
+
 ## Features
 
 - **58 Algorithms across 14 Categories** with interactive visualizations (bar charts, SVG graphs/trees, CSS grids, DP tables, and more)
@@ -11,7 +13,9 @@ Algorithm visualization web app for learners. Step through algorithms with synch
 - **Step-by-Step Playback**: Play, pause, step forward/backward, scrub, adjustable speed (0.25x–4x)
 - **Category-Specific Input Editors**: Editable arrays, targets, grids, text patterns, and matrices
 - **Educational Content**: Slide-over drawer with overview, complexity analysis, real-world uses, and trade-offs
-- **Responsive Layout**: 3-panel resizable IDE-style layout on desktop; tab-based switcher on mobile/tablet
+- **Responsive Layout**: 3-panel resizable layout on desktop; 2-panel tablet layout (768-1023px); tab-based switcher on mobile
+- **Theme Support**: Light/dark/system theme toggle with persistent preference storage
+- **Accessibility**: WCAG 2.1 AA — focus traps, ARIA roles, reduced-motion support across all visualizers
 
 ## Algorithms
 
@@ -139,9 +143,9 @@ See [docs/deployment.md](docs/deployment.md) for Docker build internals and per-
 
 ## Session Hooks
 
-The project uses 13 session hooks (`.claude/settings.json`) to enforce code quality, safety, and consistency automatically during development sessions — including branch protection, pre-commit quality gates, post-edit warnings, and session-end verification.
+The project uses 14 session hooks (`.claude/settings.json`) to enforce code quality, safety, and consistency automatically during development sessions — including branch protection, pre-commit quality gates, post-edit warnings, hardcoded-wait bans, and session-end verification.
 
-See [Development System](docs/claude-system.md#session-hooks-13) for the full hook list with descriptions.
+See [Development System](docs/claude-system.md#session-hooks-14) for the full hook list with descriptions.
 
 ## Development Plan
 

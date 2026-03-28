@@ -1,5 +1,5 @@
 /** SVG graph visualizer rendering nodes as circles and edges as lines with state-driven color animations. */
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import type { GraphVisualState, GraphNodeState, GraphEdgeState } from "@/types";
 
@@ -25,6 +25,7 @@ const EDGE_COLORS: Record<GraphEdgeState, string> = {
 };
 
 export default function GraphVisualizer({ visualState }: GraphVisualizerProps) {
+  const shouldReduceMotion = useReducedMotion();
   const { nodes, edges, queue, visited } = visualState;
 
   return (
@@ -86,7 +87,7 @@ export default function GraphVisualizer({ visualState }: GraphVisualizerProps) {
               cy={node.position.y}
               r={NODE_RADIUS}
               animate={{ fill: NODE_COLORS[node.state] }}
-              transition={{ duration: 0.3 }}
+              transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.3 }}
               stroke="var(--color-border-subtle)"
               strokeWidth={1.5}
             />

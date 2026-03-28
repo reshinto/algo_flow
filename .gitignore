@@ -38,8 +38,15 @@ npm-debug.log*
 *.sln
 *.sw?
 
-# Plans
-.plans
+# Demo recording intermediates
+docs/assets/*.webm
+docs/assets/palette.png
+
+# Superpowers
+.superpowers
+
+# Claude worktrees
+.claude/worktrees
 
 # OS
 .DS_Store

@@ -7,6 +7,7 @@
  */
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import Editor from "@monaco-editor/react";
+import * as monacoEditor from "monaco-editor";
 import type { editor } from "monaco-editor";
 
 import { useAppStore } from "@/store";
@@ -27,10 +28,25 @@ export default function CodePanel() {
   /** Holds the active decorations collection strictly so we can precisely clear it definitively before each physical step update completely. */
   const decorationsRef = useRef<editor.IEditorDecorationsCollection | null>(null);
 
+  const theme = useAppStore((state) => state.theme);
+
   const sourceCode = definition?.sources[activeLanguage] ?? "";
   const monacoLanguage = MONACO_LANGUAGE_MAP[activeLanguage];
 
   const currentStep = steps[currentStepIndex];
+
+  /* Sync Monaco editor theme with app theme */
+  useEffect(() => {
+    const resolvedTheme =
+      theme === "system"
+        ? window.matchMedia("(prefers-color-scheme: light)").matches
+          ? "vs"
+          : "vs-dark"
+        : theme === "light"
+          ? "vs"
+          : "vs-dark";
+    monacoEditor.editor.setTheme(resolvedTheme);
+  }, [theme]);
 
   // Condense array layouts definitively mapping AST row vectors uniquely per-language intrinsically.
   const highlightedLines = useMemo(() => {
@@ -131,7 +147,16 @@ export default function CodePanel() {
         <Editor
           value={sourceCode}
           language={monacoLanguage}
-          theme="vs-dark"
+          theme={
+            theme === "light"
+              ? "vs"
+              : theme === "system"
+                ? typeof window !== "undefined" &&
+                  window.matchMedia("(prefers-color-scheme: light)").matches
+                  ? "vs"
+                  : "vs-dark"
+                : "vs-dark"
+          }
           options={{
             readOnly: true,
             minimap: { enabled: false },

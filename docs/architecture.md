@@ -22,21 +22,21 @@ AlgoFlow uses a **registry-driven** architecture with **pre-computed execution s
 
 ## Development System
 
-The `.claude/` directory defines 11 agents, 18 skills, 13 session hooks, and 17 plugins for development workflow automation and quality enforcement. See [Development System](claude-system.md) for the full reference with tables of all agents, skills, hooks, and plugins.
+The `.claude/` directory defines 11 agents, 18 skills, 14 session hooks, and 17 plugins for development workflow automation and quality enforcement. See [Development System](claude-system.md) for the full reference with tables of all agents, skills, hooks, and plugins.
 
 ---
 
 ## Tech Stack
 
-| Layer       | Technology                             | Purpose                                       |
-| ----------- | -------------------------------------- | --------------------------------------------- |
-| Framework   | Vite + React 19 + TypeScript (strict)  | Build tooling, UI, type safety                |
-| Styling     | Tailwind CSS v4                        | Black-first theme (zinc-950/zinc-900)         |
-| State       | Zustand (4 slices + immer)             | Global state management                       |
-| Code Editor | Monaco Editor                          | Read-only code display with line highlighting |
-| Layout      | react-resizable-panels                 | 3-panel IDE layout on desktop                 |
-| Animation   | Framer Motion                          | Bar swaps, grid waves, spring transitions     |
-| Testing     | Vitest + Testing Library + Storybook 8 | Unit, visual, and integration testing         |
+| Layer       | Technology                             | Purpose                                              |
+| ----------- | -------------------------------------- | ---------------------------------------------------- |
+| Framework   | Vite + React 19 + TypeScript (strict)  | Build tooling, UI, type safety                       |
+| Styling     | Tailwind CSS v4 + 2-layer CSS tokens   | Dark/light theme support with @theme + @layer base   |
+| State       | Zustand (4 slices + immer)             | Global state management                              |
+| Code Editor | Monaco Editor                          | Read-only code display with line highlighting        |
+| Layout      | react-resizable-panels                 | 3-panel desktop, 2-panel tablet, single-panel mobile |
+| Animation   | Framer Motion                          | Bar swaps, grid waves, spring transitions            |
+| Testing     | Vitest + Testing Library + Storybook 8 | Unit, visual, and integration testing                |
 
 ## Data Flow
 
@@ -115,7 +115,7 @@ Zustand with 4 slices merged into a single `AppStore`, using immer middleware fo
 | **algorithm** | Selected algorithm, input data, grid state        | `selectAlgorithm`, `updateInput`, `updateGrid`             |
 | **playback**  | Current step index, play/pause, speed, step array | `play`, `pause`, `stepForward`, `stepBackward`, `setSpeed` |
 | **editor**    | Monaco editor ref, selected language              | `setLanguage`, `setEditorRef`                              |
-| **UI**        | Drawer visibility, panel sizes, mobile tab        | `toggleDrawer`, `setActiveTab`                             |
+| **UI**        | Drawer visibility, panel sizes, theme, mobile tab | `toggleDrawer`, `setActiveTab`, `setTheme`, `toggleTheme`  |
 
 ```mermaid
 flowchart TD
@@ -140,13 +140,13 @@ const selectAlgorithm = useAppStore((state) => state.selectAlgorithm);
 
 ## Responsive Design
 
-| Tier        | Breakpoint   | Layout                                                           |
-| ----------- | ------------ | ---------------------------------------------------------------- |
-| **Desktop** | >= 1024px    | 3-panel resizable layout (code, visualization, explanation)      |
-| **Tablet**  | 768 – 1023px | Tab-based single-panel switcher ("Visualize", "Code", "Details") |
-| **Mobile**  | < 768px      | Tab-based single-panel switcher (compact controls)               |
+| Tier        | Breakpoint   | Layout                                                             |
+| ----------- | ------------ | ------------------------------------------------------------------ |
+| **Desktop** | >= 1024px    | 3-panel resizable layout (code, visualization, explanation)        |
+| **Tablet**  | 768 – 1023px | 2-panel resizable layout (visualization + Steps/Code tab switcher) |
+| **Mobile**  | < 768px      | Tab-based single-panel switcher (compact controls)                 |
 
-Breakpoint values are defined in `BREAKPOINTS` (`src/utils/constants.ts`). Layout switching uses `useResponsiveLayout` with `useSyncExternalStore` for tear-free viewport-aware rendering.
+Breakpoint values are defined in `BREAKPOINTS` (`src/utils/constants.ts`). Layout switching uses `useResponsiveLayout` which returns a `LayoutTier` (`"mobile" | "tablet" | "desktop"`) via `useSyncExternalStore` for tear-free viewport-aware rendering.
 
 ## Input Editors
 
@@ -176,11 +176,11 @@ A slide-over drawer (toggled via "L" key or header button) displays 7 sections o
 
 ## Custom Hooks
 
-| Hook                   | Purpose                                                                             |
-| ---------------------- | ----------------------------------------------------------------------------------- |
-| `usePlaybackEngine`    | Manages play/pause interval, speed changes, and timed step advancement              |
-| `useKeyboardShortcuts` | Binds global keyboard events to playback and UI actions                             |
-| `useResponsiveLayout`  | Returns viewport tier via `useSyncExternalStore` for breakpoint-based layout shifts |
+| Hook                   | Purpose                                                                                                                |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `usePlaybackEngine`    | Manages play/pause interval, speed changes, and timed step advancement                                                 |
+| `useKeyboardShortcuts` | Binds global keyboard events to playback and UI actions                                                                |
+| `useResponsiveLayout`  | Returns `LayoutTier` ("mobile" \| "tablet" \| "desktop") via `useSyncExternalStore` for breakpoint-based layout shifts |
 
 All hooks are in `src/hooks/`.
 
@@ -218,7 +218,7 @@ src/
 │   ├── educational/         # Slide-over educational drawer
 │   ├── explanation-panel/   # Step details, metrics, variables
 │   ├── input-editor/        # Category-specific input editors
-│   ├── layout/              # AppShell, Header, PanelLayout, MobileLayout
+│   ├── layout/              # AppShell, Header, DesktopLayout, TabletLayout, MobileLayout
 │   ├── playback/            # PlaybackControls with progress bar
 │   ├── shared/              # Button, Badge, IconButton, Select
 │   └── visualization/       # Visualizer components + co-located component stories

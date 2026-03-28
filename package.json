@@ -21,7 +21,9 @@
     "storybook:test": "test-storybook",
     "chromatic": "dotenv -- chromatic --exit-zero-on-changes --build-script-name=storybook:build",
     "e2e": "node e2e/algoflow_e2e.mjs",
-    "e2e:headed": "node e2e/algoflow_e2e.mjs -H"
+    "e2e:headed": "node e2e/algoflow_e2e.mjs -H",
+    "demo:record": "node scripts/record-demo.mjs",
+    "demo:gif": "node scripts/record-demo.mjs --gif-only"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",
