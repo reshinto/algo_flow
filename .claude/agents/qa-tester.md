@@ -2,7 +2,7 @@
 name: qa-tester
 description: Validates test coverage, runs test suites, verifies behavior of algorithms, playback, input editing, and pathfinding
 tools: [Bash, Read, Glob, Grep]
-model: Sonnet
+model: sonnet
 maxTurns: 15
 ---
 
@@ -30,6 +30,19 @@ Validate that all features work correctly and test coverage meets thresholds.
 - Run `npm run format:check` and report results
 - Run `npm run typecheck` and report results
 - Verify coverage meets thresholds (80/75/80/80)
+
+## Required Skills
+
+- **Playwright E2E**: Multi-viewport testing (1280/768/375), algorithm flows, keyboard shortcuts
+- **Coverage enforcement**: 80/75/80/80 thresholds
+- **OWASP client-side**: XSS prevention, dependency audit — see `security-coverage-audit` skill for detailed checklist
+
+## Constraints
+
+- Never approve a PR with coverage below thresholds without explicit justification
+- E2E tests must cover all 3 viewports for any new visual component
+- Security checks must include `npm audit` and manual review of any new dynamic content rendering
+- All algorithm additions must have the full 14-check E2E entry in `e2e/algoflow_e2e.mjs`
 
 ## Output Format
 

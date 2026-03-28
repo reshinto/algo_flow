@@ -86,16 +86,47 @@ algo_flow/
 │   │   ├── senior-engineer-code-reviewer.md
 │   │   ├── qa-tester.md
 │   │   ├── ui-ux-designer.md
-│   │   └── tech-lead-architect.md
+│   │   ├── tech-lead-architect.md
+│   │   ├── product-strategist.md
+│   │   ├── technical-writer.md
+│   │   ├── marketing-engine.md
+│   │   ├── claude-system-architect.md
+│   │   ├── silent-failure-hunter.md
+│   │   ├── code-simplifier.md
+│   │   └── code-explorer.md
 │   ├── skills/
 │   │   ├── implementation-planning/SKILL.md
 │   │   ├── algorithm-learning-content/SKILL.md
 │   │   ├── pathfinding-scenario-editing/SKILL.md
 │   │   ├── repository-quality-gate/SKILL.md
-│   │   └── branch-safety-check/SKILL.md
+│   │   ├── branch-safety-check/SKILL.md
+│   │   ├── cifix/SKILL.md
+│   │   ├── accessibility-audit/SKILL.md
+│   │   ├── architecture-review/SKILL.md
+│   │   ├── strict-typescript-review/SKILL.md
+│   │   ├── security-coverage-audit/SKILL.md
+│   │   ├── learner-engagement-review/SKILL.md
+│   │   ├── documentation-review/SKILL.md
+│   │   ├── readme-optimization/SKILL.md
+│   │   ├── claude-system-management/SKILL.md
+│   │   ├── tdd/SKILL.md
+│   │   ├── verification/SKILL.md
+│   │   ├── feature-dev/SKILL.md
+│   │   └── debugging/SKILL.md
 │   └── hooks/
 │       ├── session-start-branch-check.sh
-│       └── session-end-quality-gate.sh
+│       ├── session-end-quality-gate.sh
+│       ├── session-end-readme-check.sh
+│       ├── session-end-comments-check.sh
+│       ├── session-end-e2e-check.sh
+│       ├── session-end-security-check.sh
+│       ├── session-end-claude-system-check.sh
+│       ├── block-ai-attribution.sh
+│       ├── block-main-branch-commits.sh
+│       ├── pre-commit-quality-check.sh
+│       ├── auto-pr-after-push.sh
+│       ├── post-edit-typescript-check.sh
+│       └── post-edit-accessibility-check.sh
 ├── src/
 │   ├── types/                       # All TypeScript interfaces
 │   ├── registry/                    # AlgorithmRegistry singleton
