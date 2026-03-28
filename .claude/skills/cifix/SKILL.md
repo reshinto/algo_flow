@@ -1,3 +1,9 @@
+---
+name: cifix
+description: Run lint, format, typecheck, and tests in sequence, fixing all failures until the full CI quality gate passes
+user-invocable: true
+---
+
 # CI Fix
 
 Run the full CI quality gate and fix all failures until everything passes green.
