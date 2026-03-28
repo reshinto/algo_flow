@@ -24,6 +24,17 @@
     ],
     "PostToolUse": [
       {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(jq -r '.tool_input.file_path // empty'); if [ -n \"$FILE\" ]; then cd \"${CLAUDE_PROJECT_DIR}\" && npx eslint --fix \"$FILE\" 2>/dev/null; npx prettier --write \"$FILE\" 2>/dev/null; npx tsc -b --noEmit 2>/dev/null; fi",
+            "timeout": 60000,
+            "statusMessage": "Linting, formatting, and typechecking..."
+          }
+        ]
+      },
+      {
         "matcher": "Bash",
         "hooks": [
           {
