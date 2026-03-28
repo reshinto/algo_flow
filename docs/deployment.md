@@ -76,6 +76,36 @@ The deploy jobs only run on push/dispatch events (not PRs). Requires `pages: wri
 
 ---
 
+## Demo Recording
+
+The README hero GIF is generated from an automated Playwright recording. This is a manual release artifact, not part of CI.
+
+### Prerequisites
+
+- `ffmpeg` installed (`brew install ffmpeg`)
+- Dev server running or auto-started by the script
+
+### Commands
+
+| Command               | Purpose                                             |
+| --------------------- | --------------------------------------------------- |
+| `npm run demo:record` | Record a new demo and convert to GIF                |
+| `npm run demo:gif`    | Re-convert an existing WebM to GIF (skip recording) |
+
+### What the script does
+
+1. Launches a headless Chromium browser with Playwright video recording
+2. Runs a ~15-second demo scenario: Bubble Sort playback, algorithm switching, Dijkstra wavefront, educational drawer, BFS traversal
+3. Converts the recorded WebM to a high-quality GIF via ffmpeg two-pass palette generation
+4. Outputs `docs/assets/demo.gif` (git-tracked) and cleans up intermediates
+
+### Output
+
+- `docs/assets/demo.gif` — committed to the repo, referenced by README
+- Target: 800px wide, 15fps, under 5MB
+
+---
+
 ## See Also
 
 - [Architecture](architecture.md) — tech stack, data flow, project structure

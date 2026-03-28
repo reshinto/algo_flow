@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import type { HeapVisualState, HeapNodeState } from "@/types";
 
@@ -19,6 +19,7 @@ const NODE_COLORS: Record<HeapNodeState, string> = {
 const ARRAY_CELL_COLORS: Record<HeapNodeState, string> = NODE_COLORS;
 
 export default function HeapVisualizer({ visualState }: HeapVisualizerProps) {
+  const shouldReduceMotion = useReducedMotion();
   const { nodes } = visualState;
 
   return (
@@ -78,7 +79,7 @@ export default function HeapVisualizer({ visualState }: HeapVisualizerProps) {
               cy={node.position.y}
               r={NODE_RADIUS}
               animate={{ fill: NODE_COLORS[node.state] }}
-              transition={{ duration: 0.25 }}
+              transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.25 }}
               stroke="var(--color-border-subtle)"
               strokeWidth={1.5}
             />
@@ -113,7 +114,7 @@ export default function HeapVisualizer({ visualState }: HeapVisualizerProps) {
             key={node.index}
             className="flex w-10 flex-col items-center"
             animate={{ backgroundColor: ARRAY_CELL_COLORS[node.state] }}
-            transition={{ duration: 0.25 }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.25 }}
             style={{
               border: "1px solid var(--color-border-subtle)",
               borderRadius: 4,

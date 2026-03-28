@@ -1,5 +1,5 @@
 /** Array bar chart visualizer supporting optional dual-row display for algorithms like merge or prefix sum. */
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import type { ArrayVisualState, ArrayElement, ArrayElementState } from "@/types";
 
@@ -24,11 +24,13 @@ function ArrayRow({
   pointers,
   maxValue,
   label,
+  shouldReduceMotion,
 }: {
   elements: ArrayElement[];
   pointers: Record<string, number>;
   maxValue: number;
   label?: string;
+  shouldReduceMotion: boolean | null;
 }) {
   return (
     <div className="flex flex-1 flex-col">
@@ -54,7 +56,11 @@ function ArrayRow({
                   className="w-full rounded-t-sm"
                   style={{ height: `${heightPercent}%`, minHeight: 4 }}
                   animate={{ backgroundColor: STATE_COLORS[element.state] }}
-                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                  transition={
+                    shouldReduceMotion
+                      ? { duration: 0 }
+                      : { type: "spring", stiffness: 300, damping: 25 }
+                  }
                 />
               </div>
 
@@ -78,6 +84,7 @@ function ArrayRow({
 }
 
 export default function ArrayVisualizer({ visualState }: ArrayVisualizerProps) {
+  const shouldReduceMotion = useReducedMotion();
   const { elements, pointers, secondaryElements, secondaryLabel } = visualState;
   const maxValue = Math.max(...elements.map((element) => element.value), 1);
 
@@ -87,13 +94,19 @@ export default function ArrayVisualizer({ visualState }: ArrayVisualizerProps) {
 
   return (
     <div className="flex h-full flex-col p-4">
-      <ArrayRow elements={elements} pointers={pointers} maxValue={maxValue} />
+      <ArrayRow
+        elements={elements}
+        pointers={pointers}
+        maxValue={maxValue}
+        shouldReduceMotion={shouldReduceMotion}
+      />
       {secondaryElements && secondaryElements.length > 0 && (
         <ArrayRow
           elements={secondaryElements}
           pointers={{}}
           maxValue={secondaryMaxValue}
           label={secondaryLabel}
+          shouldReduceMotion={shouldReduceMotion}
         />
       )}
     </div>

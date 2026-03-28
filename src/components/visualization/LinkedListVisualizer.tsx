@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import type { LinkedListVisualState, LinkedListNodeState } from "@/types";
 
@@ -17,6 +17,7 @@ const NODE_WIDTH = 48;
 const NODE_HEIGHT = 36;
 
 export default function LinkedListVisualizer({ visualState }: LinkedListVisualizerProps) {
+  const shouldReduceMotion = useReducedMotion();
   const { nodes, headId, pointers } = visualState;
 
   // Build a reverse map: nodeId → pointer names pointing at it
@@ -96,7 +97,7 @@ export default function LinkedListVisualizer({ visualState }: LinkedListVisualiz
                 height={NODE_HEIGHT}
                 rx={4}
                 animate={{ fill: NODE_COLORS[node.state] }}
-                transition={{ duration: 0.3 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.3 }}
                 stroke="var(--color-border-subtle)"
                 strokeWidth={1.5}
               />

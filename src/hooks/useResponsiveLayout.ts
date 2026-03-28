@@ -1,51 +1,39 @@
 /**
- * @file useResponsiveLayout.ts
- * @module hooks/useResponsiveLayout
- *
- * Highly optimized viewport subscriber using React 18's `useSyncExternalStore`.
- * Decouples the UI responsivity from standard `useEffect/useState` loops, ensuring that the components
- * correctly tear down and re-mount based on explicitly defined breakpoints without intermediate tearing/flickers.
+ * Three-tier responsive layout hook using React 18's `useSyncExternalStore`.
+ * Returns "mobile" | "tablet" | "desktop" based on viewport width.
  */
 import { useSyncExternalStore } from "react";
 import { BREAKPOINTS } from "@/utils/constants";
 
-/**
- * Subscribes to the raw DOM `window.matchMedia` API.
- * React invokes the callback explicitly when the browser crosses the physical pixel threshold.
- *
- * @param callback React dispatcher evaluating layout shifts.
- * @returns Event cleanup dismantler enforcing airtight memory limits.
- */
+export type LayoutTier = "mobile" | "tablet" | "desktop";
+
+const mobileQuery = `(max-width: ${BREAKPOINTS.mobile - 1}px)`;
+const tabletQuery = `(min-width: ${BREAKPOINTS.mobile}px) and (max-width: ${BREAKPOINTS.tablet - 1}px)`;
+
 function subscribe(callback: () => void) {
-  // Instantiates a strict boolean boundary evaluation against the global Tablet constraint.
-  const mediaQuery = window.matchMedia(`(max-width: ${BREAKPOINTS.tablet - 1}px)`);
+  const mobileMedia = window.matchMedia(mobileQuery);
+  const tabletMedia = window.matchMedia(tabletQuery);
 
-  // Appends universal listener triggering cross-platform dimension tracking.
-  mediaQuery.addEventListener("change", callback);
-  return () => mediaQuery.removeEventListener("change", callback);
+  mobileMedia.addEventListener("change", callback);
+  tabletMedia.addEventListener("change", callback);
+
+  return () => {
+    mobileMedia.removeEventListener("change", callback);
+    tabletMedia.removeEventListener("change", callback);
+  };
 }
 
-/**
- * Instantly grabs the literal pixel configuration locally.
- * Prevents multiple frame re-renders by immediately informing React what layout needs to be compiled natively.
- */
-function getSnapshot(): boolean {
-  return window.innerWidth < BREAKPOINTS.tablet;
+function getSnapshot(): LayoutTier {
+  const width = window.innerWidth;
+  if (width < BREAKPOINTS.mobile) return "mobile";
+  if (width < BREAKPOINTS.tablet) return "tablet";
+  return "desktop";
 }
 
-/**
- * Server-Side Rendering (SSR) fallback constraint.
- * Resolves to false natively because NextJS/Build engines do not possess `window` instances during compile time.
- */
-function getServerSnapshot(): boolean {
-  return false;
+function getServerSnapshot(): LayoutTier {
+  return "desktop";
 }
 
-/**
- * Exposes a clean reactive boolean natively to the components.
- *
- * @returns `true` if the viewport is explicitly narrowed to a Mobile interface. Defaults to Desktop layout framework.
- */
-export function useResponsiveLayout(): boolean {
+export function useResponsiveLayout(): LayoutTier {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }

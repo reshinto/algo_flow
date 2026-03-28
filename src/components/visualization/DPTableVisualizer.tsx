@@ -3,7 +3,7 @@
  * Supports both tabulation (bottom-up) and memoization (top-down) variants —
  * the presence of `callStack` in the visual state determines which mode is active.
  */
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 import type { DPTableVisualState, DPCellState } from "@/types";
 
@@ -21,6 +21,7 @@ const CELL_COLORS: Record<DPCellState, string> = {
 };
 
 export default function DPTableVisualizer({ visualState }: DPTableVisualizerProps) {
+  const shouldReduceMotion = useReducedMotion();
   const { table, currentIndex, callStack } = visualState;
   const isMemoization = Array.isArray(callStack);
 
@@ -44,9 +45,11 @@ export default function DPTableVisualizer({ visualState }: DPTableVisualizerProp
               className="relative flex flex-col items-center gap-1"
               animate={{ scale: isCacheHit ? 1.2 : isActive ? 1.1 : 1 }}
               transition={
-                isCacheHit
-                  ? { type: "spring", stiffness: 500, damping: 18 }
-                  : { type: "spring", stiffness: 300, damping: 25 }
+                shouldReduceMotion
+                  ? { duration: 0 }
+                  : isCacheHit
+                    ? { type: "spring", stiffness: 500, damping: 18 }
+                    : { type: "spring", stiffness: 300, damping: 25 }
               }
             >
               {/* "Cache hit!" floating label — appears only on cache-hit steps */}
@@ -57,7 +60,7 @@ export default function DPTableVisualizer({ visualState }: DPTableVisualizerProp
                     initial={{ opacity: 0, y: 4 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 4 }}
-                    transition={{ duration: 0.15 }}
+                    transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.15 }}
                     className="absolute -top-5 whitespace-nowrap rounded bg-[var(--color-viz-comparing)] px-1.5 py-0.5 font-mono text-[9px] font-semibold text-[var(--color-text-primary)]"
                   >
                     Cache hit!
@@ -70,7 +73,7 @@ export default function DPTableVisualizer({ visualState }: DPTableVisualizerProp
                   backgroundColor: CELL_COLORS[cell.state],
                   borderColor: isActive ? "var(--color-accent-cyan)" : "var(--color-border-subtle)",
                 }}
-                transition={{ duration: 0.3 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.3 }}
               >
                 <span className="text-[var(--color-text-primary)]">
                   {cell.value !== null ? cell.value : "—"}
@@ -118,6 +121,7 @@ const MAX_VISIBLE_FRAMES = 8;
 /** Vertical call stack panel — newest frame on top, oldest at bottom. Mirrors the CS convention
  *  for call stacks and makes depth-first recursion growth/shrink clearly visible. */
 function CallStackPanel({ callStack }: { callStack: string[] }) {
+  const shouldReduceMotion = useReducedMotion();
   const overflow =
     callStack.length > MAX_VISIBLE_FRAMES ? callStack.length - MAX_VISIBLE_FRAMES : 0;
   // Show the top MAX_VISIBLE_FRAMES frames (newest = last in array), displayed top-to-bottom reversed
@@ -148,7 +152,7 @@ function CallStackPanel({ callStack }: { callStack: string[] }) {
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -12 }}
-                transition={{ duration: 0.15 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.15 }}
                 className="flex items-center gap-1.5"
                 style={{ paddingLeft: `${depth * 8}px` }}
               >

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import type { StringVisualState, StringCharState, FailureTableEntryState } from "@/types";
 
@@ -23,6 +23,7 @@ const FAILURE_COLORS: Record<FailureTableEntryState, string> = {
 const CELL_SIZE = 32;
 
 export default function StringVisualizer({ visualState }: StringVisualizerProps) {
+  const shouldReduceMotion = useReducedMotion();
   const { textChars, patternChars, failureTable, patternOffset, matchFound } = visualState;
 
   return (
@@ -44,7 +45,7 @@ export default function StringVisualizer({ visualState }: StringVisualizerProps)
                   flexShrink: 0,
                 }}
                 animate={{ backgroundColor: CHAR_COLORS[char.state] }}
-                transition={{ duration: 0.2 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2 }}
               >
                 {char.value}
               </motion.div>
@@ -60,7 +61,7 @@ export default function StringVisualizer({ visualState }: StringVisualizerProps)
           <motion.div
             className="flex gap-1"
             animate={{ x: patternOffset * (CELL_SIZE + 4) }}
-            transition={{ duration: 0.3 }}
+            transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.3 }}
           >
             {patternChars.map((char, idx) => (
               <motion.div
@@ -74,7 +75,7 @@ export default function StringVisualizer({ visualState }: StringVisualizerProps)
                   flexShrink: 0,
                 }}
                 animate={{ backgroundColor: CHAR_COLORS[char.state] }}
-                transition={{ duration: 0.2 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2 }}
               >
                 {char.value}
               </motion.div>
@@ -136,7 +137,7 @@ export default function StringVisualizer({ visualState }: StringVisualizerProps)
                     flexShrink: 0,
                   }}
                   animate={{ backgroundColor: FAILURE_COLORS[entry.state] }}
-                  transition={{ duration: 0.2 }}
+                  transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2 }}
                 >
                   {entry.value}
                 </motion.div>

@@ -43,6 +43,12 @@
             "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/post-edit-accessibility-check.sh",
             "timeout": 10000,
             "statusMessage": "Checking accessibility patterns..."
+          },
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/ban-hardcoded-waits.sh",
+            "timeout": 5000,
+            "statusMessage": "Checking for banned waitForTimeout..."
           }
         ]
       },

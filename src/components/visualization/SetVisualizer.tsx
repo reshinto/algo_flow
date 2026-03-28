@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import type { SetVisualState, SetElementState } from "@/types";
 
@@ -17,11 +17,12 @@ const ELEMENT_COLORS: Record<SetElementState, string> = {
 } as Record<SetElementState, string>;
 
 function ElementCell({ value, state }: { value: number; state: SetElementState }) {
+  const shouldReduceMotion = useReducedMotion();
   return (
     <motion.div
       className="flex h-10 w-10 items-center justify-center rounded font-mono text-sm font-bold"
       animate={{ backgroundColor: ELEMENT_COLORS[state] ?? "var(--color-viz-default)" }}
-      transition={{ duration: 0.25 }}
+      transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.25 }}
       style={{
         border: "1px solid var(--color-border-subtle)",
         color: "var(--color-text-primary)",

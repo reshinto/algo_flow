@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import type { TreeVisualState, TreeNodeState } from "@/types";
 
@@ -16,6 +16,7 @@ const NODE_COLORS: Record<TreeNodeState, string> = {
 };
 
 export default function TreeVisualizer({ visualState }: TreeVisualizerProps) {
+  const shouldReduceMotion = useReducedMotion();
   const { nodes, visitOrder } = visualState;
 
   return (
@@ -77,7 +78,7 @@ export default function TreeVisualizer({ visualState }: TreeVisualizerProps) {
               cy={node.position.y}
               r={NODE_RADIUS}
               animate={{ fill: NODE_COLORS[node.state] }}
-              transition={{ duration: 0.3 }}
+              transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.3 }}
               stroke="var(--color-border-subtle)"
               strokeWidth={1.5}
             />

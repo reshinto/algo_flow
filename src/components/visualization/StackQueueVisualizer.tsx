@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 import type { StackQueueVisualState, StackElementState, InputCharState } from "@/types";
 
@@ -23,6 +23,7 @@ const STACK_ELEMENT_COLORS: Record<StackElementState, string> = {
 };
 
 export default function StackQueueVisualizer({ visualState }: StackQueueVisualizerProps) {
+  const shouldReduceMotion = useReducedMotion();
   const { stackElements, inputChars, statusMessage } = visualState;
 
   return (
@@ -36,7 +37,7 @@ export default function StackQueueVisualizer({ visualState }: StackQueueVisualiz
               key={idx}
               className="flex h-9 w-9 items-center justify-center rounded font-mono text-sm font-bold"
               animate={{ backgroundColor: INPUT_CHAR_COLORS[char.state] }}
-              transition={{ duration: 0.25 }}
+              transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.25 }}
               style={{
                 border: "1px solid var(--color-border-subtle)",
                 color: "var(--color-text-primary)",
@@ -66,7 +67,7 @@ export default function StackQueueVisualizer({ visualState }: StackQueueVisualiz
                   backgroundColor: STACK_ELEMENT_COLORS[element.state],
                 }}
                 exit={{ opacity: 0, y: -10, scaleY: 0.8 }}
-                transition={{ duration: 0.2 }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.2 }}
                 className="flex h-10 w-14 items-center justify-center rounded font-mono text-base font-bold"
                 style={{
                   border: "1px solid var(--color-border-subtle)",

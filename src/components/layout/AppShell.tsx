@@ -21,7 +21,8 @@ import PlaybackControls from "@/components/playback/PlaybackControls";
 import EducationalDrawer from "@/components/educational/EducationalDrawer";
 
 import Header from "./Header";
-import PanelLayout from "./PanelLayout";
+import DesktopLayout from "./DesktopLayout";
+import TabletLayout from "./TabletLayout";
 import MobileLayout from "./MobileLayout";
 
 /**
@@ -33,8 +34,7 @@ export default function AppShell() {
   usePlaybackEngine();
   useKeyboardShortcuts();
 
-  // Real-time listener firing true if max-width dictates a Mobile tablet environment.
-  const isMobile = useResponsiveLayout();
+  const layoutTier = useResponsiveLayout();
 
   const selectAlgorithm = useAppStore((state) => state.selectAlgorithm);
   const selectedId = useAppStore((state) => state.selectedId);
@@ -54,15 +54,20 @@ export default function AppShell() {
     <div className="flex h-dvh flex-col bg-[var(--color-surface-primary)]">
       <Header />
 
-      {/* Component Delegation Strategy: Pass generic instances downwards so the specific Responsive layouts can mount them structurally as they see fit. */}
-      {isMobile ? (
+      {layoutTier === "mobile" ? (
         <MobileLayout
           codePanel={<CodePanel />}
           visualizationPanel={<VisualizationPanel />}
           explanationPanel={<ExplanationPanel />}
         />
+      ) : layoutTier === "tablet" ? (
+        <TabletLayout
+          codePanel={<CodePanel />}
+          visualizationPanel={<VisualizationPanel />}
+          explanationPanel={<ExplanationPanel />}
+        />
       ) : (
-        <PanelLayout
+        <DesktopLayout
           codePanel={<CodePanel />}
           visualizationPanel={<VisualizationPanel />}
           explanationPanel={<ExplanationPanel />}

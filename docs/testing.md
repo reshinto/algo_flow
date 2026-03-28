@@ -100,7 +100,9 @@ The suite uses a **tiered approach**:
 - **Full suite** (one representative per category): playback controls, language tabs, keyboard shortcuts, educational drawer
 - **Input editors**: algorithms in `inputTests` get additional input interaction tests
 - **Grid tests**: Dijkstra's Algorithm receives dedicated grid cell and wavefront tests
-- **Cross-cutting**: progress bar scrubbing, speed controls, zero browser console errors
+- **Cross-cutting**: progress bar scrubbing, speed controls, theme toggle (dark → light → system → dark), zero browser console errors
+- **Responsive tests**: tablet layout (768x1024) and mobile layout (375x812) — verify tab switching and panel rendering
+- **Hardcoded delays**: banned in test/E2E files via `ban-hardcoded-waits.sh` hook — use `waitFor`/`waitForSelector`/`waitForFunction` instead of `waitForTimeout`
 
 ### Automatic Enforcement
 
@@ -129,7 +131,7 @@ npm run chromatic       # Run Chromatic visual tests
 | **Shared Primitives**      | `src/components/shared/`                 | Button, Badge, IconButton, Select                                                                                                                                                                                                         |
 | **Code Panel**             | `src/components/code-panel/`             | CodePanel, LanguageTabs                                                                                                                                                                                                                   |
 | **Individual Visualizers** | `src/components/visualization/`          | ArrayVisualizer, DPTableVisualizer, GraphVisualizer, GridVisualizer, HashMapVisualizer, HeapVisualizer, LinkedListVisualizer, MatrixVisualizer, SetVisualizer, StackQueueVisualizer, StringVisualizer, TreeVisualizer, VisualizationPanel |
-| **Layout**                 | `src/components/layout/`                 | AlgorithmSelectorModal, AppShell, Header, MobileLayout, PanelLayout                                                                                                                                                                       |
+| **Layout**                 | `src/components/layout/`                 | AlgorithmSelectorModal, AppShell, Header, MobileLayout, TabletLayout, DesktopLayout                                                                                                                                                       |
 | **Educational**            | `src/components/educational/`            | EducationalDrawer, MermaidDiagram                                                                                                                                                                                                         |
 | **Input Editor**           | `src/components/input-editor/`           | ArrayInputEditor, InputEditor                                                                                                                                                                                                             |
 | **Explanation Panel**      | `src/components/explanation-panel/`      | ExplanationPanel                                                                                                                                                                                                                          |

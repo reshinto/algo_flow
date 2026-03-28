@@ -21,27 +21,29 @@ AlgoFlow's visual language: colors, typography, spacing, layout breakpoints, and
 
 ### Surfaces
 
-| Token                       | Value                | Usage                       |
-| --------------------------- | -------------------- | --------------------------- |
-| `--color-surface-primary`   | `#09090b` (zinc-950) | Page background             |
-| `--color-surface-secondary` | `#18181b` (zinc-900) | Panel backgrounds           |
-| `--color-surface-tertiary`  | `#27272a` (zinc-800) | Hover states, card fills    |
-| `--color-surface-elevated`  | `#3f3f46` (zinc-700) | Elevated elements, tooltips |
+Token names are declared in `@theme` and values are set per theme in `@layer base`. Dark theme is the default (`:root`); light theme activates via `:root[data-theme="light"]`.
+
+| Token                       | Dark Theme (Default) | Light Theme          | Usage                       |
+| --------------------------- | -------------------- | -------------------- | --------------------------- |
+| `--color-surface-primary`   | `#09090b` (zinc-950) | `#f4f4f5` (zinc-100) | Page background             |
+| `--color-surface-secondary` | `#18181b` (zinc-900) | `#ffffff` (white)    | Panel backgrounds           |
+| `--color-surface-tertiary`  | `#27272a` (zinc-800) | `#e4e4e7` (zinc-200) | Hover states, card fills    |
+| `--color-surface-elevated`  | `#3f3f46` (zinc-700) | `#d4d4d8` (zinc-300) | Elevated elements, tooltips |
 
 ### Borders
 
-| Token                    | Value     | Usage             |
-| ------------------------ | --------- | ----------------- |
-| `--color-border-default` | `#3f3f46` | Standard borders  |
-| `--color-border-subtle`  | `#27272a` | Subtle separators |
+| Token                    | Dark Theme (Default) | Light Theme          | Usage             |
+| ------------------------ | -------------------- | -------------------- | ----------------- |
+| `--color-border-default` | `#3f3f46` (zinc-700) | `#d4d4d8` (zinc-300) | Standard borders  |
+| `--color-border-subtle`  | `#27272a` (zinc-800) | `#e4e4e7` (zinc-200) | Subtle separators |
 
 ### Text
 
-| Token                    | Value     | Usage                          |
-| ------------------------ | --------- | ------------------------------ |
-| `--color-text-primary`   | `#fafafa` | Body text, headings            |
-| `--color-text-secondary` | `#a1a1aa` | Secondary labels, descriptions |
-| `--color-text-muted`     | `#71717a` | Disabled text, placeholders    |
+| Token                    | Dark Theme (Default) | Light Theme          | Usage                          |
+| ------------------------ | -------------------- | -------------------- | ------------------------------ |
+| `--color-text-primary`   | `#fafafa` (zinc-50)  | `#09090b` (zinc-950) | Body text, headings            |
+| `--color-text-secondary` | `#a1a1aa` (zinc-400) | `#52525b` (zinc-600) | Secondary labels, descriptions |
+| `--color-text-muted`     | `#71717a` (zinc-500) | `#71717a` (zinc-500) | Disabled text, placeholders    |
 
 ### Accent Colors
 
@@ -99,10 +101,10 @@ All defined in `src/index.css` under the `@theme` block.
 | Tier        | Breakpoint   | Layout                                                                             |
 | ----------- | ------------ | ---------------------------------------------------------------------------------- |
 | **Desktop** | >= 1024px    | 3-panel resizable layout: code (left), visualization (center), explanation (right) |
-| **Tablet**  | 768 – 1023px | Tab-based single-panel switcher: "Visualize", "Code", "Details"                    |
+| **Tablet**  | 768 – 1023px | 2-panel resizable layout (visualization + Steps/Code tab switcher)                 |
 | **Mobile**  | < 768px      | Tab-based single-panel switcher with compact controls                              |
 
-Breakpoint values are defined in `BREAKPOINTS` (`src/utils/constants.ts`). Layout switching uses `useResponsiveLayout` hook.
+Breakpoint values are defined in `BREAKPOINTS` (`src/utils/constants.ts`). Layout switching uses `useResponsiveLayout` hook which returns a `LayoutTier` (`"mobile" | "tablet" | "desktop"`).
 
 ---
 
@@ -132,12 +134,19 @@ AlgoFlow targets **WCAG 2.1 AA** compliance.
 
 - **ARIA labels** on all interactive elements (buttons, inputs, controls)
 - **Keyboard navigation** for all features (see keyboard shortcuts in README)
-- **Focus management** for drawers and modals (focus trap, restore on close)
-- **Reduced motion** — `@media (prefers-reduced-motion: reduce)` in `src/index.css` disables all animations
+- **Focus management** for drawers and modals (focus traps in `AlgorithmSelectorModal`, focus restoration on close in `EducationalDrawer`)
+- **Reduced motion** — All Framer Motion animations must pair with `useReducedMotion()` hook. Additionally, `@media (prefers-reduced-motion: reduce)` in `src/index.css` disables CSS animations
+- **ARIA roles** — Mobile and tablet tab-based navigation uses `role="tablist"`, `role="tab"`, `role="tabpanel"` with proper `aria-labelledby` associations
+
+### Theme Support
+
+- **Theme toggle** in Header cycles: dark → light → system preference
+- Theme persists to `localStorage` under `algoflow-theme`
+- **Monaco editor theme sync** — editor switches between `vs-dark` and `vs` automatically
 
 ### Monaco Editor
 
-- Line highlighting uses a subtle cyan background (`rgba(34, 211, 238, 0.12)`) with a 3px cyan gutter indicator
+- Line highlighting uses a subtle cyan background (`rgba(34, 211, 238, 0.12)` dark / `rgba(34, 211, 238, 0.2)` light) with a 3px cyan gutter indicator
 - Read-only mode by default prevents accidental edits
 
 ---

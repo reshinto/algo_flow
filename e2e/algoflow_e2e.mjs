@@ -816,7 +816,91 @@ await check("Speed: keyboard '5' → 4x", async () => {
   await waitForSpeed("4");
 });
 
-// ─── 8. Console errors ────────────────────────────────────────────────────────
+// ─── 8. Theme toggle ─────────────────────────────────────────────────────────
+console.log("\n━━━ Theme Toggle ━━━");
+await check("Theme toggle button exists", async () => {
+  const themeBtn = page.locator("button[aria-label='Switch to light theme']");
+  await themeBtn.waitFor({ timeout: 3000 });
+});
+await check("Theme cycles dark → light → system → dark", async () => {
+  // Start: dark — aria-label is "Switch to light theme"
+  const lightBtn = page.locator("button[aria-label='Switch to light theme']");
+  await lightBtn.click();
+
+  // Now light — aria-label becomes "Switch to system theme"
+  await page.waitForFunction(
+    () => document.documentElement.getAttribute("data-theme") === "light",
+    undefined,
+    { timeout: 3000 },
+  );
+  const systemBtn = page.locator("button[aria-label='Switch to system theme']");
+  await systemBtn.waitFor({ timeout: 3000 });
+
+  // Click to system — aria-label becomes "Switch to dark theme"
+  await systemBtn.click();
+  const darkBtn = page.locator("button[aria-label='Switch to dark theme']");
+  await darkBtn.waitFor({ timeout: 3000 });
+
+  // Click back to dark — data-theme removed
+  await darkBtn.click();
+  await page.waitForFunction(
+    () => !document.documentElement.getAttribute("data-theme"),
+    undefined,
+    { timeout: 3000 },
+  );
+});
+
+// ─── 9. Tablet layout ───────────────────────────────────────────────────────
+console.log("\n━━━ Tablet Layout ━━━");
+await check("Tablet layout renders at 768px", async () => {
+  await page.setViewportSize({ width: 768, height: 1024 });
+  await selectAlgorithm("Bubble Sort");
+  // Tablet layout should show Steps/Code tabs
+  const stepsTab = page.locator("[role='tab']").filter({ hasText: "Steps" });
+  await stepsTab.waitFor({ timeout: 3000 });
+  const codeTab = page.locator("[role='tab']").filter({ hasText: "Code" });
+  await codeTab.waitFor({ timeout: 3000 });
+});
+await check("Tablet: Code tab switches to editor", async () => {
+  const codeTab = page.locator("[role='tab']").filter({ hasText: "Code" });
+  await codeTab.click();
+  await page.waitForSelector("[role='tabpanel']", { timeout: 3000 });
+  // Monaco editor should be visible in the Code tab
+  const editor = page.locator(".monaco-editor");
+  await editor.waitFor({ timeout: 5000 });
+});
+await check("Tablet: Steps tab switches back", async () => {
+  const stepsTab = page.locator("[role='tab']").filter({ hasText: "Steps" });
+  await stepsTab.click();
+  // Should show explanation content (metrics heading)
+  const metrics = page.locator("h3").filter({ hasText: "Metrics" });
+  await metrics.waitFor({ timeout: 3000 });
+});
+
+// ─── 10. Mobile layout ──────────────────────────────────────────────────────
+console.log("\n━━━ Mobile Layout ━━━");
+await check("Mobile layout renders at 375px", async () => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  // Mobile should show Visualize/Code/Steps tabs
+  const vizTab = page.locator("[role='tab']").filter({ hasText: "Visualize" });
+  await vizTab.waitFor({ timeout: 3000 });
+});
+await check("Mobile: tab switching works", async () => {
+  const codeTab = page.locator("[role='tab']").filter({ hasText: "Code" });
+  await codeTab.click();
+  await page.waitForSelector("[role='tabpanel']", { timeout: 3000 });
+  // Switch back to Visualize
+  const vizTab = page.locator("[role='tab']").filter({ hasText: "Visualize" });
+  await vizTab.click();
+  // Wait for Visualize tabpanel to be active
+  const vizPanel = page.locator("[role='tabpanel']").filter({ hasText: /Array values|comma/ });
+  await vizPanel.waitFor({ timeout: 3000 });
+});
+
+// Restore desktop viewport for remaining tests
+await page.setViewportSize({ width: 1400, height: 900 });
+
+// ─── 11. Console errors ───────────────────────────────────────────────────────
 console.log("\n━━━ Browser Console Errors ━━━");
 const reactErrors = consoleErrors.filter(
   (e) => !e.includes("ResizeObserver") && !e.includes("favicon") && !e.includes("chunk"),

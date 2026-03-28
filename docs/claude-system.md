@@ -11,7 +11,7 @@ AlgoFlow uses a structured development workflow powered by agents, skills, sessi
 - [Overview](#overview)
 - [Agents (11)](#agents-11)
 - [Skills (18)](#skills-18)
-- [Session Hooks (13)](#session-hooks-13)
+- [Session Hooks (14)](#session-hooks-13)
 - [Plugins (17)](#plugins-17)
 - [Plugin vs. Project Wrapper](#plugin-vs-project-wrapper)
 
@@ -77,7 +77,7 @@ Skill definitions live in `.claude/skills/<skill-name>/SKILL.md`.
 
 ---
 
-## Session Hooks (13)
+## Session Hooks (14)
 
 Hooks run automatically during development sessions. They are configured in `.claude/settings.json`.
 
@@ -101,6 +101,7 @@ Hooks run automatically during development sessions. They are configured in `.cl
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | `post-edit-typescript-check.sh`    | Warns (non-blocking) on `any` types, bare `@ts-ignore`, unsafe assertions, `number[][]` instead of tuples              |
 | `post-edit-accessibility-check.sh` | Warns (non-blocking) on raw hex colors, missing `aria-label`, `outline:none`, Framer Motion without `useReducedMotion` |
+| `ban-hardcoded-waits.sh`           | Blocks writing `waitForTimeout`, `sleep()`, or `setTimeout`-based delays to test/E2E files                             |
 
 ### PostToolUse (Bash)
 
