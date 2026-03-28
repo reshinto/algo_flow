@@ -108,14 +108,21 @@ npm run chromatic       # Run Chromatic visual tests
 
 ### Story Inventory
 
-**63 story files** organized into:
+**88 story files** organized into:
 
-| Category                   | Stories                                                                                      |
-| -------------------------- | -------------------------------------------------------------------------------------------- |
-| **Shared Primitives**      | Button, Badge, IconButton, Select                                                            |
-| **Code Panel**             | LanguageTabs                                                                                 |
-| **Individual Visualizers** | ArrayVisualizer, GraphVisualizer, GridVisualizer, DPTableVisualizer                          |
-| **Algorithm Pipelines**    | 54 algorithm pipelines — initial, mid-execution, and final states using real step generators |
+| Category                   | Location                                 | Stories                                                                                                                                                                                                                                   |
+| -------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Shared Primitives**      | `src/components/shared/`                 | Button, Badge, IconButton, Select                                                                                                                                                                                                         |
+| **Code Panel**             | `src/components/code-panel/`             | CodePanel, LanguageTabs                                                                                                                                                                                                                   |
+| **Individual Visualizers** | `src/components/visualization/`          | ArrayVisualizer, DPTableVisualizer, GraphVisualizer, GridVisualizer, HashMapVisualizer, HeapVisualizer, LinkedListVisualizer, MatrixVisualizer, SetVisualizer, StackQueueVisualizer, StringVisualizer, TreeVisualizer, VisualizationPanel |
+| **Layout**                 | `src/components/layout/`                 | AlgorithmSelectorModal, AppShell, Header, MobileLayout, PanelLayout                                                                                                                                                                       |
+| **Educational**            | `src/components/educational/`            | EducationalDrawer, MermaidDiagram                                                                                                                                                                                                         |
+| **Input Editor**           | `src/components/input-editor/`           | ArrayInputEditor, InputEditor                                                                                                                                                                                                             |
+| **Explanation Panel**      | `src/components/explanation-panel/`      | ExplanationPanel                                                                                                                                                                                                                          |
+| **Playback**               | `src/components/playback/`               | PlaybackControls                                                                                                                                                                                                                          |
+| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/` | 58 algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                              |
+
+Pipeline stories (`*.Pipeline.stories.tsx`) live alongside their algorithm implementation, not with the visualizer components. Component stories remain co-located with their components in `src/components/`.
 
 ### Chromatic Visual Regression
 

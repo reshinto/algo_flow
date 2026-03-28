@@ -19,6 +19,8 @@
 ### Storybook
 
 - Every component gets at least one story per significant state variant
+- Pipeline stories (`*.Pipeline.stories.tsx`) live in algorithm directories (e.g., `src/algorithms/sorting/bubble-sort/BubbleSortPipeline.stories.tsx`), not in `src/components/`
+- Component stories remain co-located with their components in `src/components/`
 - Visual regression via `@storybook/test-runner`
 - Test language switching in CodePanel stories
 - Test responsive behavior in layout stories

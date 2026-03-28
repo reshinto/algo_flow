@@ -120,7 +120,7 @@ New to the project? The contributing guide covers everything from first clone to
 
 1. Create `src/algorithms/<category>/<algorithm>/` with source files, step generator, educational content, and registry module
 2. Import in `src/algorithms/index.ts` (triggers self-registration)
-3. Add Storybook pipeline stories
+3. Add Storybook pipeline stories in the algorithm directory (`<Algorithm>Pipeline.stories.tsx`)
 4. All UI works automatically via the registry
 
 See the [full walkthrough](docs/contributing.md#adding-a-new-algorithm) for step-by-step instructions with code examples.

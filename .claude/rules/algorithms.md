@@ -16,6 +16,7 @@
 - Multi-language source files: TypeScript, Python, Java
 - Unit tests for algorithm correctness
 - Unit tests for step generation
+- Pipeline story (`<AlgorithmName>Pipeline.stories.tsx`) co-located in the algorithm directory
 - Educational content (all sections)
 - Registry integration via self-registration
 
