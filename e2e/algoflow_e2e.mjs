@@ -1,6 +1,8 @@
 import { chromium } from "playwright";
 import { execSync, spawn } from "node:child_process";
 import http from "node:http";
+import fs from "node:fs";
+import path from "node:path";
 
 const PASS = "✅";
 const FAIL = "❌";
@@ -86,6 +88,79 @@ async function check(label, fn) {
 }
 
 let page;
+let currentAlgorithm = null;
+
+// ── Step counter utilities ───────────────────────────────────────────────────
+
+/** Locate the step counter span showing "N / M" */
+function getStepCounter() {
+  return page
+    .locator("span")
+    .filter({ hasText: /^\d+ \/ \d+$/ })
+    .first();
+}
+
+/** Read the current step index from the step counter */
+async function getStepIndex() {
+  const text = await getStepCounter().textContent();
+  const match = text.match(/^(\d+) \/ (\d+)$/);
+  return match ? { current: Number(match[1]), total: Number(match[2]) } : null;
+}
+
+/** Wait for the step counter's current value to differ from previousCurrent */
+async function waitForStepChange(previousCurrent) {
+  await page.waitForFunction(
+    (prev) => {
+      const spans = [...document.querySelectorAll("span")];
+      const counter = spans.find((s) => /^\d+ \/ \d+$/.test(s.textContent ?? ""));
+      if (!counter) return false;
+      const match = counter.textContent.match(/^(\d+) \/ (\d+)$/);
+      return match && Number(match[1]) !== prev;
+    },
+    previousCurrent,
+    { timeout: 3000 },
+  );
+}
+
+/** Wait for the step counter to reset to "1 / N" */
+async function waitForStepReset() {
+  await page.waitForFunction(
+    () => {
+      const spans = [...document.querySelectorAll("span")];
+      const counter = spans.find((s) => /^\d+ \/ \d+$/.test(s.textContent ?? ""));
+      if (!counter) return false;
+      const match = counter.textContent.match(/^(\d+) \/ (\d+)$/);
+      return match && Number(match[1]) === 1;
+    },
+    undefined,
+    { timeout: 3000 },
+  );
+}
+
+// ── Input fill helpers ───────────────────────────────────────────────────────
+
+async function fillTextInput(value) {
+  const textInput = page.locator("input[type='text']").first();
+  await textInput.click({ clickCount: 3 });
+  await textInput.fill(value);
+  await textInput.press("Tab");
+}
+
+async function fillNumberInput(value) {
+  const numInput = page.locator("input[type='number']").first();
+  await numInput.click({ clickCount: 3 });
+  await numInput.fill(String(value));
+  await numInput.press("Tab");
+}
+
+async function fillNthTextInput(nthIndex, value) {
+  const inputs = page.locator("input[type='text']");
+  await inputs.nth(nthIndex).click({ clickCount: 3 });
+  await inputs.nth(nthIndex).fill(value);
+  await inputs.nth(nthIndex).press("Tab");
+}
+
+// ── Modal utilities ──────────────────────────────────────────────────────────
 
 // Close the command palette if it's open, by clicking the X button
 async function ensureModalClosed() {
@@ -97,7 +172,6 @@ async function ensureModalClosed() {
     await page
       .waitForSelector("[role='dialog']", { state: "detached", timeout: 3000 })
       .catch(() => {});
-    await page.waitForTimeout(300);
   }
 }
 
@@ -110,14 +184,17 @@ async function selectAlgorithm(name) {
   // Type to filter if the name is long
   const searchInput = page.locator("#algo-search-input");
   await searchInput.fill(name.slice(0, 6));
-  await page.waitForTimeout(200);
   const optionBtn = page.locator("[role='dialog'] button").filter({ hasText: name }).first();
   await optionBtn.waitFor({ timeout: 3000 });
   await optionBtn.click();
   // Modal closes automatically after selection
   await page.waitForSelector("[role='dialog']", { state: "detached", timeout: 4000 });
-  await page.waitForTimeout(400);
+  // Wait for the step counter to appear, confirming the algorithm loaded
+  await getStepCounter().waitFor({ timeout: 5000 });
+  currentAlgorithm = name;
 }
+
+// ── Test suites ──────────────────────────────────────────────────────────────
 
 // Test all playback buttons for current algorithm
 async function testPlayback(algoName) {
@@ -129,34 +206,36 @@ async function testPlayback(algoName) {
   const pause = page.locator("button[aria-label='Pause']");
 
   await check(`${algoName}: step forward ×3`, async () => {
-    for (let i = 0; i < 3; i++) {
+    for (let clickIndex = 0; clickIndex < 3; clickIndex++) {
+      const before = await getStepIndex();
       await stepFwd.click();
-      await page.waitForTimeout(100);
+      await waitForStepChange(before.current);
     }
   });
 
   await check(`${algoName}: step backward`, async () => {
+    const before = await getStepIndex();
     await stepBwd.click();
-    await page.waitForTimeout(150);
+    await waitForStepChange(before.current);
   });
 
   await check(`${algoName}: reset`, async () => {
     await reset.click();
-    await page.waitForTimeout(200);
+    await waitForStepReset();
   });
 
   await check(`${algoName}: play → pause`, async () => {
     await play.click();
-    await page.waitForTimeout(500);
+    await pause.waitFor({ timeout: 3000 });
     await pause.click();
-    await page.waitForTimeout(200);
+    await play.waitFor({ timeout: 3000 });
   });
 
   await check(`${algoName}: rerun`, async () => {
     await rerun.click();
-    await page.waitForTimeout(500);
+    await pause.waitFor({ timeout: 3000 });
     await pause.click().catch(() => {}); // may have already stopped
-    await page.waitForTimeout(200);
+    await play.waitFor({ timeout: 3000 });
   });
 }
 
@@ -167,7 +246,10 @@ async function testLanguageTabs(algoName) {
       const tab = page.locator(`button:has-text("${lang}")`).first();
       await tab.waitFor({ timeout: 3000 });
       await tab.click();
-      await page.waitForTimeout(200);
+      await page
+        .locator("button[role='tab'][aria-selected='true']")
+        .filter({ hasText: lang })
+        .waitFor({ timeout: 3000 });
     });
   }
 }
@@ -177,9 +259,7 @@ async function testEducationalDrawer(algoName) {
   await check(`${algoName}: educational drawer opens (L key)`, async () => {
     // Click body first to ensure keyboard focus is not trapped in an input
     await page.locator("body").click({ position: { x: 700, y: 400 } });
-    await page.waitForTimeout(100);
     await page.keyboard.press("l");
-    await page.waitForTimeout(400);
     // Look for drawer content — the drawer shows section headings
     const overview = page.locator("text=Overview").first();
     await overview.waitFor({ timeout: 3000 });
@@ -187,18 +267,15 @@ async function testEducationalDrawer(algoName) {
   await check(`${algoName}: educational drawer closes (Escape)`, async () => {
     // Click body to ensure focus is on the page, then press Escape
     await page.locator("body").click({ position: { x: 700, y: 400 } });
-    await page.waitForTimeout(100);
     await page.keyboard.press("Escape");
-    await page.waitForTimeout(500);
-    // Retry once if drawer is still visible (handles rare timing issues)
     const overview = page.locator("text=Overview").first();
-    let visible = await overview.isVisible().catch(() => false);
+    await overview.waitFor({ state: "hidden", timeout: 3000 });
+    // Retry once if drawer is still visible (handles rare timing issues)
+    const visible = await overview.isVisible().catch(() => false);
     if (visible) {
       await page.keyboard.press("Escape");
-      await page.waitForTimeout(500);
-      visible = await overview.isVisible().catch(() => false);
+      await overview.waitFor({ state: "hidden", timeout: 3000 });
     }
-    if (visible) throw new Error("Drawer still open after Escape");
   });
 }
 
@@ -206,22 +283,68 @@ async function testEducationalDrawer(algoName) {
 async function testKeyboard(algoName) {
   await check(`${algoName}: Space play/pause`, async () => {
     await page.keyboard.press("Space");
-    await page.waitForTimeout(300);
+    await page.locator("button[aria-label='Pause']").waitFor({ timeout: 3000 });
     await page.keyboard.press("Space");
-    await page.waitForTimeout(200);
+    await page.locator("button[aria-label='Play']").waitFor({ timeout: 3000 });
   });
   await check(`${algoName}: ArrowRight → ArrowLeft`, async () => {
+    const before = await getStepIndex();
     await page.keyboard.press("ArrowRight");
-    await page.waitForTimeout(100);
+    await waitForStepChange(before.current);
+    const after = await getStepIndex();
     await page.keyboard.press("ArrowLeft");
-    await page.waitForTimeout(100);
+    await waitForStepChange(after.current);
   });
   await check(`${algoName}: R resets to step 0`, async () => {
-    await page.keyboard.press("ArrowRight");
-    await page.waitForTimeout(100);
+    const before = await getStepIndex();
+    if (before.current === 1) {
+      await page.keyboard.press("ArrowRight");
+      await waitForStepChange(before.current);
+    }
     await page.keyboard.press("r");
-    await page.waitForTimeout(200);
+    await waitForStepReset();
   });
+}
+
+// ── Algorithm discovery ──────────────────────────────────────────────────────
+
+/**
+ * Discover algorithms from the filesystem. Picks the first algorithm per
+ * category as a representative for full UI testing. The rest get smoke tests.
+ */
+function discoverAlgorithms() {
+  const algorithmsDir = path.join(process.cwd(), "src/algorithms");
+  const categories = fs
+    .readdirSync(algorithmsDir)
+    .filter((entry) => fs.statSync(path.join(algorithmsDir, entry)).isDirectory());
+
+  const allAlgorithms = [];
+  const representativeSet = new Set();
+
+  for (const category of categories) {
+    const categoryDir = path.join(algorithmsDir, category);
+    const algoDirs = fs
+      .readdirSync(categoryDir)
+      .filter((entry) => fs.statSync(path.join(categoryDir, entry)).isDirectory());
+    let firstInCategory = true;
+
+    for (const algo of algoDirs) {
+      const indexFile = path.join(categoryDir, algo, "index.ts");
+      if (fs.existsSync(indexFile)) {
+        const content = fs.readFileSync(indexFile, "utf-8");
+        const nameMatch = content.match(/name:\s*"([^"]+)"/);
+        if (nameMatch) {
+          const name = nameMatch[1];
+          allAlgorithms.push(name);
+          if (firstInCategory) {
+            representativeSet.add(name);
+            firstInCategory = false;
+          }
+        }
+      }
+    }
+  }
+  return { allAlgorithms, representativeSet };
 }
 
 // ── MAIN ──────────────────────────────────────────────────────────────────────
@@ -239,7 +362,7 @@ page.on("pageerror", (err) => consoleErrors.push(`PAGE ERROR: ${err.message}`));
 
 // ─── 1. Load ───────────────────────────────────────────────────────────────────
 console.log("\n━━━ Page Load ━━━");
-await check("App loads at localhost:5174", async () => {
+await check("App loads at localhost", async () => {
   await page.goto(BASE_URL, { waitUntil: "networkidle" });
   await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
 });
@@ -263,7 +386,6 @@ await check("Search input auto-focused", async () => {
 });
 await check("Filtering works (type 'breadth')", async () => {
   await page.fill("#algo-search-input", "breadth");
-  await page.waitForTimeout(200);
   const btn = page
     .locator("[role='dialog'] button")
     .filter({ hasText: "Breadth-First Search" })
@@ -282,164 +404,288 @@ await check("Opens again and closes via backdrop click", async () => {
   await page.waitForSelector("[role='dialog']", { state: "detached", timeout: 3000 });
 });
 
-// ─── 3. All 14 algorithms ─────────────────────────────────────────────────────
-const algorithms = [
-  "Bubble Sort",
-  "Binary Search",
-  "Breadth-First Search",
-  "Dijkstra's Algorithm",
-  "Fibonacci (Tabulation)",
-  "Fibonacci (Memoization)",
-  "Sliding Window (Max Sum)",
-  "BST In-Order Traversal",
-  "Reverse Linked List",
-  "Build Min Heap",
-  "Valid Parentheses",
-  "Two Sum",
-  "KMP Search",
-  "Spiral Order",
-  "Set Intersection",
-];
+// ─── 3. Discover all registered algorithms from filesystem ───────────────────
+const { allAlgorithms: algorithms, representativeSet } = discoverAlgorithms();
+console.log(
+  `\nDiscovered ${algorithms.length} algorithms (${representativeSet.size} representatives)`,
+);
 
 for (const algo of algorithms) {
   console.log(`\n━━━ ${algo} ━━━`);
 
-  await check(`Select "${algo}"`, async () => {
+  // Smoke test: every algorithm must load and generate steps
+  const selected = await check(`Select "${algo}"`, async () => {
     await selectAlgorithm(algo);
-    const empty = await page
-      .locator("text=Select an algorithm to begin")
-      .isVisible()
-      .catch(() => false);
-    if (empty) throw new Error("still showing empty state");
+    const stepInfo = await getStepIndex();
+    if (!stepInfo || stepInfo.total === 0) throw new Error("No steps generated");
   });
 
-  await testPlayback(algo);
-  await testLanguageTabs(algo);
-  await testKeyboard(algo);
-  await testEducationalDrawer(algo);
+  // Full UI suite: only for representative algorithms (one per category/visual kind)
+  if (selected && representativeSet.has(algo)) {
+    await testPlayback(algo);
+    await testLanguageTabs(algo);
+    await testKeyboard(algo);
+    await testEducationalDrawer(algo);
+  }
 }
 
 // ─── 4. Input editors ─────────────────────────────────────────────────────────
 console.log("\n━━━ Input Editors ━━━");
 
 const inputTests = [
-  {
-    algo: "Bubble Sort",
-    test: async () => {
-      const input = page.locator("input[type='text']").first();
-      await input.click({ clickCount: 3 });
-      await input.fill("5, 3, 8, 1, 9, 2");
-      await input.press("Tab");
-      await page.waitForTimeout(400);
-    },
-  },
+  { algo: "Bubble Sort", test: () => fillTextInput("5, 3, 8, 1, 9, 2") },
   {
     algo: "Binary Search",
     test: async () => {
-      const textInput = page.locator("input[type='text']").first();
-      await textInput.click({ clickCount: 3 });
-      await textInput.fill("2, 5, 8, 12, 16");
-      await textInput.press("Tab");
-      const numInput = page.locator("input[type='number']").first();
-      await numInput.click({ clickCount: 3 });
-      await numInput.fill("12");
-      await numInput.press("Tab");
-      await page.waitForTimeout(400);
+      await fillTextInput("2, 5, 8, 12, 16");
+      await fillNumberInput(12);
     },
   },
   {
     algo: "Sliding Window (Max Sum)",
     test: async () => {
-      const textInput = page.locator("input[type='text']").first();
-      await textInput.click({ clickCount: 3 });
-      await textInput.fill("2, 1, 5, 1, 3, 2");
-      await textInput.press("Tab");
-      const numInput = page.locator("input[type='number']").first();
-      await numInput.click({ clickCount: 3 });
-      await numInput.fill("3");
-      await numInput.press("Tab");
-      await page.waitForTimeout(400);
+      await fillTextInput("2, 1, 5, 1, 3, 2");
+      await fillNumberInput(3);
     },
   },
   {
-    algo: "Fibonacci (Tabulation)",
+    algo: "Kadane's Algorithm (Max Subarray)",
+    test: () => fillTextInput("-2, 1, -3, 4, -1, 2"),
+  },
+  {
+    algo: "Best Time to Buy/Sell Stock",
+    test: () => fillTextInput("7, 1, 5, 3, 6, 4"),
+  },
+  {
+    algo: "Boyer-Moore Voting (Majority)",
+    test: () => fillTextInput("2, 2, 1, 1, 1, 2, 2"),
+  },
+  { algo: "Move Zeros to End", test: () => fillTextInput("0, 1, 0, 3, 12") },
+  {
+    algo: "Remove Duplicates (Sorted)",
+    test: () => fillTextInput("1, 1, 2, 2, 3, 4"),
+  },
+  {
+    algo: "Two Sum (Sorted, Two Pointer)",
     test: async () => {
-      const numInput = page.locator("input[type='number']").first();
-      await numInput.click({ clickCount: 3 });
-      await numInput.fill("10");
-      await numInput.press("Tab");
-      await page.waitForTimeout(400);
+      await fillTextInput("1, 2, 4, 6, 8, 11");
+      await fillNumberInput(10);
     },
+  },
+  { algo: "Find Missing Number (XOR)", test: () => fillTextInput("3, 0, 1") },
+  { algo: "Single Number (XOR)", test: () => fillTextInput("4, 1, 2, 1, 2") },
+  {
+    algo: "Dutch National Flag (3-Way Partition)",
+    test: () => fillTextInput("2, 0, 1, 2, 1, 0"),
+  },
+  {
+    algo: "Rotate Array (Reversal)",
+    test: async () => {
+      await fillTextInput("1, 2, 3, 4, 5, 6, 7");
+      await fillNumberInput(3);
+    },
+  },
+  { algo: "Next Greater Element", test: () => fillTextInput("4, 5, 2, 10, 8") },
+  {
+    algo: "Container With Most Water",
+    test: () => fillTextInput("1, 8, 6, 2, 5, 4, 8, 3, 7"),
+  },
+  {
+    algo: "Product of Array Except Self",
+    test: () => fillTextInput("1, 2, 3, 4, 5"),
+  },
+  {
+    algo: "Three Sum (Zero Triplets)",
+    test: () => fillTextInput("-1, 0, 1, 2, -1, -4"),
+  },
+  {
+    algo: "Lomuto Partition",
+    test: () => fillTextInput("8, 3, 6, 1, 5, 9, 2, 7"),
+  },
+  { algo: "Cyclic Sort", test: () => fillTextInput("3, 5, 2, 1, 4, 6") },
+  {
+    algo: "Prefix Sum (Range Query)",
+    test: () => fillTextInput("2, 4, 1, 3, 5"),
+  },
+  {
+    algo: "Subarray Sum Equals K",
+    test: async () => {
+      await fillTextInput("1, 2, 3, -1, 1");
+      await fillNumberInput(3);
+    },
+  },
+  {
+    algo: "Merge Two Sorted Arrays",
+    test: async () => {
+      await fillNthTextInput(0, "1, 3, 5, 7");
+      await fillNthTextInput(1, "2, 4, 6, 8");
+    },
+  },
+  {
+    algo: "Difference Array (Range Update)",
+    test: () => fillNumberInput(6),
+  },
+  {
+    algo: "Counting Sort",
+    test: () => fillTextInput("4, 2, 2, 8, 3, 3, 1"),
+  },
+  {
+    algo: "Sliding Window (Min Sum)",
+    test: async () => {
+      await fillTextInput("4, 2, 1, 7, 8, 1, 2");
+      await fillNumberInput(3);
+    },
+  },
+  {
+    algo: "Min Size Subarray Sum",
+    test: async () => {
+      await fillTextInput("2, 3, 1, 2, 4, 3");
+      await fillNumberInput(7);
+    },
+  },
+  {
+    algo: "Subarray Product < K",
+    test: async () => {
+      await fillTextInput("10, 5, 2, 6");
+      await fillNumberInput(100);
+    },
+  },
+  {
+    algo: "Max Consecutive Ones III",
+    test: async () => {
+      await fillTextInput("1, 1, 0, 0, 1, 1, 1, 0");
+      await fillNumberInput(2);
+    },
+  },
+  {
+    algo: "Minimum Subarray Sum",
+    test: () => fillTextInput("3, -4, 2, -3, -1, 7"),
+  },
+  {
+    algo: "Count Anagram Windows",
+    test: async () => {
+      await fillNthTextInput(0, "1, 2, 3, 1, 2, 1, 3");
+      await fillNthTextInput(1, "1, 2, 3");
+    },
+  },
+  {
+    algo: "First Negative in Window",
+    test: async () => {
+      await fillTextInput("12, -1, -7, 8, -15, 30");
+      await fillNumberInput(3);
+    },
+  },
+  {
+    algo: "Longest K-Distinct Subarray",
+    test: async () => {
+      await fillTextInput("1, 2, 1, 2, 3, 3, 4");
+      await fillNumberInput(2);
+    },
+  },
+  {
+    algo: "Maximum Product Subarray",
+    test: () => fillTextInput("2, 3, -2, 4, -1, 2"),
+  },
+  {
+    algo: "Quickselect (K-th Smallest)",
+    test: async () => {
+      await fillTextInput("7, 2, 1, 6, 8, 5, 3");
+      await fillNumberInput(4);
+    },
+  },
+  {
+    algo: "Rotate Array (Cyclic)",
+    test: async () => {
+      await fillTextInput("1, 2, 3, 4, 5, 6");
+      await fillNumberInput(2);
+    },
+  },
+  {
+    algo: "Find All Duplicates",
+    test: () => fillTextInput("4, 3, 2, 7, 8, 2, 3, 1"),
+  },
+  {
+    algo: "First Missing Positive",
+    test: () => fillTextInput("3, 4, -1, 1, 7, 5"),
+  },
+  {
+    algo: "XOR Range Query",
+    test: () => fillTextInput("3, 5, 2, 7, 1, 4"),
+  },
+  {
+    algo: "Trapping Rain Water",
+    test: () => fillTextInput("0, 1, 0, 2, 1, 0, 1, 3"),
+  },
+  {
+    algo: "Largest Rectangle in Histogram",
+    test: () => fillTextInput("2, 1, 5, 6, 2, 3"),
+  },
+  {
+    algo: "Sliding Window Maximum (Deque)",
+    test: async () => {
+      await fillTextInput("1, 3, -1, -3, 5, 3, 6");
+      await fillNumberInput(3);
+    },
+  },
+  {
+    algo: "Best Time Buy/Sell (Unlimited)",
+    test: () => fillTextInput("7, 1, 5, 3, 6, 4"),
+  },
+  {
+    algo: "Four Sum",
+    test: async () => {
+      await fillTextInput("1, 0, -1, 0, -2, 2");
+      await fillNumberInput(0);
+    },
+  },
+  {
+    algo: "Previous Smaller Element",
+    test: () => fillTextInput("4, 10, 5, 8, 20, 15"),
+  },
+  {
+    algo: "Daily Temperatures",
+    test: () => fillTextInput("73, 74, 75, 71, 69, 72, 76"),
+  },
+  {
+    algo: "Floyd's Cycle Detection",
+    test: () => fillTextInput("1, 3, 4, 2, 2"),
+  },
+  {
+    algo: "Fibonacci (Tabulation)",
+    test: () => fillNumberInput(10),
   },
   {
     algo: "KMP Search",
     test: async () => {
-      const inputs = page.locator("input[type='text']");
-      await inputs.nth(0).click({ clickCount: 3 });
-      await inputs.nth(0).fill("AABABAB");
-      await inputs.nth(0).press("Tab");
-      await inputs.nth(1).click({ clickCount: 3 });
-      await inputs.nth(1).fill("ABAB");
-      await inputs.nth(1).press("Tab");
-      await page.waitForTimeout(400);
+      await fillNthTextInput(0, "AABABAB");
+      await fillNthTextInput(1, "ABAB");
     },
   },
   {
     algo: "Set Intersection",
     test: async () => {
-      const inputs = page.locator("input[type='text']");
-      await inputs.nth(0).click({ clickCount: 3 });
-      await inputs.nth(0).fill("10, 20, 30, 40");
-      await inputs.nth(0).press("Tab");
-      await inputs.nth(1).click({ clickCount: 3 });
-      await inputs.nth(1).fill("20, 40, 60");
-      await inputs.nth(1).press("Tab");
-      await page.waitForTimeout(400);
+      await fillNthTextInput(0, "10, 20, 30, 40");
+      await fillNthTextInput(1, "20, 40, 60");
     },
   },
   {
     algo: "Two Sum",
     test: async () => {
-      const textInput = page.locator("input[type='text']").first();
-      await textInput.click({ clickCount: 3 });
-      await textInput.fill("3, 5, 8, 2");
-      await textInput.press("Tab");
-      const numInput = page.locator("input[type='number']").first();
-      await numInput.click({ clickCount: 3 });
-      await numInput.fill("10");
-      await numInput.press("Tab");
-      await page.waitForTimeout(400);
+      await fillTextInput("3, 5, 8, 2");
+      await fillNumberInput(10);
     },
   },
   {
     algo: "Valid Parentheses",
-    test: async () => {
-      const input = page.locator("input[type='text']").first();
-      await input.click({ clickCount: 3 });
-      await input.fill("({[]})");
-      await input.press("Tab");
-      await page.waitForTimeout(400);
-    },
+    test: () => fillTextInput("({[]})"),
   },
   {
     algo: "Build Min Heap",
-    test: async () => {
-      const input = page.locator("input[type='text']").first();
-      await input.click({ clickCount: 3 });
-      await input.fill("8, 3, 7, 1, 5");
-      await input.press("Tab");
-      await page.waitForTimeout(400);
-    },
+    test: () => fillTextInput("8, 3, 7, 1, 5"),
   },
   {
     algo: "Reverse Linked List",
-    test: async () => {
-      const input = page.locator("input[type='text']").first();
-      await input.click({ clickCount: 3 });
-      await input.fill("1, 2, 3, 4, 5");
-      await input.press("Tab");
-      await page.waitForTimeout(400);
-    },
+    test: () => fillTextInput("1, 2, 3, 4, 5"),
   },
   {
     algo: "Spiral Order",
@@ -454,14 +700,15 @@ const inputTests = [
       await textarea.click({ clickCount: 3 });
       await textarea.fill("1, 2, 3\n4, 5, 6\n7, 8, 9");
       await page.keyboard.press("Tab");
-      await page.waitForTimeout(400);
     },
   },
 ];
 
 for (const { algo, test } of inputTests) {
   await check(`${algo}: input editor interaction`, async () => {
-    await selectAlgorithm(algo);
+    if (currentAlgorithm !== algo) {
+      await selectAlgorithm(algo);
+    }
     await test();
   });
 }
@@ -477,16 +724,19 @@ await check("Grid cells render (no input editor expected)", async () => {
   if (count < 30) throw new Error(`Only ${count} cells — grid may not be rendering`);
 });
 await check("Dijkstra: play wavefront and pause", async () => {
-  await page.locator("button[aria-label='Play']").click();
-  await page.waitForTimeout(600);
-  await page.locator("button[aria-label='Pause']").click();
-  await page.waitForTimeout(200);
+  const play = page.locator("button[aria-label='Play']");
+  const pause = page.locator("button[aria-label='Pause']");
+  await play.click();
+  await pause.waitFor({ timeout: 3000 });
+  await pause.click();
+  await play.waitFor({ timeout: 3000 });
 });
 await check("Dijkstra: step through 5 more steps", async () => {
   const stepFwd = page.locator("button[aria-label='Step forward']");
-  for (let i = 0; i < 5; i++) {
+  for (let clickIndex = 0; clickIndex < 5; clickIndex++) {
+    const before = await getStepIndex();
     await stepFwd.click();
-    await page.waitForTimeout(100);
+    await waitForStepChange(before.current);
   }
 });
 
@@ -499,7 +749,18 @@ await check("Scrub to 50% of Bubble Sort", async () => {
   const box = await bar.boundingBox();
   if (!box) throw new Error("no progress bar");
   await page.mouse.click(box.x + box.width * 0.5, box.y + box.height / 2);
-  await page.waitForTimeout(300);
+  // Wait for step counter to show a non-initial value
+  await page.waitForFunction(
+    () => {
+      const spans = [...document.querySelectorAll("span")];
+      const counter = spans.find((s) => /^\d+ \/ \d+$/.test(s.textContent ?? ""));
+      if (!counter) return false;
+      const match = counter.textContent.match(/^(\d+) \/ (\d+)$/);
+      return match && Number(match[1]) !== 1 && Number(match[1]) !== Number(match[2]);
+    },
+    undefined,
+    { timeout: 3000 },
+  );
   // Verify step index changed (not 0 or max)
   const stepText = await page
     .locator("span")
@@ -518,38 +779,41 @@ await check("Scrub to 50% of Bubble Sort", async () => {
 // ─── 7. Speed controls ────────────────────────────────────────────────────────
 console.log("\n━━━ Speed Controls ━━━");
 const speedSelect = page.locator("select[aria-label='Playback speed']");
+
+async function waitForSpeed(expectedValue) {
+  await page.waitForFunction(
+    (val) => {
+      const select = document.querySelector("select[aria-label='Playback speed']");
+      return select && select.value === val;
+    },
+    expectedValue,
+    { timeout: 3000 },
+  );
+}
+
 await check("Speed: select 2x", async () => {
   await speedSelect.selectOption({ value: "2" });
-  await page.waitForTimeout(200);
+  await waitForSpeed("2");
 });
 await check("Speed: select 0.5x", async () => {
   await speedSelect.selectOption({ value: "0.5" });
-  await page.waitForTimeout(200);
+  await waitForSpeed("0.5");
 });
 await check("Speed: keyboard '1' → 0.25x", async () => {
   // Click the visualization panel to blur the speed select before sending keyboard shortcuts
   await page.locator("body").click({ position: { x: 700, y: 400 } });
-  await page.waitForTimeout(100);
   await page.keyboard.press("1");
-  await page.waitForTimeout(200);
-  const val = await speedSelect.inputValue();
-  if (val !== "0.25") throw new Error(`Expected 0.25, got ${val}`);
+  await waitForSpeed("0.25");
 });
 await check("Speed: keyboard '3' → 1x", async () => {
   await page.locator("body").click({ position: { x: 700, y: 400 } });
-  await page.waitForTimeout(100);
   await page.keyboard.press("3");
-  await page.waitForTimeout(200);
-  const val = await speedSelect.inputValue();
-  if (val !== "1") throw new Error(`Expected 1, got ${val}`);
+  await waitForSpeed("1");
 });
 await check("Speed: keyboard '5' → 4x", async () => {
   await page.locator("body").click({ position: { x: 700, y: 400 } });
-  await page.waitForTimeout(100);
   await page.keyboard.press("5");
-  await page.waitForTimeout(200);
-  const val = await speedSelect.inputValue();
-  if (val !== "4") throw new Error(`Expected 4, got ${val}`);
+  await waitForSpeed("4");
 });
 
 // ─── 8. Console errors ────────────────────────────────────────────────────────

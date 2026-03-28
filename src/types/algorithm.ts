@@ -16,26 +16,19 @@ import type { ExecutionStep } from "./execution";
  */
 export type AlgorithmCategory = string;
 
-/**
- * Programming Languages natively supported by the internal Vite AST source-loader parser.
- */
+/** Languages with source file implementations. */
 export type SupportedLanguage = "typescript" | "python" | "java";
 
-/**
- * Mathematical Big-O bounds detailing an algorithm's execution stress across variable input scenarios.
- * Used entirely for rendering rigid statistics inside the UI.
- */
+/** Best/average/worst time complexity for UI display. */
 export interface ComplexitySpec {
   best: string;
   average: string;
   worst: string;
 }
 
-/**
- * Static read-only metadata displayed globally in headers before an algorithm is actually mathematically executed.
- */
+/** Read-only metadata shown in the algorithm header. */
 export interface AlgorithmMeta {
-  /** Underlying structural map ID mapping directly back to physical local TS files (e.g. `bubble-sort`) */
+  /** Kebab-case identifier matching the algorithm's directory name (e.g. `bubble-sort`). */
   id: string;
   name: string;
   category: AlgorithmCategory;
@@ -43,37 +36,28 @@ export interface AlgorithmMeta {
   timeComplexity: ComplexitySpec;
   spaceComplexity: string;
   supportedLanguages: SupportedLanguage[];
-  /** Generic parameter object dictating what the input fields default to statically */
   defaultInput: unknown;
 }
 
 /**
- * The holy-grail interface binding logic files to the visual React renderers.
- * Complete algorithm registration payload consumed explicitly by `src/registry.ts`.
+ * Complete algorithm registration consumed by the registry.
  *
- * @typeParam TInput - Strict mathematical shape of the algorithm's input (e.g., `number[]` for Arrays, or custom tuple bounds in Grid setups).
+ * @typeParam TInput - Shape of the algorithm's input.
  */
 export interface AlgorithmDefinition<TInput = unknown> {
-  /** Basic textual metadata like Name and Big-O Complexity */
   meta: AlgorithmMeta;
 
-  /**
-   * Validates correctness natively mimicking standard function output.
-   * Mostly used natively inside Vitest logic to check the exact mathematical result independently from standard visual side-effects.
-   */
+  /** Runs the algorithm and returns its result (used in correctness tests). */
   execute: (input: TInput) => unknown;
 
-  /**
-   * The structural heart of the visualization.
-   * This generator iterates over the logic graph offline, freezing exact clones of memory mappings internally, returning a rigid static execution timeline.
-   */
+  /** Produces the full ExecutionStep[] timeline for playback. */
   generateSteps: (input: TInput) => ExecutionStep[];
 
-  /** Raw Markdown text payload mapped exactly to the Right-Hand sliding Information panels. */
+  /** Educational content for the info drawer. */
   educational: EducationalContent;
 
   /**
-   * Raw strings mapping exactly to physical filesystem snippets, resolved entirely at Vite build-time.
+   * Source code strings per language, resolved at build time.
    * @see source-loader.ts
    */
   sources: Record<SupportedLanguage, string>;

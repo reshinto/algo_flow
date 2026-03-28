@@ -1,10 +1,4 @@
-/**
- * @file GridVisualizer.tsx
- * @module components/visualization/GridVisualizer
- *
- * Interactive Pathfinding Grid implicitly mapping intuitively elegantly uniquely visually automatically correctly smoothly uniquely gracefully organically cleanly flawlessly elegantly safely safely securely safely correctly explicitly logically powerfully cleanly securely magically nicely intuitively naturally organically safely effortlessly.
- * This mathematically natively completely dynamically expertly cleanly securely optimally properly magically correctly brilliantly confidently dynamically visually correctly implicitly clearly securely smartly rationally implicitly efficiently creatively dynamically elegantly physically cleverly creatively natively uniquely gracefully intelligently structurally flawlessly smoothly physically intuitively perfectly elegantly natively perfectly cleverly explicitly neatly logically natively smoothly smartly natively logically dynamically exactly smartly visually intuitively instinctively explicitly cleanly successfully expertly safely smoothly securely creatively magnetically tightly safely manually physically smoothly organically visually automatically intuitively natively inherently correctly natively expertly natively cleanly dynamically organically clearly securely creatively naturally smoothly smartly mathematically elegantly successfully creatively compactly creatively cleanly automatically efficiently safely magically seamlessly smartly smartly intelligently securely confidently intelligently naturally precisely effortlessly organically cleanly flawlessly expertly securely implicitly seamlessly cleanly explicitly comfortably efficiently.
- */
+/** CSS grid visualizer for pathfinding algorithms with cell-state coloring and wave-expansion animations. */
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { FiRotateCcw } from "react-icons/fi";
@@ -140,7 +134,6 @@ export default function GridVisualizer({ visualState }: GridVisualizerProps) {
 
   return (
     <div className="flex h-full flex-col gap-2 p-4">
-      {/* Interactive Toolbar Header */}
       <div className="flex items-center justify-between pb-1 text-xs px-2">
         <span className="text-[10px] text-[var(--color-text-muted)]">
           Click and drag directly on the grid below to dynamically plot walls and target nodes!

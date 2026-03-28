@@ -9,7 +9,7 @@ Algorithm visualization web app for learners. Step through algorithms with synch
 
 ## Features
 
-- **14 Algorithm Categories** with interactive visualizations (bar charts, SVG graphs/trees, CSS grids, DP tables, and more)
+- **58 Algorithms across 14 Categories** with interactive visualizations (bar charts, SVG graphs/trees, CSS grids, DP tables, and more)
 - **Multi-Language Code Display**: TypeScript, Python, and Java with synchronized line highlighting via Monaco Editor
 - **Step-by-Step Playback**: Play, pause, step forward/backward, scrub, adjustable speed (0.25x–4x)
 - **Category-Specific Input Editors**: Editable arrays, targets, grids, text patterns, and matrices
@@ -18,22 +18,65 @@ Algorithm visualization web app for learners. Step through algorithms with synch
 
 ## Algorithms
 
-| Category            | Algorithm                | Visualizer                                 |
-| ------------------- | ------------------------ | ------------------------------------------ |
-| Sorting             | Bubble Sort              | Animated bar chart                         |
-| Searching           | Binary Search            | Bar chart with pointer narrowing           |
-| Graph               | Breadth-First Search     | SVG node + edge graph                      |
-| Pathfinding         | Dijkstra's Algorithm     | CSS grid with wavefront                    |
-| Dynamic Programming | Fibonacci (Tab + Memo)   | DP table cells + call stack                |
-| Arrays              | Sliding Window (Max Sum) | Bar chart with window range                |
-| Trees               | BST In-Order Traversal   | SVG binary tree with traversal order       |
-| Linked Lists        | Reverse Linked List      | SVG node chain with pointer animation      |
-| Heaps               | Build Min Heap           | SVG tree + array dual-view with sift-down  |
-| Stacks & Queues     | Valid Parentheses        | Stack push/pop with input character states |
-| Hash Maps           | Two Sum                  | Input array + key→value table              |
-| Strings             | KMP Search               | Text row, pattern row, failure table       |
-| Matrices            | Spiral Order Traversal   | CSS grid with boundary shrink animation    |
-| Sets                | Set Intersection         | Array A, array B, hash set, result panels  |
+| Category            | Algorithm                         | Visualizer                                     |
+| ------------------- | --------------------------------- | ---------------------------------------------- |
+| Sorting             | Bubble Sort                       | Animated bar chart                             |
+| Searching           | Binary Search                     | Bar chart with pointer narrowing               |
+| Graph               | Breadth-First Search              | SVG node + edge graph                          |
+| Pathfinding         | Dijkstra's Algorithm              | CSS grid with wavefront                        |
+| Dynamic Programming | Fibonacci (Tab + Memo)            | DP table cells + call stack                    |
+| Arrays              | Sliding Window (Max Sum)          | Bar chart with window range                    |
+| Arrays              | Sliding Window (Min Sum)          | Bar chart with window range                    |
+| Arrays              | Kadane's Algorithm (Max Subarray) | Bar chart with extend/restart window           |
+| Arrays              | Minimum Subarray Sum              | Bar chart with inverted Kadane's window        |
+| Arrays              | Max Product Subarray              | Bar chart with dual min/max tracking           |
+| Arrays              | Best Time Buy/Sell Stock          | Bar chart with min-price pointer               |
+| Arrays              | Best Time Buy/Sell (Unlimited)    | Bar chart with greedy profit highlights        |
+| Arrays              | Boyer-Moore Voting (Majority)     | Bar chart with candidate tracking              |
+| Arrays              | Move Zeros to End                 | Bar chart with fast/slow pointers              |
+| Arrays              | Remove Duplicates (Sorted)        | Bar chart with write/read pointers             |
+| Arrays              | Two Sum (Sorted, Two Pointer)     | Bar chart with converging pointers             |
+| Arrays              | Three Sum (Zero Triplets)         | Bar chart with anchor + two pointers           |
+| Arrays              | Four Sum                          | Bar chart with four pointers                   |
+| Arrays              | Container With Most Water         | Bar chart with converging pointers             |
+| Arrays              | Trapping Rain Water               | Bar chart with two-pointer water calculation   |
+| Arrays              | Dutch National Flag               | Bar chart with 3-way partition pointers        |
+| Arrays              | Lomuto Partition                  | Bar chart with pivot + boundary pointer        |
+| Arrays              | Quickselect (K-th Smallest)       | Bar chart with partition narrowing             |
+| Arrays              | Rotate Array (Reversal)           | Bar chart with three-pass reversal             |
+| Arrays              | Rotate Array (Cyclic)             | Bar chart with cycle-following swaps           |
+| Arrays              | Cyclic Sort                       | Bar chart with index-placement swaps           |
+| Arrays              | Find Missing Number (XOR)         | Bar chart with running XOR highlight           |
+| Arrays              | Single Number (XOR)               | Bar chart with pair-cancellation highlight     |
+| Arrays              | Find All Duplicates               | Bar chart with sign-negation marking           |
+| Arrays              | First Missing Positive            | Bar chart with placement + scan phases         |
+| Arrays              | Next Greater Element              | Bar chart with monotonic stack resolution      |
+| Arrays              | Previous Smaller Element          | Bar chart with monotonic stack (left scan)     |
+| Arrays              | Daily Temperatures                | Bar chart with distance-based stack resolution |
+| Arrays              | Largest Rectangle in Histogram    | Bar chart (histogram) with monotonic stack     |
+| Arrays              | Sliding Window Maximum (Deque)    | Bar chart with deque-based max tracking        |
+| Arrays              | Min Size Subarray Sum             | Bar chart with variable window                 |
+| Arrays              | Subarray Product < K              | Bar chart with product-based variable window   |
+| Arrays              | Max Consecutive Ones III          | Bar chart with zero-flip window                |
+| Arrays              | Count Anagram Windows             | Bar chart with frequency-matching window       |
+| Arrays              | First Negative in Window          | Bar chart with deque-tracked negatives         |
+| Arrays              | Longest K-Distinct Subarray       | Bar chart with distinct-count window           |
+| Arrays              | Prefix Sum (Range Query)          | Dual bar chart (original + prefix sum)         |
+| Arrays              | Subarray Sum Equals K             | Bar chart with prefix sum + hash map           |
+| Arrays              | Product of Array Except Self      | Bar chart with two-pass prefix/suffix          |
+| Arrays              | Difference Array (Range Update)   | Dual bar chart (diff array + result)           |
+| Arrays              | XOR Range Query                   | Dual bar chart (original + prefix XOR)         |
+| Arrays              | Merge Two Sorted Arrays           | Dual bar chart (inputs + merged result)        |
+| Arrays              | Counting Sort                     | Dual bar chart (input + count array)           |
+| Arrays              | Floyd's Cycle Detection           | Bar chart with tortoise/hare pointers          |
+| Trees               | BST In-Order Traversal            | SVG binary tree with traversal order           |
+| Linked Lists        | Reverse Linked List               | SVG node chain with pointer animation          |
+| Heaps               | Build Min Heap                    | SVG tree + array dual-view with sift-down      |
+| Stacks & Queues     | Valid Parentheses                 | Stack push/pop with input character states     |
+| Hash Maps           | Two Sum                           | Input array + key→value table                  |
+| Strings             | KMP Search                        | Text row, pattern row, failure table           |
+| Matrices            | Spiral Order Traversal            | CSS grid with boundary shrink animation        |
+| Sets                | Set Intersection                  | Array A, array B, hash set, result panels      |
 
 ## Quick Start
 

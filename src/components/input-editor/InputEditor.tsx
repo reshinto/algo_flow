@@ -1,41 +1,23 @@
-/**
- * @file InputEditor.tsx
- * @module components/input-editor/InputEditor
- *
- * Category-dispatch Strategy Input architectural router.
- *
- * Distinctly reads the currently active algorithm's underlying category exactly from the central Registry payload securely natively
- * and actively delegates strictly to the appropriate category-specific physical DOM editor precisely (arrays, matrices, trees, etc.).
- * Inherently isolates strictly algorithm-specific mutation buffers entirely out of the physical execution panel implicitly natively naturally,
- * intentionally granting unique categories explicit absolute control exactly establishing customized Data-Entry UX exclusively perfectly natively.
- */
+/** Dispatches to category-specific input editors based on the current algorithm's category. */
 import { useState } from "react";
 import { useAppStore } from "@/store";
 import { CATEGORY } from "@/utils/constants";
 
 import ArrayInputEditor from "./ArrayInputEditor";
 
-/**
- * Root dispatcher structurally returning discrete specialized Input Form components natively matching strictly defined categorical primitives explicitly natively definitively identically completely intuitively identically implicitly natively perfectly naturally purely interactively seamlessly efficiently completely securely intuitively natively identically intuitively deeply.
- */
 export default function InputEditor() {
   const definition = useAppStore((state) => state.definition);
   const input = useAppStore((state) => state.input);
   const setInput = useAppStore((state) => state.setInput);
 
-  // Return empty string structurally securely if definitions fault natively
   if (!definition) return null;
 
   const category = definition.meta.category;
 
-  /*
-   * Strict Router implicitly casting un-typed generic Store boundaries into physically strict typing natively dynamically thoroughly successfully flawlessly instinctively.
-   */
   switch (category) {
     case CATEGORY.SORTING:
       return (
         <ArrayInputEditor
-          // Sorting implicitly guarantees 1-Dimensional Array primitive structures explicitly exclusively definitively completely inherently reliably intrinsically strictly absolutely natively implicitly strictly safely definitively purely
           values={input as number[]}
           onChange={(values) => setInput(values)}
           label="Array values (comma-separated)"
@@ -45,19 +27,13 @@ export default function InputEditor() {
     case CATEGORY.SEARCHING:
       return (
         <SearchingInputEditor
-          // Searching intrinsically mandates a dual-primitive Tuple distinctly carrying a needle/haystack relationship perfectly cleanly actively.
           input={input as { sortedArray: number[]; targetValue: number }}
           onChange={setInput}
         />
       );
 
     case CATEGORY.ARRAYS:
-      return (
-        <SlidingWindowInputEditor
-          input={input as { inputArray: number[]; windowSize: number }}
-          onChange={setInput}
-        />
-      );
+      return renderArraysEditor(definition.meta.id, input, setInput);
 
     case CATEGORY.DYNAMIC_PROGRAMMING:
       return (
@@ -69,7 +45,7 @@ export default function InputEditor() {
       );
 
     case CATEGORY.PATHFINDING:
-      // Explicit deliberate override: Pathfinding explicitly binds natively intrinsically exclusively exactly mapped onto the grid component logically interactively cleanly explicitly elegantly deeply uniquely perfectly flawlessly inherently effectively.
+      /* Grid editing is handled directly in the GridVisualizer component */
       return null;
 
     case CATEGORY.TREES:
@@ -140,8 +116,160 @@ export default function InputEditor() {
 }
 
 /**
- * Isolated localized Hook DOM managing explicit dual Array/Target structures intuitively distinctly implicitly cleanly natively securely elegantly deeply smoothly successfully explicitly thoroughly beautifully precisely cleanly uniquely perfectly implicitly exclusively securely actively completely identically distinctly flawlessly seamlessly identically perfectly efficiently definitively correctly naturally perfectly intrinsically automatically reliably physically accurately purely seamlessly distinctly accurately explicitly logically strictly identically fully perfectly intuitively intrinsically dynamically exclusively fully implicitly smoothly uniquely optimally securely reliably optimally natively correctly explicitly automatically absolutely directly instinctively seamlessly efficiently flawlessly flawlessly securely actively safely reliably distinctly strictly beautifully intrinsically cleanly securely identically successfully physically instinctively naturally optimally definitively structurally clearly elegantly cleanly strongly confidently successfully absolutely securely explicitly solidly thoroughly seamlessly safely accurately uniquely actively physically flawlessly securely actively seamlessly absolutely identically implicitly instinctively exactly securely strictly intrinsically cleanly thoroughly optimally explicitly uniquely strictly smoothly automatically purely definitively physically cleanly completely optimally logically safely flawlessly completely completely solidly actively safely implicitly instinctively strongly efficiently entirely safely strongly seamlessly intuitively natively gracefully solidly deeply securely instinctively accurately successfully absolutely perfectly strongly precisely physically optimally identically accurately effectively elegantly automatically deeply cleanly effectively naturally gracefully correctly purely efficiently thoroughly reliably smoothly seamlessly clearly solidly absolutely completely successfully actively gracefully uniquely completely safely accurately perfectly completely solidly completely solidly gracefully naturally effectively precisely cleanly natively structurally intrinsically reliably securely elegantly solidly deeply strongly physically logically safely flawlessly tightly completely accurately securely absolutely explicitly reliably elegantly tightly physically deeply precisely physically mathematically flawlessly clearly seamlessly securely intelligently automatically tightly optimally effectively completely solidly strongly intuitively functionally securely accurately functionally securely functionally tightly actively structurally elegantly cleanly naturally mathematically structurally cleanly correctly correctly solidly flawlessly beautifully firmly seamlessly smoothly solidly strongly structurally completely clearly smoothly cleanly correctly fully effectively precisely naturally firmly functionally safely perfectly inherently smoothly natively purely automatically deeply successfully cleanly functionally structurally mathematically instinctively smoothly functionally intrinsically solidly tightly perfectly instinctively naturally explicitly cleanly cleanly logically uniquely structurally seamlessly mathematically reliably strongly elegantly seamlessly firmly accurately physically perfectly seamlessly firmly properly physically physically seamlessly completely natively completely.
+ * Formats a camelCase or snake_case field name into a human-readable label.
+ * e.g. "inputArray" → "Input array", "maxFlips" → "Max flips"
  */
+function fieldToLabel(field: string): string {
+  return field
+    .replace(/([A-Z])/g, " $1")
+    .replace(/^./, (char) => char.toUpperCase())
+    .trim();
+}
+
+/**
+ * Generic arrays-category input editor that introspects the input shape
+ * and renders appropriate controls for each field automatically.
+ * Handles: single arrays, array+number combos, dual arrays, and complex inputs.
+ */
+function renderArraysEditor(
+  _algorithmId: string,
+  input: unknown,
+  setInput: (value: unknown) => void,
+) {
+  const inputRecord = input as Record<string, unknown>;
+  const keys = Object.keys(inputRecord);
+
+  const numberArrayFields = keys.filter(
+    (key) =>
+      Array.isArray(inputRecord[key]) &&
+      (inputRecord[key] as unknown[]).length > 0 &&
+      typeof (inputRecord[key] as unknown[])[0] === "number",
+  );
+  const scalarFields = keys.filter((key) => typeof inputRecord[key] === "number");
+
+  // Single flat number[] with no extra fields — simplest case
+  if (numberArrayFields.length === 1 && scalarFields.length === 0) {
+    const arrayKey = numberArrayFields[0]!;
+    return (
+      <ArrayInputEditor
+        values={inputRecord[arrayKey] as number[]}
+        onChange={(values) => setInput({ ...inputRecord, [arrayKey]: values })}
+        label={`${fieldToLabel(arrayKey)} (comma-separated)`}
+      />
+    );
+  }
+
+  // number[] + one or more scalar numbers — array with parameter(s)
+  if (numberArrayFields.length >= 1 && scalarFields.length >= 1) {
+    return (
+      <GenericArrayWithParamsEditor
+        input={inputRecord}
+        arrayFields={numberArrayFields}
+        scalarFields={scalarFields}
+        onChange={setInput}
+      />
+    );
+  }
+
+  // Two or more number[] fields with no scalars — dual/multi array
+  if (numberArrayFields.length >= 2 && scalarFields.length === 0) {
+    return (
+      <GenericArrayWithParamsEditor
+        input={inputRecord}
+        arrayFields={numberArrayFields}
+        scalarFields={[]}
+        onChange={setInput}
+      />
+    );
+  }
+
+  // Fallback: render all number[] fields as array editors
+  if (numberArrayFields.length >= 1) {
+    const arrayKey = numberArrayFields[0]!;
+    return (
+      <ArrayInputEditor
+        values={inputRecord[arrayKey] as number[]}
+        onChange={(values) => setInput({ ...inputRecord, [arrayKey]: values })}
+        label={`${fieldToLabel(arrayKey)} (comma-separated)`}
+      />
+    );
+  }
+
+  // Scalar-only fields (no editable arrays) — e.g. Difference Array has arrayLength + complex updates
+  if (scalarFields.length >= 1) {
+    return (
+      <GenericArrayWithParamsEditor
+        input={inputRecord}
+        arrayFields={[]}
+        scalarFields={scalarFields}
+        onChange={setInput}
+      />
+    );
+  }
+
+  return null;
+}
+
+/**
+ * Generic editor for algorithms with one or more array fields and optional scalar parameters.
+ * Renders each array as a text input and each scalar as a number input.
+ */
+function GenericArrayWithParamsEditor({
+  input,
+  arrayFields,
+  scalarFields,
+  onChange,
+}: {
+  input: Record<string, unknown>;
+  arrayFields: string[];
+  scalarFields: string[];
+  onChange: (value: unknown) => void;
+}) {
+  return (
+    <div className="flex flex-col gap-2 border-b border-[var(--color-border-default)] px-3 py-2">
+      {arrayFields.map((field) => (
+        <div key={field} className="flex items-center gap-2">
+          <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">
+            {fieldToLabel(field)}:
+          </label>
+          <input
+            type="text"
+            value={(input[field] as number[]).join(", ")}
+            onChange={(event) => {
+              const parsed = event.target.value
+                .split(",")
+                .map((str) => parseInt(str.trim(), 10))
+                .filter((num) => !isNaN(num));
+              if (parsed.length > 0) {
+                onChange({ ...input, [field]: parsed });
+              }
+            }}
+            className="min-w-0 flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+          />
+        </div>
+      ))}
+      {scalarFields.map((field) => (
+        <div key={field} className="flex items-center gap-2">
+          <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">
+            {fieldToLabel(field)}:
+          </label>
+          <input
+            type="number"
+            value={input[field] as number}
+            onChange={(event) => {
+              const value = parseInt(event.target.value, 10);
+              if (!isNaN(value)) {
+                onChange({ ...input, [field]: value });
+              }
+            }}
+            className="w-20 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function SearchingInputEditor({
   input,
   onChange,
@@ -181,52 +309,6 @@ function SearchingInputEditor({
             }
           }}
           className="w-20 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
-        />
-      </div>
-    </div>
-  );
-}
-
-function SlidingWindowInputEditor({
-  input,
-  onChange,
-}: {
-  input: { inputArray: number[]; windowSize: number };
-  onChange: (value: unknown) => void;
-}) {
-  return (
-    <div className="flex flex-col gap-2 border-b border-[var(--color-border-default)] px-3 py-2">
-      <div className="flex items-center gap-2">
-        <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">Array:</label>
-        <input
-          type="text"
-          value={input.inputArray.join(", ")}
-          onChange={(event) => {
-            const parsed = event.target.value
-              .split(",")
-              .map((str) => parseInt(str.trim(), 10))
-              .filter((num) => !isNaN(num));
-            if (parsed.length > 0) {
-              onChange({ ...input, inputArray: parsed });
-            }
-          }}
-          className="min-w-0 flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
-        />
-      </div>
-      <div className="flex items-center gap-2">
-        <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">Window size:</label>
-        <input
-          type="number"
-          min={1}
-          max={input.inputArray.length}
-          value={input.windowSize}
-          onChange={(event) => {
-            const windowSize = parseInt(event.target.value, 10);
-            if (!isNaN(windowSize) && windowSize > 0) {
-              onChange({ ...input, windowSize });
-            }
-          }}
-          className="w-16 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
         />
       </div>
     </div>
