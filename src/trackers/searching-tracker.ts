@@ -81,8 +81,11 @@ export class SearchingTracker extends BaseTracker {
   ): void {
     const overrides: Partial<Record<number, ArrayElementState>> = {};
     for (let idx = startIndex; idx <= endIndex; idx++) {
-      this.elements[idx]!.state = "eliminated";
-      overrides[idx] = "eliminated";
+      const element = this.elements[idx];
+      if (element) {
+        element.state = "eliminated";
+        overrides[idx] = "eliminated";
+      }
     }
     this.pushStep({
       type: "eliminate",
