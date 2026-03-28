@@ -183,7 +183,7 @@ All hooks are in `src/hooks/`.
 e2e/                        # E2E browser tests (Playwright)
 docs/                       # Documentation
 src/
-├── algorithms/              # Self-registering algorithm definitions
+├── algorithms/              # Self-registering algorithm definitions + pipeline stories
 │   ├── sorting/             # Bubble Sort
 │   ├── searching/           # Binary Search
 │   ├── graph/               # BFS
@@ -206,7 +206,7 @@ src/
 │   ├── layout/              # AppShell, Header, PanelLayout, MobileLayout
 │   ├── playback/            # PlaybackControls with progress bar
 │   ├── shared/              # Button, Badge, IconButton, Select
-│   └── visualization/       # All visualizer components + pipeline stories
+│   └── visualization/       # Visualizer components + co-located component stories
 ├── hooks/                   # usePlaybackEngine, useKeyboardShortcuts, useResponsiveLayout
 ├── registry/                # AlgorithmRegistry singleton
 ├── store/                   # Zustand slices (algorithm, playback, editor, UI)

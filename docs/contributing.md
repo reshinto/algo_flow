@@ -101,15 +101,16 @@ This is the most common contribution. Each algorithm lives in its own directory 
 
 ```
 src/algorithms/<category>/<algorithm>/
-├── step-generator.ts           # Produces ExecutionStep[] using a tracker
-├── educational.ts              # 7 learning sections
-├── index.ts                    # AlgorithmDefinition + registry.register()
-├── <algorithm>.test.ts         # Algorithm correctness tests
-├── step-generator.test.ts      # Step generation tests
+├── step-generator.ts                      # Produces ExecutionStep[] using a tracker
+├── educational.ts                         # 7 learning sections
+├── index.ts                               # AlgorithmDefinition + registry.register()
+├── <algorithm>.test.ts                    # Algorithm correctness tests
+├── step-generator.test.ts                 # Step generation tests
+├── <Algorithm>Pipeline.stories.tsx        # Storybook pipeline story
 └── sources/
-    ├── <algorithm>.ts          # TypeScript source with @step: markers
-    ├── <algorithm>.py          # Python source with @step: markers
-    └── <Algorithm>.java        # Java source with @step: markers
+    ├── <algorithm>.ts                     # TypeScript source with @step: markers
+    ├── <algorithm>.py                     # Python source with @step: markers
+    └── <Algorithm>.java                   # Java source with @step: markers
 ```
 
 ### Step 1: Write the Source Files
@@ -306,7 +307,10 @@ registry.register(definition);
 
 1. Add your algorithm's constants to `src/utils/constants.ts`. `ALGORITHM_ID` is auto-generated from directory names (e.g., `ALGORITHM_ID.MY_ALGORITHM` maps to `"my-algorithm"`). `CATEGORY` is derived from `CATEGORY_LABELS` (e.g., `CATEGORY.SORTING` maps to `"sorting"`). If adding a new category, add its display label to `CATEGORY_LABELS` first.
 2. Import the new algorithm in `src/algorithms/index.ts` — this triggers self-registration
-3. Add Storybook pipeline stories in `src/components/visualization/<Algorithm>Pipeline.stories.tsx`
+3. Add a Storybook pipeline story in the algorithm directory: `src/algorithms/<category>/<algorithm>/<Algorithm>Pipeline.stories.tsx`
+
+> [!NOTE]
+> Pipeline stories (end-to-end visualization stories) live with their algorithm. Component stories (e.g., `ArrayVisualizer.stories.tsx`, `Button.stories.tsx`) remain co-located with their components in `src/components/`.
 
 > [!WARNING]
 > Forgetting the import in `src/algorithms/index.ts` is the most common mistake. The algorithm will silently not appear in the UI because `registry.register()` never executes.

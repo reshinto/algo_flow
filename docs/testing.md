@@ -110,12 +110,14 @@ npm run chromatic       # Run Chromatic visual tests
 
 **63 story files** organized into:
 
-| Category                   | Stories                                                                                      |
-| -------------------------- | -------------------------------------------------------------------------------------------- |
-| **Shared Primitives**      | Button, Badge, IconButton, Select                                                            |
-| **Code Panel**             | LanguageTabs                                                                                 |
-| **Individual Visualizers** | ArrayVisualizer, GraphVisualizer, GridVisualizer, DPTableVisualizer                          |
-| **Algorithm Pipelines**    | 54 algorithm pipelines — initial, mid-execution, and final states using real step generators |
+| Category                   | Location                                 | Stories                                                                                      |
+| -------------------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **Shared Primitives**      | `src/components/shared/`                 | Button, Badge, IconButton, Select                                                            |
+| **Code Panel**             | `src/components/code-panel/`             | LanguageTabs                                                                                 |
+| **Individual Visualizers** | `src/components/visualization/`          | ArrayVisualizer, GraphVisualizer, GridVisualizer, DPTableVisualizer                          |
+| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/` | 54 algorithm pipelines — initial, mid-execution, and final states using real step generators |
+
+Pipeline stories (`*.Pipeline.stories.tsx`) live alongside their algorithm implementation, not with the visualizer components. Component stories remain co-located with their components in `src/components/`.
 
 ### Chromatic Visual Regression
 
