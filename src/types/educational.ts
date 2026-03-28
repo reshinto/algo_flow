@@ -2,27 +2,28 @@
  * @file educational.ts
  * @module types/educational
  *
- * Formal structural requirements dictating how the Right-Hand Informational Drawer receives
- * instructional documentation about a specific algorithm logic base.
+ * Structure for per-algorithm educational content rendered in the info drawer.
  */
 
 /**
- * Structured educational material mapped identically to an individual specific Algorithm node.
- * Native fields define precise text (usually Markdown and Mermaid code) parsed physically by `react-markdown`.
+ * Educational material for one algorithm, formatted as Markdown with optional Mermaid diagrams.
  */
 export interface EducationalContent {
-  /** Primary initial Tab containing fundamental explanations without deep-diving into syntax */
+  /** High-level explanation of what the algorithm does. */
   overview: string;
-  /** Heavy-duty explanation typically utilizing Sub-graph Mermaid flowcharts indicating runtime constraints */
+  /** Step-by-step walkthrough, often with Mermaid flowcharts. */
   howItWorks: string;
+  /** Big-O analysis for time and space. */
   timeAndSpaceComplexity: string;
+  /** Performance under best-case and worst-case inputs. */
   bestAndWorstCase: string;
-  /** Broad examples listing specific software architecture implementations utilizing the algorithm natively */
+  /** Practical applications and use cases. */
   realWorldUses: string[];
+  /** Pros and cons compared to alternative approaches. */
   strengthsAndLimitations: {
     strengths: string[];
     limitations: string[];
   };
-  /** Comparative layout analyzing when to use it over algorithmic Alternatives */
+  /** When to choose this algorithm over alternatives. */
   whenToUseIt: string;
 }

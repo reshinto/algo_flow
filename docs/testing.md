@@ -44,7 +44,7 @@ npm run e2e:headed  # Run with a visible browser (development)
 
 The E2E suite lives in `e2e/algoflow_e2e.mjs`. It uses Playwright with Chromium and simulates a real user session:
 
-- Selects all 15 algorithms via the command palette
+- Selects all 58 algorithms via the command palette
 - Exercises playback controls (play, pause, step, reset, rerun)
 - Switches language tabs (TypeScript / Python / Java)
 - Edits every input editor
@@ -74,14 +74,14 @@ npm run chromatic       # Run Chromatic visual tests
 
 ### Story Inventory
 
-**15 story files** (51 snapshots) organized into:
+**58 story files** organized into:
 
 | Category                   | Stories                                                                                 |
 | -------------------------- | --------------------------------------------------------------------------------------- |
 | **Shared Primitives**      | Button, Badge, IconButton, Select                                                       |
 | **Code Panel**             | LanguageTabs                                                                            |
 | **Individual Visualizers** | ArrayVisualizer, GraphVisualizer, GridVisualizer, DPTableVisualizer                     |
-| **Algorithm Pipelines**    | All 14 categories — initial, mid-execution, and final states using real step generators |
+| **Algorithm Pipelines**    | All 58 algorithms — initial, mid-execution, and final states using real step generators |
 
 ### Chromatic Visual Regression
 

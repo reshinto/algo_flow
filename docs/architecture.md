@@ -104,7 +104,7 @@ Each algorithm category has a tailored input editor rendered above the visualiza
 | ------------------- | ---------------------------------------------------------- |
 | Sorting             | Comma-separated array                                      |
 | Searching           | Sorted array + target value                                |
-| Arrays              | Array + window size                                        |
+| Arrays              | Array (+ optional params: window size, target, K, etc.)    |
 | Dynamic Programming | Target index number                                        |
 | Pathfinding         | Interactive mini-grid (click walls, drag start/end, reset) |
 | Heaps               | Comma-separated array                                      |

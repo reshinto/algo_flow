@@ -1,6 +1,8 @@
 import { chromium } from "playwright";
 import { execSync, spawn } from "node:child_process";
 import http from "node:http";
+import fs from "node:fs";
+import path from "node:path";
 
 const PASS = "✅";
 const FAIL = "❌";
@@ -282,24 +284,33 @@ await check("Opens again and closes via backdrop click", async () => {
   await page.waitForSelector("[role='dialog']", { state: "detached", timeout: 3000 });
 });
 
-// ─── 3. All 14 algorithms ─────────────────────────────────────────────────────
-const algorithms = [
-  "Bubble Sort",
-  "Binary Search",
-  "Breadth-First Search",
-  "Dijkstra's Algorithm",
-  "Fibonacci (Tabulation)",
-  "Fibonacci (Memoization)",
-  "Sliding Window (Max Sum)",
-  "BST In-Order Traversal",
-  "Reverse Linked List",
-  "Build Min Heap",
-  "Valid Parentheses",
-  "Two Sum",
-  "KMP Search",
-  "Spiral Order",
-  "Set Intersection",
-];
+// ─── 3. Discover all registered algorithms from filesystem ───────────────────
+/** Reads src/algorithms/<category>/<algo>/index.ts and extracts the `name:` field */
+function discoverAlgorithmNames() {
+  const algorithmsDir = path.join(process.cwd(), "src/algorithms");
+  const categories = fs
+    .readdirSync(algorithmsDir)
+    .filter((entry) => fs.statSync(path.join(algorithmsDir, entry)).isDirectory());
+  const names = [];
+  for (const category of categories) {
+    const categoryDir = path.join(algorithmsDir, category);
+    const algoDirs = fs
+      .readdirSync(categoryDir)
+      .filter((entry) => fs.statSync(path.join(categoryDir, entry)).isDirectory());
+    for (const algo of algoDirs) {
+      const indexFile = path.join(categoryDir, algo, "index.ts");
+      if (fs.existsSync(indexFile)) {
+        const content = fs.readFileSync(indexFile, "utf-8");
+        const nameMatch = content.match(/name:\s*"([^"]+)"/);
+        if (nameMatch) names.push(nameMatch[1]);
+      }
+    }
+  }
+  return names;
+}
+
+const algorithms = discoverAlgorithmNames();
+console.log(`\nDiscovered ${algorithms.length} algorithms from filesystem`);
 
 for (const algo of algorithms) {
   console.log(`\n━━━ ${algo} ━━━`);
@@ -358,6 +369,494 @@ const inputTests = [
       await numInput.click({ clickCount: 3 });
       await numInput.fill("3");
       await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Kadane's Algorithm (Max Subarray)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("-2, 1, -3, 4, -1, 2");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Best Time to Buy/Sell Stock",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("7, 1, 5, 3, 6, 4");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Boyer-Moore Voting (Majority)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("2, 2, 1, 1, 1, 2, 2");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Move Zeros to End",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("0, 1, 0, 3, 12");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Remove Duplicates (Sorted)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("1, 1, 2, 2, 3, 4");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Two Sum (Sorted, Two Pointer)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("1, 2, 4, 6, 8, 11");
+      await textInput.press("Tab");
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("10");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Find Missing Number (XOR)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("3, 0, 1");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Single Number (XOR)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("4, 1, 2, 1, 2");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Dutch National Flag (3-Way Partition)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("2, 0, 1, 2, 1, 0");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Rotate Array (Reversal)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("1, 2, 3, 4, 5, 6, 7");
+      await textInput.press("Tab");
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("3");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Next Greater Element",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("4, 5, 2, 10, 8");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Container With Most Water",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("1, 8, 6, 2, 5, 4, 8, 3, 7");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Product of Array Except Self",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("1, 2, 3, 4, 5");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Three Sum (Zero Triplets)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("-1, 0, 1, 2, -1, -4");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Lomuto Partition",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("8, 3, 6, 1, 5, 9, 2, 7");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Cyclic Sort",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("3, 5, 2, 1, 4, 6");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Prefix Sum (Range Query)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("2, 4, 1, 3, 5");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Subarray Sum Equals K",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("1, 2, 3, -1, 1");
+      await textInput.press("Tab");
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("3");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Merge Two Sorted Arrays",
+    test: async () => {
+      const inputs = page.locator("input[type='text']");
+      await inputs.nth(0).click({ clickCount: 3 });
+      await inputs.nth(0).fill("1, 3, 5, 7");
+      await inputs.nth(0).press("Tab");
+      await inputs.nth(1).click({ clickCount: 3 });
+      await inputs.nth(1).fill("2, 4, 6, 8");
+      await inputs.nth(1).press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Difference Array (Range Update)",
+    test: async () => {
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("6");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Counting Sort",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("4, 2, 2, 8, 3, 3, 1");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Sliding Window (Min Sum)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("4, 2, 1, 7, 8, 1, 2");
+      await textInput.press("Tab");
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("3");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Min Size Subarray Sum",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("2, 3, 1, 2, 4, 3");
+      await textInput.press("Tab");
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("7");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Subarray Product < K",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("10, 5, 2, 6");
+      await textInput.press("Tab");
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("100");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Max Consecutive Ones III",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("1, 1, 0, 0, 1, 1, 1, 0");
+      await textInput.press("Tab");
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("2");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Minimum Subarray Sum",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("3, -4, 2, -3, -1, 7");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Count Anagram Windows",
+    test: async () => {
+      const inputs = page.locator("input[type='text']");
+      await inputs.nth(0).click({ clickCount: 3 });
+      await inputs.nth(0).fill("1, 2, 3, 1, 2, 1, 3");
+      await inputs.nth(0).press("Tab");
+      await inputs.nth(1).click({ clickCount: 3 });
+      await inputs.nth(1).fill("1, 2, 3");
+      await inputs.nth(1).press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "First Negative in Window",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("12, -1, -7, 8, -15, 30");
+      await textInput.press("Tab");
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("3");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Longest K-Distinct Subarray",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("1, 2, 1, 2, 3, 3, 4");
+      await textInput.press("Tab");
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("2");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Maximum Product Subarray",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("2, 3, -2, 4, -1, 2");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Quickselect (K-th Smallest)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("7, 2, 1, 6, 8, 5, 3");
+      await textInput.press("Tab");
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("4");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Rotate Array (Cyclic)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("1, 2, 3, 4, 5, 6");
+      await textInput.press("Tab");
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("2");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Find All Duplicates",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("4, 3, 2, 7, 8, 2, 3, 1");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "First Missing Positive",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("3, 4, -1, 1, 7, 5");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "XOR Range Query",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("3, 5, 2, 7, 1, 4");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Trapping Rain Water",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("0, 1, 0, 2, 1, 0, 1, 3");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Largest Rectangle in Histogram",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("2, 1, 5, 6, 2, 3");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Sliding Window Maximum (Deque)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("1, 3, -1, -3, 5, 3, 6");
+      await textInput.press("Tab");
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("3");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Best Time Buy/Sell (Unlimited)",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("7, 1, 5, 3, 6, 4");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Four Sum",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("1, 0, -1, 0, -2, 2");
+      await textInput.press("Tab");
+      const numInput = page.locator("input[type='number']").first();
+      await numInput.click({ clickCount: 3 });
+      await numInput.fill("0");
+      await numInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Previous Smaller Element",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("4, 10, 5, 8, 20, 15");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Daily Temperatures",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("73, 74, 75, 71, 69, 72, 76");
+      await textInput.press("Tab");
+      await page.waitForTimeout(400);
+    },
+  },
+  {
+    algo: "Floyd's Cycle Detection",
+    test: async () => {
+      const textInput = page.locator("input[type='text']").first();
+      await textInput.click({ clickCount: 3 });
+      await textInput.fill("1, 3, 4, 2, 2");
+      await textInput.press("Tab");
       await page.waitForTimeout(400);
     },
   },

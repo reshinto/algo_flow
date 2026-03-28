@@ -2,14 +2,12 @@
  * @file execution.ts
  * @module types/execution
  *
- * Defines the core structure of the offline simulation engine timeline array formatting.
- * `ExecutionStep` maps identically to exactly one physical logic "tick" inside a Playback environment.
+ * Core execution types for the step-based visualization timeline.
  */
 import type { SupportedLanguage } from "./algorithm";
 
 /**
- * Enumerated execution markers binding generic logic iterations to exact physical UI highlights.
- * Triggers distinct color transitions mapping generically to arrays, graphs, or matrices inherently.
+ * Categorizes each execution step for line-map resolution and UI state transitions.
  */
 export type StepType =
   | "initialize"
@@ -60,13 +58,13 @@ export type StepType =
   | "pop-call"
   | "complete";
 
-/** Points back to the raw source Code strings highlighting the matching Line Numbers exactly */
+/** Maps a language to the source lines highlighted for this step. */
 export interface LineHighlight {
   language: SupportedLanguage;
   lines: number[];
 }
 
-/** Live accumulating meta trackers displayed actively underneath the visual code panels */
+/** Cumulative operation counts displayed in the metrics panel. */
 export interface StepMetrics {
   comparisons: number;
   swaps: number;
@@ -77,31 +75,22 @@ export interface StepMetrics {
 }
 
 /**
- * A universally atomic frozen clone of memory variables representing a specific discrete algorithmic sequence.
- *
- * A 50-step algorithm maps to exactly 50 ExecutionStep clones sitting inside an array,
- * decoupling DOM visualization bounds completely from runtime CPU limitations.
+ * Immutable snapshot of one algorithm tick, enabling bidirectional playback scrubbing.
  */
 export interface ExecutionStep {
-  /** Order in the global Playback timeline array (e.g., 0 to N-1) */
   index: number;
   type: StepType;
-  /** Verbose description natively piped to the Explanation HUD */
+  /** Human-readable description shown in the explanation panel. */
   description: string;
   highlightedLines: LineHighlight[];
-  /** Frozen primitive map tracking localized runtime constraints purely for debug HUD output */
+  /** Snapshot of runtime variables at this step. */
   variables: Record<string, unknown>;
-  /**
-   * Fully localized cloned payload tracking graph, list, and matrix bounds inherently.
-   * Allows bidirectional scrubbing (Reverse or Forward) safely because state is purely static memory here!
-   */
+  /** Visual state consumed by the visualizer for this step. */
   visualState: VisualState;
   metrics: StepMetrics;
 }
 
-/**
- * Discriminated union identifying the fundamental canvas structural rendering topology natively required by the step configuration.
- */
+/** Discriminated union of all visualization types. */
 export type VisualState =
   | ArrayVisualState
   | GraphVisualState
@@ -138,10 +127,12 @@ export interface ArrayElement {
 export interface ArrayVisualState {
   kind: "array";
   elements: ArrayElement[];
-  /** Map strings directly indicating sliding indices natively overlayed directly on Array cells */
   pointers: Record<string, number>;
-  /** Dual tracking tuple dictating Sliding Window algorithmic sub-sets specifically */
   windowRange?: [number, number];
+  /** Optional secondary array for dual-array algorithms (prefix sum, merge, count) */
+  secondaryElements?: ArrayElement[];
+  /** Label for the secondary array row (e.g., "Prefix Sum", "Count Array") */
+  secondaryLabel?: string;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -154,7 +145,7 @@ export interface GraphNode {
   id: string;
   label: string;
   state: GraphNodeState;
-  /** Explicit relative rendering coordinates required for exact native SVG visualization spacing */
+  /** Relative coordinates for SVG layout. */
   position: { x: number; y: number };
 }
 
@@ -187,7 +178,7 @@ export interface GridCell {
   col: number;
   type: GridCellType;
   state: GridCellState;
-  // A* heuristics
+  /** Present only during A* — g(actual), h(heuristic), f(total) path costs */
   gCost?: number;
   hCost?: number;
   fCost?: number;
@@ -195,7 +186,6 @@ export interface GridCell {
 
 export interface GridVisualState {
   kind: "grid";
-  // Tuple Matrix defining precise row and column limits mapped natively
   cells: GridCell[][];
   startPosition: [number, number];
   endPosition: [number, number];

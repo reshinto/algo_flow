@@ -190,22 +190,22 @@ export function generateMyAlgorithmSteps(input: number[]): ExecutionStep[] {
 
 #### Available Trackers
 
-| Category            | Tracker              | Key Methods                                                            |
-| ------------------- | -------------------- | ---------------------------------------------------------------------- |
-| Sorting             | `SortingTracker`     | `initialize`, `compare`, `swap`, `markSorted`, `complete`              |
-| Searching           | `SearchingTracker`   | `initialize`, `check`, `narrowRange`, `found`, `notFound`, `complete`  |
-| Graph               | `GraphTracker`       | `initialize`, `visit`, `enqueue`, `dequeue`, `complete`                |
-| Pathfinding         | `PathfindingTracker` | `initialize`, `visit`, `updateDistance`, `reconstructPath`, `complete` |
-| Dynamic Programming | `DPTracker`          | `initialize`, `compute`, `lookup`, `complete`                          |
-| Arrays              | `ArrayTracker`       | `initialize`, `slideWindow`, `updateMax`, `complete`                   |
-| Trees               | `TreeTracker`        | `initialize`, `visit`, `traverse`, `complete`                          |
-| Linked Lists        | `LinkedListTracker`  | `initialize`, `traverse`, `reverse`, `complete`                        |
-| Heaps               | `HeapTracker`        | `initialize`, `compare`, `swap`, `siftDown`, `complete`                |
-| Stacks & Queues     | `StackQueueTracker`  | `initialize`, `push`, `pop`, `check`, `complete`                       |
-| Hash Maps           | `HashMapTracker`     | `initialize`, `insert`, `lookup`, `found`, `complete`                  |
-| Strings             | `StringTracker`      | `initialize`, `compare`, `match`, `buildTable`, `complete`             |
-| Matrices            | `MatrixTracker`      | `initialize`, `visit`, `collect`, `updateBounds`, `complete`           |
-| Sets                | `SetTracker`         | `initialize`, `insert`, `check`, `found`, `complete`                   |
+| Category            | Tracker              | Key Methods                                                                                                                                                                            |
+| ------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sorting             | `SortingTracker`     | `initialize`, `compare`, `swap`, `markSorted`, `complete`                                                                                                                              |
+| Searching           | `SearchingTracker`   | `initialize`, `check`, `narrowRange`, `found`, `notFound`, `complete`                                                                                                                  |
+| Graph               | `GraphTracker`       | `initialize`, `visit`, `enqueue`, `dequeue`, `complete`                                                                                                                                |
+| Pathfinding         | `PathfindingTracker` | `initialize`, `visit`, `updateDistance`, `reconstructPath`, `complete`                                                                                                                 |
+| Dynamic Programming | `DPTracker`          | `initialize`, `compute`, `lookup`, `complete`                                                                                                                                          |
+| Arrays              | `ArrayTracker`       | `initialize`, `moveWindow`, `expandWindow`, `shrinkWindow`, `visit`, `swap`, `compareTwo`, `markElement`, `setWindowActive`, `setSecondaryArray`, `updateSecondaryElement`, `complete` |
+| Trees               | `TreeTracker`        | `initialize`, `visit`, `traverse`, `complete`                                                                                                                                          |
+| Linked Lists        | `LinkedListTracker`  | `initialize`, `traverse`, `reverse`, `complete`                                                                                                                                        |
+| Heaps               | `HeapTracker`        | `initialize`, `compare`, `swap`, `siftDown`, `complete`                                                                                                                                |
+| Stacks & Queues     | `StackQueueTracker`  | `initialize`, `push`, `pop`, `check`, `complete`                                                                                                                                       |
+| Hash Maps           | `HashMapTracker`     | `initialize`, `insert`, `lookup`, `found`, `complete`                                                                                                                                  |
+| Strings             | `StringTracker`      | `initialize`, `compare`, `match`, `buildTable`, `complete`                                                                                                                             |
+| Matrices            | `MatrixTracker`      | `initialize`, `visit`, `collect`, `updateBounds`, `complete`                                                                                                                           |
+| Sets                | `SetTracker`         | `initialize`, `insert`, `check`, `found`, `complete`                                                                                                                                   |
 
 All trackers share `initialize`, `complete`, and `getSteps()` from `BaseTracker`. Check the tracker source in `src/trackers/` for the full method signatures and parameters.
 
