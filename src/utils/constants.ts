@@ -75,6 +75,24 @@ export const CATEGORY = Object.fromEntries(
  */
 export const TECHNIQUE_LABELS: Record<string, string> = discoverTechniqueLabels();
 
+/** Maps each algorithm category to one of 6 accent CSS custom properties for pill filters and group borders */
+export const CATEGORY_ACCENT_MAP: Record<string, string> = {
+  arrays: "--color-accent-cyan",
+  sorting: "--color-accent-emerald",
+  searching: "--color-accent-blue",
+  graph: "--color-accent-violet",
+  pathfinding: "--color-accent-amber",
+  "dynamic-programming": "--color-accent-rose",
+  "hash-maps": "--color-accent-cyan",
+  heaps: "--color-accent-emerald",
+  "linked-lists": "--color-accent-blue",
+  matrices: "--color-accent-violet",
+  sets: "--color-accent-amber",
+  "stacks-queues": "--color-accent-rose",
+  strings: "--color-accent-cyan",
+  trees: "--color-accent-emerald",
+};
+
 /** Structural bounding limits enforcing that Pathfinding Grid instances render optimally on mobile/desktop without overflow */
 export const GRID_DEFAULTS = {
   rows: 15,

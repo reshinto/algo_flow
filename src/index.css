@@ -115,6 +115,14 @@ body {
   width: 3px !important;
 }
 
+/* Hide scrollbar for pill filter rows */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   *,

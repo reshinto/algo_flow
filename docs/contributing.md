@@ -347,9 +347,14 @@ registry.register(definition);
 
 ### Step 5: Register and Add Stories
 
-1. Add your algorithm's constants to `src/utils/constants.ts`. `ALGORITHM_ID` is auto-generated from directory names (e.g., `ALGORITHM_ID.MY_ALGORITHM` maps to `"my-algorithm"`). `CATEGORY` is derived from `CATEGORY_LABELS` (e.g., `CATEGORY.SORTING` maps to `"sorting"`). If adding a new category, add its display label to `CATEGORY_LABELS` first.
+1. Add your algorithm's constants to `src/utils/constants.ts`. `ALGORITHM_ID` is auto-generated from directory names (e.g., `ALGORITHM_ID.MY_ALGORITHM` maps to `"my-algorithm"`). `CATEGORY` is derived from `CATEGORY_LABELS` (e.g., `CATEGORY.SORTING` maps to `"sorting"`). If adding a new category:
+   - Add its display label to `CATEGORY_LABELS` — this automatically creates a pill in the algorithm selector's category filter row
+   - Add an entry to `CATEGORY_ACCENT_MAP` in `src/utils/constants.ts` to assign an accent color to the new category's dot and group header border
 2. Import the new algorithm in `src/algorithms/index.ts` — this triggers self-registration
 3. Add a Storybook pipeline story in the algorithm directory: `src/algorithms/<category>/<algorithm>/<Algorithm>Pipeline.stories.tsx`
+
+> [!NOTE]
+> **Technique labels are auto-discovered.** `discoverTechniqueLabels()` derives technique display labels from the directory structure at build time. Adding a new technique directory (e.g. `src/algorithms/sorting/radix/`) is enough — no manual label registration is needed.
 
 > [!NOTE]
 > Pipeline stories (end-to-end visualization stories) live with their algorithm. Component stories (e.g., `ArrayVisualizer.stories.tsx`, `Button.stories.tsx`) remain co-located with their components in `src/components/`.

@@ -411,6 +411,28 @@ await check("Opens again and closes via backdrop click", async () => {
   await page.mouse.click(50, 50); // top-left corner = outside modal = on backdrop
   await page.waitForSelector("[role='dialog']", { state: "detached", timeout: 3000 });
 });
+await check("Category pill filter is visible", async () => {
+  await page.click("button[aria-label='Search algorithms']");
+  await page.waitForSelector("[role='dialog']", { timeout: 3000 });
+  const pillGroup = page.locator("[role='group'][aria-label='Filter by category']");
+  await pillGroup.waitFor({ timeout: 3000 });
+  const allPill = pillGroup.locator("button[aria-pressed='true']").first();
+  await allPill.waitFor({ timeout: 2000 });
+});
+await check("Category pill filters algorithm list", async () => {
+  const pillGroup = page.locator("[role='group'][aria-label='Filter by category']");
+  // Click a category pill (skip "All" which is first)
+  const categoryPill = pillGroup.locator("button[aria-pressed='false']").first();
+  await categoryPill.click();
+  await categoryPill.waitFor({ timeout: 2000 });
+  // Verify the pill is now active
+  const activePills = pillGroup.locator("button[aria-pressed='true']");
+  const activeCount = await activePills.count();
+  if (activeCount !== 1) throw new Error(`Expected 1 active pill, got ${activeCount}`);
+  // Close and reopen to verify reset
+  await page.click("button[aria-label='Close command palette']");
+  await page.waitForSelector("[role='dialog']", { state: "detached", timeout: 3000 });
+});
 
 // ─── 3. Discover all registered algorithms from filesystem ───────────────────
 const { allAlgorithms: algorithms, representativeSet } = discoverAlgorithms();

@@ -16,6 +16,7 @@ storybook-static
 # Playwright
 playwright-results
 test-results
+.playwright-mcp
 
 # Environment
 .env
