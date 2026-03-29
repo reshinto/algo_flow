@@ -1,0 +1,14 @@
+// Coin Change Ways (Tabulation) — count distinct ways to make each amount using given coins
+public class CoinChangeWays {
+    public static int coinChangeWays(int amount, int[] coins) { // @step:initialize
+        int[] dpTable = new int[amount + 1]; // @step:initialize,fill-table
+        dpTable[0] = 1; // @step:fill-table
+        // Outer loop over coins — ordering ensures we count combinations, not permutations
+        for (int coin : coins) { // @step:compute-cell
+            for (int currentAmount = coin; currentAmount <= amount; currentAmount++) { // @step:compute-cell
+                dpTable[currentAmount] = dpTable[currentAmount] + dpTable[currentAmount - coin]; // @step:compute-cell,read-cache
+            }
+        }
+        return dpTable[amount]; // @step:complete
+    }
+}

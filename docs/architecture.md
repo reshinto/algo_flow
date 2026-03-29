@@ -152,20 +152,20 @@ Breakpoint values are defined in `BREAKPOINTS` (`src/utils/constants.ts`). Layou
 
 Each algorithm category has a tailored input editor rendered above the visualization:
 
-| Category            | Input Type                                                 |
-| ------------------- | ---------------------------------------------------------- |
-| Sorting             | Comma-separated array                                      |
-| Searching           | Sorted array + target value                                |
-| Arrays              | Array (+ optional params: window size, target, K, etc.)    |
-| Dynamic Programming | Target index number                                        |
-| Pathfinding         | Interactive mini-grid (click walls, drag start/end, reset) |
-| Heaps               | Comma-separated array                                      |
-| Linked Lists        | Comma-separated values                                     |
-| Stacks & Queues     | Bracket string                                             |
-| Hash Maps           | Array + target number                                      |
-| Strings             | Text string + pattern string                               |
-| Matrices            | Textarea (one row per line, comma-separated)               |
-| Sets                | Two comma-separated arrays (A and B)                       |
+| Category            | Input Type                                                                                                                                                            |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sorting             | Comma-separated array                                                                                                                                                 |
+| Searching           | Sorted array + target value                                                                                                                                           |
+| Arrays              | Array (+ optional params: window size, target, K, etc.)                                                                                                               |
+| Dynamic Programming | Generic editor auto-generated from `defaultInput` shape (number scalars, number arrays, string fields, string arrays) — no custom editor needed for new DP algorithms |
+| Pathfinding         | Interactive mini-grid (click walls, drag start/end, reset)                                                                                                            |
+| Heaps               | Comma-separated array                                                                                                                                                 |
+| Linked Lists        | Comma-separated values                                                                                                                                                |
+| Stacks & Queues     | Bracket string                                                                                                                                                        |
+| Hash Maps           | Array + target number                                                                                                                                                 |
+| Strings             | Text string + pattern string                                                                                                                                          |
+| Matrices            | Textarea (one row per line, comma-separated)                                                                                                                          |
+| Sets                | Two comma-separated arrays (A and B)                                                                                                                                  |
 
 > [!IMPORTANT]
 > All input edits are **temporary and non-persistent**. Edits reset on algorithm switch or page reload. No localStorage, URL state, or server persistence.
@@ -203,7 +203,7 @@ src/
 │   ├── searching/           # Binary Search
 │   ├── graph/               # BFS
 │   ├── pathfinding/         # Dijkstra
-│   ├── dynamic-programming/ # Fibonacci (Tabulation + Memoization)
+│   ├── dynamic-programming/ # 32 algorithms (Fibonacci, Climbing Stairs, Coin Change, and more)
 │   ├── arrays/              # Sliding Window
 │   ├── trees/               # BST In-Order Traversal
 │   ├── linked-lists/        # Reverse Linked List

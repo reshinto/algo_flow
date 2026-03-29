@@ -2,7 +2,7 @@
 
 # Algorithm Catalog
 
-Complete listing of all 58 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
+Complete listing of all 88 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
 
 > **Prerequisites:** None — this is a reference document.
 
@@ -12,7 +12,7 @@ Complete listing of all 58 algorithms available in AlgoFlow, organized by catego
 - [Searching (1)](#searching-1-algorithm)
 - [Graph (1)](#graph-1-algorithm)
 - [Pathfinding (1)](#pathfinding-1-algorithm)
-- [Dynamic Programming (2)](#dynamic-programming-2-algorithms)
+- [Dynamic Programming (32)](#dynamic-programming-32-algorithms)
 - [Arrays (44)](#arrays-44-algorithms)
 - [Trees (1)](#trees-1-algorithm)
 - [Linked Lists (1)](#linked-lists-1-algorithm)
@@ -65,14 +65,96 @@ Algorithms that find shortest paths in grids or weighted graphs.
 
 ---
 
-## Dynamic Programming (2 algorithms)
+## Dynamic Programming (32 algorithms)
 
 Break problems into overlapping subproblems and cache results.
 
-| Algorithm               | Visualizer            | Source Directory                                            |
-| ----------------------- | --------------------- | ----------------------------------------------------------- |
-| Fibonacci (Tabulation)  | DP table cells        | `src/algorithms/dynamic-programming/fibonacci-tabulation/`  |
-| Fibonacci (Memoization) | DP table + call stack | `src/algorithms/dynamic-programming/fibonacci-memoization/` |
+### Linear Recurrence
+
+| Algorithm                     | Time Complexity | Space Complexity | Approach    |
+| ----------------------------- | --------------- | ---------------- | ----------- |
+| Fibonacci (Tabulation)        | O(n)            | O(n)             | Tabulation  |
+| Fibonacci (Memoization)       | O(n)            | O(n)             | Memoization |
+| Climbing Stairs (Tabulation)  | O(n)            | O(n)             | Tabulation  |
+| Climbing Stairs (Memoization) | O(n)            | O(n)             | Memoization |
+| Tribonacci (Tabulation)       | O(n)            | O(n)             | Tabulation  |
+| Tribonacci (Memoization)      | O(n)            | O(n)             | Memoization |
+
+### Cost Optimization
+
+| Algorithm                              | Time Complexity | Space Complexity | Approach    |
+| -------------------------------------- | --------------- | ---------------- | ----------- |
+| Min Cost Climbing Stairs (Tabulation)  | O(n)            | O(n)             | Tabulation  |
+| Min Cost Climbing Stairs (Memoization) | O(n)            | O(n)             | Memoization |
+
+### Decision (Skip/Take)
+
+| Algorithm                  | Time Complexity | Space Complexity | Approach    |
+| -------------------------- | --------------- | ---------------- | ----------- |
+| House Robber (Tabulation)  | O(n)            | O(n)             | Tabulation  |
+| House Robber (Memoization) | O(n)            | O(n)             | Memoization |
+
+### Subarray Optimization
+
+| Algorithm                                | Time Complexity | Space Complexity | Approach   |
+| ---------------------------------------- | --------------- | ---------------- | ---------- |
+| Maximum Subarray — Kadane's (Tabulation) | O(n)            | O(n)             | Tabulation |
+
+### Coin/Unbounded Knapsack
+
+| Algorithm                             | Time Complexity | Space Complexity | Approach    |
+| ------------------------------------- | --------------- | ---------------- | ----------- |
+| Coin Change — Minimum (Tabulation)    | O(n × m)        | O(n)             | Tabulation  |
+| Coin Change — Minimum (Memoization)   | O(n × m)        | O(n)             | Memoization |
+| Coin Change — Count Ways (Tabulation) | O(n × m)        | O(n)             | Tabulation  |
+| Perfect Squares (Tabulation)          | O(n × √n)       | O(n)             | Tabulation  |
+| Rod Cutting (Tabulation)              | O(n²)           | O(n)             | Tabulation  |
+
+### String DP
+
+| Algorithm                 | Time Complexity | Space Complexity | Approach    |
+| ------------------------- | --------------- | ---------------- | ----------- |
+| Decode Ways (Tabulation)  | O(n)            | O(n)             | Tabulation  |
+| Decode Ways (Memoization) | O(n)            | O(n)             | Memoization |
+| Word Break (Tabulation)   | O(n²)           | O(n)             | Tabulation  |
+| Word Break (Memoization)  | O(n²)           | O(n)             | Memoization |
+
+### Number Theory
+
+| Algorithm                          | Time Complexity | Space Complexity | Approach    |
+| ---------------------------------- | --------------- | ---------------- | ----------- |
+| Integer Break (Tabulation)         | O(n²)           | O(n)             | Tabulation  |
+| Integer Break (Memoization)        | O(n²)           | O(n)             | Memoization |
+| Count Bits (Tabulation)            | O(n)            | O(n)             | Tabulation  |
+| Catalan Numbers (Tabulation)       | O(n²)           | O(n)             | Tabulation  |
+| Pascal's Triangle Row (Tabulation) | O(n²)           | O(n)             | Tabulation  |
+
+### Reachability/Jump
+
+| Algorithm                  | Time Complexity | Space Complexity | Approach   |
+| -------------------------- | --------------- | ---------------- | ---------- |
+| Can Jump (Tabulation)      | O(n²)           | O(n)             | Tabulation |
+| Minimum Jumps (Tabulation) | O(n²)           | O(n)             | Tabulation |
+
+### Subsequence
+
+| Algorithm                                          | Time Complexity | Space Complexity | Approach    |
+| -------------------------------------------------- | --------------- | ---------------- | ----------- |
+| LIS — Longest Increasing Subsequence (Tabulation)  | O(n²)           | O(n)             | Tabulation  |
+| LIS — Longest Increasing Subsequence (Memoization) | O(n²)           | O(n)             | Memoization |
+
+### Knapsack
+
+| Algorithm                               | Time Complexity | Space Complexity | Approach   |
+| --------------------------------------- | --------------- | ---------------- | ---------- |
+| Partition Equal Subset Sum (Tabulation) | O(n × sum)      | O(sum)           | Tabulation |
+| 0/1 Knapsack (Tabulation)               | O(n × W)        | O(n × W)         | Tabulation |
+
+### Grid/Path
+
+| Algorithm                 | Time Complexity | Space Complexity | Approach   |
+| ------------------------- | --------------- | ---------------- | ---------- |
+| Unique Paths (Tabulation) | O(m × n)        | O(m × n)         | Tabulation |
 
 ---
 

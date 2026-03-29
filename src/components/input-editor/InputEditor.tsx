@@ -1,5 +1,4 @@
 /** Dispatches to category-specific input editors based on the current algorithm's category. */
-import { useState } from "react";
 import { useAppStore } from "@/store";
 import { CATEGORY } from "@/utils/constants";
 
@@ -36,13 +35,7 @@ export default function InputEditor() {
       return renderArraysEditor(definition.meta.id, input, setInput);
 
     case CATEGORY.DYNAMIC_PROGRAMMING:
-      return (
-        <DPInputEditor
-          key={(input as { targetIndex: number }).targetIndex}
-          input={input as { targetIndex: number }}
-          onChange={setInput}
-        />
-      );
+      return renderDPEditor(input, setInput);
 
     case CATEGORY.PATHFINDING:
       /* Grid editing is handled directly in the GridVisualizer component */
@@ -494,35 +487,107 @@ function TwoSumInputEditor({
   );
 }
 
-function DPInputEditor({
-  input,
-  onChange,
-}: {
-  input: { targetIndex: number };
-  onChange: (value: unknown) => void;
-}) {
-  const [localValue, setLocalValue] = useState(String(input.targetIndex));
+/**
+ * Generic DP-category input editor that introspects the input shape
+ * and renders appropriate controls for each field automatically.
+ * Handles: number scalars, number arrays, string fields, and string arrays.
+ */
+function renderDPEditor(input: unknown, setInput: (value: unknown) => void) {
+  const inputRecord = input as Record<string, unknown>;
+  const keys = Object.keys(inputRecord);
+
+  const numberArrayFields = keys.filter(
+    (key) =>
+      Array.isArray(inputRecord[key]) &&
+      (inputRecord[key] as unknown[]).length > 0 &&
+      typeof (inputRecord[key] as unknown[])[0] === "number",
+  );
+  const stringArrayFields = keys.filter(
+    (key) =>
+      Array.isArray(inputRecord[key]) &&
+      (inputRecord[key] as unknown[]).length > 0 &&
+      typeof (inputRecord[key] as unknown[])[0] === "string",
+  );
+  const scalarFields = keys.filter((key) => typeof inputRecord[key] === "number");
+  const stringFields = keys.filter(
+    (key) => typeof inputRecord[key] === "string" && !Array.isArray(inputRecord[key]),
+  );
 
   return (
-    <div className="flex items-center gap-2 border-b border-[var(--color-border-default)] px-3 py-2">
-      <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">
-        Compute F(n), n =
-      </label>
-      <input
-        type="number"
-        min={0}
-        max={30}
-        value={localValue}
-        onChange={(event) => {
-          setLocalValue(event.target.value);
-          if (event.target.value === "") return;
-          const targetIndex = parseInt(event.target.value, 10);
-          if (!isNaN(targetIndex) && targetIndex >= 0 && targetIndex <= 30) {
-            onChange({ targetIndex });
-          }
-        }}
-        className="w-16 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
-      />
+    <div className="flex flex-col gap-2 border-b border-[var(--color-border-default)] px-3 py-2">
+      {scalarFields.map((field) => (
+        <div key={field} className="flex items-center gap-2">
+          <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">
+            {fieldToLabel(field)}:
+          </label>
+          <input
+            type="number"
+            value={inputRecord[field] as number}
+            onChange={(event) => {
+              const value = parseInt(event.target.value, 10);
+              if (!isNaN(value)) {
+                setInput({ ...inputRecord, [field]: value });
+              }
+            }}
+            className="w-20 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+          />
+        </div>
+      ))}
+      {numberArrayFields.map((field) => (
+        <div key={field} className="flex items-center gap-2">
+          <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">
+            {fieldToLabel(field)}:
+          </label>
+          <input
+            type="text"
+            value={(inputRecord[field] as number[]).join(", ")}
+            onChange={(event) => {
+              const parsed = event.target.value
+                .split(",")
+                .map((str) => parseInt(str.trim(), 10))
+                .filter((num) => !isNaN(num));
+              if (parsed.length > 0) {
+                setInput({ ...inputRecord, [field]: parsed });
+              }
+            }}
+            className="min-w-0 flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+          />
+        </div>
+      ))}
+      {stringFields.map((field) => (
+        <div key={field} className="flex items-center gap-2">
+          <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">
+            {fieldToLabel(field)}:
+          </label>
+          <input
+            type="text"
+            value={inputRecord[field] as string}
+            onChange={(event) => setInput({ ...inputRecord, [field]: event.target.value })}
+            className="min-w-0 flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+          />
+        </div>
+      ))}
+      {stringArrayFields.map((field) => (
+        <div key={field} className="flex items-center gap-2">
+          <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">
+            {fieldToLabel(field)}:
+          </label>
+          <input
+            type="text"
+            value={(inputRecord[field] as string[]).join(", ")}
+            onChange={(event) => {
+              const parsed = event.target.value
+                .split(",")
+                .map((str) => str.trim())
+                .filter((str) => str.length > 0);
+              if (parsed.length > 0) {
+                setInput({ ...inputRecord, [field]: parsed });
+              }
+            }}
+            className="min-w-0 flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
+          />
+        </div>
+      ))}
     </div>
   );
 }

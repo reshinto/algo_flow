@@ -264,6 +264,12 @@ export function generateMyAlgorithmSteps(input: number[]): ExecutionStep[] {
 | Matrices            | `MatrixTracker`      | `initialize`, `visit`, `collect`, `updateBounds`, `complete`                                                                                                                           |
 | Sets                | `SetTracker`         | `initialize`, `insert`, `check`, `found`, `complete`                                                                                                                                   |
 
+> [!NOTE]
+> **DPTracker constructor:** `new DPTracker(tableSize, lineMap, labelFn?)` — the optional `labelFn` parameter controls how table cell indices are displayed in step descriptions and the variables panel. It defaults to `` (index) => `F(${index})` `` for backward compatibility (Fibonacci-style labels). New algorithms should pass a custom label function: e.g. `` (index) => `S(${index})` `` for Climbing Stairs, `` (index) => `$${index}` `` for Coin Change. Passing `labelFn` avoids generic "F(n)" labels appearing in algorithms where that notation is meaningless.
+
+> [!NOTE]
+> **Generic DP input editor:** The `dynamic-programming` category uses a shared `renderDPEditor()` function instead of per-algorithm input editors. It introspects the algorithm's `defaultInput` shape and auto-generates controls for number scalars, number arrays, string fields, and string arrays. You do not need to write a custom input editor for new DP algorithms — set a well-typed `defaultInput` in your `AlgorithmDefinition` and the editor is generated automatically. You also do not need to add a DP algorithm to the `inputTests` object in `e2e/algoflow_e2e.mjs` unless it has input fields that require custom validation.
+
 All trackers share `initialize`, `complete`, and `getSteps()` from `BaseTracker`. Check the tracker source in `src/trackers/` for the full method signatures and parameters.
 
 ### Step 3: Write the Educational Content

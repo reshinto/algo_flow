@@ -19,6 +19,9 @@ A plain-language reference for the terms and concepts you will encounter while w
   - [LineMap](#linemap)
   - [StepType](#steptype)
   - [Playback](#playback)
+  - [Tabulation](#tabulation)
+  - [Memoization](#memoization)
+  - [1D Space Optimization](#1d-space-optimization)
 - [Type System](#type-system)
   - [AlgorithmMeta](#algorithmmeta)
   - [SupportedLanguage](#supportedlanguage)
@@ -165,6 +168,33 @@ Not a type — a runtime concept. After `generateSteps()` produces the full `Exe
 
 **Managed by:** the `playback` slice of `AppStore` (`src/store/`).
 **Used by:** playback controls (play, pause, step, speed, reset), the Code Panel, all Visualizer components, and the variables/metrics panels.
+
+---
+
+### Tabulation
+
+A bottom-up dynamic programming approach that fills a table iteratively starting from base cases. Each cell is computed exactly once in a predetermined order, so no recursion or call-stack overhead is involved. In AlgoFlow, tabulation algorithms use `DPTracker.compute()` to record each cell fill as a distinct `ExecutionStep`, producing a left-to-right sweep across the DP table visualizer.
+
+**Contrasts with:** [Memoization](#memoization) (top-down, recursive).
+**Example algorithms:** Fibonacci (tabulation variant), Climbing Stairs, Coin Change.
+
+---
+
+### Memoization
+
+A top-down dynamic programming approach that solves problems recursively and caches the result of each unique subproblem on first computation. Subsequent calls for the same subproblem return the cached value immediately (a cache hit). In AlgoFlow, memoization algorithms use `DPTracker.lookup()` to record cache reads and `DPTracker.compute()` to record cache writes, so learners can distinguish first-time computation from cache hits in the step-by-step playback.
+
+**Contrasts with:** [Tabulation](#tabulation) (bottom-up, iterative).
+**Example algorithms:** Fibonacci (memoization variant).
+
+---
+
+### 1D Space Optimization
+
+A DP optimization that reduces a 2D table (where each row depends only on the previous row) to a single reusable array, also called a rolling array. The array is updated in-place on each pass, keeping memory usage at O(n) rather than O(n²). When a DP algorithm uses this technique, the `DPTracker` is constructed with `tableSize = n` (the 1D length) and each outer-loop iteration overwrites cells in place — the DP table visualizer shows the current row state rather than the full 2D grid.
+
+**See also:** [Tabulation](#tabulation).
+**Example algorithms:** 0/1 Knapsack (space-optimized variant), Longest Common Subsequence (space-optimized).
 
 ---
 
