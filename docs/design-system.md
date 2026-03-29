@@ -10,6 +10,7 @@ AlgoFlow's visual language: colors, typography, spacing, layout breakpoints, and
 
 - [Color Palette](#color-palette)
 - [Visualization State Colors](#visualization-state-colors)
+- [Category Accent Map](#category-accent-map)
 - [Typography](#typography)
 - [Breakpoints & Layout](#breakpoints--layout)
 - [Component Patterns](#component-patterns)
@@ -81,6 +82,31 @@ All defined in `src/index.css` under the `@theme` block.
 
 ---
 
+## Category Accent Map
+
+`CATEGORY_ACCENT_MAP` in `src/utils/constants.ts` maps each algorithm category to one of the 6 accent CSS custom properties. This drives the color-coded dot in the header search bar and the accent left border on category headers in the algorithm selector modal.
+
+| Category              | Accent Token             | Color   |
+| --------------------- | ------------------------ | ------- |
+| `sorting`             | `--color-accent-cyan`    | Cyan    |
+| `searching`           | `--color-accent-emerald` | Emerald |
+| `graph`               | `--color-accent-violet`  | Violet  |
+| `pathfinding`         | `--color-accent-amber`   | Amber   |
+| `dynamic-programming` | `--color-accent-rose`    | Rose    |
+| `arrays`              | `--color-accent-blue`    | Blue    |
+| `trees`               | `--color-accent-emerald` | Emerald |
+| `linked-lists`        | `--color-accent-cyan`    | Cyan    |
+| `heaps`               | `--color-accent-amber`   | Amber   |
+| `stacks-queues`       | `--color-accent-rose`    | Rose    |
+| `hash-maps`           | `--color-accent-violet`  | Violet  |
+| `strings`             | `--color-accent-blue`    | Blue    |
+| `matrices`            | `--color-accent-cyan`    | Cyan    |
+| `sets`                | `--color-accent-emerald` | Emerald |
+
+When adding a new category, add an entry to `CATEGORY_ACCENT_MAP` to assign its accent color.
+
+---
+
 ## Typography
 
 | Token         | Value                                                        | Usage                             |
@@ -116,6 +142,31 @@ Breakpoint values are defined in `BREAKPOINTS` (`src/utils/constants.ts`). Layou
 - **Badge** — Status indicators with color variants
 - **IconButton** — Icon-only button with `aria-label` required
 - **Select** — Dropdown selection with consistent styling
+- **CategoryPill** — Horizontally scrollable filter pill used in the algorithm selector modal. Renders one pill per category plus an "All" pill. Active pill uses the category's accent color from `CATEGORY_ACCENT_MAP`; inactive pills use `surface-tertiary`. Accepts `category`, `isActive`, and `onClick` props.
+
+### Header Search Bar
+
+The header algorithm selector trigger is a two-line layout:
+
+1. **Accent dot** — A small filled circle colored via the active algorithm's `CATEGORY_ACCENT_MAP` entry (`var(--color-accent-*)`)
+2. **Breadcrumb** — Category › Technique rendered at `text-xs font-normal text-secondary`
+3. **Algorithm name** — Rendered at `text-sm font-semibold text-primary`
+
+### Algorithm Selector Modal
+
+The modal uses a two-level group hierarchy:
+
+- **Category pill filter row** — horizontally scrollable (`overflow-x-auto scrollbar-none`) row of `CategoryPill` components above the algorithm list; filters the list to the selected category
+- **Category headers** — bold label with an accent-colored left border (`border-l-2`, color from `CATEGORY_ACCENT_MAP`)
+- **Technique sub-headers** — indented, rendered in `text-secondary` beneath their category header
+
+### CSS Utilities
+
+| Class             | Definition                                                        | Usage                                                      |
+| ----------------- | ----------------------------------------------------------------- | ---------------------------------------------------------- |
+| `.scrollbar-none` | `scrollbar-width: none` + `::-webkit-scrollbar { display: none }` | Hides scrollbar on pill filter row and overflow containers |
+
+Defined in `src/index.css`.
 
 ### Design Rules
 

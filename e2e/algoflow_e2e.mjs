@@ -309,8 +309,9 @@ async function testKeyboard(algoName) {
 // ── Algorithm discovery ──────────────────────────────────────────────────────
 
 /**
- * Discover algorithms from the filesystem. Picks the first algorithm per
- * category as a representative for full UI testing. The rest get smoke tests.
+ * Discover algorithms from the filesystem. Recursively traverses category
+ * directories to find algorithm index.ts files at any nesting depth.
+ * Picks the first algorithm per category as a representative for full UI testing.
  */
 function discoverAlgorithms() {
   const algorithmsDir = path.join(process.cwd(), "src/algorithms");
@@ -323,26 +324,33 @@ function discoverAlgorithms() {
 
   for (const category of categories) {
     const categoryDir = path.join(algorithmsDir, category);
-    const algoDirs = fs
-      .readdirSync(categoryDir)
-      .filter((entry) => fs.statSync(path.join(categoryDir, entry)).isDirectory());
     let firstInCategory = true;
 
-    for (const algo of algoDirs) {
-      const indexFile = path.join(categoryDir, algo, "index.ts");
-      if (fs.existsSync(indexFile)) {
-        const content = fs.readFileSync(indexFile, "utf-8");
-        const nameMatch = content.match(/name:\s*"([^"]+)"/);
-        if (nameMatch) {
-          const name = nameMatch[1];
-          allAlgorithms.push(name);
-          if (firstInCategory) {
-            representativeSet.add(name);
-            firstInCategory = false;
+    function walkDir(dir) {
+      const entries = fs.readdirSync(dir).sort();
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry);
+        if (!fs.statSync(fullPath).isDirectory()) continue;
+
+        const indexFile = path.join(fullPath, "index.ts");
+        if (fs.existsSync(indexFile)) {
+          const content = fs.readFileSync(indexFile, "utf-8");
+          const nameMatch = content.match(/name:\s*"([^"]+)"/);
+          if (nameMatch) {
+            const name = nameMatch[1];
+            allAlgorithms.push(name);
+            if (firstInCategory) {
+              representativeSet.add(name);
+              firstInCategory = false;
+            }
           }
+        } else {
+          walkDir(fullPath);
         }
       }
     }
+
+    walkDir(categoryDir);
   }
   return { allAlgorithms, representativeSet };
 }
@@ -401,6 +409,28 @@ await check("Opens again and closes via backdrop click", async () => {
   await page.waitForSelector("[role='dialog']", { timeout: 3000 });
   // Click the backdrop (the fixed overlay div behind the modal)
   await page.mouse.click(50, 50); // top-left corner = outside modal = on backdrop
+  await page.waitForSelector("[role='dialog']", { state: "detached", timeout: 3000 });
+});
+await check("Category pill filter is visible", async () => {
+  await page.click("button[aria-label='Search algorithms']");
+  await page.waitForSelector("[role='dialog']", { timeout: 3000 });
+  const pillGroup = page.locator("[role='group'][aria-label='Filter by category']");
+  await pillGroup.waitFor({ timeout: 3000 });
+  const allPill = pillGroup.locator("button[aria-pressed='true']").first();
+  await allPill.waitFor({ timeout: 2000 });
+});
+await check("Category pill filters algorithm list", async () => {
+  const pillGroup = page.locator("[role='group'][aria-label='Filter by category']");
+  // Click a category pill (skip "All" which is first)
+  const categoryPill = pillGroup.locator("button[aria-pressed='false']").first();
+  await categoryPill.click();
+  await categoryPill.waitFor({ timeout: 2000 });
+  // Verify the pill is now active
+  const activePills = pillGroup.locator("button[aria-pressed='true']");
+  const activeCount = await activePills.count();
+  if (activeCount !== 1) throw new Error(`Expected 1 active pill, got ${activeCount}`);
+  // Close and reopen to verify reset
+  await page.click("button[aria-label='Close command palette']");
   await page.waitForSelector("[role='dialog']", { state: "detached", timeout: 3000 });
 });
 

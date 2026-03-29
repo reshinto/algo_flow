@@ -26,6 +26,10 @@ class AlgorithmRegistry {
     return this.getAll().filter((definition) => definition.meta.category === category);
   }
 
+  getByTechnique(technique: string): AlgorithmDefinition[] {
+    return this.getAll().filter((algo) => algo.meta.technique === technique);
+  }
+
   getCategories(): AlgorithmCategory[] {
     const categories = new Set<AlgorithmCategory>();
     for (const definition of this.algorithms.values()) {

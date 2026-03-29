@@ -104,6 +104,8 @@ Algorithm source files (`sources/*.ts`, `*.py`, `*.java`) support two Vite impor
 
 The `buildLineMapFromSources(algorithmId)` utility (`src/utils/source-loader.ts`) parses `@step:` markers from all language source files for a given algorithm and returns a `LineMap` mapping each step key to per-language line numbers. Step generators pass this to their tracker constructor.
 
+`discoverTechniqueLabels()` (also in `src/utils/source-loader.ts`) auto-discovers technique display labels by scanning the algorithm directory structure at build time. Technique labels are no longer hardcoded — they are derived directly from the filesystem, so adding a new technique directory automatically produces a label in the algorithm selector's two-level hierarchy without any manual registration.
+
 See the [full annotation guide](contributing.md#the-step-annotation-system) and [import conventions](contributing.md#step-1-write-the-source-files) in the contributing docs.
 
 ## State Management
@@ -152,20 +154,20 @@ Breakpoint values are defined in `BREAKPOINTS` (`src/utils/constants.ts`). Layou
 
 Each algorithm category has a tailored input editor rendered above the visualization:
 
-| Category            | Input Type                                                 |
-| ------------------- | ---------------------------------------------------------- |
-| Sorting             | Comma-separated array                                      |
-| Searching           | Sorted array + target value                                |
-| Arrays              | Array (+ optional params: window size, target, K, etc.)    |
-| Dynamic Programming | Target index number                                        |
-| Pathfinding         | Interactive mini-grid (click walls, drag start/end, reset) |
-| Heaps               | Comma-separated array                                      |
-| Linked Lists        | Comma-separated values                                     |
-| Stacks & Queues     | Bracket string                                             |
-| Hash Maps           | Array + target number                                      |
-| Strings             | Text string + pattern string                               |
-| Matrices            | Textarea (one row per line, comma-separated)               |
-| Sets                | Two comma-separated arrays (A and B)                       |
+| Category            | Input Type                                                                                                                                                            |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sorting             | Comma-separated array                                                                                                                                                 |
+| Searching           | Sorted array + target value                                                                                                                                           |
+| Arrays              | Array (+ optional params: window size, target, K, etc.)                                                                                                               |
+| Dynamic Programming | Generic editor auto-generated from `defaultInput` shape (number scalars, number arrays, string fields, string arrays) — no custom editor needed for new DP algorithms |
+| Pathfinding         | Interactive mini-grid (click walls, drag start/end, reset)                                                                                                            |
+| Heaps               | Comma-separated array                                                                                                                                                 |
+| Linked Lists        | Comma-separated values                                                                                                                                                |
+| Stacks & Queues     | Bracket string                                                                                                                                                        |
+| Hash Maps           | Array + target number                                                                                                                                                 |
+| Strings             | Text string + pattern string                                                                                                                                          |
+| Matrices            | Textarea (one row per line, comma-separated)                                                                                                                          |
+| Sets                | Two comma-separated arrays (A and B)                                                                                                                                  |
 
 > [!IMPORTANT]
 > All input edits are **temporary and non-persistent**. Edits reset on algorithm switch or page reload. No localStorage, URL state, or server persistence.
@@ -199,20 +201,21 @@ e2e/                        # E2E browser tests (Playwright)
 docs/                       # Documentation
 src/
 ├── algorithms/              # Self-registering algorithm definitions + pipeline stories
-│   ├── sorting/             # Bubble Sort
-│   ├── searching/           # Binary Search
-│   ├── graph/               # BFS
-│   ├── pathfinding/         # Dijkstra
-│   ├── dynamic-programming/ # Fibonacci (Tabulation + Memoization)
-│   ├── arrays/              # Sliding Window
-│   ├── trees/               # BST In-Order Traversal
-│   ├── linked-lists/        # Reverse Linked List
-│   ├── heaps/               # Build Min Heap
-│   ├── stacks-queues/       # Valid Parentheses
-│   ├── hash-maps/           # Two Sum
-│   ├── strings/             # KMP Search
-│   ├── matrices/            # Spiral Order Traversal
-│   └── sets/                # Set Intersection
+│   │                        # All categories use category/technique/algorithm/ nesting
+│   ├── sorting/             # e.g. sorting/comparison/bubble-sort/
+│   ├── searching/           # e.g. searching/binary/binary-search/
+│   ├── graph/               # e.g. graph/traversal/bfs/
+│   ├── pathfinding/         # e.g. pathfinding/shortest-path/dijkstra/
+│   ├── dynamic-programming/ # 32 algorithms across 1d-linear, optimization, counting, subsequence, knapsack, string-dp
+│   ├── arrays/              # 44 algorithms across sliding-window, two-pointer, prefix-sum, and more
+│   ├── trees/               # e.g. trees/traversal/bst-inorder/
+│   ├── linked-lists/        # e.g. linked-lists/manipulation/reverse-linked-list/
+│   ├── heaps/               # e.g. heaps/construction/build-min-heap/
+│   ├── stacks-queues/       # e.g. stacks-queues/validation/valid-parentheses/
+│   ├── hash-maps/           # e.g. hash-maps/lookup/two-sum/
+│   ├── strings/             # e.g. strings/pattern-matching/kmp-search/
+│   ├── matrices/            # e.g. matrices/traversal/spiral-order/
+│   └── sets/                # e.g. sets/operations/set-intersection/
 ├── components/
 │   ├── code-panel/          # Monaco editor with language tabs
 │   ├── educational/         # Slide-over educational drawer

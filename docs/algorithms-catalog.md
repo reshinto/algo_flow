@@ -2,7 +2,7 @@
 
 # Algorithm Catalog
 
-Complete listing of all 58 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
+Complete listing of all 89 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
 
 > **Prerequisites:** None — this is a reference document.
 
@@ -12,7 +12,7 @@ Complete listing of all 58 algorithms available in AlgoFlow, organized by catego
 - [Searching (1)](#searching-1-algorithm)
 - [Graph (1)](#graph-1-algorithm)
 - [Pathfinding (1)](#pathfinding-1-algorithm)
-- [Dynamic Programming (2)](#dynamic-programming-2-algorithms)
+- [Dynamic Programming (32)](#dynamic-programming-32-algorithms)
 - [Arrays (44)](#arrays-44-algorithms)
 - [Trees (1)](#trees-1-algorithm)
 - [Linked Lists (1)](#linked-lists-1-algorithm)
@@ -27,237 +27,215 @@ Complete listing of all 58 algorithms available in AlgoFlow, organized by catego
 
 ## Sorting (1 algorithm)
 
-Algorithms that arrange elements in a specific order.
+Algorithms that arrange elements in a specific order. Algorithms live under `src/algorithms/sorting/<technique>/<algorithm>/`.
 
-| Algorithm   | Visualizer         | Source Directory                      |
-| ----------- | ------------------ | ------------------------------------- |
-| Bubble Sort | Animated bar chart | `src/algorithms/sorting/bubble-sort/` |
+| Technique  | Algorithm   | Visualizer         | Source Directory                                 |
+| ---------- | ----------- | ------------------ | ------------------------------------------------ |
+| Comparison | Bubble Sort | Animated bar chart | `src/algorithms/sorting/comparison/bubble-sort/` |
 
 ---
 
 ## Searching (1 algorithm)
 
-Algorithms that find elements in data structures.
+Algorithms that find elements in data structures. Algorithms live under `src/algorithms/searching/<technique>/<algorithm>/`.
 
-| Algorithm     | Visualizer                       | Source Directory                          |
-| ------------- | -------------------------------- | ----------------------------------------- |
-| Binary Search | Bar chart with pointer narrowing | `src/algorithms/searching/binary-search/` |
+| Technique | Algorithm     | Visualizer                       | Source Directory                                 |
+| --------- | ------------- | -------------------------------- | ------------------------------------------------ |
+| Binary    | Binary Search | Bar chart with pointer narrowing | `src/algorithms/searching/binary/binary-search/` |
 
 ---
 
 ## Graph (1 algorithm)
 
-Algorithms that traverse or analyze graph structures.
+Algorithms that traverse or analyze graph structures. Algorithms live under `src/algorithms/graph/<technique>/<algorithm>/`.
 
-| Algorithm            | Visualizer            | Source Directory            |
-| -------------------- | --------------------- | --------------------------- |
-| Breadth-First Search | SVG node + edge graph | `src/algorithms/graph/bfs/` |
+| Technique | Algorithm            | Visualizer            | Source Directory                      |
+| --------- | -------------------- | --------------------- | ------------------------------------- |
+| Traversal | Breadth-First Search | SVG node + edge graph | `src/algorithms/graph/traversal/bfs/` |
 
 ---
 
 ## Pathfinding (1 algorithm)
 
-Algorithms that find shortest paths in grids or weighted graphs.
+Algorithms that find shortest paths in grids or weighted graphs. Algorithms live under `src/algorithms/pathfinding/<technique>/<algorithm>/`.
 
-| Algorithm            | Visualizer              | Source Directory                       |
-| -------------------- | ----------------------- | -------------------------------------- |
-| Dijkstra's Algorithm | CSS grid with wavefront | `src/algorithms/pathfinding/dijkstra/` |
+| Technique     | Algorithm            | Visualizer              | Source Directory                                     |
+| ------------- | -------------------- | ----------------------- | ---------------------------------------------------- |
+| Shortest Path | Dijkstra's Algorithm | CSS grid with wavefront | `src/algorithms/pathfinding/shortest-path/dijkstra/` |
 
 ---
 
-## Dynamic Programming (2 algorithms)
+## Dynamic Programming (32 algorithms)
 
-Break problems into overlapping subproblems and cache results.
+Break problems into overlapping subproblems and cache results. Algorithms live under `src/algorithms/dynamic-programming/<technique>/<algorithm>/`.
 
-| Algorithm               | Visualizer            | Source Directory                                            |
-| ----------------------- | --------------------- | ----------------------------------------------------------- |
-| Fibonacci (Tabulation)  | DP table cells        | `src/algorithms/dynamic-programming/fibonacci-tabulation/`  |
-| Fibonacci (Memoization) | DP table + call stack | `src/algorithms/dynamic-programming/fibonacci-memoization/` |
+| Technique    | Algorithm                                          | Time Complexity | Space Complexity | Approach    |
+| ------------ | -------------------------------------------------- | --------------- | ---------------- | ----------- |
+| 1D Linear    | Fibonacci (Memoization)                            | O(n)            | O(n)             | Memoization |
+| 1D Linear    | Fibonacci (Tabulation)                             | O(n)            | O(n)             | Tabulation  |
+| 1D Linear    | Climbing Stairs (Memoization)                      | O(n)            | O(n)             | Memoization |
+| 1D Linear    | Climbing Stairs (Tabulation)                       | O(n)            | O(n)             | Tabulation  |
+| 1D Linear    | Min Cost Climbing Stairs (Memoization)             | O(n)            | O(n)             | Memoization |
+| 1D Linear    | Min Cost Climbing Stairs (Tabulation)              | O(n)            | O(n)             | Tabulation  |
+| 1D Linear    | Tribonacci (Memoization)                           | O(n)            | O(n)             | Memoization |
+| 1D Linear    | Tribonacci (Tabulation)                            | O(n)            | O(n)             | Tabulation  |
+| 1D Linear    | House Robber (Memoization)                         | O(n)            | O(n)             | Memoization |
+| 1D Linear    | House Robber (Tabulation)                          | O(n)            | O(n)             | Tabulation  |
+| 1D Linear    | Count Bits (Tabulation)                            | O(n)            | O(n)             | Tabulation  |
+| 1D Linear    | Decode Ways (Memoization)                          | O(n)            | O(n)             | Memoization |
+| 1D Linear    | Decode Ways (Tabulation)                           | O(n)            | O(n)             | Tabulation  |
+| Optimization | Coin Change — Minimum (Memoization)                | O(n × m)        | O(n)             | Memoization |
+| Optimization | Coin Change — Minimum (Tabulation)                 | O(n × m)        | O(n)             | Tabulation  |
+| Optimization | Integer Break (Memoization)                        | O(n²)           | O(n)             | Memoization |
+| Optimization | Integer Break (Tabulation)                         | O(n²)           | O(n)             | Tabulation  |
+| Optimization | Perfect Squares (Tabulation)                       | O(n × √n)       | O(n)             | Tabulation  |
+| Optimization | Rod Cutting (Tabulation)                           | O(n²)           | O(n)             | Tabulation  |
+| Counting     | Coin Change — Count Ways (Tabulation)              | O(n × m)        | O(n)             | Tabulation  |
+| Counting     | Catalan Numbers (Tabulation)                       | O(n²)           | O(n)             | Tabulation  |
+| Counting     | Unique Paths (Tabulation)                          | O(m × n)        | O(m × n)         | Tabulation  |
+| Counting     | Pascal's Triangle Row (Tabulation)                 | O(n²)           | O(n)             | Tabulation  |
+| Subsequence  | LIS — Longest Increasing Subsequence (Memoization) | O(n²)           | O(n)             | Memoization |
+| Subsequence  | LIS — Longest Increasing Subsequence (Tabulation)  | O(n²)           | O(n)             | Tabulation  |
+| Subsequence  | Maximum Subarray — Kadane's (Tabulation)           | O(n)            | O(n)             | Tabulation  |
+| Subsequence  | Can Jump (Tabulation)                              | O(n²)           | O(n)             | Tabulation  |
+| Subsequence  | Minimum Jumps (Tabulation)                         | O(n²)           | O(n)             | Tabulation  |
+| Knapsack     | 0/1 Knapsack (Tabulation)                          | O(n × W)        | O(n × W)         | Tabulation  |
+| Knapsack     | Partition Equal Subset Sum (Tabulation)            | O(n × sum)      | O(sum)           | Tabulation  |
+| String DP    | Word Break (Memoization)                           | O(n²)           | O(n)             | Memoization |
+| String DP    | Word Break (Tabulation)                            | O(n²)           | O(n)             | Tabulation  |
 
 ---
 
 ## Arrays (44 algorithms)
 
-The largest category, covering a wide range of array manipulation techniques.
+The largest category, covering a wide range of array manipulation techniques. Algorithms live under `src/algorithms/arrays/<technique>/<algorithm>/`.
 
-### Two Pointers
-
-| Algorithm                     | Visualizer                                   |
-| ----------------------------- | -------------------------------------------- |
-| Move Zeros to End             | Bar chart with fast/slow pointers            |
-| Remove Duplicates (Sorted)    | Bar chart with write/read pointers           |
-| Two Sum (Sorted, Two Pointer) | Bar chart with converging pointers           |
-| Three Sum (Zero Triplets)     | Bar chart with anchor + two pointers         |
-| Four Sum                      | Bar chart with four pointers                 |
-| Container With Most Water     | Bar chart with converging pointers           |
-| Trapping Rain Water           | Bar chart with two-pointer water calculation |
-| Dutch National Flag           | Bar chart with 3-way partition pointers      |
-
-### Sliding Window (Fixed)
-
-| Algorithm                      | Visualizer                               |
-| ------------------------------ | ---------------------------------------- |
-| Sliding Window (Max Sum)       | Bar chart with window range              |
-| Sliding Window (Min Sum)       | Bar chart with window range              |
-| Count Anagram Windows          | Bar chart with frequency-matching window |
-| First Negative in Window       | Bar chart with deque-tracked negatives   |
-| Sliding Window Maximum (Deque) | Bar chart with deque-based max tracking  |
-
-### Sliding Window (Variable)
-
-| Algorithm                   | Visualizer                                   |
-| --------------------------- | -------------------------------------------- |
-| Longest K-Distinct Subarray | Bar chart with distinct-count window         |
-| Min Size Subarray Sum       | Bar chart with variable window               |
-| Subarray Product < K        | Bar chart with product-based variable window |
-| Max Consecutive Ones III    | Bar chart with zero-flip window              |
-
-### Kadane's / Subarray
-
-| Algorithm                         | Visualizer                              |
-| --------------------------------- | --------------------------------------- |
-| Kadane's Algorithm (Max Subarray) | Bar chart with extend/restart window    |
-| Minimum Subarray Sum              | Bar chart with inverted Kadane's window |
-| Max Product Subarray              | Bar chart with dual min/max tracking    |
-
-### Greedy / Stock Trading
-
-| Algorithm                      | Visualizer                              |
-| ------------------------------ | --------------------------------------- |
-| Best Time Buy/Sell Stock       | Bar chart with min-price pointer        |
-| Best Time Buy/Sell (Unlimited) | Bar chart with greedy profit highlights |
-| Boyer-Moore Voting (Majority)  | Bar chart with candidate tracking       |
-
-### Sorting & Partitioning
-
-| Algorithm                   | Visualizer                              |
-| --------------------------- | --------------------------------------- |
-| Lomuto Partition            | Bar chart with pivot + boundary pointer |
-| Quickselect (K-th Smallest) | Bar chart with partition narrowing      |
-| Rotate Array (Reversal)     | Bar chart with three-pass reversal      |
-| Rotate Array (Cyclic)       | Bar chart with cycle-following swaps    |
-| Cyclic Sort                 | Bar chart with index-placement swaps    |
-| Merge Two Sorted Arrays     | Dual bar chart (inputs + merged result) |
-| Counting Sort               | Dual bar chart (input + count array)    |
-
-### Bit Manipulation
-
-| Algorithm                 | Visualizer                                 |
-| ------------------------- | ------------------------------------------ |
-| Find Missing Number (XOR) | Bar chart with running XOR highlight       |
-| Single Number (XOR)       | Bar chart with pair-cancellation highlight |
-
-### Index Marking
-
-| Algorithm              | Visualizer                             |
-| ---------------------- | -------------------------------------- |
-| Find All Duplicates    | Bar chart with sign-negation marking   |
-| First Missing Positive | Bar chart with placement + scan phases |
-
-### Monotonic Stack
-
-| Algorithm                      | Visualizer                                     |
-| ------------------------------ | ---------------------------------------------- |
-| Next Greater Element           | Bar chart with monotonic stack resolution      |
-| Previous Smaller Element       | Bar chart with monotonic stack (left scan)     |
-| Daily Temperatures             | Bar chart with distance-based stack resolution |
-| Largest Rectangle in Histogram | Bar chart (histogram) with monotonic stack     |
-
-### Prefix / Suffix
-
-| Algorithm                       | Visualizer                             |
-| ------------------------------- | -------------------------------------- |
-| Prefix Sum (Range Query)        | Dual bar chart (original + prefix sum) |
-| Subarray Sum Equals K           | Bar chart with prefix sum + hash map   |
-| Product of Array Except Self    | Bar chart with two-pass prefix/suffix  |
-| Difference Array (Range Update) | Dual bar chart (diff array + result)   |
-| XOR Range Query                 | Dual bar chart (original + prefix XOR) |
-
-### Cycle Detection
-
-| Algorithm               | Visualizer                            |
-| ----------------------- | ------------------------------------- |
-| Floyd's Cycle Detection | Bar chart with tortoise/hare pointers |
+| Technique              | Algorithm                         | Visualizer                                     |
+| ---------------------- | --------------------------------- | ---------------------------------------------- |
+| Sliding Window         | Sliding Window (Max Sum)          | Bar chart with window range                    |
+| Sliding Window         | Sliding Window (Min Sum)          | Bar chart with window range                    |
+| Sliding Window         | Sliding Window Maximum (Deque)    | Bar chart with deque-based max tracking        |
+| Sliding Window         | Min Size Subarray Sum             | Bar chart with variable window                 |
+| Sliding Window         | Count Anagram Windows             | Bar chart with frequency-matching window       |
+| Sliding Window         | First Negative in Window          | Bar chart with deque-tracked negatives         |
+| Sliding Window         | Longest K-Distinct Subarray       | Bar chart with distinct-count window           |
+| Sliding Window         | Subarray Product < K              | Bar chart with product-based variable window   |
+| Sliding Window         | Max Consecutive Ones III          | Bar chart with zero-flip window                |
+| Sliding Window         | Minimum Subarray Sum              | Bar chart with inverted Kadane's window        |
+| Two Pointer            | Two Sum (Sorted, Two Pointer)     | Bar chart with converging pointers             |
+| Two Pointer            | Three Sum (Zero Triplets)         | Bar chart with anchor + two pointers           |
+| Two Pointer            | Four Sum                          | Bar chart with four pointers                   |
+| Two Pointer            | Container With Most Water         | Bar chart with converging pointers             |
+| Two Pointer            | Move Zeros to End                 | Bar chart with fast/slow pointers              |
+| Two Pointer            | Remove Duplicates (Sorted)        | Bar chart with write/read pointers             |
+| Two Pointer            | Merge Two Sorted Arrays           | Dual bar chart (inputs + merged result)        |
+| Prefix Sum             | Prefix Sum (Range Query)          | Dual bar chart (original + prefix sum)         |
+| Prefix Sum             | Subarray Sum Equals K             | Bar chart with prefix sum + hash map           |
+| Prefix Sum             | Difference Array (Range Update)   | Dual bar chart (diff array + result)           |
+| Prefix Sum             | XOR Range Query                   | Dual bar chart (original + prefix XOR)         |
+| Prefix Sum             | Product of Array Except Self      | Bar chart with two-pass prefix/suffix          |
+| Stack-Based            | Next Greater Element              | Bar chart with monotonic stack resolution      |
+| Stack-Based            | Previous Smaller Element          | Bar chart with monotonic stack (left scan)     |
+| Stack-Based            | Daily Temperatures                | Bar chart with distance-based stack resolution |
+| Stack-Based            | Trapping Rain Water               | Bar chart with two-pointer water calculation   |
+| Stack-Based            | Largest Rectangle in Histogram    | Bar chart (histogram) with monotonic stack     |
+| Sorting & Partitioning | Dutch National Flag               | Bar chart with 3-way partition pointers        |
+| Sorting & Partitioning | Lomuto Partition                  | Bar chart with pivot + boundary pointer        |
+| Sorting & Partitioning | Counting Sort                     | Dual bar chart (input + count array)           |
+| Sorting & Partitioning | Quickselect (K-th Smallest)       | Bar chart with partition narrowing             |
+| Cyclic Sort            | Cyclic Sort                       | Bar chart with index-placement swaps           |
+| Cyclic Sort            | Find Missing Number (XOR)         | Bar chart with running XOR highlight           |
+| Cyclic Sort            | Find All Duplicates               | Bar chart with sign-negation marking           |
+| Cyclic Sort            | First Missing Positive            | Bar chart with placement + scan phases         |
+| Kadane / Subarray      | Kadane's Algorithm (Max Subarray) | Bar chart with extend/restart window           |
+| Kadane / Subarray      | Max Product Subarray              | Bar chart with dual min/max tracking           |
+| Kadane / Subarray      | Best Time Buy/Sell Stock          | Bar chart with min-price pointer               |
+| Kadane / Subarray      | Best Time Buy/Sell (Unlimited)    | Bar chart with greedy profit highlights        |
+| Bit Manipulation       | Single Number (XOR)               | Bar chart with pair-cancellation highlight     |
+| Cycle Detection        | Floyd's Cycle Detection           | Bar chart with tortoise/hare pointers          |
+| Rotation               | Rotate Array (Reversal)           | Bar chart with three-pass reversal             |
+| Rotation               | Rotate Array (Cyclic)             | Bar chart with cycle-following swaps           |
+| Voting                 | Boyer-Moore Voting (Majority)     | Bar chart with candidate tracking              |
 
 ---
 
 ## Trees (1 algorithm)
 
-Algorithms that traverse or manipulate tree data structures.
+Algorithms that traverse or manipulate tree data structures. Algorithms live under `src/algorithms/trees/<technique>/<algorithm>/`.
 
-| Algorithm              | Visualizer                           | Source Directory                    |
-| ---------------------- | ------------------------------------ | ----------------------------------- |
-| BST In-Order Traversal | SVG binary tree with traversal order | `src/algorithms/trees/bst-inorder/` |
+| Technique | Algorithm              | Visualizer                           | Source Directory                              |
+| --------- | ---------------------- | ------------------------------------ | --------------------------------------------- |
+| Traversal | BST In-Order Traversal | SVG binary tree with traversal order | `src/algorithms/trees/traversal/bst-inorder/` |
 
 ---
 
 ## Linked Lists (1 algorithm)
 
-Algorithms that manipulate linked list nodes.
+Algorithms that manipulate linked list nodes. Algorithms live under `src/algorithms/linked-lists/<technique>/<algorithm>/`.
 
-| Algorithm           | Visualizer                            | Source Directory                                   |
-| ------------------- | ------------------------------------- | -------------------------------------------------- |
-| Reverse Linked List | SVG node chain with pointer animation | `src/algorithms/linked-lists/reverse-linked-list/` |
+| Technique    | Algorithm           | Visualizer                            | Source Directory                                                |
+| ------------ | ------------------- | ------------------------------------- | --------------------------------------------------------------- |
+| Manipulation | Reverse Linked List | SVG node chain with pointer animation | `src/algorithms/linked-lists/manipulation/reverse-linked-list/` |
 
 ---
 
 ## Heaps (1 algorithm)
 
-Algorithms involving heap/priority queue operations.
+Algorithms involving heap/priority queue operations. Algorithms live under `src/algorithms/heaps/<technique>/<algorithm>/`.
 
-| Algorithm      | Visualizer                                | Source Directory                       |
-| -------------- | ----------------------------------------- | -------------------------------------- |
-| Build Min Heap | SVG tree + array dual-view with sift-down | `src/algorithms/heaps/build-min-heap/` |
+| Technique    | Algorithm      | Visualizer                                | Source Directory                                    |
+| ------------ | -------------- | ----------------------------------------- | --------------------------------------------------- |
+| Construction | Build Min Heap | SVG tree + array dual-view with sift-down | `src/algorithms/heaps/construction/build-min-heap/` |
 
 ---
 
 ## Stacks & Queues (1 algorithm)
 
-Algorithms using stack or queue data structures.
+Algorithms using stack or queue data structures. Algorithms live under `src/algorithms/stacks-queues/<technique>/<algorithm>/`.
 
-| Algorithm         | Visualizer                                 | Source Directory                                  |
-| ----------------- | ------------------------------------------ | ------------------------------------------------- |
-| Valid Parentheses | Stack push/pop with input character states | `src/algorithms/stacks-queues/valid-parentheses/` |
+| Technique  | Algorithm         | Visualizer                                 | Source Directory                                             |
+| ---------- | ----------------- | ------------------------------------------ | ------------------------------------------------------------ |
+| Validation | Valid Parentheses | Stack push/pop with input character states | `src/algorithms/stacks-queues/validation/valid-parentheses/` |
 
 ---
 
 ## Hash Maps (1 algorithm)
 
-Algorithms leveraging hash table lookups.
+Algorithms leveraging hash table lookups. Algorithms live under `src/algorithms/hash-maps/<technique>/<algorithm>/`.
 
-| Algorithm | Visualizer                    | Source Directory                    |
-| --------- | ----------------------------- | ----------------------------------- |
-| Two Sum   | Input array + key→value table | `src/algorithms/hash-maps/two-sum/` |
+| Technique | Algorithm | Visualizer                    | Source Directory                           |
+| --------- | --------- | ----------------------------- | ------------------------------------------ |
+| Lookup    | Two Sum   | Input array + key→value table | `src/algorithms/hash-maps/lookup/two-sum/` |
 
 ---
 
 ## Strings (1 algorithm)
 
-Algorithms for string matching and manipulation.
+Algorithms for string matching and manipulation. Algorithms live under `src/algorithms/strings/<technique>/<algorithm>/`.
 
-| Algorithm  | Visualizer                           | Source Directory                     |
-| ---------- | ------------------------------------ | ------------------------------------ |
-| KMP Search | Text row, pattern row, failure table | `src/algorithms/strings/kmp-search/` |
+| Technique        | Algorithm  | Visualizer                           | Source Directory                                      |
+| ---------------- | ---------- | ------------------------------------ | ----------------------------------------------------- |
+| Pattern Matching | KMP Search | Text row, pattern row, failure table | `src/algorithms/strings/pattern-matching/kmp-search/` |
 
 ---
 
 ## Matrices (1 algorithm)
 
-Algorithms operating on 2D matrix structures.
+Algorithms operating on 2D matrix structures. Algorithms live under `src/algorithms/matrices/<technique>/<algorithm>/`.
 
-| Algorithm              | Visualizer                              | Source Directory                        |
-| ---------------------- | --------------------------------------- | --------------------------------------- |
-| Spiral Order Traversal | CSS grid with boundary shrink animation | `src/algorithms/matrices/spiral-order/` |
+| Technique | Algorithm              | Visualizer                              | Source Directory                                  |
+| --------- | ---------------------- | --------------------------------------- | ------------------------------------------------- |
+| Traversal | Spiral Order Traversal | CSS grid with boundary shrink animation | `src/algorithms/matrices/traversal/spiral-order/` |
 
 ---
 
 ## Sets (1 algorithm)
 
-Algorithms involving set operations.
+Algorithms involving set operations. Algorithms live under `src/algorithms/sets/<technique>/<algorithm>/`.
 
-| Algorithm        | Visualizer                                | Source Directory                        |
-| ---------------- | ----------------------------------------- | --------------------------------------- |
-| Set Intersection | Array A, array B, hash set, result panels | `src/algorithms/sets/set-intersection/` |
+| Technique  | Algorithm        | Visualizer                                | Source Directory                                   |
+| ---------- | ---------------- | ----------------------------------------- | -------------------------------------------------- |
+| Operations | Set Intersection | Array A, array B, hash set, result panels | `src/algorithms/sets/operations/set-intersection/` |
 
 ---
 

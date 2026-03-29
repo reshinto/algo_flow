@@ -14,13 +14,17 @@ export class DPTracker extends BaseTracker {
   private currentIndex: number = 0;
   private callStack: string[] = [];
 
-  constructor(tableSize: number, lineMap: LineMap) {
+  constructor(
+    tableSize: number,
+    lineMap: LineMap,
+    labelFn: (index: number) => string = (index) => `F(${index})`,
+  ) {
     super(lineMap);
     this.table = Array.from({ length: tableSize }, (_, cellIndex) => ({
       index: cellIndex,
       value: null,
       state: "default" as DPCellState,
-      label: `F(${cellIndex})`,
+      label: labelFn(cellIndex),
     }));
   }
 
@@ -56,7 +60,7 @@ export class DPTracker extends BaseTracker {
     cell.state = "computing";
     this.pushStep({
       type: "compute-cell",
-      description: description ?? `Compute F(${index}) = ${value}`,
+      description: description ?? `Compute ${cell.label} = ${value}`,
       variables,
       visualState: this.snapshot(),
     });
@@ -72,7 +76,7 @@ export class DPTracker extends BaseTracker {
     cell.state = "reading-cache";
     this.pushStep({
       type: "read-cache",
-      description: `Read cached value F(${index}) = ${cell.value}`,
+      description: `Read cached value ${cell.label} = ${cell.value}`,
       variables,
       visualState: this.snapshot(),
     });

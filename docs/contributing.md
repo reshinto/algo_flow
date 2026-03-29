@@ -264,6 +264,12 @@ export function generateMyAlgorithmSteps(input: number[]): ExecutionStep[] {
 | Matrices            | `MatrixTracker`      | `initialize`, `visit`, `collect`, `updateBounds`, `complete`                                                                                                                           |
 | Sets                | `SetTracker`         | `initialize`, `insert`, `check`, `found`, `complete`                                                                                                                                   |
 
+> [!NOTE]
+> **DPTracker constructor:** `new DPTracker(tableSize, lineMap, labelFn?)` — the optional `labelFn` parameter controls how table cell indices are displayed in step descriptions and the variables panel. It defaults to `` (index) => `F(${index})` `` for backward compatibility (Fibonacci-style labels). New algorithms should pass a custom label function: e.g. `` (index) => `S(${index})` `` for Climbing Stairs, `` (index) => `$${index}` `` for Coin Change. Passing `labelFn` avoids generic "F(n)" labels appearing in algorithms where that notation is meaningless.
+
+> [!NOTE]
+> **Generic DP input editor:** The `dynamic-programming` category uses a shared `renderDPEditor()` function instead of per-algorithm input editors. It introspects the algorithm's `defaultInput` shape and auto-generates controls for number scalars, number arrays, string fields, and string arrays. You do not need to write a custom input editor for new DP algorithms — set a well-typed `defaultInput` in your `AlgorithmDefinition` and the editor is generated automatically. You also do not need to add a DP algorithm to the `inputTests` object in `e2e/algoflow_e2e.mjs` unless it has input fields that require custom validation.
+
 All trackers share `initialize`, `complete`, and `getSteps()` from `BaseTracker`. Check the tracker source in `src/trackers/` for the full method signatures and parameters.
 
 ### Step 3: Write the Educational Content
@@ -341,9 +347,14 @@ registry.register(definition);
 
 ### Step 5: Register and Add Stories
 
-1. Add your algorithm's constants to `src/utils/constants.ts`. `ALGORITHM_ID` is auto-generated from directory names (e.g., `ALGORITHM_ID.MY_ALGORITHM` maps to `"my-algorithm"`). `CATEGORY` is derived from `CATEGORY_LABELS` (e.g., `CATEGORY.SORTING` maps to `"sorting"`). If adding a new category, add its display label to `CATEGORY_LABELS` first.
+1. Add your algorithm's constants to `src/utils/constants.ts`. `ALGORITHM_ID` is auto-generated from directory names (e.g., `ALGORITHM_ID.MY_ALGORITHM` maps to `"my-algorithm"`). `CATEGORY` is derived from `CATEGORY_LABELS` (e.g., `CATEGORY.SORTING` maps to `"sorting"`). If adding a new category:
+   - Add its display label to `CATEGORY_LABELS` — this automatically creates a pill in the algorithm selector's category filter row
+   - Add an entry to `CATEGORY_ACCENT_MAP` in `src/utils/constants.ts` to assign an accent color to the new category's dot and group header border
 2. Import the new algorithm in `src/algorithms/index.ts` — this triggers self-registration
 3. Add a Storybook pipeline story in the algorithm directory: `src/algorithms/<category>/<algorithm>/<Algorithm>Pipeline.stories.tsx`
+
+> [!NOTE]
+> **Technique labels are auto-discovered.** `discoverTechniqueLabels()` derives technique display labels from the directory structure at build time. Adding a new technique directory (e.g. `src/algorithms/sorting/radix/`) is enough — no manual label registration is needed.
 
 > [!NOTE]
 > Pipeline stories (end-to-end visualization stories) live with their algorithm. Component stories (e.g., `ArrayVisualizer.stories.tsx`, `Button.stories.tsx`) remain co-located with their components in `src/components/`.

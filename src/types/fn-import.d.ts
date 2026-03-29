@@ -13,6 +13,36 @@ declare module "*.ts?fn" {
   // Dynamic Programming
   export const fibonacciTabulation: (...args: any[]) => any;
   export const fibonacciMemoization: (...args: any[]) => any;
+  export const tribonacciTabulation: (...args: any[]) => any;
+  export const uniquePaths: (...args: any[]) => any;
+  export const catalanNumber: (...args: any[]) => any;
+  export const knapsack01: (...args: any[]) => any;
+  export const lisMemoization: (...args: any[]) => any;
+  export const lisLength: (...args: any[]) => any;
+  export const partitionEqualSubset: (...args: any[]) => any;
+  export const pascalsTriangleRow: (...args: any[]) => any;
+  export const rodCutting: (...args: any[]) => any;
+  export const tribonacciMemoization: (...args: any[]) => any;
+  export const wordBreakMemoization: (...args: any[]) => any;
+  export const wordBreakTabulation: (...args: any[]) => any;
+  export const canJump: (...args: any[]) => any;
+  export const climbingStairsMemoization: (...args: any[]) => any;
+  export const climbingStairsTabulation: (...args: any[]) => any;
+  export const coinChangeMinMemoization: (...args: any[]) => any;
+  export const coinChangeMinTabulation: (...args: any[]) => any;
+  export const coinChangeWays: (...args: any[]) => any;
+  export const countBits: (...args: any[]) => any;
+  export const decodeWaysMemoization: (...args: any[]) => any;
+  export const decodeWaysTabulation: (...args: any[]) => any;
+  export const houseRobberMemoization: (...args: any[]) => any;
+  export const houseRobberTabulation: (...args: any[]) => any;
+  export const integerBreakTabulation: (...args: any[]) => any;
+  export const integerBreakMemoization: (...args: any[]) => any;
+  export const maxSubarrayKadane: (...args: any[]) => any;
+  export const minCostClimbingStairsMemoization: (...args: any[]) => any;
+  export const minCostClimbingStairsTabulation: (...args: any[]) => any;
+  export const minimumJumps: (...args: any[]) => any;
+  export const perfectSquares: (...args: any[]) => any;
   // Sorting
   export const bubbleSort: (...args: any[]) => any;
   // Searching

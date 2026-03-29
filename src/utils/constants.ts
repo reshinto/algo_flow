@@ -7,7 +7,11 @@
  * to fundamental values (like breakpoints or speeds) immediately reflect everywhere without hunting for magic numbers.
  */
 import type { AlgorithmCategory, SupportedLanguage } from "@/types";
-import { discoverAlgorithmIds, discoverCategoryLabels } from "@/utils/source-loader";
+import {
+  discoverAlgorithmIds,
+  discoverCategoryLabels,
+  discoverTechniqueLabels,
+} from "@/utils/source-loader";
 
 /** Configurable velocity multipliers bound to user transport controls (0.25x -> 4.0x) */
 export const PLAYBACK_SPEEDS = [0.25, 0.5, 1, 2, 4] as const;
@@ -63,6 +67,31 @@ export const CATEGORY_LABELS: Record<string, string> = discoverCategoryLabels();
 export const CATEGORY = Object.fromEntries(
   Object.keys(CATEGORY_LABELS).map((key) => [key.toUpperCase().replaceAll("-", "_"), key]),
 ) as Record<string, AlgorithmCategory>;
+
+/**
+ * Auto-discovered technique labels from the algorithms directory structure.
+ * Adding a new `src/algorithms/<category>/<technique>/` folder automatically generates its label.
+ * Labels are Title Case versions of the directory name (e.g. "two-pointer" → "Two Pointer").
+ */
+export const TECHNIQUE_LABELS: Record<string, string> = discoverTechniqueLabels();
+
+/** Maps each algorithm category to one of 6 accent CSS custom properties for pill filters and group borders */
+export const CATEGORY_ACCENT_MAP: Record<string, string> = {
+  arrays: "--color-accent-cyan",
+  sorting: "--color-accent-emerald",
+  searching: "--color-accent-blue",
+  graph: "--color-accent-violet",
+  pathfinding: "--color-accent-amber",
+  "dynamic-programming": "--color-accent-rose",
+  "hash-maps": "--color-accent-cyan",
+  heaps: "--color-accent-emerald",
+  "linked-lists": "--color-accent-blue",
+  matrices: "--color-accent-violet",
+  sets: "--color-accent-amber",
+  "stacks-queues": "--color-accent-rose",
+  strings: "--color-accent-cyan",
+  trees: "--color-accent-emerald",
+};
 
 /** Structural bounding limits enforcing that Pathfinding Grid instances render optimally on mobile/desktop without overflow */
 export const GRID_DEFAULTS = {
