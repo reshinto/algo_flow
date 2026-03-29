@@ -309,8 +309,9 @@ async function testKeyboard(algoName) {
 // ── Algorithm discovery ──────────────────────────────────────────────────────
 
 /**
- * Discover algorithms from the filesystem. Picks the first algorithm per
- * category as a representative for full UI testing. The rest get smoke tests.
+ * Discover algorithms from the filesystem. Recursively traverses category
+ * directories to find algorithm index.ts files at any nesting depth.
+ * Picks the first algorithm per category as a representative for full UI testing.
  */
 function discoverAlgorithms() {
   const algorithmsDir = path.join(process.cwd(), "src/algorithms");
@@ -323,26 +324,33 @@ function discoverAlgorithms() {
 
   for (const category of categories) {
     const categoryDir = path.join(algorithmsDir, category);
-    const algoDirs = fs
-      .readdirSync(categoryDir)
-      .filter((entry) => fs.statSync(path.join(categoryDir, entry)).isDirectory());
     let firstInCategory = true;
 
-    for (const algo of algoDirs) {
-      const indexFile = path.join(categoryDir, algo, "index.ts");
-      if (fs.existsSync(indexFile)) {
-        const content = fs.readFileSync(indexFile, "utf-8");
-        const nameMatch = content.match(/name:\s*"([^"]+)"/);
-        if (nameMatch) {
-          const name = nameMatch[1];
-          allAlgorithms.push(name);
-          if (firstInCategory) {
-            representativeSet.add(name);
-            firstInCategory = false;
+    function walkDir(dir) {
+      const entries = fs.readdirSync(dir).sort();
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry);
+        if (!fs.statSync(fullPath).isDirectory()) continue;
+
+        const indexFile = path.join(fullPath, "index.ts");
+        if (fs.existsSync(indexFile)) {
+          const content = fs.readFileSync(indexFile, "utf-8");
+          const nameMatch = content.match(/name:\s*"([^"]+)"/);
+          if (nameMatch) {
+            const name = nameMatch[1];
+            allAlgorithms.push(name);
+            if (firstInCategory) {
+              representativeSet.add(name);
+              firstInCategory = false;
+            }
           }
+        } else {
+          walkDir(fullPath);
         }
       }
     }
+
+    walkDir(categoryDir);
   }
   return { allAlgorithms, representativeSet };
 }

@@ -37,6 +37,7 @@ export interface AlgorithmMeta {
   spaceComplexity: string;
   supportedLanguages: SupportedLanguage[];
   defaultInput: unknown;
+  technique?: string;
 }
 
 /**

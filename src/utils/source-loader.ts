@@ -14,11 +14,14 @@ import type { SupportedLanguage } from "@/types";
  * Eagerly pulls every raw algorithm display file into a giant RAM dictionary cache.
  * Uses `?raw` to demand plain-text strings instead of compiled Javascript bytecode.
  */
-const sourceModules = import.meta.glob("/src/algorithms/*/*/sources/*", {
-  query: "?raw",
-  import: "default",
-  eager: true,
-}) as Record<string, string>;
+const sourceModules = import.meta.glob(
+  ["/src/algorithms/*/*/sources/*", "/src/algorithms/*/*/*/sources/*"],
+  {
+    query: "?raw",
+    import: "default",
+    eager: true,
+  },
+) as Record<string, string>;
 
 /** Type-safe dictionary converting language keys to strict native file suffixes. */
 const LANGUAGE_EXTENSIONS: Record<SupportedLanguage, string> = {
@@ -96,6 +99,39 @@ export function discoverCategoryLabels(): Record<string, string> {
   }
 
   return categoryMap;
+}
+
+/**
+ * Auto-discovers all technique subcategory directory names from 3-level nested paths
+ * and generates human-readable labels by converting kebab-case to Title Case.
+ * Only paths with the structure `<category>/<technique>/<algorithm>/sources/*` are considered.
+ *
+ * @example
+ * // Output format:
+ * { "two-pointer": "Two Pointer", "sliding-window": "Sliding Window" }
+ */
+export function discoverTechniqueLabels(): Record<string, string> {
+  const techniqueMap: Record<string, string> = {};
+
+  for (const filePath of Object.keys(sourceModules)) {
+    const pathParts = filePath.split("/");
+    const algorithmsIndex = pathParts.indexOf("algorithms");
+    if (algorithmsIndex === -1) continue;
+
+    const sourcesIndex = pathParts.indexOf("sources");
+    if (sourcesIndex === -1) continue;
+
+    // 3-level nested: algorithms(0) / category(1) / technique(2) / algorithm(3) / sources(4)
+    const depth = sourcesIndex - algorithmsIndex;
+    if (depth !== 4) continue;
+
+    const techniqueId = pathParts[algorithmsIndex + 2];
+    if (!techniqueId || techniqueId in techniqueMap) continue;
+
+    techniqueMap[techniqueId] = kebabToTitleCase(techniqueId);
+  }
+
+  return techniqueMap;
 }
 
 /**

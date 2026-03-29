@@ -199,20 +199,21 @@ e2e/                        # E2E browser tests (Playwright)
 docs/                       # Documentation
 src/
 ├── algorithms/              # Self-registering algorithm definitions + pipeline stories
-│   ├── sorting/             # Bubble Sort
-│   ├── searching/           # Binary Search
-│   ├── graph/               # BFS
-│   ├── pathfinding/         # Dijkstra
-│   ├── dynamic-programming/ # 32 algorithms (Fibonacci, Climbing Stairs, Coin Change, and more)
-│   ├── arrays/              # Sliding Window
-│   ├── trees/               # BST In-Order Traversal
-│   ├── linked-lists/        # Reverse Linked List
-│   ├── heaps/               # Build Min Heap
-│   ├── stacks-queues/       # Valid Parentheses
-│   ├── hash-maps/           # Two Sum
-│   ├── strings/             # KMP Search
-│   ├── matrices/            # Spiral Order Traversal
-│   └── sets/                # Set Intersection
+│   │                        # All categories use category/technique/algorithm/ nesting
+│   ├── sorting/             # e.g. sorting/comparison/bubble-sort/
+│   ├── searching/           # e.g. searching/binary/binary-search/
+│   ├── graph/               # e.g. graph/traversal/bfs/
+│   ├── pathfinding/         # e.g. pathfinding/shortest-path/dijkstra/
+│   ├── dynamic-programming/ # 32 algorithms across 1d-linear, optimization, counting, subsequence, knapsack, string-dp
+│   ├── arrays/              # 44 algorithms across sliding-window, two-pointer, prefix-sum, and more
+│   ├── trees/               # e.g. trees/traversal/bst-inorder/
+│   ├── linked-lists/        # e.g. linked-lists/manipulation/reverse-linked-list/
+│   ├── heaps/               # e.g. heaps/construction/build-min-heap/
+│   ├── stacks-queues/       # e.g. stacks-queues/validation/valid-parentheses/
+│   ├── hash-maps/           # e.g. hash-maps/lookup/two-sum/
+│   ├── strings/             # e.g. strings/pattern-matching/kmp-search/
+│   ├── matrices/            # e.g. matrices/traversal/spiral-order/
+│   └── sets/                # e.g. sets/operations/set-intersection/
 ├── components/
 │   ├── code-panel/          # Monaco editor with language tabs
 │   ├── educational/         # Slide-over educational drawer

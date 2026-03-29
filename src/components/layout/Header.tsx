@@ -7,7 +7,7 @@ import { FiBookOpen, FiChevronDown, FiSun, FiMoon, FiMonitor } from "react-icons
 
 import { registry } from "@/registry";
 import { useAppStore } from "@/store";
-import { CATEGORY_LABELS } from "@/utils/constants";
+import { CATEGORY_LABELS, TECHNIQUE_LABELS } from "@/utils/constants";
 import { IconButton } from "@/components/shared";
 
 import AlgorithmSelectorModal from "./AlgorithmSelectorModal";
@@ -24,11 +24,17 @@ export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const algorithmOptions = useMemo(() => {
-    return registry.getAll().map((definition) => ({
-      value: definition.meta.id,
-      label: definition.meta.name,
-      group: CATEGORY_LABELS[definition.meta.category] ?? definition.meta.category,
-    }));
+    return registry.getAll().map((definition) => {
+      const categoryLabel = CATEGORY_LABELS[definition.meta.category] ?? definition.meta.category;
+      const techniqueLabel = definition.meta.technique
+        ? TECHNIQUE_LABELS[definition.meta.technique]
+        : undefined;
+      return {
+        value: definition.meta.id,
+        label: definition.meta.name,
+        group: techniqueLabel ? `${categoryLabel} › ${techniqueLabel}` : categoryLabel,
+      };
+    });
   }, []);
 
   const currentAlgorithmName =
