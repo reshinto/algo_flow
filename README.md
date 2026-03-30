@@ -145,9 +145,9 @@ See [docs/deployment.md](docs/deployment.md) for Docker build internals and per-
 
 ## Session Hooks
 
-The project uses 14 session hooks (`.claude/settings.json`) to enforce code quality, safety, and consistency automatically during development sessions — including branch protection, pre-commit quality gates, post-edit warnings, hardcoded-wait bans, and session-end verification.
+The project uses 12 session hooks (`.claude/settings.json`) to enforce code quality, safety, and consistency automatically during development sessions — including branch protection, pre-commit quality gates, per-language post-edit warnings, hardcoded-wait bans, plugin auto-switching by branch prefix, and a unified session-end gate.
 
-See [Development System](docs/claude-system.md#session-hooks-14) for the full hook list with descriptions.
+See [Development System](docs/claude-system.md#session-hooks-12) for the full hook list with descriptions.
 
 ## Development Plan
 

@@ -1,3 +1,9 @@
+---
+paths:
+  - "docs/**/*.md"
+  - "README.md"
+---
+
 ## Documentation Rules
 
 ### Documentation Structure

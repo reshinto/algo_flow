@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Session start hook: block working directly on main/master.
-# Forces creation of a task-related feature branch.
+# Also validates branch naming convention.
 
 set -euo pipefail
 
@@ -16,10 +16,32 @@ PROTECTED_BRANCHES="main master"
 for PROTECTED in $PROTECTED_BRANCHES; do
   if [ "$CURRENT_BRANCH" = "$PROTECTED" ]; then
     echo "BLOCKED: Currently on '$CURRENT_BRANCH'. You must create a feature branch before making changes." >&2
-    echo "Run: git checkout -b <type>/<short-description>" >&2
-    echo "Examples: feat/add-merge-sort, fix/grid-editor-drag, chore/update-deps" >&2
+    echo "Run: git checkout -b <type>/<subcategory>-<description>" >&2
+    echo "Examples: feat/ui-dashboard, fix/backend-auth, chore/claude-optimize, feat/expand-hash-maps" >&2
     exit 2
   fi
 done
+
+# Validate branch naming convention (warn, not block)
+VALID_TYPES="feat fix chore docs test refactor"
+TYPE=$(echo "$CURRENT_BRANCH" | cut -d'/' -f1)
+
+if ! echo "$CURRENT_BRANCH" | grep -q '/'; then
+  echo "WARNING: Branch '$CURRENT_BRANCH' does not follow convention: <type>/<description>" >&2
+  echo "Valid types: $VALID_TYPES" >&2
+fi
+
+VALID_TYPE=false
+for VTYPE in $VALID_TYPES; do
+  if [ "$TYPE" = "$VTYPE" ]; then
+    VALID_TYPE=true
+    break
+  fi
+done
+
+if [ "$VALID_TYPE" = "false" ] && echo "$CURRENT_BRANCH" | grep -q '/'; then
+  echo "WARNING: Unknown branch type '$TYPE' in '$CURRENT_BRANCH'" >&2
+  echo "Valid types: $VALID_TYPES" >&2
+fi
 
 echo "Branch check passed: on '$CURRENT_BRANCH'" >&2

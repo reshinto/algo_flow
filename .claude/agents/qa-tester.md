@@ -3,7 +3,7 @@ name: qa-tester
 description: Validates test coverage, runs test suites, verifies behavior of algorithms, playback, input editing, and pathfinding
 tools: [Bash, Read, Glob, Grep]
 model: sonnet
-maxTurns: 15
+maxTurns: 10
 ---
 
 # QA Tester

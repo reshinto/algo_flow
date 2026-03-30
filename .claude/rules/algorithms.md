@@ -1,3 +1,10 @@
+---
+paths:
+  - "src/algorithms/**"
+  - "src/trackers/**"
+  - "src/registry/**"
+---
+
 ## Algorithm Rules
 
 ### Required Categories and Starters

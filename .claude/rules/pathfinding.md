@@ -1,3 +1,9 @@
+---
+paths:
+  - "src/algorithms/pathfinding/**"
+  - "src/components/visualization/Grid*"
+---
+
 ## Pathfinding Rules
 
 ### Grid Editing

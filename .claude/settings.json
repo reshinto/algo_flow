@@ -2,7 +2,7 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": "Bash(git commit*|git push*|gh pr*)",
         "hooks": [
           {
             "type": "command",
@@ -13,11 +13,16 @@
             "type": "command",
             "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/block-main-branch-commits.sh",
             "timeout": 5000
-          },
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(git checkout -b*|git checkout -B*|git switch -c*|git branch *)",
+        "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/pre-commit-quality-check.sh",
-            "timeout": 120000
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/enforce-branch-naming.sh",
+            "timeout": 5000
           }
         ]
       }
@@ -37,6 +42,18 @@
             "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/post-edit-accessibility-check.sh",
             "timeout": 10000,
             "statusMessage": "Checking accessibility patterns..."
+          },
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/post-edit-python-check.sh",
+            "timeout": 10000,
+            "statusMessage": "Checking Python patterns..."
+          },
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/post-edit-java-check.sh",
+            "timeout": 10000,
+            "statusMessage": "Checking Java patterns..."
           },
           {
             "type": "command",
@@ -65,6 +82,12 @@
             "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-start-branch-check.sh",
             "timeout": 5000,
             "once": true
+          },
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/auto-plugin-mode.sh",
+            "timeout": 10000,
+            "once": true
           }
         ]
       }
@@ -74,38 +97,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-end-quality-gate.sh",
-            "timeout": 60000,
-            "once": true
-          },
-          {
-            "type": "command",
-            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-end-readme-check.sh",
-            "timeout": 10000,
-            "once": true
-          },
-          {
-            "type": "command",
-            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-end-comments-check.sh",
-            "timeout": 10000,
-            "once": true
-          },
-          {
-            "type": "command",
-            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-end-e2e-check.sh",
-            "timeout": 300000,
-            "once": true
-          },
-          {
-            "type": "command",
-            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-end-security-check.sh",
-            "timeout": 60000,
-            "once": true
-          },
-          {
-            "type": "command",
-            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-end-claude-system-check.sh",
-            "timeout": 10000,
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/session-end-unified-gate.sh",
+            "timeout": 900000,
             "once": true
           }
         ]
@@ -113,22 +106,21 @@
     ]
   },
   "enabledPlugins": {
-    "frontend-design@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true,
-    "context7@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
     "github@claude-plugins-official": true,
-    "feature-dev@claude-plugins-official": true,
-    "playwright@claude-plugins-official": true,
-    "ralph-loop@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": false,
+    "figma@claude-plugins-official": false,
+    "playground@claude-plugins-official": false,
+    "playwright@claude-plugins-official": false,
+    "security-guidance@claude-plugins-official": false,
+    "code-simplifier@claude-plugins-official": false,
     "claude-md-management@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
-    "security-guidance@claude-plugins-official": true,
-    "commit-commands@claude-plugins-official": true,
-    "figma@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true,
-    "pr-review-toolkit@claude-plugins-official": true,
-    "playground@claude-plugins-official": true
+    "ralph-loop@claude-plugins-official": false
   }
 }

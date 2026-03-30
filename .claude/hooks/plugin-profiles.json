@@ -1,0 +1,46 @@
+{
+  "core": [
+    "superpowers@claude-plugins-official",
+    "commit-commands@claude-plugins-official",
+    "context7@claude-plugins-official",
+    "github@claude-plugins-official",
+    "code-review@claude-plugins-official",
+    "pr-review-toolkit@claude-plugins-official"
+  ],
+  "branch_modes": {
+    "feat/ui-": [
+      "frontend-design@claude-plugins-official",
+      "figma@claude-plugins-official",
+      "playground@claude-plugins-official"
+    ],
+    "fix/ui-": ["frontend-design@claude-plugins-official"],
+    "feat/e2e-": ["playwright@claude-plugins-official"],
+    "fix/e2e-": ["playwright@claude-plugins-official"],
+    "feat/design-": ["frontend-design@claude-plugins-official", "figma@claude-plugins-official"],
+    "feat/preview-": [
+      "playwright@claude-plugins-official",
+      "frontend-design@claude-plugins-official"
+    ],
+    "fix/preview-": [
+      "playwright@claude-plugins-official",
+      "frontend-design@claude-plugins-official"
+    ],
+    "feat/backend-": ["security-guidance@claude-plugins-official"],
+    "fix/backend-": ["security-guidance@claude-plugins-official"],
+    "feat/api-": ["security-guidance@claude-plugins-official"],
+    "fix/api-": ["security-guidance@claude-plugins-official"],
+    "feat/refactor-": ["code-simplifier@claude-plugins-official"],
+    "refactor/": ["code-simplifier@claude-plugins-official"],
+    "chore/claude-": [
+      "claude-md-management@claude-plugins-official",
+      "skill-creator@claude-plugins-official",
+      "claude-code-setup@claude-plugins-official"
+    ],
+    "chore/skill-": ["skill-creator@claude-plugins-official"],
+    "chore/meta-": [
+      "claude-md-management@claude-plugins-official",
+      "claude-code-setup@claude-plugins-official",
+      "ralph-loop@claude-plugins-official"
+    ]
+  }
+}

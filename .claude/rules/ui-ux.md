@@ -1,3 +1,9 @@
+---
+paths:
+  - "src/components/**/*.tsx"
+  - "src/components/**/*.css"
+---
+
 ## UI/UX Rules
 
 ### Theme
