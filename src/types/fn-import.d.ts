@@ -133,6 +133,16 @@ declare module "*.ts?fn" {
   export const validParentheses: (...args: any[]) => any;
   // Hash Maps
   export const twoSum: (...args: any[]) => any;
+  export const romanToInteger: (...args: any[]) => any;
+  export const groupAnagrams: (...args: any[]) => any;
+  export const longestConsecutiveSequence: (...args: any[]) => any;
+  export const topKFrequentElements: (...args: any[]) => any;
+  export const sortCharactersByFrequency: (...args: any[]) => any;
+  export const findAllAnagrams: (...args: any[]) => any;
+  export const fourSumII: (...args: any[]) => any;
+  export const wordPattern: (...args: any[]) => any;
+  export const happyNumber: (...args: any[]) => any;
+  export const jewelsAndStones: (...args: any[]) => any;
   // Strings
   export const kmpSearch: (...args: any[]) => any;
   // Matrices

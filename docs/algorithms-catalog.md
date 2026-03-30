@@ -2,7 +2,7 @@
 
 # Algorithm Catalog
 
-Complete listing of all 116 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
+Complete listing of all 143 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
 
 > **Prerequisites:** None — this is a reference document.
 
@@ -18,7 +18,7 @@ Complete listing of all 116 algorithms available in AlgoFlow, organized by categ
 - [Linked Lists (1)](#linked-lists-1-algorithm)
 - [Heaps (1)](#heaps-1-algorithm)
 - [Stacks & Queues (1)](#stacks--queues-1-algorithm)
-- [Hash Maps (1)](#hash-maps-1-algorithm)
+- [Hash Maps (28)](#hash-maps-28-algorithms)
 - [Strings (1)](#strings-1-algorithm)
 - [Matrices (1)](#matrices-1-algorithm)
 - [Sets (1)](#sets-1-algorithm)
@@ -273,13 +273,40 @@ Algorithms using stack or queue data structures. Algorithms live under `src/algo
 
 ---
 
-## Hash Maps (1 algorithm)
+## Hash Maps (28 algorithms)
 
-Algorithms leveraging hash table lookups. Algorithms live under `src/algorithms/hash-maps/<technique>/<algorithm>/`.
+Algorithms leveraging hash table lookups, frequency counting, grouping, tracking, prefix sums, mapping, and sliding windows. Algorithms live under `src/algorithms/hash-maps/<technique>/<algorithm>/`.
 
-| Technique | Algorithm | Visualizer                    | Source Directory                           |
-| --------- | --------- | ----------------------------- | ------------------------------------------ |
-| Lookup    | Two Sum   | Input array + key→value table | `src/algorithms/hash-maps/lookup/two-sum/` |
+| Technique      | Algorithm                           | Visualizer                                   | Source Directory                                                               |
+| -------------- | ----------------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------ |
+| Lookup         | Two Sum                             | Input array + key→value table                | `src/algorithms/hash-maps/lookup/two-sum/`                                     |
+| Lookup         | Contains Duplicate                  | Input array + hash set                       | `src/algorithms/hash-maps/lookup/contains-duplicate/`                          |
+| Lookup         | Contains Duplicate II               | Input array + value→index map                | `src/algorithms/hash-maps/lookup/contains-duplicate-ii/`                       |
+| Lookup         | Four Sum II                         | Dual-phase sum map + checking                | `src/algorithms/hash-maps/lookup/four-sum-ii/`                                 |
+| Counting       | First Unique Character              | Char array + frequency map                   | `src/algorithms/hash-maps/counting/first-unique-character/`                    |
+| Counting       | Valid Anagram                       | Dual input + frequency map                   | `src/algorithms/hash-maps/counting/valid-anagram/`                             |
+| Counting       | Ransom Note                         | Dual input + frequency map                   | `src/algorithms/hash-maps/counting/ransom-note/`                               |
+| Counting       | Majority Element                    | Input array + frequency map                  | `src/algorithms/hash-maps/counting/majority-element/`                          |
+| Counting       | Find the Difference                 | Dual input + frequency map                   | `src/algorithms/hash-maps/counting/find-the-difference/`                       |
+| Counting       | N-Repeated Element                  | Input array + frequency map                  | `src/algorithms/hash-maps/counting/n-repeated-element/`                        |
+| Counting       | Number of Good Pairs                | Input array + frequency map                  | `src/algorithms/hash-maps/counting/number-of-good-pairs/`                      |
+| Frequency      | Top K Frequent Elements             | Input array + frequency map + highlighting   | `src/algorithms/hash-maps/frequency/top-k-frequent-elements/`                  |
+| Frequency      | Sort Characters by Frequency        | Char array + frequency map                   | `src/algorithms/hash-maps/frequency/sort-characters-by-frequency/`             |
+| Frequency      | Find All Anagrams                   | Sliding window + frequency comparison        | `src/algorithms/hash-maps/frequency/find-all-anagrams/`                        |
+| Grouping       | Group Anagrams                      | Word array + sorted-key map + group result   | `src/algorithms/hash-maps/grouping/group-anagrams/`                            |
+| Grouping       | Word Pattern                        | Dual input + bidirectional map               | `src/algorithms/hash-maps/grouping/word-pattern/`                              |
+| Grouping       | Isomorphic Strings                  | Dual input + bidirectional char map          | `src/algorithms/hash-maps/grouping/isomorphic-strings/`                        |
+| Tracking       | Longest Consecutive Sequence        | Input array + hash set + sequence scan       | `src/algorithms/hash-maps/tracking/longest-consecutive-sequence/`              |
+| Tracking       | Happy Number                        | Dynamic input + seen set + cycle detection   | `src/algorithms/hash-maps/tracking/happy-number/`                              |
+| Tracking       | Jewels and Stones                   | Dual input + jewel set + stone counting      | `src/algorithms/hash-maps/tracking/jewels-and-stones/`                         |
+| Tracking       | Intersection of Two Arrays          | Dual input + set intersection                | `src/algorithms/hash-maps/tracking/intersection-of-two-arrays/`                |
+| Tracking       | Find All Duplicates                 | Input array + seen set                       | `src/algorithms/hash-maps/tracking/find-all-duplicates/`                       |
+| Tracking       | Missing Number                      | Input array + number set + range check       | `src/algorithms/hash-maps/tracking/missing-number/`                            |
+| Prefix Sum     | Subarray Sum Equals K               | Input array + prefix sum map                 | `src/algorithms/hash-maps/prefix-sum/subarray-sum-equals-k/`                   |
+| Prefix Sum     | Contiguous Array                    | Binary input + prefix sum map                | `src/algorithms/hash-maps/prefix-sum/contiguous-array/`                        |
+| Mapping        | Roman to Integer                    | Char input + symbol→value map                | `src/algorithms/hash-maps/mapping/roman-to-integer/`                           |
+| Mapping        | Integer to Roman                    | Value→symbol map + greedy subtraction        | `src/algorithms/hash-maps/mapping/integer-to-roman/`                           |
+| Sliding Window | Longest Substring Without Repeating | Char input + char→index map + window overlay | `src/algorithms/hash-maps/sliding-window/longest-substring-without-repeating/` |
 
 ---
 

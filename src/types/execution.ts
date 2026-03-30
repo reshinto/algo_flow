@@ -75,6 +75,13 @@ export type StepType =
   | "mark-bridge"
   | "mark-articulation"
   | "backtrack"
+  | "increment-count"
+  | "decrement-count"
+  | "update-value"
+  | "delete-key"
+  | "check-duplicate"
+  | "check-prefix"
+  | "prefix-found"
   | "complete";
 
 /** Maps a language to the source lines highlighted for this step. */
@@ -389,8 +396,23 @@ export interface StackQueueVisualState {
 /*                             Hash Map Structure                              */
 /* -------------------------------------------------------------------------- */
 
-export type HashMapEntryState = "default" | "inserting" | "looking-up" | "found";
-export type HashMapInputElementState = "default" | "current" | "processed" | "found";
+export type HashMapEntryState =
+  | "default"
+  | "inserting"
+  | "looking-up"
+  | "found"
+  | "updating"
+  | "deleting"
+  | "counting"
+  | "highlighted";
+export type HashMapInputElementState =
+  | "default"
+  | "current"
+  | "processed"
+  | "found"
+  | "matched"
+  | "mismatched"
+  | "in-window";
 
 export interface HashMapEntry {
   key: string;
@@ -399,7 +421,7 @@ export interface HashMapEntry {
 }
 
 export interface HashMapInputElement {
-  value: number;
+  value: number | string;
   index: number;
   state: HashMapInputElementState;
 }
@@ -416,6 +438,20 @@ export interface HashMapVisualState {
   lookupKey: string | null;
   /** The result pair [indexA, indexB] once found, or null */
   resultPair: [number, number] | null;
+  /** Current algorithm phase label (e.g., "building", "checking", "scanning") */
+  phase?: string;
+  /** Secondary input row for dual-input algorithms (e.g., Valid Anagram, Ransom Note) */
+  secondaryInputElements?: HashMapInputElement[];
+  /** Generalized result for algorithms returning diverse types */
+  result?: string | string[] | number | number[] | boolean | string[][] | null;
+  /** Grouped result for Group Anagrams-style output */
+  groupResult?: Record<string, string[]>;
+  /** Sliding window start index over input elements */
+  windowStart?: number;
+  /** Sliding window end index over input elements */
+  windowEnd?: number;
+  /** Running prefix sum value for prefix-sum algorithms */
+  prefixSum?: number;
 }
 
 /* -------------------------------------------------------------------------- */
