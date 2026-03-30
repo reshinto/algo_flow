@@ -64,6 +64,6 @@ See `.claude/rules/` for full constraints. Most commonly violated:
 
 ## Workflow
 
-1. Branch-per-task mandatory before any changes
-2. Quality gate: lint + format + typecheck + unit tests + storybook build
+1. Branch-per-task mandatory before any changes — use format `<type>/<subcategory>-<description>` (e.g., `feat/ui-modal`, `fix/e2e-hash-maps`). The subcategory determines which optional plugins are auto-enabled at session start via `auto-plugin-mode.sh`.
+2. Quality gate runs automatically at session end via `session-end-unified-gate.sh` (lint, format, typecheck, tests with coverage, Storybook build, E2E, security scan). Blocks git operations on failure.
 3. See `.claude/rules/workflow.md` for full 7-step development flow with agent roles

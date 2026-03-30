@@ -1,3 +1,10 @@
+---
+paths:
+  - "Dockerfile"
+  - "docker-compose.*"
+  - ".github/**"
+---
+
 ## Docker & CI/CD Rules
 
 ### Dockerfile

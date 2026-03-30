@@ -1,0 +1,6 @@
+eval\(
+\.innerHTML
+dangerouslySetInnerHTML
+new Function\(
+unsafe-eval
+unsafe-inline

@@ -3,7 +3,7 @@ name: code-explorer
 description: Traces AlgoFlow's registry pipeline, step generation flow, visualization rendering, and source loading with domain-aware dependency mapping
 tools: [Read, Glob, Grep]
 model: sonnet
-maxTurns: 12
+maxTurns: 8
 ---
 
 # Code Explorer
@@ -47,7 +47,7 @@ Deeply analyze AlgoFlow's codebase by tracing execution paths through the regist
 
 ## Required Skills
 
-- **Execution path tracing**: Follow data from user interaction through store to rendering — see `feature-dev:code-explorer` for general methodology
+- **Execution path tracing**: Follow data from user interaction through store to rendering
 - **AlgoFlow types**: `AlgorithmDefinition<TInput>`, `ExecutionStep`, `VisualState`, `LineHighlight`
 
 ## Key Type Definitions
