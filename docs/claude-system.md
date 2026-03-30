@@ -101,13 +101,13 @@ Safety hooks are narrowed to git commit, push, and PR commands only:
 
 ### PostToolUse (Edit | Write)
 
-| Hook                               | Behavior                                                                                                               |
-| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Hook                               | Behavior                                                                                                                             |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `post-edit-typescript-check.sh`    | Warns (non-blocking) on `any` types, bare `@ts-ignore`, unsafe assertions, `number[][]` instead of tuples (`.ts`, `.tsx` files only) |
-| `post-edit-python-check.sh`        | Warns (non-blocking) on style and type issues in Python source files (`.py` files only)                                |
-| `post-edit-java-check.sh`          | Warns (non-blocking) on style and type issues in Java source files (`.java` files only)                                |
-| `post-edit-accessibility-check.sh` | Warns (non-blocking) on raw hex colors, missing `aria-label`, `outline:none`, Framer Motion without `useReducedMotion` |
-| `ban-hardcoded-waits.sh`           | Blocks writing `waitForTimeout`, `sleep()`, or `setTimeout`-based delays to test/E2E files                             |
+| `post-edit-python-check.sh`        | Warns (non-blocking) on style and type issues in Python source files (`.py` files only)                                              |
+| `post-edit-java-check.sh`          | Warns (non-blocking) on style and type issues in Java source files (`.java` files only)                                              |
+| `post-edit-accessibility-check.sh` | Warns (non-blocking) on raw hex colors, missing `aria-label`, `outline:none`, Framer Motion without `useReducedMotion`               |
+| `ban-hardcoded-waits.sh`           | Blocks writing `waitForTimeout`, `sleep()`, or `setTimeout`-based delays to test/E2E files                                           |
 
 ### PostToolUse (Bash)
 
@@ -119,8 +119,8 @@ Safety hooks are narrowed to git commit, push, and PR commands only:
 
 All session-end checks are consolidated into a single unified gate:
 
-| Hook                          | Behavior                                                                                                                                                                                    |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Hook                          | Behavior                                                                                                                                                                                                                                                                                                         |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `session-end-unified-gate.sh` | Runs lint, format, typecheck; Storybook build (conditional); unit tests with coverage; E2E suite (conditional, when `.tsx`/`.css`/`.html`/E2E files change); security pattern scan; advisory checks (npm audit, docs, claude system). 900s timeout with per-step sub-timeouts. Blocks git operations on failure. |
 
 Hook scripts live in `.claude/hooks/`.
@@ -135,32 +135,32 @@ Claude Code plugins provide system-level capabilities. They are enabled in `.cla
 
 These 6 plugins are enabled in every session regardless of branch:
 
-| Plugin              | Purpose                                                                                    | Project Wrapper                                                                                                                                           |
-| ------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `superpowers`       | Planning, brainstorming, TDD, debugging, verification, parallel agents                     | `tdd`, `verification`, `debugging` skills                                                                                                                 |
-| `commit-commands`   | Git commit, push, PR automation                                                            | Covered by project hooks                                                                                                                                  |
-| `context7`          | Real-time library documentation lookup                                                     | Used directly                                                                                                                                             |
-| `github`            | GitHub issues, PRs, branches                                                               | Used directly                                                                                                                                             |
-| `code-review`       | Pull request code review                                                                   | Used directly                                                                                                                                             |
-| `pr-review-toolkit` | PR review, silent failure hunting, code simplification, test analysis, type design         | `silent-failure-hunter` agent; merged into `senior-engineer-code-reviewer`, `strict-typescript-review`, `security-coverage-audit`, `documentation-review` |
+| Plugin              | Purpose                                                                            | Project Wrapper                                                                                                                                           |
+| ------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `superpowers`       | Planning, brainstorming, TDD, debugging, verification, parallel agents             | `tdd`, `verification`, `debugging` skills                                                                                                                 |
+| `commit-commands`   | Git commit, push, PR automation                                                    | Covered by project hooks                                                                                                                                  |
+| `context7`          | Real-time library documentation lookup                                             | Used directly                                                                                                                                             |
+| `github`            | GitHub issues, PRs, branches                                                       | Used directly                                                                                                                                             |
+| `code-review`       | Pull request code review                                                           | Used directly                                                                                                                                             |
+| `pr-review-toolkit` | PR review, silent failure hunting, code simplification, test analysis, type design | `silent-failure-hunter` agent; merged into `senior-engineer-code-reviewer`, `strict-typescript-review`, `security-coverage-audit`, `documentation-review` |
 
 ### Optional Plugins (auto-enabled by branch prefix)
 
 These 11 plugins are disabled by default and enabled automatically via `auto-plugin-mode.sh` based on the active branch prefix (configured in `plugin-profiles.json`):
 
-| Plugin               | Purpose                                                | Auto-enabled by branch prefix |
-| -------------------- | ------------------------------------------------------ | ----------------------------- |
-| `frontend-design`    | Production-grade UI component generation               | `feat/ui-*`                   |
-| `figma`              | Figma design-to-code integration                       | `feat/ui-*`                   |
-| `playground`         | Interactive HTML playground generation                 | `feat/ui-*`                   |
-| `playwright`         | Browser automation and E2E testing                     | `test/*`, `fix/e2e-*`         |
-| `code-simplifier`    | Code quality and clarity refinement                    | `refactor/*`                  |
-| `skill-creator`      | Create and measure custom skills                       | `chore/skills-*`              |
-| `claude-code-setup`  | Automation recommendations                             | `chore/setup-*`               |
-| `ralph-loop`         | Recurring task execution                               | `chore/loop-*`                |
-| `security-guidance`  | Security analysis and guidance                         | `fix/security-*`              |
-| `claude-md-management` | CLAUDE.md auditing and updates                       | `chore/claude-md-*`           |
-| `code-simplifier`    | Code quality and clarity refinement                    | `refactor/*`                  |
+| Plugin                 | Purpose                                  | Auto-enabled by branch prefix |
+| ---------------------- | ---------------------------------------- | ----------------------------- |
+| `frontend-design`      | Production-grade UI component generation | `feat/ui-*`                   |
+| `figma`                | Figma design-to-code integration         | `feat/ui-*`                   |
+| `playground`           | Interactive HTML playground generation   | `feat/ui-*`                   |
+| `playwright`           | Browser automation and E2E testing       | `test/*`, `fix/e2e-*`         |
+| `code-simplifier`      | Code quality and clarity refinement      | `refactor/*`                  |
+| `skill-creator`        | Create and measure custom skills         | `chore/skills-*`              |
+| `claude-code-setup`    | Automation recommendations               | `chore/setup-*`               |
+| `ralph-loop`           | Recurring task execution                 | `chore/loop-*`                |
+| `security-guidance`    | Security analysis and guidance           | `fix/security-*`              |
+| `claude-md-management` | CLAUDE.md auditing and updates           | `chore/claude-md-*`           |
+| `code-simplifier`      | Code quality and clarity refinement      | `refactor/*`                  |
 
 ---
 
@@ -171,6 +171,7 @@ Branch names follow the format `<type>/<subcategory>-<description>`. The subcate
 **Valid types:** `feat`, `fix`, `chore`, `docs`, `test`, `refactor`
 
 Examples:
+
 - `feat/ui-modal-editor` — enables `frontend-design`, `figma`, `playground`
 - `test/e2e-hash-maps` — enables `playwright`
 - `refactor/simplify-trackers` — enables `code-simplifier`
@@ -188,24 +189,24 @@ Rules files in `.claude/rules/` are either always-loaded or path-scoped (loaded 
 
 ### Always-loaded rules (4)
 
-| File                 | When it applies             |
-| -------------------- | --------------------------- |
-| `coding-standards`   | All sessions                |
-| `architecture`       | All sessions                |
-| `token-efficiency`   | All sessions                |
-| `workflow`           | All sessions                |
+| File               | When it applies |
+| ------------------ | --------------- |
+| `coding-standards` | All sessions    |
+| `architecture`     | All sessions    |
+| `token-efficiency` | All sessions    |
+| `workflow`         | All sessions    |
 
 ### Path-scoped rules (loaded on demand)
 
-| File           | Loaded when reading                    |
-| -------------- | -------------------------------------- |
-| `algorithms`   | Files matching `src/algorithms/**`     |
-| `testing`      | Test files and spec files              |
-| `storybook`    | Files matching `**/*.stories.tsx`      |
-| `pathfinding`  | Pathfinding algorithm files            |
-| `ui-ux`        | Component and style files              |
-| `docker-ci-cd` | CI/CD and Docker config files          |
-| `docs`         | Documentation files                   |
+| File           | Loaded when reading                |
+| -------------- | ---------------------------------- |
+| `algorithms`   | Files matching `src/algorithms/**` |
+| `testing`      | Test files and spec files          |
+| `storybook`    | Files matching `**/*.stories.tsx`  |
+| `pathfinding`  | Pathfinding algorithm files        |
+| `ui-ux`        | Component and style files          |
+| `docker-ci-cd` | CI/CD and Docker config files      |
+| `docs`         | Documentation files                |
 
 Storybook-specific rules (story structure, pipeline story placement, visual regression) are defined in `storybook.md` rather than `testing.md`.
 

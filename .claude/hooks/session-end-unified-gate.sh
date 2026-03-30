@@ -57,7 +57,7 @@ echo "=== Unified Quality Gate ===" >&2
 # === BLOCKING STEPS (all run, accumulate failures) ===
 
 run_step "lint" "npm run lint --silent" 60
-run_step "format" "npm run format:check --silent" 30
+run_step "format" "npm run format --silent && npm run format:check --silent" 30
 run_step "typecheck" "npm run typecheck --silent" 60
 
 # Conditional: storybook only if UI/story files changed
