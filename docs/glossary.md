@@ -22,6 +22,16 @@ A plain-language reference for the terms and concepts you will encounter while w
   - [Tabulation](#tabulation)
   - [Memoization](#memoization)
   - [1D Space Optimization](#1d-space-optimization)
+  - [SCC (Strongly Connected Component)](#scc-strongly-connected-component)
+  - [MST (Minimum Spanning Tree)](#mst-minimum-spanning-tree)
+  - [Augmenting Path](#augmenting-path)
+  - [Residual Graph](#residual-graph)
+  - [Topological Order](#topological-order)
+  - [Bridge (Cut Edge)](#bridge-cut-edge)
+  - [Articulation Point (Cut Vertex)](#articulation-point-cut-vertex)
+  - [Bipartite Graph](#bipartite-graph)
+  - [Eulerian Circuit](#eulerian-circuit)
+  - [Union-Find (Disjoint Set Union)](#union-find-disjoint-set-union)
 - [Type System](#type-system)
   - [AlgorithmMeta](#algorithmmeta)
   - [SupportedLanguage](#supportedlanguage)
@@ -186,6 +196,86 @@ A top-down dynamic programming approach that solves problems recursively and cac
 
 **Contrasts with:** [Tabulation](#tabulation) (bottom-up, iterative).
 **Example algorithms:** Fibonacci (memoization variant).
+
+---
+
+### SCC (Strongly Connected Component)
+
+A maximal subgraph of a directed graph where every vertex is reachable from every other vertex. Algorithms like Tarjan's and Kosaraju's decompose a graph into its SCCs in a single or double DFS pass. Used in dependency analysis, circuit design, and compiler optimizations.
+
+**See also:** [Tarjan's SCC](../src/algorithms/graph/connectivity/tarjans-scc/), [Kosaraju's SCC](../src/algorithms/graph/connectivity/kosarajus-scc/).
+
+---
+
+### MST (Minimum Spanning Tree)
+
+A spanning tree of a weighted undirected graph that connects all vertices with the minimum possible total edge weight. A spanning tree has exactly V-1 edges for V vertices and contains no cycles. Used in network design, clustering, and approximation algorithms.
+
+**See also:** Kruskal's, Prim's, Boruvka's algorithms under `src/algorithms/graph/mst/`.
+
+---
+
+### Augmenting Path
+
+A path from source to sink in a residual graph along which additional flow can be pushed (all edges on the path have remaining positive capacity). Ford-Fulkerson repeatedly finds augmenting paths and increases flow until none remain, at which point the maximum flow has been found.
+
+**See also:** [Residual Graph](#residual-graph), Ford-Fulkerson and Edmonds-Karp under `src/algorithms/graph/network-flow/`.
+
+---
+
+### Residual Graph
+
+A derived graph used in network flow algorithms that shows the remaining capacity available on each edge. For every original edge u→v with capacity c and current flow f, the residual graph has a forward edge u→v with capacity c-f and a back edge v→u with capacity f. Augmenting paths are found in the residual graph.
+
+**See also:** [Augmenting Path](#augmenting-path).
+
+---
+
+### Topological Order
+
+A linear ordering of the vertices of a directed acyclic graph (DAG) such that for every directed edge u→v, vertex u appears before vertex v in the ordering. A topological order only exists if the graph has no cycles. Used in task scheduling, build systems, and dependency resolution.
+
+**See also:** Kahn's Algorithm and DFS Topological Sort under `src/algorithms/graph/topological-sort/`.
+
+---
+
+### Bridge (Cut Edge)
+
+An edge in an undirected graph whose removal increases the number of connected components (i.e., disconnects the graph). Bridges represent critical links in a network — removing one creates an unreachable subgraph. Found efficiently using DFS with low-link values.
+
+**See also:** Bridges algorithm under `src/algorithms/graph/connectivity/bridges/`.
+
+---
+
+### Articulation Point (Cut Vertex)
+
+A vertex in an undirected graph whose removal increases the number of connected components. Articulation points represent critical nodes in a network — removing one partitions the graph. Found using the same DFS low-link technique as bridge detection.
+
+**See also:** Articulation Points algorithm under `src/algorithms/graph/connectivity/articulation-points/`.
+
+---
+
+### Bipartite Graph
+
+A graph whose vertices can be divided into two disjoint sets U and V such that every edge connects a vertex in U to a vertex in V — no edges exist within the same set. Equivalently, a graph is bipartite if and only if it contains no odd-length cycles. Used in matching problems and scheduling.
+
+**See also:** Bipartite Check under `src/algorithms/graph/coloring/bipartite-check/`.
+
+---
+
+### Eulerian Circuit
+
+A circuit (closed walk) that visits every edge of a graph exactly once and returns to the starting vertex. A connected undirected graph has an Eulerian circuit if and only if every vertex has even degree. Hierholzer's algorithm finds one in O(E) time.
+
+**See also:** Hierholzer's Algorithm under `src/algorithms/graph/eulerian/hierholzers/`.
+
+---
+
+### Union-Find (Disjoint Set Union)
+
+A data structure that tracks a partition of elements into disjoint sets and supports two operations efficiently: `union(a, b)` merges the sets containing a and b, and `find(a)` returns the representative of the set containing a. With path compression and union by rank, both operations run in near-constant amortized time. Used in Kruskal's MST and cycle detection.
+
+**See also:** Union-Find Cycle Detection under `src/algorithms/graph/cycle-detection/union-find/`, Kruskal's under `src/algorithms/graph/mst/kruskal/`.
 
 ---
 

@@ -93,7 +93,34 @@ declare module "*.ts?fn" {
   export const dailyTemperatures: (...args: any[]) => any;
   export const floydCycleDetection: (...args: any[]) => any;
   // Graph
+  export const hierholzersAlgorithm: (...args: any[]) => any;
   export const breadthFirstSearch: (...args: any[]) => any;
+  export const hungarianMatching: (...args: any[]) => any;
+  export const connectedComponents: (...args: any[]) => any;
+  export const tarjanSCC: (...args: any[]) => any;
+  export const kosarajuSCC: (...args: any[]) => any;
+  export const findBridges: (...args: any[]) => any;
+  export const findArticulationPoints: (...args: any[]) => any;
+  export const fordFulkerson: (...args: any[]) => any;
+  export const edmondsKarp: (...args: any[]) => any;
+  export const greedyColoring: (...args: any[]) => any;
+  export const bipartiteCheck: (...args: any[]) => any;
+  export const kruskalsAlgorithm: (...args: any[]) => any;
+  export const primsAlgorithm: (...args: any[]) => any;
+  export const boruvkasAlgorithm: (...args: any[]) => any;
+  export const dijkstraShortestPath: (...args: any[]) => any;
+  export const aStarSearch: (...args: any[]) => any;
+  export const dagShortestPath: (...args: any[]) => any;
+  export const bellmanFord: (...args: any[]) => any;
+  export const floydWarshall: (...args: any[]) => any;
+  export const kahnsTopologicalSort: (...args: any[]) => any;
+  export const dfsTopologicalSort: (...args: any[]) => any;
+  export const depthFirstSearch: (...args: any[]) => any;
+  export const bidirectionalBFS: (...args: any[]) => any;
+  export const iterativeDeepeningDFS: (...args: any[]) => any;
+  export const dfsCycleDirected: (...args: any[]) => any;
+  export const dfsCycleUndirected: (...args: any[]) => any;
+  export const unionFindCycle: (...args: any[]) => any;
   // Trees
   export const bstInorder: (...args: any[]) => any;
   // Pathfinding
