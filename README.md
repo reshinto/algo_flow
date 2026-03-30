@@ -8,7 +8,7 @@ Algorithm visualization web app for learners. Step through algorithms with synch
 
 ## Features
 
-- **116 Algorithms across 14 Categories** with interactive visualizations (bar charts, SVG graphs/trees, CSS grids, DP tables, and more)
+- **143 Algorithms across 14 Categories** with interactive visualizations (bar charts, SVG graphs/trees, CSS grids, DP tables, and more)
 - **Multi-Language Code Display**: TypeScript, Python, and Java with synchronized line highlighting via Monaco Editor
 - **Step-by-Step Playback**: Play, pause, step forward/backward, scrub, adjustable speed (0.25x–4x)
 - **Category-Specific Input Editors**: Editable arrays, targets, grids, text patterns, and matrices
@@ -19,7 +19,7 @@ Algorithm visualization web app for learners. Step through algorithms with synch
 
 ## Algorithms
 
-**116 algorithms across 14 categories**: Sorting, Searching, Graph (28 algorithms across 10 technique subcategories), Pathfinding, Dynamic Programming (32 algorithms across 6 technique subcategories), Arrays (44 algorithms across 11 technique subcategories), Trees, Linked Lists, Heaps, Stacks & Queues, Hash Maps, Strings, Matrices, and Sets.
+**143 algorithms across 14 categories**: Sorting, Searching, Graph (28 algorithms across 10 technique subcategories), Pathfinding, Dynamic Programming (32 algorithms across 6 technique subcategories), Arrays (44 algorithms across 11 technique subcategories), Trees, Linked Lists, Heaps, Stacks & Queues, Hash Maps (28 algorithms across 8 technique subcategories), Strings, Matrices, and Sets.
 
 See the [full Algorithm Catalog](docs/algorithms-catalog.md) for the complete listing with visualizer descriptions and technique subcategories.
 
