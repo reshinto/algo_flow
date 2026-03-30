@@ -59,7 +59,7 @@ const steps = generateDijkstraSteps({
 });
 
 const meta: Meta<typeof GraphVisualizer> = {
-  title: "Algorithm Pipelines/Dijkstra",
+  title: "Algorithm Pipelines/Dijkstra (Graph)",
   component: GraphVisualizer,
   decorators: [
     (Story) => (
