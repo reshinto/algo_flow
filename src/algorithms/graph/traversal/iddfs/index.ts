@@ -1,0 +1,96 @@
+/* IDDFS algorithm registration — assembles the definition (meta, execute, steps,
+   educational, sources) and self-registers with the algorithm registry. */
+
+import type { AlgorithmDefinition, GraphNode, GraphEdge } from "@/types";
+import { registry } from "@/registry";
+import { ALGORITHM_ID, CATEGORY } from "@/utils/constants";
+
+import { iterativeDeepeningDFS } from "./sources/iddfs.ts?fn";
+
+type AdjacencyList = Record<string, string[]>;
+import { generateIddfsSteps } from "./step-generator";
+import type { IddfsInput } from "./step-generator";
+import { iddfsEducational } from "./educational";
+
+import typescriptSource from "./sources/iddfs.ts?raw";
+import pythonSource from "./sources/iddfs.py?raw";
+import javaSource from "./sources/IDDFS.java?raw";
+
+/** Pre-computed positions for 6 nodes arranged in a circle layout */
+const CIRCLE_RADIUS = 150;
+const CENTER_X = 200;
+const CENTER_Y = 200;
+
+/** Distributes nodes evenly around a circle for the default graph layout. */
+function circlePosition(index: number, totalNodes: number): { x: number; y: number } {
+  const angle = (2 * Math.PI * index) / totalNodes - Math.PI / 2;
+  return {
+    x: Math.round(CENTER_X + CIRCLE_RADIUS * Math.cos(angle)),
+    y: Math.round(CENTER_Y + CIRCLE_RADIUS * Math.sin(angle)),
+  };
+}
+
+const defaultNodes: GraphNode[] = [
+  { id: "A", label: "A", state: "default", position: circlePosition(0, 6) },
+  { id: "B", label: "B", state: "default", position: circlePosition(1, 6) },
+  { id: "C", label: "C", state: "default", position: circlePosition(2, 6) },
+  { id: "D", label: "D", state: "default", position: circlePosition(3, 6) },
+  { id: "E", label: "E", state: "default", position: circlePosition(4, 6) },
+  { id: "F", label: "F", state: "default", position: circlePosition(5, 6) },
+];
+
+const defaultEdges: GraphEdge[] = [
+  { source: "A", target: "B", state: "default" },
+  { source: "A", target: "C", state: "default" },
+  { source: "B", target: "D", state: "default" },
+  { source: "C", target: "E", state: "default" },
+  { source: "D", target: "E", state: "default" },
+  { source: "D", target: "F", state: "default" },
+  { source: "E", target: "F", state: "default" },
+];
+
+const defaultAdjacencyList: AdjacencyList = {
+  A: ["B", "C"],
+  B: ["D"],
+  C: ["E"],
+  D: ["E", "F"],
+  E: ["F"],
+  F: [],
+};
+
+const defaultInput: IddfsInput = {
+  adjacencyList: defaultAdjacencyList,
+  startNodeId: "A",
+  nodes: defaultNodes,
+  edges: defaultEdges,
+};
+
+const iddfsDefinition: AlgorithmDefinition<IddfsInput> = {
+  meta: {
+    id: ALGORITHM_ID.IDDFS!,
+    name: "Iterative Deepening DFS",
+    category: CATEGORY.GRAPH!,
+    technique: "traversal",
+    description:
+      "A graph traversal algorithm that combines DFS space efficiency with BFS completeness by running depth-limited DFS with incrementally increasing depth limits",
+    timeComplexity: {
+      best: "O(V+E)",
+      average: "O(V+E)",
+      worst: "O(b^d)",
+    },
+    spaceComplexity: "O(V)",
+    supportedLanguages: ["typescript", "python", "java"],
+    defaultInput,
+  },
+  execute: (input: IddfsInput) =>
+    iterativeDeepeningDFS(input.adjacencyList, input.startNodeId, input.maxDepth),
+  generateSteps: generateIddfsSteps,
+  educational: iddfsEducational,
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+  },
+};
+
+registry.register(iddfsDefinition);

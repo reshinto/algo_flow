@@ -2,7 +2,7 @@
 
 # Algorithm Catalog
 
-Complete listing of all 89 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
+Complete listing of all 116 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
 
 > **Prerequisites:** None — this is a reference document.
 
@@ -10,7 +10,7 @@ Complete listing of all 89 algorithms available in AlgoFlow, organized by catego
 
 - [Sorting (1)](#sorting-1-algorithm)
 - [Searching (1)](#searching-1-algorithm)
-- [Graph (1)](#graph-1-algorithm)
+- [Graph (28)](#graph-28-algorithms)
 - [Pathfinding (1)](#pathfinding-1-algorithm)
 - [Dynamic Programming (32)](#dynamic-programming-32-algorithms)
 - [Arrays (44)](#arrays-44-algorithms)
@@ -45,13 +45,87 @@ Algorithms that find elements in data structures. Algorithms live under `src/alg
 
 ---
 
-## Graph (1 algorithm)
+## Graph (28 algorithms)
 
 Algorithms that traverse or analyze graph structures. Algorithms live under `src/algorithms/graph/<technique>/<algorithm>/`.
 
-| Technique | Algorithm            | Visualizer            | Source Directory                      |
-| --------- | -------------------- | --------------------- | ------------------------------------- |
-| Traversal | Breadth-First Search | SVG node + edge graph | `src/algorithms/graph/traversal/bfs/` |
+### Traversal (4)
+
+| Technique | Algorithm            | Visualizer            | Source Directory                                    |
+| --------- | -------------------- | --------------------- | --------------------------------------------------- |
+| Traversal | Breadth-First Search | SVG node + edge graph | `src/algorithms/graph/traversal/bfs/`               |
+| Traversal | Depth-First Search   | SVG node + edge graph | `src/algorithms/graph/traversal/dfs/`               |
+| Traversal | IDDFS                | SVG node + edge graph | `src/algorithms/graph/traversal/iddfs/`             |
+| Traversal | Bidirectional BFS    | SVG node + edge graph | `src/algorithms/graph/traversal/bidirectional-bfs/` |
+
+### Shortest Path (5)
+
+| Technique     | Algorithm         | Visualizer            | Source Directory                                        |
+| ------------- | ----------------- | --------------------- | ------------------------------------------------------- |
+| Shortest Path | Dijkstra          | SVG node + edge graph | `src/algorithms/graph/shortest-path/dijkstra/`          |
+| Shortest Path | Bellman-Ford      | SVG node + edge graph | `src/algorithms/graph/shortest-path/bellman-ford/`      |
+| Shortest Path | Floyd-Warshall    | SVG node + edge graph | `src/algorithms/graph/shortest-path/floyd-warshall/`    |
+| Shortest Path | A\* Search        | SVG node + edge graph | `src/algorithms/graph/shortest-path/a-star/`            |
+| Shortest Path | DAG Shortest Path | SVG node + edge graph | `src/algorithms/graph/shortest-path/dag-shortest-path/` |
+
+### Minimum Spanning Tree (3)
+
+| Technique | Algorithm | Visualizer            | Source Directory                    |
+| --------- | --------- | --------------------- | ----------------------------------- |
+| MST       | Kruskal's | SVG node + edge graph | `src/algorithms/graph/mst/kruskal/` |
+| MST       | Prim's    | SVG node + edge graph | `src/algorithms/graph/mst/prim/`    |
+| MST       | Boruvka's | SVG node + edge graph | `src/algorithms/graph/mst/boruvka/` |
+
+### Topological Sort (2)
+
+| Technique        | Algorithm            | Visualizer            | Source Directory                                       |
+| ---------------- | -------------------- | --------------------- | ------------------------------------------------------ |
+| Topological Sort | Kahn's Algorithm     | SVG node + edge graph | `src/algorithms/graph/topological-sort/kahns/`         |
+| Topological Sort | DFS Topological Sort | SVG node + edge graph | `src/algorithms/graph/topological-sort/dfs-topo-sort/` |
+
+### Cycle Detection (3)
+
+| Technique       | Algorithm                        | Visualizer            | Source Directory                                       |
+| --------------- | -------------------------------- | --------------------- | ------------------------------------------------------ |
+| Cycle Detection | DFS Cycle Detection (Directed)   | SVG node + edge graph | `src/algorithms/graph/cycle-detection/dfs-directed/`   |
+| Cycle Detection | DFS Cycle Detection (Undirected) | SVG node + edge graph | `src/algorithms/graph/cycle-detection/dfs-undirected/` |
+| Cycle Detection | Union-Find Cycle Detection       | SVG node + edge graph | `src/algorithms/graph/cycle-detection/union-find/`     |
+
+### Connectivity (5)
+
+| Technique    | Algorithm            | Visualizer            | Source Directory                                          |
+| ------------ | -------------------- | --------------------- | --------------------------------------------------------- |
+| Connectivity | Connected Components | SVG node + edge graph | `src/algorithms/graph/connectivity/connected-components/` |
+| Connectivity | Tarjan's SCC         | SVG node + edge graph | `src/algorithms/graph/connectivity/tarjans-scc/`          |
+| Connectivity | Kosaraju's SCC       | SVG node + edge graph | `src/algorithms/graph/connectivity/kosarajus-scc/`        |
+| Connectivity | Bridges              | SVG node + edge graph | `src/algorithms/graph/connectivity/bridges/`              |
+| Connectivity | Articulation Points  | SVG node + edge graph | `src/algorithms/graph/connectivity/articulation-points/`  |
+
+### Network Flow (2)
+
+| Technique    | Algorithm      | Visualizer            | Source Directory                                    |
+| ------------ | -------------- | --------------------- | --------------------------------------------------- |
+| Network Flow | Ford-Fulkerson | SVG node + edge graph | `src/algorithms/graph/network-flow/ford-fulkerson/` |
+| Network Flow | Edmonds-Karp   | SVG node + edge graph | `src/algorithms/graph/network-flow/edmonds-karp/`   |
+
+### Graph Coloring (2)
+
+| Technique      | Algorithm       | Visualizer            | Source Directory                                 |
+| -------------- | --------------- | --------------------- | ------------------------------------------------ |
+| Graph Coloring | Greedy Coloring | SVG node + edge graph | `src/algorithms/graph/coloring/greedy-coloring/` |
+| Graph Coloring | Bipartite Check | SVG node + edge graph | `src/algorithms/graph/coloring/bipartite-check/` |
+
+### Eulerian (1)
+
+| Technique | Algorithm              | Visualizer            | Source Directory                             |
+| --------- | ---------------------- | --------------------- | -------------------------------------------- |
+| Eulerian  | Hierholzer's Algorithm | SVG node + edge graph | `src/algorithms/graph/eulerian/hierholzers/` |
+
+### Matching (1)
+
+| Technique | Algorithm                    | Visualizer            | Source Directory                                     |
+| --------- | ---------------------------- | --------------------- | ---------------------------------------------------- |
+| Matching  | Hungarian Bipartite Matching | SVG node + edge graph | `src/algorithms/graph/matching/hungarian-bipartite/` |
 
 ---
 

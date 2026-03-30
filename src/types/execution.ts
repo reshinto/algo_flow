@@ -56,6 +56,25 @@ export type StepType =
   | "member-not-found"
   | "push-call"
   | "pop-call"
+  | "push-stack"
+  | "pop-stack"
+  | "relax-edge"
+  | "reject-edge"
+  | "add-to-mst"
+  | "classify-edge"
+  | "detect-cycle"
+  | "assign-component"
+  | "process-node"
+  | "update-distance"
+  | "add-to-order"
+  | "augment-flow"
+  | "assign-color"
+  | "merge-components"
+  | "check-bipartite"
+  | "use-edge"
+  | "mark-bridge"
+  | "mark-articulation"
+  | "backtrack"
   | "complete";
 
 /** Maps a language to the source lines highlighted for this step. */
@@ -139,7 +158,25 @@ export interface ArrayVisualState {
 /*                               Graph Structure                              */
 /* -------------------------------------------------------------------------- */
 
-export type GraphNodeState = "default" | "visiting" | "visited" | "queued" | "current";
+export type GraphNodeState =
+  | "default"
+  | "visiting"
+  | "visited"
+  | "queued"
+  | "current"
+  | "in-stack"
+  | "processed"
+  | "in-mst"
+  | "source"
+  | "sink"
+  | "color-a"
+  | "color-b"
+  | "conflict"
+  | "active"
+  | "matched"
+  | "free"
+  | "trying"
+  | "backtracking";
 
 export interface GraphNode {
   id: string;
@@ -147,14 +184,36 @@ export interface GraphNode {
   state: GraphNodeState;
   /** Relative coordinates for SVG layout. */
   position: { x: number; y: number };
+  colorIndex?: number;
 }
 
-export type GraphEdgeState = "default" | "traversing" | "traversed" | "path";
+export type GraphEdgeState =
+  | "default"
+  | "traversing"
+  | "traversed"
+  | "path"
+  | "relaxed"
+  | "rejected"
+  | "in-mst"
+  | "back-edge"
+  | "cross-edge"
+  | "forward-edge"
+  | "tree-edge"
+  | "bridge"
+  | "augmenting"
+  | "saturated"
+  | "residual"
+  | "matched"
+  | "used"
+  | "candidate"
+  | "cycle-edge";
 
 export interface GraphEdge {
   source: string;
   target: string;
   weight?: number;
+  capacity?: number;
+  flow?: number;
   state: GraphEdgeState;
 }
 
@@ -164,6 +223,16 @@ export interface GraphVisualState {
   edges: GraphEdge[];
   queue: string[];
   visited: string[];
+  stack?: string[];
+  distances?: Record<string, number | string>;
+  components?: string[][];
+  topologicalOrder?: string[];
+  mstWeight?: number;
+  currentFlow?: number;
+  maxFlow?: number;
+  inDegree?: Record<string, number>;
+  colorAssignment?: Record<string, number>;
+  isDirected?: boolean;
 }
 
 /* -------------------------------------------------------------------------- */

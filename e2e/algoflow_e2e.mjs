@@ -184,7 +184,10 @@ async function selectAlgorithm(name) {
   // Type to filter if the name is long
   const searchInput = page.locator("#algo-search-input");
   await searchInput.fill(name.slice(0, 6));
-  const optionBtn = page.locator("[role='dialog'] button").filter({ hasText: name }).first();
+  const optionBtn = page
+    .locator("[role='dialog']")
+    .getByRole("button", { name, exact: true })
+    .first();
   await optionBtn.waitFor({ timeout: 3000 });
   await optionBtn.click();
   // Modal closes automatically after selection
