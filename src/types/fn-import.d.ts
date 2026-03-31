@@ -182,7 +182,26 @@ declare module "*.ts?fn" {
   // Strings
   export const kmpSearch: (...args: any[]) => any;
   // Matrices
+  export const pascalsTriangle: (...args: any[]) => any;
+  export const validSudoku: (...args: any[]) => any;
   export const spiralOrder: (...args: any[]) => any;
+  export const rotateLayerByLayer: (...args: any[]) => any;
+  export const matrixDiagonalSum: (...args: any[]) => any;
+  export const reshapeMatrix: (...args: any[]) => any;
+  export const spiralMatrixII: (...args: any[]) => any;
+  export const toeplitzMatrix: (...args: any[]) => any;
+  export const rotateMatrix: (...args: any[]) => any;
+  export const diagonalTraversal: (...args: any[]) => any;
+  export const antiDiagonalTraversal: (...args: any[]) => any;
+  export const zigzagTraversal: (...args: any[]) => any;
+  export const transposeMatrix: (...args: any[]) => any;
+  export const setMatrixZeroes: (...args: any[]) => any;
+  export const flipImage: (...args: any[]) => any;
+  export const gameOfLife: (...args: any[]) => any;
+  export const search2DMatrix: (...args: any[]) => any;
+  export const search2DMatrixII: (...args: any[]) => any;
+  export const kthSmallestSortedMatrix: (...args: any[]) => any;
+  export const islandCount: (...args: any[]) => any;
   // Sets
   export const setIntersection: (...args: any[]) => any;
 }

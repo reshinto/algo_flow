@@ -767,6 +767,96 @@ const inputTests = [
       await page.keyboard.press("Tab");
     },
   },
+  {
+    algo: "Zigzag Traversal",
+    test: async () => {
+      // Target the MatrixInputEditor textarea specifically (not Monaco's hidden internal textarea)
+      const container = page
+        .locator("div")
+        .filter({ hasText: /Matrix rows/ })
+        .last();
+      const textarea = container.locator("textarea");
+      await textarea.waitFor({ timeout: 3000 });
+      await textarea.click({ clickCount: 3 });
+      await textarea.fill("1, 2, 3\n4, 5, 6\n7, 8, 9");
+      await page.keyboard.press("Tab");
+    },
+  },
+  {
+    algo: "Transpose Matrix",
+    test: async () => {
+      // Target the MatrixInputEditor textarea specifically (not Monaco's hidden internal textarea)
+      const container = page
+        .locator("div")
+        .filter({ hasText: /Matrix rows/ })
+        .last();
+      const textarea = container.locator("textarea");
+      await textarea.waitFor({ timeout: 3000 });
+      await textarea.click({ clickCount: 3 });
+      await textarea.fill("1, 2, 3\n4, 5, 6\n7, 8, 9");
+      await page.keyboard.press("Tab");
+    },
+  },
+  {
+    algo: "Set Matrix Zeroes",
+    test: async () => {
+      // Target the MatrixInputEditor textarea specifically (not Monaco's hidden internal textarea)
+      const container = page
+        .locator("div")
+        .filter({ hasText: /Matrix rows/ })
+        .last();
+      const textarea = container.locator("textarea");
+      await textarea.waitFor({ timeout: 3000 });
+      await textarea.click({ clickCount: 3 });
+      await textarea.fill("1, 0, 3\n4, 5, 6\n7, 8, 9");
+      await page.keyboard.press("Tab");
+    },
+  },
+  {
+    algo: "Kth Smallest in Sorted Matrix",
+    test: async () => {
+      // Target the MatrixInputEditor textarea specifically (not Monaco's hidden internal textarea)
+      const container = page
+        .locator("div")
+        .filter({ hasText: /Matrix rows/ })
+        .last();
+      const textarea = container.locator("textarea");
+      await textarea.waitFor({ timeout: 3000 });
+      await textarea.click({ clickCount: 3 });
+      await textarea.fill("1, 5, 9\n10, 11, 13\n12, 13, 15");
+      await page.keyboard.press("Tab");
+    },
+  },
+  {
+    algo: "Island Count",
+    test: async () => {
+      // Target the MatrixInputEditor textarea specifically (not Monaco's hidden internal textarea)
+      const container = page
+        .locator("div")
+        .filter({ hasText: /Matrix rows/ })
+        .last();
+      const textarea = container.locator("textarea");
+      await textarea.waitFor({ timeout: 3000 });
+      await textarea.click({ clickCount: 3 });
+      await textarea.fill("1, 1, 0\n0, 1, 0\n0, 0, 1");
+      await page.keyboard.press("Tab");
+    },
+  },
+  {
+    algo: "Rotate Layer by Layer",
+    test: async () => {
+      // Target the MatrixInputEditor textarea specifically (not Monaco's hidden internal textarea)
+      const container = page
+        .locator("div")
+        .filter({ hasText: /Matrix rows/ })
+        .last();
+      const textarea = container.locator("textarea");
+      await textarea.waitFor({ timeout: 3000 });
+      await textarea.click({ clickCount: 3 });
+      await textarea.fill("1, 2, 3\n4, 5, 6\n7, 8, 9");
+      await page.keyboard.press("Tab");
+    },
+  },
 ];
 
 for (const { algo, test } of inputTests) {

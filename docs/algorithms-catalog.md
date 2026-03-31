@@ -2,7 +2,7 @@
 
 # Algorithm Catalog
 
-Complete listing of all 169 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
+Complete listing of all 188 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
 
 > **Prerequisites:** None — this is a reference document.
 
@@ -20,7 +20,7 @@ Complete listing of all 169 algorithms available in AlgoFlow, organized by categ
 - [Stacks & Queues (1)](#stacks--queues-1-algorithm)
 - [Hash Maps (28)](#hash-maps-28-algorithms)
 - [Strings (1)](#strings-1-algorithm)
-- [Matrices (1)](#matrices-1-algorithm)
+- [Matrices (20)](#matrices-20-algorithms)
 - [Sets (1)](#sets-1-algorithm)
 
 ---
@@ -347,13 +347,54 @@ Algorithms for string matching and manipulation. Algorithms live under `src/algo
 
 ---
 
-## Matrices (1 algorithm)
+## Matrices (20 algorithms)
 
 Algorithms operating on 2D matrix structures. Algorithms live under `src/algorithms/matrices/<technique>/<algorithm>/`.
 
-| Technique | Algorithm              | Visualizer                              | Source Directory                                  |
-| --------- | ---------------------- | --------------------------------------- | ------------------------------------------------- |
-| Traversal | Spiral Order Traversal | CSS grid with boundary shrink animation | `src/algorithms/matrices/traversal/spiral-order/` |
+### Traversal (4)
+
+| Technique | Algorithm               | Visualizer                              | Source Directory                                        |
+| --------- | ----------------------- | --------------------------------------- | ------------------------------------------------------- |
+| Traversal | Spiral Order            | CSS grid with boundary shrink animation | `src/algorithms/matrices/traversal/spiral-order/`       |
+| Traversal | Diagonal Traversal      | CSS grid with diagonal sweep animation  | `src/algorithms/matrices/traversal/diagonal-traversal/` |
+| Traversal | Zigzag Traversal        | CSS grid with zigzag path highlight     | `src/algorithms/matrices/traversal/zigzag-traversal/`   |
+| Traversal | Anti-Diagonal Traversal | CSS grid with anti-diagonal sweep       | `src/algorithms/matrices/traversal/anti-diagonal/`      |
+
+### Transformation (5)
+
+| Technique      | Algorithm         | Visualizer                                   | Source Directory                                       |
+| -------------- | ----------------- | -------------------------------------------- | ------------------------------------------------------ |
+| Transformation | Rotate Matrix 90° | CSS grid with layer-by-layer rotation        | `src/algorithms/matrices/transformation/rotate-90/`    |
+| Transformation | Transpose Matrix  | CSS grid with diagonal reflection            | `src/algorithms/matrices/transformation/transpose/`    |
+| Transformation | Set Matrix Zeroes | CSS grid with row/column zero propagation    | `src/algorithms/matrices/transformation/set-zeroes/`   |
+| Transformation | Flip Image        | CSS grid with horizontal mirror highlight    | `src/algorithms/matrices/transformation/flip-image/`   |
+| Transformation | Game of Life      | CSS grid with neighbor-count state animation | `src/algorithms/matrices/transformation/game-of-life/` |
+
+### Search (4)
+
+| Technique | Algorithm                     | Visualizer                                  | Source Directory                                             |
+| --------- | ----------------------------- | ------------------------------------------- | ------------------------------------------------------------ |
+| Search    | Search 2D Matrix              | CSS grid with binary search row/column scan | `src/algorithms/matrices/search/search-2d-matrix/`           |
+| Search    | Search 2D Matrix II           | CSS grid with staircase elimination         | `src/algorithms/matrices/search/search-2d-matrix-ii/`        |
+| Search    | Kth Smallest in Sorted Matrix | CSS grid with binary search value narrowing | `src/algorithms/matrices/search/kth-smallest-sorted-matrix/` |
+| Search    | Island Count                  | CSS grid with BFS/DFS flood-fill regions    | `src/algorithms/matrices/search/island-count/`               |
+
+### Construction (4)
+
+| Technique    | Algorithm         | Visualizer                              | Source Directory                                         |
+| ------------ | ----------------- | --------------------------------------- | -------------------------------------------------------- |
+| Construction | Spiral Matrix II  | CSS grid with outward spiral fill       | `src/algorithms/matrices/construction/spiral-matrix-ii/` |
+| Construction | Toeplitz Matrix   | CSS grid with diagonal equality check   | `src/algorithms/matrices/construction/toeplitz-matrix/`  |
+| Construction | Pascal's Triangle | CSS grid with row-by-row sum build      | `src/algorithms/matrices/construction/pascals-triangle/` |
+| Construction | Valid Sudoku      | CSS grid with row/column/box validation | `src/algorithms/matrices/construction/valid-sudoku/`     |
+
+### Layer Operations (3)
+
+| Technique        | Algorithm             | Visualizer                                            | Source Directory                                                  |
+| ---------------- | --------------------- | ----------------------------------------------------- | ----------------------------------------------------------------- |
+| Layer Operations | Rotate Layer by Layer | CSS grid with concentric layer rotation               | `src/algorithms/matrices/layer-operations/rotate-layer-by-layer/` |
+| Layer Operations | Matrix Diagonal Sum   | CSS grid with primary/secondary diagonals highlighted | `src/algorithms/matrices/layer-operations/diagonal-sum/`          |
+| Layer Operations | Reshape Matrix        | CSS grid with source-to-target mapping                | `src/algorithms/matrices/layer-operations/reshape-matrix/`        |
 
 ---
 

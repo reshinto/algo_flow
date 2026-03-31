@@ -7,7 +7,7 @@ import type {
   MatrixCell,
   MatrixCellState,
   MatrixBoundaries,
-  SpiralDirection,
+  MatrixTraversalDirection,
   MatrixVisualState,
 } from "@/types";
 
@@ -18,7 +18,7 @@ export class MatrixTracker extends BaseTracker {
   private cells: MatrixCell[][];
   private collectedOrder: number[] = [];
   private currentPosition: [number, number] | null = null;
-  private direction: SpiralDirection | null = null;
+  private direction: MatrixTraversalDirection | null = null;
   private boundaries: MatrixBoundaries;
 
   constructor(matrix: number[][], lineMap: LineMap) {
@@ -67,7 +67,7 @@ export class MatrixTracker extends BaseTracker {
   }
 
   /** Set the active traversal direction. */
-  setDirection(direction: SpiralDirection, variables: Record<string, unknown>): void {
+  setDirection(direction: MatrixTraversalDirection, variables: Record<string, unknown>): void {
     this.direction = direction;
     this.pushStep({
       type: "move-direction",

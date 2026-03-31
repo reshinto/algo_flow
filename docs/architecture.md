@@ -214,7 +214,7 @@ src/
 │   ├── stacks-queues/       # e.g. stacks-queues/validation/valid-parentheses/
 │   ├── hash-maps/           # e.g. hash-maps/lookup/two-sum/
 │   ├── strings/             # e.g. strings/pattern-matching/kmp-search/
-│   ├── matrices/            # e.g. matrices/traversal/spiral-order/
+│   ├── matrices/            # 20 algorithms across traversal, transformation, search, construction, layer-operations
 │   └── sets/                # e.g. sets/operations/set-intersection/
 ├── components/
 │   ├── code-panel/          # Monaco editor with language tabs
