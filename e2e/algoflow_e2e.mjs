@@ -742,7 +742,7 @@ const inputTests = [
     },
   },
   {
-    algo: "Sort Nearly Sorted Array",
+    algo: "Sort Nearly Sorted",
     test: async () => {
       await fillTextInput("6, 5, 3, 2, 8, 10");
       await fillNumberInput(3);
