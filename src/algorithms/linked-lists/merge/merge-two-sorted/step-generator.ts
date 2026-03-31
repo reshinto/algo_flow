@@ -57,7 +57,7 @@ export function generateMergeTwoSortedSteps(input: MergeTwoSortedInput): Executi
     state: "default",
     position: { x: startX + Math.max(listA.length, listB.length) * nodeSpacingX + 50, y: 130 },
   };
-  tracker.nodes = [...tracker.nodes, dummy];
+  tracker.setNodes([...tracker.getNodes(), dummy]);
 
   tracker.setPointer("currentA", headIdA);
   tracker.setPointer("currentB", headIdB);

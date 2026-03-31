@@ -13,6 +13,12 @@
             "type": "command",
             "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/block-main-branch-commits.sh",
             "timeout": 5000
+          },
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PROJECT_DIR}/.claude/hooks/pre-commit-fn-import-check.sh",
+            "timeout": 10000,
+            "statusMessage": "Validating fn-import.d.ts completeness..."
           }
         ]
       },

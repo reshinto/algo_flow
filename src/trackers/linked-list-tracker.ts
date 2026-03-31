@@ -25,6 +25,16 @@ export class LinkedListTracker extends BaseTracker {
     this.headId = headId;
   }
 
+  /** Returns the current node list. Use to append nodes during initialization. */
+  getNodes(): LinkedListNode[] {
+    return this.nodes;
+  }
+
+  /** Replaces the internal node list. Use to set up multi-list scenarios. */
+  setNodes(nodes: LinkedListNode[]): void {
+    this.nodes = nodes;
+  }
+
   private snapshot(): LinkedListVisualState {
     const state: LinkedListVisualState = {
       kind: "linked-list",

@@ -57,13 +57,7 @@ export default function InputEditor() {
       return renderGenericEditor(input, setInput);
 
     case CATEGORY.LINKED_LISTS:
-      return (
-        <ArrayInputEditor
-          values={(input as { values: number[] }).values}
-          onChange={(values) => setInput({ values })}
-          label="List values (comma-separated)"
-        />
-      );
+      return renderGenericEditor(input, setInput);
 
     case CATEGORY.SETS:
       return (

@@ -49,7 +49,7 @@ export function generateRemoveDuplicatesSortedSteps(
     const nextId: string | null = nextMap.get(currentId) ?? null;
     const nextNode = nextId ? nodes.find((n) => n.id === nextId) : null;
 
-    if (nextNode && currentNode && currentNode.value === nextNode.value) {
+    if (nextNode && currentNode && nextId !== null && currentNode.value === nextNode.value) {
       tracker.compare(
         currentId,
         nextId,
@@ -57,7 +57,7 @@ export function generateRemoveDuplicatesSortedSteps(
         { current: currentId, next: nextId, isDuplicate: true },
       );
 
-      const skipId = nextMap.get(nextId) ?? null;
+      const skipId: string | null = nextMap.get(nextId) ?? null;
       tracker.deleteNode(nextId, currentId, `Remove duplicate: skip node ${nextId}`, {
         deleted: nextId,
         newNext: skipId,
@@ -66,7 +66,7 @@ export function generateRemoveDuplicatesSortedSteps(
       deletedNodeIds.add(nextId);
       nextMap.set(currentId, skipId);
     } else {
-      if (nextNode && currentNode) {
+      if (nextNode && currentNode && nextId !== null) {
         tracker.compare(
           currentId,
           nextId,

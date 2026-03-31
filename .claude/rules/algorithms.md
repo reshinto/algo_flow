@@ -26,6 +26,8 @@ paths:
 - Pipeline story (`<AlgorithmName>Pipeline.stories.tsx`) co-located in the algorithm directory
 - Educational content (all sections)
 - Registry integration via self-registration
+- **fn-import.d.ts entry**: Every function exported from `sources/*.ts?fn` must have a matching `export const` declaration in `src/types/fn-import.d.ts` — enforced by pre-commit hook
+- **InputEditor compatibility**: If the algorithm's `defaultInput` shape differs from other algorithms in the same category, verify `InputEditor.tsx` handles it (use `renderGenericEditor` for categories with diverse input shapes)
 
 ### Step Generation
 
