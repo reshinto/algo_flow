@@ -127,6 +127,13 @@ declare module "*.ts?fn" {
   export const dijkstra: (...args: any[]) => any;
   // Linked Lists
   export const reverseLinkedList: (...args: any[]) => any;
+  export const mergeTwoSorted: (...args: any[]) => any;
+  export const findNodeByValue: (...args: any[]) => any;
+  export const linkedListLength: (...args: any[]) => any;
+  export const insertAtPosition: (...args: any[]) => any;
+  export const deleteByValue: (...args: any[]) => any;
+  export const removeDuplicatesSorted: (...args: any[]) => any;
+  export const isSorted: (...args: any[]) => any;
   // Heaps
   export const buildMinHeap: (...args: any[]) => any;
   export const buildMaxHeap: (...args: any[]) => any;
