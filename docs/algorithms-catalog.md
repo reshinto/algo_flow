@@ -2,7 +2,7 @@
 
 # Algorithm Catalog
 
-Complete listing of all 143 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
+Complete listing of all 169 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
 
 > **Prerequisites:** None — this is a reference document.
 
@@ -16,7 +16,7 @@ Complete listing of all 143 algorithms available in AlgoFlow, organized by categ
 - [Arrays (44)](#arrays-44-algorithms)
 - [Trees (1)](#trees-1-algorithm)
 - [Linked Lists (1)](#linked-lists-1-algorithm)
-- [Heaps (1)](#heaps-1-algorithm)
+- [Heaps (28)](#heaps-28-algorithms)
 - [Stacks & Queues (1)](#stacks--queues-1-algorithm)
 - [Hash Maps (28)](#hash-maps-28-algorithms)
 - [Strings (1)](#strings-1-algorithm)
@@ -253,13 +253,40 @@ Algorithms that manipulate linked list nodes. Algorithms live under `src/algorit
 
 ---
 
-## Heaps (1 algorithm)
+## Heaps (28 algorithms)
 
 Algorithms involving heap/priority queue operations. Algorithms live under `src/algorithms/heaps/<technique>/<algorithm>/`.
 
-| Technique    | Algorithm      | Visualizer                                | Source Directory                                    |
-| ------------ | -------------- | ----------------------------------------- | --------------------------------------------------- |
-| Construction | Build Min Heap | SVG tree + array dual-view with sift-down | `src/algorithms/heaps/construction/build-min-heap/` |
+| Technique      | Algorithm               | Visualizer                                 | Source Directory                                             |
+| -------------- | ----------------------- | ------------------------------------------ | ------------------------------------------------------------ |
+| Construction   | Build Min Heap          | SVG tree + array dual-view with sift-down  | `src/algorithms/heaps/construction/build-min-heap/`          |
+| Construction   | Build Max Heap          | SVG tree + array dual-view with sift-down  | `src/algorithms/heaps/construction/build-max-heap/`          |
+| Construction   | Build Heap (Top-Down)   | SVG tree with sift-up insertion            | `src/algorithms/heaps/construction/build-heap-top-down/`     |
+| Construction   | Heapify Single Node     | SVG tree with single sift-down path        | `src/algorithms/heaps/construction/heapify-single-node/`     |
+| Operations     | Heap Insert             | SVG tree with sift-up after append         | `src/algorithms/heaps/operations/heap-insert/`               |
+| Operations     | Extract Min             | SVG tree with root extraction + sift-down  | `src/algorithms/heaps/operations/heap-extract-min/`          |
+| Operations     | Extract Max             | SVG tree with root extraction + sift-down  | `src/algorithms/heaps/operations/heap-extract-max/`          |
+| Operations     | Heap Peek               | SVG tree with root highlight               | `src/algorithms/heaps/operations/heap-peek/`                 |
+| Operations     | Delete Arbitrary Node   | SVG tree with replacement + sift           | `src/algorithms/heaps/operations/heap-delete-arbitrary/`     |
+| Operations     | Decrease Key            | SVG tree with value update + sift-up       | `src/algorithms/heaps/operations/heap-decrease-key/`         |
+| Operations     | Increase Key            | SVG tree with value update + sift-down     | `src/algorithms/heaps/operations/heap-increase-key/`         |
+| Operations     | Replace Root            | SVG tree with root replacement + sift-down | `src/algorithms/heaps/operations/heap-replace-root/`         |
+| Applications   | Kth Largest Element     | SVG tree showing min-heap of size k        | `src/algorithms/heaps/applications/kth-largest-element/`     |
+| Applications   | Kth Smallest Element    | SVG tree showing max-heap of size k        | `src/algorithms/heaps/applications/kth-smallest-element/`    |
+| Applications   | Last Stone Weight       | SVG tree with repeated extract + insert    | `src/algorithms/heaps/applications/last-stone-weight/`       |
+| Applications   | K Closest Points        | SVG tree with max-heap of distances        | `src/algorithms/heaps/applications/k-closest-points/`        |
+| Applications   | Ugly Number II          | SVG tree with min-heap generating sequence | `src/algorithms/heaps/applications/ugly-number-ii/`          |
+| Applications   | Heap Sort (Heap View)   | SVG tree shrinking during extraction       | `src/algorithms/heaps/applications/heap-sort-visualization/` |
+| Applications   | Top K Frequent (Heap)   | SVG tree with frequency-based min-heap     | `src/algorithms/heaps/applications/top-k-frequent-heap/`     |
+| Applications   | Merge K Sorted Arrays   | SVG tree as k-way merge buffer             | `src/algorithms/heaps/applications/merge-k-sorted-arrays/`   |
+| Applications   | Sort Nearly Sorted      | SVG tree with sliding window heap          | `src/algorithms/heaps/applications/sort-nearly-sorted/`      |
+| Applications   | Reorganize String       | SVG tree with char frequency max-heap      | `src/algorithms/heaps/applications/reorganize-string/`       |
+| Applications   | Task Scheduler          | SVG tree with task frequency max-heap      | `src/algorithms/heaps/applications/task-scheduler-heap/`     |
+| Applications   | Find Median from Stream | SVG tree tracking max-heap lower half      | `src/algorithms/heaps/applications/find-median-stream/`      |
+| Applications   | Meeting Rooms II        | SVG tree with end-time min-heap            | `src/algorithms/heaps/applications/meeting-rooms-ii/`        |
+| Priority Queue | PQ Enqueue              | SVG tree with priority insert              | `src/algorithms/heaps/priority-queue/pq-enqueue/`            |
+| Priority Queue | PQ Dequeue              | SVG tree with priority extraction          | `src/algorithms/heaps/priority-queue/pq-dequeue/`            |
+| Priority Queue | Change Priority         | SVG tree with priority update + re-heapify | `src/algorithms/heaps/priority-queue/pq-change-priority/`    |
 
 ---
 

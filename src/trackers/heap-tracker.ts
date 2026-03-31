@@ -51,7 +51,14 @@ export class HeapTracker extends BaseTracker {
   /** Reset non-settled nodes back to default before the next comparison. */
   private resetTransientStates(): void {
     for (const node of this.nodes) {
-      if (node.state === "comparing" || node.state === "swapping" || node.state === "current") {
+      if (
+        node.state === "comparing" ||
+        node.state === "swapping" ||
+        node.state === "current" ||
+        node.state === "inserted" ||
+        node.state === "updated" ||
+        node.state === "highlighted"
+      ) {
         node.state = "default";
       }
     }
@@ -138,6 +145,94 @@ export class HeapTracker extends BaseTracker {
     });
   }
 
+  /** Mark the start of a sift-up pass from the given index. */
+  startSiftUp(idx: number, variables: Record<string, unknown>): void {
+    this.resetTransientStates();
+    this.activeIndex = idx;
+    this.setNodeState(idx, "current");
+    this.pushStep({
+      type: "sift-up",
+      description: `Sift-up from index ${idx} (value ${this.nodes[idx]?.value})`,
+      variables,
+      visualState: this.snapshot(),
+    });
+  }
+
+  /** Append a new node at the end of the heap array. */
+  addNode(value: number, variables: Record<string, unknown>): void {
+    this.resetTransientStates();
+    const idx = this.nodes.length;
+    this.nodes.push({
+      index: idx,
+      value,
+      state: "inserted",
+      position: heapTreePosition(idx, this.nodes.length),
+    });
+    this.activeIndex = idx;
+    this.pushStep({
+      type: "heap-insert",
+      description: `Insert value ${value} at index ${idx}`,
+      variables,
+      visualState: this.snapshot(),
+    });
+  }
+
+  /** Remove the last node from the heap array. */
+  removeNode(variables: Record<string, unknown>): void {
+    this.resetTransientStates();
+    const removed = this.nodes.pop();
+    if (removed) {
+      this.activeIndex = null;
+      this.pushStep({
+        type: "heap-extract",
+        description: `Remove node at index ${removed.index} (value ${removed.value})`,
+        variables,
+        visualState: this.snapshot(),
+      });
+    }
+  }
+
+  /** Mark a node as extracted (visually fading out before removal). */
+  markExtracted(idx: number, variables: Record<string, unknown>): void {
+    this.resetTransientStates();
+    this.setNodeState(idx, "extracted");
+    this.pushStep({
+      type: "heap-extract",
+      description: `Extract node at index ${idx} (value ${this.nodes[idx]?.value})`,
+      variables,
+      visualState: this.snapshot(),
+    });
+  }
+
+  /** Update a node's value in-place (for decrease-key / increase-key). */
+  updateValue(idx: number, newValue: number, variables: Record<string, unknown>): void {
+    this.resetTransientStates();
+    const node = this.nodes[idx];
+    if (node) {
+      const oldValue = node.value;
+      node.value = newValue;
+      node.state = "updated";
+      this.pushStep({
+        type: "heap-update",
+        description: `Update index ${idx} from ${oldValue} to ${newValue}`,
+        variables,
+        visualState: this.snapshot(),
+      });
+    }
+  }
+
+  /** Highlight a node for emphasis (peek, found result). */
+  markHighlighted(idx: number, variables: Record<string, unknown>): void {
+    this.resetTransientStates();
+    this.setNodeState(idx, "highlighted");
+    this.pushStep({
+      type: "visit",
+      description: `Highlight node at index ${idx} (value ${this.nodes[idx]?.value})`,
+      variables,
+      visualState: this.snapshot(),
+    });
+  }
+
   complete(variables: Record<string, unknown>): void {
     for (const node of this.nodes) {
       node.state = "settled";
@@ -146,7 +241,7 @@ export class HeapTracker extends BaseTracker {
     this.compareIndices = null;
     this.pushStep({
       type: "complete",
-      description: "Min-heap constructed — every parent is smaller than its children",
+      description: "Heap operation complete",
       variables,
       visualState: this.snapshot(),
     });

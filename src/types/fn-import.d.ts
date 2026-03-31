@@ -129,6 +129,35 @@ declare module "*.ts?fn" {
   export const reverseLinkedList: (...args: any[]) => any;
   // Heaps
   export const buildMinHeap: (...args: any[]) => any;
+  export const buildMaxHeap: (...args: any[]) => any;
+  export const buildHeapTopDown: (...args: any[]) => any;
+  export const heapifySingleNode: (...args: any[]) => any;
+  export const heapInsert: (...args: any[]) => any;
+  export const heapExtractMin: (...args: any[]) => any;
+  export const heapExtractMax: (...args: any[]) => any;
+  export const heapPeek: (...args: any[]) => any;
+  export const heapDecreaseKey: (...args: any[]) => any;
+  export const heapDeleteArbitrary: (...args: any[]) => any;
+  export const heapIncreaseKey: (...args: any[]) => any;
+  export const heapReplaceRoot: (...args: any[]) => any;
+  // Heap Applications
+  export const kClosestPoints: (...args: any[]) => any;
+  export const kthLargestElement: (...args: any[]) => any;
+  export const kthSmallestElement: (...args: any[]) => any;
+  export const lastStoneWeight: (...args: any[]) => any;
+  export const uglyNumberIi: (...args: any[]) => any;
+  export const heapSortVisualization: (...args: any[]) => any;
+  export const topKFrequentHeap: (...args: any[]) => any;
+  export const mergeKSortedArrays: (...args: any[]) => any;
+  export const findMedianStream: (...args: any[]) => any;
+  export const sortNearlySorted: (...args: any[]) => any;
+  export const reorganizeString: (...args: any[]) => any;
+  export const taskSchedulerHeap: (...args: any[]) => any;
+  export const meetingRoomsII: (...args: any[]) => any;
+  // Priority Queue
+  export const pqEnqueue: (...args: any[]) => any;
+  export const pqDequeue: (...args: any[]) => any;
+  export const pqChangePriority: (...args: any[]) => any;
   // Stacks & Queues
   export const validParentheses: (...args: any[]) => any;
   // Hash Maps
