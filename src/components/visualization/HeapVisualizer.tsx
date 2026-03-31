@@ -14,6 +14,10 @@ const NODE_COLORS: Record<HeapNodeState, string> = {
   swapping: "var(--color-viz-swapping)",
   settled: "var(--color-viz-sorted)",
   current: "var(--color-viz-current)",
+  inserted: "var(--color-viz-visiting)",
+  extracted: "var(--color-viz-eliminated)",
+  updated: "var(--color-viz-swapping)",
+  highlighted: "var(--color-viz-found)",
 };
 
 const ARRAY_CELL_COLORS: Record<HeapNodeState, string> = NODE_COLORS;

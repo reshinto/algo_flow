@@ -34,7 +34,11 @@ export type StepType =
   | "traverse-next"
   | "reverse-pointer"
   | "sift-down"
+  | "sift-up"
   | "heap-swap"
+  | "heap-insert"
+  | "heap-extract"
+  | "heap-update"
   | "push"
   | "pop"
   | "match"
@@ -343,7 +347,16 @@ export interface LinkedListVisualState {
 /*                               Heap Structure                               */
 /* -------------------------------------------------------------------------- */
 
-export type HeapNodeState = "default" | "comparing" | "swapping" | "settled" | "current";
+export type HeapNodeState =
+  | "default"
+  | "comparing"
+  | "swapping"
+  | "settled"
+  | "current"
+  | "inserted"
+  | "extracted"
+  | "updated"
+  | "highlighted";
 
 export interface HeapNode {
   /** 0-based index in the underlying array */

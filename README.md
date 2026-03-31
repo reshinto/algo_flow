@@ -19,7 +19,7 @@ Algorithm visualization web app for learners. Step through algorithms with synch
 
 ## Algorithms
 
-**143 algorithms across 14 categories**: Sorting, Searching, Graph (28 algorithms across 10 technique subcategories), Pathfinding, Dynamic Programming (32 algorithms across 6 technique subcategories), Arrays (44 algorithms across 11 technique subcategories), Trees, Linked Lists, Heaps, Stacks & Queues, Hash Maps (28 algorithms across 8 technique subcategories), Strings, Matrices, and Sets.
+**169 algorithms across 14 categories**: Sorting, Searching, Graph (28 algorithms across 10 technique subcategories), Pathfinding, Dynamic Programming (32 algorithms across 6 technique subcategories), Arrays (44 algorithms across 11 technique subcategories), Trees, Linked Lists, Heaps (28 algorithms across 4 technique subcategories), Stacks & Queues, Hash Maps (28 algorithms across 8 technique subcategories), Strings, Matrices, and Sets.
 
 See the [full Algorithm Catalog](docs/algorithms-catalog.md) for the complete listing with visualizer descriptions and technique subcategories.
 

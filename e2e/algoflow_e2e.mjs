@@ -717,6 +717,38 @@ const inputTests = [
     test: () => fillTextInput("8, 3, 7, 1, 5"),
   },
   {
+    algo: "Build Max Heap",
+    test: () => fillTextInput("3, 7, 1, 5, 9"),
+  },
+  {
+    algo: "Heap Insert",
+    test: async () => {
+      await fillTextInput("1, 3, 5, 7, 9");
+      await fillNumberInput(2);
+    },
+  },
+  {
+    algo: "Kth Largest Element",
+    test: async () => {
+      await fillTextInput("3, 1, 5, 12, 2, 11");
+      await fillNumberInput(3);
+    },
+  },
+  {
+    algo: "Kth Smallest Element",
+    test: async () => {
+      await fillTextInput("7, 10, 4, 3, 20");
+      await fillNumberInput(2);
+    },
+  },
+  {
+    algo: "Sort Nearly Sorted Array",
+    test: async () => {
+      await fillTextInput("6, 5, 3, 2, 8, 10");
+      await fillNumberInput(3);
+    },
+  },
+  {
     algo: "Reverse Linked List",
     test: () => fillTextInput("1, 2, 3, 4, 5"),
   },
