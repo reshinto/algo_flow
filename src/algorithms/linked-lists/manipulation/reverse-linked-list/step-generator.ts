@@ -34,7 +34,7 @@ export function generateReverseLinkedListSteps(input: ReverseLinkedListInput): E
 
   tracker.setPointer("prev", null);
   tracker.setPointer("current", headId);
-  tracker.initialize({ prev: null, current: headId });
+  tracker.initialize("Initialize: prev = null, current = head", { prev: null, current: headId });
 
   let prevId: string | null = null;
   let currentId: string | null = headId;
@@ -54,7 +54,7 @@ export function generateReverseLinkedListSteps(input: ReverseLinkedListInput): E
     tracker.setPointer("current", currentId);
   }
 
-  tracker.complete(prevId, { newHead: prevId });
+  tracker.complete(prevId, "Linked list reversed — prev is the new head", { newHead: prevId });
 
   return tracker.getSteps();
 }

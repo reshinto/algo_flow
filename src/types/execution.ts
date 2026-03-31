@@ -86,6 +86,11 @@ export type StepType =
   | "check-duplicate"
   | "check-prefix"
   | "prefix-found"
+  | "delete-node"
+  | "insert-node"
+  | "update-head"
+  | "mark-cycle"
+  | "link-doubly"
   | "complete";
 
 /** Maps a language to the source lines highlighted for this step. */
@@ -324,12 +329,23 @@ export interface TreeVisualState {
 /*                            Linked List Structure                            */
 /* -------------------------------------------------------------------------- */
 
-export type LinkedListNodeState = "default" | "current" | "processed" | "swapping";
+export type LinkedListNodeState =
+  | "default"
+  | "current"
+  | "processed"
+  | "swapping"
+  | "in-cycle"
+  | "deleted"
+  | "inserted"
+  | "highlighted"
+  | "found";
 
 export interface LinkedListNode {
   id: string;
   value: number;
   nextId: string | null;
+  /** Backward pointer for doubly-linked list algorithms. Omitted for singly-linked. */
+  prevId?: string | null;
   state: LinkedListNodeState;
   position: { x: number; y: number };
 }
@@ -339,8 +355,14 @@ export interface LinkedListVisualState {
   nodes: LinkedListNode[];
   /** ID of the current head node */
   headId: string | null;
+  /** Second head for two-list algorithms (merge, intersection, add-two-numbers) */
+  secondaryHeadId?: string | null;
   /** Named pointer positions: "prev", "current", "next" → node ID or null */
   pointers: Record<string, string | null>;
+  /** Edge that closes a cycle, rendered as a curved arc */
+  cycleEdge?: { fromId: string; toId: string };
+  /** Current algorithm phase label (e.g. "detecting", "merging") */
+  phase?: string;
 }
 
 /* -------------------------------------------------------------------------- */
