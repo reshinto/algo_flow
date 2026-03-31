@@ -91,6 +91,19 @@ export type StepType =
   | "update-head"
   | "mark-cycle"
   | "link-doubly"
+  | "swap-cells"
+  | "mark-cell"
+  | "zero-cell"
+  | "flip-cell"
+  | "compare-cell"
+  | "mark-found"
+  | "eliminate-region"
+  | "place-value"
+  | "compute-value"
+  | "verify-cell"
+  | "select-layer"
+  | "process-layer"
+  | "accumulate"
   | "complete";
 
 /** Maps a language to the source lines highlighted for this step. */
@@ -529,8 +542,33 @@ export interface StringVisualState {
 /*                              Matrix Structure                               */
 /* -------------------------------------------------------------------------- */
 
-export type MatrixCellState = "default" | "current" | "collected" | "boundary";
+export type MatrixCellState =
+  | "default"
+  | "current"
+  | "collected"
+  | "boundary"
+  | "swapping"
+  | "swapped"
+  | "zeroed"
+  | "marked"
+  | "flipped"
+  | "comparing"
+  | "found"
+  | "searching"
+  | "eliminated"
+  | "placed"
+  | "computing"
+  | "layer-active"
+  | "layer-processed";
+
 export type SpiralDirection = "right" | "down" | "left" | "up";
+
+export type MatrixTraversalDirection =
+  | SpiralDirection
+  | "diagonal-down"
+  | "diagonal-up"
+  | "zigzag-left"
+  | "zigzag-right";
 
 export interface MatrixCell {
   row: number;
@@ -546,18 +584,47 @@ export interface MatrixBoundaries {
   right: number;
 }
 
+export interface MatrixSearchRegion {
+  topRow: number;
+  bottomRow: number;
+  leftCol: number;
+  rightCol: number;
+}
+
 export interface MatrixVisualState {
   kind: "matrix";
   /** 2D array of cells — rows × cols */
   cells: MatrixCell[][];
-  /** Elements collected in spiral order so far */
+  /** Elements collected in traversal order so far */
   collectedOrder: number[];
   /** Currently active cell position, or null */
   currentPosition: [number, number] | null;
   /** Active traversal direction */
-  direction: SpiralDirection | null;
+  direction: MatrixTraversalDirection | null;
   /** Current shrinking boundaries */
   boundaries: MatrixBoundaries;
+  /** Active operation label for status bar (e.g., "Rotating", "Searching") */
+  operationLabel?: string;
+  /** For transform: source cell of an in-progress swap */
+  swapSource?: [number, number] | null;
+  /** For transform: target cell of an in-progress swap */
+  swapTarget?: [number, number] | null;
+  /** For search: the region currently under consideration */
+  searchRegion?: MatrixSearchRegion | null;
+  /** For search: value being searched for */
+  searchTarget?: number | null;
+  /** For construction: order in which cells were filled */
+  fillOrder?: number[];
+  /** For layer: which layer (0-based ring index) is currently active */
+  activeLayer?: number | null;
+  /** For layer: total number of layers */
+  totalLayers?: number;
+  /** General-purpose phase label */
+  phase?: string;
+  /** Result value for algorithms returning a scalar (e.g., diagonal sum) */
+  scalarResult?: number | null;
+  /** Second matrix for before/after display (e.g., showing original) */
+  originalCells?: MatrixCell[][] | null;
 }
 
 /* -------------------------------------------------------------------------- */

@@ -13,4 +13,8 @@ export { StackQueueTracker } from "./stack-queue-tracker";
 export { HashMapTracker } from "./hash-map-tracker";
 export { StringTracker } from "./string-tracker";
 export { MatrixTracker } from "./matrix-tracker";
+export { MatrixTransformTracker } from "./matrix-transform-tracker";
+export { MatrixSearchTracker } from "./matrix-search-tracker";
+export { MatrixConstructionTracker } from "./matrix-construction-tracker";
+export { MatrixLayerTracker } from "./matrix-layer-tracker";
 export { SetTracker } from "./set-tracker";

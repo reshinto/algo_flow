@@ -67,13 +67,38 @@ export default function InputEditor() {
         />
       );
 
-    case CATEGORY.MATRICES:
+    case CATEGORY.MATRICES: {
+      const matrixInput = input as Record<string, unknown>;
+      // Pascal's Triangle uses a scalar numRows — delegate to generic editor.
+      if ("numRows" in matrixInput && typeof matrixInput.numRows === "number") {
+        return renderGenericEditor(input, setInput);
+      }
+      // Valid Sudoku uses "board" as its matrix key.
+      if ("board" in matrixInput && Array.isArray(matrixInput.board)) {
+        return (
+          <MatrixInputEditor
+            matrix={matrixInput.board as number[][]}
+            onChange={(board) => setInput({ ...matrixInput, board })}
+          />
+        );
+      }
+      // Some matrix algorithms use "grid" as their input key (e.g. Island Count)
+      // while others use "matrix". Preserve any extra fields (e.g. targetK).
+      if ("grid" in matrixInput && Array.isArray(matrixInput.grid)) {
+        return (
+          <MatrixInputEditor
+            matrix={matrixInput.grid as number[][]}
+            onChange={(grid) => setInput({ ...matrixInput, grid })}
+          />
+        );
+      }
       return (
         <MatrixInputEditor
-          matrix={(input as { matrix: number[][] }).matrix}
-          onChange={(matrix) => setInput({ matrix })}
+          matrix={(matrixInput.matrix ?? []) as number[][]}
+          onChange={(matrix) => setInput({ ...matrixInput, matrix })}
         />
       );
+    }
 
     case CATEGORY.STRINGS:
       return (
