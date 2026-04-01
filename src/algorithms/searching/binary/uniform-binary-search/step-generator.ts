@@ -26,10 +26,14 @@ export function generateUniformBinarySearchSteps(input: {
   const deltaTable: number[] = [];
   if (arrayLength > 0) {
     let deltaValue = Math.ceil(arrayLength / 2);
-    while (deltaValue > 0) {
-      deltaTable.push(deltaValue);
-      if (deltaValue === 1) break;
+    deltaTable.push(deltaValue);
+    while (deltaValue > 1) {
       deltaValue = Math.ceil(deltaValue / 2);
+      deltaTable.push(deltaValue);
+    }
+    // Ensure enough steps to reach any element in the array
+    if (deltaTable.length < Math.ceil(Math.log2(arrayLength)) + 1) {
+      deltaTable.push(1);
     }
   }
 
@@ -81,11 +85,12 @@ export function generateUniformBinarySearchSteps(input: {
       break;
     }
 
+    const previousIndex = currentIndex;
     if (currentValue < targetValue) {
       const eliminatedStart = 0;
       const eliminatedEnd = currentIndex;
-      const previousIndex = currentIndex;
       currentIndex += nextDelta;
+      if (currentIndex >= arrayLength) currentIndex = arrayLength - 1;
 
       tracker.eliminate(
         eliminatedStart,
@@ -100,13 +105,11 @@ export function generateUniformBinarySearchSteps(input: {
         },
         `arr[${previousIndex}]=${currentValue} < ${targetValue}, move right by ${nextDelta} to index ${currentIndex}`,
       );
-
-      if (currentIndex >= arrayLength) break;
     } else {
       const eliminatedStart = currentIndex;
       const eliminatedEnd = arrayLength - 1;
-      const previousIndex = currentIndex;
       currentIndex -= nextDelta;
+      if (currentIndex < 0) currentIndex = 0;
 
       tracker.eliminate(
         eliminatedStart,
@@ -121,9 +124,9 @@ export function generateUniformBinarySearchSteps(input: {
         },
         `arr[${previousIndex}]=${currentValue} > ${targetValue}, move left by ${nextDelta} to index ${currentIndex}`,
       );
-
-      if (currentIndex < 0) break;
     }
+
+    if (currentIndex === previousIndex) break;
   }
 
   tracker.complete({ resultIndex: -1, targetValue }, false);

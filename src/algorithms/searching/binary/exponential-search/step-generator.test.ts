@@ -111,7 +111,7 @@ describe("generateExponentialSearchSteps", () => {
   it("includes eliminate steps during binary search phase", () => {
     const steps = generateExponentialSearchSteps({
       sortedArray: [2, 5, 8, 12, 16, 23, 38, 56, 72, 91],
-      targetValue: 72,
+      targetValue: 23,
     });
     const eliminateSteps = steps.filter((step) => step.type === "eliminate");
 
