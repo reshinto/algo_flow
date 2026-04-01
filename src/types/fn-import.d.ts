@@ -47,6 +47,23 @@ declare module "*.ts?fn" {
   export const bubbleSort: (...args: any[]) => any;
   // Searching
   export const binarySearch: (...args: any[]) => any;
+  export const jumpSearch: (...args: any[]) => any;
+  export const fibonacciSearch: (...args: any[]) => any;
+  export const hashSearch: (...args: any[]) => any;
+  export const ternarySearch: (...args: any[]) => any;
+  export const recursiveBinarySearch: (...args: any[]) => any;
+  export const exponentialSearch: (...args: any[]) => any;
+  export const interpolationSearch: (...args: any[]) => any;
+  export const lowerBoundSearch: (...args: any[]) => any;
+  export const upperBoundSearch: (...args: any[]) => any;
+  export const searchRotatedArray: (...args: any[]) => any;
+  export const findPeakElement: (...args: any[]) => any;
+  export const minRotatedArray: (...args: any[]) => any;
+  export const metaBinarySearch: (...args: any[]) => any;
+  export const uniformBinarySearch: (...args: any[]) => any;
+  export const sqrtBinarySearch: (...args: any[]) => any;
+  export const linearSearch: (...args: any[]) => any;
+  export const sentinelLinearSearch: (...args: any[]) => any;
   // Arrays
   export const maxSumSubarray: (...args: any[]) => any;
   export const kadanesAlgorithm: (...args: any[]) => any;

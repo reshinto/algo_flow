@@ -475,6 +475,116 @@ const inputTests = [
     },
   },
   {
+    algo: "Linear Search",
+    test: async () => {
+      await fillTextInput("4, 2, 7, 1, 9, 3");
+      await fillNumberInput(7);
+    },
+  },
+  {
+    algo: "Sentinel Linear Search",
+    test: async () => {
+      await fillTextInput("4, 2, 7, 1, 9, 3");
+      await fillNumberInput(9);
+    },
+  },
+  {
+    algo: "Recursive Binary Search",
+    test: async () => {
+      await fillTextInput("2, 5, 8, 12, 16");
+      await fillNumberInput(12);
+    },
+  },
+  {
+    algo: "Exponential Search",
+    test: async () => {
+      await fillTextInput("2, 5, 8, 12, 16");
+      await fillNumberInput(8);
+    },
+  },
+  {
+    algo: "Interpolation Search",
+    test: async () => {
+      await fillTextInput("2, 5, 8, 12, 16");
+      await fillNumberInput(12);
+    },
+  },
+  {
+    algo: "Lower Bound Search",
+    test: async () => {
+      await fillTextInput("1, 3, 3, 5, 5, 8");
+      await fillNumberInput(5);
+    },
+  },
+  {
+    algo: "Upper Bound Search",
+    test: async () => {
+      await fillTextInput("1, 3, 3, 5, 5, 8");
+      await fillNumberInput(5);
+    },
+  },
+  {
+    algo: "Search in Rotated Sorted Array",
+    test: async () => {
+      await fillTextInput("4, 5, 6, 7, 0, 1, 2");
+      await fillNumberInput(0);
+    },
+  },
+  {
+    algo: "Find Peak Element",
+    test: () => fillTextInput("1, 3, 20, 4, 1, 0"),
+  },
+  {
+    algo: "Square Root via Binary Search",
+    test: () => fillNumberInput(49),
+  },
+  {
+    algo: "Minimum in Rotated Sorted Array",
+    test: () => fillTextInput("4, 5, 6, 7, 0, 1, 2"),
+  },
+  {
+    algo: "Meta Binary Search",
+    test: async () => {
+      await fillTextInput("2, 5, 8, 12, 16");
+      await fillNumberInput(12);
+    },
+  },
+  {
+    algo: "Uniform Binary Search",
+    test: async () => {
+      await fillTextInput("2, 5, 8, 12, 16");
+      await fillNumberInput(12);
+    },
+  },
+  {
+    algo: "Jump Search",
+    test: async () => {
+      await fillTextInput("2, 5, 8, 12, 16");
+      await fillNumberInput(12);
+    },
+  },
+  {
+    algo: "Fibonacci Search",
+    test: async () => {
+      await fillTextInput("2, 5, 8, 12, 16");
+      await fillNumberInput(12);
+    },
+  },
+  {
+    algo: "Hash-Based Search",
+    test: async () => {
+      await fillTextInput("4, 2, 7, 1, 9, 3");
+      await fillNumberInput(9);
+    },
+  },
+  {
+    algo: "Ternary Search",
+    test: async () => {
+      await fillTextInput("2, 5, 8, 12, 16");
+      await fillNumberInput(12);
+    },
+  },
+  {
     algo: "Sliding Window (Max Sum)",
     test: async () => {
       await fillTextInput("2, 1, 5, 1, 3, 2");

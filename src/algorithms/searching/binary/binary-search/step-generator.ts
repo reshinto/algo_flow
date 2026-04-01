@@ -14,7 +14,12 @@ export function generateBinarySearchSteps(input: {
 }): ExecutionStep[] {
   const workingArray = [...input.sortedArray];
   const { targetValue } = input;
-  const tracker = new SearchingTracker(workingArray, targetValue, BINARY_SEARCH_LINE_MAP);
+  const tracker = new SearchingTracker(
+    workingArray,
+    targetValue,
+    BINARY_SEARCH_LINE_MAP,
+    "binary search",
+  );
 
   let lowIndex = 0;
   let highIndex = workingArray.length - 1;
