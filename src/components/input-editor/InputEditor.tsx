@@ -23,13 +23,24 @@ export default function InputEditor() {
         />
       );
 
-    case CATEGORY.SEARCHING:
-      return (
-        <SearchingInputEditor
-          input={input as { sortedArray: number[]; targetValue: number }}
-          onChange={setInput}
-        />
-      );
+    case CATEGORY.SEARCHING: {
+      const searchInput = input as Record<string, unknown>;
+      const hasArray = "array" in searchInput && Array.isArray(searchInput.array);
+      const hasSortedArray = "sortedArray" in searchInput && Array.isArray(searchInput.sortedArray);
+      const hasTarget = "targetValue" in searchInput && typeof searchInput.targetValue === "number";
+
+      if ((hasSortedArray || hasArray) && hasTarget) {
+        return (
+          <SearchingInputEditor
+            input={searchInput}
+            onChange={setInput}
+            arrayKey={hasSortedArray ? "sortedArray" : "array"}
+            autoSort={hasSortedArray}
+          />
+        );
+      }
+      return renderGenericEditor(input, setInput);
+    }
 
     case CATEGORY.ARRAYS:
       return renderArraysEditor(definition.meta.id, input, setInput);
@@ -412,25 +423,35 @@ function GenericArrayWithParamsEditor({
 function SearchingInputEditor({
   input,
   onChange,
+  arrayKey,
+  autoSort,
 }: {
-  input: { sortedArray: number[]; targetValue: number };
+  input: Record<string, unknown>;
   onChange: (value: unknown) => void;
+  arrayKey: string;
+  autoSort: boolean;
 }) {
+  const arrayValues = input[arrayKey] as number[];
+  const targetValue = input.targetValue as number;
+  const arrayLabel = autoSort ? "Sorted Array:" : "Array:";
+
   return (
     <div className="flex flex-col gap-2 border-b border-[var(--color-border-default)] px-3 py-2">
       <div className="flex items-center gap-2">
-        <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">Array:</label>
+        <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">{arrayLabel}</label>
         <input
           type="text"
-          value={input.sortedArray.join(", ")}
+          value={arrayValues.join(", ")}
           onChange={(event) => {
-            const parsed = event.target.value
+            let parsed = event.target.value
               .split(",")
               .map((str) => parseInt(str.trim(), 10))
-              .filter((num) => !isNaN(num))
-              .sort((numA, numB) => numA - numB);
+              .filter((num) => !isNaN(num));
+            if (autoSort) {
+              parsed = parsed.sort((numA, numB) => numA - numB);
+            }
             if (parsed.length > 0) {
-              onChange({ ...input, sortedArray: parsed });
+              onChange({ ...input, [arrayKey]: parsed });
             }
           }}
           className="min-w-0 flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
@@ -440,11 +461,11 @@ function SearchingInputEditor({
         <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">Target:</label>
         <input
           type="number"
-          value={input.targetValue}
+          value={targetValue}
           onChange={(event) => {
-            const targetValue = parseInt(event.target.value, 10);
-            if (!isNaN(targetValue)) {
-              onChange({ ...input, targetValue });
+            const newTarget = parseInt(event.target.value, 10);
+            if (!isNaN(newTarget)) {
+              onChange({ ...input, targetValue: newTarget });
             }
           }}
           className="w-20 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"

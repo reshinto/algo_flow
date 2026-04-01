@@ -14,10 +14,17 @@ import type { LineMap } from "./base-tracker";
 export class SearchingTracker extends BaseTracker {
   private elements: ArrayElement[];
   private targetValue: number;
+  private algorithmLabel: string;
 
-  constructor(initialArray: number[], targetValue: number, lineMap: LineMap) {
+  constructor(
+    initialArray: number[],
+    targetValue: number,
+    lineMap: LineMap,
+    algorithmLabel: string = "search",
+  ) {
     super(lineMap);
     this.targetValue = targetValue;
+    this.algorithmLabel = algorithmLabel;
     this.elements = initialArray.map((value) => ({
       value,
       state: "default" as ArrayElementState,
@@ -40,7 +47,7 @@ export class SearchingTracker extends BaseTracker {
   initialize(variables: Record<string, unknown>): void {
     this.pushStep({
       type: "initialize",
-      description: `Initialize binary search for target ${this.targetValue}`,
+      description: `Initialize ${this.algorithmLabel} for target ${this.targetValue}`,
       variables,
       visualState: this.snapshot(),
     });
