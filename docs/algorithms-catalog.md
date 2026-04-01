@@ -2,7 +2,7 @@
 
 # Algorithm Catalog
 
-Complete listing of all 188 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
+Complete listing of all 214 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
 
 > **Prerequisites:** None — this is a reference document.
 
@@ -11,7 +11,7 @@ Complete listing of all 188 algorithms available in AlgoFlow, organized by categ
 - [Sorting (1)](#sorting-1-algorithm)
 - [Searching (1)](#searching-1-algorithm)
 - [Graph (28)](#graph-28-algorithms)
-- [Pathfinding (1)](#pathfinding-1-algorithm)
+- [Pathfinding (27)](#pathfinding-27-algorithms)
 - [Dynamic Programming (32)](#dynamic-programming-32-algorithms)
 - [Arrays (44)](#arrays-44-algorithms)
 - [Trees (1)](#trees-1-algorithm)
@@ -129,13 +129,61 @@ Algorithms that traverse or analyze graph structures. Algorithms live under `src
 
 ---
 
-## Pathfinding (1 algorithm)
+## Pathfinding (27 algorithms)
 
-Algorithms that find shortest paths in grids or weighted graphs. Algorithms live under `src/algorithms/pathfinding/<technique>/<algorithm>/`.
+Algorithms that find shortest paths, explore grids, generate mazes, and fill regions. Algorithms live under `src/algorithms/pathfinding/<technique>/<algorithm>/`.
 
-| Technique     | Algorithm            | Visualizer              | Source Directory                                     |
-| ------------- | -------------------- | ----------------------- | ---------------------------------------------------- |
-| Shortest Path | Dijkstra's Algorithm | CSS grid with wavefront | `src/algorithms/pathfinding/shortest-path/dijkstra/` |
+### Shortest Path (6)
+
+| Technique     | Algorithm              | Visualizer              | Source Directory                                                   |
+| ------------- | ---------------------- | ----------------------- | ------------------------------------------------------------------ |
+| Shortest Path | Dijkstra's Algorithm   | CSS grid with wavefront | `src/algorithms/pathfinding/shortest-path/dijkstra/`               |
+| Shortest Path | BFS Shortest Path      | CSS grid with wavefront | `src/algorithms/pathfinding/shortest-path/bfs-shortest-path/`      |
+| Shortest Path | A\* Search             | CSS grid with wavefront | `src/algorithms/pathfinding/shortest-path/a-star/`                 |
+| Shortest Path | Bellman-Ford Grid      | CSS grid with wavefront | `src/algorithms/pathfinding/shortest-path/bellman-ford-grid/`      |
+| Shortest Path | Lee Algorithm          | CSS grid with wavefront | `src/algorithms/pathfinding/shortest-path/lee-algorithm/`          |
+| Shortest Path | Dijkstra Bidirectional | CSS grid with wavefront | `src/algorithms/pathfinding/shortest-path/dijkstra-bidirectional/` |
+
+### Heuristic Search (6)
+
+| Technique        | Algorithm               | Visualizer              | Source Directory                                                       |
+| ---------------- | ----------------------- | ----------------------- | ---------------------------------------------------------------------- |
+| Heuristic Search | Greedy Best-First       | CSS grid with wavefront | `src/algorithms/pathfinding/heuristic-search/greedy-best-first/`       |
+| Heuristic Search | Jump Point Search       | CSS grid with wavefront | `src/algorithms/pathfinding/heuristic-search/jump-point-search/`       |
+| Heuristic Search | IDA\*                   | CSS grid with wavefront | `src/algorithms/pathfinding/heuristic-search/ida-star/`                |
+| Heuristic Search | Weighted A\*            | CSS grid with wavefront | `src/algorithms/pathfinding/heuristic-search/weighted-a-star/`         |
+| Heuristic Search | D\* Lite                | CSS grid with wavefront | `src/algorithms/pathfinding/heuristic-search/d-star-lite/`             |
+| Heuristic Search | Best-First Tie Breaking | CSS grid with wavefront | `src/algorithms/pathfinding/heuristic-search/best-first-tie-breaking/` |
+
+### Graph Traversal (5)
+
+| Technique       | Algorithm               | Visualizer              | Source Directory                                                      |
+| --------------- | ----------------------- | ----------------------- | --------------------------------------------------------------------- |
+| Graph Traversal | BFS Exploration         | CSS grid with wavefront | `src/algorithms/pathfinding/graph-traversal/bfs-exploration/`         |
+| Graph Traversal | DFS Exploration         | CSS grid with wavefront | `src/algorithms/pathfinding/graph-traversal/dfs-exploration/`         |
+| Graph Traversal | Bidirectional BFS       | CSS grid with wavefront | `src/algorithms/pathfinding/graph-traversal/bidirectional-bfs/`       |
+| Graph Traversal | Iterative Deepening DFS | CSS grid with wavefront | `src/algorithms/pathfinding/graph-traversal/iterative-deepening-dfs/` |
+| Graph Traversal | Wall Follower           | CSS grid with wavefront | `src/algorithms/pathfinding/graph-traversal/wall-follower/`           |
+
+### Flood Fill (3)
+
+| Technique  | Algorithm        | Visualizer                      | Source Directory                                          |
+| ---------- | ---------------- | ------------------------------- | --------------------------------------------------------- |
+| Flood Fill | Flood Fill BFS   | CSS grid with region fill sweep | `src/algorithms/pathfinding/flood-fill/flood-fill-bfs/`   |
+| Flood Fill | Flood Fill DFS   | CSS grid with region fill sweep | `src/algorithms/pathfinding/flood-fill/flood-fill-dfs/`   |
+| Flood Fill | Multi-Source BFS | CSS grid with region fill sweep | `src/algorithms/pathfinding/flood-fill/multi-source-bfs/` |
+
+### Maze Generation (7)
+
+| Technique       | Algorithm             | Visualizer                  | Source Directory                                                    |
+| --------------- | --------------------- | --------------------------- | ------------------------------------------------------------------- |
+| Maze Generation | Recursive Backtracker | CSS grid with wall carving  | `src/algorithms/pathfinding/maze-generation/recursive-backtracker/` |
+| Maze Generation | Prim's Maze           | CSS grid with wall carving  | `src/algorithms/pathfinding/maze-generation/prims-maze/`            |
+| Maze Generation | Kruskal's Maze        | CSS grid with wall carving  | `src/algorithms/pathfinding/maze-generation/kruskals-maze/`         |
+| Maze Generation | Recursive Division    | CSS grid with wall building | `src/algorithms/pathfinding/maze-generation/recursive-division/`    |
+| Maze Generation | Aldous-Broder         | CSS grid with wall carving  | `src/algorithms/pathfinding/maze-generation/aldous-broder/`         |
+| Maze Generation | Binary Tree Maze      | CSS grid with wall carving  | `src/algorithms/pathfinding/maze-generation/binary-tree-maze/`      |
+| Maze Generation | Eller's Maze          | CSS grid with wall carving  | `src/algorithms/pathfinding/maze-generation/ellers-maze/`           |
 
 ---
 
