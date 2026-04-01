@@ -125,6 +125,32 @@ declare module "*.ts?fn" {
   export const bstInorder: (...args: any[]) => any;
   // Pathfinding
   export const dijkstra: (...args: any[]) => any;
+  export const bfsShortestPath: (...args: any[]) => any;
+  export const aStarGrid: (...args: any[]) => any;
+  export const bellmanFordGrid: (...args: any[]) => any;
+  export const leeAlgorithm: (...args: any[]) => any;
+  export const dijkstraBidirectional: (...args: any[]) => any;
+  export const greedyBestFirst: (...args: any[]) => any;
+  export const jumpPointSearch: (...args: any[]) => any;
+  export const idaStar: (...args: any[]) => any;
+  export const weightedAStar: (...args: any[]) => any;
+  export const dStarLite: (...args: any[]) => any;
+  export const bestFirstTieBreaking: (...args: any[]) => any;
+  export const bfsExploration: (...args: any[]) => any;
+  export const dfsExploration: (...args: any[]) => any;
+  export const floodFillBfs: (...args: any[]) => any;
+  export const floodFillDfs: (...args: any[]) => any;
+  export const multiSourceBfs: (...args: any[]) => any;
+  export const bidirectionalBfsGrid: (...args: any[]) => any;
+  export const iterativeDeepeningDfs: (...args: any[]) => any;
+  export const wallFollower: (...args: any[]) => any;
+  export const recursiveBacktrackerMaze: (...args: any[]) => any;
+  export const primsMaze: (...args: any[]) => any;
+  export const kruskalsMaze: (...args: any[]) => any;
+  export const recursiveDivision: (...args: any[]) => any;
+  export const aldousBroder: (...args: any[]) => any;
+  export const binaryTreeMaze: (...args: any[]) => any;
+  export const ellersMaze: (...args: any[]) => any;
   // Linked Lists
   export const reverseLinkedList: (...args: any[]) => any;
   export const mergeTwoSorted: (...args: any[]) => any;

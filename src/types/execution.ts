@@ -104,6 +104,8 @@ export type StepType =
   | "select-layer"
   | "process-layer"
   | "accumulate"
+  | "carve-cell"
+  | "merge-cells"
   | "complete";
 
 /** Maps a language to the source lines highlighted for this step. */
@@ -269,7 +271,17 @@ export interface GraphVisualState {
 /* -------------------------------------------------------------------------- */
 
 export type GridCellType = "empty" | "wall" | "start" | "end";
-export type GridCellState = "default" | "open" | "closed" | "path" | "current";
+export type GridCellState =
+  | "default"
+  | "open"
+  | "closed"
+  | "path"
+  | "current"
+  | "open-reverse"
+  | "closed-reverse"
+  | "jump-point"
+  | "carved"
+  | "generating";
 
 export interface GridCell {
   row: number;
@@ -288,6 +300,12 @@ export interface GridVisualState {
   startPosition: [number, number];
   endPosition: [number, number];
   currentPath: [number, number][];
+  /** For bidirectional search: the reverse frontier's reconstructed path */
+  reversePath?: [number, number][];
+  /** For maze generation: total cells carved so far */
+  carvedCount?: number;
+  /** General-purpose phase label (e.g., "forward", "backward", "generating") */
+  phase?: string;
 }
 
 /* -------------------------------------------------------------------------- */

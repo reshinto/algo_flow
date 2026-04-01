@@ -24,6 +24,11 @@ const CELL_COLORS: Record<CellAppearance, string> = {
   closed: "var(--color-viz-visiting)",
   path: "var(--color-viz-found)",
   current: "var(--color-viz-current)",
+  "open-reverse": "var(--color-accent-rose)",
+  "closed-reverse": "var(--color-viz-swapped)",
+  "jump-point": "var(--color-accent-amber)",
+  carved: "var(--color-viz-found)",
+  generating: "var(--color-viz-comparing)",
 };
 
 function getCellColor(type: GridCellType, state: GridCellState): string {
