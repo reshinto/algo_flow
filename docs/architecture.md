@@ -4,8 +4,7 @@
 
 AlgoFlow uses a **registry-driven** architecture with **pre-computed execution steps**. This document covers the technical design: how algorithms are registered, how steps are generated, how state flows through the app, and how the UI renders visualizations.
 
-> [!NOTE]
-> **Prerequisites:** See the [Glossary](glossary.md) for definitions of key terms like ExecutionStep, VisualState, Tracker, and LineMap.
+> [!NOTE] > **Prerequisites:** See the [Glossary](glossary.md) for definitions of key terms like ExecutionStep, VisualState, Tracker, and LineMap.
 
 ## Contents
 
@@ -186,6 +185,46 @@ A slide-over drawer (toggled via "L" key or header button) displays 7 sections o
 
 All hooks are in `src/hooks/`.
 
+## Architectural Decisions & Trade-offs
+
+The "Why" behind the structural engineering.
+
+### 1. Why a Registry Pattern?
+
+Instead of tightly coupling UI components (like a hardcoded sidebar) to specific algorithm files via static imports, AlgoFlow inversion-of-control relies entirely on self-registration.
+
+- **Trade-off:** It forces a stricter interface constraint on the algorithm definitions. If a definition is incomplete, the app might crash at runtime instead of failing TypeScript compilations gracefully at the root UI layer.
+- **Why we did it anyway:** It decouples navigation, filtering, and component rendering completely from logic execution. A new developer can add 50 new algorithms without touching a single React UI file.
+
+### 2. Why Pre-Computed Steps instead of Generators?
+
+Algorithms could theoretically execute using JS `yield` statements, emitting a UI state iteratively.
+
+- **Trade-off:** Pre-computing 1,000 steps requires duplicating entire `variables` and `visualState` snapshots into a large RAM collection, drastically increasing raw memory footprint.
+- **Why we did it anyway:** Yielding generators natively block backward traversal. To let users "scrub" an algorithm visually backward and forward identically to a YouTube video timeline, we absolutely must cache the timeline immutably in `O(1)` accessible memory arrays.
+
+### 3. Why Zustand Slices over Redux or React Context?
+
+- **Trade-off:** Zustand requires careful extraction of store properties via selectors to prevent unnecessary hook re-renders, whereas Redux strictly enforces it via its verbose provider architectures.
+- **Why we did it anyway:** Redux forces monumental boilerplate (actions, reducers, payload types) which distracts from writing algorithmic code. React Context inherently forces the entire encapsulated DOM tree to re-render whenever _any_ deep value mutates (like `currentStepIndex` shifting every 100ms). Zustand allows atomic subscription outside of the React element tree.
+
+## Current Constraints & Future Improvements
+
+### 1. Main-Thread Step Calculation
+
+- **Constraint:** `generateSteps` fires synchronously on the UI thread when an algorithm is selected or variables change. If an algorithm takes O(N³) to execute heavily nested array swapping, the browser tab will temporarily freeze. We forcefully bound this via `const MAX_STEPS = 10000;`.
+- **Improvement:** Offloading `generateSteps` calculations into a Web Worker would allow background compilation. The UI could display a "Simulating..." loading state natively without locking the GPU frame.
+
+### 2. Tracker Imperative Coupling
+
+- **Constraint:** Subclasses of `BaseTracker` maintain extremely stateful data. Domain methods like `swap()` simultaneously mutate private class data representing the visual state _and_ push a step natively.
+- **Improvement:** Migrating step generation to a purely functional reducer syntax `(prevState, action) => nextState` would make writing massive suites of highly-predictable automated tests drastically easier.
+
+### 3. Monaco Editor Mobile Constraints
+
+- **Constraint:** The generic Monaco editor (used to display `?raw` source files) natively struggles with iOS/Android soft-keyboard touch target interception.
+- **Improvement:** Detect `LayoutTier === "mobile"` and swap Monaco for a lightweight, purely read-only syntax highlighting container (like Prism.js) to recover strict accessibility natively.
+
 ## Project Structure
 
 > [!NOTE]
@@ -237,6 +276,7 @@ src/
 
 ## See Also
 
+- [Onboarding Guide](onboarding.md) — the critical starting point for all new developers
 - [Glossary](glossary.md) — key terms and type definitions
 - [Contributing](contributing.md) — adding algorithms, trackers, languages, and troubleshooting
 - [Testing](testing.md) — unit tests, E2E, Storybook, Chromatic

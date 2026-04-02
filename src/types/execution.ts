@@ -106,6 +106,24 @@ export type StepType =
   | "accumulate"
   | "carve-cell"
   | "merge-cells"
+  | "add-to-result"
+  | "skip-element"
+  | "check-subset"
+  | "subset-pass"
+  | "subset-fail"
+  | "count-element"
+  | "compare-count"
+  | "generate-subset"
+  | "generate-pair"
+  | "generate-permutation"
+  | "hash-element"
+  | "set-bit"
+  | "check-bit"
+  | "insert-bucket"
+  | "evict-element"
+  | "union-sets"
+  | "find-root"
+  | "select-set"
   | "complete";
 
 /** Maps a language to the source lines highlighted for this step. */
@@ -649,8 +667,37 @@ export interface MatrixVisualState {
 /*                               Set Structure                                 */
 /* -------------------------------------------------------------------------- */
 
-export type SetElementState = "default" | "current" | "checking" | "found" | "not-found" | "added";
-export type SetPhase = "building" | "checking";
+export type SetElementState =
+  | "default"
+  | "current"
+  | "checking"
+  | "found"
+  | "not-found"
+  | "added"
+  | "adding"
+  | "skipped"
+  | "counted"
+  | "generated"
+  | "hashed"
+  | "bit-set"
+  | "bit-checked"
+  | "evicted"
+  | "root"
+  | "compressed"
+  | "selected";
+
+export type SetPhase =
+  | "building"
+  | "checking"
+  | "counting"
+  | "comparing"
+  | "generating"
+  | "hashing"
+  | "querying"
+  | "union"
+  | "finding"
+  | "selecting"
+  | "complete";
 
 export interface SetElement {
   value: number;
@@ -665,10 +712,66 @@ export interface SetVisualState {
   setB: SetElement[];
   /** The hash set built from array A */
   hashSet: SetElement[];
-  /** Elements found in both sets */
+  /** Elements in result */
   result: number[];
   /** The element currently being processed, or null */
   currentElement: number | null;
-  /** "building" = populating hash set from A, "checking" = iterating B */
+  /** Current algorithm phase */
   phase: SetPhase;
+
+  /* ---- Operations extensions ---- */
+  /** Universal set elements (complement) */
+  universalSet?: SetElement[];
+  /** Boolean result for predicate algorithms (subset, superset, equality) */
+  booleanResult?: boolean | null;
+  /** Frequency counters for set A (multiset operations) */
+  countersA?: Record<string, number>;
+  /** Frequency counters for set B (multiset operations) */
+  countersB?: Record<string, number>;
+
+  /* ---- Generation extensions ---- */
+  /** All generated subsets/pairs/permutations so far */
+  generatedSets?: number[][];
+  /** Current partial subset being built */
+  currentSubset?: number[];
+  /** Recursion depth or iteration index */
+  generationDepth?: number;
+  /** Total expected output count */
+  totalExpected?: number;
+
+  /* ---- Membership extensions ---- */
+  /** Bit array visualization (bloom/cuckoo filter) */
+  bitArray?: SetElement[];
+  /** Hash function results for current element */
+  hashPositions?: number[];
+  /** Bucket array (cuckoo filter) */
+  buckets?: (SetElement | null)[];
+  /** Whether current query is a false positive */
+  falsePositive?: boolean;
+  /** 2D counter grid (count-min-sketch) */
+  sketchGrid?: number[][];
+  /** Number of hash functions */
+  hashFunctionCount?: number;
+
+  /* ---- Disjoint-sets extensions ---- */
+  /** Parent array visualization (union-find) */
+  parentArray?: SetElement[];
+  /** Rank array (union-find) */
+  rankArray?: number[];
+  /** Tree edges [child, parent] (union-find) */
+  treeEdges?: [number, number][];
+  /** Component groupings (union-find) */
+  components?: number[][];
+
+  /* ---- Optimization extensions ---- */
+  /** Available sets to choose from (set-cover) */
+  availableSets?: { elements: number[]; state: SetElementState }[];
+  /** Uncovered elements remaining (set-cover) */
+  uncoveredElements?: SetElement[];
+  /** Chosen sets so far (set-cover) */
+  chosenSets?: number[][];
+
+  /* ---- General ---- */
+  /** Operation label for status display */
+  operationLabel?: string;
 }

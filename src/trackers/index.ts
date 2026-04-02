@@ -18,3 +18,7 @@ export { MatrixSearchTracker } from "./matrix-search-tracker";
 export { MatrixConstructionTracker } from "./matrix-construction-tracker";
 export { MatrixLayerTracker } from "./matrix-layer-tracker";
 export { SetTracker } from "./set-tracker";
+export { SetGenerationTracker } from "./set-generation-tracker";
+export { SetMembershipTracker } from "./set-membership-tracker";
+export { DisjointSetTracker } from "./disjoint-set-tracker";
+export { SetCoverTracker } from "./set-cover-tracker";

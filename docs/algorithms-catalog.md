@@ -2,7 +2,7 @@
 
 # Algorithm Catalog
 
-Complete listing of all 214 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
+Complete listing of all 232 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
 
 > **Prerequisites:** None — this is a reference document.
 
@@ -21,7 +21,7 @@ Complete listing of all 214 algorithms available in AlgoFlow, organized by categ
 - [Hash Maps (28)](#hash-maps-28-algorithms)
 - [Strings (1)](#strings-1-algorithm)
 - [Matrices (20)](#matrices-20-algorithms)
-- [Sets (1)](#sets-1-algorithm)
+- [Sets (19)](#sets-19-algorithms)
 
 ---
 
@@ -446,13 +446,53 @@ Algorithms operating on 2D matrix structures. Algorithms live under `src/algorit
 
 ---
 
-## Sets (1 algorithm)
+## Sets (19 algorithms)
 
-Algorithms involving set operations. Algorithms live under `src/algorithms/sets/<technique>/<algorithm>/`.
+Algorithms involving set operations, generation, probabilistic membership, disjoint sets, and optimization. Algorithms live under `src/algorithms/sets/<technique>/<algorithm>/`.
 
-| Technique  | Algorithm        | Visualizer                                | Source Directory                                   |
-| ---------- | ---------------- | ----------------------------------------- | -------------------------------------------------- |
-| Operations | Set Intersection | Array A, array B, hash set, result panels | `src/algorithms/sets/operations/set-intersection/` |
+### Operations (10)
+
+| Technique  | Algorithm                | Visualizer                                          | Source Directory                                           |
+| ---------- | ------------------------ | --------------------------------------------------- | ---------------------------------------------------------- |
+| Operations | Set Intersection         | Array A, array B, hash set, result panels           | `src/algorithms/sets/operations/set-intersection/`         |
+| Operations | Set Union                | Array A, array B, hash set, union result            | `src/algorithms/sets/operations/set-union/`                |
+| Operations | Set Difference           | Array A, array B, hash set, difference result       | `src/algorithms/sets/operations/set-difference/`           |
+| Operations | Set Symmetric Difference | Array A, array B, hash set, symmetric diff result   | `src/algorithms/sets/operations/set-symmetric-difference/` |
+| Operations | Subset Check             | Array A, array B, hash set, boolean result          | `src/algorithms/sets/operations/subset-check/`             |
+| Operations | Superset Check           | Array A, array B, hash set, boolean result          | `src/algorithms/sets/operations/superset-check/`           |
+| Operations | Set Equality             | Array A, array B, hash set, boolean result          | `src/algorithms/sets/operations/set-equality/`             |
+| Operations | Set Complement           | Array A, universal set, hash set, complement result | `src/algorithms/sets/operations/set-complement/`           |
+| Operations | Multiset Union           | Array A, array B, frequency counters, bag union     | `src/algorithms/sets/operations/multiset-union/`           |
+| Operations | Multiset Intersection    | Array A, array B, frequency counters, bag intersect | `src/algorithms/sets/operations/multiset-intersection/`    |
+
+### Generation (4)
+
+| Technique  | Algorithm         | Visualizer                                        | Source Directory                                    |
+| ---------- | ----------------- | ------------------------------------------------- | --------------------------------------------------- |
+| Generation | Power Set         | Input elements, current subset, generated subsets | `src/algorithms/sets/generation/power-set/`         |
+| Generation | Cartesian Product | Input sets, generated pairs grid                  | `src/algorithms/sets/generation/cartesian-product/` |
+| Generation | K-Combinations    | Input elements, current subset, k-element subsets | `src/algorithms/sets/generation/k-combinations/`    |
+| Generation | Set Permutations  | Input elements, swap visualization, permutations  | `src/algorithms/sets/generation/set-permutations/`  |
+
+### Membership (3)
+
+| Technique  | Algorithm        | Visualizer                                       | Source Directory                                   |
+| ---------- | ---------------- | ------------------------------------------------ | -------------------------------------------------- |
+| Membership | Bloom Filter     | Bit array, hash positions, insert/query phases   | `src/algorithms/sets/membership/bloom-filter/`     |
+| Membership | Cuckoo Filter    | Bucket array, fingerprints, eviction chain       | `src/algorithms/sets/membership/cuckoo-filter/`    |
+| Membership | Count-Min Sketch | 2D counter grid, hash rows, frequency estimation | `src/algorithms/sets/membership/count-min-sketch/` |
+
+### Disjoint Sets (1)
+
+| Technique     | Algorithm  | Visualizer                                 | Source Directory                                |
+| ------------- | ---------- | ------------------------------------------ | ----------------------------------------------- |
+| Disjoint Sets | Union-Find | Parent array, rank array, component groups | `src/algorithms/sets/disjoint-sets/union-find/` |
+
+### Optimization (1)
+
+| Technique    | Algorithm | Visualizer                                          | Source Directory                              |
+| ------------ | --------- | --------------------------------------------------- | --------------------------------------------- |
+| Optimization | Set Cover | Universe, candidate sets, greedy selection progress | `src/algorithms/sets/optimization/set-cover/` |
 
 ---
 

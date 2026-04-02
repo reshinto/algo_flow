@@ -4,8 +4,7 @@
 
 AlgoFlow uses three layers of testing to ensure algorithm correctness, visual consistency, and end-to-end reliability. This guide covers setup, conventions, and coverage targets for each layer.
 
-> [!NOTE]
-> **Prerequisites:** Read the [Contributing guide](contributing.md) for quality gate requirements and branch workflow. See the [Glossary](glossary.md) for terms like ExecutionStep and StepType.
+> [!NOTE] > **Prerequisites:** Read the [Contributing guide](contributing.md) for quality gate requirements and branch workflow. See the [Glossary](glossary.md) for terms like ExecutionStep and StepType.
 
 ## Contents
 
