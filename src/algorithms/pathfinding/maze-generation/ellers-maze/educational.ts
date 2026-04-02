@@ -18,9 +18,9 @@ export const ellersMazeEducational: EducationalContent = {
     "```\n\n" +
     "```mermaid\n" +
     "flowchart TD\n" +
-    "    R1((Row 1)) --\"Merge Sets\"--> R1A((Set A))\n" +
-    "    R1A --\"Vertical Drop\"--> R2((Row 2))\n" +
-    "```\n\n" ,
+    '    R1((Row 1)) --"Merge Sets"--> R1A((Set A))\n' +
+    '    R1A --"Vertical Drop"--> R2((Row 2))\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V)`**\n\n" +

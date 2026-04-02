@@ -15,11 +15,11 @@ import javaSource from "./sources/IterativeDeepeningDfs.java?raw";
  */
 function createDefaultGrid(): GridCell[][] {
   const { rows, cols } = GRID_DEFAULTS;
-  
+
   // Custom nearby targets for exactly this algorithm to prevent browser crash
   const startPos: [number, number] = [6, 10];
   const endPos: [number, number] = [6, 14];
-  
+
   const grid: GridCell[][] = [];
 
   for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
@@ -44,13 +44,28 @@ function createDefaultGrid(): GridCell[][] {
   /* Add walls to constrain IDDFS expansion and guide the search */
   const wallPositions: [number, number][] = [
     // Top boundary
-    [4, 9], [4, 10], [4, 11], [4, 12], [4, 13], [4, 14], [4, 15],
+    [4, 9],
+    [4, 10],
+    [4, 11],
+    [4, 12],
+    [4, 13],
+    [4, 14],
+    [4, 15],
     // Bottom boundary
-    [8, 9], [8, 10], [8, 11], [8, 12], [8, 13], [8, 14], [8, 15],
+    [8, 9],
+    [8, 10],
+    [8, 11],
+    [8, 12],
+    [8, 13],
+    [8, 14],
+    [8, 15],
     // Left boundary
-    [5, 9], [6, 9], [7, 9],
+    [5, 9],
+    [6, 9],
+    [7, 9],
     // Obstacle in the middle
-    [5, 12], [6, 12],
+    [5, 12],
+    [6, 12],
   ];
 
   for (const [wallRow, wallCol] of wallPositions) {

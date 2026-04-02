@@ -37,7 +37,7 @@ function createDefaultGrid(): GridCell[][] {
   /* Add continuous walls to create a simply-connected maze that wall-follower can solve.
      Wall-follower algorithms mathematically require start and end to be connected by a 
      continuous wall barrier to guarantee a solution. Floating walls cause endless loops. */
-  
+
   // Create outer boundary walls
   for (let r = 0; r < rows; r++) {
     grid[r]![0]!.type = "wall";

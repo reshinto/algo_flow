@@ -167,10 +167,10 @@ Algorithms that find shortest paths, explore grids, generate mazes, and fill reg
 
 ### Flood Fill (3)
 
-| Technique  | Algorithm        | Visualizer                      | Source Directory                                          |
-| ---------- | ---------------- | ------------------------------- | --------------------------------------------------------- |
-| Flood Fill | Flood Fill BFS   | CSS grid with region fill sweep | `src/algorithms/pathfinding/flood-fill/flood-fill-bfs/`   |
-| Flood Fill | Flood Fill DFS   | CSS grid with region fill sweep | `src/algorithms/pathfinding/flood-fill/flood-fill-dfs/`   |
+| Technique  | Algorithm        | Visualizer                                  | Source Directory                                          |
+| ---------- | ---------------- | ------------------------------------------- | --------------------------------------------------------- |
+| Flood Fill | Flood Fill BFS   | CSS grid with region fill sweep             | `src/algorithms/pathfinding/flood-fill/flood-fill-bfs/`   |
+| Flood Fill | Flood Fill DFS   | CSS grid with region fill sweep             | `src/algorithms/pathfinding/flood-fill/flood-fill-dfs/`   |
 | Flood Fill | Multi-Source BFS | CSS grid with topographical heatmap mapping | `src/algorithms/pathfinding/flood-fill/multi-source-bfs/` |
 
 ### Maze Generation (7)

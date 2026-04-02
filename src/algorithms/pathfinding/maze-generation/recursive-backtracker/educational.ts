@@ -21,9 +21,9 @@ export const recursiveBacktrackerEducational: EducationalContent = {
     "graph TD\n" +
     "    Start((Start)) --> A((Cell A))\n" +
     "    A --> B((Cell B))\n" +
-    "    B --\"Dead End\"--> B\n" +
-    "    B -.\"Backtrack\".-> A\n" +
-    "```\n\n" ,
+    '    B --"Dead End"--> B\n' +
+    '    B -."Backtrack".-> A\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V)`**\n\n" +

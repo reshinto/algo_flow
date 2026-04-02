@@ -21,8 +21,8 @@ export const dStarLiteEducational: EducationalContent = {
     "graph RL\n" +
     "    T((Target)) --> A((Expanded))\n" +
     "    A --> B((Current))\n" +
-    "    C((Obstacle Detected)) -.\"Update RHS\"..-> B\n" +
-    "```\n\n" ,
+    '    C((Obstacle Detected)) -."Update RHS"..-> B\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O((V + E) log V)`** for the initial search; replanning is proportional only to the number of changed edges.\n\n" +

@@ -18,9 +18,9 @@ export const binaryTreeMazeEducational: EducationalContent = {
     "> *This produces perfect mazes but with always-open top row and right column — a recognizable signature bias.*\n\n" +
     "```mermaid\n" +
     "graph TD\n" +
-    "    Node((Cell)) --\"Pick North or West\"--> North((North))\n" +
-    "    Node -.-\"Biased Diagonal\".-> West((West))\n" +
-    "```\n\n" ,
+    '    Node((Cell)) --"Pick North or West"--> North((North))\n' +
+    '    Node -.-"Biased Diagonal".-> West((West))\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V)`**\n\n" +

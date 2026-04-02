@@ -21,7 +21,7 @@ export const multiSourceBfsEducational: EducationalContent = {
     "    W1((Wall 1)) --> S((Safe Zone))\n" +
     "    W2((Wall 2)) --> S\n" +
     "    W3((Wall 3)) --> S\n" +
-    "```\n\n" ,
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

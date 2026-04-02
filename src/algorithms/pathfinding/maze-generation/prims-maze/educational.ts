@@ -21,8 +21,8 @@ export const primsMazeEducational: EducationalContent = {
     "flowchart LR\n" +
     "    Tree((Current Tree)) --- F1((Frontier 1))\n" +
     "    Tree --- F2((Frontier 2))\n" +
-    "    F1 --\"Random Selection\"--> Expand((Expand Tree))\n" +
-    "```\n\n" ,
+    '    F1 --"Random Selection"--> Expand((Expand Tree))\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V log V)`**\n\n" +

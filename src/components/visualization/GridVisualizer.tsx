@@ -169,10 +169,16 @@ export default function GridVisualizer({ visualState }: GridVisualizerProps) {
       >
         {cells.flat().map((cell) => {
           let color = getCellColor(cell.type, cell.state);
-          
-          if (isHeatmap && cell.gCost != null && cell.state !== "default" && cell.state !== "path" && cell.type === "empty") {
-             const hue = Math.floor(((cell.gCost - 1) / Math.max(1, maxCost - 1)) * 120);
-             color = `hsl(${hue}, 85%, 45%)`; 
+
+          if (
+            isHeatmap &&
+            cell.gCost != null &&
+            cell.state !== "default" &&
+            cell.state !== "path" &&
+            cell.type === "empty"
+          ) {
+            const hue = Math.floor(((cell.gCost - 1) / Math.max(1, maxCost - 1)) * 120);
+            color = `hsl(${hue}, 85%, 45%)`;
           }
 
           const isStart = cell.row === vizStart[0] && cell.col === vizStart[1];
@@ -198,11 +204,15 @@ export default function GridVisualizer({ visualState }: GridVisualizerProps) {
                   E
                 </span>
               )}
-              {isHeatmap && cell.gCost != null && cell.state !== "default" && cell.type === "empty" && cell.state !== "path" && (
-                <span className="text-[9px] font-mono font-bold text-white opacity-90 select-none pointer-events-none drop-shadow-md">
-                  {cell.gCost}
-                </span>
-              )}
+              {isHeatmap &&
+                cell.gCost != null &&
+                cell.state !== "default" &&
+                cell.type === "empty" &&
+                cell.state !== "path" && (
+                  <span className="text-[9px] font-mono font-bold text-white opacity-90 select-none pointer-events-none drop-shadow-md">
+                    {cell.gCost}
+                  </span>
+                )}
             </motion.div>
           );
         })}

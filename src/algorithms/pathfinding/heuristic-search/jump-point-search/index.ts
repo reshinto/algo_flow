@@ -30,7 +30,7 @@ function createDefaultGrid(): GridCell[][] {
   }
 
   const wallPositions: [number, number][] = [];
-  
+
   // Create long continuous walls to form large open spaces and corridors
   // This highlights JPS's ability to "jump" across massive distances without exploring intermediate nodes
   // Wall 1 - Vertical

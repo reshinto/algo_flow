@@ -30,7 +30,7 @@ function createDefaultGrid(): GridCell[][] {
   }
 
   const wallPositions: [number, number][] = [];
-  
+
   // Create 3 porous vertical walls to showcase D* edge-replanning visually
   for (let r = 1; r < 14; r++) {
     // Wall 1

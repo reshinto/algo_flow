@@ -22,7 +22,7 @@ export const iterativeDeepeningDfsEducational: EducationalContent = {
     "    Root((Limit: 1)) --> Root2((Limit: 2))\n" +
     "    Root2 --> L1((Level 1))\n" +
     "    Root2 --> L2((Level 2))\n" +
-    "```\n\n" ,
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(b^d)`**\n\n" +

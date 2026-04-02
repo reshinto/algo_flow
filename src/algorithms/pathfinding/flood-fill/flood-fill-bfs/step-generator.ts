@@ -19,17 +19,12 @@ export function generateFloodFillBfsSteps(input: FloodFillBfsInput): ExecutionSt
   const rowCount = grid.length;
   const colCount = grid[0]?.length ?? 0;
 
-  const tracker = new PathfindingTracker(
-    grid,
-    startPosition,
-    endPosition,
-    FLOOD_FILL_BFS_LINE_MAP,
-  );
+  const tracker = new PathfindingTracker(grid, startPosition, endPosition, FLOOD_FILL_BFS_LINE_MAP);
 
   const filledSet: boolean[][] = Array.from({ length: rowCount }, () =>
     new Array(colCount).fill(false),
   );
-  
+
   const parent: ([number, number] | null)[][] = Array.from({ length: rowCount }, () =>
     new Array<[number, number] | null>(colCount).fill(null),
   );
@@ -70,7 +65,6 @@ export function generateFloodFillBfsSteps(input: FloodFillBfsInput): ExecutionSt
       filledCount,
     });
 
-
     /* Explore 4-directional neighbors */
     for (const [deltaRow, deltaCol] of directions) {
       const neighborRow = currentRow + deltaRow;
@@ -105,12 +99,21 @@ export function generateFloodFillBfsSteps(input: FloodFillBfsInput): ExecutionSt
     const path = reconstructPath(parent, endPosition);
     tracker.tracePath(path, { pathLength: path.length, path });
     tracker.complete(
-      { pathFound: true, pathLength: path.length, filledCount, completeDescription: `Flood Fill completed, painted ${filledCount} cells` },
+      {
+        pathFound: true,
+        pathLength: path.length,
+        filledCount,
+        completeDescription: `Flood Fill completed, painted ${filledCount} cells`,
+      },
       true,
     );
   } else {
     tracker.complete(
-      { pathFound: false, filledCount, completeDescription: `Flood Fill completed, painted ${filledCount} cells` },
+      {
+        pathFound: false,
+        filledCount,
+        completeDescription: `Flood Fill completed, painted ${filledCount} cells`,
+      },
       false,
     );
   }

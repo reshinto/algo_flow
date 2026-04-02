@@ -22,10 +22,10 @@ export const recursiveDivisionEducational: EducationalContent = {
     "> *The recursive splits create nested rectangular sub-rooms, giving the maze a structured, architectural appearance.*\n\n" +
     "```mermaid\n" +
     "flowchart TD\n" +
-    "    Room((Main Room)) --\"Horizontal Wall\"--> Sub1((Sub Room Top))\n" +
+    '    Room((Main Room)) --"Horizontal Wall"--> Sub1((Sub Room Top))\n' +
     "    Room --> Sub2((Sub Room Bot))\n" +
-    "    Sub1 --\"Vertical Wall\"--> Sub3((Sub Room Quadrant))\n" +
-    "```\n\n" ,
+    '    Sub1 --"Vertical Wall"--> Sub3((Sub Room Quadrant))\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V)`**\n\n" +

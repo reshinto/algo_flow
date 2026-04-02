@@ -24,7 +24,7 @@ export const leeAlgorithmEducational: EducationalContent = {
     "    A --> B((Node [2]))\n" +
     "    B -.-> S\n" +
     "    B --> E((End [3]))\n" +
-    "```\n\n" ,
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

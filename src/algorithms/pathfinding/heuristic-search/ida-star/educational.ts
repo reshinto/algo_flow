@@ -21,7 +21,7 @@ export const idaStarEducational: EducationalContent = {
     "graph TD\n" +
     "    T1((Threshold: 5)) --> A((f=4: Search))\n" +
     "    A --> B((f=6: Prune, Save for next threshold))\n" +
-    "```\n\n" ,
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(b^d)`** — same asymptotic as A*, but with a higher constant factor due to node revisiting across iterations.\n\n" +

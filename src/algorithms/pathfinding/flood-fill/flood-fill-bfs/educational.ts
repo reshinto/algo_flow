@@ -20,7 +20,7 @@ export const floodFillBfsEducational: EducationalContent = {
     "```mermaid\n" +
     "graph TD\n" +
     "    Center((Queue: First)) --> Top((Queue: Last))\n" +
-    "```\n\n" ,
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

@@ -30,7 +30,7 @@ function createDefaultGrid(): GridCell[][] {
   }
 
   const wallPositions: [number, number][] = [];
-  
+
   // Construct a large 'C' shaped trap facing the start node
   // Top lid
   for (let c = 5; c <= 25; c++) {

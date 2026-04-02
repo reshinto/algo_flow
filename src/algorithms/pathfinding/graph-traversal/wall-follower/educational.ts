@@ -23,10 +23,10 @@ export const wallFollowerEducational: EducationalContent = {
     "> *The wall always stays to the right — the agent hugs surfaces like a hand trailing along a wall.*\n\n" +
     "```mermaid\n" +
     "graph TD\n" +
-    "    Robot((Robot)) --\"Right Wall Detected\"--> MoveForward((Move Forward))\n" +
-    "    MoveForward --\"Wall Ahead\"--> TurnLeft((Turn Left))\n" +
-    "    TurnLeft --\"No Wall\"--> TurnRight((Turn Right))\n" +
-    "```\n\n" ,
+    '    Robot((Robot)) --"Right Wall Detected"--> MoveForward((Move Forward))\n' +
+    '    MoveForward --"Wall Ahead"--> TurnLeft((Turn Left))\n' +
+    '    TurnLeft --"No Wall"--> TurnRight((Turn Right))\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V)`**\n\n" +

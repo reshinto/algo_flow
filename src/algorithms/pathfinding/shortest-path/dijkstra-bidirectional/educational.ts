@@ -20,12 +20,12 @@ export const dijkstraBidirectionalEducational: EducationalContent = {
     "> *The savings are most dramatic on open grids with no obstacles between start and end.*\n\n" +
     "```mermaid\n" +
     "flowchart LR\n" +
-    "    SF((Start)) --\"Forward\"--> M1((Mid))\n" +
-    "    M1 --\"Meeting Point\"--- M2((Mid))\n" +
-    "    EF((End)) --\"Backward\"--> M2\n" +
+    '    SF((Start)) --"Forward"--> M1((Mid))\n' +
+    '    M1 --"Meeting Point"--- M2((Mid))\n' +
+    '    EF((End)) --"Backward"--> M2\n' +
     "    style SF fill:#06b6d4,stroke:#0891b2\n" +
     "    style EF fill:#f43f5e,stroke:#e11d48\n" +
-    "```\n\n" ,
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O((V + E) log V)`**\n\n" +

@@ -99,7 +99,10 @@ export function generateBfsExplorationSteps(input: BfsExplorationInput): Executi
     }
   }
 
-  tracker.complete({ visitedCount, layers: layerCount, pathFound: false, explorationComplete: true }, true);
+  tracker.complete(
+    { visitedCount, layers: layerCount, pathFound: false, explorationComplete: true },
+    true,
+  );
 
   return tracker.getSteps();
 }

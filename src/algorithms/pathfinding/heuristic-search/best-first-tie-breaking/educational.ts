@@ -21,8 +21,8 @@ export const bestFirstTieBreakingEducational: EducationalContent = {
     "```mermaid\n" +
     "graph TD\n" +
     "    A((Node A: f=4)) --- B((Node B: f=4))\n" +
-    "    A --\"Cross-Product Tiebreaker\"--> B\n" +
-    "```\n\n" ,
+    '    A --"Cross-Product Tiebreaker"--> B\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O((V + E) log V)`** — same as A*. The tie-breaker adds no asymptotic overhead.\n\n" +

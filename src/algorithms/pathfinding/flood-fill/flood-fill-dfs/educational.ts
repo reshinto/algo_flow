@@ -20,7 +20,7 @@ export const floodFillDfsEducational: EducationalContent = {
     "```mermaid\n" +
     "graph TD\n" +
     "    Center((Stack: Last In)) --> Deep((Stack: First Out))\n" +
-    "```\n\n" ,
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

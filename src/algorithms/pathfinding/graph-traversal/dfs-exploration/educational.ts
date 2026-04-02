@@ -21,8 +21,8 @@ export const dfsExplorationEducational: EducationalContent = {
     "graph TD\n" +
     "    Root((Root)) --> Left((Left Deep))\n" +
     "    Left --> Bottom((Bottom Hit))\n" +
-    "    Bottom -.\"Backtrack\".-> Root\n" +
-    "```\n\n" ,
+    '    Bottom -."Backtrack".-> Root\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

@@ -36,7 +36,7 @@ function createDefaultGrid(): GridCell[][] {
 
   /* Add some default walls for visual interest */
   const wallPositions: [number, number][] = [];
-  
+
   // Create a solid vertical dividing wall perfectly cutting the grid in half, with a single small gap
   // This illustrates both searches exploring simultaneously and meeting exactly at the gap
   for (let r = 0; r < rows; r++) {

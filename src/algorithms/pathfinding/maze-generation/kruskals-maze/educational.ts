@@ -21,9 +21,9 @@ export const kruskalsMazeEducational: EducationalContent = {
     "```\n\n" +
     "```mermaid\n" +
     "graph TD\n" +
-    "    E((Wall Edge)) --\"Connects Set 1 to Set 2\"--> Connect((Knock Down))\n" +
-    "    E --\"Connects Set 1 to Set 1\"--> Ignore((Keep Wall))\n" +
-    "```\n\n" ,
+    '    E((Wall Edge)) --"Connects Set 1 to Set 2"--> Connect((Knock Down))\n' +
+    '    E --"Connects Set 1 to Set 1"--> Ignore((Keep Wall))\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(E · α(V))`**\n\n" +

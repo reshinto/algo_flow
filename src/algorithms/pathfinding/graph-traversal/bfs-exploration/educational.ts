@@ -24,7 +24,7 @@ export const bfsExplorationEducational: EducationalContent = {
     "    Root --- B((L1))\n" +
     "    A --- C((L2))\n" +
     "    A --- D((L2))\n" +
-    "```\n\n" ,
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

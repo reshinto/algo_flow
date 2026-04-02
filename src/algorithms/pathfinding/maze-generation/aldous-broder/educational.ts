@@ -21,7 +21,7 @@ export const aldousBroderEducational: EducationalContent = {
     "graph TD\n" +
     "    Random((Random Walk)) --> HitUnvisited((Unvisited Node: Carve!))\n" +
     "    Random --> HitVisited((Visited Node: Ignore))\n" +
-    "```\n\n" ,
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V²)` expected**\n\n" +

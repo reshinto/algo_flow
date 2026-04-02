@@ -22,8 +22,8 @@ export const bidirectionalBfsEducational: EducationalContent = {
     "flowchart LR\n" +
     "    S((Start)) --> WaveS((Wave 1))\n" +
     "    E((End)) --> WaveE((Wave 2))\n" +
-    "    WaveS --\"Overlap\"--- WaveE\n" +
-    "```\n\n" ,
+    '    WaveS --"Overlap"--- WaveE\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(b^(d/2))`**\n\n" +

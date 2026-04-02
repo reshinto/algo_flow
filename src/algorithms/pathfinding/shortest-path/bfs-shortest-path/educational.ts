@@ -24,7 +24,7 @@ export const bfsShortestPathEducational: EducationalContent = {
     "    L0 --- L1B((Level 1))\n" +
     "    L1B --- L2A((Level 2))\n" +
     "    L1B --- L2B((Level 2))\n" +
-    "```\n\n" ,
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +
