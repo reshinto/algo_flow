@@ -17,6 +17,7 @@ export function generateSetIntersectionSteps(input: SetIntersectionInput): Execu
   const tracker = new SetTracker(arrayA, arrayB, SET_INTERSECTION_LINE_MAP);
   const hashSet = new Set<number>();
 
+  tracker.setOperationLabel("Intersection");
   tracker.initialize({ arrayA, arrayB });
 
   // Phase 1: build hash set from arrayA

@@ -71,12 +71,7 @@ export default function InputEditor() {
       return renderGenericEditor(input, setInput);
 
     case CATEGORY.SETS:
-      return (
-        <SetIntersectionInputEditor
-          input={input as { arrayA: number[]; arrayB: number[] }}
-          onChange={setInput}
-        />
-      );
+      return renderGenericEditor(input, setInput);
 
     case CATEGORY.MATRICES: {
       const matrixInput = input as Record<string, unknown>;
@@ -493,53 +488,6 @@ function StringInputEditor({
         onChange={(event) => onChange(event.target.value)}
         className="flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
       />
-    </div>
-  );
-}
-
-function SetIntersectionInputEditor({
-  input,
-  onChange,
-}: {
-  input: { arrayA: number[]; arrayB: number[] };
-  onChange: (value: unknown) => void;
-}) {
-  return (
-    <div className="flex flex-col gap-2 border-b border-[var(--color-border-default)] px-3 py-2">
-      <div className="flex items-center gap-2">
-        <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">Array A:</label>
-        <input
-          type="text"
-          value={input.arrayA.join(", ")}
-          onChange={(event) => {
-            const parsed = event.target.value
-              .split(",")
-              .map((str) => parseInt(str.trim(), 10))
-              .filter((num) => !isNaN(num));
-            if (parsed.length > 0) {
-              onChange({ ...input, arrayA: parsed });
-            }
-          }}
-          className="min-w-0 flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
-        />
-      </div>
-      <div className="flex items-center gap-2">
-        <label className="shrink-0 text-[10px] text-[var(--color-text-muted)]">Array B:</label>
-        <input
-          type="text"
-          value={input.arrayB.join(", ")}
-          onChange={(event) => {
-            const parsed = event.target.value
-              .split(",")
-              .map((str) => parseInt(str.trim(), 10))
-              .filter((num) => !isNaN(num));
-            if (parsed.length > 0) {
-              onChange({ ...input, arrayB: parsed });
-            }
-          }}
-          className="min-w-0 flex-1 rounded bg-[var(--color-surface-tertiary)] px-2 py-1 font-mono text-xs text-[var(--color-text-primary)] outline-none focus:ring-1 focus:ring-[var(--color-accent-cyan)]"
-        />
-      </div>
     </div>
   );
 }

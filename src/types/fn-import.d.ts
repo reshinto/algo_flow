@@ -247,4 +247,22 @@ declare module "*.ts?fn" {
   export const islandCount: (...args: any[]) => any;
   // Sets
   export const setIntersection: (...args: any[]) => any;
+  export const setUnion: (...args: any[]) => any;
+  export const setDifference: (...args: any[]) => any;
+  export const setSymmetricDifference: (...args: any[]) => any;
+  export const subsetCheck: (...args: any[]) => any;
+  export const supersetCheck: (...args: any[]) => any;
+  export const setEquality: (...args: any[]) => any;
+  export const setComplement: (...args: any[]) => any;
+  export const multisetUnion: (...args: any[]) => any;
+  export const multisetIntersection: (...args: any[]) => any;
+  export const powerSet: (...args: any[]) => any;
+  export const cartesianProduct: (...args: any[]) => any;
+  export const kCombinations: (...args: any[]) => any;
+  export const setPermutations: (...args: any[]) => any;
+  export const bloomFilter: (...args: any[]) => any;
+  export const cuckooFilter: (...args: any[]) => any;
+  export const countMinSketch: (...args: any[]) => any;
+  export const unionFind: (...args: any[]) => any;
+  export const setCover: (...args: any[]) => any;
 }
