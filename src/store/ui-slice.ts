@@ -5,17 +5,34 @@ import type { StateCreator } from "zustand";
 
 export type AppTheme = "dark" | "light" | "system";
 
+/**
+ * State and strictly typed actions responsible for macro-level UI layout presentation.
+ * Drives mobile responsiveness, theming engines, and floating educational panels.
+ */
 export interface UISlice {
+  /** Governs the slide-out mobile navigation drawer visibility. */
   isMobileDrawerOpen: boolean;
+  /** Governs the right-side informational drawer containing algorithmic complexity breakdowns. */
   educationalDrawerOpen: boolean;
+  /**
+   * Active tab control tracking which core visualization interface the user is currently staring at.
+   * Particularly relevant on mobile where screen real-estate only allows one view simultaneously.
+   */
   activePanel: "code" | "visualization" | "explanation";
+  /** Explicit styling classification for CSS variable binding. */
   theme: AppTheme;
 
+  /** Transitions the mobile navigation overlay. */
   toggleMobileDrawer: () => void;
+  /** Forcible reset for when a user clicks a nav link and the drawer must immediately hide. */
   closeMobileDrawer: () => void;
+  /** Toggles the informative right-panel describing Big-O and algorithm mechanics. */
   toggleEducationalDrawer: () => void;
+  /** Explicit override to force the layout system into rendering one of the three primary modules. */
   setActivePanel: (panel: "code" | "visualization" | "explanation") => void;
+  /** Hard-binds the color palette scheme to the DOM, caching the decision into LocalStorage. */
   setTheme: (theme: AppTheme) => void;
+  /** Cycles the user through `dark` -> `light` -> `system` automatically. */
   toggleTheme: () => void;
 }
 

@@ -4,8 +4,7 @@
 
 How to build, deploy, and serve AlgoFlow in production. Covers Docker containerization and GitHub Actions CI/CD pipelines.
 
-> [!NOTE]
-> **Prerequisites:** Read [Architecture](architecture.md) for tech stack context and [Testing](testing.md) to understand what the CI jobs verify.
+> [!NOTE] > **Prerequisites:** Read [Architecture](architecture.md) for tech stack context and [Testing](testing.md) to understand what the CI jobs verify.
 
 ## Contents
 

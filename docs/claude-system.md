@@ -4,8 +4,7 @@
 
 AlgoFlow uses a structured development workflow powered by agents, skills, session hooks, and plugins. This page documents the full system defined in the `.claude/` directory.
 
-> [!NOTE]
-> **Prerequisites:** Read [Contributing](contributing.md) for quality gate and branch workflow context before working with this system.
+> [!NOTE] > **Prerequisites:** Read [Contributing](contributing.md) for quality gate and branch workflow context before working with this system.
 
 ## Contents
 
