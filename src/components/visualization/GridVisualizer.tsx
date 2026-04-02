@@ -51,9 +51,14 @@ export default function GridVisualizer({ visualState }: GridVisualizerProps) {
   const setInput = useAppStore((state) => state.setInput);
   const [dragMode, setDragMode] = useState<DragMode>(null);
 
-  const { cells, startPosition: vizStart, endPosition: vizEnd, currentPath } = visualState;
+  const { cells, startPosition: vizStart, endPosition: vizEnd, currentPath, phase } = visualState;
   const rowCount = cells.length;
   const colCount = cells[0]?.length ?? 0;
+
+  const isHeatmap = phase === "heatmap-rendering";
+  const maxCost = isHeatmap
+    ? cells.flat().reduce((max, cell) => Math.max(max, cell.gCost ?? 0), 1)
+    : 1;
 
   const updateCell = useCallback(
     (row: number, col: number, mode: DragMode) => {
@@ -163,7 +168,13 @@ export default function GridVisualizer({ visualState }: GridVisualizerProps) {
         onDragStart={(e) => e.preventDefault()}
       >
         {cells.flat().map((cell) => {
-          const color = getCellColor(cell.type, cell.state);
+          let color = getCellColor(cell.type, cell.state);
+          
+          if (isHeatmap && cell.gCost != null && cell.state !== "default" && cell.state !== "path" && cell.type === "empty") {
+             const hue = Math.floor(((cell.gCost - 1) / Math.max(1, maxCost - 1)) * 120);
+             color = `hsl(${hue}, 85%, 45%)`; 
+          }
+
           const isStart = cell.row === vizStart[0] && cell.col === vizStart[1];
           const isEnd = cell.row === vizEnd[0] && cell.col === vizEnd[1];
 
@@ -182,9 +193,14 @@ export default function GridVisualizer({ visualState }: GridVisualizerProps) {
                   S
                 </span>
               )}
-              {isEnd && (
+              {isEnd && !isHeatmap && (
                 <span className="text-[8px] font-bold text-[var(--color-surface-base)] pointer-events-none">
                   E
+                </span>
+              )}
+              {isHeatmap && cell.gCost != null && cell.state !== "default" && cell.type === "empty" && cell.state !== "path" && (
+                <span className="text-[9px] font-mono font-bold text-white opacity-90 select-none pointer-events-none drop-shadow-md">
+                  {cell.gCost}
                 </span>
               )}
             </motion.div>

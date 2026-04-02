@@ -17,7 +17,15 @@ export const dijkstraBidirectionalEducational: EducationalContent = {
     "Bidirectional:     each front explores radius R/2\n" +
     "Area ratio ≈ π(R)² vs 2 × π(R/2)² = πR²/2  →  ~2× fewer cells\n" +
     "```\n\n" +
-    "> *The savings are most dramatic on open grids with no obstacles between start and end.*",
+    "> *The savings are most dramatic on open grids with no obstacles between start and end.*\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    SF((Start)) --\"Forward\"--> M1((Mid))\n" +
+    "    M1 --\"Meeting Point\"--- M2((Mid))\n" +
+    "    EF((End)) --\"Backward\"--> M2\n" +
+    "    style SF fill:#06b6d4,stroke:#0891b2\n" +
+    "    style EF fill:#f43f5e,stroke:#e11d48\n" +
+    "```\n\n" ,
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O((V + E) log V)`**\n\n" +

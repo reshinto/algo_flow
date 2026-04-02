@@ -15,7 +15,12 @@ export const ellersMazeEducational: EducationalContent = {
     "Row 1:  [A] [A] [B] [C] [C]  ← merged A-A and C-C horizontally\n" +
     "Down:   [A]     [B] [C]      ← A extends 1, B extends 1, C extends 1\n" +
     "Row 2:  [A] [D] [B] [C] [E]  ← non-extending cells get new sets D, E\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    "    R1((Row 1)) --\"Merge Sets\"--> R1A((Set A))\n" +
+    "    R1A --\"Vertical Drop\"--> R2((Row 2))\n" +
+    "```\n\n" ,
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V)`**\n\n" +

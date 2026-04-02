@@ -15,19 +15,23 @@ interface FloodFillDfsInput {
 }
 
 export function generateFloodFillDfsSteps(input: FloodFillDfsInput): ExecutionStep[] {
-  const { grid, startPosition } = input;
+  const { grid, startPosition, endPosition } = input;
   const rowCount = grid.length;
   const colCount = grid[0]?.length ?? 0;
 
   const tracker = new PathfindingTracker(
     grid,
     startPosition,
-    input.endPosition,
+    endPosition,
     FLOOD_FILL_DFS_LINE_MAP,
   );
 
   const filledSet: boolean[][] = Array.from({ length: rowCount }, () =>
     new Array(colCount).fill(false),
+  );
+  
+  const parent: ([number, number] | null)[][] = Array.from({ length: rowCount }, () =>
+    new Array<[number, number] | null>(colCount).fill(null),
   );
 
   const directions: [number, number][] = [
@@ -39,7 +43,7 @@ export function generateFloodFillDfsSteps(input: FloodFillDfsInput): ExecutionSt
 
   tracker.initialize({
     startPosition,
-    endPosition: input.endPosition,
+    endPosition,
     rowCount,
     colCount,
   });
@@ -66,6 +70,7 @@ export function generateFloodFillDfsSteps(input: FloodFillDfsInput): ExecutionSt
       filledCount,
     });
 
+
     /* Explore 4-directional neighbors */
     for (const [deltaRow, deltaCol] of directions) {
       const neighborRow = currentRow + deltaRow;
@@ -85,6 +90,7 @@ export function generateFloodFillDfsSteps(input: FloodFillDfsInput): ExecutionSt
       if (filledSet[neighborRow]![neighborCol]) continue;
 
       filledSet[neighborRow]![neighborCol] = true;
+      parent[neighborRow]![neighborCol] = [currentRow, currentCol];
       stack.push([neighborRow, neighborCol]);
 
       tracker.openNode(neighborRow, neighborCol, {
@@ -95,9 +101,31 @@ export function generateFloodFillDfsSteps(input: FloodFillDfsInput): ExecutionSt
     }
   }
 
-  tracker.complete(
-    { pathFound: false, filledCount, message: `Fill complete: ${filledCount} cells filled` },
-    false,
-  );
+  if (filledSet[endPosition[0]]?.[endPosition[1]]) {
+    const path = reconstructPath(parent, endPosition);
+    tracker.tracePath(path, { pathLength: path.length, path });
+    tracker.complete(
+      { pathFound: true, pathLength: path.length, filledCount, completeDescription: `Flood Fill completed, painted ${filledCount} cells` },
+      true,
+    );
+  } else {
+    tracker.complete(
+      { pathFound: false, filledCount, completeDescription: `Flood Fill completed, painted ${filledCount} cells` },
+      false,
+    );
+  }
   return tracker.getSteps();
+}
+
+function reconstructPath(
+  parent: ([number, number] | null)[][],
+  end: [number, number],
+): [number, number][] {
+  const path: [number, number][] = [];
+  let current: [number, number] | null = end;
+  while (current !== null) {
+    path.unshift(current);
+    current = parent[current[0]]![current[1]]!;
+  }
+  return path;
 }

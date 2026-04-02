@@ -17,7 +17,11 @@ export const weightedAStarEducational: EducationalContent = {
     "ε = 1.5 → f = g + 1.5h  (weighted A*, sub-optimal but faster)\n" +
     "ε = ∞   → f = h         (Greedy, very fast, not optimal)\n" +
     "```\n\n" +
-    "> *The path found is at most `ε` times longer than the optimal path — a bounded sub-optimality guarantee.*",
+    "> *The path found is at most `ε` times longer than the optimal path — a bounded sub-optimality guarantee.*\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    "    S((Start)) --\"f = g + (h * 2)\"--> P((Accelerated Path))\n" +
+    "```\n\n" ,
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(b^d / ε)` heuristically** — higher weights explore fewer nodes, trading optimality for speed.\n\n" +

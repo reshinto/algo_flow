@@ -17,7 +17,14 @@ export const bfsShortestPathEducational: EducationalContent = {
     "Step 3: Dequeue A, enqueue C\n" +
     "  [B, C]\n" +
     "```\n\n" +
-    "> *Every cell at distance 1 is fully explored before any cell at distance 2 — guaranteeing optimality.*",
+    "> *Every cell at distance 1 is fully explored before any cell at distance 2 — guaranteeing optimality.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    L0((Start/Level 0)) --- L1A((Level 1))\n" +
+    "    L0 --- L1B((Level 1))\n" +
+    "    L1B --- L2A((Level 2))\n" +
+    "    L1B --- L2B((Level 2))\n" +
+    "```\n\n" ,
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

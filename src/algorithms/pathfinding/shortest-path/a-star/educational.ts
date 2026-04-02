@@ -17,7 +17,16 @@ export const aStarEducational: EducationalContent = {
     "hCost  = Manhattan distance to goal  (admissible — never overestimates)\n" +
     "fCost  = priority for expansion\n" +
     "```\n\n" +
-    "> *The Manhattan heuristic is admissible, so A* is guaranteed to find the shortest path.*",
+    "> *The Manhattan heuristic is admissible, so A* is guaranteed to find the shortest path.*\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    S((Start)) --\"g=1, h=4, F=5\"--> A((A))\n" +
+    "    S --\"g=2, h=2, F=4\"--> B((B))\n" +
+    "    B --\"g=3, h=1, F=4\"--> C((C))\n" +
+    "    C --\"g=4, h=0, F=4\"--> E((End))\n" +
+    "    style S fill:#06b6d4,stroke:#0891b2\n" +
+    "    style E fill:#10b981,stroke:#059669\n" +
+    "```\n\n" ,
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O((V + E) log V)`**\n\n" +

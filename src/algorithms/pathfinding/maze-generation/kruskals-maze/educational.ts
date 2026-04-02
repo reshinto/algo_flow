@@ -18,7 +18,12 @@ export const kruskalsMazeEducational: EducationalContent = {
     "Remove A-B wall → {A, B}, {C}, {D}\n" +
     "Remove C-D wall → {A, B}, {C, D}\n" +
     "Remove B-C wall → {A, B, C, D}  ← all connected\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    E((Wall Edge)) --\"Connects Set 1 to Set 2\"--> Connect((Knock Down))\n" +
+    "    E --\"Connects Set 1 to Set 1\"--> Ignore((Keep Wall))\n" +
+    "```\n\n" ,
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(E · α(V))`**\n\n" +

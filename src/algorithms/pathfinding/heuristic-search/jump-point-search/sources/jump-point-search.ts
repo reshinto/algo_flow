@@ -124,6 +124,10 @@ function jump(
       return [currentRow, currentCol];
     }
 
+    // Orthogonal target alignment — stops the jump to allow a perpendicular turn towards the goal
+    if (deltaRow !== 0 && currentRow === end[0]) return [currentRow, currentCol];
+    if (deltaCol !== 0 && currentCol === end[1]) return [currentRow, currentCol];
+
     currentRow += deltaRow;
     currentCol += deltaCol;
   }

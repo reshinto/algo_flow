@@ -15,7 +15,13 @@ export const multiSourceBfsEducational: EducationalContent = {
     "1 2 2 2 1\n" +
     "1 1 1 1 1\n" +
     "```\n\n" +
-    "> *Cells near the edges get distance 1; the center cell gets the maximum value — the furthest point from any wall.*",
+    "> *Cells near the edges get distance 1; the center cell gets the maximum value — the furthest point from any wall.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    W1((Wall 1)) --> S((Safe Zone))\n" +
+    "    W2((Wall 2)) --> S\n" +
+    "    W3((Wall 3)) --> S\n" +
+    "```\n\n" ,
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

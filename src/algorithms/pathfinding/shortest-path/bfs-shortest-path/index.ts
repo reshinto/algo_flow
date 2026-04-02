@@ -35,25 +35,17 @@ function createDefaultGrid(): GridCell[][] {
   }
 
   /* Add some default walls for visual interest */
-  const wallPositions: [number, number][] = [
-    [3, 5],
-    [4, 5],
-    [5, 5],
-    [6, 5],
-    [7, 5],
-    [3, 15],
-    [4, 15],
-    [5, 15],
-    [6, 15],
-    [7, 15],
-    [8, 15],
-    [9, 15],
-    [10, 10],
-    [10, 11],
-    [10, 12],
-    [10, 13],
-    [10, 14],
-  ];
+  const wallPositions: [number, number][] = [];
+  
+  // Create 3 porous vertical walls to showcase BFS/Dijkstra's uniform radial expansion
+  for (let r = 1; r < 14; r++) {
+    // Wall 1
+    if (r !== 4 && r !== 10) wallPositions.push([r, 7]);
+    // Wall 2
+    if (r !== 7) wallPositions.push([r, 15]);
+    // Wall 3
+    if (r !== 3 && r !== 11) wallPositions.push([r, 22]);
+  }
 
   for (const [wallRow, wallCol] of wallPositions) {
     const gridRow = grid[wallRow];

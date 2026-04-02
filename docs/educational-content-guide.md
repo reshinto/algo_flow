@@ -126,6 +126,10 @@ Educational content supports full Markdown rendering in the drawer:
 - Headers (##, ###) for section structure
 - Mermaid diagrams for flowcharts
 
+> **Mermaid Syntax Warning:** The rendering engine strictly prohibits unquoted special characters inside node declarations and edge connections. 
+> ❌ `A[Node (Extra)] -->|O(N)| B` (Will cause "Failed to render diagram" on UI)
+> ✅ `A["Node (Extra)"] --"O(N)"--> B` (Enclose in strict quotation)
+
 Example with Mermaid:
 
 ```ts

@@ -44,6 +44,8 @@ export function generateMultiSourceBfsSteps(input: MultiSourceBfsInput): Executi
     colCount,
   });
 
+  tracker.setPhase("heatmap-rendering");
+
   /* Seed queue: all empty cells adjacent to a wall or boundary (distance = 1) */
   const queue: [number, number][] = [];
 

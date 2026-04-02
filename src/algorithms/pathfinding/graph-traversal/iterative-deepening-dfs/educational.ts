@@ -16,7 +16,13 @@ export const iterativeDeepeningDfsEducational: EducationalContent = {
     "Depth 1: [S, A, B]    ← checks neighbors\n" +
     "Depth 2: [S, A, C, B, D]  ← and their neighbors\n" +
     "```\n\n" +
-    "> *Although nodes near the start are revisited in each iteration, the total work is dominated by the last (deepest) iteration.*",
+    "> *Although nodes near the start are revisited in each iteration, the total work is dominated by the last (deepest) iteration.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    Root((Limit: 1)) --> Root2((Limit: 2))\n" +
+    "    Root2 --> L1((Level 1))\n" +
+    "    Root2 --> L2((Level 2))\n" +
+    "```\n\n" ,
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(b^d)`**\n\n" +

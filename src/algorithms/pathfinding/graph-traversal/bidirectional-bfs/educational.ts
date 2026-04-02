@@ -17,7 +17,13 @@ export const bidirectionalBfsEducational: EducationalContent = {
     "                     ↕\n" +
     "               Meeting at B/D\n" +
     "```\n\n" +
-    "> *Each search covers only half the distance, reducing visited nodes from O(b^d) to O(b^(d/2)).*",
+    "> *Each search covers only half the distance, reducing visited nodes from O(b^d) to O(b^(d/2)).*\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    S((Start)) --> WaveS((Wave 1))\n" +
+    "    E((End)) --> WaveE((Wave 2))\n" +
+    "    WaveS --\"Overlap\"--- WaveE\n" +
+    "```\n\n" ,
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(b^(d/2))`**\n\n" +

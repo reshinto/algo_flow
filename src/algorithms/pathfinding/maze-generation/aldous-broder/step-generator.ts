@@ -123,7 +123,7 @@ export function generateAldousBroderSteps(input: MazeInput): ExecutionStep[] {
 
   tracker.complete(
     { passagesCarved, description: `Maze generation complete: ${passagesCarved} passages carved` },
-    false,
+    true,
   );
 
   return tracker.getSteps();

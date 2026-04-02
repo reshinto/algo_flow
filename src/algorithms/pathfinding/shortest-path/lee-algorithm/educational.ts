@@ -17,7 +17,14 @@ export const leeAlgorithmEducational: EducationalContent = {
     " 2  W  W  W  6\n" +
     " 3  4  5  6  7\n" +
     "```\n\n" +
-    "> *`W` = wall. Wave numbers mark Manhattan distance from start; the path backtracks through decreasing values.*",
+    "> *`W` = wall. Wave numbers mark Manhattan distance from start; the path backtracks through decreasing values.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    S((Start [0])) --> A((Node [1]))\n" +
+    "    A --> B((Node [2]))\n" +
+    "    B -.-> S\n" +
+    "    B --> E((End [3]))\n" +
+    "```\n\n" ,
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

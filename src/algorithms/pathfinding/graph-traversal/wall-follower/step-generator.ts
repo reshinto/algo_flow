@@ -36,6 +36,7 @@ export function generateWallFollowerSteps(input: WallFollowerInput): ExecutionSt
   let currentCol = startPosition[1];
   let facingDirection = 1; // start facing right
   const maxSteps = rowCount * colCount * 4;
+  const path: [number, number][] = [[currentRow, currentCol]];
 
   tracker.openNode(currentRow, currentCol, {
     currentNode: [currentRow, currentCol],
@@ -51,8 +52,7 @@ export function generateWallFollowerSteps(input: WallFollowerInput): ExecutionSt
     });
 
     if (currentRow === endPosition[0] && currentCol === endPosition[1]) {
-      const path: [number, number][] = [[currentRow, currentCol]];
-      tracker.tracePath(path, { pathLength: stepCount + 1, stepsTraversed: stepCount });
+      tracker.tracePath(path, { pathLength: path.length, stepsTraversed: stepCount });
       tracker.complete({ pathFound: true, stepsTraversed: stepCount }, true);
       return tracker.getSteps();
     }
@@ -76,6 +76,7 @@ export function generateWallFollowerSteps(input: WallFollowerInput): ExecutionSt
     facingDirection = chosenDirection;
     currentRow = currentRow + DIRECTION_ROW[facingDirection]!;
     currentCol = currentCol + DIRECTION_COL[facingDirection]!;
+    path.push([currentRow, currentCol]);
 
     tracker.openNode(currentRow, currentCol, {
       currentNode: [currentRow, currentCol],

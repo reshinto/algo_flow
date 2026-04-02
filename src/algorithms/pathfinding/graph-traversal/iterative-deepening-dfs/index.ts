@@ -10,18 +10,25 @@ import typescriptSource from "./sources/iterative-deepening-dfs.ts?raw";
 import pythonSource from "./sources/iterative-deepening-dfs.py?raw";
 import javaSource from "./sources/IterativeDeepeningDfs.java?raw";
 
-/** Builds the initial pathfinding grid with start/end positions and preset walls. */
+/** Builds the initial pathfinding grid with start/end positions and preset walls.
+ *  Uses custom close targets to prevent IDDFS exponential expansion O(b^d) crash.
+ */
 function createDefaultGrid(): GridCell[][] {
-  const { rows, cols, startPosition, endPosition } = GRID_DEFAULTS;
+  const { rows, cols } = GRID_DEFAULTS;
+  
+  // Custom nearby targets for exactly this algorithm to prevent browser crash
+  const startPos: [number, number] = [6, 10];
+  const endPos: [number, number] = [6, 14];
+  
   const grid: GridCell[][] = [];
 
   for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
     const row: GridCell[] = [];
     for (let colIndex = 0; colIndex < cols; colIndex++) {
       let cellType: GridCell["type"] = "empty";
-      if (rowIndex === startPosition[0] && colIndex === startPosition[1]) {
+      if (rowIndex === startPos[0] && colIndex === startPos[1]) {
         cellType = "start";
-      } else if (rowIndex === endPosition[0] && colIndex === endPosition[1]) {
+      } else if (rowIndex === endPos[0] && colIndex === endPos[1]) {
         cellType = "end";
       }
       row.push({
@@ -34,30 +41,20 @@ function createDefaultGrid(): GridCell[][] {
     grid.push(row);
   }
 
-  /* Add some default walls for visual interest */
+  /* Add walls to constrain IDDFS expansion and guide the search */
   const wallPositions: [number, number][] = [
-    [3, 5],
-    [4, 5],
-    [5, 5],
-    [6, 5],
-    [7, 5],
-    [3, 15],
-    [4, 15],
-    [5, 15],
-    [6, 15],
-    [7, 15],
-    [8, 15],
-    [9, 15],
+    // Top boundary
+    [4, 9], [4, 10], [4, 11], [4, 12], [4, 13], [4, 14], [4, 15],
+    // Bottom boundary
+    [8, 9], [8, 10], [8, 11], [8, 12], [8, 13], [8, 14], [8, 15],
+    // Left boundary
+    [5, 9], [6, 9], [7, 9],
+    // Obstacle in the middle
+    [5, 12], [6, 12],
   ];
 
   for (const [wallRow, wallCol] of wallPositions) {
-    const gridRow = grid[wallRow];
-    if (gridRow) {
-      const cell = gridRow[wallCol];
-      if (cell && cell.type === "empty") {
-        cell.type = "wall";
-      }
-    }
+    grid[wallRow]![wallCol]!.type = "wall";
   }
 
   return grid;
@@ -88,8 +85,8 @@ const iterativeDeepeningDfsDefinition: AlgorithmDefinition<IddfsInput> = {
     supportedLanguages: ["typescript", "python", "java"],
     defaultInput: {
       grid: defaultGrid,
-      startPosition: [...GRID_DEFAULTS.startPosition],
-      endPosition: [...GRID_DEFAULTS.endPosition],
+      startPosition: [6, 10],
+      endPosition: [6, 14],
     },
   },
   execute: (input: IddfsInput) =>

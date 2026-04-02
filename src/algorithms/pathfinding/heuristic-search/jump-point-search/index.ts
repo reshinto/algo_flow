@@ -29,25 +29,16 @@ function createDefaultGrid(): GridCell[][] {
     grid.push(row);
   }
 
-  const wallPositions: [number, number][] = [
-    [3, 5],
-    [4, 5],
-    [5, 5],
-    [6, 5],
-    [7, 5],
-    [3, 15],
-    [4, 15],
-    [5, 15],
-    [6, 15],
-    [7, 15],
-    [8, 15],
-    [9, 15],
-    [10, 10],
-    [10, 11],
-    [10, 12],
-    [10, 13],
-    [10, 14],
-  ];
+  const wallPositions: [number, number][] = [];
+  
+  // Create long continuous walls to form large open spaces and corridors
+  // This highlights JPS's ability to "jump" across massive distances without exploring intermediate nodes
+  // Wall 1 - Vertical
+  for (let r = 2; r <= 10; r++) wallPositions.push([r, 8]);
+  // Wall 2 - Horizontal
+  for (let c = 15; c <= 25; c++) wallPositions.push([5, c]);
+  // Wall 3 - Vertical
+  for (let r = 8; r <= 13; r++) wallPositions.push([r, 20]);
 
   for (const [wallRow, wallCol] of wallPositions) {
     const gridRow = grid[wallRow];

@@ -17,7 +17,14 @@ export const bfsExplorationEducational: EducationalContent = {
     "  . . .                  B . .                  B E .\n" +
     "  . . .                  C . .                  C F G\n" +
     "```\n\n" +
-    "> *All cells at distance 1 are visited before any cell at distance 2, producing a wave-like expansion.*",
+    "> *All cells at distance 1 are visited before any cell at distance 2, producing a wave-like expansion.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    Root((Root)) --- A((L1))\n" +
+    "    Root --- B((L1))\n" +
+    "    A --- C((L2))\n" +
+    "    A --- D((L2))\n" +
+    "```\n\n" ,
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

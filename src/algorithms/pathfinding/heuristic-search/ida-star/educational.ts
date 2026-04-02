@@ -16,7 +16,12 @@ export const idaStarEducational: EducationalContent = {
     "Iteration 2: threshold = min pruned f = 10\n" +
     "Iteration 3: threshold = min pruned f = 12  ← goal found!\n" +
     "```\n\n" +
-    "> *Each iteration is a complete DFS — nodes are revisited across iterations but never stored.*",
+    "> *Each iteration is a complete DFS — nodes are revisited across iterations but never stored.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    T1((Threshold: 5)) --> A((f=4: Search))\n" +
+    "    A --> B((f=6: Prune, Save for next threshold))\n" +
+    "```\n\n" ,
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(b^d)`** — same asymptotic as A*, but with a higher constant factor due to node revisiting across iterations.\n\n" +

@@ -20,7 +20,13 @@ export const wallFollowerEducational: EducationalContent = {
     "Priority 3: ↑ (left turn)    — if open, turn and move\n" +
     "Priority 4: ← (reverse)      — last resort\n" +
     "```\n\n" +
-    "> *The wall always stays to the right — the agent hugs surfaces like a hand trailing along a wall.*",
+    "> *The wall always stays to the right — the agent hugs surfaces like a hand trailing along a wall.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    Robot((Robot)) --\"Right Wall Detected\"--> MoveForward((Move Forward))\n" +
+    "    MoveForward --\"Wall Ahead\"--> TurnLeft((Turn Left))\n" +
+    "    TurnLeft --\"No Wall\"--> TurnRight((Turn Right))\n" +
+    "```\n\n" ,
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V)`**\n\n" +
