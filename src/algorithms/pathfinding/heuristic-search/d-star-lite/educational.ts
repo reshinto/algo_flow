@@ -16,7 +16,13 @@ export const dStarLiteEducational: EducationalContent = {
     "Obstacle found: B is blocked\n" +
     "Replanned path: S → A → D → E → G  (only affected nodes recomputed)\n" +
     "```\n\n" +
-    "> *D\\* Lite reuses all unaffected cost estimates — replanning is far cheaper than restarting A*.*",
+    "> *D\\* Lite reuses all unaffected cost estimates — replanning is far cheaper than restarting A*.*\n\n" +
+    "```mermaid\n" +
+    "graph RL\n" +
+    "    T((Target)) --> A((Expanded))\n" +
+    "    A --> B((Current))\n" +
+    '    C((Obstacle Detected)) -."Update RHS"..-> B\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O((V + E) log V)`** for the initial search; replanning is proportional only to the number of changed edges.\n\n" +

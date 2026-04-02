@@ -29,25 +29,21 @@ function createDefaultGrid(): GridCell[][] {
     grid.push(row);
   }
 
-  const wallPositions: [number, number][] = [
-    [3, 5],
-    [4, 5],
-    [5, 5],
-    [6, 5],
-    [7, 5],
-    [3, 15],
-    [4, 15],
-    [5, 15],
-    [6, 15],
-    [7, 15],
-    [8, 15],
-    [9, 15],
-    [10, 10],
-    [10, 11],
-    [10, 12],
-    [10, 13],
-    [10, 14],
-  ];
+  const wallPositions: [number, number][] = [];
+
+  // Construct a large 'C' shaped trap facing the start node
+  // Top lid
+  for (let c = 5; c <= 25; c++) {
+    wallPositions.push([3, c]);
+  }
+  // Bottom lid
+  for (let c = 5; c <= 25; c++) {
+    wallPositions.push([11, c]);
+  }
+  // Right spine
+  for (let r = 3; r <= 11; r++) {
+    wallPositions.push([r, 25]);
+  }
 
   for (const [wallRow, wallCol] of wallPositions) {
     const gridRow = grid[wallRow];

@@ -16,7 +16,13 @@ export const greedyBestFirstEducational: EducationalContent = {
     "f(n) = h(n)   ← greedy ignores g(n) entirely\n" +
     "h(n) = |row_n - row_goal| + |col_n - col_goal|  (Manhattan)\n" +
     "```\n\n" +
-    "> *The algorithm rushes toward the goal but may travel through suboptimal corridors.*",
+    "> *The algorithm rushes toward the goal but may travel through suboptimal corridors.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '    Start((Start)) --"h=8"--> Node1((h=4))\n' +
+    '    Start --"h=6"--> Node2((h=2))\n' +
+    '    Node2 --"Greedy Pick"--> End((Goal: h=0))\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(b^m)`** in the worst case, where `b` is the branching factor and `m` is the maximum depth. With a good heuristic, it is much faster in practice.\n\n" +

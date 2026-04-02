@@ -16,7 +16,11 @@ export const floodFillDfsEducational: EducationalContent = {
     "  1 1 1 1 1                            2 5 . . 10\n" +
     "  1 1 S 1 1                            3 4 . . 11\n" +
     "```\n\n" +
-    "> *DFS follows one path to its end before exploring another — creating irregular, winding fill patterns.*",
+    "> *DFS follows one path to its end before exploring another — creating irregular, winding fill patterns.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    Center((Stack: Last In)) --> Deep((Stack: First Out))\n" +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

@@ -16,7 +16,13 @@ export const primsMazeEducational: EducationalContent = {
     "Pick B  →  Add B + walls; frontier: [A, C, D, E]\n" +
     "Pick A  →  Add A + walls; frontier: [C, D, E, F]\n" +
     "```\n\n" +
-    "> *Because any frontier cell can be picked at random, growth radiates outward in multiple directions simultaneously — creating short, bushy branches.*",
+    "> *Because any frontier cell can be picked at random, growth radiates outward in multiple directions simultaneously — creating short, bushy branches.*\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    Tree((Current Tree)) --- F1((Frontier 1))\n" +
+    "    Tree --- F2((Frontier 2))\n" +
+    '    F1 --"Random Selection"--> Expand((Expand Tree))\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V log V)`**\n\n" +

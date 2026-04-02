@@ -35,25 +35,13 @@ function createDefaultGrid(): GridCell[][] {
   }
 
   /* Add some default walls for visual interest */
-  const wallPositions: [number, number][] = [
-    [3, 5],
-    [4, 5],
-    [5, 5],
-    [6, 5],
-    [7, 5],
-    [3, 15],
-    [4, 15],
-    [5, 15],
-    [6, 15],
-    [7, 15],
-    [8, 15],
-    [9, 15],
-    [10, 10],
-    [10, 11],
-    [10, 12],
-    [10, 13],
-    [10, 14],
-  ];
+  const wallPositions: [number, number][] = [];
+
+  // Create a solid vertical dividing wall perfectly cutting the grid in half, with a single small gap
+  // This illustrates both searches exploring simultaneously and meeting exactly at the gap
+  for (let r = 0; r < rows; r++) {
+    if (r !== 7 && r !== 8) wallPositions.push([r, Math.floor(cols / 2)]);
+  }
 
   for (const [wallRow, wallCol] of wallPositions) {
     const gridRow = grid[wallRow];

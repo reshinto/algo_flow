@@ -16,7 +16,11 @@ export const floodFillBfsEducational: EducationalContent = {
     "  [ ][S][ ]                [D][S][E]\n" +
     "  [ ][ ][ ]                [F][G][H]\n" +
     "```\n\n" +
-    "> *Every cell at Manhattan distance 1 is processed before any cell at distance 2 — creating a perfect outward wave.*",
+    "> *Every cell at Manhattan distance 1 is processed before any cell at distance 2 — creating a perfect outward wave.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    Center((Queue: First)) --> Top((Queue: Last))\n" +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

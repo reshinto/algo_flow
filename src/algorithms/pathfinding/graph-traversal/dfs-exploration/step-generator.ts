@@ -96,7 +96,7 @@ export function generateDfsExplorationSteps(input: DfsExplorationInput): Executi
     }
   }
 
-  tracker.complete({ visitedCount, maxDepth, pathFound: false }, false);
+  tracker.complete({ visitedCount, maxDepth, pathFound: false, explorationComplete: true }, true);
 
   return tracker.getSteps();
 }

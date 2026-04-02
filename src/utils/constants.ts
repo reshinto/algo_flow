@@ -96,11 +96,11 @@ export const CATEGORY_ACCENT_MAP: Record<string, string> = {
 /** Structural bounding limits enforcing that Pathfinding Grid instances render optimally on mobile/desktop without overflow */
 export const GRID_DEFAULTS = {
   rows: 15,
-  cols: 30,
+  cols: 31,
   maxRows: 30,
-  maxCols: 30,
+  maxCols: 31,
   /** Pre-defined [row, col] origin for algorithms like Dijkstra */
   startPosition: [1, 1] as [number, number],
   /** Pre-defined [row, col] destination */
-  endPosition: [13, 28] as [number, number],
+  endPosition: [13, 29] as [number, number],
 } as const;

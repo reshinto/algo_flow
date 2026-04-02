@@ -15,7 +15,12 @@ export const binaryTreeMazeEducational: EducationalContent = {
     "For cell (3,3):  Can go N → (1,3)? Yes. Can go E → (3,5)? Yes.\n" +
     "Coin flip → go North → carve wall at (2,3)\n" +
     "```\n\n" +
-    "> *This produces perfect mazes but with always-open top row and right column — a recognizable signature bias.*",
+    "> *This produces perfect mazes but with always-open top row and right column — a recognizable signature bias.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '    Node((Cell)) --"Pick North or West"--> North((North))\n' +
+    '    Node -.-"Biased Diagonal".-> West((West))\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V)`**\n\n" +

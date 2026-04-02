@@ -16,7 +16,13 @@ export const dfsExplorationEducational: EducationalContent = {
     "[S]          [A, B]              [A, C, D]\n" +
     "→ DFS always processes the most recently added cell first\n" +
     "```\n\n" +
-    "> *Unlike BFS, DFS follows one branch to its end before exploring siblings — producing depth-first ordering.*",
+    "> *Unlike BFS, DFS follows one branch to its end before exploring siblings — producing depth-first ordering.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    Root((Root)) --> Left((Left Deep))\n" +
+    "    Left --> Bottom((Bottom Hit))\n" +
+    '    Bottom -."Backtrack".-> Root\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

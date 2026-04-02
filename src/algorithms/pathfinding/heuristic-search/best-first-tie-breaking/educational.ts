@@ -17,7 +17,12 @@ export const bestFirstTieBreakingEducational: EducationalContent = {
     "dx2 = end.col  - start.col     dy2 = end.row  - start.row\n" +
     "cross = |dx1*dy2 - dx2*dy1|\n" +
     "```\n\n" +
-    "> *Nodes on the straight line from start to end have cross = 0 and are preferred.*",
+    "> *Nodes on the straight line from start to end have cross = 0 and are preferred.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    A((Node A: f=4)) --- B((Node B: f=4))\n" +
+    '    A --"Cross-Product Tiebreaker"--> B\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O((V + E) log V)`** — same as A*. The tie-breaker adds no asymptotic overhead.\n\n" +

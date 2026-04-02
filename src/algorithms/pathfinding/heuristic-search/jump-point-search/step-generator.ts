@@ -83,6 +83,10 @@ function jump(
     if (hasForced(grid, currentRow, currentCol, deltaRow, deltaCol, rowCount, colCount))
       return [currentRow, currentCol];
 
+    /* Orthogonal target alignment stops the jump, allowing a perpendicular turn towards the goal */
+    if (deltaRow !== 0 && currentRow === endPosition[0]) return [currentRow, currentCol];
+    if (deltaCol !== 0 && currentCol === endPosition[1]) return [currentRow, currentCol];
+
     currentRow += deltaRow;
     currentCol += deltaCol;
   }

@@ -16,7 +16,14 @@ export const recursiveBacktrackerEducational: EducationalContent = {
     "Even-indexed cells act as walls between them.\n" +
     "Carving from (1,1) to (1,3) removes the wall at (1,2).\n" +
     "```\n\n" +
-    "> *The DFS nature means the algorithm chases one long corridor before backtracking — resulting in dramatic, winding mazes.*",
+    "> *The DFS nature means the algorithm chases one long corridor before backtracking — resulting in dramatic, winding mazes.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    Start((Start)) --> A((Cell A))\n" +
+    "    A --> B((Cell B))\n" +
+    '    B --"Dead End"--> B\n' +
+    '    B -."Backtrack".-> A\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V)`**\n\n" +

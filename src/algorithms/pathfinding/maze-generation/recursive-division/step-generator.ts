@@ -102,7 +102,7 @@ export function generateRecursiveDivisionSteps(input: MazeInput): ExecutionStep[
 
   tracker.complete(
     { wallsBuilt, description: `Maze generation complete: ${wallsBuilt} walls built` },
-    false,
+    true,
   );
 
   return tracker.getSteps();

@@ -18,7 +18,12 @@ export const jumpPointSearchEducational: EducationalContent = {
     "Moving right →:  if cell above-left is a wall but cell above is passable,\n" +
     "                 the cell above is a forced neighbor → current is a jump point\n" +
     "```\n\n" +
-    "> *JPS symmetry pruning means entire corridors are traversed in a single jump.*",
+    "> *JPS symmetry pruning means entire corridors are traversed in a single jump.*\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    S((Start)) -.->|"Scan Empty Space"| J1((Jump Point))\n' +
+    '    J1 --"Corner Forced"--> J2((Obstacle))\n' +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(b^d)`** in the worst case (same as A*), but in practice far fewer nodes are expanded.\n\n" +

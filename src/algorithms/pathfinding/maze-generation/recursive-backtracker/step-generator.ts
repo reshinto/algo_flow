@@ -108,7 +108,7 @@ export function generateRecursiveBacktrackerSteps(input: MazeInput): ExecutionSt
   }
 
   const completeDescription = `Maze generation complete: ${passagesCarved} passages carved`;
-  tracker.complete({ passagesCarved, completeDescription }, false);
+  tracker.complete({ passagesCarved, completeDescription }, true);
 
   return tracker.getSteps();
 }

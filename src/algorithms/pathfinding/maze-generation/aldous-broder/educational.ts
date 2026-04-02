@@ -16,7 +16,12 @@ export const aldousBroderEducational: EducationalContent = {
     "Move to C (visited) → no carve, just move\n" +
     "Move to D (unvisited) → carve C-D → mark D visited\n" +
     "```\n\n" +
-    "> *The random walk revisits cells many times before finishing — this inefficiency is the price of perfect uniformity.*",
+    "> *The random walk revisits cells many times before finishing — this inefficiency is the price of perfect uniformity.*\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    Random((Random Walk)) --> HitUnvisited((Unvisited Node: Carve!))\n" +
+    "    Random --> HitVisited((Visited Node: Ignore))\n" +
+    "```\n\n",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V²)` expected**\n\n" +

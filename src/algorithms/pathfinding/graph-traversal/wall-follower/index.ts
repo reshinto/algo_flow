@@ -34,41 +34,34 @@ function createDefaultGrid(): GridCell[][] {
     grid.push(row);
   }
 
-  /* Add walls to create a simple-connected maze that wall-follower can solve */
-  const wallPositions: [number, number][] = [
-    [3, 3],
-    [4, 3],
-    [5, 3],
-    [6, 3],
-    [7, 3],
-    [3, 8],
-    [4, 8],
-    [5, 8],
-    [6, 8],
-    [7, 8],
-    [8, 8],
-    [3, 13],
-    [4, 13],
-    [5, 13],
-    [6, 13],
-    [7, 13],
-    [3, 18],
-    [4, 18],
-    [5, 18],
-    [6, 18],
-    [7, 18],
-    [8, 18],
-  ];
+  /* Add continuous walls to create a simply-connected maze that wall-follower can solve.
+     Wall-follower algorithms mathematically require start and end to be connected by a 
+     continuous wall barrier to guarantee a solution. Floating walls cause endless loops. */
 
-  for (const [wallRow, wallCol] of wallPositions) {
-    const gridRow = grid[wallRow];
-    if (gridRow) {
-      const cell = gridRow[wallCol];
-      if (cell && cell.type === "empty") {
-        cell.type = "wall";
-      }
-    }
+  // Create outer boundary walls
+  for (let r = 0; r < rows; r++) {
+    grid[r]![0]!.type = "wall";
+    grid[r]![cols - 1]!.type = "wall";
   }
+  for (let c = 0; c < cols; c++) {
+    grid[0]![c]!.type = "wall";
+    grid[rows - 1]![c]!.type = "wall";
+  }
+
+  // Create internal attached walls to make it a winding maze
+  for (let r = 0; r <= 10; r++) {
+    grid[r]![5]!.type = "wall";
+    grid[r]![15]!.type = "wall";
+    grid[r]![25]!.type = "wall";
+  }
+  for (let r = 4; r <= 14; r++) {
+    grid[r]![10]!.type = "wall";
+    grid[r]![20]!.type = "wall";
+  }
+
+  // Ensure start and end aren't accidentally overwritten by walls
+  grid[startPosition[0]]![startPosition[1]]!.type = "start";
+  grid[endPosition[0]]![endPosition[1]]!.type = "end";
 
   return grid;
 }
