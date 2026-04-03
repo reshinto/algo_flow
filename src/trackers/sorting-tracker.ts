@@ -92,6 +92,17 @@ export class SortingTracker extends BaseTracker {
     });
   }
 
+  /**
+   * Silently update the value at a given index without emitting a step.
+   * Use this to synchronize the tracker's internal state with an external
+   * working array after non-swap mutations (e.g., placing a computed value).
+   */
+  setElementValue(index: number, value: number): void {
+    const element = this.elements[index];
+    if (!element) return;
+    element.value = value;
+  }
+
   /** Permanently mark an element as in its final sorted position. */
   markSorted(sortedIndex: number, variables: Record<string, unknown>): void {
     const element = this.elements[sortedIndex];

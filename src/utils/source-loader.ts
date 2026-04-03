@@ -42,7 +42,13 @@ export function loadSource(algorithmId: string, language: SupportedLanguage): st
 
   // Perform a full scan across the loaded absolute Vite paths and snatch the correct string bucket
   for (const [filePath, content] of Object.entries(sourceModules)) {
-    if (filePath.includes(`/${algorithmId}/sources/`) && filePath.endsWith(extension)) {
+    // Primary match: directory name matches algorithmId (e.g. /radix-sort-lsd/sources/)
+    const directoryMatch =
+      filePath.includes(`/${algorithmId}/sources/`) && filePath.endsWith(extension);
+    // Fallback match: filename matches algorithmId but directory may differ (e.g. counting-sort-distribution.ts in counting-sort/)
+    const filenameMatch =
+      filePath.includes("/sources/") && filePath.endsWith(`/${algorithmId}${extension}`);
+    if (directoryMatch || filenameMatch) {
       return content;
     }
   }
