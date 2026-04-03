@@ -48,9 +48,6 @@ export function generateBlockMergeSortSteps(inputArray: number[]): ExecutionStep
 
       while (leftPointer < rightPointer && rightPointer < mergeEnd) {
         tracker.compare(leftPointer, rightPointer, {
-          leftStart,
-          rightStart,
-          mergeEnd,
           leftPointer,
           rightPointer,
           phase: "merge",
@@ -59,52 +56,42 @@ export function generateBlockMergeSortSteps(inputArray: number[]): ExecutionStep
         if (workingArray[leftPointer]! <= workingArray[rightPointer]!) {
           leftPointer++;
         } else {
-          // Rotation-based in-place merge step
-          const displacedValue = workingArray[rightPointer]!;
-
+          // Rotation: shift elements right and place displaced value
+          // Use sequential swaps from rightPointer down to leftPointer
           for (let shiftIndex = rightPointer; shiftIndex > leftPointer; shiftIndex--) {
-            workingArray[shiftIndex] = workingArray[shiftIndex - 1]!;
+            // Swap in both workingArray and tracker
+            const tempValue = workingArray[shiftIndex - 1]!;
+            workingArray[shiftIndex - 1] = workingArray[shiftIndex]!;
+            workingArray[shiftIndex] = tempValue;
 
             tracker.swap(shiftIndex, shiftIndex - 1, {
               leftPointer,
               rightPointer,
               shiftIndex,
               phase: "rotate",
-              sortedArray: [...workingArray],
             });
           }
 
-          workingArray[leftPointer] = displacedValue;
           leftPointer++;
           rightPointer++;
         }
       }
 
-      if (boundaryIndex + 3 <= runBoundaries.length - 1) {
-        nextBoundaries.push(mergeEnd);
-      }
+      nextBoundaries.push(mergeEnd);
     }
 
-    // Handle odd run
+    // If there is an odd run left, carry its end boundary over unchanged
     if ((runBoundaries.length - 1) % 2 === 1) {
-      const lastRunStart = runBoundaries[runBoundaries.length - 2]!;
-      nextBoundaries.push(lastRunStart);
+      nextBoundaries.push(arrayLength);
     }
-    nextBoundaries.push(arrayLength);
 
     runBoundaries.length = 0;
     for (const boundary of nextBoundaries) runBoundaries.push(boundary);
-
-    // Mark the merged region as sorted after each merge pass
-    const passEnd = nextBoundaries.length > 1 ? nextBoundaries[1]! : arrayLength;
-    for (let markIdx = 0; markIdx < passEnd && markIdx < arrayLength; markIdx++) {
-      tracker.markSorted(markIdx, { sortedPosition: markIdx, phase: "merge-pass-complete" });
-    }
   }
 
-  // Mark all elements as sorted at the end
+  // Mark all elements as sorted
   for (let finalIndex = 0; finalIndex < arrayLength; finalIndex++) {
-    tracker.markSorted(finalIndex, { sortedPosition: finalIndex, phase: "final" });
+    tracker.markSorted(finalIndex, { sortedPosition: finalIndex });
   }
 
   tracker.complete({ result: [...workingArray] });

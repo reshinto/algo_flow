@@ -50,17 +50,13 @@ function blockMergeSort(inputArray: number[]): number[] {
         }
       }
 
-      if (boundaryIndex + 3 <= runBoundaries.length - 1) {
-        nextBoundaries.push(mergeEnd); // @step:merge
-      }
+      nextBoundaries.push(mergeEnd); // @step:merge
     }
 
-    // If there is an odd run left, carry it over unchanged
+    // If there is an odd run left, carry its end boundary over unchanged
     if ((runBoundaries.length - 1) % 2 === 1) {
-      const lastRunStart = runBoundaries[runBoundaries.length - 2]!; // @step:merge
-      nextBoundaries.push(lastRunStart); // @step:merge
+      nextBoundaries.push(arrayLength); // @step:merge
     }
-    nextBoundaries.push(arrayLength); // @step:merge
 
     runBoundaries.length = 0; // @step:merge
     for (const boundary of nextBoundaries) runBoundaries.push(boundary); // @step:merge
