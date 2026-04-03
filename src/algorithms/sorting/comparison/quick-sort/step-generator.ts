@@ -50,6 +50,8 @@ export function generateQuickSortSteps(inputArray: number[]): ExecutionStep[] {
     const temporaryValue = workingArray[pivotFinalIndex]!;
     workingArray[pivotFinalIndex] = workingArray[highIndex]!;
     workingArray[highIndex] = temporaryValue;
+    tracker.setElementValue(pivotFinalIndex, workingArray[pivotFinalIndex]!);
+    tracker.setElementValue(highIndex, workingArray[highIndex]!);
 
     tracker.markSorted(pivotFinalIndex, {
       pivotFinalIndex,

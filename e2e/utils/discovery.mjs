@@ -9,6 +9,8 @@ export function discoverAlgorithms() {
 
   const allAlgorithms = [];
   const representativeSet = new Set();
+  const categoryMap = new Map();
+  const algorithmCategories = [];
 
   for (const category of categories) {
     const categoryDir = path.join(algorithmsDir, category);
@@ -27,6 +29,8 @@ export function discoverAlgorithms() {
           if (nameMatch) {
             const name = nameMatch[1];
             allAlgorithms.push(name);
+            algorithmCategories.push(category);
+            categoryMap.set(name, category);
             if (firstInCategory) {
               representativeSet.add(name);
               firstInCategory = false;
@@ -40,5 +44,5 @@ export function discoverAlgorithms() {
 
     walkDir(categoryDir);
   }
-  return { allAlgorithms, representativeSet };
+  return { allAlgorithms, representativeSet, categoryMap, algorithmCategories };
 }

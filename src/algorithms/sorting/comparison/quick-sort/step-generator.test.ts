@@ -38,6 +38,15 @@ describe("generateQuickSortSteps", () => {
     }
   });
 
+  it("final visual state values match sorted order for default E2E input", () => {
+    const input = [64, 12, 25, 34, 22, 11, 90];
+    const steps = generateQuickSortSteps(input);
+    const lastStep = steps[steps.length - 1]!;
+    const visualState = lastStep.visualState as ArrayVisualState;
+    const displayedValues = visualState.elements.map((element) => element.value);
+    expect(displayedValues).toEqual([...input].sort((firstVal, secondVal) => firstVal - secondVal));
+  });
+
   it("accumulates metrics correctly", () => {
     const steps = generateQuickSortSteps([3, 1, 2]);
     const lastStep = steps[steps.length - 1]!;

@@ -37,7 +37,7 @@ export function generateSmoothSortSteps(inputArray: number[]): ExecutionStep[] {
 
     while (currentOrder >= 2) {
       const rightChild = currentRoot - 1;
-      const leftChild = currentRoot - 1 - (leonardoNumbers[currentOrder - 2] ?? 1);
+      const leftChild = currentRoot - 1 - (leonardoNumbers[currentOrder - 1] ?? 1);
 
       let largestIndex = currentRoot;
 
@@ -95,7 +95,7 @@ export function generateSmoothSortSteps(inputArray: number[]): ExecutionStep[] {
 
       if (currentOrder >= 2) {
         const rightChild = currentRoot - 1;
-        const leftChild = currentRoot - 1 - (leonardoNumbers[currentOrder - 2] ?? 1);
+        const leftChild = currentRoot - 1 - (leonardoNumbers[currentOrder - 1] ?? 1);
 
         tracker.compare(prevRoot, rightChild, {
           phase: "trinkle-child-check",
@@ -104,8 +104,8 @@ export function generateSmoothSortSteps(inputArray: number[]): ExecutionStep[] {
         });
 
         if (
-          workingArray[prevRoot]! <= workingArray[rightChild]! ||
-          workingArray[prevRoot]! <= workingArray[leftChild]!
+          workingArray[prevRoot]! < workingArray[rightChild]! ||
+          workingArray[prevRoot]! < workingArray[leftChild]!
         ) {
           break;
         }
@@ -153,7 +153,7 @@ export function generateSmoothSortSteps(inputArray: number[]): ExecutionStep[] {
 
     if (currentOrder >= 2) {
       const rightRoot = extractIndex - 1;
-      const leftRoot = extractIndex - 1 - (leonardoNumbers[currentOrder - 2] ?? 1);
+      const leftRoot = extractIndex - 1 - (leonardoNumbers[currentOrder - 1] ?? 1);
       heapRoots.push([leftRoot, currentOrder - 2]);
       heapRoots.push([rightRoot, currentOrder - 1]);
 

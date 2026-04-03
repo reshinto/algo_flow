@@ -18,7 +18,7 @@ import javaSource from "./sources/CountingSortDistribution.java?raw";
 const countingSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
     id: ALGORITHM_ID.COUNTING_SORT_DISTRIBUTION!,
-    name: "Counting Sort",
+    name: "Counting Sort (Distribution)",
     category: CATEGORY.SORTING!,
     technique: "distribution",
     description:

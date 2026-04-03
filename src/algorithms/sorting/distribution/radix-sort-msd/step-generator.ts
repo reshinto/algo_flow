@@ -41,65 +41,74 @@ export function generateRadixSortMsdSteps(inputArray: number[]): ExecutionStep[]
     maxDivisor,
   });
 
-  // Iterative simulation of MSD recursion for step generation
-  // We flatten the recursive passes into sequential steps using an explicit work stack
+  // MSD radix sort using contiguous sub-ranges for correct in-place sorting
   const outputArray = [...workingArray];
 
-  function collectMsdSteps(subIndices: number[], digitDivisor: number): void {
-    if (subIndices.length <= 1 || digitDivisor < 1) return;
+  function collectMsdSteps(startIndex: number, endIndex: number, digitDivisor: number): void {
+    if (startIndex >= endIndex || digitDivisor < 1) return;
 
-    const buckets: number[][] = Array.from({ length: base }, () => []);
-    const bucketSourceIndices: number[][] = Array.from({ length: base }, () => []);
-
-    // Distribute — compare() shows digit extraction
-    for (const globalIndex of subIndices) {
-      const value = outputArray[globalIndex]!;
-      const digit = Math.floor(value / digitDivisor) % base;
-      buckets[digit]!.push(value);
-      bucketSourceIndices[digit]!.push(globalIndex);
+    // Count elements per bucket
+    const bucketCounts: number[] = new Array<number>(base).fill(0);
+    for (let scanIndex = startIndex; scanIndex <= endIndex; scanIndex++) {
+      const digit = Math.floor(outputArray[scanIndex]! / digitDivisor) % base;
+      bucketCounts[digit]!++;
       tracker.compare(
-        globalIndex,
-        globalIndex,
+        scanIndex,
+        scanIndex,
         {
-          globalIndex,
-          value: value - offset,
+          scanIndex,
+          value: outputArray[scanIndex]! - offset,
           digit,
           digitDivisor,
         },
-        `MSD digit (÷${String(digitDivisor)}): value ${String(value - offset)} → bucket ${String(digit)}`,
+        `MSD digit (÷${String(digitDivisor)}): value ${String(outputArray[scanIndex]! - offset)} → bucket ${String(digit)}`,
       );
     }
 
-    // Recursively sort each non-empty bucket
-    for (let bucketIndex = 0; bucketIndex < base; bucketIndex++) {
-      if (buckets[bucketIndex]!.length > 1) {
-        collectMsdSteps(bucketSourceIndices[bucketIndex]!, Math.floor(digitDivisor / base));
-      }
+    // Compute bucket start positions within the sub-range
+    const bucketStarts: number[] = new Array<number>(base).fill(startIndex);
+    for (let bucketIndex = 1; bucketIndex < base; bucketIndex++) {
+      bucketStarts[bucketIndex] = bucketStarts[bucketIndex - 1]! + bucketCounts[bucketIndex - 1]!;
     }
 
-    // Collect — swap() shows writing back sorted values
-    let writePosition = subIndices[0]!;
+    // Stable distribute into temp buffer, then copy back to outputArray
+    const tempBuffer: number[] = new Array<number>(endIndex - startIndex + 1);
+    const bucketWritePos: number[] = [...bucketStarts];
+    for (let scanIndex = startIndex; scanIndex <= endIndex; scanIndex++) {
+      const digit = Math.floor(outputArray[scanIndex]! / digitDivisor) % base;
+      tempBuffer[bucketWritePos[digit]! - startIndex] = outputArray[scanIndex]!;
+      bucketWritePos[digit]!++;
+    }
+
+    // Write sorted-by-digit values back and sync tracker
+    for (let writeIndex = 0; writeIndex < tempBuffer.length; writeIndex++) {
+      const globalPos = startIndex + writeIndex;
+      outputArray[globalPos] = tempBuffer[writeIndex]!;
+      tracker.setElementValue(globalPos, tempBuffer[writeIndex]! - offset);
+      tracker.swap(
+        globalPos,
+        globalPos,
+        {
+          digitDivisor,
+          placedValue: tempBuffer[writeIndex]! - offset,
+          globalPos,
+          sortedArray: outputArray.map((val) => val - offset),
+        },
+        `Placing ${String(tempBuffer[writeIndex]! - offset)} at position ${String(globalPos)}`,
+      );
+    }
+
+    // Recursively sort each non-empty bucket (now contiguous in outputArray)
     for (let bucketIndex = 0; bucketIndex < base; bucketIndex++) {
-      for (const bucketValue of buckets[bucketIndex]!) {
-        outputArray[writePosition] = bucketValue;
-        tracker.swap(
-          writePosition,
-          writePosition,
-          {
-            bucketIndex,
-            bucketValue: bucketValue - offset,
-            writePosition,
-            sortedArray: outputArray.map((val) => val - offset),
-          },
-          `Collecting bucket ${String(bucketIndex)}: placing ${String(bucketValue - offset)} at position ${String(writePosition)}`,
-        );
-        writePosition++;
+      if (bucketCounts[bucketIndex]! > 1) {
+        const bucketStart = bucketStarts[bucketIndex]!;
+        const bucketEnd = bucketStart + bucketCounts[bucketIndex]! - 1;
+        collectMsdSteps(bucketStart, bucketEnd, Math.floor(digitDivisor / base));
       }
     }
   }
 
-  const allIndices = Array.from({ length: arrayLength }, (_, idx) => idx);
-  collectMsdSteps(allIndices, maxDivisor);
+  collectMsdSteps(0, arrayLength - 1, maxDivisor);
 
   // Restore offset and mark sorted
   for (let restoreIndex = 0; restoreIndex < arrayLength; restoreIndex++) {

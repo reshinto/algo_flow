@@ -74,7 +74,7 @@ export function generateMergeInsertionSortSteps(inputArray: number[]): Execution
       largerElements[innerIndex + 1] = largerElements[innerIndex]!;
       innerIndex--;
 
-      // Update visual representation
+      // Update visual representation (workingArray only — tracker sync after swap)
       for (let visualIndex = 0; visualIndex < largerElements.length; visualIndex++) {
         workingArray[visualIndex] = largerElements[visualIndex]!;
       }
@@ -93,6 +93,11 @@ export function generateMergeInsertionSortSteps(inputArray: number[]): Execution
       }
     }
     largerElements[innerIndex + 1] = currentValue;
+
+    // Sync tracker state after each insertion pass
+    for (let syncIdx = 0; syncIdx < largerElements.length; syncIdx++) {
+      tracker.setElementValue(syncIdx, largerElements[syncIdx]!);
+    }
   }
 
   // Place sorted larger elements into the working array
@@ -143,6 +148,11 @@ export function generateMergeInsertionSortSteps(inputArray: number[]): Execution
       });
     }
     workingArray[insertionPosition] = valueToInsert;
+
+    // Sync tracker after shift completes
+    for (let syncIdx = 0; syncIdx <= insertedCount; syncIdx++) {
+      tracker.setElementValue(syncIdx, workingArray[syncIdx]!);
+    }
 
     insertedCount++;
   }

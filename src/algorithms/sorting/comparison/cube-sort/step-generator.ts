@@ -43,6 +43,8 @@ export function generateCubeSortSteps(inputArray: number[]): ExecutionStep[] {
         workingArray[innerIndex + 1] = workingArray[innerIndex]!;
         workingArray[innerIndex] = currentValue;
 
+        tracker.setElementValue(innerIndex + 1, workingArray[innerIndex + 1]!);
+        tracker.setElementValue(innerIndex, workingArray[innerIndex]!);
         tracker.swap(innerIndex + 1, innerIndex, {
           phase: "block-insertion-sort",
           blockIndex,
@@ -61,6 +63,7 @@ export function generateCubeSortSteps(inputArray: number[]): ExecutionStep[] {
         }
       }
       workingArray[innerIndex + 1] = currentValue;
+      tracker.setElementValue(innerIndex + 1, currentValue);
     }
   }
 

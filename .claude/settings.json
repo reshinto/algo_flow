@@ -1,4 +1,28 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(node /tmp/check_quick.mjs)",
+      "Bash(node /tmp/check_bitonic.mjs)",
+      "Bash(node /tmp/check_sleep.mjs)",
+      "Bash(node /tmp/check_sleep2.mjs)",
+      "Bash(node /tmp/check_cartesian.mjs)",
+      "Bash(node /tmp/check_library.mjs)",
+      "Bash(node /tmp/check_radix_msd.mjs)",
+      "Bash(node /tmp/check_counting.mjs)",
+      "Bash(node /tmp/check_bead.mjs)",
+      "Bash(node /tmp/check_bead2.mjs)",
+      "Bash(node /tmp/check_smooth_fixed.mjs)",
+      "Bash(node /tmp/check_radix_fixed.mjs)",
+      "Bash(node /tmp/check_radix_fixed2.mjs)",
+      "Bash(node /tmp/check_radix_fixed3.mjs)",
+      "Bash(node /tmp/verify_sleep.mjs)",
+      "Bash(node /tmp/check_library2.mjs)",
+      "Bash(killall -9 node)",
+      "Bash(tee /tmp/e2e_run2.txt)",
+      "Bash(echo \"DONE_EXIT:$?\")",
+      "Bash(git -C /Users/springfield/dev/algo_flow add -A)"
+    ]
+  },
   "hooks": {
     "PreToolUse": [
       {

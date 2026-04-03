@@ -43,19 +43,15 @@ export function generateSleepSortSteps(inputArray: number[]): ExecutionStep[] {
       });
     }
 
-    // Place the woken element into output position
+    // Place the woken element into output position by direct assignment
     const targetPosition = wakePosition;
-    if (wakeEntry.index !== targetPosition) {
-      tracker.swap(wakeEntry.index, targetPosition, {
-        wakingElement: wakeEntry.value,
-        targetPosition,
-        sortedArray: [...workingArray],
-      });
-      // Sync workingArray
-      const temporaryValue = workingArray[wakeEntry.index]!;
-      workingArray[wakeEntry.index] = workingArray[targetPosition]!;
-      workingArray[targetPosition] = temporaryValue;
-    }
+    workingArray[targetPosition] = wakeEntry.value;
+    tracker.setElementValue(targetPosition, wakeEntry.value);
+    tracker.swap(targetPosition, targetPosition, {
+      wakingElement: wakeEntry.value,
+      targetPosition,
+      sortedArray: [...workingArray],
+    });
 
     outputArray.push(wakeEntry.value);
     tracker.markSorted(targetPosition, {

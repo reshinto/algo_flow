@@ -59,6 +59,7 @@ export function generateRadixSortLsdSteps(inputArray: number[]): ExecutionStep[]
       for (const bucketValue of buckets[bucketIndex]!) {
         const originalIndex = writeIndex;
         workingArray[writeIndex] = bucketValue;
+        tracker.setElementValue(writeIndex, bucketValue - offset);
         writeIndex++;
         tracker.swap(
           originalIndex,
@@ -81,6 +82,7 @@ export function generateRadixSortLsdSteps(inputArray: number[]): ExecutionStep[]
   // Restore offset and mark all sorted
   for (let restoreIndex = 0; restoreIndex < arrayLength; restoreIndex++) {
     workingArray[restoreIndex] = workingArray[restoreIndex]! - offset;
+    tracker.setElementValue(restoreIndex, workingArray[restoreIndex]!);
     tracker.markSorted(restoreIndex, {
       restoreIndex,
       value: workingArray[restoreIndex],

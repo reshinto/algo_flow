@@ -30,7 +30,7 @@ const beadSortDefinition: AlgorithmDefinition<number[]> = {
     },
     spaceComplexity: "O(n × max)",
     supportedLanguages: ["typescript", "python", "java"],
-    defaultInput: [64, 34, 25, 12, 22, 11, 90],
+    defaultInput: [6, 3, 5, 1, 2, 4, 9],
   },
   execute: beadSort,
   generateSteps: generateBeadSortSteps,

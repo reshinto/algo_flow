@@ -30,53 +30,51 @@ export function generateLibrarySortSteps(inputArray: number[]): ExecutionStep[] 
 
   for (let outerIndex = 1; outerIndex < arrayLength; outerIndex++) {
     const currentElement = workingArray[outerIndex]!;
-    let searchLeft = 0;
-    let searchRight = gappedSize - 1;
-    let insertPosition = centerPosition;
 
-    // Binary search phase among filled slots
-    while (searchLeft <= searchRight) {
-      const midPosition = Math.floor((searchLeft + searchRight) / 2);
-      const midValue = gappedArray[midPosition];
-
-      // Use the first non-null value nearby as the comparison element
-      let compareValue: number | null = midValue ?? null;
-      let scanPos = midPosition;
-      if (compareValue === null) {
-        let leftScan = midPosition - 1;
-        while (leftScan >= searchLeft && gappedArray[leftScan] === null) leftScan--;
-        if (leftScan >= searchLeft && gappedArray[leftScan] !== null) {
-          compareValue = gappedArray[leftScan]!;
-          scanPos = leftScan;
-        }
-      }
-
-      if (compareValue === null) {
-        searchLeft = midPosition + 1;
-        continue;
-      }
-
-      // Emit a compare step using the working array indices (map to nearest filled)
-      // For visualization, compare currentElement against position outerIndex-1 (last sorted)
-      tracker.compare(outerIndex, outerIndex - 1, {
-        outerIndex,
-        currentElement,
-        searchLeft,
-        searchRight,
-        midPosition: scanPos,
-        compareValue,
-      });
-
-      if (currentElement < compareValue) {
-        searchRight = scanPos - 1;
-        insertPosition = scanPos;
-      } else {
-        searchLeft = midPosition + 1;
-        insertPosition = midPosition;
+    // Collect sorted filled values and their positions from the gapped array
+    const filledValues: number[] = [];
+    const filledPositions: number[] = [];
+    for (let scanIndex = 0; scanIndex < gappedSize; scanIndex++) {
+      if (gappedArray[scanIndex] !== null) {
+        filledValues.push(gappedArray[scanIndex]!);
+        filledPositions.push(scanIndex);
       }
     }
 
-    // Shift phase — open a gap at insertPosition
+    // Binary search on filled values to find insertion rank
+    let searchLeft = 0;
+    let searchRight = filledValues.length - 1;
+    let insertRank = filledValues.length;
+    while (searchLeft <= searchRight) {
+      const midRank = Math.floor((searchLeft + searchRight) / 2);
+      tracker.compare(outerIndex, outerIndex - 1, {
+        outerIndex,
+        currentElement,
+        midRank,
+        compareValue: filledValues[midRank],
+        searchLeft,
+        searchRight,
+      });
+      if (currentElement < filledValues[midRank]!) {
+        insertRank = midRank;
+        searchRight = midRank - 1;
+      } else {
+        searchLeft = midRank + 1;
+      }
+    }
+
+    // Convert rank to gapped array position
+    let insertPosition: number;
+    if (insertRank === 0) {
+      insertPosition = filledPositions[0]!;
+    } else if (insertRank >= filledPositions.length) {
+      insertPosition = filledPositions[filledPositions.length - 1]! + 1;
+    } else {
+      insertPosition = filledPositions[insertRank - 1]! + 1;
+    }
+    if (insertPosition >= gappedSize) insertPosition = gappedSize - 1;
+
+    // Shift phase — find a gap near insertPosition and place currentElement
     let rightSearch = insertPosition;
     while (rightSearch < gappedSize && gappedArray[rightSearch] !== null) rightSearch++;
 
@@ -93,12 +91,14 @@ export function generateLibrarySortSteps(inputArray: number[]): ExecutionStep[] 
         sortedArray: [...workingArray],
       });
     } else {
-      let leftSearch = insertPosition;
+      let leftSearch = insertPosition - 1;
       while (leftSearch >= 0 && gappedArray[leftSearch] !== null) leftSearch--;
-      for (let shiftPos = leftSearch; shiftPos < insertPosition; shiftPos++) {
-        gappedArray[shiftPos] = gappedArray[shiftPos + 1]!;
+      if (leftSearch >= 0) {
+        for (let shiftPos = leftSearch; shiftPos < insertPosition - 1; shiftPos++) {
+          gappedArray[shiftPos] = gappedArray[shiftPos + 1]!;
+        }
+        gappedArray[insertPosition - 1] = currentElement;
       }
-      gappedArray[insertPosition - 1 >= 0 ? insertPosition - 1 : 0] = currentElement;
 
       tracker.swap(outerIndex, outerIndex - 1, {
         outerIndex,
@@ -122,6 +122,7 @@ export function generateLibrarySortSteps(inputArray: number[]): ExecutionStep[] 
       const rebalanced = gappedArray.filter((val) => val !== null) as number[];
       for (let syncIndex = 0; syncIndex < rebalanced.length; syncIndex++) {
         workingArray[syncIndex] = rebalanced[syncIndex]!;
+        tracker.setElementValue(syncIndex, rebalanced[syncIndex]!);
       }
 
       tracker.swap(0, outerIndex, {
@@ -134,6 +135,7 @@ export function generateLibrarySortSteps(inputArray: number[]): ExecutionStep[] 
       const currentFilled = gappedArray.filter((val) => val !== null) as number[];
       for (let syncIndex = 0; syncIndex < currentFilled.length; syncIndex++) {
         workingArray[syncIndex] = currentFilled[syncIndex]!;
+        tracker.setElementValue(syncIndex, currentFilled[syncIndex]!);
       }
     }
 
@@ -146,6 +148,7 @@ export function generateLibrarySortSteps(inputArray: number[]): ExecutionStep[] 
   const resultArray = gappedArray.filter((val) => val !== null) as number[];
   for (let finalIndex = 0; finalIndex < resultArray.length; finalIndex++) {
     workingArray[finalIndex] = resultArray[finalIndex]!;
+    tracker.setElementValue(finalIndex, resultArray[finalIndex]!);
   }
 
   tracker.complete({ result: [...workingArray] });

@@ -10,6 +10,10 @@ import {
   testKeyboard,
 } from "./suites/core-ui.mjs";
 import { inputTests } from "./data/inputs.mjs";
+import {
+  testSortedValueVerification,
+  testFinalStateValuesExist,
+} from "./suites/value-verification.mjs";
 
 const { url: BASE_URL, serverProcess } = await setupEnvironment();
 
@@ -65,13 +69,18 @@ await check("Opens again and closes via backdrop", async () => {
   await page.waitForSelector("[role='dialog']", { state: "detached", timeout: 3000 });
 });
 
-const { allAlgorithms: algorithms, representativeSet } = discoverAlgorithms();
+const { allAlgorithms: algorithms, representativeSet, algorithmCategories } = discoverAlgorithms();
 console.log(
   `\nDiscovered ${algorithms.length} algorithms (${representativeSet.size} representatives)`,
 );
 
+// Algorithms excluded from sorted-value verification (non-standard output)
+const VALUE_VERIFY_EXCLUDE = ["Stalin Sort"];
+
 let currentAlgorithm = null;
-for (const algo of algorithms) {
+for (let algoIndex = 0; algoIndex < algorithms.length; algoIndex++) {
+  const algo = algorithms[algoIndex];
+  const algoCategory = algorithmCategories[algoIndex];
   console.log(`\n━━━ ${algo} ━━━`);
   const selected = await check(`Select "${algo}"`, async () => {
     await selectAlgorithm(page, algo);
@@ -85,6 +94,16 @@ for (const algo of algorithms) {
     await testLanguageTabs(page, algo);
     await testKeyboard(page, algo);
     await testEducationalDrawer(page, algo);
+  }
+
+  // Verify final state values for ALL algorithms (skips non-array visualizers)
+  if (selected) {
+    await testFinalStateValuesExist(page, algo);
+  }
+
+  // Additionally verify sorted order for sorting algorithms (using index-based category)
+  if (selected && algoCategory === "sorting") {
+    await testSortedValueVerification(page, algo, VALUE_VERIFY_EXCLUDE);
   }
 }
 

@@ -89,6 +89,10 @@ export function generateCycleSortSteps(inputArray: number[]): ExecutionStep[] {
       }
     }
 
+    // Sync tracker state after each cycle completes
+    for (let syncIdx = 0; syncIdx < arrayLength; syncIdx++) {
+      tracker.setElementValue(syncIdx, workingArray[syncIdx]!);
+    }
     tracker.markSorted(cycleStart, {
       cycleStart,
       sortedArray: [...workingArray],
@@ -96,6 +100,9 @@ export function generateCycleSortSteps(inputArray: number[]): ExecutionStep[] {
   }
 
   // Mark the last element sorted
+  for (let syncIdx = 0; syncIdx < arrayLength; syncIdx++) {
+    tracker.setElementValue(syncIdx, workingArray[syncIdx]!);
+  }
   tracker.markSorted(arrayLength - 1, {
     sortedPosition: arrayLength - 1,
   });

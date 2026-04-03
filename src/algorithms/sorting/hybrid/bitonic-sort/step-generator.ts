@@ -69,6 +69,10 @@ export function generateBitonicSortSteps(inputArray: number[]): ExecutionStep[] 
                 partnerIndex,
                 sortedArray: [...workingArray],
               });
+            } else if (elementIndex < arrayLength) {
+              tracker.setElementValue(elementIndex, workingArray[elementIndex]!);
+            } else if (partnerIndex < arrayLength) {
+              tracker.setElementValue(partnerIndex, workingArray[partnerIndex]!);
             }
             swapHappenedThisStep = true;
           } else if (!isAscending && paddedArray[elementIndex]! < paddedArray[partnerIndex]!) {
@@ -87,6 +91,10 @@ export function generateBitonicSortSteps(inputArray: number[]): ExecutionStep[] 
                 partnerIndex,
                 sortedArray: [...workingArray],
               });
+            } else if (elementIndex < arrayLength) {
+              tracker.setElementValue(elementIndex, workingArray[elementIndex]!);
+            } else if (partnerIndex < arrayLength) {
+              tracker.setElementValue(partnerIndex, workingArray[partnerIndex]!);
             }
             swapHappenedThisStep = true;
           }

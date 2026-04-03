@@ -60,6 +60,7 @@ export function generateCountingSortSteps(inputArray: number[]): ExecutionStep[]
       const placedValue = valueIndex + minValue;
       const originalIndex = writeIndex;
       workingArray[writeIndex] = placedValue;
+      tracker.setElementValue(writeIndex, placedValue);
       countArray[valueIndex]!--;
       writeIndex++;
       tracker.swap(

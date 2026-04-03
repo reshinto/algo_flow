@@ -75,49 +75,59 @@ export function generateCartesianTreeSortSteps(inputArray: number[]): ExecutionS
     });
   }
 
-  const treeRoot = nodeStack[0]!;
+  // Merge two min-heap Cartesian subtrees while maintaining min-heap order
+  function mergeTrees(
+    leftTree: CartesianNode | null,
+    rightTree: CartesianNode | null,
+  ): CartesianNode | null {
+    if (leftTree === null) return rightTree;
+    if (rightTree === null) return leftTree;
 
-  // Inorder traversal to extract sorted elements
-  const resultArray: number[] = [];
-  const traversalStack: Array<{ node: CartesianNode; visited: boolean }> = [];
-
-  if (treeRoot) {
-    traversalStack.push({ node: treeRoot, visited: false });
+    if (leftTree.value <= rightTree.value) {
+      tracker.compare(leftTree.originalIndex, rightTree.originalIndex, {
+        leftValue: leftTree.value,
+        rightValue: rightTree.value,
+        phase: "merge",
+      });
+      leftTree.rightChild = mergeTrees(leftTree.rightChild, rightTree);
+      return leftTree;
+    } else {
+      tracker.compare(leftTree.originalIndex, rightTree.originalIndex, {
+        leftValue: leftTree.value,
+        rightValue: rightTree.value,
+        phase: "merge",
+      });
+      rightTree.leftChild = mergeTrees(leftTree, rightTree.leftChild);
+      return rightTree;
+    }
   }
 
+  // Repeatedly extract the minimum root and merge its two subtrees
+  let currentRoot: CartesianNode | null = nodeStack[0] ?? null;
+  const resultArray: number[] = [];
   let extractPosition = 0;
 
-  while (traversalStack.length > 0) {
-    const current = traversalStack[traversalStack.length - 1]!;
+  while (currentRoot !== null) {
+    resultArray.push(currentRoot.value);
 
-    if (!current.visited && current.node.leftChild) {
-      current.visited = true;
-      traversalStack.push({ node: current.node.leftChild, visited: false });
-    } else {
-      traversalStack.pop();
-      resultArray.push(current.node.value);
+    // Place extracted minimum into the working array at the sorted position
+    workingArray[extractPosition] = currentRoot.value;
+    tracker.setElementValue(extractPosition, currentRoot.value);
 
-      // Place extracted element into the working array at the sorted position
-      workingArray[extractPosition] = current.node.value;
+    tracker.swap(extractPosition, extractPosition, {
+      extractedValue: currentRoot.value,
+      sortedPosition: extractPosition,
+      phase: "extract",
+      sortedArray: [...workingArray],
+    });
 
-      tracker.swap(current.node.originalIndex, extractPosition, {
-        extractedValue: current.node.value,
-        sortedPosition: extractPosition,
-        phase: "extract",
-        sortedArray: [...workingArray],
-      });
+    tracker.markSorted(extractPosition, {
+      sortedPosition: extractPosition,
+      extractedValue: currentRoot.value,
+    });
 
-      tracker.markSorted(extractPosition, {
-        sortedPosition: extractPosition,
-        extractedValue: current.node.value,
-      });
-
-      extractPosition++;
-
-      if (current.node.rightChild) {
-        traversalStack.push({ node: current.node.rightChild, visited: false });
-      }
-    }
+    extractPosition++;
+    currentRoot = mergeTrees(currentRoot.leftChild, currentRoot.rightChild);
   }
 
   tracker.complete({ result: [...workingArray] });

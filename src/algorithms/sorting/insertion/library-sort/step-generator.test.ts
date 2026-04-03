@@ -66,4 +66,13 @@ describe("generateLibrarySortSteps", () => {
     expect(steps.length).toBeGreaterThan(0);
     expect(steps[steps.length - 1]!.type).toBe("complete");
   });
+
+  it("final visual state values match sorted order for default E2E input", () => {
+    const input = [64, 25, 12, 22, 11, 90, 34];
+    const steps = generateLibrarySortSteps(input);
+    const lastStep = steps[steps.length - 1]!;
+    const visualState = lastStep.visualState as ArrayVisualState;
+    const displayedValues = visualState.elements.map((element) => element.value);
+    expect(displayedValues).toEqual([...input].sort((firstVal, secondVal) => firstVal - secondVal));
+  });
 });

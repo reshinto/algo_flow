@@ -29,61 +29,61 @@ Complete listing of all 284 algorithms available in AlgoFlow, organized by categ
 
 Algorithms that arrange elements in a specific order. Algorithms live under `src/algorithms/sorting/<technique>/<algorithm>/`.
 
-| Technique    | Algorithm                | Visualizer         | Source Directory                                           |
-| ------------ | ------------------------ | ------------------ | ---------------------------------------------------------- |
-| Comparison   | Bubble Sort              | Animated bar chart | `src/algorithms/sorting/comparison/bubble-sort/`           |
-| Comparison   | Selection Sort           | Animated bar chart | `src/algorithms/sorting/comparison/selection-sort/`        |
-| Comparison   | Insertion Sort           | Animated bar chart | `src/algorithms/sorting/comparison/insertion-sort/`        |
-| Comparison   | Merge Sort               | Animated bar chart | `src/algorithms/sorting/comparison/merge-sort/`            |
-| Comparison   | Quick Sort               | Animated bar chart | `src/algorithms/sorting/comparison/quick-sort/`            |
-| Comparison   | Heap Sort                | Animated bar chart | `src/algorithms/sorting/comparison/heap-sort/`             |
-| Comparison   | Shell Sort               | Animated bar chart | `src/algorithms/sorting/comparison/shell-sort/`            |
-| Comparison   | Tim Sort                 | Animated bar chart | `src/algorithms/sorting/comparison/tim-sort/`              |
-| Comparison   | Intro Sort               | Animated bar chart | `src/algorithms/sorting/comparison/intro-sort/`            |
-| Comparison   | Tree Sort                | Animated bar chart | `src/algorithms/sorting/comparison/tree-sort/`             |
-| Comparison   | Tournament Sort          | Animated bar chart | `src/algorithms/sorting/comparison/tournament-sort/`       |
-| Comparison   | Patience Sort            | Animated bar chart | `src/algorithms/sorting/comparison/patience-sort/`         |
-| Comparison   | Cycle Sort               | Animated bar chart | `src/algorithms/sorting/comparison/cycle-sort/`            |
-| Comparison   | Smooth Sort              | Animated bar chart | `src/algorithms/sorting/comparison/smooth-sort/`           |
-| Comparison   | Cube Sort                | Animated bar chart | `src/algorithms/sorting/comparison/cube-sort/`             |
-| Comparison   | Block Sort               | Animated bar chart | `src/algorithms/sorting/comparison/block-sort/`            |
-| Comparison   | Strand Sort              | Animated bar chart | `src/algorithms/sorting/comparison/strand-sort/`           |
-| Comparison   | Merge Insertion Sort     | Animated bar chart | `src/algorithms/sorting/comparison/merge-insertion-sort/`  |
-| Exchange     | Cocktail Shaker Sort     | Animated bar chart | `src/algorithms/sorting/exchange/cocktail-shaker-sort/`    |
-| Exchange     | Gnome Sort               | Animated bar chart | `src/algorithms/sorting/exchange/gnome-sort/`              |
-| Exchange     | Comb Sort                | Animated bar chart | `src/algorithms/sorting/exchange/comb-sort/`               |
-| Exchange     | Odd-Even Sort            | Animated bar chart | `src/algorithms/sorting/exchange/odd-even-sort/`           |
-| Exchange     | Pancake Sort             | Animated bar chart | `src/algorithms/sorting/exchange/pancake-sort/`            |
-| Exchange     | Circle Sort              | Animated bar chart | `src/algorithms/sorting/exchange/circle-sort/`             |
-| Exchange     | Exchange Sort            | Animated bar chart | `src/algorithms/sorting/exchange/exchange-sort/`           |
-| Distribution | Counting Sort            | Animated bar chart | `src/algorithms/sorting/distribution/counting-sort/`       |
-| Distribution | Radix Sort (LSD)         | Animated bar chart | `src/algorithms/sorting/distribution/radix-sort-lsd/`      |
-| Distribution | Radix Sort (MSD)         | Animated bar chart | `src/algorithms/sorting/distribution/radix-sort-msd/`      |
-| Distribution | Bucket Sort              | Animated bar chart | `src/algorithms/sorting/distribution/bucket-sort/`         |
-| Distribution | Pigeonhole Sort          | Animated bar chart | `src/algorithms/sorting/distribution/pigeonhole-sort/`     |
-| Distribution | Flash Sort               | Animated bar chart | `src/algorithms/sorting/distribution/flash-sort/`          |
-| Distribution | Spread Sort              | Animated bar chart | `src/algorithms/sorting/distribution/spread-sort/`         |
-| Distribution | American Flag Sort       | Animated bar chart | `src/algorithms/sorting/distribution/american-flag-sort/`  |
-| Distribution | Proxmap Sort             | Animated bar chart | `src/algorithms/sorting/distribution/proxmap-sort/`        |
-| Distribution | Bead Sort                | Animated bar chart | `src/algorithms/sorting/distribution/bead-sort/`           |
-| Insertion    | Binary Insertion Sort    | Animated bar chart | `src/algorithms/sorting/insertion/binary-insertion-sort/`  |
-| Insertion    | Library Sort             | Animated bar chart | `src/algorithms/sorting/insertion/library-sort/`           |
-| Selection    | Double Selection Sort    | Animated bar chart | `src/algorithms/sorting/selection/double-selection-sort/`  |
-| Selection    | Cartesian Tree Sort      | Animated bar chart | `src/algorithms/sorting/selection/cartesian-tree-sort/`    |
-| Hybrid       | Quick Sort (3-Way)       | Animated bar chart | `src/algorithms/sorting/hybrid/quick-sort-3-way/`          |
-| Hybrid       | Dual-Pivot Quick Sort    | Animated bar chart | `src/algorithms/sorting/hybrid/dual-pivot-quick-sort/`     |
-| Hybrid       | Block Merge Sort         | Animated bar chart | `src/algorithms/sorting/hybrid/block-merge-sort/`          |
-| Hybrid       | Bitonic Sort             | Animated bar chart | `src/algorithms/sorting/hybrid/bitonic-sort/`              |
-| Network      | Bitonic Sort Network     | Animated bar chart | `src/algorithms/sorting/network/bitonic-sort-network/`     |
-| Network      | Odd-Even Merge Sort      | Animated bar chart | `src/algorithms/sorting/network/odd-even-merge-sort/`      |
-| Network      | Pairwise Sorting Network | Animated bar chart | `src/algorithms/sorting/network/pairwise-sorting-network/` |
-| Concurrent   | Sleep Sort               | Animated bar chart | `src/algorithms/sorting/concurrent/sleep-sort/`            |
-| Concurrent   | Stooge Sort              | Animated bar chart | `src/algorithms/sorting/concurrent/stooge-sort/`           |
-| Concurrent   | Slow Sort                | Animated bar chart | `src/algorithms/sorting/concurrent/slow-sort/`             |
-| Novelty      | Bogo Sort                | Animated bar chart | `src/algorithms/sorting/novelty/bogo-sort/`                |
-| Novelty      | Bozo Sort                | Animated bar chart | `src/algorithms/sorting/novelty/bozo-sort/`                |
-| Novelty      | Stalin Sort              | Animated bar chart | `src/algorithms/sorting/novelty/stalin-sort/`              |
-| Novelty      | Spaghetti Sort           | Animated bar chart | `src/algorithms/sorting/novelty/spaghetti-sort/`           |
+| Technique    | Algorithm                    | Visualizer         | Source Directory                                           |
+| ------------ | ---------------------------- | ------------------ | ---------------------------------------------------------- |
+| Comparison   | Bubble Sort                  | Animated bar chart | `src/algorithms/sorting/comparison/bubble-sort/`           |
+| Comparison   | Selection Sort               | Animated bar chart | `src/algorithms/sorting/comparison/selection-sort/`        |
+| Comparison   | Insertion Sort               | Animated bar chart | `src/algorithms/sorting/comparison/insertion-sort/`        |
+| Comparison   | Merge Sort                   | Animated bar chart | `src/algorithms/sorting/comparison/merge-sort/`            |
+| Comparison   | Quick Sort                   | Animated bar chart | `src/algorithms/sorting/comparison/quick-sort/`            |
+| Comparison   | Heap Sort                    | Animated bar chart | `src/algorithms/sorting/comparison/heap-sort/`             |
+| Comparison   | Shell Sort                   | Animated bar chart | `src/algorithms/sorting/comparison/shell-sort/`            |
+| Comparison   | Tim Sort                     | Animated bar chart | `src/algorithms/sorting/comparison/tim-sort/`              |
+| Comparison   | Intro Sort                   | Animated bar chart | `src/algorithms/sorting/comparison/intro-sort/`            |
+| Comparison   | Tree Sort                    | Animated bar chart | `src/algorithms/sorting/comparison/tree-sort/`             |
+| Comparison   | Tournament Sort              | Animated bar chart | `src/algorithms/sorting/comparison/tournament-sort/`       |
+| Comparison   | Patience Sort                | Animated bar chart | `src/algorithms/sorting/comparison/patience-sort/`         |
+| Comparison   | Cycle Sort                   | Animated bar chart | `src/algorithms/sorting/comparison/cycle-sort/`            |
+| Comparison   | Smooth Sort                  | Animated bar chart | `src/algorithms/sorting/comparison/smooth-sort/`           |
+| Comparison   | Cube Sort                    | Animated bar chart | `src/algorithms/sorting/comparison/cube-sort/`             |
+| Comparison   | Block Sort                   | Animated bar chart | `src/algorithms/sorting/comparison/block-sort/`            |
+| Comparison   | Strand Sort                  | Animated bar chart | `src/algorithms/sorting/comparison/strand-sort/`           |
+| Comparison   | Merge Insertion Sort         | Animated bar chart | `src/algorithms/sorting/comparison/merge-insertion-sort/`  |
+| Exchange     | Cocktail Shaker Sort         | Animated bar chart | `src/algorithms/sorting/exchange/cocktail-shaker-sort/`    |
+| Exchange     | Gnome Sort                   | Animated bar chart | `src/algorithms/sorting/exchange/gnome-sort/`              |
+| Exchange     | Comb Sort                    | Animated bar chart | `src/algorithms/sorting/exchange/comb-sort/`               |
+| Exchange     | Odd-Even Sort                | Animated bar chart | `src/algorithms/sorting/exchange/odd-even-sort/`           |
+| Exchange     | Pancake Sort                 | Animated bar chart | `src/algorithms/sorting/exchange/pancake-sort/`            |
+| Exchange     | Circle Sort                  | Animated bar chart | `src/algorithms/sorting/exchange/circle-sort/`             |
+| Exchange     | Exchange Sort                | Animated bar chart | `src/algorithms/sorting/exchange/exchange-sort/`           |
+| Distribution | Counting Sort (Distribution) | Animated bar chart | `src/algorithms/sorting/distribution/counting-sort/`       |
+| Distribution | Radix Sort (LSD)             | Animated bar chart | `src/algorithms/sorting/distribution/radix-sort-lsd/`      |
+| Distribution | Radix Sort (MSD)             | Animated bar chart | `src/algorithms/sorting/distribution/radix-sort-msd/`      |
+| Distribution | Bucket Sort                  | Animated bar chart | `src/algorithms/sorting/distribution/bucket-sort/`         |
+| Distribution | Pigeonhole Sort              | Animated bar chart | `src/algorithms/sorting/distribution/pigeonhole-sort/`     |
+| Distribution | Flash Sort                   | Animated bar chart | `src/algorithms/sorting/distribution/flash-sort/`          |
+| Distribution | Spread Sort                  | Animated bar chart | `src/algorithms/sorting/distribution/spread-sort/`         |
+| Distribution | American Flag Sort           | Animated bar chart | `src/algorithms/sorting/distribution/american-flag-sort/`  |
+| Distribution | Proxmap Sort                 | Animated bar chart | `src/algorithms/sorting/distribution/proxmap-sort/`        |
+| Distribution | Bead Sort                    | Animated bar chart | `src/algorithms/sorting/distribution/bead-sort/`           |
+| Insertion    | Binary Insertion Sort        | Animated bar chart | `src/algorithms/sorting/insertion/binary-insertion-sort/`  |
+| Insertion    | Library Sort                 | Animated bar chart | `src/algorithms/sorting/insertion/library-sort/`           |
+| Selection    | Double Selection Sort        | Animated bar chart | `src/algorithms/sorting/selection/double-selection-sort/`  |
+| Selection    | Cartesian Tree Sort          | Animated bar chart | `src/algorithms/sorting/selection/cartesian-tree-sort/`    |
+| Hybrid       | Quick Sort (3-Way)           | Animated bar chart | `src/algorithms/sorting/hybrid/quick-sort-3-way/`          |
+| Hybrid       | Dual-Pivot Quick Sort        | Animated bar chart | `src/algorithms/sorting/hybrid/dual-pivot-quick-sort/`     |
+| Hybrid       | Block Merge Sort             | Animated bar chart | `src/algorithms/sorting/hybrid/block-merge-sort/`          |
+| Hybrid       | Bitonic Sort                 | Animated bar chart | `src/algorithms/sorting/hybrid/bitonic-sort/`              |
+| Network      | Bitonic Sort Network         | Animated bar chart | `src/algorithms/sorting/network/bitonic-sort-network/`     |
+| Network      | Odd-Even Merge Sort          | Animated bar chart | `src/algorithms/sorting/network/odd-even-merge-sort/`      |
+| Network      | Pairwise Sorting Network     | Animated bar chart | `src/algorithms/sorting/network/pairwise-sorting-network/` |
+| Concurrent   | Sleep Sort                   | Animated bar chart | `src/algorithms/sorting/concurrent/sleep-sort/`            |
+| Concurrent   | Stooge Sort                  | Animated bar chart | `src/algorithms/sorting/concurrent/stooge-sort/`           |
+| Concurrent   | Slow Sort                    | Animated bar chart | `src/algorithms/sorting/concurrent/slow-sort/`             |
+| Novelty      | Bogo Sort                    | Animated bar chart | `src/algorithms/sorting/novelty/bogo-sort/`                |
+| Novelty      | Bozo Sort                    | Animated bar chart | `src/algorithms/sorting/novelty/bozo-sort/`                |
+| Novelty      | Stalin Sort                  | Animated bar chart | `src/algorithms/sorting/novelty/stalin-sort/`              |
+| Novelty      | Spaghetti Sort               | Animated bar chart | `src/algorithms/sorting/novelty/spaghetti-sort/`           |
 
 ---
 

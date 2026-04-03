@@ -51,4 +51,13 @@ describe("generateSleepSortSteps", () => {
     expect(steps.length).toBeGreaterThan(0);
     expect(steps[steps.length - 1]!.type).toBe("complete");
   });
+
+  it("final visual state values match sorted order for default E2E input", () => {
+    const input = [5, 8, 3, 4, 1, 6, 7, 2];
+    const steps = generateSleepSortSteps(input);
+    const lastStep = steps[steps.length - 1]!;
+    const visualState = lastStep.visualState as ArrayVisualState;
+    const displayedValues = visualState.elements.map((element) => element.value);
+    expect(displayedValues).toEqual([...input].sort((firstVal, secondVal) => firstVal - secondVal));
+  });
 });

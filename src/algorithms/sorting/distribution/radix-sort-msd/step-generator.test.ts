@@ -77,4 +77,13 @@ describe("generateRadixSortMsdSteps", () => {
     expect(steps.length).toBeGreaterThan(0);
     expect(steps[steps.length - 1]!.type).toBe("complete");
   });
+
+  it("final visual state values match sorted order for default E2E input", () => {
+    const input = [64, 12, 25, 34, 22, 11, 90];
+    const steps = generateRadixSortMsdSteps(input);
+    const lastStep = steps[steps.length - 1]!;
+    const visualState = lastStep.visualState as ArrayVisualState;
+    const displayedValues = visualState.elements.map((element) => element.value);
+    expect(displayedValues).toEqual([...input].sort((firstVal, secondVal) => firstVal - secondVal));
+  });
 });

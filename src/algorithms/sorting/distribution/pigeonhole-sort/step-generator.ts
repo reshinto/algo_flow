@@ -55,6 +55,7 @@ export function generatePigeonholeSortSteps(inputArray: number[]): ExecutionStep
       const collectedValue = holeIndex + minValue;
       const targetIndex = writeIndex;
       workingArray[writeIndex] = collectedValue;
+      tracker.setElementValue(writeIndex, collectedValue);
       holes[holeIndex]!--;
       writeIndex++;
       tracker.swap(

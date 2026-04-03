@@ -41,6 +41,11 @@ function insertionSortRun(
       }
     }
   }
+
+  // Sync tracker after each insertion sort run
+  for (let syncIdx = runStart; syncIdx <= runEnd; syncIdx++) {
+    tracker.setElementValue(syncIdx, workingArray[syncIdx]!);
+  }
 }
 
 function mergeRuns(
@@ -87,6 +92,11 @@ function mergeRuns(
   }
   while (rightPointer < rightSlice.length) {
     workingArray[mergeIndex++] = rightSlice[rightPointer++]!;
+  }
+
+  // Sync tracker after merge completes
+  for (let syncIdx = leftStart; syncIdx <= rightEnd; syncIdx++) {
+    tracker.setElementValue(syncIdx, workingArray[syncIdx]!);
   }
 }
 

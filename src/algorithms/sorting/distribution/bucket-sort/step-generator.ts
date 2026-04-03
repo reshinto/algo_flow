@@ -100,6 +100,7 @@ export function generateBucketSortSteps(inputArray: number[]): ExecutionStep[] {
     for (const bucketValue of buckets[bucketIndex]!) {
       const targetIndex = writeIndex;
       workingArray[writeIndex] = bucketValue;
+      tracker.setElementValue(writeIndex, bucketValue);
       writeIndex++;
       tracker.swap(
         targetIndex,

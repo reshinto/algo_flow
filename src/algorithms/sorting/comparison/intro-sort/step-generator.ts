@@ -41,6 +41,11 @@ function insertionSortSlice(
       }
     }
   }
+
+  // Sync tracker after insertion sort completes for this slice
+  for (let syncIdx = sliceStart; syncIdx <= sliceEnd; syncIdx++) {
+    tracker.setElementValue(syncIdx, workingArray[syncIdx]!);
+  }
 }
 
 function heapify(

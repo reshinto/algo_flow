@@ -77,6 +77,11 @@ export function generateMergeSortSteps(inputArray: number[]): ExecutionStep[] {
       rightIndex++;
     }
 
+    // Sync tracker after each sub-merge completes
+    for (let syncIdx = leftStart; syncIdx < rightEnd; syncIdx++) {
+      tracker.setElementValue(syncIdx, workingArray[syncIdx]!);
+    }
+
     // Mark the merged segment as sorted at this level
     for (let markIndex = leftStart; markIndex < rightEnd; markIndex++) {
       if (rightEnd === arrayLength && leftStart === 0) {
