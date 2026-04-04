@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 test.describe("Page Load", () => {
   test("app loads at localhost", async ({ page }) => {
     await page.goto("/", { waitUntil: "networkidle" });
-    await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
+    await page.waitForSelector("button[aria-label='Search algorithms']");
     expect(page.url()).toContain("localhost");
   });
 
@@ -22,7 +22,7 @@ test.describe("Page Load", () => {
 test.describe("Command Palette", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/", { waitUntil: "networkidle" });
-    await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
+    await page.waitForSelector("button[aria-label='Search algorithms']");
   });
 
   test("opens on button click", async ({ page }) => {

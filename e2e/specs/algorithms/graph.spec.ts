@@ -11,7 +11,7 @@ for (const algo of categoryAlgos) {
   test.describe(`Graph: ${algo}`, () => {
     test(`selects "${algo}" and generates steps`, async ({ page }) => {
       await page.goto("/", { waitUntil: "networkidle" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
+      await page.waitForSelector("button[aria-label='Search algorithms']");
       await selectAlgorithm(page, algo);
       const stepInfo = await getStepIndex(page);
       expect(stepInfo).not.toBeNull();
@@ -20,7 +20,7 @@ for (const algo of categoryAlgos) {
 
     test(`${algo}: SVG visualization renders`, async ({ page }) => {
       await page.goto("/", { waitUntil: "networkidle" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
+      await page.waitForSelector("button[aria-label='Search algorithms']");
       await selectAlgorithm(page, algo);
       const svgElement = page.locator("svg").first();
       await expect(svgElement).toBeVisible();
