@@ -20,8 +20,9 @@
     "build-storybook": "storybook build",
     "storybook:test": "test-storybook",
     "chromatic": "dotenv -- chromatic --exit-zero-on-changes --build-script-name=storybook:build",
-    "e2e": "node e2e/algoflow_e2e.mjs",
-    "e2e:headed": "node e2e/algoflow_e2e.mjs -H",
+    "e2e": "playwright test --config=e2e/playwright.config.ts",
+    "e2e:headed": "playwright test --config=e2e/playwright.config.ts --headed",
+    "e2e:debug": "playwright test --config=e2e/playwright.config.ts --debug",
     "demo:record": "node scripts/record-demo.mjs",
     "demo:gif": "node scripts/record-demo.mjs --gif-only"
   },
@@ -42,6 +43,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.7",
     "@eslint/js": "^9.39.4",
+    "@playwright/test": "^1.59.1",
     "@storybook/addon-essentials": "^8.6.14",
     "@storybook/react-vite": "^8.6.18",
     "@storybook/test": "^8.6.15",

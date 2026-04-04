@@ -83,6 +83,12 @@ Defined in `src/types/execution.ts`.
 
 Each algorithm category has a dedicated tracker that extends `BaseTracker`. Trackers provide domain-specific methods (e.g., `compare`, `swap` for sorting) that internally call `pushStep()` to record an `ExecutionStep` with the correct visual state.
 
+`SortingTracker` has an additional method beyond the standard set:
+
+| Method                           | Purpose                                                                                                      |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `setElementValue(index, value)`  | Syncs the tracker's internal array state after a non-swap mutation (e.g., placing a value at a specific position during distribution sorts or insertion). Use this when writing to an index directly rather than swapping two elements. |
+
 All trackers extend `BaseTracker` (`src/trackers/base-tracker.ts`), which provides:
 
 | Member            | Visibility  | Purpose                                                  |
@@ -118,6 +124,9 @@ Zustand with 4 slices merged into a single `AppStore`, using immer middleware fo
 | **editor**    | Monaco editor ref, selected language              | `setLanguage`, `setEditorRef`                              |
 | **UI**        | Drawer visibility, panel sizes, theme, mobile tab | `toggleDrawer`, `setActiveTab`, `setTheme`, `toggleTheme`  |
 
+> [!NOTE]
+> `selectAlgorithm()` and `recompute()` atomically reset `currentStepIndex: 0` and `isPlaying: false` in the same store update as the step array replacement. This prevents a frame where the old step index exceeds the new step array length.
+
 ```mermaid
 flowchart TD
     subgraph AppStore
@@ -150,6 +159,17 @@ const selectAlgorithm = useAppStore((state) => state.selectAlgorithm);
 Breakpoint values are defined in `BREAKPOINTS` (`src/utils/constants.ts`). Layout switching uses `useResponsiveLayout` which returns a `LayoutTier` (`"mobile" | "tablet" | "desktop"`) via `useSyncExternalStore` for tear-free viewport-aware rendering.
 
 ## Input Editors
+
+The `InputEditor` component is split into 6 focused files, each handling a specific input shape:
+
+| File                      | Handles                                                                 |
+| ------------------------- | ----------------------------------------------------------------------- |
+| `ArrayInputEditor.tsx`    | Comma-separated arrays (sorting, heaps, linked lists). Debounced `onChange` fires on every keystroke (300ms) and a `useEffect` resyncs when the algorithm switches. |
+| `SearchingInputEditor.tsx`| Sorted array + target value                                              |
+| `StringInputEditor.tsx`   | Text string + pattern string                                             |
+| `MatrixInputEditor.tsx`   | Textarea (one row per line, comma-separated)                             |
+| `KmpSearchInputEditor.tsx`| KMP-specific string and pattern inputs                                   |
+| `GenericEditor.tsx`       | Auto-generated editor for DP and other categories (introspects `defaultInput` shape) |
 
 Each algorithm category has a tailored input editor rendered above the visualization:
 

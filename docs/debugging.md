@@ -28,7 +28,7 @@ This guide covers the most common failure modes in AlgoFlow and how to fix them 
 | Blank visualizer       | `VisualState.kind` doesn't match any visualizer  | [Visualizer Rendering Problems](#visualizer-rendering-problems) |
 | Step count is 0        | Tracker not calling `pushStep()`                 | [Step Generation Failures](#step-generation-failures)           |
 | `?fn` import error     | File not in `sources/` directory or not `.ts`    | [?fn Import Pipeline](#fn-import-pipeline)                      |
-| E2E test timeout       | Dev server not running or wrong port             | [E2E Test Failures](#e2e-test-failures)                         |
+| E2E test timeout       | `webServer` failed to start or wrong port        | [E2E Test Failures](#e2e-test-failures)                         |
 
 ---
 
@@ -186,30 +186,31 @@ Verify the `meta.id` is unique across all algorithm definitions.
 
 ## E2E Test Failures
 
-The E2E suite (`e2e/algoflow_e2e.mjs`) runs against a live dev server and covers 14 checks per algorithm (select, playback, language tabs, keyboard, educational drawer).
+The E2E suite uses `@playwright/test`. Spec files live in `e2e/specs/` (21 files, ~950 tests). Config is at `e2e/playwright.config.ts`. The `webServer` block auto-starts Vite on port 5174 so no manual dev server is needed.
 
 **How the suite runs:**
 
-- `npm run e2e` — headless mode; auto-discovers a running dev server on ports 5173–5176 or starts one automatically
+- `npm run e2e` — headless mode (CI / automated)
 - `npm run e2e:headed` — opens a visible browser for interactive debugging
-- The `session-end-e2e-check.sh` Stop hook runs the suite automatically whenever `.tsx`, `.css`, `.html`, or `e2e/algoflow_e2e.mjs` files are modified
+- `npm run e2e:debug` — opens the Playwright inspector for step-through debugging
+- The `session-end-e2e-check.sh` Stop hook runs the suite automatically whenever `.tsx`, `.css`, `.html`, or `e2e/specs/` files are modified
 
 **Common failures and fixes:**
 
-| Failure                            | Cause                                                                                                    | Fix                                                                                                     |
-| ---------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| Element not found / selector error | A component's DOM structure or ARIA label changed                                                        | Update the selector in `e2e/algoflow_e2e.mjs` to match the new structure                                |
-| Timeout waiting for element        | Slow step generation or animation blocking the assertion                                                 | Increase the wait timeout for that assertion, or check that `generateSteps()` completes without hanging |
-| Console error detected             | Runtime JS error on the page (the suite monitors for errors, filtering ResizeObserver and favicon noise) | Open the browser console with `npm run e2e:headed` and fix the underlying error                         |
-| New algorithm not tested           | Algorithm added to registry but not added to the E2E `algorithms` array                                  | Add an entry to `e2e/algoflow_e2e.mjs` with all 14 checks and an `inputTests` entry if applicable       |
-| Wrong port / connection refused    | Dev server not running or listening on a non-standard port                                               | Run `npm run dev` first, or let `npm run e2e` start it automatically                                    |
+| Failure                            | Cause                                                                                                    | Fix                                                                                                              |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Element not found / selector error | A component's DOM structure or ARIA label changed                                                        | Update the selector in the relevant spec file or shared helper in `e2e/helpers/` to match the new structure      |
+| Timeout waiting for element        | Slow step generation or animation blocking the assertion                                                 | Increase the wait timeout for that assertion, or check that `generateSteps()` completes without hanging          |
+| Console error detected             | Runtime JS error on the page (the suite monitors for errors, filtering ResizeObserver and favicon noise) | Open the browser console with `npm run e2e:headed` and fix the underlying error                                  |
+| New algorithm not tested           | Algorithm added to registry but category spec file doesn't pick it up                                    | Per-category spec files auto-discover from the registry — verify `src/algorithms/index.ts` imports the algorithm |
+| Wrong port / connection refused    | `webServer` config failed to start Vite                                                                  | Check port 5174 is free; re-run `npm run e2e` — `webServer` handles startup automatically                        |
 
 **Debug tips:**
 
 - Run `npm run e2e:headed` to watch every step execute in a real browser
-- Check the browser console output — the suite reports console errors it intercepts
+- Run `npm run e2e:debug` to pause and inspect the DOM at any assertion
 - Confirm Node version is 22: `node --version`
-- If a single algorithm's test fails, isolate it by temporarily filtering the `algorithms` array in `e2e/algoflow_e2e.mjs`
+- Clear Playwright cache if selectors behave unexpectedly: `npx playwright install chromium`
 
 ---
 

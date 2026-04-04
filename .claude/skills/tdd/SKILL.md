@@ -25,23 +25,24 @@ Implement features using test-driven development following AlgoFlow's specific t
 Write tests in this order:
 
 1. **Correctness test** (`<algorithm>.test.ts`)
+
    - Test pure `execute()` function with known inputs/outputs
    - Test edge cases: empty input, single element, already-solved, worst case
    - Use meaningful variable names (no `i`, `j`, `k`)
 
 2. **Step generation test** (`step-generator.test.ts`)
+
    - Test `generateSteps()` produces expected step count
    - Test step types match expected sequence
    - Test final `visualState` matches expected result
    - Test `highlightedLines` are present for all 3 languages
 
 3. **Pipeline story** (`<AlgorithmName>Pipeline.stories.tsx`)
+
    - Place in `src/algorithms/<category>/<algo>/`, NOT `src/components/`
    - Story renders the full pipeline with sample input
 
-4. **E2E entry** (in `e2e/algoflow_e2e.mjs`)
-   - Add to `algorithms` array with all 14 checks
-   - Add to `inputTests` if algorithm has an input editor
+4. **E2E coverage** — per-category spec files in `e2e/specs/` auto-discover algorithms from the registry; no manual entry needed for basic smoke testing. Add a test in `e2e/specs/input-editors.spec.ts` only if the algorithm has a custom input editor.
 
 ### New Component
 

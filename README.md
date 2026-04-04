@@ -8,7 +8,7 @@ Algorithm visualization web app for learners. Step through algorithms with synch
 
 ## Features
 
-- **232 Algorithms across 14 Categories** with interactive visualizations (bar charts, SVG graphs/trees, CSS grids, DP tables, and more)
+- **284 Algorithms across 14 Categories** with interactive visualizations (bar charts, SVG graphs/trees, CSS grids, DP tables, and more)
 - **Multi-Language Code Display**: TypeScript, Python, and Java with synchronized line highlighting via Monaco Editor
 - **Step-by-Step Playback**: Play, pause, step forward/backward, scrub, adjustable speed (0.25x–4x)
 - **Category-Specific Input Editors**: Editable arrays, targets, grids, text patterns, and matrices
@@ -19,7 +19,7 @@ Algorithm visualization web app for learners. Step through algorithms with synch
 
 ## Algorithms
 
-**232 algorithms across 14 categories**: Sorting, Searching, Graph (28 algorithms across 10 technique subcategories), Pathfinding (27 algorithms across 5 technique subcategories), Dynamic Programming (32 algorithms across 6 technique subcategories), Arrays (44 algorithms across 11 technique subcategories), Trees, Linked Lists, Heaps (28 algorithms across 4 technique subcategories), Stacks & Queues, Hash Maps (28 algorithms across 8 technique subcategories), Strings, Matrices (20 algorithms across 5 technique subcategories), and Sets (19 algorithms across 5 technique subcategories).
+**284 algorithms across 14 categories**: Sorting (53 algorithms across 9 technique subcategories), Searching, Graph (28 algorithms across 10 technique subcategories), Pathfinding (27 algorithms across 5 technique subcategories), Dynamic Programming (32 algorithms across 6 technique subcategories), Arrays (44 algorithms across 11 technique subcategories), Trees, Linked Lists, Heaps (28 algorithms across 4 technique subcategories), Stacks & Queues, Hash Maps (28 algorithms across 8 technique subcategories), Strings, Matrices (20 algorithms across 5 technique subcategories), and Sets (19 algorithms across 5 technique subcategories).
 
 See the [full Algorithm Catalog](docs/algorithms-catalog.md) for the complete listing with visualizer descriptions and technique subcategories.
 
@@ -57,7 +57,7 @@ Welcome to the definitive map of AlgoFlow. We maintain 12 specialized guides map
 | Debug step-generation crashes      | 🐛 [Debugging](docs/debugging.md)                                 |
 | Work on UI layout or styling       | 💅 [Design System](docs/design-system.md)                         |
 | Write algorithm learning modules   | 📚 [Educational Content Guide](docs/educational-content-guide.md) |
-| Browse all 232 algorithms          | 🔍 [Algorithm Catalog](docs/algorithms-catalog.md)                |
+| Browse all 284 algorithms          | 🔍 [Algorithm Catalog](docs/algorithms-catalog.md)                |
 | Understand AI hooks & plugins      | 🤖 [Development System](docs/claude-system.md)                    |
 
 > [!TIP] > **First-time contributors:** Do not try to hack around aimlessly. Start strictly at the [New Developer Onboarding Guide](docs/onboarding.md). It dictates the hard boundary between the UI logic and the engine.

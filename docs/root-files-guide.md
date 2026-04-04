@@ -16,6 +16,14 @@ _Note: This guide ignores root directories (like `/src` or `/node_modules`) and 
 - **Where:** Git configuration layer.
 - **How (Creation/Modification/Deletion):** Modify this file to add new log files, build artifacts, or operating-system-specific files (like `.DS_Store`) that you never want committed.
 
+### `.githooks/pre-commit`
+
+- **What:** A shell script that runs automatically before every `git commit`.
+- **Why:** Enforces code quality locally — runs Prettier, ESLint with `--fix`, and TypeScript type-checking before a commit is created, then re-stages any files that were auto-fixed. This catches issues before they reach CI.
+- **When:** Invoked by Git immediately before a commit is finalized.
+- **Where:** Git hook layer (activated by `git config core.hooksPath .githooks`).
+- **How (Creation/Modification/Deletion):** Run `git config core.hooksPath .githooks` once after cloning to activate. Edit the script only to add new pre-commit checks. If you need to bypass the hook in an emergency, use `git commit --no-verify` (not recommended).
+
 ### `.env.example`
 
 - **What:** A template for environment variables used by the application.
@@ -104,6 +112,14 @@ _Note: This guide ignores root directories (like `/src` or `/node_modules`) and 
 - **Where:** Editor and compiler.
 - **How (Creation/Modification/Deletion):** Edit if your build scripts require access to newly supported Node runtime features.
 
+### `tsconfig.e2e.json`
+
+- **What:** A TypeScript configuration targeting the `e2e/` directory specifically.
+- **Why:** E2E spec files use `@playwright/test` types and DOM + ESNext module conventions that differ from the main app config. This config is referenced by `e2e/tsconfig.json` (which extends it) to give editors full type coverage over the spec and helper files.
+- **When:** Parsed by the TypeScript compiler when type-checking E2E files and by editors navigating `e2e/` sources.
+- **Where:** Editor and compiler (E2E scope only).
+- **How (Creation/Modification/Deletion):** Edit if Playwright types or E2E-specific lib targets change.
+
 ### `index.html`
 
 - **What:** The absolute entry point for the frontend web application.
@@ -135,7 +151,7 @@ _Note: This guide ignores root directories (like `/src` or `/node_modules`) and 
 ### `.prettierignore`
 
 - **What:** A list telling Prettier which files to skip.
-- **Why:** Running Prettier on enormous auto-generated bundles or legacy unformatted files wastes CPU time and corrupts formatting algorithms.
+- **Why:** Running Prettier on enormous auto-generated bundles or legacy unformatted files wastes CPU time and corrupts formatting algorithms. `*.md` is currently excluded so that documentation files are not auto-reformatted by the pre-commit hook.
 - **When:** Anytime Prettier tries to format.
 - **Where:** Editor runtime.
 - **How (Creation/Modification/Deletion):** Add a path here when a file should absolutely not be automatically styled correctly (rare).

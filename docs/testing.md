@@ -20,7 +20,20 @@ npm run test:coverage   # Run with coverage report
 npm run test:watch      # Watch mode during development
 ```
 
-Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 58 algorithms in 14 categories.
+Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 284 algorithms in 14 categories.
+
+### Vitest Projects Configuration
+
+The Vitest config uses the `projects` feature to split the test suite into two isolated environments, reducing total runtime to ~20 seconds:
+
+| Project        | Environment | Covers                                                   |
+| -------------- | ----------- | -------------------------------------------------------- |
+| `algorithms`   | `node`      | Algorithm correctness, step generators, trackers, store  |
+| `components`   | `jsdom`     | React component tests requiring a DOM environment        |
+
+This avoids the overhead of loading `jsdom` for pure algorithm tests and removes the need for manual timeout configuration in `test-setup.ts`.
+
+CI shards unit tests 8 ways (aggregated under the **Unit Tests Status** job) and E2E tests 12 ways (aggregated under the **E2E Status** job).
 
 > [!TIP]
 > Run a subset of tests with `npx vitest --filter <pattern>` (e.g., `npx vitest --filter bubble-sort`).
@@ -89,28 +102,84 @@ describe("bubbleSort", () => {
 ```bash
 npm run e2e         # Run headless (CI / automated)
 npm run e2e:headed  # Run with a visible browser (development)
+npm run e2e:debug   # Run with Playwright inspector for step-through debugging
 ```
 
-The E2E suite lives in `e2e/algoflow_e2e.mjs`. It uses Playwright with Chromium and simulates a real user session:
+The E2E suite uses `@playwright/test` with Chromium and simulates a real user session. Config lives at `e2e/playwright.config.ts`; the `webServer` block auto-starts Vite on port 5174 so you do not need a running dev server before invoking these commands.
 
-The suite uses a **tiered approach**:
+> [!NOTE]
+> **CI configuration:** The CI Playwright config sets `baseURL` to `http://127.0.0.1:5174` (not `localhost`) for IPv4/IPv6 compatibility, `globalTimeout: 600_000` to cap total suite runtime, `trace: "off"` to prevent teardown hangs, and the GitHub Actions job uses `timeout-minutes: 15`. These settings differ from the local config intentionally.
 
-- **Smoke tests** (all 58 algorithms): select via command palette, verify step generation is non-zero
-- **Full suite** (one representative per category): playback controls, language tabs, keyboard shortcuts, educational drawer
-- **Input editors**: algorithms in `inputTests` get additional input interaction tests
-- **Grid tests**: Dijkstra's Algorithm receives dedicated grid cell and wavefront tests
+### File Structure
+
+```
+e2e/
+├── playwright.config.ts          # Playwright configuration (webServer, workers, projects)
+├── specs/                        # One spec file per concern
+│   ├── page-load.spec.ts
+│   ├── controls.spec.ts
+│   ├── input-editors.spec.ts
+│   ├── grid-interaction.spec.ts
+│   ├── mobile-layout.spec.ts
+│   ├── console-errors.spec.ts
+│   ├── representative.spec.ts    # Full playback suite (one algorithm per category)
+│   ├── sorting.spec.ts
+│   ├── searching.spec.ts
+│   ├── graph.spec.ts
+│   ├── pathfinding.spec.ts
+│   ├── dynamic-programming.spec.ts
+│   ├── arrays.spec.ts
+│   ├── trees.spec.ts
+│   ├── linked-lists.spec.ts
+│   ├── heaps.spec.ts
+│   ├── stacks-queues.spec.ts
+│   ├── hash-maps.spec.ts
+│   ├── strings.spec.ts
+│   ├── matrices.spec.ts
+│   └── sets.spec.ts
+└── helpers/                      # Shared Playwright helpers and selectors
+```
+
+~950 tests across 21 spec files. Per-category spec files use `test.describe.configure({ mode: "serial" })` to run tests in declaration order. Workers: 2 locally, 4 on CI. In CI the suite is sharded 12 ways, aggregated under the **E2E Status** check.
+
+### What the Suite Covers
+
+- **Smoke tests** (all algorithms): select via command palette, verify step generation is non-zero
+- **Full suite** (`representative.spec.ts`): playback controls, language tabs, keyboard shortcuts, educational drawer — one algorithm per category
+- **Input editors**: `input-editors.spec.ts` covers algorithms with custom input interaction
+- **Grid tests**: `grid-interaction.spec.ts` covers pathfinding grid cell editing and wavefront behavior
 - **Cross-cutting**: progress bar scrubbing, speed controls, theme toggle (dark → light → system → dark), zero browser console errors
-- **Responsive tests**: tablet layout (768x1024) and mobile layout (375x812) — verify tab switching and panel rendering
-- **Hardcoded delays**: banned in test/E2E files via `ban-hardcoded-waits.sh` hook — use `waitFor`/`waitForSelector`/`waitForFunction` instead of `waitForTimeout`
+- **Responsive tests**: `mobile-layout.spec.ts` verifies tab switching and panel rendering at 375×812
+
+> [!NOTE]
+> Hardcoded delays are banned in E2E files via the `ban-hardcoded-waits.sh` hook. Always use `waitFor`, `waitForSelector`, or `waitForFunction` — never `waitForTimeout` or `setTimeout`-based waits.
 
 ### Automatic Enforcement
 
 > [!TIP]
-> The E2E suite is automatically enforced by the `session-end-e2e-check.sh` Stop hook. Whenever any `.tsx`, `.css`, `.html`, or `e2e/algoflow_e2e.mjs` file is modified, the hook runs the suite in headless mode before allowing git operations. If no dev server is running, it starts one automatically.
+> The E2E suite is automatically enforced by the `session-end-e2e-check.sh` Stop hook. Whenever any `.tsx`, `.css`, `.html`, or `e2e/specs/` file is modified, the hook runs the suite in headless mode before allowing git operations. The `webServer` config handles dev server startup automatically.
 
 ### Adding Algorithms to E2E
 
-New algorithms are auto-discovered — no manual update needed for basic smoke testing. See [Updating E2E Tests](contributing.md#updating-e2e-tests) in the contributing guide for details on input editor entries.
+New algorithms are auto-discovered from the registry — no manual update is needed for basic smoke testing (the per-category spec files pick them up automatically). If your algorithm has a custom input editor, add an entry in `e2e/specs/input-editors.spec.ts` covering the relevant input interactions. If the visualizer for a new algorithm category requires a new selector, update the shared helpers in `e2e/helpers/`.
+
+## Pre-commit Hook
+
+A pre-commit hook at `.githooks/pre-commit` runs automatically before every `git commit`. It:
+
+1. Runs **Prettier** (auto-fixes formatting)
+2. Runs **ESLint** with `--fix` (auto-fixes lint issues)
+3. Runs **TypeScript type-checking** (`tsc --noEmit`)
+4. Re-stages any files that were auto-fixed
+
+Activate it once after cloning:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+> [!NOTE]
+> Markdown files are excluded from Prettier via `.prettierignore`, so documentation edits will not be reformatted by the hook.
 
 ## Storybook & Visual Regression Testing
 
@@ -135,7 +204,7 @@ npm run chromatic       # Run Chromatic visual tests
 | **Input Editor**           | `src/components/input-editor/`           | ArrayInputEditor, InputEditor                                                                                                                                                                                                             |
 | **Explanation Panel**      | `src/components/explanation-panel/`      | ExplanationPanel                                                                                                                                                                                                                          |
 | **Playback**               | `src/components/playback/`               | PlaybackControls                                                                                                                                                                                                                          |
-| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/` | 58 algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                              |
+| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/` | 284 algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                             |
 
 Pipeline stories (`*.Pipeline.stories.tsx`) live alongside their algorithm implementation, not with the visualizer components. Component stories remain co-located with their components in `src/components/`.
 

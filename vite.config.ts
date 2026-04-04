@@ -20,8 +20,26 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    environment: "jsdom",
     setupFiles: ["./src/test-setup.ts"],
-    include: ["src/**/*.test.{ts,tsx}"],
+    testTimeout: 1000,
+    projects: [
+      {
+        extends: true,
+        test: {
+          name: "algorithms",
+          include: ["src/algorithms/**/*.test.ts"],
+          environment: "node",
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: "components",
+          include: ["src/**/*.test.{ts,tsx}"],
+          exclude: ["src/algorithms/**/*.test.ts"],
+          environment: "jsdom",
+        },
+      },
+    ],
   },
 });

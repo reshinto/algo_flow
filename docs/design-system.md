@@ -142,7 +142,7 @@ Breakpoint values are defined in `BREAKPOINTS` (`src/utils/constants.ts`). Layou
 - **Badge** — Status indicators with color variants
 - **IconButton** — Icon-only button with `aria-label` required
 - **Select** — Dropdown selection with consistent styling
-- **CategoryPill** — Horizontally scrollable filter pill used in the algorithm selector modal. Renders one pill per category plus an "All" pill. Active pill uses the category's accent color from `CATEGORY_ACCENT_MAP`; inactive pills use `surface-tertiary`. Accepts `category`, `isActive`, and `onClick` props.
+- **CategoryPill** — Horizontally scrollable filter pill used in the algorithm selector modal. Renders one pill per category plus an "All" pill. Active pill uses the category's accent color from `CATEGORY_ACCENT_MAP`; inactive pills use `surface-tertiary`. Accepts `category`, `isActive`, and `onClick` props. The pill row also supports **mouse wheel horizontal scrolling** — a `wheel` event listener translates vertical scroll delta to horizontal scroll on the container, enabling trackpad and mouse-wheel navigation without requiring a horizontal scrollbar.
 
 ### Header Search Bar
 
@@ -156,7 +156,7 @@ The header algorithm selector trigger is a two-line layout:
 
 The modal uses a two-level group hierarchy:
 
-- **Category pill filter row** — horizontally scrollable (`overflow-x-auto scrollbar-none`) row of `CategoryPill` components above the algorithm list; filters the list to the selected category
+- **Category pill filter row** — horizontally scrollable (`overflow-x-auto scrollbar-none`) row of `CategoryPill` components above the algorithm list; filters the list to the selected category. Supports mouse wheel horizontal scrolling via a `wheel` event listener on the container.
 - **Category headers** — bold label with an accent-colored left border (`border-l-2`, color from `CATEGORY_ACCENT_MAP`)
 - **Technique sub-headers** — indented, rendered in `text-secondary` beneath their category header
 

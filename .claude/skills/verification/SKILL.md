@@ -24,7 +24,7 @@ Verify all algorithm work is complete and correct before claiming done, committi
 - [ ] Correctness unit tests pass
 - [ ] Step generation unit tests pass
 - [ ] Pipeline story in algorithm directory (not `src/components/`)
-- [ ] E2E entry with all 14 checks in `e2e/algoflow_e2e.mjs`
+- [ ] E2E: per-category spec in `e2e/specs/` auto-discovers from registry; if algorithm has a custom input editor, entry added in `e2e/specs/input-editors.spec.ts`
 
 ### 2. Coverage Check
 
