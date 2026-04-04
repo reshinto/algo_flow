@@ -69,15 +69,19 @@ export const createAlgorithmSlice: StateCreator<AlgorithmSlice> = (set, get) => 
 
   recompute: () => {
     const { definition, input } = get();
-    // Safety check preventing execution against empty algorithm mounts
     if (!definition || input === null) return;
 
-    const steps = definition.generateSteps(input);
-    (set as (state: Record<string, unknown>) => void)({
-      steps,
-      totalSteps: steps.length,
-      currentStepIndex: 0,
-      isPlaying: false,
-    });
+    try {
+      const steps = definition.generateSteps(input);
+      (set as (state: Record<string, unknown>) => void)({
+        steps,
+        totalSteps: steps.length,
+        currentStepIndex: 0,
+        isPlaying: false,
+      });
+    } catch {
+      // Input caused step generation to fail (e.g. infinite loop guard triggered).
+      // Keep the current steps so the UI doesn't crash.
+    }
   },
 });

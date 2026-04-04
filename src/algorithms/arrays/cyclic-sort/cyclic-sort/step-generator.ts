@@ -47,7 +47,12 @@ export function generateCyclicSortSteps(input: CyclicSortInput): ExecutionStep[]
       `Examine arr[${currentIndex}]=${currentValue} — correct position is index ${correctIndex}`,
     );
 
-    if (currentValue !== currentIndex + 1) {
+    if (
+      correctIndex >= 0 &&
+      correctIndex < workArray.length &&
+      correctIndex !== currentIndex &&
+      workArray[correctIndex] !== currentValue
+    ) {
       tracker.swap(
         currentIndex,
         correctIndex,

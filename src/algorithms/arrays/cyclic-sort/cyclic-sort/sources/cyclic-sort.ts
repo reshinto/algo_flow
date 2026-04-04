@@ -7,7 +7,12 @@ function cyclicSort(inputArray: number[]): number[] {
     const currentValue = result[currentIndex]!; // @step:compare
     const correctIndex = currentValue - 1; // @step:compare
 
-    if (currentValue !== currentIndex + 1) {
+    if (
+      correctIndex >= 0 &&
+      correctIndex < result.length &&
+      correctIndex !== currentIndex &&
+      result[correctIndex] !== currentValue
+    ) {
       // @step:compare
       const tempValue = result[correctIndex]!; // @step:swap
       result[correctIndex] = result[currentIndex]!; // @step:swap
