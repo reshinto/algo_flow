@@ -4,3 +4,4 @@ node_modules
 coverage
 storybook-static
 *.min.js
+*.md

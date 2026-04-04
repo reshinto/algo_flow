@@ -61,8 +61,12 @@ git clone <repo-url>
 cd algo_flow
 nvm use          # switches to Node 22
 npm install
+git config core.hooksPath .githooks   # activate pre-commit hook
 npm run dev      # http://localhost:5173
 ```
+
+> [!IMPORTANT]
+> Run `git config core.hooksPath .githooks` once after cloning to activate the pre-commit hook. The hook at `.githooks/pre-commit` automatically runs Prettier, ESLint, and TypeScript type-checking before every commit and re-stages any auto-fixed files. Skipping this step means those checks will not run locally before commits.
 
 To verify everything works:
 
@@ -101,6 +105,8 @@ npm run test         # Vitest unit tests
 ```
 
 If any check fails, fix the issue before committing. Do **not** bypass hooks.
+
+The pre-commit hook at `.githooks/pre-commit` also enforces these checks automatically on every `git commit`. It runs Prettier, ESLint, and TypeScript type-checking, then re-stages any files that Prettier auto-fixed. Activate it once after cloning with `git config core.hooksPath .githooks`.
 
 ### Mid-Session Warnings (PostToolUse)
 

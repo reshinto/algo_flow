@@ -1,10 +1,10 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Page Load", () => {
-  test("app loads at localhost", async ({ page }) => {
+  test("app loads successfully", async ({ page }) => {
     await page.goto("/", { waitUntil: "domcontentloaded" });
     await page.waitForSelector("button[aria-label='Search algorithms']");
-    expect(page.url()).toContain("localhost");
+    expect(page.url()).toContain("5174");
   });
 
   test("title is set", async ({ page }) => {

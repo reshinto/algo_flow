@@ -1,0 +1,22 @@
+#!/bin/sh
+# Pre-commit hook: auto-format, lint, typecheck, then re-stage any changes.
+
+echo "🔧 Running prettier --write ..."
+npx prettier --write . --log-level warn
+
+echo "🔍 Running eslint --fix ..."
+npx eslint . --fix --quiet
+
+echo "📝 Running typecheck ..."
+npm run typecheck
+
+# If typecheck failed, abort the commit
+if [ $? -ne 0 ]; then
+  echo "❌ Typecheck failed — commit aborted."
+  exit 1
+fi
+
+# Re-stage any files modified by prettier or eslint
+git add -A
+
+echo "✅ Pre-commit checks passed."

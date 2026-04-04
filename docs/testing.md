@@ -94,6 +94,9 @@ npm run e2e:debug   # Run with Playwright inspector for step-through debugging
 
 The E2E suite uses `@playwright/test` with Chromium and simulates a real user session. Config lives at `e2e/playwright.config.ts`; the `webServer` block auto-starts Vite on port 5174 so you do not need a running dev server before invoking these commands.
 
+> [!NOTE]
+> **CI configuration:** The CI Playwright config sets `baseURL` to `http://127.0.0.1:5174` (not `localhost`) for IPv4/IPv6 compatibility, `globalTimeout: 600_000` to cap total suite runtime, `trace: "off"` to prevent teardown hangs, and the GitHub Actions job uses `timeout-minutes: 15`. These settings differ from the local config intentionally.
+
 ### File Structure
 
 ```
