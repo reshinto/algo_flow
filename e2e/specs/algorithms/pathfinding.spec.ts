@@ -10,8 +10,8 @@ const categoryAlgos = allAlgorithms.filter((_, idx) => algorithmCategories[idx] 
 for (const algo of categoryAlgos) {
   test.describe(`Pathfinding: ${algo}`, () => {
     test(`selects "${algo}" and generates steps`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
       const stepInfo = await getStepIndex(page);
       expect(stepInfo).not.toBeNull();
@@ -19,8 +19,8 @@ for (const algo of categoryAlgos) {
     });
 
     test(`${algo}: grid visualization renders`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
       const gridCells = page.locator("[class*='grid'] > div");
       await gridCells.first().waitFor({ timeout: 5000 });

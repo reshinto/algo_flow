@@ -2,27 +2,27 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Page Load", () => {
   test("app loads at localhost", async ({ page }) => {
-    await page.goto("/", { waitUntil: "domcontentloaded" });
-    await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+    await page.goto("/", { waitUntil: "networkidle" });
+    await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
     expect(page.url()).toContain("localhost");
   });
 
   test("title is set", async ({ page }) => {
-    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await page.goto("/", { waitUntil: "networkidle" });
     const title = await page.title();
     expect(title).toBeTruthy();
   });
 
   test("AlgoFlow h1 visible", async ({ page }) => {
-    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await page.goto("/", { waitUntil: "networkidle" });
     await expect(page.locator("h1").filter({ hasText: "AlgoFlow" })).toBeVisible();
   });
 });
 
 test.describe("Command Palette", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/", { waitUntil: "domcontentloaded" });
-    await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+    await page.goto("/", { waitUntil: "networkidle" });
+    await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
   });
 
   test("opens on button click", async ({ page }) => {

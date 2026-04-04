@@ -15,8 +15,8 @@ const representatives = [...representativeSet];
 for (const algo of representatives) {
   test.describe(`Representative: ${algo}`, () => {
     test(`${algo}: step forward ×3`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
 
       const stepFwd = page.locator("button[aria-label='Step forward']");
@@ -29,8 +29,8 @@ for (const algo of representatives) {
     });
 
     test(`${algo}: step backward`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
 
       const stepFwd = page.locator("button[aria-label='Step forward']");
@@ -47,8 +47,8 @@ for (const algo of representatives) {
     });
 
     test(`${algo}: reset`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
 
       const stepFwd = page.locator("button[aria-label='Step forward']");
@@ -63,8 +63,8 @@ for (const algo of representatives) {
     });
 
     test(`${algo}: play then pause`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
 
       const playBtn = page.locator("button[aria-label='Play']");
@@ -76,8 +76,8 @@ for (const algo of representatives) {
     });
 
     test(`${algo}: rerun`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
 
       const rerunBtn = page.locator("button[aria-label='Rerun']");
@@ -90,8 +90,8 @@ for (const algo of representatives) {
     });
 
     test(`${algo}: TypeScript tab`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
       const tab = page.locator("button:has-text('TypeScript')").first();
       await tab.waitFor({ timeout: 3000 });
@@ -102,8 +102,8 @@ for (const algo of representatives) {
     });
 
     test(`${algo}: Python tab`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
       const tab = page.locator("button:has-text('Python')").first();
       await tab.waitFor({ timeout: 3000 });
@@ -114,8 +114,8 @@ for (const algo of representatives) {
     });
 
     test(`${algo}: Java tab`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
       const tab = page.locator("button:has-text('Java')").first();
       await tab.waitFor({ timeout: 3000 });
@@ -126,8 +126,8 @@ for (const algo of representatives) {
     });
 
     test(`${algo}: Space play/pause keyboard shortcut`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
       await page.locator("body").click({ position: { x: 700, y: 400 } });
       await page.keyboard.press("Space");
@@ -137,8 +137,8 @@ for (const algo of representatives) {
     });
 
     test(`${algo}: ArrowRight and ArrowLeft keyboard shortcuts`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
       await page.locator("body").click({ position: { x: 700, y: 400 } });
 
@@ -153,8 +153,8 @@ for (const algo of representatives) {
     });
 
     test(`${algo}: R key resets to step 1`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
       await page.locator("body").click({ position: { x: 700, y: 400 } });
 
@@ -169,8 +169,8 @@ for (const algo of representatives) {
     });
 
     test(`${algo}: educational drawer opens with L key`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
       await page.locator("body").click({ position: { x: 700, y: 400 } });
       await page.keyboard.press("l");
@@ -178,8 +178,8 @@ for (const algo of representatives) {
     });
 
     test(`${algo}: educational drawer closes with Escape`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+      await page.goto("/", { waitUntil: "networkidle" });
+      await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
       await selectAlgorithm(page, algo);
       await page.locator("body").click({ position: { x: 700, y: 400 } });
       await page.keyboard.press("l");

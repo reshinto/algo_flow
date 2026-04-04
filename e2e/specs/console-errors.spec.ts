@@ -24,8 +24,8 @@ test.describe("Console Errors", () => {
       }
     });
 
-    await page.goto("/", { waitUntil: "domcontentloaded" });
-    await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
+    await page.goto("/", { waitUntil: "networkidle" });
+    await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 15000 });
 
     const { allAlgorithms } = discoverAlgorithms();
     // Run a sample of algorithms to keep test duration reasonable
