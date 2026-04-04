@@ -55,6 +55,10 @@ jobs:
   e2e:
     name: E2E Tests
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1/4, 2/4, 3/4, 4/4]
     steps:
       - uses: actions/checkout@v6
 
@@ -70,7 +74,8 @@ jobs:
       - name: Build for E2E
         run: npm run build
 
-      - run: npm run e2e
+      - name: Run E2E shard
+        run: npx playwright test --config=e2e/playwright.config.ts --shard=${{ matrix.shard }}
 
   storybook:
     name: Storybook Build

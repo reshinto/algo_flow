@@ -7,7 +7,6 @@ import {
   waitForStepReset,
 } from "../helpers/dom-helpers";
 
-
 const { representativeSet } = discoverAlgorithms();
 const representatives = [...representativeSet];
 

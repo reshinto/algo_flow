@@ -7,7 +7,6 @@ import {
   getDisplayedArrayValues,
 } from "../../helpers/dom-helpers";
 
-
 const STALIN_SORT = "Stalin Sort";
 
 const { allAlgorithms, algorithmCategories } = discoverAlgorithms();

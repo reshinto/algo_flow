@@ -25,17 +25,20 @@ Implement features using test-driven development following AlgoFlow's specific t
 Write tests in this order:
 
 1. **Correctness test** (`<algorithm>.test.ts`)
+
    - Test pure `execute()` function with known inputs/outputs
    - Test edge cases: empty input, single element, already-solved, worst case
    - Use meaningful variable names (no `i`, `j`, `k`)
 
 2. **Step generation test** (`step-generator.test.ts`)
+
    - Test `generateSteps()` produces expected step count
    - Test step types match expected sequence
    - Test final `visualState` matches expected result
    - Test `highlightedLines` are present for all 3 languages
 
 3. **Pipeline story** (`<AlgorithmName>Pipeline.stories.tsx`)
+
    - Place in `src/algorithms/<category>/<algo>/`, NOT `src/components/`
    - Story renders the full pipeline with sample input
 
