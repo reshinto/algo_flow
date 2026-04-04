@@ -7,7 +7,6 @@ import {
   waitForStepReset,
 } from "../helpers/dom-helpers";
 
-test.describe.configure({ mode: "serial" });
 
 const { representativeSet } = discoverAlgorithms();
 const representatives = [...representativeSet];

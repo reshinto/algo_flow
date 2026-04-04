@@ -2,7 +2,6 @@ import { test, expect } from "@playwright/test";
 import { inputTests } from "../helpers/inputs";
 import { selectAlgorithm, getStepIndex } from "../helpers/dom-helpers";
 
-test.describe.configure({ mode: "serial" });
 
 test.describe("Input Editors", () => {
   for (const { algo, test: runInputTest } of inputTests) {

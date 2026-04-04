@@ -7,7 +7,6 @@ import {
   getDisplayedArrayValues,
 } from "../../helpers/dom-helpers";
 
-test.describe.configure({ mode: "serial" });
 
 const STALIN_SORT = "Stalin Sort";
 

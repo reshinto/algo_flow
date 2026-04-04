@@ -2,7 +2,6 @@ import { test, expect } from "@playwright/test";
 import { discoverAlgorithms } from "../../helpers/discovery";
 import { selectAlgorithm, getStepIndex } from "../../helpers/dom-helpers";
 
-test.describe.configure({ mode: "serial" });
 
 const { allAlgorithms, algorithmCategories } = discoverAlgorithms();
 const categoryAlgos = allAlgorithms.filter((_, idx) => algorithmCategories[idx] === "trees");
