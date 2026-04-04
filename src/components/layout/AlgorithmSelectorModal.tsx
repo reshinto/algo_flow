@@ -273,11 +273,17 @@ export default function AlgorithmSelectorModal({
               </IconButton>
             </div>
 
-            {/* Category pill filters */}
+            {/* Category pill filters — onWheel converts vertical scroll to horizontal for mouse users */}
             <div
               className="flex shrink-0 gap-2 overflow-x-auto px-4 py-3 scrollbar-none border-b border-[var(--color-border-subtle)]"
               role="group"
               aria-label="Filter by category"
+              onWheel={(wheelEvent) => {
+                if (wheelEvent.deltaY !== 0) {
+                  wheelEvent.currentTarget.scrollLeft += wheelEvent.deltaY;
+                  wheelEvent.preventDefault();
+                }
+              }}
             >
               <CategoryPill
                 label="All"
