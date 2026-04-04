@@ -1,22 +1,24 @@
 import { defineConfig } from "@playwright/test";
 
+const isCI = !!process.env.CI;
+
 export default defineConfig({
   testDir: "./specs",
   fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 2 : undefined,
-  reporter: process.env.CI ? [["github"], ["html", { open: "never" }]] : [["list"]],
+  forbidOnly: isCI,
+  retries: isCI ? 1 : 0,
+  workers: isCI ? 1 : undefined,
+  reporter: isCI ? [["github"], ["html", { open: "never" }]] : [["list"]],
   use: {
     baseURL: "http://localhost:5174",
     viewport: { width: 1400, height: 900 },
-    video: "retain-on-failure",
+    video: isCI ? "off" : "retain-on-failure",
     screenshot: "only-on-failure",
     trace: "on-first-retry",
   },
   webServer: {
     command: "npx vite preview --host --port 5174",
     port: 5174,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: !isCI,
   },
 });
