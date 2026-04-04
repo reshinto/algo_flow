@@ -124,7 +124,7 @@ These hooks always exit 0 — they warn but never block. Fix the flagged pattern
 - [ ] All quality gate checks pass
 - [ ] E2E tests pass if UI files changed (`npm run e2e`)
 - [ ] Storybook builds if components changed (`npm run storybook:build`)
-- [ ] New algorithm with input editor? Added entry to `inputTests` in `e2e/algoflow_e2e.mjs` (see [E2E updates](#updating-e2e-tests))
+- [ ] New algorithm with input editor? Added entry in `e2e/specs/input-editors.spec.ts` (see [E2E updates](#updating-e2e-tests))
 
 ---
 
@@ -269,7 +269,7 @@ export function generateMyAlgorithmSteps(input: number[]): ExecutionStep[] {
 
 > [!NOTE] > **DPTracker constructor:** `new DPTracker(tableSize, lineMap, labelFn?)` — the optional `labelFn` parameter controls how table cell indices are displayed in step descriptions and the variables panel. It defaults to `` (index) => `F(${index})` `` for backward compatibility (Fibonacci-style labels). New algorithms should pass a custom label function: e.g. `` (index) => `S(${index})` `` for Climbing Stairs, `` (index) => `$${index}` `` for Coin Change. Passing `labelFn` avoids generic "F(n)" labels appearing in algorithms where that notation is meaningless.
 
-> [!NOTE] > **Generic DP input editor:** The `dynamic-programming` category uses a shared `renderDPEditor()` function instead of per-algorithm input editors. It introspects the algorithm's `defaultInput` shape and auto-generates controls for number scalars, number arrays, string fields, and string arrays. You do not need to write a custom input editor for new DP algorithms — set a well-typed `defaultInput` in your `AlgorithmDefinition` and the editor is generated automatically. You also do not need to add a DP algorithm to the `inputTests` object in `e2e/algoflow_e2e.mjs` unless it has input fields that require custom validation.
+> [!NOTE] > **Generic DP input editor:** The `dynamic-programming` category uses a shared `renderDPEditor()` function instead of per-algorithm input editors. It introspects the algorithm's `defaultInput` shape and auto-generates controls for number scalars, number arrays, string fields, and string arrays. You do not need to write a custom input editor for new DP algorithms — set a well-typed `defaultInput` in your `AlgorithmDefinition` and the editor is generated automatically. You also do not need to add a DP algorithm to `e2e/specs/input-editors.spec.ts` unless it has input fields that require custom validation.
 
 All trackers share `initialize`, `complete`, and `getSteps()` from `BaseTracker`. Check the tracker source in `src/trackers/` for the full method signatures and parameters.
 
@@ -373,7 +373,7 @@ See `src/algorithms/sorting/bubble-sort/` for reference test files.
 
 ### Updating E2E Tests
 
-The E2E suite auto-discovers algorithms from the filesystem via `discoverAlgorithms()`. No manual array update is needed for basic smoke testing (select + step generation). You only need to update `e2e/algoflow_e2e.mjs` if the algorithm has a custom input editor — add an entry to the `inputTests` object.
+The E2E suite auto-discovers algorithms from the registry — no manual update is needed for basic smoke testing (select + step generation). The per-category spec files in `e2e/specs/` pick up new algorithms automatically. You only need to add a test in `e2e/specs/input-editors.spec.ts` if the algorithm has a custom input editor that requires interaction testing.
 
 ---
 
@@ -420,9 +420,10 @@ The `?fn` suffix only works for `.ts` files in `sources/` directories. It is pow
 <details>
 <summary><strong>E2E tests fail locally but pass in CI</strong></summary>
 
-- Ensure you have a dev server running (`npm run dev`) or use `npm run e2e` which auto-starts one
+- The `webServer` config in `e2e/playwright.config.ts` auto-starts Vite on port 5174 — you do not need a running dev server before running `npm run e2e`
 - Check that your local Node version matches 22 (`node --version`)
 - Clear Playwright cache: `npx playwright install chromium`
+- Use `npm run e2e:debug` to open the Playwright inspector for step-through debugging
 
 </details>
 

@@ -49,12 +49,14 @@ export const createAlgorithmSlice: StateCreator<AlgorithmSlice> = (set, get) => 
     // 3. Immediately fully execute the logic offline to cache perfectly deterministic timeline steps
     const steps = definition.generateSteps(input);
 
-    set({
+    (set as (state: Record<string, unknown>) => void)({
       selectedId: id,
       definition,
       input,
       steps,
       totalSteps: steps.length,
+      currentStepIndex: 0,
+      isPlaying: false,
     });
   },
 
@@ -71,7 +73,11 @@ export const createAlgorithmSlice: StateCreator<AlgorithmSlice> = (set, get) => 
     if (!definition || input === null) return;
 
     const steps = definition.generateSteps(input);
-    // Overwrite the execution timeline directly. The Playback slice handles resetting the playhead to 0.
-    set({ steps, totalSteps: steps.length });
+    (set as (state: Record<string, unknown>) => void)({
+      steps,
+      totalSteps: steps.length,
+      currentStepIndex: 0,
+      isPlaying: false,
+    });
   },
 });

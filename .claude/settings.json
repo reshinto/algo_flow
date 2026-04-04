@@ -20,7 +20,12 @@
       "Bash(killall -9 node)",
       "Bash(tee /tmp/e2e_run2.txt)",
       "Bash(echo \"DONE_EXIT:$?\")",
-      "Bash(git -C /Users/springfield/dev/algo_flow add -A)"
+      "Bash(git -C /Users/springfield/dev/algo_flow add -A)",
+      "Bash(git -C /Users/springfield/dev/algo_flow push)",
+      "Bash(xargs -I {} sh -c 'echo \"=== {} ===\" && find {} -name \"index.ts\" -type f | wc -l')",
+      "Bash(npx playwright:*)",
+      "Bash(curl -s http://localhost:5174)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5174/)"
     ]
   },
   "hooks": {

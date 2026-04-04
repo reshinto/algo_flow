@@ -89,28 +89,63 @@ describe("bubbleSort", () => {
 ```bash
 npm run e2e         # Run headless (CI / automated)
 npm run e2e:headed  # Run with a visible browser (development)
+npm run e2e:debug   # Run with Playwright inspector for step-through debugging
 ```
 
-The E2E suite lives in `e2e/algoflow_e2e.mjs`. It uses Playwright with Chromium and simulates a real user session:
+The E2E suite uses `@playwright/test` with Chromium and simulates a real user session. Config lives at `e2e/playwright.config.ts`; the `webServer` block auto-starts Vite on port 5174 so you do not need a running dev server before invoking these commands.
 
-The suite uses a **tiered approach**:
+### File Structure
 
-- **Smoke tests** (all 58 algorithms): select via command palette, verify step generation is non-zero
-- **Full suite** (one representative per category): playback controls, language tabs, keyboard shortcuts, educational drawer
-- **Input editors**: algorithms in `inputTests` get additional input interaction tests
-- **Grid tests**: Dijkstra's Algorithm receives dedicated grid cell and wavefront tests
+```
+e2e/
+├── playwright.config.ts          # Playwright configuration (webServer, workers, projects)
+├── specs/                        # One spec file per concern
+│   ├── page-load.spec.ts
+│   ├── controls.spec.ts
+│   ├── input-editors.spec.ts
+│   ├── grid-interaction.spec.ts
+│   ├── mobile-layout.spec.ts
+│   ├── console-errors.spec.ts
+│   ├── representative.spec.ts    # Full playback suite (one algorithm per category)
+│   ├── sorting.spec.ts
+│   ├── searching.spec.ts
+│   ├── graph.spec.ts
+│   ├── pathfinding.spec.ts
+│   ├── dynamic-programming.spec.ts
+│   ├── arrays.spec.ts
+│   ├── trees.spec.ts
+│   ├── linked-lists.spec.ts
+│   ├── heaps.spec.ts
+│   ├── stacks-queues.spec.ts
+│   ├── hash-maps.spec.ts
+│   ├── strings.spec.ts
+│   ├── matrices.spec.ts
+│   └── sets.spec.ts
+└── helpers/                      # Shared Playwright helpers and selectors
+```
+
+885 tests across 21 spec files. Per-category spec files use `test.describe.configure({ mode: "serial" })` to run tests in declaration order. Workers: 2 locally, 4 on CI.
+
+### What the Suite Covers
+
+- **Smoke tests** (all algorithms): select via command palette, verify step generation is non-zero
+- **Full suite** (`representative.spec.ts`): playback controls, language tabs, keyboard shortcuts, educational drawer — one algorithm per category
+- **Input editors**: `input-editors.spec.ts` covers algorithms with custom input interaction
+- **Grid tests**: `grid-interaction.spec.ts` covers pathfinding grid cell editing and wavefront behavior
 - **Cross-cutting**: progress bar scrubbing, speed controls, theme toggle (dark → light → system → dark), zero browser console errors
-- **Responsive tests**: tablet layout (768x1024) and mobile layout (375x812) — verify tab switching and panel rendering
-- **Hardcoded delays**: banned in test/E2E files via `ban-hardcoded-waits.sh` hook — use `waitFor`/`waitForSelector`/`waitForFunction` instead of `waitForTimeout`
+- **Responsive tests**: `mobile-layout.spec.ts` verifies tab switching and panel rendering at 375×812
+
+> [!NOTE]
+> Hardcoded delays are banned in E2E files via the `ban-hardcoded-waits.sh` hook. Always use `waitFor`, `waitForSelector`, or `waitForFunction` — never `waitForTimeout` or `setTimeout`-based waits.
 
 ### Automatic Enforcement
 
 > [!TIP]
-> The E2E suite is automatically enforced by the `session-end-e2e-check.sh` Stop hook. Whenever any `.tsx`, `.css`, `.html`, or `e2e/algoflow_e2e.mjs` file is modified, the hook runs the suite in headless mode before allowing git operations. If no dev server is running, it starts one automatically.
+> The E2E suite is automatically enforced by the `session-end-e2e-check.sh` Stop hook. Whenever any `.tsx`, `.css`, `.html`, or `e2e/specs/` file is modified, the hook runs the suite in headless mode before allowing git operations. The `webServer` config handles dev server startup automatically.
 
 ### Adding Algorithms to E2E
 
-New algorithms are auto-discovered — no manual update needed for basic smoke testing. See [Updating E2E Tests](contributing.md#updating-e2e-tests) in the contributing guide for details on input editor entries.
+New algorithms are auto-discovered from the registry — no manual update is needed for basic smoke testing (the per-category spec files pick them up automatically). If your algorithm has a custom input editor, add an entry in `e2e/specs/input-editors.spec.ts` covering the relevant input interactions. If the visualizer for a new algorithm category requires a new selector, update the shared helpers in `e2e/helpers/`.
 
 ## Storybook & Visual Regression Testing
 
