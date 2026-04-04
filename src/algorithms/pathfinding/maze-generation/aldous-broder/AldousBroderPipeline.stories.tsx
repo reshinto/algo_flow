@@ -1,6 +1,6 @@
 /**
  * Storybook stories for the Aldous-Broder Maze pipeline.
- * Uses the real step generator with a small all-walls grid,
+ * Uses the real step generator with a small 5x7 all-walls grid,
  * rendering the GridVisualizer at key maze generation states.
  */
 import type { Meta, StoryObj } from "@storybook/react";
@@ -10,8 +10,8 @@ import GridVisualizer from "@/components/visualization/GridVisualizer";
 
 /** Build a small all-walls grid for the Aldous-Broder story */
 function buildStoryGrid(): GridCell[][] {
-  const rows = 7;
-  const cols = 9;
+  const rows = 5;
+  const cols = 7;
   const grid: GridCell[][] = [];
 
   for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
@@ -24,7 +24,7 @@ function buildStoryGrid(): GridCell[][] {
 
   const startCell = grid[1]?.[1];
   if (startCell) startCell.type = "start";
-  const endCell = grid[5]?.[7];
+  const endCell = grid[3]?.[5];
   if (endCell) endCell.type = "end";
 
   return grid;
@@ -32,7 +32,7 @@ function buildStoryGrid(): GridCell[][] {
 
 const storyGrid = buildStoryGrid();
 const startPosition: [number, number] = [1, 1];
-const endPosition: [number, number] = [5, 7];
+const endPosition: [number, number] = [3, 5];
 
 const steps = generateAldousBroderSteps({
   grid: storyGrid,

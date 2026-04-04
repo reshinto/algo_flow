@@ -1,6 +1,6 @@
 /**
  * Storybook stories for the IDA* pipeline.
- * Uses the real step generator with a small 8x12 grid,
+ * Uses the real step generator with a small 5x7 grid,
  * rendering the GridVisualizer at key pathfinding states.
  */
 import type { Meta, StoryObj } from "@storybook/react";
@@ -10,8 +10,8 @@ import GridVisualizer from "@/components/visualization/GridVisualizer";
 
 /** Build a small grid with walls for the story demonstration */
 function buildStoryGrid(): GridCell[][] {
-  const rows = 8;
-  const cols = 12;
+  const rows = 5;
+  const cols = 7;
   const grid: GridCell[][] = [];
 
   for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
@@ -22,16 +22,21 @@ function buildStoryGrid(): GridCell[][] {
     grid.push(row);
   }
 
-  /* Add a wall barrier to require navigation */
-  for (let wallRow = 2; wallRow <= 5; wallRow++) {
-    const cell = grid[wallRow]?.[4];
+  /* Add a small wall barrier */
+  const wallCells: [number, number][] = [
+    [1, 3],
+    [2, 3],
+    [3, 3],
+  ];
+  for (const [wallRow, wallCol] of wallCells) {
+    const cell = grid[wallRow]?.[wallCol];
     if (cell) cell.type = "wall";
   }
 
   /* Mark start and end positions */
   const startCell = grid[1]?.[1];
   if (startCell) startCell.type = "start";
-  const endCell = grid[6]?.[8];
+  const endCell = grid[3]?.[5];
   if (endCell) endCell.type = "end";
 
   return grid;
@@ -39,7 +44,7 @@ function buildStoryGrid(): GridCell[][] {
 
 const storyGrid = buildStoryGrid();
 const startPosition: [number, number] = [1, 1];
-const endPosition: [number, number] = [6, 8];
+const endPosition: [number, number] = [3, 5];
 
 const steps = generateIDAStarSteps({ grid: storyGrid, startPosition, endPosition });
 
