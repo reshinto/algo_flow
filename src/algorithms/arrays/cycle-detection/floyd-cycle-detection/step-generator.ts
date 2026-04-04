@@ -44,8 +44,12 @@ export function generateFloydCycleDetectionSteps(input: FloydCycleDetectionInput
     const prevTortoise = tortoise;
     const prevHare = hare;
 
+    if (tortoise < 0 || tortoise >= inputArray.length) break;
+    if (hare < 0 || hare >= inputArray.length) break;
     tortoise = inputArray[tortoise]!;
-    hare = inputArray[inputArray[hare]!]!;
+    const hareNext = inputArray[hare]!;
+    if (hareNext < 0 || hareNext >= inputArray.length) break;
+    hare = inputArray[hareNext]!;
     phaseOneSteps++;
 
     tracker.compareTwo(

@@ -9,7 +9,8 @@ function firstMissingPositive(inputArray: number[]): { missingPositive: number }
     while (
       result[placementIndex]! >= 1 &&
       result[placementIndex]! <= arrayLength &&
-      result[result[placementIndex]! - 1] !== result[placementIndex]
+      result[result[placementIndex]! - 1] !== result[placementIndex] &&
+      result[placementIndex] !== placementIndex + 1
     ) {
       const correctIndex = result[placementIndex]! - 1; // @step:compare
       const tempValue = result[correctIndex]!; // @step:swap

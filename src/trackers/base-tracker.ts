@@ -51,8 +51,19 @@ export abstract class BaseTracker {
     this.lineMap = lineMap;
   }
 
+  /** Maximum steps any single step generator may produce before being cut off. */
+  private static readonly MAX_STEPS = 10_000;
+
   /** Record a new execution step, resolving line highlights from the line map. */
   protected pushStep(input: StepInput): void {
+    if (this.steps.length >= BaseTracker.MAX_STEPS) {
+      throw new Error(
+        `Step limit (${String(BaseTracker.MAX_STEPS)}) exceeded — likely an infinite loop ` +
+          "caused by invalid input (duplicates, out-of-range values, or unsorted data). " +
+          "Check the algorithm's input constraints.",
+      );
+    }
+
     const highlightedLines = this.resolveLines(input.lineMapKey ?? input.type);
     this.metrics = { ...this.metrics, elapsedSteps: this.metrics.elapsedSteps + 1 };
 

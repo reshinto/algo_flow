@@ -37,7 +37,8 @@ export function generateFirstMissingPositiveSteps(
     while (
       workArray[placementIndex]! >= 1 &&
       workArray[placementIndex]! <= arrayLength &&
-      workArray[workArray[placementIndex]! - 1] !== workArray[placementIndex]
+      workArray[workArray[placementIndex]! - 1] !== workArray[placementIndex] &&
+      workArray[placementIndex] !== placementIndex + 1
     ) {
       const correctIndex = workArray[placementIndex]! - 1;
       const currentValue = workArray[placementIndex]!;
