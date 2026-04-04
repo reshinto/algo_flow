@@ -12,7 +12,7 @@ const categoryAlgos = allAlgorithms.filter(
 for (const algo of categoryAlgos) {
   test.describe(`Stacks & Queues: ${algo}`, () => {
     test(`selects "${algo}" and generates steps`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "networkidle" });
+      await page.goto("/", { waitUntil: "domcontentloaded" });
       await page.waitForSelector("button[aria-label='Search algorithms']");
       await selectAlgorithm(page, algo);
       const stepInfo = await getStepIndex(page);
@@ -21,7 +21,7 @@ for (const algo of categoryAlgos) {
     });
 
     test(`${algo}: visualization renders`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "networkidle" });
+      await page.goto("/", { waitUntil: "domcontentloaded" });
       await page.waitForSelector("button[aria-label='Search algorithms']");
       await selectAlgorithm(page, algo);
       const stepCounter = page

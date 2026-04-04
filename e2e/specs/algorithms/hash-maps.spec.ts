@@ -10,7 +10,7 @@ const categoryAlgos = allAlgorithms.filter((_, idx) => algorithmCategories[idx] 
 for (const algo of categoryAlgos) {
   test.describe(`Hash Maps: ${algo}`, () => {
     test(`selects "${algo}" and generates steps`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "networkidle" });
+      await page.goto("/", { waitUntil: "domcontentloaded" });
       await page.waitForSelector("button[aria-label='Search algorithms']");
       await selectAlgorithm(page, algo);
       const stepInfo = await getStepIndex(page);
@@ -19,7 +19,7 @@ for (const algo of categoryAlgos) {
     });
 
     test(`${algo}: visualization renders`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "networkidle" });
+      await page.goto("/", { waitUntil: "domcontentloaded" });
       await page.waitForSelector("button[aria-label='Search algorithms']");
       await selectAlgorithm(page, algo);
       const stepCounter = page

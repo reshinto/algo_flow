@@ -2,26 +2,26 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Page Load", () => {
   test("app loads at localhost", async ({ page }) => {
-    await page.goto("/", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
     await page.waitForSelector("button[aria-label='Search algorithms']");
     expect(page.url()).toContain("localhost");
   });
 
   test("title is set", async ({ page }) => {
-    await page.goto("/", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
     const title = await page.title();
     expect(title).toBeTruthy();
   });
 
   test("AlgoFlow h1 visible", async ({ page }) => {
-    await page.goto("/", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
     await expect(page.locator("h1").filter({ hasText: "AlgoFlow" })).toBeVisible();
   });
 });
 
 test.describe("Command Palette", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
     await page.waitForSelector("button[aria-label='Search algorithms']");
   });
 

@@ -24,7 +24,7 @@ test.describe("Console Errors", () => {
       }
     });
 
-    await page.goto("/", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
     await page.waitForSelector("button[aria-label='Search algorithms']");
 
     const { allAlgorithms } = discoverAlgorithms();

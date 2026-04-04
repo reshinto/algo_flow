@@ -7,7 +7,7 @@ test.describe.configure({ mode: "serial" });
 test.describe("Input Editors", () => {
   for (const { algo, test: runInputTest } of inputTests) {
     test(`${algo}: input editor interaction`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "networkidle" });
+      await page.goto("/", { waitUntil: "domcontentloaded" });
       await page.waitForSelector("button[aria-label='Search algorithms']");
       await selectAlgorithm(page, algo);
       await runInputTest(page);

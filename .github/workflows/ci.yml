@@ -67,6 +67,9 @@ jobs:
 
       - run: npx playwright install --with-deps chromium
 
+      - name: Build for E2E
+        run: npm run build
+
       - run: npm run e2e
 
   storybook:

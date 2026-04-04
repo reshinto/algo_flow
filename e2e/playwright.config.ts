@@ -12,16 +12,16 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:5174",
     viewport: { width: 1400, height: 900 },
-    actionTimeout: 30_000,
-    navigationTimeout: 60_000,
+    actionTimeout: 15_000,
+    navigationTimeout: 30_000,
     video: "retain-on-failure",
     screenshot: "only-on-failure",
     trace: "on-first-retry",
   },
   webServer: {
-    command: "npx vite --port 5174",
+    command: "npx vite preview --port 5174",
     port: 5174,
     reuseExistingServer: !process.env.CI,
-    timeout: 60_000,
+    timeout: 30_000,
   },
 });

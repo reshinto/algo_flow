@@ -3,7 +3,7 @@ import { selectAlgorithm, getStepIndex } from "../helpers/dom-helpers";
 
 test.describe("Playback Controls", () => {
   test("progress bar scrub to 50% changes current step", async ({ page }) => {
-    await page.goto("/", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
     await page.waitForSelector("button[aria-label='Search algorithms']");
     await selectAlgorithm(page, "Bubble Sort");
 
@@ -19,7 +19,7 @@ test.describe("Playback Controls", () => {
   });
 
   test("speed selector: select 2x", async ({ page }) => {
-    await page.goto("/", { waitUntil: "networkidle" });
+    await page.goto("/", { waitUntil: "domcontentloaded" });
     await page.waitForSelector("button[aria-label='Search algorithms']");
     const speedSelect = page.locator("select[aria-label='Playback speed']");
     await speedSelect.selectOption({ value: "2" });
