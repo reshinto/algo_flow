@@ -14,7 +14,7 @@ export default defineConfig({
   retries: isCI ? 1 : 0,
   workers: isCI ? 1 : undefined,
   globalTimeout: isCI ? 600_000 : undefined,
-  reporter: isCI ? [["github"], ["html", { open: "never" }]] : [["list"]],
+  reporter: isCI ? [["github"], ["list"], ["html", { open: "never" }]] : [["list"]],
   use: {
     baseURL: "http://localhost:5174",
     viewport: { width: 1400, height: 900 },
