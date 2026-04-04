@@ -17,6 +17,8 @@ paths:
 - Test store slice state transitions for all actions
 - Test custom hooks with `renderHook`
 - Meaningful test variable names (no single chars)
+- Vitest uses the `projects` feature: `algorithms` project runs in `node` environment, `components` project runs in `jsdom`. This keeps total test time ~20 seconds and removes the need for manual timeout hooks in `test-setup.ts`
+- CI shards unit tests 8 ways; aggregation job is named **Unit Tests Status**
 
 ### Coverage Thresholds
 

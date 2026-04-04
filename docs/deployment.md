@@ -51,13 +51,13 @@ Two GitHub Actions workflows are in `.github/workflows/`:
 
 Triggers on all pull requests to `main`. Runs these jobs in parallel:
 
-| Job                          | What It Does                                                          |
-| ---------------------------- | --------------------------------------------------------------------- |
-| **Type Check & Lint**        | `npm run typecheck`, `npm run lint`, `npm run format:check`           |
-| **Unit Tests**               | `npm run test`                                                        |
-| **E2E Tests**                | `npm run e2e`                                                         |
-| **Storybook Build**          | `npm run storybook:build`                                             |
-| **Visual Tests (Chromatic)** | Runs after Storybook build; requires `CHROMATIC_PROJECT_TOKEN` secret |
+| Job                          | What It Does                                                                                          |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------- |
+| **Type Check & Lint**        | `npm run typecheck`, `npm run lint`, `npm run format:check`                                           |
+| **Unit Tests**               | `npm run test` — sharded 8 ways; results aggregated under the **Unit Tests Status** required check    |
+| **E2E Tests**                | `npm run e2e` — sharded 12 ways (15-min timeout per shard); aggregated under the **E2E Status** check |
+| **Storybook Build**          | `npm run storybook:build`                                                                             |
+| **Visual Tests (Chromatic)** | Runs after Storybook build; requires `CHROMATIC_PROJECT_TOKEN` secret                                 |
 
 All jobs use Node 22 with npm caching. Concurrency groups cancel in-progress runs for the same branch.
 

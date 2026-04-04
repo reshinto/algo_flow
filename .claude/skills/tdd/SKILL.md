@@ -42,9 +42,7 @@ Write tests in this order:
    - Place in `src/algorithms/<category>/<algo>/`, NOT `src/components/`
    - Story renders the full pipeline with sample input
 
-4. **E2E entry** (in `e2e/algoflow_e2e.mjs`)
-   - Add to `algorithms` array with all 14 checks
-   - Add to `inputTests` if algorithm has an input editor
+4. **E2E coverage** — per-category spec files in `e2e/specs/` auto-discover algorithms from the registry; no manual entry needed for basic smoke testing. Add a test in `e2e/specs/input-editors.spec.ts` only if the algorithm has a custom input editor.
 
 ### New Component
 

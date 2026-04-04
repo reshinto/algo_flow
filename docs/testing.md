@@ -20,7 +20,20 @@ npm run test:coverage   # Run with coverage report
 npm run test:watch      # Watch mode during development
 ```
 
-Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 58 algorithms in 14 categories.
+Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 284 algorithms in 14 categories.
+
+### Vitest Projects Configuration
+
+The Vitest config uses the `projects` feature to split the test suite into two isolated environments, reducing total runtime to ~20 seconds:
+
+| Project        | Environment | Covers                                                   |
+| -------------- | ----------- | -------------------------------------------------------- |
+| `algorithms`   | `node`      | Algorithm correctness, step generators, trackers, store  |
+| `components`   | `jsdom`     | React component tests requiring a DOM environment        |
+
+This avoids the overhead of loading `jsdom` for pure algorithm tests and removes the need for manual timeout configuration in `test-setup.ts`.
+
+CI shards unit tests 8 ways (aggregated under the **Unit Tests Status** job) and E2E tests 12 ways (aggregated under the **E2E Status** job).
 
 > [!TIP]
 > Run a subset of tests with `npx vitest --filter <pattern>` (e.g., `npx vitest --filter bubble-sort`).
@@ -127,7 +140,7 @@ e2e/
 └── helpers/                      # Shared Playwright helpers and selectors
 ```
 
-885 tests across 21 spec files. Per-category spec files use `test.describe.configure({ mode: "serial" })` to run tests in declaration order. Workers: 2 locally, 4 on CI.
+~950 tests across 21 spec files. Per-category spec files use `test.describe.configure({ mode: "serial" })` to run tests in declaration order. Workers: 2 locally, 4 on CI. In CI the suite is sharded 12 ways, aggregated under the **E2E Status** check.
 
 ### What the Suite Covers
 
@@ -149,6 +162,24 @@ e2e/
 ### Adding Algorithms to E2E
 
 New algorithms are auto-discovered from the registry — no manual update is needed for basic smoke testing (the per-category spec files pick them up automatically). If your algorithm has a custom input editor, add an entry in `e2e/specs/input-editors.spec.ts` covering the relevant input interactions. If the visualizer for a new algorithm category requires a new selector, update the shared helpers in `e2e/helpers/`.
+
+## Pre-commit Hook
+
+A pre-commit hook at `.githooks/pre-commit` runs automatically before every `git commit`. It:
+
+1. Runs **Prettier** (auto-fixes formatting)
+2. Runs **ESLint** with `--fix` (auto-fixes lint issues)
+3. Runs **TypeScript type-checking** (`tsc --noEmit`)
+4. Re-stages any files that were auto-fixed
+
+Activate it once after cloning:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+> [!NOTE]
+> Markdown files are excluded from Prettier via `.prettierignore`, so documentation edits will not be reformatted by the hook.
 
 ## Storybook & Visual Regression Testing
 
@@ -173,7 +204,7 @@ npm run chromatic       # Run Chromatic visual tests
 | **Input Editor**           | `src/components/input-editor/`           | ArrayInputEditor, InputEditor                                                                                                                                                                                                             |
 | **Explanation Panel**      | `src/components/explanation-panel/`      | ExplanationPanel                                                                                                                                                                                                                          |
 | **Playback**               | `src/components/playback/`               | PlaybackControls                                                                                                                                                                                                                          |
-| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/` | 58 algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                              |
+| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/` | 284 algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                             |
 
 Pipeline stories (`*.Pipeline.stories.tsx`) live alongside their algorithm implementation, not with the visualizer components. Component stories remain co-located with their components in `src/components/`.
 

@@ -69,7 +69,7 @@ Code review checklist:
 
 - Unit tests: correctness + step generation
 - Coverage: 80/75/80/80 thresholds
-- E2E: 14-check entry in `e2e/algoflow_e2e.mjs`
+- E2E: per-category spec files in `e2e/specs/` auto-discover from registry; add to `e2e/specs/input-editors.spec.ts` only if algorithm has a custom input editor
 - Security: no unsafe patterns, npm audit clean
 
 ### Step 7: Technical Writer Review

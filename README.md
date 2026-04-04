@@ -57,7 +57,7 @@ Welcome to the definitive map of AlgoFlow. We maintain 12 specialized guides map
 | Debug step-generation crashes      | 🐛 [Debugging](docs/debugging.md)                                 |
 | Work on UI layout or styling       | 💅 [Design System](docs/design-system.md)                         |
 | Write algorithm learning modules   | 📚 [Educational Content Guide](docs/educational-content-guide.md) |
-| Browse all 232 algorithms          | 🔍 [Algorithm Catalog](docs/algorithms-catalog.md)                |
+| Browse all 284 algorithms          | 🔍 [Algorithm Catalog](docs/algorithms-catalog.md)                |
 | Understand AI hooks & plugins      | 🤖 [Development System](docs/claude-system.md)                    |
 
 > [!TIP] > **First-time contributors:** Do not try to hack around aimlessly. Start strictly at the [New Developer Onboarding Guide](docs/onboarding.md). It dictates the hard boundary between the UI logic and the engine.

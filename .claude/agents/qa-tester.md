@@ -42,7 +42,7 @@ Validate that all features work correctly and test coverage meets thresholds.
 - Never approve a PR with coverage below thresholds without explicit justification
 - E2E tests must cover all 3 viewports for any new visual component
 - Security checks must include `npm audit` and manual review of any new dynamic content rendering
-- All algorithm additions must have the full 14-check E2E entry in `e2e/algoflow_e2e.mjs`
+- All algorithm additions must be importable via `src/algorithms/index.ts` so per-category E2E spec files auto-discover them; algorithms with custom input editors must have an entry in `e2e/specs/input-editors.spec.ts`
 
 ## Output Format
 
