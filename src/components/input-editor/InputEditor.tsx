@@ -7,7 +7,6 @@ import ArraysEditor from "./ArraysEditor";
 import DPEditor from "./DPEditor";
 import GenericIntrospectEditor from "./GenericIntrospectEditor";
 import HashMapsEditor from "./HashMapsEditor";
-import KmpSearchInputEditor from "./KmpSearchInputEditor";
 import MatrixInputEditor from "./MatrixInputEditor";
 import SearchingInputEditor from "./SearchingInputEditor";
 
@@ -108,12 +107,7 @@ export default function InputEditor() {
     }
 
     case CATEGORY.STRINGS:
-      return (
-        <KmpSearchInputEditor
-          input={input as { text: string; pattern: string }}
-          onChange={setInput}
-        />
-      );
+      return <GenericIntrospectEditor input={input} onChange={setInput} />;
 
     case CATEGORY.HASH_MAPS:
       return <HashMapsEditor input={input} onChange={setInput} />;

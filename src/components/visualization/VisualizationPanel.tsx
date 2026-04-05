@@ -13,6 +13,11 @@ import HeapVisualizer from "./HeapVisualizer";
 import StackQueueVisualizer from "./StackQueueVisualizer";
 import HashMapVisualizer from "./HashMapVisualizer";
 import StringVisualizer from "./StringVisualizer";
+import PalindromeVisualizer from "./PalindromeVisualizer";
+import FrequencyVisualizer from "./FrequencyVisualizer";
+import TransformVisualizer from "./TransformVisualizer";
+import TrieVisualizer from "./TrieVisualizer";
+import DistanceVisualizer from "./DistanceVisualizer";
 import MatrixVisualizer from "./MatrixVisualizer";
 import SetVisualizer from "./SetVisualizer";
 
@@ -38,6 +43,16 @@ function renderVisualizer(visualState: VisualState) {
       return <HashMapVisualizer visualState={visualState} />;
     case "string":
       return <StringVisualizer visualState={visualState} />;
+    case "string-palindrome":
+      return <PalindromeVisualizer visualState={visualState} />;
+    case "string-frequency":
+      return <FrequencyVisualizer visualState={visualState} />;
+    case "string-transform":
+      return <TransformVisualizer visualState={visualState} />;
+    case "string-trie":
+      return <TrieVisualizer visualState={visualState} />;
+    case "string-distance":
+      return <DistanceVisualizer visualState={visualState} />;
     case "matrix":
       return <MatrixVisualizer visualState={visualState} />;
     case "set":

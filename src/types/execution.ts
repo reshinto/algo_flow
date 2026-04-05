@@ -132,6 +132,22 @@ export type StepType =
   | "dequeue-rear"
   | "transfer"
   | "resolve"
+  | "expand-center"
+  | "check-palindrome"
+  | "update-frequency"
+  | "window-match"
+  | "read-char"
+  | "write-char"
+  | "swap-pointers"
+  | "insert-trie"
+  | "traverse-trie"
+  | "mark-end-word"
+  | "compute-distance"
+  | "trace-edit-path"
+  | "build-suffix"
+  | "hash-compute"
+  | "hash-match"
+  | "skip-char"
   | "complete";
 
 /** Maps a language to the source lines highlighted for this step. */
@@ -179,7 +195,12 @@ export type VisualState =
   | HashMapVisualState
   | StringVisualState
   | MatrixVisualState
-  | SetVisualState;
+  | SetVisualState
+  | PalindromeVisualState
+  | FrequencyVisualState
+  | TransformVisualState
+  | TrieVisualState
+  | DistanceVisualState;
 
 /* -------------------------------------------------------------------------- */
 /*                               Array Structure                              */
@@ -626,6 +647,165 @@ export interface StringVisualState {
   patternIndex: number;
   /** null = searching, true = found, false = not found */
   matchFound: boolean | null;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                           Palindrome Structure                              */
+/* -------------------------------------------------------------------------- */
+
+/** Visual state for palindrome checking algorithms with two-pointer or center expansion. */
+export interface PalindromeVisualState {
+  kind: "string-palindrome";
+  /** Characters of the string being analyzed */
+  chars: StringChar[];
+  /** Left pointer position */
+  leftPointer: number;
+  /** Right pointer position */
+  rightPointer: number;
+  /** Center index for expand-around-center approach, null if not applicable */
+  centerIndex: number | null;
+  /** Current expansion radius from center */
+  expandRadius: number;
+  /** null = checking, true = is palindrome, false = not palindrome */
+  isPalindrome: boolean | null;
+  /** Start index of the longest palindrome found so far */
+  longestStart: number;
+  /** Length of the longest palindrome found so far */
+  longestLength: number;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                        Character Frequency Structure                         */
+/* -------------------------------------------------------------------------- */
+
+export type FrequencyEntryState = "default" | "partial" | "satisfied" | "excess";
+
+/** A single entry in the character frequency map visualization. */
+export interface FrequencyEntry {
+  char: string;
+  count: number;
+  targetCount: number;
+  state: FrequencyEntryState;
+}
+
+/** Visual state for algorithms that compare character frequencies or use sliding windows. */
+export interface FrequencyVisualState {
+  kind: "string-frequency";
+  /** Primary string characters */
+  primaryChars: StringChar[];
+  /** Secondary string characters (empty array if single-string algorithm) */
+  secondaryChars: StringChar[];
+  /** Character frequency map entries */
+  frequencyMap: FrequencyEntry[];
+  /** Sliding window start index */
+  windowStart: number;
+  /** Sliding window end index */
+  windowEnd: number;
+  /** Number of matches found so far */
+  matchCount: number;
+  /** Indices where matches were found */
+  resultIndices: number[];
+}
+
+/* -------------------------------------------------------------------------- */
+/*                        String Transform Structure                           */
+/* -------------------------------------------------------------------------- */
+
+/** Visual state for string transformation algorithms (reverse, compress, convert). */
+export interface TransformVisualState {
+  kind: "string-transform";
+  /** Input string characters */
+  inputChars: StringChar[];
+  /** Output string characters built during transformation */
+  outputChars: StringChar[];
+  /** Read pointer position in the input */
+  readPointer: number;
+  /** Write pointer position in the output */
+  writePointer: number;
+  /** Current transformation phase label */
+  phase: string;
+  /** Auxiliary data for display (e.g., running count, Roman numeral value) */
+  auxiliaryData: string | null;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Trie Structure                                 */
+/* -------------------------------------------------------------------------- */
+
+export type TrieNodeState = "default" | "current" | "matched" | "path" | "inserted";
+export type TrieEdgeState = "default" | "highlighted" | "traversed";
+
+/** A node in the trie tree visualization. */
+export interface TrieNode {
+  id: number;
+  char: string;
+  isEnd: boolean;
+  state: TrieNodeState;
+}
+
+/** An edge in the trie tree visualization connecting parent to child. */
+export interface TrieEdge {
+  from: number;
+  to: number;
+  char: string;
+  state: TrieEdgeState;
+}
+
+/** Visual state for trie-based algorithms with tree structure and path highlighting. */
+export interface TrieVisualState {
+  kind: "string-trie";
+  /** All trie nodes */
+  nodes: TrieNode[];
+  /** All trie edges */
+  edges: TrieEdge[];
+  /** Node IDs forming the currently active path */
+  currentPath: number[];
+  /** Characters of the word being searched/inserted */
+  searchWord: StringChar[];
+  /** Node IDs that should be highlighted */
+  highlightedNodes: number[];
+  /** null = searching, true = found, false = not found */
+  matchResult: boolean | null;
+  /** Auto-complete suggestions collected so far */
+  suggestions: string[];
+}
+
+/* -------------------------------------------------------------------------- */
+/*                         Edit Distance Structure                             */
+/* -------------------------------------------------------------------------- */
+
+export type DistanceCellState = "default" | "computing" | "computed" | "path" | "current";
+
+/** A cell in the edit distance DP matrix. */
+export interface DistanceCell {
+  value: number;
+  state: DistanceCellState;
+}
+
+/** Describes a single edit operation in the optimal edit path. */
+export interface EditOperation {
+  type: "insert" | "delete" | "replace" | "match";
+  sourceIdx: number;
+  targetIdx: number;
+}
+
+/** Visual state for edit distance and string similarity algorithms using DP matrices. */
+export interface DistanceVisualState {
+  kind: "string-distance";
+  /** Source string characters */
+  sourceChars: StringChar[];
+  /** Target string characters */
+  targetChars: StringChar[];
+  /** DP matrix (rows = source+1, cols = target+1) */
+  matrix: DistanceCell[][];
+  /** Current row being computed */
+  currentRow: number;
+  /** Current column being computed */
+  currentCol: number;
+  /** Edit operations in the optimal path */
+  operations: EditOperation[];
+  /** Final distance/similarity result, null while computing */
+  result: number | null;
 }
 
 /* -------------------------------------------------------------------------- */
