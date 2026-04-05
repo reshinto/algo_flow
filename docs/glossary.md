@@ -115,24 +115,29 @@ Fields:
 A discriminated union that describes what the visualizer should render at a given step. The `kind` field determines which visualizer component handles the data and what other fields are present on the object.
 
 **Defined in:** `src/types/execution.ts`
-**Used by:** the central dispatch logic that routes to the correct Visualizer component, and all 12 Visualizer components themselves.
+**Used by:** the central dispatch logic that routes to the correct Visualizer component, and all 17 Visualizer components themselves.
 
-The 12 `kind` values are:
+The 17 `kind` values are:
 
-| `kind`        | Visualizer                   |
-| ------------- | ---------------------------- |
-| `array`       | ArrayVisualizer              |
-| `graph`       | GraphVisualizer              |
-| `grid`        | GridVisualizer (pathfinding) |
-| `dp-table`    | DpTableVisualizer            |
-| `tree`        | TreeVisualizer               |
-| `linked-list` | LinkedListVisualizer         |
-| `heap`        | HeapVisualizer               |
-| `stack-queue` | StackQueueVisualizer         |
-| `hash-map`    | HashMapVisualizer            |
-| `string`      | StringVisualizer             |
-| `matrix`      | MatrixVisualizer             |
-| `set`         | SetVisualizer                |
+| `kind`              | Visualizer            |
+| ------------------- | --------------------- |
+| `array`             | ArrayVisualizer       |
+| `graph`             | GraphVisualizer       |
+| `grid`              | GridVisualizer        |
+| `dp-table`          | DpTableVisualizer     |
+| `tree`              | TreeVisualizer        |
+| `linked-list`       | LinkedListVisualizer  |
+| `heap`              | HeapVisualizer        |
+| `stack-queue`       | StackQueueVisualizer  |
+| `hash-map`          | HashMapVisualizer     |
+| `string`            | StringVisualizer      |
+| `string-palindrome` | PalindromeVisualizer  |
+| `string-frequency`  | FrequencyVisualizer   |
+| `string-transform`  | TransformVisualizer   |
+| `string-trie`       | TrieVisualizer        |
+| `string-distance`   | DistanceVisualizer    |
+| `matrix`            | MatrixVisualizer      |
+| `set`               | SetVisualizer         |
 
 ---
 
@@ -434,7 +439,7 @@ Slices:
 
 ### Visualizer
 
-A generic React component that renders one kind of `VisualState`. There are 12 Visualizer components, one per `VisualState.kind`. A central dispatcher reads `kind` from the current step's `VisualState` and mounts the correct Visualizer. No Visualizer contains any algorithm-specific logic — they are purely driven by the data in `VisualState`, which means adding a new algorithm never requires touching any Visualizer.
+A generic React component that renders one kind of `VisualState`. There are 17 Visualizer components, one per `VisualState.kind`. A central dispatcher reads `kind` from the current step's `VisualState` and mounts the correct Visualizer. No Visualizer contains any algorithm-specific logic — they are purely driven by the data in `VisualState`, which means adding a new algorithm never requires touching any Visualizer.
 
 **Location:** `src/components/` (one file per visualizer)
 **Used by:** the visualization panel, dispatched from the central visualizer router.

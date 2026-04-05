@@ -2,7 +2,7 @@
 
 # Algorithm Catalog
 
-Complete listing of all 284 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
+Complete listing of all 367 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
 
 > **Prerequisites:** None — this is a reference document.
 
@@ -19,7 +19,7 @@ Complete listing of all 284 algorithms available in AlgoFlow, organized by categ
 - [Heaps (28)](#heaps-28-algorithms)
 - [Stacks & Queues (1)](#stacks--queues-1-algorithm)
 - [Hash Maps (28)](#hash-maps-28-algorithms)
-- [Strings (1)](#strings-1-algorithm)
+- [Strings (32)](#strings-32-algorithms)
 - [Matrices (20)](#matrices-20-algorithms)
 - [Sets (19)](#sets-19-algorithms)
 
@@ -437,13 +437,71 @@ Algorithms leveraging hash table lookups, frequency counting, grouping, tracking
 
 ---
 
-## Strings (1 algorithm)
+## Strings (32 algorithms)
 
-Algorithms for string matching and manipulation. Algorithms live under `src/algorithms/strings/<technique>/<algorithm>/`.
+Algorithms for string matching, manipulation, and comparison. Algorithms live under `src/algorithms/strings/<technique>/<algorithm>/`.
 
-| Technique        | Algorithm  | Visualizer                           | Source Directory                                      |
-| ---------------- | ---------- | ------------------------------------ | ----------------------------------------------------- |
-| Pattern Matching | KMP Search | Text row, pattern row, failure table | `src/algorithms/strings/pattern-matching/kmp-search/` |
+### Pattern Matching (6)
+
+| Technique        | Algorithm            | Visualizer                                       | Source Directory                                                |
+| ---------------- | -------------------- | ------------------------------------------------ | --------------------------------------------------------------- |
+| Pattern Matching | KMP Search           | Text row, pattern row, failure table             | `src/algorithms/strings/pattern-matching/kmp-search/`           |
+| Pattern Matching | Naive Pattern Search | Text row, pattern row, brute-force slide         | `src/algorithms/strings/pattern-matching/naive-pattern-search/` |
+| Pattern Matching | Rabin-Karp Search    | Text row, pattern row, rolling hash display      | `src/algorithms/strings/pattern-matching/rabin-karp-search/`    |
+| Pattern Matching | Boyer-Moore Search   | Text row, pattern row, bad character table        | `src/algorithms/strings/pattern-matching/boyer-moore-search/`   |
+| Pattern Matching | Z-Algorithm          | Text row, pattern row, Z-array visualization     | `src/algorithms/strings/pattern-matching/z-algorithm/`          |
+| Pattern Matching | Hamming Distance     | Text row, pattern row, position-by-position diff | `src/algorithms/strings/pattern-matching/hamming-distance/`     |
+
+### Palindrome (3)
+
+| Technique  | Algorithm                     | Visualizer                                  | Source Directory                                                        |
+| ---------- | ----------------------------- | ------------------------------------------- | ----------------------------------------------------------------------- |
+| Palindrome | Palindrome Check              | Char row with L/R pointers                  | `src/algorithms/strings/palindrome/palindrome-check/`                   |
+| Palindrome | Valid Palindrome               | Char row with skip markers and L/R pointers | `src/algorithms/strings/palindrome/valid-palindrome/`                   |
+| Palindrome | Longest Palindromic Substring | Char row with center expansion arcs         | `src/algorithms/strings/palindrome/longest-palindromic-substring/`      |
+
+### Character Frequency (3)
+
+| Technique           | Algorithm                    | Visualizer                                  | Source Directory                                                                    |
+| ------------------- | ---------------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Character Frequency | First Non-Repeating Character | String row with frequency histogram         | `src/algorithms/strings/character-frequency/first-non-repeating-character/`          |
+| Character Frequency | Minimum Window Substring      | String rows with sliding window bracket     | `src/algorithms/strings/character-frequency/minimum-window-substring/`               |
+| Character Frequency | Character Frequency Sort      | String row with frequency-sorted output     | `src/algorithms/strings/character-frequency/character-frequency-sort/`               |
+
+### Transformation (7)
+
+| Technique      | Algorithm            | Visualizer                                   | Source Directory                                                       |
+| -------------- | -------------------- | -------------------------------------------- | ---------------------------------------------------------------------- |
+| Transformation | Reverse String       | Input/output rows with swap pointers         | `src/algorithms/strings/transformation/reverse-string/`                |
+| Transformation | Reverse Words        | Input/output rows with word-level reversal   | `src/algorithms/strings/transformation/reverse-words/`                 |
+| Transformation | String Compression   | Input row with run-length output building    | `src/algorithms/strings/transformation/string-compression/`            |
+| Transformation | Run-Length Decoding   | Input row with expanded output building      | `src/algorithms/strings/transformation/run-length-decoding/`           |
+| Transformation | String to Integer    | Input row with phase-based parsing display   | `src/algorithms/strings/transformation/string-to-integer/`             |
+| Transformation | String Rotation Check | Input/output with concatenation visualization | `src/algorithms/strings/transformation/string-rotation-check/`         |
+| Transformation | Longest Common Prefix | Input display with vertical column scanning  | `src/algorithms/strings/transformation/longest-common-prefix/`         |
+
+### Trie Operations (5)
+
+| Technique       | Algorithm            | Visualizer                                  | Source Directory                                                    |
+| --------------- | -------------------- | ------------------------------------------- | ------------------------------------------------------------------- |
+| Trie Operations | Trie Insert & Search | SVG trie tree with path highlighting        | `src/algorithms/strings/trie-operations/trie-insert-search/`        |
+| Trie Operations | Trie Prefix Count    | SVG trie tree with count annotations        | `src/algorithms/strings/trie-operations/trie-prefix-count/`         |
+| Trie Operations | Longest Word in Trie | SVG trie tree with DFS path marking         | `src/algorithms/strings/trie-operations/longest-word-in-trie/`      |
+| Trie Operations | Auto-Complete Trie   | SVG trie tree with suggestion collection    | `src/algorithms/strings/trie-operations/auto-complete-trie/`        |
+| Trie Operations | Aho-Corasick Search  | SVG trie tree with failure links and matches | `src/algorithms/strings/trie-operations/aho-corasick-search/`       |
+
+### Edit Distance (8)
+
+| Technique     | Algorithm                    | Visualizer                                | Source Directory                                                             |
+| ------------- | ---------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------- |
+| Edit Distance | Levenshtein Distance         | DP matrix with source/target headers      | `src/algorithms/strings/edit-distance/levenshtein-distance/`                 |
+| Edit Distance | Jaro-Winkler Similarity      | DP matrix with match window visualization | `src/algorithms/strings/edit-distance/jaro-winkler-similarity/`              |
+| Edit Distance | Longest Common Subsequence   | DP matrix with diagonal path tracing      | `src/algorithms/strings/edit-distance/longest-common-subsequence/`           |
+| Edit Distance | Longest Common Substring     | DP matrix with contiguous diagonal path   | `src/algorithms/strings/edit-distance/longest-common-substring/`             |
+| Edit Distance | Longest Repeated Substring   | DP matrix (self-comparison)               | `src/algorithms/strings/edit-distance/longest-repeated-substring/`           |
+| Edit Distance | Suffix Array Construction    | DP matrix with suffix comparison display  | `src/algorithms/strings/edit-distance/suffix-array-construction/`            |
+| Edit Distance | Wildcard Matching            | DP matrix with ?/* pattern matching       | `src/algorithms/strings/edit-distance/wildcard-matching/`                    |
+| Edit Distance | Regular Expression Matching  | DP matrix with ./* regex matching         | `src/algorithms/strings/edit-distance/regex-matching/`                       |
 
 ---
 

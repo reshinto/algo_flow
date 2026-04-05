@@ -542,4 +542,209 @@ export const inputTests: InputTest[] = [
       await page.keyboard.press("Tab");
     },
   },
+  {
+    algo: "Naive Pattern Search",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "AABAACAADAABAABA");
+      await fillNthTextInput(page, 1, "AABA");
+    },
+  },
+  {
+    algo: "Rabin-Karp Search",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "GEEKS FOR GEEKS");
+      await fillNthTextInput(page, 1, "GEEK");
+    },
+  },
+  {
+    algo: "Boyer-Moore Search",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "ABAAABCD");
+      await fillNthTextInput(page, 1, "ABC");
+    },
+  },
+  {
+    algo: "Z-Algorithm",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "AABXAABXCAABXAABXAY");
+      await fillNthTextInput(page, 1, "AABXAAB");
+    },
+  },
+  {
+    algo: "Hamming Distance",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "karolin");
+      await fillNthTextInput(page, 1, "kathrin");
+    },
+  },
+  {
+    algo: "Palindrome Check",
+    test: (page) => fillTextInput(page, "racecar"),
+  },
+  {
+    algo: "Valid Palindrome",
+    test: (page) => fillTextInput(page, "A man, a plan, a canal: Panama"),
+  },
+  {
+    algo: "Longest Palindromic Substring",
+    test: (page) => fillTextInput(page, "babad"),
+  },
+  {
+    algo: "Valid Anagram",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "anagram");
+      await fillNthTextInput(page, 1, "nagaram");
+    },
+  },
+  {
+    algo: "Group Anagrams",
+    test: (page) => fillTextInput(page, "eat,tea,tan,ate,nat,bat"),
+  },
+  {
+    algo: "Find All Anagrams",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "cbaebabacd");
+      await fillNthTextInput(page, 1, "abc");
+    },
+  },
+  {
+    algo: "First Non-Repeating Character",
+    test: (page) => fillTextInput(page, "leetcode"),
+  },
+  {
+    algo: "Longest Substring Without Repeating",
+    test: (page) => fillTextInput(page, "abcabcbb"),
+  },
+  {
+    algo: "Minimum Window Substring",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "ADOBECODEBANC");
+      await fillNthTextInput(page, 1, "ABC");
+    },
+  },
+  {
+    algo: "Character Frequency Sort",
+    test: (page) => fillTextInput(page, "tree"),
+  },
+  {
+    algo: "Reverse String",
+    test: (page) => fillTextInput(page, "hello"),
+  },
+  {
+    algo: "Reverse Words in a String",
+    test: (page) => fillTextInput(page, "the sky is blue"),
+  },
+  {
+    algo: "String Compression",
+    test: (page) => fillTextInput(page, "aabcccccaaa"),
+  },
+  {
+    algo: "Run-Length Decoding",
+    test: (page) => fillTextInput(page, "3a2b4c"),
+  },
+  {
+    algo: "String to Integer (atoi)",
+    test: (page) => fillTextInput(page, "   -42"),
+  },
+  {
+    algo: "Roman to Integer",
+    test: (page) => fillTextInput(page, "MCMXCIV"),
+  },
+  {
+    algo: "Integer to Roman",
+    test: (page) => fillNumberInput(page, 1994),
+  },
+  {
+    algo: "String Rotation Check",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "waterbottle");
+      await fillNthTextInput(page, 1, "erbottlewat");
+    },
+  },
+  {
+    algo: "Longest Common Prefix",
+    test: (page) => fillTextInput(page, "flower,flow,flight"),
+  },
+  {
+    algo: "Trie Insert & Search",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "apple,app,application,apply,apt");
+      await fillNthTextInput(page, 1, "app");
+    },
+  },
+  {
+    algo: "Trie Prefix Count",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "apple,app,application,apply,apt");
+      await fillNthTextInput(page, 1, "ap");
+    },
+  },
+  {
+    algo: "Longest Word in Trie",
+    test: (page) => fillTextInput(page, "apple,app,application,apply,apt"),
+  },
+  {
+    algo: "Auto-Complete with Trie",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "apple,app,application,apply,apt");
+      await fillNthTextInput(page, 1, "ap");
+    },
+  },
+  {
+    algo: "Aho-Corasick Search",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "ahishers");
+      await fillNthTextInput(page, 1, "he,she,his,hers");
+    },
+  },
+  {
+    algo: "Levenshtein Distance",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "kitten");
+      await fillNthTextInput(page, 1, "sitting");
+    },
+  },
+  {
+    algo: "Jaro-Winkler Similarity",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "martha");
+      await fillNthTextInput(page, 1, "marhta");
+    },
+  },
+  {
+    algo: "Longest Common Subsequence",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "ABCBDAB");
+      await fillNthTextInput(page, 1, "BDCAB");
+    },
+  },
+  {
+    algo: "Longest Common Substring",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "ABABC");
+      await fillNthTextInput(page, 1, "BABCBA");
+    },
+  },
+  {
+    algo: "Longest Repeated Substring",
+    test: (page) => fillTextInput(page, "banana"),
+  },
+  {
+    algo: "Suffix Array Construction",
+    test: (page) => fillTextInput(page, "banana"),
+  },
+  {
+    algo: "Wildcard Matching",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "adceb");
+      await fillNthTextInput(page, 1, "*a*b");
+    },
+  },
+  {
+    algo: "Regular Expression Matching",
+    test: async (page) => {
+      await fillNthTextInput(page, 0, "aab");
+      await fillNthTextInput(page, 1, "c*a*b");
+    },
+  },
 ];

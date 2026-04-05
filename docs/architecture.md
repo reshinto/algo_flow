@@ -50,6 +50,11 @@ flowchart LR
     E -- "grid" --> H["GridVisualizer"]
     E -- "dp-table" --> I["DPTableVisualizer"]
     E -- "tree / linked-list<br/>heap / stack-queue<br/>hash-map / string<br/>matrix / set" --> J["Other Visualizers"]
+    E -- "string-palindrome" --> K["PalindromeVisualizer"]
+    E -- "string-frequency" --> L["FrequencyVisualizer"]
+    E -- "string-transform" --> M["TransformVisualizer"]
+    E -- "string-trie" --> N["TrieVisualizer"]
+    E -- "string-distance" --> O["DistanceVisualizer"]
 ```
 
 ## Core Pattern
