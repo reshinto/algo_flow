@@ -364,6 +364,47 @@ export const inputTests: InputTest[] = [
     test: (page) => fillTextInput(page, "({[]})"),
   },
   {
+    algo: "Min Remove to Make Valid",
+    test: (page) => fillTextInput(page, "a(b(c)d"),
+  },
+  {
+    algo: "Longest Valid Parentheses",
+    test: (page) => fillTextInput(page, "(()())"),
+  },
+  {
+    algo: "Simplify Path",
+    test: (page) => fillTextInput(page, "/a/./b/../../c/"),
+  },
+  {
+    algo: "Remove All Adjacent Duplicates",
+    test: (page) => fillTextInput(page, "abbaca"),
+  },
+  {
+    algo: "Decode String",
+    test: (page) => fillTextInput(page, "3[a2[c]]"),
+  },
+  {
+    algo: "Remove K Digits",
+    test: async (page) => {
+      await fillTextInput(page, "1432219");
+      await fillNumberInput(page, 3);
+    },
+  },
+  {
+    algo: "Sliding Window Maximum",
+    test: async (page) => {
+      await fillTextInput(page, "1, 3, -1, -3, 5, 3, 6, 7");
+      await fillNumberInput(page, 3);
+    },
+  },
+  {
+    algo: "Moving Average from Stream",
+    test: async (page) => {
+      await fillTextInput(page, "1, 10, 3, 5");
+      await fillNumberInput(page, 3);
+    },
+  },
+  {
     algo: "Build Min Heap",
     test: (page) => fillTextInput(page, "8, 3, 7, 1, 5"),
   },

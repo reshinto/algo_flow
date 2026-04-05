@@ -10,7 +10,6 @@ import HashMapsEditor from "./HashMapsEditor";
 import KmpSearchInputEditor from "./KmpSearchInputEditor";
 import MatrixInputEditor from "./MatrixInputEditor";
 import SearchingInputEditor from "./SearchingInputEditor";
-import StringInputEditor from "./StringInputEditor";
 
 export default function InputEditor() {
   const definition = useAppStore((state) => state.definition);
@@ -64,13 +63,7 @@ export default function InputEditor() {
       return null;
 
     case CATEGORY.STACKS_QUEUES:
-      return (
-        <StringInputEditor
-          value={(input as { inputString: string }).inputString}
-          onChange={(inputString: string) => setInput({ inputString })}
-          label="Brackets string"
-        />
-      );
+      return <GenericIntrospectEditor input={input} onChange={setInput} />;
 
     case CATEGORY.HEAPS:
       return <GenericIntrospectEditor input={input} onChange={setInput} />;

@@ -6,23 +6,17 @@ const { allAlgorithms, algorithmCategories } = discoverAlgorithms();
 const categoryAlgos = allAlgorithms.filter((_, idx) => algorithmCategories[idx] === "searching");
 
 for (const algo of categoryAlgos) {
-  test.describe(`Searching: ${algo}`, () => {
-    test(`selects "${algo}" and generates steps`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']");
-      await selectAlgorithm(page, algo);
-      const stepInfo = await getStepIndex(page);
-      expect(stepInfo).not.toBeNull();
-      expect(stepInfo!.total).toBeGreaterThan(0);
-    });
+  test(`Searching: ${algo} — selects, generates steps, renders`, async ({ page }) => {
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await page.waitForSelector("button[aria-label='Search algorithms']");
+    await selectAlgorithm(page, algo);
 
-    test(`${algo}: visualization renders`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']");
-      await selectAlgorithm(page, algo);
-      const values = await getDisplayedArrayValues(page);
-      expect(values).not.toBeNull();
-      expect(values!.length).toBeGreaterThan(0);
-    });
+    const stepInfo = await getStepIndex(page);
+    expect(stepInfo).not.toBeNull();
+    expect(stepInfo!.total).toBeGreaterThan(0);
+
+    const values = await getDisplayedArrayValues(page);
+    expect(values).not.toBeNull();
+    expect(values!.length).toBeGreaterThan(0);
   });
 }

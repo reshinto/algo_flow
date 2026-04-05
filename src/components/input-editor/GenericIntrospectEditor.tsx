@@ -32,7 +32,10 @@ export default function GenericIntrospectEditor({
     (key) =>
       Array.isArray(inputRecord[key]) &&
       (inputRecord[key] as unknown[]).length > 0 &&
-      Array.isArray((inputRecord[key] as unknown[])[0]),
+      Array.isArray((inputRecord[key] as unknown[])[0]) &&
+      (inputRecord[key] as unknown[][]).every(
+        (row) => Array.isArray(row) && row.every((cell) => typeof cell === "number"),
+      ),
   );
   const scalarFields = keys.filter((key) => typeof inputRecord[key] === "number");
   const stringFields = keys.filter(

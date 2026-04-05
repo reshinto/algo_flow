@@ -261,7 +261,34 @@ declare module "*.ts?fn" {
   export const pqDequeue: (...args: any[]) => any;
   export const pqChangePriority: (...args: any[]) => any;
   // Stacks & Queues
+  export const slidingWindowMaxMonotonic: (...args: any[]) => any;
+  export const basicCalculator: (...args: any[]) => any;
+  export const evaluateReversePolish: (...args: any[]) => any;
+  export const maxFrequencyStack: (...args: any[]) => any;
+  export const decodeString: (...args: any[]) => any;
+  export const asteroidCollision: (...args: any[]) => any;
+  export const minStack: (...args: any[]) => any;
+  export const onlineStockSpan: (...args: any[]) => any;
+  export const backspaceStringCompare: (...args: any[]) => any;
+  export const infixToPostfix: (...args: any[]) => any;
   export const validParentheses: (...args: any[]) => any;
+  export const minRemoveToMakeValid: (...args: any[]) => any;
+  export const longestValidParentheses: (...args: any[]) => any;
+  export const removeAllAdjacentDuplicates: (...args: any[]) => any;
+  export const simplifyPath: (...args: any[]) => any;
+  export const removeKDigits: (...args: any[]) => any;
+  export const sumOfSubarrayMinimums: (...args: any[]) => any;
+  export const implementQueueUsingStacks: (...args: any[]) => any;
+  export const implementStackUsingQueues: (...args: any[]) => any;
+  export const numberOfRecentCalls: (...args: any[]) => any;
+  export const designCircularQueue: (...args: any[]) => any;
+  export const designCircularDeque: (...args: any[]) => any;
+  export const movingAverageFromStream: (...args: any[]) => any;
+  export const taskSchedulerQueue: (...args: any[]) => any;
+  export const generateBinaryNumbers: (...args: any[]) => any;
+  export const interleaveFirstHalfQueue: (...args: any[]) => any;
+  export const firstNonRepeatingCharStream: (...args: any[]) => any;
+  export const flattenNestedListIterator: (...args: any[]) => any;
   // Hash Maps
   export const twoSum: (...args: any[]) => any;
   export const romanToInteger: (...args: any[]) => any;
