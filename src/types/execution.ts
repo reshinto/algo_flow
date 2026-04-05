@@ -124,6 +124,14 @@ export type StepType =
   | "union-sets"
   | "find-root"
   | "select-set"
+  | "peek"
+  | "evaluate"
+  | "output"
+  | "maintain-monotonic"
+  | "enqueue-front"
+  | "dequeue-rear"
+  | "transfer"
+  | "resolve"
   | "complete";
 
 /** Maps a language to the source lines highlighted for this step. */
@@ -464,6 +472,36 @@ export interface InputChar {
   state: InputCharState;
 }
 
+export type NumericInputState = "default" | "current" | "processed" | "result-pending" | "resolved";
+
+export interface NumericInputElement {
+  value: number;
+  index: number;
+  state: NumericInputState;
+}
+
+export type OutputElementState = "default" | "new" | "computed";
+
+export interface OutputElement {
+  value: string;
+  state: OutputElementState;
+}
+
+export type ResultElementState = "default" | "pending" | "resolved";
+
+export interface ResultElement {
+  value: number | null;
+  index: number;
+  state: ResultElementState;
+}
+
+export interface CircularBufferState {
+  elements: (string | number | null)[];
+  frontIndex: number;
+  rearIndex: number;
+  capacity: number;
+}
+
 export interface StackQueueVisualState {
   kind: "stack-queue";
   /** Current stack contents, bottom to top */
@@ -474,6 +512,22 @@ export interface StackQueueVisualState {
   inputIndex: number;
   /** Human-readable status shown below the visualizer */
   statusMessage: string | null;
+  /** Numeric input array for number-based problems */
+  inputArray?: NumericInputElement[];
+  /** Queue contents (front to back) for queue-based problems */
+  queueElements?: StackElement[];
+  /** Secondary/auxiliary stack (e.g., min-stack's min tracker) */
+  auxiliaryStack?: StackElement[];
+  /** Output/result tokens for expression evaluation */
+  outputElements?: OutputElement[];
+  /** Result array for problems producing numeric output */
+  resultArray?: ResultElement[];
+  /** Monotonic ordering indicator */
+  monotonicOrder?: "increasing" | "decreasing" | null;
+  /** Circular buffer state for circular queue/deque */
+  circularBuffer?: CircularBufferState;
+  /** Phase label for multi-phase algorithms */
+  phase?: string;
 }
 
 /* -------------------------------------------------------------------------- */

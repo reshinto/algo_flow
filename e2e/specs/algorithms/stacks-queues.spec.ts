@@ -8,25 +8,21 @@ const categoryAlgos = allAlgorithms.filter(
 );
 
 for (const algo of categoryAlgos) {
-  test.describe(`Stacks & Queues: ${algo}`, () => {
-    test(`selects "${algo}" and generates steps`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']");
-      await selectAlgorithm(page, algo);
-      const stepInfo = await getStepIndex(page);
-      expect(stepInfo).not.toBeNull();
-      expect(stepInfo!.total).toBeGreaterThan(0);
-    });
+  test(`Stacks & Queues: ${algo} — selects, generates steps, renders`, async ({ page }) => {
+    await page.goto("/", { waitUntil: "domcontentloaded" });
+    await page.waitForSelector("button[aria-label='Search algorithms']");
+    await selectAlgorithm(page, algo);
 
-    test(`${algo}: visualization renders`, async ({ page }) => {
-      await page.goto("/", { waitUntil: "domcontentloaded" });
-      await page.waitForSelector("button[aria-label='Search algorithms']");
-      await selectAlgorithm(page, algo);
-      const stepCounter = page
-        .locator("span")
-        .filter({ hasText: /^\d+ \/ \d+$/ })
-        .first();
-      await expect(stepCounter).toBeVisible();
-    });
+    // Verify step generation
+    const stepInfo = await getStepIndex(page);
+    expect(stepInfo).not.toBeNull();
+    expect(stepInfo!.total).toBeGreaterThan(0);
+
+    // Verify visualization renders
+    const stepCounter = page
+      .locator("span")
+      .filter({ hasText: /^\d+ \/ \d+$/ })
+      .first();
+    await expect(stepCounter).toBeVisible();
   });
 }

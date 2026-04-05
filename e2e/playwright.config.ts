@@ -12,7 +12,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: isCI,
   retries: isCI ? 1 : 0,
-  workers: isCI ? 1 : undefined,
+  workers: isCI ? 1 : "75%",
   globalTimeout: isCI ? 600_000 : undefined,
   reporter: isCI ? [["github"], ["list"], ["html", { open: "never" }]] : [["list"]],
   use: {
