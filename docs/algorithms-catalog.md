@@ -2,7 +2,7 @@
 
 # Algorithm Catalog
 
-Complete listing of all 367 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
+Complete listing of all 453 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
 
 > **Prerequisites:** None — this is a reference document.
 
@@ -14,7 +14,7 @@ Complete listing of all 367 algorithms available in AlgoFlow, organized by categ
 - [Pathfinding (27)](#pathfinding-27-algorithms)
 - [Dynamic Programming (32)](#dynamic-programming-32-algorithms)
 - [Arrays (44)](#arrays-44-algorithms)
-- [Trees (1)](#trees-1-algorithm)
+- [Trees (87)](#trees-87-algorithms)
 - [Linked Lists (1)](#linked-lists-1-algorithm)
 - [Heaps (28)](#heaps-28-algorithms)
 - [Stacks & Queues (1)](#stacks--queues-1-algorithm)
@@ -333,13 +333,126 @@ The largest category, covering a wide range of array manipulation techniques. Al
 
 ---
 
-## Trees (1 algorithm)
+## Trees (87 algorithms)
 
 Algorithms that traverse or manipulate tree data structures. Algorithms live under `src/algorithms/trees/<technique>/<algorithm>/`.
 
-| Technique | Algorithm              | Visualizer                           | Source Directory                              |
-| --------- | ---------------------- | ------------------------------------ | --------------------------------------------- |
-| Traversal | BST In-Order Traversal | SVG binary tree with traversal order | `src/algorithms/trees/traversal/bst-inorder/` |
+### Traversal (13)
+
+| Technique | Algorithm                          | Visualizer                           | Source Directory                                                          |
+| --------- | ---------------------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
+| Traversal | BST In-Order Traversal             | SVG binary tree with traversal order | `src/algorithms/trees/traversal/bst-inorder/`                             |
+| Traversal | BST In-Order (Iterative)           | SVG binary tree with traversal order | `src/algorithms/trees/traversal/bst-inorder-iterative/`                   |
+| Traversal | BST Pre-Order Traversal            | SVG binary tree with traversal order | `src/algorithms/trees/traversal/bst-preorder/`                            |
+| Traversal | BST Pre-Order (Iterative)          | SVG binary tree with traversal order | `src/algorithms/trees/traversal/bst-preorder-iterative/`                  |
+| Traversal | BST Post-Order Traversal           | SVG binary tree with traversal order | `src/algorithms/trees/traversal/bst-postorder/`                           |
+| Traversal | BST Post-Order (Iterative)         | SVG binary tree with traversal order | `src/algorithms/trees/traversal/bst-postorder-iterative/`                 |
+| Traversal | Level-Order Traversal              | SVG binary tree with level highlights | `src/algorithms/trees/traversal/level-order-traversal/`                  |
+| Traversal | Reverse Level-Order                | SVG binary tree with level highlights | `src/algorithms/trees/traversal/reverse-level-order/`                    |
+| Traversal | Zigzag Level-Order                 | SVG binary tree with alternating direction | `src/algorithms/trees/traversal/zigzag-level-order/`                 |
+| Traversal | Vertical Order Traversal           | SVG binary tree with column grouping | `src/algorithms/trees/traversal/vertical-order-traversal/`                |
+| Traversal | Boundary Traversal                 | SVG binary tree with boundary path   | `src/algorithms/trees/traversal/boundary-traversal/`                     |
+| Traversal | Diagonal Traversal                 | SVG binary tree with diagonal groups | `src/algorithms/trees/traversal/diagonal-traversal/`                     |
+| Traversal | Morris In-Order Traversal          | SVG binary tree with thread links    | `src/algorithms/trees/traversal/morris-inorder-traversal/`                |
+
+### BST Operations (21)
+
+| Technique      | Algorithm                              | Visualizer                                | Source Directory                                                                          |
+| -------------- | -------------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------------------- |
+| BST Operations | BST Search                             | SVG binary tree with search path          | `src/algorithms/trees/bst-operations/bst-search/`                                        |
+| BST Operations | BST Search (Iterative)                 | SVG binary tree with search path          | `src/algorithms/trees/bst-operations/bst-search-iterative/`                              |
+| BST Operations | BST Insert                             | SVG binary tree with insertion point      | `src/algorithms/trees/bst-operations/bst-insert/`                                        |
+| BST Operations | BST Insert (Iterative)                 | SVG binary tree with insertion point      | `src/algorithms/trees/bst-operations/bst-insert-iterative/`                              |
+| BST Operations | BST Delete                             | SVG binary tree with deletion steps       | `src/algorithms/trees/bst-operations/bst-delete/`                                        |
+| BST Operations | BST Delete (Iterative)                 | SVG binary tree with deletion steps       | `src/algorithms/trees/bst-operations/bst-delete-iterative/`                              |
+| BST Operations | BST Validation                         | SVG binary tree with range bounds         | `src/algorithms/trees/bst-operations/bst-validation/`                                    |
+| BST Operations | BST Validation (Iterative)             | SVG binary tree with range bounds         | `src/algorithms/trees/bst-operations/bst-validation-iterative/`                          |
+| BST Operations | BST Kth Smallest                       | SVG binary tree with in-order count       | `src/algorithms/trees/bst-operations/bst-kth-smallest/`                                  |
+| BST Operations | BST Kth Smallest (Iterative)           | SVG binary tree with in-order count       | `src/algorithms/trees/bst-operations/bst-kth-smallest-iterative/`                        |
+| BST Operations | BST Lowest Common Ancestor             | SVG binary tree with ancestor path        | `src/algorithms/trees/bst-operations/bst-lowest-common-ancestor/`                        |
+| BST Operations | BST Lowest Common Ancestor (Iterative) | SVG binary tree with ancestor path        | `src/algorithms/trees/bst-operations/bst-lowest-common-ancestor-iterative/`              |
+| BST Operations | BST from Sorted Array                  | SVG binary tree with construction steps   | `src/algorithms/trees/bst-operations/bst-from-sorted-array/`                             |
+| BST Operations | BST Iterator                           | SVG binary tree with stack state          | `src/algorithms/trees/bst-operations/bst-iterator/`                                      |
+| BST Operations | BST Floor and Ceil                     | SVG binary tree with range search         | `src/algorithms/trees/bst-operations/bst-floor-ceil/`                                    |
+| BST Operations | BST Floor and Ceil (Iterative)         | SVG binary tree with range search         | `src/algorithms/trees/bst-operations/bst-floor-ceil-iterative/`                          |
+| BST Operations | BST Range Sum                          | SVG binary tree with range highlights     | `src/algorithms/trees/bst-operations/bst-range-sum/`                                     |
+| BST Operations | BST Range Sum (Iterative)              | SVG binary tree with range highlights     | `src/algorithms/trees/bst-operations/bst-range-sum-iterative/`                           |
+| BST Operations | BST to Greater Tree                    | SVG binary tree with reverse in-order sum | `src/algorithms/trees/bst-operations/bst-to-greater-tree/`                               |
+| BST Operations | BST to Greater Tree (Iterative)        | SVG binary tree with reverse in-order sum | `src/algorithms/trees/bst-operations/bst-to-greater-tree-iterative/`                     |
+| BST Operations | BST Recover Swapped                    | SVG binary tree with swapped node markers | `src/algorithms/trees/bst-operations/bst-recover-swapped/`                               |
+
+### Properties (21)
+
+| Technique  | Algorithm                              | Visualizer                                   | Source Directory                                                                    |
+| ---------- | -------------------------------------- | -------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Properties | Maximum Depth                          | SVG binary tree with depth annotation        | `src/algorithms/trees/properties/maximum-depth/`                                   |
+| Properties | Maximum Depth (Iterative)              | SVG binary tree with depth annotation        | `src/algorithms/trees/properties/maximum-depth-iterative/`                         |
+| Properties | Minimum Depth                          | SVG binary tree with depth annotation        | `src/algorithms/trees/properties/minimum-depth/`                                   |
+| Properties | Minimum Depth (Iterative)              | SVG binary tree with depth annotation        | `src/algorithms/trees/properties/minimum-depth-iterative/`                         |
+| Properties | Diameter of Binary Tree                | SVG binary tree with longest path highlight  | `src/algorithms/trees/properties/diameter-of-binary-tree/`                         |
+| Properties | Is Balanced Tree                       | SVG binary tree with height balance check    | `src/algorithms/trees/properties/is-balanced-tree/`                                |
+| Properties | Is Balanced Tree (Iterative)           | SVG binary tree with height balance check    | `src/algorithms/trees/properties/is-balanced-tree-iterative/`                      |
+| Properties | Is Symmetric Tree                      | SVG binary tree with mirror comparison       | `src/algorithms/trees/properties/is-symmetric-tree/`                               |
+| Properties | Is Symmetric Tree (Iterative)          | SVG binary tree with mirror comparison       | `src/algorithms/trees/properties/is-symmetric-tree-iterative/`                     |
+| Properties | Count Complete Tree Nodes              | SVG binary tree with node count              | `src/algorithms/trees/properties/count-complete-tree-nodes/`                       |
+| Properties | Path Sum                               | SVG binary tree with root-to-leaf path       | `src/algorithms/trees/properties/path-sum/`                                        |
+| Properties | Path Sum (Iterative)                   | SVG binary tree with root-to-leaf path       | `src/algorithms/trees/properties/path-sum-iterative/`                              |
+| Properties | Maximum Path Sum                       | SVG binary tree with max path highlight      | `src/algorithms/trees/properties/maximum-path-sum/`                                |
+| Properties | Sum of Left Leaves                     | SVG binary tree with left leaf highlights    | `src/algorithms/trees/properties/sum-of-left-leaves/`                              |
+| Properties | Sum of Left Leaves (Iterative)         | SVG binary tree with left leaf highlights    | `src/algorithms/trees/properties/sum-of-left-leaves-iterative/`                    |
+| Properties | All Root-to-Leaf Paths                 | SVG binary tree with path enumeration        | `src/algorithms/trees/properties/all-root-to-leaf-paths/`                          |
+| Properties | All Root-to-Leaf Paths (Iterative)     | SVG binary tree with path enumeration        | `src/algorithms/trees/properties/all-root-to-leaf-paths-iterative/`                |
+| Properties | Binary Tree Tilt                       | SVG binary tree with tilt value annotation   | `src/algorithms/trees/properties/binary-tree-tilt/`                                |
+| Properties | Cousins in Binary Tree                 | SVG binary tree with level and parent check  | `src/algorithms/trees/properties/cousins-in-binary-tree/`                          |
+| Properties | Sum Root-to-Leaf Numbers               | SVG binary tree with path number accumulation | `src/algorithms/trees/properties/sum-root-to-leaf-numbers/`                       |
+| Properties | Sum Root-to-Leaf Numbers (Iterative)   | SVG binary tree with path number accumulation | `src/algorithms/trees/properties/sum-root-to-leaf-numbers-iterative/`             |
+
+### Construction (6)
+
+| Technique    | Algorithm                               | Visualizer                                    | Source Directory                                                                             |
+| ------------ | --------------------------------------- | --------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Construction | Build from Pre-Order + In-Order         | SVG binary tree with construction steps       | `src/algorithms/trees/construction/build-from-preorder-inorder/`                            |
+| Construction | Build from Pre-Order + In-Order (Iter.) | SVG binary tree with construction steps       | `src/algorithms/trees/construction/build-from-preorder-inorder-iterative/`                  |
+| Construction | Build from Post-Order + In-Order        | SVG binary tree with construction steps       | `src/algorithms/trees/construction/build-from-postorder-inorder/`                           |
+| Construction | Build from Post-Order + In-Order (Iter.)| SVG binary tree with construction steps       | `src/algorithms/trees/construction/build-from-postorder-inorder-iterative/`                 |
+| Construction | Serialize / Deserialize Tree            | SVG binary tree with serialization buffer     | `src/algorithms/trees/construction/serialize-deserialize-tree/`                             |
+| Construction | Build from Level-Order                  | SVG binary tree with level-by-level insertion | `src/algorithms/trees/construction/build-from-level-order/`                                 |
+
+### Manipulation (16)
+
+| Technique    | Algorithm                            | Visualizer                                    | Source Directory                                                                      |
+| ------------ | ------------------------------------ | --------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Manipulation | Invert Binary Tree                   | SVG binary tree with child swap animation     | `src/algorithms/trees/manipulation/invert-binary-tree/`                               |
+| Manipulation | Invert Binary Tree (Iterative)       | SVG binary tree with child swap animation     | `src/algorithms/trees/manipulation/invert-binary-tree-iterative/`                    |
+| Manipulation | Flatten to Linked List               | SVG binary tree with right-chain formation    | `src/algorithms/trees/manipulation/flatten-to-linked-list/`                          |
+| Manipulation | Flatten to Linked List (Iterative)   | SVG binary tree with right-chain formation    | `src/algorithms/trees/manipulation/flatten-to-linked-list-iterative/`                |
+| Manipulation | Right Side View                      | SVG binary tree with rightmost node highlight | `src/algorithms/trees/manipulation/right-side-view/`                                 |
+| Manipulation | Right Side View (Recursive)          | SVG binary tree with rightmost node highlight | `src/algorithms/trees/manipulation/right-side-view-recursive/`                       |
+| Manipulation | Same Tree                            | SVG dual binary tree with node comparison     | `src/algorithms/trees/manipulation/same-tree/`                                       |
+| Manipulation | Same Tree (Iterative)                | SVG dual binary tree with node comparison     | `src/algorithms/trees/manipulation/same-tree-iterative/`                             |
+| Manipulation | Merge Binary Trees                   | SVG dual binary tree with merge steps         | `src/algorithms/trees/manipulation/merge-binary-trees/`                              |
+| Manipulation | Merge Binary Trees (Iterative)       | SVG dual binary tree with merge steps         | `src/algorithms/trees/manipulation/merge-binary-trees-iterative/`                   |
+| Manipulation | Subtree of Another Tree              | SVG binary tree with subtree matching         | `src/algorithms/trees/manipulation/subtree-of-another-tree/`                         |
+| Manipulation | Lowest Common Ancestor               | SVG binary tree with ancestor path            | `src/algorithms/trees/manipulation/lowest-common-ancestor/`                          |
+| Manipulation | Lowest Common Ancestor (Iterative)   | SVG binary tree with ancestor path            | `src/algorithms/trees/manipulation/lowest-common-ancestor-iterative/`                |
+| Manipulation | Delete Leaves with Value             | SVG binary tree with leaf pruning steps       | `src/algorithms/trees/manipulation/delete-leaves-with-value/`                        |
+| Manipulation | Distribute Coins                     | SVG binary tree with coin flow animation      | `src/algorithms/trees/manipulation/distribute-coins/`                                |
+| Manipulation | Flip Equivalent Trees                | SVG dual binary tree with flip comparison     | `src/algorithms/trees/manipulation/flip-equivalent-trees/`                           |
+
+### Advanced (10)
+
+| Technique | Algorithm                      | Visualizer                                         | Source Directory                                                        |
+| --------- | ------------------------------ | -------------------------------------------------- | ----------------------------------------------------------------------- |
+| Advanced  | AVL Insert with Rotation       | SVG binary tree with rotation animation            | `src/algorithms/trees/advanced/avl-insert-rotation/`                   |
+| Advanced  | Red-Black Insert               | SVG binary tree with color and rotation steps      | `src/algorithms/trees/advanced/red-black-insert/`                      |
+| Advanced  | Segment Tree Range Sum         | SVG segment tree with range query highlight        | `src/algorithms/trees/advanced/segment-tree-range-sum/`                |
+| Advanced  | Segment Tree Range Min         | SVG segment tree with range query highlight        | `src/algorithms/trees/advanced/segment-tree-range-min/`                |
+| Advanced  | Binary Indexed Tree            | SVG BIT array with prefix sum visualization        | `src/algorithms/trees/advanced/binary-indexed-tree/`                   |
+| Advanced  | Tree to Doubly Linked List     | SVG binary tree with in-order pointer rewiring     | `src/algorithms/trees/advanced/tree-to-doubly-linked-list/`            |
+| Advanced  | Binary Tree Pruning            | SVG binary tree with subtree removal steps         | `src/algorithms/trees/advanced/binary-tree-pruning/`                   |
+| Advanced  | N-Ary Tree Traversal           | SVG n-ary tree with child expansion                | `src/algorithms/trees/advanced/n-ary-tree-traversal/`                  |
+| Advanced  | Huffman Coding Tree            | SVG Huffman tree with frequency-based construction | `src/algorithms/trees/advanced/huffman-coding-tree/`                   |
+| Advanced  | Expression Tree Evaluation     | SVG expression tree with operator evaluation       | `src/algorithms/trees/advanced/expression-tree-evaluation/`            |
 
 ---
 

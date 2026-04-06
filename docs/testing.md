@@ -20,7 +20,7 @@ npm run test:coverage   # Run with coverage report
 npm run test:watch      # Watch mode during development
 ```
 
-Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 367 algorithms in 14 categories.
+Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 453 algorithms in 14 categories.
 
 ### Vitest Projects Configuration
 
@@ -192,7 +192,7 @@ npm run chromatic       # Run Chromatic visual tests
 
 ### Story Inventory
 
-**88 story files** organized into:
+**483 story files** organized into:
 
 | Category                   | Location                                 | Stories                                                                                                                                                                                                                                   |
 | -------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -204,7 +204,7 @@ npm run chromatic       # Run Chromatic visual tests
 | **Input Editor**           | `src/components/input-editor/`           | ArrayInputEditor, InputEditor                                                                                                                                                                                                             |
 | **Explanation Panel**      | `src/components/explanation-panel/`      | ExplanationPanel                                                                                                                                                                                                                          |
 | **Playback**               | `src/components/playback/`               | PlaybackControls                                                                                                                                                                                                                          |
-| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/` | 367 algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                             |
+| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/` | 453 algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                             |
 
 Pipeline stories (`*.Pipeline.stories.tsx`) live alongside their algorithm implementation, not with the visualizer components. Component stories remain co-located with their components in `src/components/`.
 

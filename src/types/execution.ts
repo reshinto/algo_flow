@@ -148,6 +148,31 @@ export type StepType =
   | "hash-compute"
   | "hash-match"
   | "skip-char"
+  | "search-node"
+  | "insert-child"
+  | "delete-child"
+  | "rotate-left"
+  | "rotate-right"
+  | "recolor-node"
+  | "check-balance"
+  | "update-height"
+  | "build-node"
+  | "connect-child"
+  | "partition-array"
+  | "swap-children"
+  | "merge-node"
+  | "detach-node"
+  | "query-range"
+  | "update-segment"
+  | "compute-prefix"
+  | "encode-char"
+  | "select-min-freq"
+  | "push-to-stack"
+  | "pop-from-stack"
+  | "enqueue-node"
+  | "dequeue-node"
+  | "thread-node"
+  | "unthread-node"
   | "complete";
 
 /** Maps a language to the source lines highlighted for this step. */
@@ -379,7 +404,15 @@ export interface DPTableVisualState {
 /*                               Tree Structure                               */
 /* -------------------------------------------------------------------------- */
 
-export type TreeNodeState = "default" | "visiting" | "visited" | "current";
+export type TreeNodeState =
+  | "default"
+  | "visiting"
+  | "visited"
+  | "current"
+  | "found"
+  | "comparing"
+  | "target"
+  | "highlighted";
 
 export interface TreeNode {
   id: string;
@@ -387,6 +420,8 @@ export interface TreeNode {
   parentId: string | null;
   leftChildId: string | null;
   rightChildId: string | null;
+  /** Child IDs for n-ary, expression, and huffman trees */
+  childrenIds?: string[];
   state: TreeNodeState;
   /** Pre-computed position for SVG rendering (level-based hierarchical layout) */
   position: { x: number; y: number };
@@ -401,6 +436,24 @@ export interface TreeVisualState {
   visitOrder: string[];
   /** ID of the node currently being processed */
   currentNodeId: string | null;
+  /** Target value being searched/operated on */
+  targetValue?: number | null;
+  /** Node IDs forming the current active path */
+  currentPath?: string[];
+  /** Current phase label (e.g., "searching", "inserting", "deleting") */
+  phase?: string;
+  /** Current BFS level being processed */
+  currentLevel?: number;
+  /** Secondary tree for dual-tree algorithms (same-tree, merge, subtree-of) */
+  secondaryTree?: { nodes: TreeNode[]; rootId: string } | null;
+  /** Label describing the current operation */
+  operationLabel?: string;
+  /** Range being queried in segment tree operations */
+  queryRange?: [number, number] | null;
+  /** Scalar result value (depth, sum, diameter, etc.) */
+  scalarResult?: number | null;
+  /** Boolean result (is balanced, is symmetric, etc.) */
+  booleanResult?: boolean | null;
 }
 
 /* -------------------------------------------------------------------------- */
