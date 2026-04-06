@@ -1,0 +1,31 @@
+import type { EducationalContent } from "@/types";
+
+export const bstFloorCeilIterativeEducational: EducationalContent = {
+  overview:
+    "**BST Floor & Ceil (Iterative)** finds both boundary values in a single while-loop pass, tracking the best candidate seen so far for each:\n- **Floor candidate:** last node where `node.value ≤ target`\n- **Ceil candidate:** last node where `node.value ≥ target`",
+
+  howItWorks:
+    "Start at root. At each node:\n- If `value === target`: exact match — return it as both floor and ceil immediately.\n- If `target < value`: current node is a ceil candidate; move left to find a smaller ceil.\n- If `target > value`: current node is a floor candidate; move right to find a larger floor.\n\nWhen the loop ends, the tracked candidates are the answer.",
+
+  timeAndSpaceComplexity:
+    "**Time: `O(h)`** — single pass from root to a leaf.\n\n**Space: `O(1)`** — two pointer variables, no call stack.",
+
+  bestAndWorstCase:
+    "**Best case:** Exact match at root — O(1).\n\n**Worst case:** Target outside the range of all stored values — must walk to a leaf.",
+
+  realWorldUses: [
+    "**Memory-constrained lookups:** O(1) space makes this suitable for embedded or real-time environments.",
+    "**Interval scheduling:** Quickly find the next available slot ≥ a given start time.",
+  ],
+
+  strengthsAndLimitations: {
+    strengths: [
+      "O(1) space — no recursion.",
+      "Finds both floor and ceil in a single traversal pass.",
+    ],
+    limitations: ["Slightly more variable management than the recursive version."],
+  },
+
+  whenToUseIt:
+    "Use the iterative variant over the recursive one when O(1) space is a hard requirement or when the tree may be deep.",
+};

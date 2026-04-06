@@ -30,3 +30,8 @@ export { SetGenerationTracker } from "./set-generation-tracker";
 export { SetMembershipTracker } from "./set-membership-tracker";
 export { DisjointSetTracker } from "./disjoint-set-tracker";
 export { SetCoverTracker } from "./set-cover-tracker";
+export { BSTOperationTracker } from "./bst-operation-tracker";
+export { TreePropertyTracker } from "./tree-property-tracker";
+export { TreeConstructionTracker } from "./tree-construction-tracker";
+export { TreeManipulationTracker } from "./tree-manipulation-tracker";
+export { AdvancedTreeTracker } from "./advanced-tree-tracker";

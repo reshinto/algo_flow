@@ -80,6 +80,19 @@ These tokens map directly to algorithm visualization states. When building a new
 
 All defined in `src/index.css` under the `@theme` block.
 
+### TreeNodeState Token Mapping
+
+When rendering tree nodes, `TreeNodeState` values map to visualization tokens as follows:
+
+| `TreeNodeState` | CSS Token             | Color   |
+| --------------- | --------------------- | ------- |
+| `found`         | `--color-viz-found`   | Emerald |
+| `comparing`     | `--color-viz-comparing` | Cyan  |
+| `target`        | `--color-viz-current` | Rose    |
+| `highlighted`   | `--color-viz-visiting` | Blue   |
+
+Use these tokens in `TreeVisualizer` node renders — never raw hex values.
+
 ---
 
 ## Category Accent Map

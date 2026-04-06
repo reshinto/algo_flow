@@ -14,6 +14,7 @@ This guide covers the most common failure modes in AlgoFlow and how to fix them 
 - [Visualizer Rendering Problems](#visualizer-rendering-problems)
 - [?fn Import Pipeline](#fn-import-pipeline)
 - [Registry & Self-Registration](#registry--self-registration)
+- [Tree-Specific Debugging](#tree-specific-debugging)
 - [E2E Test Failures](#e2e-test-failures)
 - [See Also](#see-also)
 
@@ -100,22 +101,27 @@ Cross-reference each key in the map against the step `type` values produced by `
 
 The visualization panel renders nothing (blank panel) when the `VisualState.kind` produced by the tracker does not match any registered visualizer.
 
-**Valid `kind` values** — the `VisualState` discriminated union currently has 12 members:
+**Valid `kind` values** — the `VisualState` discriminated union currently has 17 members:
 
-| `kind`        | Use case                                   |
-| ------------- | ------------------------------------------ |
-| `array`       | Sorting, searching, sliding window         |
-| `graph`       | BFS, DFS, graph traversal                  |
-| `grid`        | Pathfinding (Dijkstra, A\*)                |
-| `dp-table`    | Dynamic programming (Fibonacci tabulation) |
-| `tree`        | Binary trees, heaps (display)              |
-| `linked-list` | Linked list algorithms                     |
-| `heap`        | Priority queue / heap operations           |
-| `stack-queue` | Stack or queue walkthroughs                |
-| `hash-map`    | Hash table algorithms                      |
-| `string`      | String matching, palindromes               |
-| `matrix`      | 2-D matrix traversals                      |
-| `set`         | Set operations                             |
+| `kind`              | Use case                                   |
+| ------------------- | ------------------------------------------ |
+| `array`             | Sorting, searching, sliding window         |
+| `graph`             | BFS, DFS, graph traversal                  |
+| `grid`              | Pathfinding (Dijkstra, A\*)                |
+| `dp-table`          | Dynamic programming (Fibonacci tabulation) |
+| `tree`              | Binary trees, heaps (display)              |
+| `linked-list`       | Linked list algorithms                     |
+| `heap`              | Priority queue / heap operations           |
+| `stack-queue`       | Stack or queue walkthroughs                |
+| `hash-map`          | Hash table algorithms                      |
+| `string`            | General string matching                    |
+| `string-palindrome` | Palindrome detection algorithms            |
+| `string-frequency`  | Character frequency and anagram algorithms |
+| `string-transform`  | String edit and transformation algorithms  |
+| `string-trie`       | Trie construction and search algorithms    |
+| `string-distance`   | Edit distance and alignment algorithms     |
+| `matrix`            | 2-D matrix traversals                      |
+| `set`               | Set operations                             |
 
 **Common causes:**
 
@@ -123,7 +129,7 @@ The visualization panel renders nothing (blank panel) when the `VisualState.kind
 - Copying a tracker from a different category and forgetting to change the `kind` field in the `visualState` builder
 - The visualizer switch/dispatch has not been updated to handle a newly added `kind`
 
-**Debug pattern:** Log the `visualState.kind` of each step and confirm it matches one of the 12 values above:
+**Debug pattern:** Log the `visualState.kind` of each step and confirm it matches one of the 17 values above:
 
 ```ts
 const steps = generateSteps(knownInput);
@@ -181,6 +187,36 @@ grep -r "registry.register" src/algorithms/
 ```
 
 Verify the `meta.id` is unique across all algorithm definitions.
+
+---
+
+## Tree-Specific Debugging
+
+Tree algorithms use the `tree` VisualState kind and have several fields that require extra attention:
+
+### Dual-tree algorithms (`secondaryTree`)
+
+Some tree algorithms (e.g., LCA, symmetric tree check) operate on two trees simultaneously. These algorithms populate a `secondaryTree` field alongside the primary `nodes` and `edges` arrays. If the secondary tree renders blank, verify that `secondaryTree` is set on every step — omitting it on even one step causes the secondary panel to disappear mid-playback.
+
+### N-ary tree support (`childrenIds`)
+
+Each `TreeNode` carries a `childrenIds` array listing the IDs of its children. Binary tree algorithms always produce exactly 0, 1, or 2 entries. N-ary algorithms (tries, segment trees, expression trees) may produce many. If a child node renders disconnected from its parent, check that the parent's `childrenIds` includes the child's ID and that the child appears in the `nodes` array.
+
+**Debug pattern:**
+
+```ts
+const steps = generateSteps(knownInput);
+const step = steps[0];
+if (step.visualState.kind === "tree") {
+  step.visualState.nodes.forEach((node) => {
+    console.log(node.id, "->", node.childrenIds);
+  });
+}
+```
+
+### Segment tree queries (`queryRange`)
+
+Segment tree algorithms expose a `queryRange` field `[left, right]` on the `tree` VisualState to indicate the active query interval. If highlighted nodes do not match the expected range, confirm that `queryRange` is updated correctly each time the active segment changes.
 
 ---
 
