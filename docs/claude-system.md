@@ -11,7 +11,7 @@ AlgoFlow uses a structured development workflow powered by agents, skills, sessi
 - [Overview](#overview)
 - [Agents (10)](#agents-10)
 - [Skills (16)](#skills-16)
-- [Session Hooks (12)](#session-hooks-12)
+- [Session Hooks (13)](#session-hooks-13)
 - [Plugins (17)](#plugins-17)
 - [Branch Naming and Plugin Auto-Detection](#branch-naming-and-plugin-auto-detection)
 - [Rules Files and Path Scoping](#rules-files-and-path-scoping)
@@ -76,7 +76,7 @@ Skill definitions live in `.claude/skills/<skill-name>/SKILL.md`.
 
 ---
 
-## Session Hooks (12)
+## Session Hooks (13)
 
 Hooks run automatically during development sessions. They are configured in `.claude/settings.json`.
 

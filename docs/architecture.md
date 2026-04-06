@@ -21,7 +21,7 @@ AlgoFlow uses a **registry-driven** architecture with **pre-computed execution s
 
 ## Development System
 
-The `.claude/` directory defines 11 agents, 18 skills, 14 session hooks, and 17 plugins for development workflow automation and quality enforcement. See [Development System](claude-system.md) for the full reference with tables of all agents, skills, hooks, and plugins.
+The `.claude/` directory defines 11 agents, 18 skills, 13 session hooks, and 17 plugins for development workflow automation and quality enforcement. See [Development System](claude-system.md) for the full reference with tables of all agents, skills, hooks, and plugins.
 
 ---
 
@@ -165,7 +165,7 @@ Breakpoint values are defined in `BREAKPOINTS` (`src/utils/constants.ts`). Layou
 
 ## Input Editors
 
-The `InputEditor` component is split into 6 focused files, each handling a specific input shape:
+The `InputEditor` component is split into 10 focused files, each handling a specific input shape:
 
 | File                      | Handles                                                                 |
 | ------------------------- | ----------------------------------------------------------------------- |
@@ -192,6 +192,7 @@ Each algorithm category has a tailored input editor rendered above the visualiza
 | Strings             | Text string + pattern string                                                                                                                                          |
 | Matrices            | Textarea (one row per line, comma-separated)                                                                                                                          |
 | Sets                | Two comma-separated arrays (A and B)                                                                                                                                  |
+| Trees               | No input editor — tree structure is fixed per algorithm                                                                                                               |
 
 > [!IMPORTANT]
 > All input edits are **temporary and non-persistent**. Edits reset on algorithm switch or page reload. No localStorage, URL state, or server persistence.
@@ -272,7 +273,7 @@ src/
 │   ├── pathfinding/         # e.g. pathfinding/shortest-path/dijkstra/
 │   ├── dynamic-programming/ # 32 algorithms across 1d-linear, optimization, counting, subsequence, knapsack, string-dp
 │   ├── arrays/              # 44 algorithms across sliding-window, two-pointer, prefix-sum, and more
-│   ├── trees/               # e.g. trees/traversal/bst-inorder/
+│   ├── trees/               # 87 algorithms across traversal, bst-operations, properties, construction, manipulation, advanced
 │   ├── linked-lists/        # e.g. linked-lists/manipulation/reverse-linked-list/
 │   ├── heaps/               # e.g. heaps/construction/build-min-heap/
 │   ├── stacks-queues/       # e.g. stacks-queues/validation/valid-parentheses/

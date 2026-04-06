@@ -141,11 +141,34 @@ The 17 `kind` values are:
 
 ---
 
+### TreeNodeState
+
+A string-literal union describing the visual state of a single node in the `TreeVisualizer`. Each value maps to a distinct highlight color so learners can distinguish node roles at a glance.
+
+**Defined in:** `src/types/execution.ts` (as part of the `tree` VisualState shape)
+
+The 8 `TreeNodeState` values are:
+
+| Value         | Meaning                                                    |
+| ------------- | ---------------------------------------------------------- |
+| `default`     | Unvisited node in its initial state                        |
+| `visiting`    | Node currently being entered or opened                     |
+| `visited`     | Node whose subtree has been fully processed                |
+| `current`     | The node being actively examined at this step              |
+| `found`       | Target node that satisfies the search condition            |
+| `comparing`   | Node being compared against another node or value          |
+| `target`      | A reference node used as a comparison anchor               |
+| `highlighted` | Auxiliary highlight for path reconstruction or emphasis    |
+
+The `tree` VisualState also carries a `childrenIds` field on each `TreeNode`, which lists child node IDs for n-ary tree support. Binary trees use at most two entries; n-ary trees (e.g., tries, segment trees) may have many.
+
+---
+
 ### Tracker
 
 An abstract base class used inside `generateSteps()` to build up the `ExecutionStep[]` array. Each tracker subclass provides domain-specific recording methods that internally call `pushStep()`. You construct a tracker, call its methods as you trace through your algorithm logic, and at the end collect the completed step array.
 
-There are 14 category-specific tracker subclasses (e.g. `SortingTracker`, `ArrayTracker`, `GraphTracker`). You never use `Tracker` directly — you use the appropriate subclass for your algorithm's data structure.
+There are 34 category-specific tracker subclasses (e.g. `SortingTracker`, `ArrayTracker`, `GraphTracker`). You never use `Tracker` directly — you use the appropriate subclass for your algorithm's data structure.
 
 **Defined in:** `src/trackers/base-tracker.ts`
 **Used by:** every algorithm's `generateSteps()` function.

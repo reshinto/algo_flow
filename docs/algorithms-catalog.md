@@ -2,22 +2,22 @@
 
 # Algorithm Catalog
 
-Complete listing of all 453 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
+Complete listing of all 452 algorithms available in AlgoFlow, organized by category with visualizer descriptions and technique subcategories.
 
 > **Prerequisites:** None — this is a reference document.
 
 ## Contents
 
 - [Sorting (53)](#sorting-53-algorithms)
-- [Searching (1)](#searching-1-algorithm)
+- [Searching (18)](#searching-18-algorithms)
 - [Graph (28)](#graph-28-algorithms)
 - [Pathfinding (27)](#pathfinding-27-algorithms)
 - [Dynamic Programming (32)](#dynamic-programming-32-algorithms)
 - [Arrays (44)](#arrays-44-algorithms)
 - [Trees (87)](#trees-87-algorithms)
-- [Linked Lists (1)](#linked-lists-1-algorithm)
+- [Linked Lists (8)](#linked-lists-8-algorithms)
 - [Heaps (28)](#heaps-28-algorithms)
-- [Stacks & Queues (1)](#stacks--queues-1-algorithm)
+- [Stacks & Queues (28)](#stacks--queues-28-algorithms)
 - [Hash Maps (28)](#hash-maps-28-algorithms)
 - [Strings (32)](#strings-32-algorithms)
 - [Matrices (20)](#matrices-20-algorithms)
@@ -87,7 +87,7 @@ Algorithms that arrange elements in a specific order. Algorithms live under `src
 
 ---
 
-## Searching (1 algorithm)
+## Searching (18 algorithms)
 
 Algorithms that find elements in data structures. Algorithms live under `src/algorithms/searching/<technique>/<algorithm>/`.
 
@@ -456,7 +456,7 @@ Algorithms that traverse or manipulate tree data structures. Algorithms live und
 
 ---
 
-## Linked Lists (1 algorithm)
+## Linked Lists (8 algorithms)
 
 Algorithms that manipulate linked list nodes. Algorithms live under `src/algorithms/linked-lists/<technique>/<algorithm>/`.
 
@@ -503,7 +503,7 @@ Algorithms involving heap/priority queue operations. Algorithms live under `src/
 
 ---
 
-## Stacks & Queues (1 algorithm)
+## Stacks & Queues (28 algorithms)
 
 Algorithms using stack or queue data structures. Algorithms live under `src/algorithms/stacks-queues/<technique>/<algorithm>/`.
 

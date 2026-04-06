@@ -20,7 +20,7 @@ npm run test:coverage   # Run with coverage report
 npm run test:watch      # Watch mode during development
 ```
 
-Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 453 algorithms in 14 categories.
+Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 452 algorithms in 14 categories.
 
 ### Vitest Projects Configuration
 
@@ -33,7 +33,7 @@ The Vitest config uses the `projects` feature to split the test suite into two i
 
 This avoids the overhead of loading `jsdom` for pure algorithm tests and removes the need for manual timeout configuration in `test-setup.ts`.
 
-CI shards unit tests 8 ways (aggregated under the **Unit Tests Status** job) and E2E tests 12 ways (aggregated under the **E2E Status** job).
+CI shards unit tests 12 ways (aggregated under the **Unit Tests Status** job) and E2E tests 16 ways (aggregated under the **E2E Status** job).
 
 > [!TIP]
 > Run a subset of tests with `npx vitest --filter <pattern>` (e.g., `npx vitest --filter bubble-sort`).
@@ -140,7 +140,7 @@ e2e/
 └── helpers/                      # Shared Playwright helpers and selectors
 ```
 
-~950 tests across 21 spec files. Per-category spec files use `test.describe.configure({ mode: "serial" })` to run tests in declaration order. Workers: 2 locally, 4 on CI. In CI the suite is sharded 12 ways, aggregated under the **E2E Status** check.
+~950 tests across 21 spec files. Per-category spec files use `test.describe.configure({ mode: "serial" })` to run tests in declaration order. Workers: 2 locally, 4 on CI. In CI the suite is sharded 16 ways, aggregated under the **E2E Status** check.
 
 ### What the Suite Covers
 
@@ -204,7 +204,7 @@ npm run chromatic       # Run Chromatic visual tests
 | **Input Editor**           | `src/components/input-editor/`           | ArrayInputEditor, InputEditor                                                                                                                                                                                                             |
 | **Explanation Panel**      | `src/components/explanation-panel/`      | ExplanationPanel                                                                                                                                                                                                                          |
 | **Playback**               | `src/components/playback/`               | PlaybackControls                                                                                                                                                                                                                          |
-| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/` | 453 algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                             |
+| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/` | 452 algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                             |
 
 Pipeline stories (`*.Pipeline.stories.tsx`) live alongside their algorithm implementation, not with the visualizer components. Component stories remain co-located with their components in `src/components/`.
 
