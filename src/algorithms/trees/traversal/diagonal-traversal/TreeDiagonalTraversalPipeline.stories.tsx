@@ -77,7 +77,7 @@ const defaultNodes: TreeNode[] = [
 const steps = generateDiagonalTraversalSteps({ nodes: defaultNodes, rootId: "n4" });
 
 const meta: Meta<typeof TreeVisualizer> = {
-  title: "Algorithm Pipelines/Diagonal Traversal",
+  title: "Algorithm Pipelines/Tree Diagonal Traversal",
   component: TreeVisualizer,
   decorators: [
     (Story) => (
