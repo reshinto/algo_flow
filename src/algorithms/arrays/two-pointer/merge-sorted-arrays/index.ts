@@ -13,6 +13,9 @@ import { mergeSortedArraysEducational } from "./educational";
 import typescriptSource from "./sources/merge-sorted-arrays.ts?raw";
 import pythonSource from "./sources/merge-sorted-arrays.py?raw";
 import javaSource from "./sources/MergeSortedArrays.java?raw";
+import rustSource from "./sources/merge-sorted-arrays.rs?raw";
+import cppSource from "./sources/MergeSortedArrays.cpp?raw";
+import goSource from "./sources/merge-sorted-arrays.go?raw";
 
 interface MergeSortedArraysInput {
   firstArray: number[];
@@ -33,7 +36,7 @@ const mergeSortedArraysDefinition: AlgorithmDefinition<MergeSortedArraysInput> =
       worst: "O(n+m)",
     },
     spaceComplexity: "O(n+m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       firstArray: [1, 3, 5, 7, 9],
       secondArray: [2, 4, 6, 8, 10],
@@ -47,6 +50,9 @@ const mergeSortedArraysDefinition: AlgorithmDefinition<MergeSortedArraysInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

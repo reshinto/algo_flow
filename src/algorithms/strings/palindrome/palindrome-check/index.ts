@@ -12,6 +12,9 @@ import { palindromeCheckEducational } from "./educational";
 import typescriptSource from "./sources/palindrome-check.ts?raw";
 import pythonSource from "./sources/palindrome-check.py?raw";
 import javaSource from "./sources/PalindromeCheck.java?raw";
+import rustSource from "./sources/palindrome-check.rs?raw";
+import cppSource from "./sources/PalindromeCheck.cpp?raw";
+import goSource from "./sources/palindrome-check.go?raw";
 
 function executePalindromeCheck(input: PalindromeCheckInput): boolean {
   return palindromeCheck(input.text) as boolean;
@@ -31,7 +34,7 @@ const palindromeCheckDefinition: AlgorithmDefinition<PalindromeCheckInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "racecar" },
   },
   execute: executePalindromeCheck,
@@ -41,6 +44,9 @@ const palindromeCheckDefinition: AlgorithmDefinition<PalindromeCheckInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

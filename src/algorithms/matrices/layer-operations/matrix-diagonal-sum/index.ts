@@ -10,6 +10,9 @@ import { matrixDiagonalSumEducational } from "./educational";
 import typescriptSource from "./sources/matrix-diagonal-sum.ts?raw";
 import pythonSource from "./sources/matrix-diagonal-sum.py?raw";
 import javaSource from "./sources/MatrixDiagonalSum.java?raw";
+import rustSource from "./sources/matrix-diagonal-sum.rs?raw";
+import cppSource from "./sources/MatrixDiagonalSum.cpp?raw";
+import goSource from "./sources/matrix-diagonal-sum.go?raw";
 
 function executeMatrixDiagonalSum(input: MatrixDiagonalSumInput): number {
   return matrixDiagonalSum(input.matrix) as number;
@@ -29,7 +32,7 @@ const matrixDiagonalSumDefinition: AlgorithmDefinition<MatrixDiagonalSumInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [1, 2, 3],
@@ -45,6 +48,9 @@ const matrixDiagonalSumDefinition: AlgorithmDefinition<MatrixDiagonalSumInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

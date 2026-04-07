@@ -10,6 +10,9 @@ import { groupAnagramsEducational } from "./educational";
 import typescriptSource from "./sources/group-anagrams.ts?raw";
 import pythonSource from "./sources/group-anagrams.py?raw";
 import javaSource from "./sources/GroupAnagrams.java?raw";
+import rustSource from "./sources/group-anagrams.rs?raw";
+import cppSource from "./sources/GroupAnagrams.cpp?raw";
+import goSource from "./sources/group-anagrams.go?raw";
 
 function executeGroupAnagrams(input: GroupAnagramsInput): string[][] {
   return groupAnagrams(input.words) as string[][];
@@ -29,7 +32,7 @@ const groupAnagramsDefinition: AlgorithmDefinition<GroupAnagramsInput> = {
       worst: "O(n·k log k)",
     },
     spaceComplexity: "O(n·k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { words: ["eat", "tea", "tan", "ate", "nat", "bat"] },
   },
   execute: executeGroupAnagrams,
@@ -39,6 +42,9 @@ const groupAnagramsDefinition: AlgorithmDefinition<GroupAnagramsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

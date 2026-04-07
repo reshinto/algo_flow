@@ -13,6 +13,9 @@ import { productExceptSelfEducational } from "./educational";
 import typescriptSource from "./sources/product-except-self.ts?raw";
 import pythonSource from "./sources/product-except-self.py?raw";
 import javaSource from "./sources/ProductExceptSelf.java?raw";
+import rustSource from "./sources/product-except-self.rs?raw";
+import cppSource from "./sources/ProductExceptSelf.cpp?raw";
+import goSource from "./sources/product-except-self.go?raw";
 
 interface ProductExceptSelfInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const productExceptSelfDefinition: AlgorithmDefinition<ProductExceptSelfInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [1, 2, 3, 4, 5],
     },
@@ -44,6 +47,9 @@ const productExceptSelfDefinition: AlgorithmDefinition<ProductExceptSelfInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

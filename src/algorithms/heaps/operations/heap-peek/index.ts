@@ -10,6 +10,9 @@ import { heapPeekEducational } from "./educational";
 import typescriptSource from "./sources/heap-peek.ts?raw";
 import pythonSource from "./sources/heap-peek.py?raw";
 import javaSource from "./sources/HeapPeek.java?raw";
+import rustSource from "./sources/heap-peek.rs?raw";
+import cppSource from "./sources/HeapPeek.cpp?raw";
+import goSource from "./sources/heap-peek.go?raw";
 
 function executeHeapPeek(input: HeapPeekInput): number[] {
   const result = heapPeek(input.array) as number | undefined;
@@ -30,7 +33,7 @@ const heapPeekDefinition: AlgorithmDefinition<HeapPeekInput> = {
       worst: "O(1)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [1, 3, 5, 7, 9, 8, 6] },
   },
   execute: executeHeapPeek,
@@ -40,6 +43,9 @@ const heapPeekDefinition: AlgorithmDefinition<HeapPeekInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -13,6 +13,9 @@ import { previousSmallerElementEducational } from "./educational";
 import typescriptSource from "./sources/previous-smaller-element.ts?raw";
 import pythonSource from "./sources/previous-smaller-element.py?raw";
 import javaSource from "./sources/PreviousSmallerElement.java?raw";
+import rustSource from "./sources/previous-smaller-element.rs?raw";
+import cppSource from "./sources/PreviousSmallerElement.cpp?raw";
+import goSource from "./sources/previous-smaller-element.go?raw";
 
 interface PreviousSmallerElementInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const previousSmallerElementDefinition: AlgorithmDefinition<PreviousSmallerEleme
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [4, 10, 5, 8, 20, 15, 3, 12],
     },
@@ -44,6 +47,9 @@ const previousSmallerElementDefinition: AlgorithmDefinition<PreviousSmallerEleme
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

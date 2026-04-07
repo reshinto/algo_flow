@@ -25,7 +25,17 @@
       "Bash(xargs -I {} sh -c 'echo \"=== {} ===\" && find {} -name \"index.ts\" -type f | wc -l')",
       "Bash(npx playwright:*)",
       "Bash(curl -s http://localhost:5174)",
-      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5174/)"
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5174/)",
+      "Bash(sed -i '' 's|import javaSource from \"./sources/BinaryIndexedTree.java?raw\";|import javaSource from \"./sources/BinaryIndexedTree.java?raw\";\\\\nimport rustSource from \"./sources/binary-indexed-tree.rs?raw\";\\\\nimport cppSource from \"./sources/BinaryIndexedTree.cpp?raw\";\\\\nimport goSource from \"./sources/binary-indexed-tree.go?raw\";|' /Users/springfield/dev/algo_flow/src/algorithms/trees/advanced/binary-indexed-tree/index.ts)",
+      "Bash(sed -i '' 's/supportedLanguages: \\\\[\"typescript\", \"python\", \"java\"\\\\]/supportedLanguages: [\"typescript\", \"python\", \"java\", \"rust\", \"cpp\", \"go\"]/' /Users/springfield/dev/algo_flow/src/algorithms/trees/advanced/binary-indexed-tree/index.ts)",
+      "Bash(sed -i '' 's/sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },/sources: { typescript: typescriptSource, python: pythonSource, java: javaSource, rust: rustSource, cpp: cppSource, go: goSource },/' /Users/springfield/dev/algo_flow/src/algorithms/trees/advanced/binary-indexed-tree/index.ts)",
+      "Bash(sed -i '' 's|import javaSource from \"./sources/BinaryTreePruning.java?raw\";|import javaSource from \"./sources/BinaryTreePruning.java?raw\";\\\\nimport rustSource from \"./sources/binary-tree-pruning.rs?raw\";\\\\nimport cppSource from \"./sources/BinaryTreePruning.cpp?raw\";\\\\nimport goSource from \"./sources/binary-tree-pruning.go?raw\";|' /Users/springfield/dev/algo_flow/src/algorithms/trees/advanced/binary-tree-pruning/index.ts)",
+      "Bash(sed -i '' 's/supportedLanguages: \\\\[\"typescript\", \"python\", \"java\"\\\\]/supportedLanguages: [\"typescript\", \"python\", \"java\", \"rust\", \"cpp\", \"go\"]/' /Users/springfield/dev/algo_flow/src/algorithms/trees/advanced/binary-tree-pruning/index.ts)",
+      "Read(//Users/springfield/dev/algo_flow/**)",
+      "Bash(chmod +x /Users/springfield/dev/algo_flow/scripts/test-python.sh /Users/springfield/dev/algo_flow/scripts/test-java.sh /Users/springfield/dev/algo_flow/scripts/test-rust.sh /Users/springfield/dev/algo_flow/scripts/test-cpp.sh /Users/springfield/dev/algo_flow/scripts/test-go.sh)",
+      "Edit(/.claude/skills/debugging/**)",
+      "Edit(/.claude/skills/verification/**)",
+      "Edit(/.claude/skills/tdd/**)"
     ]
   },
   "hooks": {

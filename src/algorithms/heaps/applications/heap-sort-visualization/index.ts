@@ -10,6 +10,9 @@ import { heapSortVisualizationEducational } from "./educational";
 import typescriptSource from "./sources/heap-sort-visualization.ts?raw";
 import pythonSource from "./sources/heap-sort-visualization.py?raw";
 import javaSource from "./sources/HeapSortVisualization.java?raw";
+import rustSource from "./sources/heap-sort-visualization.rs?raw";
+import cppSource from "./sources/HeapSortVisualization.cpp?raw";
+import goSource from "./sources/heap-sort-visualization.go?raw";
 
 function executeHeapSortVisualization(input: HeapSortVisualizationInput): number[] {
   return heapSortVisualization(input.array) as number[];
@@ -29,7 +32,7 @@ const heapSortVisualizationDefinition: AlgorithmDefinition<HeapSortVisualization
       worst: "O(n log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [9, 5, 7, 1, 3, 8, 2, 6, 4] },
   },
   execute: executeHeapSortVisualization,
@@ -39,6 +42,9 @@ const heapSortVisualizationDefinition: AlgorithmDefinition<HeapSortVisualization
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

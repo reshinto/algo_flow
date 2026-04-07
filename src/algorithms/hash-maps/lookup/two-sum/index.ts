@@ -10,6 +10,9 @@ import { twoSumEducational } from "./educational";
 import typescriptSource from "./sources/two-sum.ts?raw";
 import pythonSource from "./sources/two-sum.py?raw";
 import javaSource from "./sources/TwoSum.java?raw";
+import rustSource from "./sources/two-sum.rs?raw";
+import cppSource from "./sources/TwoSum.cpp?raw";
+import goSource from "./sources/two-sum.go?raw";
 
 function executeTwoSum(input: TwoSumInput): [number, number] {
   return twoSum(input.numbers, input.target) as [number, number];
@@ -29,7 +32,7 @@ const twoSumDefinition: AlgorithmDefinition<TwoSumInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numbers: [2, 7, 11, 15], target: 9 },
   },
   execute: executeTwoSum,
@@ -39,6 +42,9 @@ const twoSumDefinition: AlgorithmDefinition<TwoSumInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

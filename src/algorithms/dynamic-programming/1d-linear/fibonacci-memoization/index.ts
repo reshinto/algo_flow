@@ -9,6 +9,9 @@ import { fibonacciMemoizationEducational } from "./educational";
 import typescriptSource from "./sources/fibonacci-memoization.ts?raw";
 import pythonSource from "./sources/fibonacci-memoization.py?raw";
 import javaSource from "./sources/FibonacciMemoization.java?raw";
+import rustSource from "./sources/fibonacci-memoization.rs?raw";
+import cppSource from "./sources/FibonacciMemoization.cpp?raw";
+import goSource from "./sources/fibonacci-memoization.go?raw";
 
 interface FibonacciInput {
   targetIndex: number;
@@ -28,7 +31,7 @@ const fibonacciMemoizationDefinition: AlgorithmDefinition<FibonacciInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { targetIndex: 8 },
   },
   execute: (input: FibonacciInput) => fibonacciMemoization(input.targetIndex),
@@ -38,6 +41,9 @@ const fibonacciMemoizationDefinition: AlgorithmDefinition<FibonacciInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

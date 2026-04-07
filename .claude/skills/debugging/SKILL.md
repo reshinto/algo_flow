@@ -58,7 +58,7 @@ Symptoms: empty code panel, wrong language, misaligned highlighting
 1. Verify Vite `?raw` glob import returns content (not `{}`)
 2. Check file paths in glob pattern — are they statically analyzable?
 3. Verify `LineHighlight` mappings per language match actual source file line numbers
-4. Check all 3 languages have source files AND line mappings
+4. Check all 6 languages have source files AND line mappings
 5. Test language tab switching — does `useAlgorithmSource` update correctly?
 
 ### Grid Editing Bugs (Pathfinding)

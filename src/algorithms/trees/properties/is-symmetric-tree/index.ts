@@ -10,6 +10,9 @@ import { isSymmetricTreeEducational } from "./educational";
 import typescriptSource from "./sources/is-symmetric-tree.ts?raw";
 import pythonSource from "./sources/is-symmetric-tree.py?raw";
 import javaSource from "./sources/IsSymmetricTree.java?raw";
+import rustSource from "./sources/is-symmetric-tree.rs?raw";
+import cppSource from "./sources/IsSymmetricTree.cpp?raw";
+import goSource from "./sources/is-symmetric-tree.go?raw";
 
 /** Symmetric 7-node BST: root=4, mirrors [2,6], [1,3,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const isSymmetricTreeDefinition: AlgorithmDefinition<IsSymmetricTreeInput> = {
       "Checks if a binary tree is a mirror of itself around its center. Recursively compares outer and inner pairs.",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeIsSymmetricTree,
   generateSteps: generateIsSymmetricTreeSteps,
   educational: isSymmetricTreeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(isSymmetricTreeDefinition);

@@ -9,6 +9,9 @@ import { climbingStairsTabulationEducational } from "./educational";
 import typescriptSource from "./sources/climbing-stairs-tabulation.ts?raw";
 import pythonSource from "./sources/climbing-stairs-tabulation.py?raw";
 import javaSource from "./sources/ClimbingStairsTabulation.java?raw";
+import rustSource from "./sources/climbing-stairs-tabulation.rs?raw";
+import cppSource from "./sources/ClimbingStairsTabulation.cpp?raw";
+import goSource from "./sources/climbing-stairs-tabulation.go?raw";
 
 interface ClimbingStairsInput {
   numberOfStairs: number;
@@ -28,7 +31,7 @@ const climbingStairsTabulationDefinition: AlgorithmDefinition<ClimbingStairsInpu
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numberOfStairs: 7 },
   },
   execute: (input: ClimbingStairsInput) => climbingStairsTabulation(input.numberOfStairs),
@@ -38,6 +41,9 @@ const climbingStairsTabulationDefinition: AlgorithmDefinition<ClimbingStairsInpu
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

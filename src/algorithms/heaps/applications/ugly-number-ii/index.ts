@@ -10,6 +10,9 @@ import { uglyNumberIiEducational } from "./educational";
 import typescriptSource from "./sources/ugly-number-ii.ts?raw";
 import pythonSource from "./sources/ugly-number-ii.py?raw";
 import javaSource from "./sources/UglyNumberIi.java?raw";
+import rustSource from "./sources/ugly-number-ii.rs?raw";
+import cppSource from "./sources/UglyNumberIi.cpp?raw";
+import goSource from "./sources/ugly-number-ii.go?raw";
 
 function executeUglyNumberIi(input: UglyNumberIiInput): number {
   return uglyNumberIi(input.nthPosition) as number;
@@ -29,7 +32,7 @@ const uglyNumberIiDefinition: AlgorithmDefinition<UglyNumberIiInput> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nthPosition: 10 },
   },
   execute: executeUglyNumberIi,
@@ -39,6 +42,9 @@ const uglyNumberIiDefinition: AlgorithmDefinition<UglyNumberIiInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

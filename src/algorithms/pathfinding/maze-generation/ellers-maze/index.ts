@@ -9,6 +9,9 @@ import { ellersMazeEducational } from "./educational";
 import typescriptSource from "./sources/ellers-maze.ts?raw";
 import pythonSource from "./sources/ellers-maze.py?raw";
 import javaSource from "./sources/EllersMaze.java?raw";
+import rustSource from "./sources/ellers-maze.rs?raw";
+import cppSource from "./sources/EllersMaze.cpp?raw";
+import goSource from "./sources/ellers-maze.go?raw";
 
 /** Builds an all-walls grid for maze generation with start/end positions marked. */
 function createDefaultGrid(): GridCell[][] {
@@ -59,7 +62,7 @@ const ellersMazeDefinition: AlgorithmDefinition<MazeInput> = {
       worst: "O(V)",
     },
     spaceComplexity: "O(cols)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -73,6 +76,9 @@ const ellersMazeDefinition: AlgorithmDefinition<MazeInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

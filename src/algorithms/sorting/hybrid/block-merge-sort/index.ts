@@ -14,6 +14,9 @@ import { blockMergeSortEducational } from "./educational";
 import typescriptSource from "./sources/block-merge-sort.ts?raw";
 import pythonSource from "./sources/block-merge-sort.py?raw";
 import javaSource from "./sources/BlockMergeSort.java?raw";
+import rustSource from "./sources/block-merge-sort.rs?raw";
+import cppSource from "./sources/BlockMergeSort.cpp?raw";
+import goSource from "./sources/block-merge-sort.go?raw";
 
 const blockMergeSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const blockMergeSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: blockMergeSort,
@@ -39,6 +42,9 @@ const blockMergeSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

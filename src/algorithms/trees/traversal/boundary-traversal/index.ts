@@ -10,6 +10,9 @@ import { boundaryTraversalEducational } from "./educational";
 import typescriptSource from "./sources/boundary-traversal.ts?raw";
 import pythonSource from "./sources/boundary-traversal.py?raw";
 import javaSource from "./sources/BoundaryTraversal.java?raw";
+import rustSource from "./sources/boundary-traversal.rs?raw";
+import cppSource from "./sources/BoundaryTraversal.cpp?raw";
+import goSource from "./sources/boundary-traversal.go?raw";
 
 /** Build a balanced 7-node BST: [4,2,6,1,3,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -114,7 +117,7 @@ const boundaryTraversalDefinition: AlgorithmDefinition<BoundaryTraversalInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       nodes: defaultNodes,
       rootId: "n4",
@@ -127,6 +130,9 @@ const boundaryTraversalDefinition: AlgorithmDefinition<BoundaryTraversalInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

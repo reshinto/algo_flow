@@ -13,6 +13,9 @@ import { findPeakElementEducational } from "./educational";
 import typescriptSource from "./sources/find-peak-element.ts?raw";
 import pythonSource from "./sources/find-peak-element.py?raw";
 import javaSource from "./sources/FindPeakElement.java?raw";
+import rustSource from "./sources/find-peak-element.rs?raw";
+import cppSource from "./sources/FindPeakElement.cpp?raw";
+import goSource from "./sources/find-peak-element.go?raw";
 
 const findPeakElementDefinition: AlgorithmDefinition<{ array: number[] }> = {
   meta: {
@@ -28,7 +31,7 @@ const findPeakElementDefinition: AlgorithmDefinition<{ array: number[] }> = {
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       array: [1, 3, 20, 4, 1, 0],
     },
@@ -40,6 +43,9 @@ const findPeakElementDefinition: AlgorithmDefinition<{ array: number[] }> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

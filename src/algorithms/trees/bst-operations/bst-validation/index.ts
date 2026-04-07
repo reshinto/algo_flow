@@ -10,6 +10,9 @@ import { bstValidationEducational } from "./educational";
 import typescriptSource from "./sources/bst-validation.ts?raw";
 import pythonSource from "./sources/bst-validation.py?raw";
 import javaSource from "./sources/BSTValidation.java?raw";
+import rustSource from "./sources/bst-validation.rs?raw";
+import cppSource from "./sources/BSTValidation.cpp?raw";
+import goSource from "./sources/bst-validation.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -105,13 +108,20 @@ const bstValidationDefinition: AlgorithmDefinition<BstValidationInput> = {
       "Recursive BST validation using min/max bounds to check the BST property at every node",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeBstValidation,
   generateSteps: generateBstValidationSteps,
   educational: bstValidationEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstValidationDefinition);

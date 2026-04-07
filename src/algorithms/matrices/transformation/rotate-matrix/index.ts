@@ -10,6 +10,9 @@ import { rotateMatrixEducational } from "./educational";
 import typescriptSource from "./sources/rotate-matrix.ts?raw";
 import pythonSource from "./sources/rotate-matrix.py?raw";
 import javaSource from "./sources/RotateMatrix.java?raw";
+import rustSource from "./sources/rotate-matrix.rs?raw";
+import cppSource from "./sources/RotateMatrix.cpp?raw";
+import goSource from "./sources/rotate-matrix.go?raw";
 
 function executeRotateMatrix(input: RotateMatrixInput): number[][] {
   const matrixCopy = input.matrix.map((row) => [...row]);
@@ -30,7 +33,7 @@ const rotateMatrixDefinition: AlgorithmDefinition<RotateMatrixInput> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [1, 2, 3],
@@ -46,6 +49,9 @@ const rotateMatrixDefinition: AlgorithmDefinition<RotateMatrixInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

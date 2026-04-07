@@ -10,6 +10,9 @@ import { sameTreeEducational } from "./educational";
 import typescriptSource from "./sources/same-tree.ts?raw";
 import pythonSource from "./sources/same-tree.py?raw";
 import javaSource from "./sources/SameTree.java?raw";
+import rustSource from "./sources/same-tree.rs?raw";
+import cppSource from "./sources/SameTree.cpp?raw";
+import goSource from "./sources/same-tree.go?raw";
 
 /** Standard 7-node balanced BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -179,7 +182,7 @@ const sameTreeDefinition: AlgorithmDefinition<SameTreeInput> = {
       "Recursively checks whether two binary trees are structurally identical and have the same node values at every position",
     timeComplexity: { best: "O(1)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       nodes: defaultNodes,
       rootId: "n4",
@@ -190,7 +193,14 @@ const sameTreeDefinition: AlgorithmDefinition<SameTreeInput> = {
   execute: executeSameTree,
   generateSteps: generateSameTreeSteps,
   educational: sameTreeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(sameTreeDefinition);

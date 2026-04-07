@@ -9,6 +9,9 @@ import { greedyBestFirstEducational } from "./educational";
 import typescriptSource from "./sources/greedy-best-first.ts?raw";
 import pythonSource from "./sources/greedy-best-first.py?raw";
 import javaSource from "./sources/GreedyBestFirst.java?raw";
+import rustSource from "./sources/greedy-best-first.rs?raw";
+import cppSource from "./sources/GreedyBestFirst.cpp?raw";
+import goSource from "./sources/greedy-best-first.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -80,7 +83,7 @@ const greedyBestFirstDefinition: AlgorithmDefinition<GreedyInput> = {
       worst: "O(b^m)",
     },
     spaceComplexity: "O(b^m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -95,6 +98,9 @@ const greedyBestFirstDefinition: AlgorithmDefinition<GreedyInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

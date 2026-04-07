@@ -10,6 +10,9 @@ import { isBalancedTreeEducational } from "./educational";
 import typescriptSource from "./sources/is-balanced-tree.ts?raw";
 import pythonSource from "./sources/is-balanced-tree.py?raw";
 import javaSource from "./sources/IsBalancedTree.java?raw";
+import rustSource from "./sources/is-balanced-tree.rs?raw";
+import cppSource from "./sources/IsBalancedTree.cpp?raw";
+import goSource from "./sources/is-balanced-tree.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const isBalancedTreeDefinition: AlgorithmDefinition<IsBalancedTreeInput> = {
       "Checks if a binary tree is height-balanced — every node must have left and right subtrees differing in height by at most 1",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeIsBalancedTree,
   generateSteps: generateIsBalancedTreeSteps,
   educational: isBalancedTreeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(isBalancedTreeDefinition);

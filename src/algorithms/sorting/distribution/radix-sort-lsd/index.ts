@@ -14,6 +14,9 @@ import { radixSortLsdEducational } from "./educational";
 import typescriptSource from "./sources/radix-sort-lsd.ts?raw";
 import pythonSource from "./sources/radix-sort-lsd.py?raw";
 import javaSource from "./sources/RadixSortLsd.java?raw";
+import rustSource from "./sources/radix-sort-lsd.rs?raw";
+import cppSource from "./sources/RadixSortLsd.cpp?raw";
+import goSource from "./sources/radix-sort-lsd.go?raw";
 
 const radixSortLsdDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const radixSortLsdDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(d·(n+k))",
     },
     spaceComplexity: "O(n + k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: radixSortLsd,
@@ -39,6 +42,9 @@ const radixSortLsdDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

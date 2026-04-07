@@ -12,6 +12,9 @@ import { stringRotationCheckEducational } from "./educational";
 import typescriptSource from "./sources/string-rotation-check.ts?raw";
 import pythonSource from "./sources/string-rotation-check.py?raw";
 import javaSource from "./sources/StringRotationCheck.java?raw";
+import rustSource from "./sources/string-rotation-check.rs?raw";
+import cppSource from "./sources/StringRotationCheck.cpp?raw";
+import goSource from "./sources/string-rotation-check.go?raw";
 
 function executeStringRotationCheck(input: StringRotationCheckInput): boolean {
   return stringRotationCheck(input.text, input.pattern) as boolean;
@@ -31,7 +34,7 @@ const stringRotationCheckDefinition: AlgorithmDefinition<StringRotationCheckInpu
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "waterbottle", pattern: "erbottlewat" },
   },
   execute: executeStringRotationCheck,
@@ -41,6 +44,9 @@ const stringRotationCheckDefinition: AlgorithmDefinition<StringRotationCheckInpu
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

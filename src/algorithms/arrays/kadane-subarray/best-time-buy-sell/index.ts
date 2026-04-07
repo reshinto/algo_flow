@@ -13,6 +13,9 @@ import { bestTimeBuySellEducational } from "./educational";
 import typescriptSource from "./sources/best-time-buy-sell.ts?raw";
 import pythonSource from "./sources/best-time-buy-sell.py?raw";
 import javaSource from "./sources/BestTimeBuySell.java?raw";
+import rustSource from "./sources/best-time-buy-sell.rs?raw";
+import cppSource from "./sources/BestTimeBuySell.cpp?raw";
+import goSource from "./sources/best-time-buy-sell.go?raw";
 
 interface BestTimeBuySellInput {
   prices: number[];
@@ -32,7 +35,7 @@ const bestTimeBuySellDefinition: AlgorithmDefinition<BestTimeBuySellInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       prices: [7, 1, 5, 3, 6, 4],
     },
@@ -44,6 +47,9 @@ const bestTimeBuySellDefinition: AlgorithmDefinition<BestTimeBuySellInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

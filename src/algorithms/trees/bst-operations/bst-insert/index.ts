@@ -10,6 +10,9 @@ import { bstInsertEducational } from "./educational";
 import typescriptSource from "./sources/bst-insert.ts?raw";
 import pythonSource from "./sources/bst-insert.py?raw";
 import javaSource from "./sources/BSTInsert.java?raw";
+import rustSource from "./sources/bst-insert.rs?raw";
+import cppSource from "./sources/BSTInsert.cpp?raw";
+import goSource from "./sources/bst-insert.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -106,13 +109,20 @@ const bstInsertDefinition: AlgorithmDefinition<BstInsertInput> = {
       "Recursive BST insertion: traverse to the correct leaf position and link the new node",
     timeComplexity: { best: "O(log n)", average: "O(log n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", insertValue: 8 },
   },
   execute: executeBstInsert,
   generateSteps: generateBstInsertSteps,
   educational: bstInsertEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstInsertDefinition);

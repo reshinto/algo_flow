@@ -10,6 +10,9 @@ import { isSymmetricTreeIterativeEducational } from "./educational";
 import typescriptSource from "./sources/is-symmetric-tree-iterative.ts?raw";
 import pythonSource from "./sources/is-symmetric-tree-iterative.py?raw";
 import javaSource from "./sources/IsSymmetricTreeIterative.java?raw";
+import rustSource from "./sources/is-symmetric-tree-iterative.rs?raw";
+import cppSource from "./sources/IsSymmetricTreeIterative.cpp?raw";
+import goSource from "./sources/is-symmetric-tree-iterative.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const isSymmetricTreeIterativeDefinition: AlgorithmDefinition<IsSymmetricTreeIte
       "Queue-based symmetry check — enqueues mirror pairs and compares them level by level",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(w)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeIsSymmetricTreeIterative,
   generateSteps: generateIsSymmetricTreeIterativeSteps,
   educational: isSymmetricTreeIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(isSymmetricTreeIterativeDefinition);

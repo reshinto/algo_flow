@@ -9,6 +9,9 @@ import { climbingStairsMemoizationEducational } from "./educational";
 import typescriptSource from "./sources/climbing-stairs-memoization.ts?raw";
 import pythonSource from "./sources/climbing-stairs-memoization.py?raw";
 import javaSource from "./sources/ClimbingStairsMemoization.java?raw";
+import rustSource from "./sources/climbing-stairs-memoization.rs?raw";
+import cppSource from "./sources/ClimbingStairsMemoization.cpp?raw";
+import goSource from "./sources/climbing-stairs-memoization.go?raw";
 
 export interface ClimbingStairsInput {
   numberOfStairs: number;
@@ -28,7 +31,7 @@ const climbingStairsMemoizationDefinition: AlgorithmDefinition<ClimbingStairsInp
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numberOfStairs: 7 },
   },
   execute: (input: ClimbingStairsInput) => climbingStairsMemoization(input.numberOfStairs),
@@ -38,6 +41,9 @@ const climbingStairsMemoizationDefinition: AlgorithmDefinition<ClimbingStairsInp
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

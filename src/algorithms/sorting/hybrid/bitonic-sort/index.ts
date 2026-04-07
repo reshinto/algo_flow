@@ -14,6 +14,9 @@ import { bitonicSortEducational } from "./educational";
 import typescriptSource from "./sources/bitonic-sort.ts?raw";
 import pythonSource from "./sources/bitonic-sort.py?raw";
 import javaSource from "./sources/BitonicSort.java?raw";
+import rustSource from "./sources/bitonic-sort.rs?raw";
+import cppSource from "./sources/BitonicSort.cpp?raw";
+import goSource from "./sources/bitonic-sort.go?raw";
 
 const bitonicSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const bitonicSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log²n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: bitonicSort,
@@ -39,6 +42,9 @@ const bitonicSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

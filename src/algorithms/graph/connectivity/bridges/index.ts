@@ -14,6 +14,9 @@ import { bridgesEducational } from "./educational";
 import typescriptSource from "./sources/bridges.ts?raw";
 import pythonSource from "./sources/bridges.py?raw";
 import javaSource from "./sources/Bridges.java?raw";
+import rustSource from "./sources/bridges.rs?raw";
+import cppSource from "./sources/Bridges.cpp?raw";
+import goSource from "./sources/bridges.go?raw";
 
 /** Positions 7 nodes in a layout that makes the two bridges visually obvious */
 function bridgePosition(index: number): { x: number; y: number } {
@@ -94,7 +97,7 @@ const bridgesDefinition: AlgorithmDefinition<BridgesInput> = {
       worst: "O(V+E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: BridgesInput) => findBridges(input.adjacencyList, input.nodeIds),
@@ -104,6 +107,9 @@ const bridgesDefinition: AlgorithmDefinition<BridgesInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

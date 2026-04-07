@@ -10,6 +10,9 @@ import { buildFromPostorderInorderIterativeEducational } from "./educational";
 import typescriptSource from "./sources/build-from-postorder-inorder-iterative.ts?raw";
 import pythonSource from "./sources/build-from-postorder-inorder-iterative.py?raw";
 import javaSource from "./sources/BuildFromPostorderInorderIterative.java?raw";
+import rustSource from "./sources/build-from-postorder-inorder-iterative.rs?raw";
+import cppSource from "./sources/BuildFromPostorderInorderIterative.cpp?raw";
+import goSource from "./sources/build-from-postorder-inorder-iterative.go?raw";
 
 function executeBuildFromPostorderInorderIterative(
   input: BuildFromPostorderInorderIterativeInput,
@@ -35,7 +38,7 @@ const buildFromPostorderInorderIterativeDefinition: AlgorithmDefinition<BuildFro
         worst: "O(n)",
       },
       spaceComplexity: "O(n)",
-      supportedLanguages: ["typescript", "python", "java"],
+      supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
       defaultInput: {
         postorder: [1, 3, 2, 5, 7, 6, 4],
         inorder: [1, 2, 3, 4, 5, 6, 7],
@@ -48,6 +51,9 @@ const buildFromPostorderInorderIterativeDefinition: AlgorithmDefinition<BuildFro
       typescript: typescriptSource,
       python: pythonSource,
       java: javaSource,
+      rust: rustSource,
+      cpp: cppSource,
+      go: goSource,
     },
   };
 

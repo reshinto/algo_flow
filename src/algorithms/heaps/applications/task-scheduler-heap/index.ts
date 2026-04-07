@@ -10,6 +10,9 @@ import { taskSchedulerHeapEducational } from "./educational";
 import typescriptSource from "./sources/task-scheduler-heap.ts?raw";
 import pythonSource from "./sources/task-scheduler-heap.py?raw";
 import javaSource from "./sources/TaskSchedulerHeap.java?raw";
+import rustSource from "./sources/task-scheduler-heap.rs?raw";
+import cppSource from "./sources/TaskSchedulerHeap.cpp?raw";
+import goSource from "./sources/task-scheduler-heap.go?raw";
 
 function executeTaskSchedulerHeap(input: TaskSchedulerHeapInput): number {
   return taskSchedulerHeap(input.tasks, input.cooldown) as number;
@@ -29,7 +32,7 @@ const taskSchedulerHeapDefinition: AlgorithmDefinition<TaskSchedulerHeapInput> =
       worst: "O(n log k)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { tasks: ["A", "A", "A", "B", "B", "B"], cooldown: 2 },
   },
   execute: executeTaskSchedulerHeap,
@@ -39,6 +42,9 @@ const taskSchedulerHeapDefinition: AlgorithmDefinition<TaskSchedulerHeapInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

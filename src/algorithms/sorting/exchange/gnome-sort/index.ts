@@ -14,6 +14,9 @@ import { gnomeSortEducational } from "./educational";
 import typescriptSource from "./sources/gnome-sort.ts?raw";
 import pythonSource from "./sources/gnome-sort.py?raw";
 import javaSource from "./sources/GnomeSort.java?raw";
+import rustSource from "./sources/gnome-sort.rs?raw";
+import cppSource from "./sources/GnomeSort.cpp?raw";
+import goSource from "./sources/gnome-sort.go?raw";
 
 const gnomeSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const gnomeSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: gnomeSort,
@@ -39,6 +42,9 @@ const gnomeSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

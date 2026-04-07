@@ -12,6 +12,9 @@ import { trieInsertSearchEducational } from "./educational";
 import typescriptSource from "./sources/trie-insert-search.ts?raw";
 import pythonSource from "./sources/trie-insert-search.py?raw";
 import javaSource from "./sources/TrieInsertSearch.java?raw";
+import rustSource from "./sources/trie-insert-search.rs?raw";
+import cppSource from "./sources/TrieInsertSearch.cpp?raw";
+import goSource from "./sources/trie-insert-search.go?raw";
 
 function executeTrieInsertSearch(input: TrieInsertSearchInput): boolean {
   return trieInsertSearch(input.words, input.search) as boolean;
@@ -31,7 +34,7 @@ const trieInsertSearchDefinition: AlgorithmDefinition<TrieInsertSearchInput> = {
       worst: "O(m)",
     },
     spaceComplexity: "O(n × m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { words: ["apple", "app", "apricot"], search: "app" },
   },
   execute: executeTrieInsertSearch,
@@ -41,6 +44,9 @@ const trieInsertSearchDefinition: AlgorithmDefinition<TrieInsertSearchInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

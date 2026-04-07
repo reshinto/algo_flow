@@ -10,6 +10,9 @@ import { heapExtractMaxEducational } from "./educational";
 import typescriptSource from "./sources/heap-extract-max.ts?raw";
 import pythonSource from "./sources/heap-extract-max.py?raw";
 import javaSource from "./sources/HeapExtractMax.java?raw";
+import rustSource from "./sources/heap-extract-max.rs?raw";
+import cppSource from "./sources/HeapExtractMax.cpp?raw";
+import goSource from "./sources/heap-extract-max.go?raw";
 
 function executeHeapExtractMax(input: HeapExtractMaxInput): number[] {
   const result = heapExtractMax(input.array) as {
@@ -33,7 +36,7 @@ const heapExtractMaxDefinition: AlgorithmDefinition<HeapExtractMaxInput> = {
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [9, 7, 8, 3, 5, 6, 1] },
   },
   execute: executeHeapExtractMax,
@@ -43,6 +46,9 @@ const heapExtractMaxDefinition: AlgorithmDefinition<HeapExtractMaxInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { treeToDoublyLinkedListEducational } from "./educational";
 import typescriptSource from "./sources/tree-to-doubly-linked-list.ts?raw";
 import pythonSource from "./sources/tree-to-doubly-linked-list.py?raw";
 import javaSource from "./sources/TreeToDoublyLinkedList.java?raw";
+import rustSource from "./sources/tree-to-doubly-linked-list.rs?raw";
+import cppSource from "./sources/TreeToDoublyLinkedList.cpp?raw";
+import goSource from "./sources/tree-to-doubly-linked-list.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -117,13 +120,20 @@ const treeToDoublyLinkedListDefinition: AlgorithmDefinition<TreeToDoublyLinkedLi
       "Convert a BST into a sorted circular doubly linked list in-place by repurposing tree pointers during in-order traversal",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeTreeToDoublyLinkedList,
   generateSteps: generateTreeToDoublyLinkedListSteps,
   educational: treeToDoublyLinkedListEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(treeToDoublyLinkedListDefinition);

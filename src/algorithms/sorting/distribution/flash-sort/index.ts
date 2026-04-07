@@ -14,6 +14,9 @@ import { flashSortEducational } from "./educational";
 import typescriptSource from "./sources/flash-sort.ts?raw";
 import pythonSource from "./sources/flash-sort.py?raw";
 import javaSource from "./sources/FlashSort.java?raw";
+import rustSource from "./sources/flash-sort.rs?raw";
+import cppSource from "./sources/FlashSort.cpp?raw";
+import goSource from "./sources/flash-sort.go?raw";
 
 const flashSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const flashSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: flashSort,
@@ -39,6 +42,9 @@ const flashSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

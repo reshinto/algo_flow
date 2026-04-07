@@ -14,6 +14,9 @@ import { treeSortEducational } from "./educational";
 import typescriptSource from "./sources/tree-sort.ts?raw";
 import pythonSource from "./sources/tree-sort.py?raw";
 import javaSource from "./sources/TreeSort.java?raw";
+import rustSource from "./sources/tree-sort.rs?raw";
+import cppSource from "./sources/TreeSort.cpp?raw";
+import goSource from "./sources/tree-sort.go?raw";
 
 const treeSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const treeSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [5, 3, 7, 1, 4, 6, 2],
   },
   execute: treeSort,
@@ -39,6 +42,9 @@ const treeSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

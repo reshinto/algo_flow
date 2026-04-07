@@ -13,6 +13,9 @@ import { binarySearchEducational } from "./educational";
 import typescriptSource from "./sources/binary-search.ts?raw";
 import pythonSource from "./sources/binary-search.py?raw";
 import javaSource from "./sources/BinarySearch.java?raw";
+import rustSource from "./sources/binary-search.rs?raw";
+import cppSource from "./sources/BinarySearch.cpp?raw";
+import goSource from "./sources/binary-search.go?raw";
 
 const binarySearchDefinition: AlgorithmDefinition<{
   sortedArray: number[];
@@ -31,7 +34,7 @@ const binarySearchDefinition: AlgorithmDefinition<{
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [2, 5, 8, 12, 16, 23, 38, 56, 72, 91],
       targetValue: 23,
@@ -44,6 +47,9 @@ const binarySearchDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

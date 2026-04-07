@@ -20,7 +20,7 @@ Review code changes for quality, correctness, and adherence to project standards
 4. **DRY**: No duplicated logic. Reused strings centralized in constants.
 5. **Tests**: Algorithm implementations have unit tests. Step generators tested.
 6. **Educational content**: Present and complete for all 7 sections.
-7. **Source files**: Exist for all 3 languages (TypeScript, Python, Java).
+7. **Source files**: Exist for all 6 languages (TypeScript, Python, Java, Rust, C++, Go).
 8. **Line mappings**: Accurate per source file.
 9. **Non-persistence**: Input edits and grid edits are temporary.
 

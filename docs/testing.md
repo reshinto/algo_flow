@@ -15,9 +15,15 @@ AlgoFlow uses three layers of testing to ensure algorithm correctness, visual co
 ## Unit Tests
 
 ```bash
-npm run test            # Run all unit tests
-npm run test:coverage   # Run with coverage report
-npm run test:watch      # Watch mode during development
+npm run test                 # Run all unit tests
+npm run test:coverage        # Run with coverage report
+npm run test:watch           # Watch mode during development
+npm run test:python          # Run Python source tests
+npm run test:java            # Run Java source tests
+npm run test:rust            # Run Rust source tests
+npm run test:cpp             # Run C++ source tests
+npm run test:go              # Run Go source tests
+npm run test:all-languages   # Run all 5 language source test suites
 ```
 
 Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 452 algorithms in 14 categories.
@@ -48,7 +54,7 @@ CI shards unit tests 12 ways (aggregated under the **Unit Tests Status** job) an
 Additionally verify:
 
 - Educational content is non-empty for all 7 sections
-- Source files exist for all supported languages (TypeScript, Python, Java)
+- Source files exist for all supported languages (TypeScript, Python, Java, Rust, C++, Go)
 
 #### Example: Algorithm Correctness Test
 

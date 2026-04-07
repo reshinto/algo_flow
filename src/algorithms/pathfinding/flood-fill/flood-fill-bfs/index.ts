@@ -9,6 +9,9 @@ import { floodFillBfsEducational } from "./educational";
 import typescriptSource from "./sources/flood-fill-bfs.ts?raw";
 import pythonSource from "./sources/flood-fill-bfs.py?raw";
 import javaSource from "./sources/FloodFillBfs.java?raw";
+import rustSource from "./sources/flood-fill-bfs.rs?raw";
+import cppSource from "./sources/FloodFillBfs.cpp?raw";
+import goSource from "./sources/flood-fill-bfs.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -90,7 +93,7 @@ const floodFillBfsDefinition: AlgorithmDefinition<FloodFillBfsInput> = {
       worst: "O(V + E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -104,6 +107,9 @@ const floodFillBfsDefinition: AlgorithmDefinition<FloodFillBfsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

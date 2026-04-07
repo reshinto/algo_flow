@@ -13,6 +13,9 @@ import { fordFulkersonEducational } from "./educational";
 import typescriptSource from "./sources/ford-fulkerson.ts?raw";
 import pythonSource from "./sources/ford-fulkerson.py?raw";
 import javaSource from "./sources/FordFulkerson.java?raw";
+import rustSource from "./sources/ford-fulkerson.rs?raw";
+import cppSource from "./sources/FordFulkerson.cpp?raw";
+import goSource from "./sources/ford-fulkerson.go?raw";
 
 const CIRCLE_RADIUS = 150;
 const CENTER_X = 220;
@@ -86,7 +89,7 @@ const fordFulkersonDefinition: AlgorithmDefinition<FordFulkersonInput> = {
       worst: "O(V·E²)",
     },
     spaceComplexity: "O(V+E)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: FordFulkersonInput) =>
@@ -97,6 +100,9 @@ const fordFulkersonDefinition: AlgorithmDefinition<FordFulkersonInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

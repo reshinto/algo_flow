@@ -9,7 +9,7 @@ Algorithm visualization web app for learners. Step through algorithms with synch
 ## Features
 
 - **452 Algorithms across 14 Categories** with interactive visualizations (bar charts, SVG graphs/trees, CSS grids, DP tables, and more)
-- **Multi-Language Code Display**: TypeScript, Python, and Java with synchronized line highlighting via Monaco Editor
+- **Multi-Language Code Display**: TypeScript, Python, Java, Rust, C++, and Go with synchronized line highlighting via Monaco Editor
 - **Step-by-Step Playback**: Play, pause, step forward/backward, scrub, adjustable speed (0.25x–4x)
 - **Category-Specific Input Editors**: Editable arrays, targets, grids, text patterns, and matrices
 - **Educational Content**: Slide-over drawer with overview, complexity analysis, real-world uses, and trade-offs

@@ -9,6 +9,9 @@ import { leeAlgorithmEducational } from "./educational";
 import typescriptSource from "./sources/lee-algorithm.ts?raw";
 import pythonSource from "./sources/lee-algorithm.py?raw";
 import javaSource from "./sources/LeeAlgorithm.java?raw";
+import rustSource from "./sources/lee-algorithm.rs?raw";
+import cppSource from "./sources/LeeAlgorithm.cpp?raw";
+import goSource from "./sources/lee-algorithm.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -82,7 +85,7 @@ const leeAlgorithmDefinition: AlgorithmDefinition<LeeInput> = {
       worst: "O(V + E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -96,6 +99,9 @@ const leeAlgorithmDefinition: AlgorithmDefinition<LeeInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

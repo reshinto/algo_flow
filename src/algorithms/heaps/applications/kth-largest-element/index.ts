@@ -10,6 +10,9 @@ import { kthLargestElementEducational } from "./educational";
 import typescriptSource from "./sources/kth-largest-element.ts?raw";
 import pythonSource from "./sources/kth-largest-element.py?raw";
 import javaSource from "./sources/KthLargestElement.java?raw";
+import rustSource from "./sources/kth-largest-element.rs?raw";
+import cppSource from "./sources/KthLargestElement.cpp?raw";
+import goSource from "./sources/kth-largest-element.go?raw";
 
 function executeKthLargestElement(input: KthLargestElementInput): number {
   return kthLargestElement(input.array, input.kValue) as number;
@@ -29,7 +32,7 @@ const kthLargestElementDefinition: AlgorithmDefinition<KthLargestElementInput> =
       worst: "O(n log k)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [3, 1, 5, 12, 2, 11, 7, 9], kValue: 3 },
   },
   execute: executeKthLargestElement,
@@ -39,6 +42,9 @@ const kthLargestElementDefinition: AlgorithmDefinition<KthLargestElementInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

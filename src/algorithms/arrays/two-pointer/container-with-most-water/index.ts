@@ -13,6 +13,9 @@ import { containerWithMostWaterEducational } from "./educational";
 import typescriptSource from "./sources/container-with-most-water.ts?raw";
 import pythonSource from "./sources/container-with-most-water.py?raw";
 import javaSource from "./sources/ContainerWithMostWater.java?raw";
+import rustSource from "./sources/container-with-most-water.rs?raw";
+import cppSource from "./sources/ContainerWithMostWater.cpp?raw";
+import goSource from "./sources/container-with-most-water.go?raw";
 
 interface ContainerWithMostWaterInput {
   heights: number[];
@@ -32,7 +35,7 @@ const containerWithMostWaterDefinition: AlgorithmDefinition<ContainerWithMostWat
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       heights: [1, 8, 6, 2, 5, 4, 8, 3, 7],
     },
@@ -44,6 +47,9 @@ const containerWithMostWaterDefinition: AlgorithmDefinition<ContainerWithMostWat
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

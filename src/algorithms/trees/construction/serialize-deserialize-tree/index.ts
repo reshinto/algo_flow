@@ -10,6 +10,9 @@ import { serializeDeserializeTreeEducational } from "./educational";
 import typescriptSource from "./sources/serialize-deserialize-tree.ts?raw";
 import pythonSource from "./sources/serialize-deserialize-tree.py?raw";
 import javaSource from "./sources/SerializeDeserializeTree.java?raw";
+import rustSource from "./sources/serialize-deserialize-tree.rs?raw";
+import cppSource from "./sources/SerializeDeserializeTree.cpp?raw";
+import goSource from "./sources/serialize-deserialize-tree.go?raw";
 
 /** Build a balanced 7-node BST for default input */
 const defaultNodes: TreeNode[] = [
@@ -117,7 +120,7 @@ const serializeDeserializeTreeDefinition: AlgorithmDefinition<SerializeDeseriali
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       nodes: defaultNodes,
       rootId: "n4",
@@ -130,6 +133,9 @@ const serializeDeserializeTreeDefinition: AlgorithmDefinition<SerializeDeseriali
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

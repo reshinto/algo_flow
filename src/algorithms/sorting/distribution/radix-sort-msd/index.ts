@@ -14,6 +14,9 @@ import { radixSortMsdEducational } from "./educational";
 import typescriptSource from "./sources/radix-sort-msd.ts?raw";
 import pythonSource from "./sources/radix-sort-msd.py?raw";
 import javaSource from "./sources/RadixSortMsd.java?raw";
+import rustSource from "./sources/radix-sort-msd.rs?raw";
+import cppSource from "./sources/RadixSortMsd.cpp?raw";
+import goSource from "./sources/radix-sort-msd.go?raw";
 
 const radixSortMsdDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const radixSortMsdDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(d·(n+k))",
     },
     spaceComplexity: "O(n + k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: radixSortMsd,
@@ -39,6 +42,9 @@ const radixSortMsdDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -9,6 +9,9 @@ import { kruskalsMazeEducational } from "./educational";
 import typescriptSource from "./sources/kruskals-maze.ts?raw";
 import pythonSource from "./sources/kruskals-maze.py?raw";
 import javaSource from "./sources/KruskalsMaze.java?raw";
+import rustSource from "./sources/kruskals-maze.rs?raw";
+import cppSource from "./sources/KruskalsMaze.cpp?raw";
+import goSource from "./sources/kruskals-maze.go?raw";
 
 /** Builds an all-walls grid for maze generation with start/end positions marked. */
 function createDefaultGrid(): GridCell[][] {
@@ -59,7 +62,7 @@ const kruskalsMazeDefinition: AlgorithmDefinition<MazeInput> = {
       worst: "O(E · α(V))",
     },
     spaceComplexity: "O(V + E)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -73,6 +76,9 @@ const kruskalsMazeDefinition: AlgorithmDefinition<MazeInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

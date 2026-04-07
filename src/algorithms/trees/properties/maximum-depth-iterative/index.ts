@@ -10,6 +10,9 @@ import { maximumDepthIterativeEducational } from "./educational";
 import typescriptSource from "./sources/maximum-depth-iterative.ts?raw";
 import pythonSource from "./sources/maximum-depth-iterative.py?raw";
 import javaSource from "./sources/MaximumDepthIterative.java?raw";
+import rustSource from "./sources/maximum-depth-iterative.rs?raw";
+import cppSource from "./sources/MaximumDepthIterative.cpp?raw";
+import goSource from "./sources/maximum-depth-iterative.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const maximumDepthIterativeDefinition: AlgorithmDefinition<MaximumDepthIterative
       "Computes maximum depth using BFS level-by-level counting — each completed level increments depth",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(w)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeMaximumDepthIterative,
   generateSteps: generateMaximumDepthIterativeSteps,
   educational: maximumDepthIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(maximumDepthIterativeDefinition);

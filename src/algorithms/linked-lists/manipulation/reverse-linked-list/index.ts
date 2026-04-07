@@ -10,6 +10,9 @@ import { reverseLinkedListEducational } from "./educational";
 import typescriptSource from "./sources/reverse-linked-list.ts?raw";
 import pythonSource from "./sources/reverse-linked-list.py?raw";
 import javaSource from "./sources/ReverseLinkedList.java?raw";
+import rustSource from "./sources/reverse-linked-list.rs?raw";
+import cppSource from "./sources/ReverseLinkedList.cpp?raw";
+import goSource from "./sources/reverse-linked-list.go?raw";
 
 /** Convert an array of values to a ?fn-compatible linked list and back. */
 function executeReverseLinkedList(input: ReverseLinkedListInput): number[] {
@@ -49,7 +52,7 @@ const reverseLinkedListDefinition: AlgorithmDefinition<ReverseLinkedListInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { values: [1, 2, 3, 4, 5] },
   },
   execute: executeReverseLinkedList,
@@ -59,6 +62,9 @@ const reverseLinkedListDefinition: AlgorithmDefinition<ReverseLinkedListInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

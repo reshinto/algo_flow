@@ -15,6 +15,9 @@ import { dfsEducational } from "./educational";
 import typescriptSource from "./sources/dfs.ts?raw";
 import pythonSource from "./sources/dfs.py?raw";
 import javaSource from "./sources/DFS.java?raw";
+import rustSource from "./sources/dfs.rs?raw";
+import cppSource from "./sources/DFS.cpp?raw";
+import goSource from "./sources/dfs.go?raw";
 
 /** Pre-computed positions for 6 nodes arranged in a circle layout */
 const CIRCLE_RADIUS = 150;
@@ -79,7 +82,7 @@ const dfsDefinition: AlgorithmDefinition<DfsInput> = {
       worst: "O(V+E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: DfsInput) => depthFirstSearch(input.adjacencyList, input.startNodeId),
@@ -89,6 +92,9 @@ const dfsDefinition: AlgorithmDefinition<DfsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

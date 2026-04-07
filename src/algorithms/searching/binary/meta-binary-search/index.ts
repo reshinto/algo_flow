@@ -13,6 +13,9 @@ import { metaBinarySearchEducational } from "./educational";
 import typescriptSource from "./sources/meta-binary-search.ts?raw";
 import pythonSource from "./sources/meta-binary-search.py?raw";
 import javaSource from "./sources/MetaBinarySearch.java?raw";
+import rustSource from "./sources/meta-binary-search.rs?raw";
+import cppSource from "./sources/MetaBinarySearch.cpp?raw";
+import goSource from "./sources/meta-binary-search.go?raw";
 
 const metaBinarySearchDefinition: AlgorithmDefinition<{
   sortedArray: number[];
@@ -31,7 +34,7 @@ const metaBinarySearchDefinition: AlgorithmDefinition<{
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [2, 5, 8, 12, 16, 23, 38, 56, 72, 91],
       targetValue: 23,
@@ -44,6 +47,9 @@ const metaBinarySearchDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

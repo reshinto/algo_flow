@@ -14,6 +14,9 @@ import { countingSortEducational } from "./educational";
 import typescriptSource from "./sources/counting-sort-distribution.ts?raw";
 import pythonSource from "./sources/counting-sort-distribution.py?raw";
 import javaSource from "./sources/CountingSortDistribution.java?raw";
+import rustSource from "./sources/counting-sort-distribution.rs?raw";
+import cppSource from "./sources/CountingSortDistribution.cpp?raw";
+import goSource from "./sources/counting-sort-distribution.go?raw";
 
 const countingSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const countingSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n + k)",
     },
     spaceComplexity: "O(n + k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: countingSortDistribution,
@@ -39,6 +42,9 @@ const countingSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

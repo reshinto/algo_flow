@@ -93,7 +93,14 @@ const MOCK_DEFINITION: AlgorithmDefinition = {
     strengthsAndLimitations: { strengths: ["Fast"], limitations: ["Slow"] },
     whenToUseIt: "Test",
   },
-  sources: { typescript: "// ts", python: "# py", java: "// java" },
+  sources: {
+    typescript: "// ts",
+    python: "# py",
+    java: "// java",
+    rust: "// rs",
+    cpp: "// cpp",
+    go: "// go",
+  },
 };
 
 describe("AppStore", () => {

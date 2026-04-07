@@ -9,6 +9,9 @@ import { uniquePathsEducational } from "./educational";
 import typescriptSource from "./sources/unique-paths.ts?raw";
 import pythonSource from "./sources/unique-paths.py?raw";
 import javaSource from "./sources/UniquePaths.java?raw";
+import rustSource from "./sources/unique-paths.rs?raw";
+import cppSource from "./sources/UniquePaths.cpp?raw";
+import goSource from "./sources/unique-paths.go?raw";
 
 export interface UniquePathsInput {
   rows: number;
@@ -29,7 +32,7 @@ const uniquePathsDefinition: AlgorithmDefinition<UniquePathsInput> = {
       worst: "O(rows × columns)",
     },
     spaceComplexity: "O(columns)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { rows: 3, columns: 7 },
   },
   execute: (input: UniquePathsInput) => uniquePaths(input.rows, input.columns),
@@ -39,6 +42,9 @@ const uniquePathsDefinition: AlgorithmDefinition<UniquePathsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

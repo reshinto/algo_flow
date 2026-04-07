@@ -47,4 +47,4 @@ paths:
 - Step count and step types for known inputs
 - Final visual state matches expected
 - Educational content is non-empty for all sections
-- Source files exist for all supported languages
+- Source files exist for all supported languages (TypeScript, Python, Java, Rust, C++, Go)

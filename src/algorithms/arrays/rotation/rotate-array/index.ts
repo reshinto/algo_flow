@@ -13,6 +13,9 @@ import { rotateArrayEducational } from "./educational";
 import typescriptSource from "./sources/rotate-array.ts?raw";
 import pythonSource from "./sources/rotate-array.py?raw";
 import javaSource from "./sources/RotateArray.java?raw";
+import rustSource from "./sources/rotate-array.rs?raw";
+import cppSource from "./sources/RotateArray.cpp?raw";
+import goSource from "./sources/rotate-array.go?raw";
 
 interface RotateArrayInput {
   inputArray: number[];
@@ -33,7 +36,7 @@ const rotateArrayDefinition: AlgorithmDefinition<RotateArrayInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [1, 2, 3, 4, 5, 6, 7],
       rotateCount: 3,
@@ -46,6 +49,9 @@ const rotateArrayDefinition: AlgorithmDefinition<RotateArrayInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

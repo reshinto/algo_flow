@@ -12,6 +12,9 @@ import { triePrefixCountEducational } from "./educational";
 import typescriptSource from "./sources/trie-prefix-count.ts?raw";
 import pythonSource from "./sources/trie-prefix-count.py?raw";
 import javaSource from "./sources/TriePrefixCount.java?raw";
+import rustSource from "./sources/trie-prefix-count.rs?raw";
+import cppSource from "./sources/TriePrefixCount.cpp?raw";
+import goSource from "./sources/trie-prefix-count.go?raw";
 
 function executeTriePrefixCount(input: TriePrefixCountInput): number {
   return triePrefixCount(input.words, input.prefix) as number;
@@ -31,7 +34,7 @@ const triePrefixCountDefinition: AlgorithmDefinition<TriePrefixCountInput> = {
       worst: "O(m)",
     },
     spaceComplexity: "O(n × m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { words: ["apple", "app", "apricot", "ape"], prefix: "ap" },
   },
   execute: executeTriePrefixCount,
@@ -41,6 +44,9 @@ const triePrefixCountDefinition: AlgorithmDefinition<TriePrefixCountInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

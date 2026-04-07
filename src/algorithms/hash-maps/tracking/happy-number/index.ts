@@ -9,6 +9,9 @@ import { happyNumberEducational } from "./educational";
 import typescriptSource from "./sources/happy-number.ts?raw";
 import pythonSource from "./sources/happy-number.py?raw";
 import javaSource from "./sources/HappyNumber.java?raw";
+import rustSource from "./sources/happy-number.rs?raw";
+import cppSource from "./sources/HappyNumber.cpp?raw";
+import goSource from "./sources/happy-number.go?raw";
 
 function executeHappyNumber(input: HappyNumberInput): boolean {
   return happyNumber(input.number);
@@ -28,7 +31,7 @@ const happyNumberDefinition: AlgorithmDefinition<HappyNumberInput> = {
       worst: "O(log n)",
     },
     spaceComplexity: "O(log n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { number: 19 },
   },
   execute: executeHappyNumber,
@@ -38,6 +41,9 @@ const happyNumberDefinition: AlgorithmDefinition<HappyNumberInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

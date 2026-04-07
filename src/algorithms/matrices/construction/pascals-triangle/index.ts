@@ -10,6 +10,9 @@ import { pascalsTriangleEducational } from "./educational";
 import typescriptSource from "./sources/pascals-triangle.ts?raw";
 import pythonSource from "./sources/pascals-triangle.py?raw";
 import javaSource from "./sources/PascalsTriangle.java?raw";
+import rustSource from "./sources/pascals-triangle.rs?raw";
+import cppSource from "./sources/PascalsTriangle.cpp?raw";
+import goSource from "./sources/pascals-triangle.go?raw";
 
 function executePascalsTriangle(input: PascalsTriangleInput): number[][] {
   return pascalsTriangle(input.numRows) as number[][];
@@ -29,7 +32,7 @@ const pascalsTriangleDefinition: AlgorithmDefinition<PascalsTriangleInput> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       numRows: 5,
     },
@@ -41,6 +44,9 @@ const pascalsTriangleDefinition: AlgorithmDefinition<PascalsTriangleInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

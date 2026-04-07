@@ -9,6 +9,9 @@ import { jumpPointSearchEducational } from "./educational";
 import typescriptSource from "./sources/jump-point-search.ts?raw";
 import pythonSource from "./sources/jump-point-search.py?raw";
 import javaSource from "./sources/JumpPointSearch.java?raw";
+import rustSource from "./sources/jump-point-search.rs?raw";
+import cppSource from "./sources/JumpPointSearch.cpp?raw";
+import goSource from "./sources/jump-point-search.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -75,7 +78,7 @@ const jumpPointSearchDefinition: AlgorithmDefinition<JpsInput> = {
       worst: "O(b^d)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -89,6 +92,9 @@ const jumpPointSearchDefinition: AlgorithmDefinition<JpsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

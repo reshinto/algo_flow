@@ -10,6 +10,9 @@ import { binaryTreePruningEducational } from "./educational";
 import typescriptSource from "./sources/binary-tree-pruning.ts?raw";
 import pythonSource from "./sources/binary-tree-pruning.py?raw";
 import javaSource from "./sources/BinaryTreePruning.java?raw";
+import rustSource from "./sources/binary-tree-pruning.rs?raw";
+import cppSource from "./sources/BinaryTreePruning.cpp?raw";
+import goSource from "./sources/binary-tree-pruning.go?raw";
 
 /** Tree with some zero-only subtrees that will be pruned */
 const defaultNodes: TreeNode[] = [
@@ -119,13 +122,20 @@ const binaryTreePruningDefinition: AlgorithmDefinition<BinaryTreePruningInput> =
       "Remove all subtrees that contain no 1s using post-order traversal — leaves with value 0 collapse upward",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n1" },
   },
   execute: executeBinaryTreePruning,
   generateSteps: generateBinaryTreePruningSteps,
   educational: binaryTreePruningEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(binaryTreePruningDefinition);

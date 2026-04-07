@@ -14,6 +14,9 @@ import { circleSortEducational } from "./educational";
 import typescriptSource from "./sources/circle-sort.ts?raw";
 import pythonSource from "./sources/circle-sort.py?raw";
 import javaSource from "./sources/CircleSort.java?raw";
+import rustSource from "./sources/circle-sort.rs?raw";
+import cppSource from "./sources/CircleSort.cpp?raw";
+import goSource from "./sources/circle-sort.go?raw";
 
 const circleSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const circleSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log n log n)",
     },
     spaceComplexity: "O(log n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: circleSort,
@@ -39,6 +42,9 @@ const circleSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

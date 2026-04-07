@@ -14,6 +14,9 @@ import { librarySortEducational } from "./educational";
 import typescriptSource from "./sources/library-sort.ts?raw";
 import pythonSource from "./sources/library-sort.py?raw";
 import javaSource from "./sources/LibrarySort.java?raw";
+import rustSource from "./sources/library-sort.rs?raw";
+import cppSource from "./sources/LibrarySort.cpp?raw";
+import goSource from "./sources/library-sort.go?raw";
 
 const librarySortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const librarySortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: librarySort,
@@ -39,6 +42,9 @@ const librarySortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { bstInsertIterativeEducational } from "./educational";
 import typescriptSource from "./sources/bst-insert-iterative.ts?raw";
 import pythonSource from "./sources/bst-insert-iterative.py?raw";
 import javaSource from "./sources/BSTInsertIterative.java?raw";
+import rustSource from "./sources/bst-insert-iterative.rs?raw";
+import cppSource from "./sources/BSTInsertIterative.cpp?raw";
+import goSource from "./sources/bst-insert-iterative.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -105,13 +108,20 @@ const bstInsertIterativeDefinition: AlgorithmDefinition<BstInsertIterativeInput>
     description: "Iterative BST insertion: track parent pointer while walking to the correct leaf",
     timeComplexity: { best: "O(log n)", average: "O(log n)", worst: "O(n)" },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", insertValue: 8 },
   },
   execute: executeBstInsertIterative,
   generateSteps: generateBstInsertIterativeSteps,
   educational: bstInsertIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstInsertIterativeDefinition);

@@ -10,6 +10,9 @@ import { bstKthSmallestEducational } from "./educational";
 import typescriptSource from "./sources/bst-kth-smallest.ts?raw";
 import pythonSource from "./sources/bst-kth-smallest.py?raw";
 import javaSource from "./sources/BSTKthSmallest.java?raw";
+import rustSource from "./sources/bst-kth-smallest.rs?raw";
+import cppSource from "./sources/BSTKthSmallest.cpp?raw";
+import goSource from "./sources/bst-kth-smallest.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -104,13 +107,20 @@ const bstKthSmallestDefinition: AlgorithmDefinition<BstKthSmallestInput> = {
     description: "Recursive in-order traversal counting nodes until the kth smallest is reached",
     timeComplexity: { best: "O(k)", average: "O(k)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", kthPosition: 3 },
   },
   execute: executeBstKthSmallest,
   generateSteps: generateBstKthSmallestSteps,
   educational: bstKthSmallestEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstKthSmallestDefinition);

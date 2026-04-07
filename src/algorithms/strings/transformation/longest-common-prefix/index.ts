@@ -12,6 +12,9 @@ import { longestCommonPrefixEducational } from "./educational";
 import typescriptSource from "./sources/longest-common-prefix.ts?raw";
 import pythonSource from "./sources/longest-common-prefix.py?raw";
 import javaSource from "./sources/LongestCommonPrefix.java?raw";
+import rustSource from "./sources/longest-common-prefix.rs?raw";
+import cppSource from "./sources/LongestCommonPrefix.cpp?raw";
+import goSource from "./sources/longest-common-prefix.go?raw";
 
 function executeLongestCommonPrefix(input: LongestCommonPrefixInput): string {
   return longestCommonPrefix(input.words) as string;
@@ -31,7 +34,7 @@ const longestCommonPrefixDefinition: AlgorithmDefinition<LongestCommonPrefixInpu
       worst: "O(n*m)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { words: ["flower", "flow", "flight"] },
   },
   execute: executeLongestCommonPrefix,
@@ -41,6 +44,9 @@ const longestCommonPrefixDefinition: AlgorithmDefinition<LongestCommonPrefixInpu
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { bstPreorderIterativeEducational } from "./educational";
 import typescriptSource from "./sources/bst-preorder-iterative.ts?raw";
 import pythonSource from "./sources/bst-preorder-iterative.py?raw";
 import javaSource from "./sources/BSTPreorderIterative.java?raw";
+import rustSource from "./sources/bst-preorder-iterative.rs?raw";
+import cppSource from "./sources/BSTPreorderIterative.cpp?raw";
+import goSource from "./sources/bst-preorder-iterative.go?raw";
 
 /** Build a balanced 7-node BST: [4,2,6,1,3,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -114,7 +117,7 @@ const bstPreorderIterativeDefinition: AlgorithmDefinition<BstPreorderIterativeIn
       worst: "O(n)",
     },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       nodes: defaultNodes,
       rootId: "n4",
@@ -127,6 +130,9 @@ const bstPreorderIterativeDefinition: AlgorithmDefinition<BstPreorderIterativeIn
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

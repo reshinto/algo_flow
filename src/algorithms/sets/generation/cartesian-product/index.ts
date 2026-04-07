@@ -10,6 +10,9 @@ import { cartesianProductEducational } from "./educational";
 import typescriptSource from "./sources/cartesian-product.ts?raw";
 import pythonSource from "./sources/cartesian-product.py?raw";
 import javaSource from "./sources/CartesianProduct.java?raw";
+import rustSource from "./sources/cartesian-product.rs?raw";
+import cppSource from "./sources/CartesianProduct.cpp?raw";
+import goSource from "./sources/cartesian-product.go?raw";
 
 function executeCartesianProduct(input: CartesianProductInput): number[][] {
   return cartesianProduct(input.setA, input.setB) as number[][];
@@ -29,7 +32,7 @@ const cartesianProductDefinition: AlgorithmDefinition<CartesianProductInput> = {
       worst: "O(n × m)",
     },
     spaceComplexity: "O(n × m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { setA: [1, 2, 3], setB: [4, 5] },
   },
   execute: executeCartesianProduct,
@@ -39,6 +42,9 @@ const cartesianProductDefinition: AlgorithmDefinition<CartesianProductInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

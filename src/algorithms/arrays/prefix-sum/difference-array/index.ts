@@ -13,6 +13,9 @@ import { differenceArrayEducational } from "./educational";
 import typescriptSource from "./sources/difference-array.ts?raw";
 import pythonSource from "./sources/difference-array.py?raw";
 import javaSource from "./sources/DifferenceArray.java?raw";
+import rustSource from "./sources/difference-array.rs?raw";
+import cppSource from "./sources/DifferenceArray.cpp?raw";
+import goSource from "./sources/difference-array.go?raw";
 
 interface DifferenceArrayInput {
   arrayLength: number;
@@ -33,7 +36,7 @@ const differenceArrayDefinition: AlgorithmDefinition<DifferenceArrayInput> = {
       worst: "O(n + q)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       arrayLength: 8,
       updates: [
@@ -50,6 +53,9 @@ const differenceArrayDefinition: AlgorithmDefinition<DifferenceArrayInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

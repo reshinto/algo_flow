@@ -15,7 +15,7 @@ Verify all algorithm work is complete and correct before claiming done, committi
 ### 1. Algorithm Completeness (if algorithm was added/changed)
 
 - [ ] Pure algorithm implementation exists (`<algorithm>.ts`)
-- [ ] Source files for all 3 languages: TypeScript, Python, Java
+- [ ] Source files for all 6 languages: TypeScript, Python, Java, Rust, C++, Go
 - [ ] Step generator produces correct step count and types
 - [ ] All 7 educational content sections present and non-empty
 - [ ] Line mappings accurate per source file for all languages

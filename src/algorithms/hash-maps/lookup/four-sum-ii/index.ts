@@ -10,6 +10,9 @@ import { fourSumIIEducational } from "./educational";
 import typescriptSource from "./sources/four-sum-ii.ts?raw";
 import pythonSource from "./sources/four-sum-ii.py?raw";
 import javaSource from "./sources/FourSumII.java?raw";
+import rustSource from "./sources/four-sum-ii.rs?raw";
+import cppSource from "./sources/FourSumII.cpp?raw";
+import goSource from "./sources/four-sum-ii.go?raw";
 
 function executeFourSumII(input: FourSumIIInput): number {
   return fourSumII(input.numsA, input.numsB, input.numsC, input.numsD) as number;
@@ -29,7 +32,7 @@ const fourSumIIDefinition: AlgorithmDefinition<FourSumIIInput> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n²)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       numsA: [1, 2],
       numsB: [-2, -1],
@@ -44,6 +47,9 @@ const fourSumIIDefinition: AlgorithmDefinition<FourSumIIInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -12,6 +12,9 @@ import { longestWordInTrieEducational } from "./educational";
 import typescriptSource from "./sources/longest-word-in-trie.ts?raw";
 import pythonSource from "./sources/longest-word-in-trie.py?raw";
 import javaSource from "./sources/LongestWordInTrie.java?raw";
+import rustSource from "./sources/longest-word-in-trie.rs?raw";
+import cppSource from "./sources/LongestWordInTrie.cpp?raw";
+import goSource from "./sources/longest-word-in-trie.go?raw";
 
 function executeLongestWordInTrie(input: LongestWordInTrieInput): string {
   return longestWordInTrie(input.words) as string;
@@ -31,7 +34,7 @@ const longestWordInTrieDefinition: AlgorithmDefinition<LongestWordInTrieInput> =
       worst: "O(n×m)",
     },
     spaceComplexity: "O(n × m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { words: ["w", "wo", "wor", "worl", "world"] },
   },
   execute: executeLongestWordInTrie,
@@ -41,6 +44,9 @@ const longestWordInTrieDefinition: AlgorithmDefinition<LongestWordInTrieInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

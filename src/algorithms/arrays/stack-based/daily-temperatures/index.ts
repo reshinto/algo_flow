@@ -13,6 +13,9 @@ import { dailyTemperaturesEducational } from "./educational";
 import typescriptSource from "./sources/daily-temperatures.ts?raw";
 import pythonSource from "./sources/daily-temperatures.py?raw";
 import javaSource from "./sources/DailyTemperatures.java?raw";
+import rustSource from "./sources/daily-temperatures.rs?raw";
+import cppSource from "./sources/DailyTemperatures.cpp?raw";
+import goSource from "./sources/daily-temperatures.go?raw";
 
 interface DailyTemperaturesInput {
   temperatures: number[];
@@ -32,7 +35,7 @@ const dailyTemperaturesDefinition: AlgorithmDefinition<DailyTemperaturesInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       temperatures: [73, 74, 75, 71, 69, 72, 76, 73],
     },
@@ -44,6 +47,9 @@ const dailyTemperaturesDefinition: AlgorithmDefinition<DailyTemperaturesInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

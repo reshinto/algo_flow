@@ -10,6 +10,9 @@ import { invertBinaryTreeIterativeEducational } from "./educational";
 import typescriptSource from "./sources/invert-binary-tree-iterative.ts?raw";
 import pythonSource from "./sources/invert-binary-tree-iterative.py?raw";
 import javaSource from "./sources/InvertBinaryTreeIterative.java?raw";
+import rustSource from "./sources/invert-binary-tree-iterative.rs?raw";
+import cppSource from "./sources/InvertBinaryTreeIterative.cpp?raw";
+import goSource from "./sources/invert-binary-tree-iterative.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -119,13 +122,20 @@ const invertBinaryTreeIterativeDefinition: AlgorithmDefinition<InvertBinaryTreeI
       "Iteratively mirrors a binary tree using a BFS queue, swapping left and right children level by level without recursion",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(w)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeInvertBinaryTreeIterative,
   generateSteps: generateInvertBinaryTreeIterativeSteps,
   educational: invertBinaryTreeIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(invertBinaryTreeIterativeDefinition);

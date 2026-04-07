@@ -30,7 +30,14 @@ function createMockDefinition(
       strengthsAndLimitations: { strengths: ["Fast"], limitations: ["Slow"] },
       whenToUseIt: "Mock when",
     },
-    sources: { typescript: "// ts", python: "# py", java: "// java" },
+    sources: {
+      typescript: "// ts",
+      python: "# py",
+      java: "// java",
+      rust: "// rs",
+      cpp: "// cpp",
+      go: "// go",
+    },
   };
 }
 

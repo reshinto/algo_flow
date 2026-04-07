@@ -10,6 +10,9 @@ import { heapExtractMinEducational } from "./educational";
 import typescriptSource from "./sources/heap-extract-min.ts?raw";
 import pythonSource from "./sources/heap-extract-min.py?raw";
 import javaSource from "./sources/HeapExtractMin.java?raw";
+import rustSource from "./sources/heap-extract-min.rs?raw";
+import cppSource from "./sources/HeapExtractMin.cpp?raw";
+import goSource from "./sources/heap-extract-min.go?raw";
 
 function executeHeapExtractMin(input: HeapExtractMinInput): number[] {
   const result = heapExtractMin(input.array) as {
@@ -33,7 +36,7 @@ const heapExtractMinDefinition: AlgorithmDefinition<HeapExtractMinInput> = {
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [1, 3, 5, 7, 9, 8, 6] },
   },
   execute: executeHeapExtractMin,
@@ -43,6 +46,9 @@ const heapExtractMinDefinition: AlgorithmDefinition<HeapExtractMinInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

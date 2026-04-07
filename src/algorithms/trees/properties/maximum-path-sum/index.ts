@@ -10,6 +10,9 @@ import { maximumPathSumEducational } from "./educational";
 import typescriptSource from "./sources/maximum-path-sum.ts?raw";
 import pythonSource from "./sources/maximum-path-sum.py?raw";
 import javaSource from "./sources/MaximumPathSum.java?raw";
+import rustSource from "./sources/maximum-path-sum.rs?raw";
+import cppSource from "./sources/MaximumPathSum.cpp?raw";
+import goSource from "./sources/maximum-path-sum.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7]. Max path is 3+2+4+6+7=22. */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const maximumPathSumDefinition: AlgorithmDefinition<MaximumPathSumInput> = {
       "Finds the maximum sum path between any two nodes. At each node it computes leftGain + node + rightGain and tracks the global maximum.",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeMaximumPathSum,
   generateSteps: generateMaximumPathSumSteps,
   educational: maximumPathSumEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(maximumPathSumDefinition);

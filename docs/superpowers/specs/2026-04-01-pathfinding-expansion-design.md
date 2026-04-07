@@ -304,7 +304,7 @@ Each algorithm produces 10 files:
 - [ ] Verify step playback works (forward, backward, reset)
 - [ ] Verify code highlighting syncs with steps
 - [ ] Verify educational drawer content
-- [ ] Verify language tab switching (TS, Python, Java)
+- [ ] Verify language tab switching (TS, Python, Java, Rust, C++, Go)
 - [ ] Fix any visual issues
 
 ### Phase 9: E2E Testing

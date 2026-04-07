@@ -10,6 +10,9 @@ import { implementQueueUsingStacksEducational } from "./educational";
 import typescriptSource from "./sources/implement-queue-using-stacks.ts?raw";
 import pythonSource from "./sources/implement-queue-using-stacks.py?raw";
 import javaSource from "./sources/ImplementQueueUsingStacks.java?raw";
+import rustSource from "./sources/implement-queue-using-stacks.rs?raw";
+import cppSource from "./sources/ImplementQueueUsingStacks.cpp?raw";
+import goSource from "./sources/implement-queue-using-stacks.go?raw";
 
 function executeImplementQueueUsingStacks(input: ImplementQueueUsingStacksInput): number[] {
   return implementQueueUsingStacks(input.values) as number[];
@@ -29,7 +32,7 @@ const implementQueueUsingStacksDefinition: AlgorithmDefinition<ImplementQueueUsi
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { values: [1, 2, 3, 4, 5] },
   },
   execute: executeImplementQueueUsingStacks,
@@ -39,6 +42,9 @@ const implementQueueUsingStacksDefinition: AlgorithmDefinition<ImplementQueueUsi
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

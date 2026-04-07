@@ -431,7 +431,7 @@ The project uses `noUncheckedIndexedAccess: true`. Array indexing returns `T | u
 <details>
 <summary><strong><code>?fn</code> import not working</strong></summary>
 
-The `?fn` suffix only works for `.ts` files in `sources/` directories. It is powered by a custom Vite plugin (`vite-plugin-fn-import.ts`). Python and Java files are always imported via `?raw` only.
+The `?fn` suffix only works for `.ts` files in `sources/` directories. It is powered by a custom Vite plugin (`vite-plugin-fn-import.ts`). Python, Java, Rust, C++, and Go files are always imported via `?raw` only.
 
 </details>
 

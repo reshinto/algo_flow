@@ -10,6 +10,9 @@ import { antiDiagonalTraversalEducational } from "./educational";
 import typescriptSource from "./sources/anti-diagonal-traversal.ts?raw";
 import pythonSource from "./sources/anti-diagonal-traversal.py?raw";
 import javaSource from "./sources/AntiDiagonalTraversal.java?raw";
+import rustSource from "./sources/anti-diagonal-traversal.rs?raw";
+import cppSource from "./sources/AntiDiagonalTraversal.cpp?raw";
+import goSource from "./sources/anti-diagonal-traversal.go?raw";
 
 function executeAntiDiagonalTraversal(input: AntiDiagonalTraversalInput): number[] {
   return antiDiagonalTraversal(input.matrix) as number[];
@@ -29,7 +32,7 @@ const antiDiagonalTraversalDefinition: AlgorithmDefinition<AntiDiagonalTraversal
       worst: "O(m × n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [1, 2, 3],
@@ -45,6 +48,9 @@ const antiDiagonalTraversalDefinition: AlgorithmDefinition<AntiDiagonalTraversal
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

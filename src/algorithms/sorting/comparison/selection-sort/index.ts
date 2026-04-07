@@ -14,6 +14,9 @@ import { selectionSortEducational } from "./educational";
 import typescriptSource from "./sources/selection-sort.ts?raw";
 import pythonSource from "./sources/selection-sort.py?raw";
 import javaSource from "./sources/SelectionSort.java?raw";
+import rustSource from "./sources/selection-sort.rs?raw";
+import cppSource from "./sources/SelectionSort.cpp?raw";
+import goSource from "./sources/selection-sort.go?raw";
 
 const selectionSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const selectionSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: selectionSort,
@@ -39,6 +42,9 @@ const selectionSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { bstLowestCommonAncestorIterativeEducational } from "./educational";
 import typescriptSource from "./sources/bst-lowest-common-ancestor-iterative.ts?raw";
 import pythonSource from "./sources/bst-lowest-common-ancestor-iterative.py?raw";
 import javaSource from "./sources/BSTLowestCommonAncestorIterative.java?raw";
+import rustSource from "./sources/bst-lowest-common-ancestor-iterative.rs?raw";
+import cppSource from "./sources/BSTLowestCommonAncestorIterative.cpp?raw";
+import goSource from "./sources/bst-lowest-common-ancestor-iterative.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -112,13 +115,20 @@ const bstLowestCommonAncestorIterativeDefinition: AlgorithmDefinition<BstLowestC
       description: "Iterative LCA: walk left/right until values split across current node",
       timeComplexity: { best: "O(log n)", average: "O(log n)", worst: "O(n)" },
       spaceComplexity: "O(1)",
-      supportedLanguages: ["typescript", "python", "java"],
+      supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
       defaultInput: { nodes: defaultNodes, rootId: "n4", nodeValueA: 1, nodeValueB: 3 },
     },
     execute: executeBstLowestCommonAncestorIterative,
     generateSteps: generateBstLowestCommonAncestorIterativeSteps,
     educational: bstLowestCommonAncestorIterativeEducational,
-    sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+    sources: {
+      typescript: typescriptSource,
+      python: pythonSource,
+      java: javaSource,
+      rust: rustSource,
+      cpp: cppSource,
+      go: goSource,
+    },
   };
 
 registry.register(bstLowestCommonAncestorIterativeDefinition);

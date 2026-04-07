@@ -28,6 +28,9 @@ const LANGUAGE_EXTENSIONS: Record<SupportedLanguage, string> = {
   typescript: ".ts",
   python: ".py",
   java: ".java",
+  rust: ".rs",
+  cpp: ".cpp",
+  go: ".go",
 };
 
 /**
@@ -207,7 +210,7 @@ export function parseStepMarkers(source: string): Record<string, number[]> {
 export function buildLineMapFromSources(
   algorithmId: string,
 ): Record<string, Record<SupportedLanguage, number[]>> {
-  const languages: SupportedLanguage[] = ["typescript", "python", "java"];
+  const languages: SupportedLanguage[] = ["typescript", "python", "java", "rust", "cpp", "go"];
   const allStepKeys = new Set<string>();
 
   // Construct empty tracking schema scaffolding
@@ -215,6 +218,9 @@ export function buildLineMapFromSources(
     typescript: {},
     python: {},
     java: {},
+    rust: {},
+    cpp: {},
+    go: {},
   };
 
   // Compile individual dictionaries mapping active markers inside each individual parsed language payload
@@ -238,6 +244,9 @@ export function buildLineMapFromSources(
       typescript: perLanguage.typescript[stepKey] ?? [],
       python: perLanguage.python[stepKey] ?? [],
       java: perLanguage.java[stepKey] ?? [],
+      rust: perLanguage.rust[stepKey] ?? [],
+      cpp: perLanguage.cpp[stepKey] ?? [],
+      go: perLanguage.go[stepKey] ?? [],
     };
   }
 

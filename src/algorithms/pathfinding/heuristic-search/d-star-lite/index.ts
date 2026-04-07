@@ -9,6 +9,9 @@ import { dStarLiteEducational } from "./educational";
 import typescriptSource from "./sources/d-star-lite.ts?raw";
 import pythonSource from "./sources/d-star-lite.py?raw";
 import javaSource from "./sources/DStarLite.java?raw";
+import rustSource from "./sources/d-star-lite.rs?raw";
+import cppSource from "./sources/DStarLite.cpp?raw";
+import goSource from "./sources/d-star-lite.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -76,7 +79,7 @@ const dStarLiteDefinition: AlgorithmDefinition<DStarInput> = {
       worst: "O((V+E) log V)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -90,6 +93,9 @@ const dStarLiteDefinition: AlgorithmDefinition<DStarInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

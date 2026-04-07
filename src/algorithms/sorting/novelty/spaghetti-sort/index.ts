@@ -12,6 +12,9 @@ import { spaghettiSortEducational } from "./educational";
 import typescriptSource from "./sources/spaghetti-sort.ts?raw";
 import pythonSource from "./sources/spaghetti-sort.py?raw";
 import javaSource from "./sources/SpaghettiSort.java?raw";
+import rustSource from "./sources/spaghetti-sort.rs?raw";
+import cppSource from "./sources/SpaghettiSort.cpp?raw";
+import goSource from "./sources/spaghetti-sort.go?raw";
 
 const spaghettiSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -27,7 +30,7 @@ const spaghettiSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [5, 3, 8, 1, 4, 2, 7, 6],
   },
   execute: spaghettiSort,
@@ -37,6 +40,9 @@ const spaghettiSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

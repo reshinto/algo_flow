@@ -10,6 +10,9 @@ import { boyerMooreSearchEducational } from "./educational";
 import typescriptSource from "./sources/boyer-moore-search.ts?raw";
 import pythonSource from "./sources/boyer-moore-search.py?raw";
 import javaSource from "./sources/BoyerMooreSearch.java?raw";
+import rustSource from "./sources/boyer-moore-search.rs?raw";
+import cppSource from "./sources/BoyerMooreSearch.cpp?raw";
+import goSource from "./sources/boyer-moore-search.go?raw";
 
 function executeBoyerMooreSearch(input: BoyerMooreSearchInput): number {
   return boyerMooreSearch(input.text, input.pattern) as number;
@@ -29,7 +32,7 @@ const boyerMooreSearchDefinition: AlgorithmDefinition<BoyerMooreSearchInput> = {
       worst: "O(nm)",
     },
     spaceComplexity: "O(σ)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "ABAAABCD", pattern: "ABC" },
   },
   execute: executeBoyerMooreSearch,
@@ -39,6 +42,9 @@ const boyerMooreSearchDefinition: AlgorithmDefinition<BoyerMooreSearchInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

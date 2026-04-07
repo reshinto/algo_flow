@@ -14,6 +14,9 @@ import { americanFlagSortEducational } from "./educational";
 import typescriptSource from "./sources/american-flag-sort.ts?raw";
 import pythonSource from "./sources/american-flag-sort.py?raw";
 import javaSource from "./sources/AmericanFlagSort.java?raw";
+import rustSource from "./sources/american-flag-sort.rs?raw";
+import cppSource from "./sources/AmericanFlagSort.cpp?raw";
+import goSource from "./sources/american-flag-sort.go?raw";
 
 const americanFlagSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const americanFlagSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n·d)",
     },
     spaceComplexity: "O(d)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: americanFlagSort,
@@ -39,6 +42,9 @@ const americanFlagSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

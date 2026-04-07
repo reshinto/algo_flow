@@ -10,6 +10,9 @@ import { setDifferenceEducational } from "./educational";
 import typescriptSource from "./sources/set-difference.ts?raw";
 import pythonSource from "./sources/set-difference.py?raw";
 import javaSource from "./sources/SetDifference.java?raw";
+import rustSource from "./sources/set-difference.rs?raw";
+import cppSource from "./sources/SetDifference.cpp?raw";
+import goSource from "./sources/set-difference.go?raw";
 
 function executeSetDifference(input: SetDifferenceInput): number[] {
   return setDifference(input.arrayA, input.arrayB) as number[];
@@ -29,7 +32,7 @@ const setDifferenceDefinition: AlgorithmDefinition<SetDifferenceInput> = {
       worst: "O(n + m)",
     },
     spaceComplexity: "O(m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { arrayA: [1, 2, 3, 4, 5], arrayB: [3, 4, 5, 6, 7] },
   },
   execute: executeSetDifference,
@@ -39,6 +42,9 @@ const setDifferenceDefinition: AlgorithmDefinition<SetDifferenceInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

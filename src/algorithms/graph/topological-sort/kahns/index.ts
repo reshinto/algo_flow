@@ -14,6 +14,9 @@ import { kahnsEducational } from "./educational";
 import typescriptSource from "./sources/kahns.ts?raw";
 import pythonSource from "./sources/kahns.py?raw";
 import javaSource from "./sources/Kahns.java?raw";
+import rustSource from "./sources/kahns.rs?raw";
+import cppSource from "./sources/Kahns.cpp?raw";
+import goSource from "./sources/kahns.go?raw";
 
 /** Positions for 6 DAG nodes arranged in a layered left-to-right layout */
 const NODE_POSITIONS: Record<string, { x: number; y: number }> = {
@@ -76,7 +79,7 @@ const kahnsDefinition: AlgorithmDefinition<KahnsInput> = {
       worst: "O(V+E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: KahnsInput) => kahnsTopologicalSort(input.adjacencyList, input.nodeIds),
@@ -86,6 +89,9 @@ const kahnsDefinition: AlgorithmDefinition<KahnsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

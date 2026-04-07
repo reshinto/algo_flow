@@ -9,6 +9,9 @@ import { decodeWaysTabulationEducational } from "./educational";
 import typescriptSource from "./sources/decode-ways-tabulation.ts?raw";
 import pythonSource from "./sources/decode-ways-tabulation.py?raw";
 import javaSource from "./sources/DecodeWaysTabulation.java?raw";
+import rustSource from "./sources/decode-ways-tabulation.rs?raw";
+import cppSource from "./sources/DecodeWaysTabulation.cpp?raw";
+import goSource from "./sources/decode-ways-tabulation.go?raw";
 
 interface DecodeWaysInput {
   digits: string;
@@ -28,7 +31,7 @@ const decodeWaysTabulationDefinition: AlgorithmDefinition<DecodeWaysInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { digits: "12321" },
   },
   execute: (input: DecodeWaysInput) => decodeWaysTabulation(input.digits),
@@ -38,6 +41,9 @@ const decodeWaysTabulationDefinition: AlgorithmDefinition<DecodeWaysInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

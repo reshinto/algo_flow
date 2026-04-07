@@ -10,6 +10,9 @@ import { diagonalTraversalEducational } from "./educational";
 import typescriptSource from "./sources/diagonal-traversal.ts?raw";
 import pythonSource from "./sources/diagonal-traversal.py?raw";
 import javaSource from "./sources/DiagonalTraversal.java?raw";
+import rustSource from "./sources/diagonal-traversal.rs?raw";
+import cppSource from "./sources/DiagonalTraversal.cpp?raw";
+import goSource from "./sources/diagonal-traversal.go?raw";
 
 function executeDiagonalTraversal(input: DiagonalTraversalInput): number[] {
   return diagonalTraversal(input.matrix) as number[];
@@ -29,7 +32,7 @@ const diagonalTraversalDefinition: AlgorithmDefinition<DiagonalTraversalInput> =
       worst: "O(m × n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [1, 2, 3, 4],
@@ -45,6 +48,9 @@ const diagonalTraversalDefinition: AlgorithmDefinition<DiagonalTraversalInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

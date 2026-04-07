@@ -9,6 +9,9 @@ import { coinChangeMinMemoizationEducational } from "./educational";
 import typescriptSource from "./sources/coin-change-min-memoization.ts?raw";
 import pythonSource from "./sources/coin-change-min-memoization.py?raw";
 import javaSource from "./sources/CoinChangeMinMemoization.java?raw";
+import rustSource from "./sources/coin-change-min-memoization.rs?raw";
+import cppSource from "./sources/CoinChangeMinMemoization.cpp?raw";
+import goSource from "./sources/coin-change-min-memoization.go?raw";
 
 interface CoinChangeInput {
   amount: number;
@@ -29,7 +32,7 @@ const coinChangeMinMemoizationDefinition: AlgorithmDefinition<CoinChangeInput> =
       worst: "O(amount × coins)",
     },
     spaceComplexity: "O(amount)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { amount: 11, coins: [1, 5, 10, 25] },
   },
   execute: (input: CoinChangeInput) => coinChangeMinMemoization(input.amount, input.coins),
@@ -39,6 +42,9 @@ const coinChangeMinMemoizationDefinition: AlgorithmDefinition<CoinChangeInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

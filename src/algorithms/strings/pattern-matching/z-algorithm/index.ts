@@ -10,6 +10,9 @@ import { zAlgorithmEducational } from "./educational";
 import typescriptSource from "./sources/z-algorithm.ts?raw";
 import pythonSource from "./sources/z-algorithm.py?raw";
 import javaSource from "./sources/ZAlgorithm.java?raw";
+import rustSource from "./sources/z-algorithm.rs?raw";
+import cppSource from "./sources/ZAlgorithm.cpp?raw";
+import goSource from "./sources/z-algorithm.go?raw";
 
 function executeZAlgorithm(input: ZAlgorithmInput): number {
   return zAlgorithm(input.text, input.pattern) as number;
@@ -29,7 +32,7 @@ const zAlgorithmDefinition: AlgorithmDefinition<ZAlgorithmInput> = {
       worst: "O(n + m)",
     },
     spaceComplexity: "O(n + m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "AABXAABXCAABXAABXAY", pattern: "AABXAAB" },
   },
   execute: executeZAlgorithm,
@@ -39,6 +42,9 @@ const zAlgorithmDefinition: AlgorithmDefinition<ZAlgorithmInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

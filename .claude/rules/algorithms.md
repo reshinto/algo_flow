@@ -20,7 +20,7 @@ paths:
 
 - Real algorithm source file (pure implementation, no visualization logic)
 - Step generator using category-specific tracker
-- Multi-language source files: TypeScript, Python, Java
+- Multi-language source files: TypeScript, Python, Java, Rust, C++, Go
 - Unit tests for algorithm correctness
 - Unit tests for step generation
 - Pipeline story (`<AlgorithmName>Pipeline.stories.tsx`) co-located in the algorithm directory

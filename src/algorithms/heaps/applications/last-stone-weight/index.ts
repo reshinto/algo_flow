@@ -10,6 +10,9 @@ import { lastStoneWeightEducational } from "./educational";
 import typescriptSource from "./sources/last-stone-weight.ts?raw";
 import pythonSource from "./sources/last-stone-weight.py?raw";
 import javaSource from "./sources/LastStoneWeight.java?raw";
+import rustSource from "./sources/last-stone-weight.rs?raw";
+import cppSource from "./sources/LastStoneWeight.cpp?raw";
+import goSource from "./sources/last-stone-weight.go?raw";
 
 function executeLastStoneWeight(input: LastStoneWeightInput): number {
   return lastStoneWeight(input.array) as number;
@@ -29,7 +32,7 @@ const lastStoneWeightDefinition: AlgorithmDefinition<LastStoneWeightInput> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [2, 7, 4, 1, 8, 1] },
   },
   execute: executeLastStoneWeight,
@@ -39,6 +42,9 @@ const lastStoneWeightDefinition: AlgorithmDefinition<LastStoneWeightInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

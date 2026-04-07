@@ -13,6 +13,9 @@ import { edmondsKarpEducational } from "./educational";
 import typescriptSource from "./sources/edmonds-karp.ts?raw";
 import pythonSource from "./sources/edmonds-karp.py?raw";
 import javaSource from "./sources/EdmondsKarp.java?raw";
+import rustSource from "./sources/edmonds-karp.rs?raw";
+import cppSource from "./sources/EdmondsKarp.cpp?raw";
+import goSource from "./sources/edmonds-karp.go?raw";
 
 const CIRCLE_RADIUS = 150;
 const CENTER_X = 220;
@@ -86,7 +89,7 @@ const edmondsKarpDefinition: AlgorithmDefinition<EdmondsKarpInput> = {
       worst: "O(VE²)",
     },
     spaceComplexity: "O(V+E)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: EdmondsKarpInput) =>
@@ -97,6 +100,9 @@ const edmondsKarpDefinition: AlgorithmDefinition<EdmondsKarpInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

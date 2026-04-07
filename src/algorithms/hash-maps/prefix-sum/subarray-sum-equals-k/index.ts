@@ -10,6 +10,9 @@ import { subarraySumEqualsKEducational } from "./educational";
 import typescriptSource from "./sources/subarray-sum-equals-k.ts?raw";
 import pythonSource from "./sources/subarray-sum-equals-k.py?raw";
 import javaSource from "./sources/SubarraySumEqualsK.java?raw";
+import rustSource from "./sources/subarray-sum-equals-k.rs?raw";
+import cppSource from "./sources/SubarraySumEqualsK.cpp?raw";
+import goSource from "./sources/subarray-sum-equals-k.go?raw";
 
 function executeSubarraySumEqualsK(input: SubarraySumEqualsKInput): number {
   return subarraySumEqualsK(input.numbers, input.target) as number;
@@ -29,7 +32,7 @@ const subarraySumEqualsKDefinition: AlgorithmDefinition<SubarraySumEqualsKInput>
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numbers: [1, 1, 1], target: 2 },
   },
   execute: executeSubarraySumEqualsK,
@@ -39,6 +42,9 @@ const subarraySumEqualsKDefinition: AlgorithmDefinition<SubarraySumEqualsKInput>
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

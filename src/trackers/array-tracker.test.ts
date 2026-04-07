@@ -6,14 +6,14 @@ import type { LineMap } from "./base-tracker";
 import { ArrayTracker } from "./array-tracker";
 
 const MOCK_LINE_MAP: LineMap = {
-  initialize: { typescript: [1], python: [1], java: [1] },
-  compare: { typescript: [3, 4], python: [3], java: [4, 5] },
-  swap: { typescript: [5, 6], python: [4, 5], java: [6, 7] },
-  visit: { typescript: [7], python: [6], java: [8] },
-  "move-window": { typescript: [8], python: [7], java: [9] },
-  "expand-window": { typescript: [9], python: [8], java: [10] },
-  "shrink-window": { typescript: [10], python: [9], java: [11] },
-  complete: { typescript: [12], python: [10], java: [13] },
+  initialize: { typescript: [1], python: [1], java: [1], rust: [], cpp: [], go: [] },
+  compare: { typescript: [3, 4], python: [3], java: [4, 5], rust: [], cpp: [], go: [] },
+  swap: { typescript: [5, 6], python: [4, 5], java: [6, 7], rust: [], cpp: [], go: [] },
+  visit: { typescript: [7], python: [6], java: [8], rust: [], cpp: [], go: [] },
+  "move-window": { typescript: [8], python: [7], java: [9], rust: [], cpp: [], go: [] },
+  "expand-window": { typescript: [9], python: [8], java: [10], rust: [], cpp: [], go: [] },
+  "shrink-window": { typescript: [10], python: [9], java: [11], rust: [], cpp: [], go: [] },
+  complete: { typescript: [12], python: [10], java: [13], rust: [], cpp: [], go: [] },
 };
 
 describe("ArrayTracker", () => {

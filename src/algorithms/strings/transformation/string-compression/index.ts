@@ -12,6 +12,9 @@ import { stringCompressionEducational } from "./educational";
 import typescriptSource from "./sources/string-compression.ts?raw";
 import pythonSource from "./sources/string-compression.py?raw";
 import javaSource from "./sources/StringCompression.java?raw";
+import rustSource from "./sources/string-compression.rs?raw";
+import cppSource from "./sources/StringCompression.cpp?raw";
+import goSource from "./sources/string-compression.go?raw";
 
 function executeStringCompression(input: StringCompressionInput): string {
   return stringCompression(input.text) as string;
@@ -32,7 +35,7 @@ const stringCompressionDefinition: AlgorithmDefinition<StringCompressionInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "aabcccccaaa" },
   },
   execute: executeStringCompression,
@@ -42,6 +45,9 @@ const stringCompressionDefinition: AlgorithmDefinition<StringCompressionInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

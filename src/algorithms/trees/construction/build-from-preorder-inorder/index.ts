@@ -10,6 +10,9 @@ import { buildFromPreorderInorderEducational } from "./educational";
 import typescriptSource from "./sources/build-from-preorder-inorder.ts?raw";
 import pythonSource from "./sources/build-from-preorder-inorder.py?raw";
 import javaSource from "./sources/BuildFromPreorderInorder.java?raw";
+import rustSource from "./sources/build-from-preorder-inorder.rs?raw";
+import cppSource from "./sources/BuildFromPreorderInorder.cpp?raw";
+import goSource from "./sources/build-from-preorder-inorder.go?raw";
 
 /** Execute the pure algorithm and return the serialized root value or null */
 function executeBuildFromPreorderInorder(input: BuildFromPreorderInorderInput): number | null {
@@ -35,7 +38,7 @@ const buildFromPreorderInorderDefinition: AlgorithmDefinition<BuildFromPreorderI
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       preorder: [4, 2, 1, 3, 6, 5, 7],
       inorder: [1, 2, 3, 4, 5, 6, 7],
@@ -48,6 +51,9 @@ const buildFromPreorderInorderDefinition: AlgorithmDefinition<BuildFromPreorderI
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { findNodeByValueEducational } from "./educational";
 import typescriptSource from "./sources/find-node-by-value.ts?raw";
 import pythonSource from "./sources/find-node-by-value.py?raw";
 import javaSource from "./sources/FindNodeByValue.java?raw";
+import rustSource from "./sources/find-node-by-value.rs?raw";
+import cppSource from "./sources/FindNodeByValue.cpp?raw";
+import goSource from "./sources/find-node-by-value.go?raw";
 
 /** Convert an array of values to a ?fn-compatible linked list and call the algorithm. */
 function executeFindNodeByValue(input: FindNodeByValueInput): number | null {
@@ -44,7 +47,7 @@ const findNodeByValueDefinition: AlgorithmDefinition<FindNodeByValueInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { values: [4, 2, 7, 1, 9], target: 7 },
   },
   execute: executeFindNodeByValue,
@@ -54,6 +57,9 @@ const findNodeByValueDefinition: AlgorithmDefinition<FindNodeByValueInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

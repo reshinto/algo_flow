@@ -13,6 +13,9 @@ import { boyerMooreVotingEducational } from "./educational";
 import typescriptSource from "./sources/boyer-moore-voting.ts?raw";
 import pythonSource from "./sources/boyer-moore-voting.py?raw";
 import javaSource from "./sources/BoyerMooreVoting.java?raw";
+import rustSource from "./sources/boyer-moore-voting.rs?raw";
+import cppSource from "./sources/BoyerMooreVoting.cpp?raw";
+import goSource from "./sources/boyer-moore-voting.go?raw";
 
 interface BoyerMooreVotingInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const boyerMooreVotingDefinition: AlgorithmDefinition<BoyerMooreVotingInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [2, 2, 1, 1, 1, 2, 2],
     },
@@ -44,6 +47,9 @@ const boyerMooreVotingDefinition: AlgorithmDefinition<BoyerMooreVotingInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

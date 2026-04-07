@@ -6,11 +6,11 @@ import type { LineMap } from "./base-tracker";
 import { SortingTracker } from "./sorting-tracker";
 
 const MOCK_LINE_MAP: LineMap = {
-  initialize: { typescript: [1], python: [1], java: [1] },
-  compare: { typescript: [3, 4], python: [3], java: [4, 5] },
-  swap: { typescript: [5, 6, 7], python: [4, 5], java: [6, 7, 8] },
-  "mark-sorted": { typescript: [8], python: [6], java: [9] },
-  complete: { typescript: [10], python: [8], java: [11] },
+  initialize: { typescript: [1], python: [1], java: [1], rust: [], cpp: [], go: [] },
+  compare: { typescript: [3, 4], python: [3], java: [4, 5], rust: [], cpp: [], go: [] },
+  swap: { typescript: [5, 6, 7], python: [4, 5], java: [6, 7, 8], rust: [], cpp: [], go: [] },
+  "mark-sorted": { typescript: [8], python: [6], java: [9], rust: [], cpp: [], go: [] },
+  complete: { typescript: [10], python: [8], java: [11], rust: [], cpp: [], go: [] },
 };
 
 describe("SortingTracker", () => {

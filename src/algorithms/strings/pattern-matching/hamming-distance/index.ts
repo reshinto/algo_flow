@@ -10,6 +10,9 @@ import { hammingDistanceEducational } from "./educational";
 import typescriptSource from "./sources/hamming-distance.ts?raw";
 import pythonSource from "./sources/hamming-distance.py?raw";
 import javaSource from "./sources/HammingDistance.java?raw";
+import rustSource from "./sources/hamming-distance.rs?raw";
+import cppSource from "./sources/HammingDistance.cpp?raw";
+import goSource from "./sources/hamming-distance.go?raw";
 
 function executeHammingDistance(input: HammingDistanceInput): number {
   return hammingDistance(input.text, input.pattern) as number;
@@ -29,7 +32,7 @@ const hammingDistanceDefinition: AlgorithmDefinition<HammingDistanceInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "karolin", pattern: "kathrin" },
   },
   execute: executeHammingDistance,
@@ -39,6 +42,9 @@ const hammingDistanceDefinition: AlgorithmDefinition<HammingDistanceInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

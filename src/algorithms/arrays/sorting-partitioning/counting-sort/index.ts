@@ -13,6 +13,9 @@ import { countingSortEducational } from "./educational";
 import typescriptSource from "./sources/counting-sort.ts?raw";
 import pythonSource from "./sources/counting-sort.py?raw";
 import javaSource from "./sources/CountingSort.java?raw";
+import rustSource from "./sources/counting-sort.rs?raw";
+import cppSource from "./sources/CountingSort.cpp?raw";
+import goSource from "./sources/counting-sort.go?raw";
 
 interface CountingSortInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const countingSortDefinition: AlgorithmDefinition<CountingSortInput> = {
       worst: "O(n+k)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [4, 2, 2, 8, 3, 3, 1, 7, 5],
     },
@@ -44,6 +47,9 @@ const countingSortDefinition: AlgorithmDefinition<CountingSortInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

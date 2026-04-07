@@ -10,6 +10,9 @@ import { reshapeMatrixEducational } from "./educational";
 import typescriptSource from "./sources/reshape-matrix.ts?raw";
 import pythonSource from "./sources/reshape-matrix.py?raw";
 import javaSource from "./sources/ReshapeMatrix.java?raw";
+import rustSource from "./sources/reshape-matrix.rs?raw";
+import cppSource from "./sources/ReshapeMatrix.cpp?raw";
+import goSource from "./sources/reshape-matrix.go?raw";
 
 function executeReshapeMatrix(input: ReshapeMatrixInput): number[][] {
   return reshapeMatrix(input.matrix, input.targetRows, input.targetCols) as number[][];
@@ -29,7 +32,7 @@ const reshapeMatrixDefinition: AlgorithmDefinition<ReshapeMatrixInput> = {
       worst: "O(m × n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [1, 2, 3, 4],
@@ -46,6 +49,9 @@ const reshapeMatrixDefinition: AlgorithmDefinition<ReshapeMatrixInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -110,7 +110,7 @@ See [contributing.md](contributing.md#available-trackers) for the full tracker t
 
 ### Source Files & Line Mapping
 
-Algorithm source files (`sources/*.ts`, `*.py`, `*.java`) support two Vite import suffixes — `?raw` for Monaco display and `?fn` for executable tests. The `?fn` suffix is powered by `vite-plugin-fn-import.ts` at the project root, a custom Vite plugin that strips `@step:` markers and transpiles TypeScript source files into executable ESM modules.
+Algorithm source files (`sources/*.ts`, `*.py`, `*.java`, `*.rs`, `*.cpp`, `*.go`) support two Vite import suffixes — `?raw` for Monaco display and `?fn` for executable tests. The `?fn` suffix is powered by `vite-plugin-fn-import.ts` at the project root, a custom Vite plugin that strips `@step:` markers and transpiles TypeScript source files into executable ESM modules.
 
 The `buildLineMapFromSources(algorithmId)` utility (`src/utils/source-loader.ts`) parses `@step:` markers from all language source files for a given algorithm and returns a `LineMap` mapping each step key to per-language line numbers. Step generators pass this to their tracker constructor.
 

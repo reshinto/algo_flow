@@ -9,6 +9,9 @@ import { houseRobberTabulationEducational } from "./educational";
 import typescriptSource from "./sources/house-robber-tabulation.ts?raw";
 import pythonSource from "./sources/house-robber-tabulation.py?raw";
 import javaSource from "./sources/HouseRobberTabulation.java?raw";
+import rustSource from "./sources/house-robber-tabulation.rs?raw";
+import cppSource from "./sources/HouseRobberTabulation.cpp?raw";
+import goSource from "./sources/house-robber-tabulation.go?raw";
 
 interface HouseRobberInput {
   houses: number[];
@@ -28,7 +31,7 @@ const houseRobberTabulationDefinition: AlgorithmDefinition<HouseRobberInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { houses: [2, 7, 9, 3, 1] },
   },
   execute: (input: HouseRobberInput) => houseRobberTabulation(input.houses),
@@ -38,6 +41,9 @@ const houseRobberTabulationDefinition: AlgorithmDefinition<HouseRobberInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

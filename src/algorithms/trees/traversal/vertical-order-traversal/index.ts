@@ -10,6 +10,9 @@ import { verticalOrderTraversalEducational } from "./educational";
 import typescriptSource from "./sources/vertical-order-traversal.ts?raw";
 import pythonSource from "./sources/vertical-order-traversal.py?raw";
 import javaSource from "./sources/VerticalOrderTraversal.java?raw";
+import rustSource from "./sources/vertical-order-traversal.rs?raw";
+import cppSource from "./sources/VerticalOrderTraversal.cpp?raw";
+import goSource from "./sources/vertical-order-traversal.go?raw";
 
 /** Build a balanced 7-node BST: [4,2,6,1,3,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -114,7 +117,7 @@ const verticalOrderTraversalDefinition: AlgorithmDefinition<VerticalOrderTravers
       worst: "O(n log n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       nodes: defaultNodes,
       rootId: "n4",
@@ -127,6 +130,9 @@ const verticalOrderTraversalDefinition: AlgorithmDefinition<VerticalOrderTravers
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

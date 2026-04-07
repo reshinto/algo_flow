@@ -1,0 +1,65 @@
+package main
+
+import (
+	"reflect"
+	"testing"
+)
+
+func TestSortsUnsortedArray(t *testing.T) {
+	result := pairwiseSortingNetwork([]int{5, 3, 8, 1, 4, 2, 7, 6})
+	expected := []int{1, 2, 3, 4, 5, 6, 7, 8}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+func TestHandlesAlreadySortedArray(t *testing.T) {
+	result := pairwiseSortingNetwork([]int{1, 2, 3, 4})
+	expected := []int{1, 2, 3, 4}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+func TestHandlesReverseSortedArray(t *testing.T) {
+	result := pairwiseSortingNetwork([]int{4, 3, 2, 1})
+	expected := []int{1, 2, 3, 4}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+func TestHandlesSingleElementArray(t *testing.T) {
+	result := pairwiseSortingNetwork([]int{42})
+	expected := []int{42}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+func TestHandlesEmptyArray(t *testing.T) {
+	result := pairwiseSortingNetwork([]int{})
+	if len(result) != 0 {
+		t.Errorf("expected empty slice, got %v", result)
+	}
+}
+
+func TestHandlesArrayWithNegativeNumbers(t *testing.T) {
+	result := pairwiseSortingNetwork([]int{3, -1, 0, -5, 2})
+	expected := []int{-5, -1, 0, 2, 3}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+func TestDoesNotMutateOriginalArray(t *testing.T) {
+	original := []int{4, 2, 3, 1}
+	originalCopy := []int{4, 2, 3, 1}
+	sorted := pairwiseSortingNetwork(original)
+	if !reflect.DeepEqual(sorted, []int{1, 2, 3, 4}) {
+		t.Errorf("expected sorted [1 2 3 4], got %v", sorted)
+	}
+	if !reflect.DeepEqual(original, originalCopy) {
+		t.Errorf("original array was mutated: got %v", original)
+	}
+}

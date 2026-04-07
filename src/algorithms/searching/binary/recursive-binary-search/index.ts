@@ -13,6 +13,9 @@ import { recursiveBinarySearchEducational } from "./educational";
 import typescriptSource from "./sources/recursive-binary-search.ts?raw";
 import pythonSource from "./sources/recursive-binary-search.py?raw";
 import javaSource from "./sources/RecursiveBinarySearch.java?raw";
+import rustSource from "./sources/recursive-binary-search.rs?raw";
+import cppSource from "./sources/RecursiveBinarySearch.cpp?raw";
+import goSource from "./sources/recursive-binary-search.go?raw";
 
 const recursiveBinarySearchDefinition: AlgorithmDefinition<{
   sortedArray: number[];
@@ -31,7 +34,7 @@ const recursiveBinarySearchDefinition: AlgorithmDefinition<{
       worst: "O(log n)",
     },
     spaceComplexity: "O(log n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [2, 5, 8, 12, 16, 23, 38, 56, 72, 91],
       targetValue: 23,
@@ -44,6 +47,9 @@ const recursiveBinarySearchDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

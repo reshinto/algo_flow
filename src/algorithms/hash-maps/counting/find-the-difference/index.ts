@@ -8,6 +8,9 @@ import { findTheDifferenceEducational } from "./educational";
 import typescriptSource from "./sources/find-the-difference.ts?raw";
 import pythonSource from "./sources/find-the-difference.py?raw";
 import javaSource from "./sources/FindTheDifference.java?raw";
+import rustSource from "./sources/find-the-difference.rs?raw";
+import cppSource from "./sources/FindTheDifference.cpp?raw";
+import goSource from "./sources/find-the-difference.go?raw";
 
 function executeFindTheDifference(input: FindTheDifferenceInput): string {
   const { original, modified } = input;
@@ -32,13 +35,20 @@ const definition: AlgorithmDefinition<FindTheDifferenceInput> = {
     description: "Find the extra character added to a modified string using frequency counting",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { original: "abcd", modified: "abcde" },
   },
   execute: executeFindTheDifference,
   generateSteps: generateFindTheDifferenceSteps,
   educational: findTheDifferenceEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(definition);

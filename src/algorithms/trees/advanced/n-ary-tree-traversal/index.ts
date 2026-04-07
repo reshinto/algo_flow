@@ -10,6 +10,9 @@ import { nAryTreeTraversalEducational } from "./educational";
 import typescriptSource from "./sources/n-ary-tree-traversal.ts?raw";
 import pythonSource from "./sources/n-ary-tree-traversal.py?raw";
 import javaSource from "./sources/NAryTreeTraversal.java?raw";
+import rustSource from "./sources/n-ary-tree-traversal.rs?raw";
+import cppSource from "./sources/NAryTreeTraversal.cpp?raw";
+import goSource from "./sources/n-ary-tree-traversal.go?raw";
 
 /** A 3-ary tree: root has 3 children, each has 2 children (9 nodes total) */
 const defaultNodes: TreeNode[] = [
@@ -147,13 +150,20 @@ const nAryTreeTraversalDefinition: AlgorithmDefinition<NAryTreeTraversalInput> =
       "Preorder traversal of an N-ary tree where each node can have any number of children — visits root before all children",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "r" },
   },
   execute: executeNAryTreeTraversal,
   generateSteps: generateNAryTreeTraversalSteps,
   educational: nAryTreeTraversalEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(nAryTreeTraversalDefinition);

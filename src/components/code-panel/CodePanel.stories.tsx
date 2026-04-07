@@ -84,6 +84,9 @@ const sampleDefinition = {
     typescript: sampleTypeScriptSource,
     python: samplePythonSource,
     java: "// Java source placeholder",
+    rust: "// rs",
+    cpp: "// cpp",
+    go: "// go",
   },
 };
 

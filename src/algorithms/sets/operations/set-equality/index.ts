@@ -10,6 +10,9 @@ import { setEqualityEducational } from "./educational";
 import typescriptSource from "./sources/set-equality.ts?raw";
 import pythonSource from "./sources/set-equality.py?raw";
 import javaSource from "./sources/SetEquality.java?raw";
+import rustSource from "./sources/set-equality.rs?raw";
+import cppSource from "./sources/SetEquality.cpp?raw";
+import goSource from "./sources/set-equality.go?raw";
 
 function executeSetEquality(input: SetEqualityInput): { isEqual: boolean } {
   return setEquality(input.arrayA, input.arrayB) as { isEqual: boolean };
@@ -29,7 +32,7 @@ const setEqualityDefinition: AlgorithmDefinition<SetEqualityInput> = {
       worst: "O(n + m)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { arrayA: [3, 1, 2], arrayB: [2, 3, 1] },
   },
   execute: executeSetEquality,
@@ -39,6 +42,9 @@ const setEqualityDefinition: AlgorithmDefinition<SetEqualityInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

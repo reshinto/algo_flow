@@ -6,16 +6,16 @@ import type { LineMap } from "./base-tracker";
 import { HeapTracker } from "./heap-tracker";
 
 const MOCK_LINE_MAP: LineMap = {
-  initialize: { typescript: [1], python: [1], java: [1] },
-  "sift-down": { typescript: [3, 4], python: [3], java: [4, 5] },
-  "sift-up": { typescript: [6, 7], python: [5, 6], java: [7, 8] },
-  compare: { typescript: [8], python: [7], java: [9] },
-  "heap-swap": { typescript: [10, 11], python: [9], java: [11, 12] },
-  "heap-insert": { typescript: [13], python: [10], java: [14] },
-  "heap-extract": { typescript: [14], python: [11], java: [15] },
-  "heap-update": { typescript: [15], python: [12], java: [16] },
-  visit: { typescript: [16], python: [13], java: [17] },
-  complete: { typescript: [17], python: [14], java: [18] },
+  initialize: { typescript: [1], python: [1], java: [1], rust: [], cpp: [], go: [] },
+  "sift-down": { typescript: [3, 4], python: [3], java: [4, 5], rust: [], cpp: [], go: [] },
+  "sift-up": { typescript: [6, 7], python: [5, 6], java: [7, 8], rust: [], cpp: [], go: [] },
+  compare: { typescript: [8], python: [7], java: [9], rust: [], cpp: [], go: [] },
+  "heap-swap": { typescript: [10, 11], python: [9], java: [11, 12], rust: [], cpp: [], go: [] },
+  "heap-insert": { typescript: [13], python: [10], java: [14], rust: [], cpp: [], go: [] },
+  "heap-extract": { typescript: [14], python: [11], java: [15], rust: [], cpp: [], go: [] },
+  "heap-update": { typescript: [15], python: [12], java: [16], rust: [], cpp: [], go: [] },
+  visit: { typescript: [16], python: [13], java: [17], rust: [], cpp: [], go: [] },
+  complete: { typescript: [17], python: [14], java: [18], rust: [], cpp: [], go: [] },
 };
 
 describe("HeapTracker", () => {

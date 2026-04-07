@@ -10,6 +10,9 @@ import { lowestCommonAncestorIterativeEducational } from "./educational";
 import typescriptSource from "./sources/lowest-common-ancestor-iterative.ts?raw";
 import pythonSource from "./sources/lowest-common-ancestor-iterative.py?raw";
 import javaSource from "./sources/LowestCommonAncestorIterative.java?raw";
+import rustSource from "./sources/lowest-common-ancestor-iterative.rs?raw";
+import cppSource from "./sources/LowestCommonAncestorIterative.cpp?raw";
+import goSource from "./sources/lowest-common-ancestor-iterative.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -117,13 +120,20 @@ const lowestCommonAncestorIterativeDefinition: AlgorithmDefinition<LowestCommonA
         "BFS builds a parent map, then traces ancestry chains from both target nodes until a common ancestor is found — no recursion required",
       timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
       spaceComplexity: "O(n)",
-      supportedLanguages: ["typescript", "python", "java"],
+      supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
       defaultInput: { nodes: defaultNodes, rootId: "n4", nodeValueA: 1, nodeValueB: 3 },
     },
     execute: executeLowestCommonAncestorIterative,
     generateSteps: generateLowestCommonAncestorIterativeSteps,
     educational: lowestCommonAncestorIterativeEducational,
-    sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+    sources: {
+      typescript: typescriptSource,
+      python: pythonSource,
+      java: javaSource,
+      rust: rustSource,
+      cpp: cppSource,
+      go: goSource,
+    },
   };
 
 registry.register(lowestCommonAncestorIterativeDefinition);

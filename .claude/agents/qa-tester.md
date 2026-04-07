@@ -20,7 +20,7 @@ Validate that all features work correctly and test coverage meets thresholds.
 4. **Playback**: Play, pause, step, speed, reset, rerun all function
 5. **Input editing**: Temporary edits trigger recompute, reset on algorithm switch
 6. **Pathfinding editing**: Wall toggle, start/end drag, run, reset all work. Edits non-persistent.
-7. **Language switching**: Code panel updates correctly for all 3 languages
+7. **Language switching**: Code panel updates correctly for all 6 languages
 8. **Responsive layout**: Works at desktop, tablet, mobile breakpoints
 
 ## Test Execution

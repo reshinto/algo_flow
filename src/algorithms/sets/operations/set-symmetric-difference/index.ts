@@ -10,6 +10,9 @@ import { setSymmetricDifferenceEducational } from "./educational";
 import typescriptSource from "./sources/set-symmetric-difference.ts?raw";
 import pythonSource from "./sources/set-symmetric-difference.py?raw";
 import javaSource from "./sources/SetSymmetricDifference.java?raw";
+import rustSource from "./sources/set-symmetric-difference.rs?raw";
+import cppSource from "./sources/SetSymmetricDifference.cpp?raw";
+import goSource from "./sources/set-symmetric-difference.go?raw";
 
 function executeSetSymmetricDifference(input: SetSymmetricDifferenceInput): number[] {
   return setSymmetricDifference(input.arrayA, input.arrayB) as number[];
@@ -29,7 +32,7 @@ const setSymmetricDifferenceDefinition: AlgorithmDefinition<SetSymmetricDifferen
       worst: "O(n + m)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { arrayA: [1, 2, 3, 4], arrayB: [3, 4, 5, 6] },
   },
   execute: executeSetSymmetricDifference,
@@ -39,6 +42,9 @@ const setSymmetricDifferenceDefinition: AlgorithmDefinition<SetSymmetricDifferen
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

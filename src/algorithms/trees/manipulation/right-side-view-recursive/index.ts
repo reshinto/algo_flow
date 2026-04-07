@@ -10,6 +10,9 @@ import { rightSideViewRecursiveEducational } from "./educational";
 import typescriptSource from "./sources/right-side-view-recursive.ts?raw";
 import pythonSource from "./sources/right-side-view-recursive.py?raw";
 import javaSource from "./sources/RightSideViewRecursive.java?raw";
+import rustSource from "./sources/right-side-view-recursive.rs?raw";
+import cppSource from "./sources/RightSideViewRecursive.cpp?raw";
+import goSource from "./sources/right-side-view-recursive.go?raw";
 
 /** Standard 7-node balanced BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -110,13 +113,20 @@ const rightSideViewRecursiveDefinition: AlgorithmDefinition<RightSideViewRecursi
       "Recursive DFS that visits the right child before the left child, recording the first node encountered at each depth to capture the right-side view",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeRightSideViewRecursive,
   generateSteps: generateRightSideViewRecursiveSteps,
   educational: rightSideViewRecursiveEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(rightSideViewRecursiveDefinition);

@@ -10,6 +10,9 @@ import { heapDeleteArbitraryEducational } from "./educational";
 import typescriptSource from "./sources/heap-delete-arbitrary.ts?raw";
 import pythonSource from "./sources/heap-delete-arbitrary.py?raw";
 import javaSource from "./sources/HeapDeleteArbitrary.java?raw";
+import rustSource from "./sources/heap-delete-arbitrary.rs?raw";
+import cppSource from "./sources/HeapDeleteArbitrary.cpp?raw";
+import goSource from "./sources/heap-delete-arbitrary.go?raw";
 
 function executeHeapDeleteArbitrary(input: HeapDeleteArbitraryInput): number[] {
   return heapDeleteArbitrary(input.array, input.targetIndex) as number[];
@@ -29,7 +32,7 @@ const heapDeleteArbitraryDefinition: AlgorithmDefinition<HeapDeleteArbitraryInpu
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [1, 3, 5, 7, 9, 8, 6], targetIndex: 2 },
   },
   execute: executeHeapDeleteArbitrary,
@@ -39,6 +42,9 @@ const heapDeleteArbitraryDefinition: AlgorithmDefinition<HeapDeleteArbitraryInpu
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

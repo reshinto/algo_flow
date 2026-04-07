@@ -10,6 +10,9 @@ import { heapInsertEducational } from "./educational";
 import typescriptSource from "./sources/heap-insert.ts?raw";
 import pythonSource from "./sources/heap-insert.py?raw";
 import javaSource from "./sources/HeapInsert.java?raw";
+import rustSource from "./sources/heap-insert.rs?raw";
+import cppSource from "./sources/HeapInsert.cpp?raw";
+import goSource from "./sources/heap-insert.go?raw";
 
 function executeHeapInsert(input: HeapInsertInput): number[] {
   return heapInsert(input.array, input.value) as number[];
@@ -29,7 +32,7 @@ const heapInsertDefinition: AlgorithmDefinition<HeapInsertInput> = {
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [1, 3, 5, 7, 9, 8, 6], value: 2 },
   },
   execute: executeHeapInsert,
@@ -39,6 +42,9 @@ const heapInsertDefinition: AlgorithmDefinition<HeapInsertInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

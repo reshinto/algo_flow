@@ -13,6 +13,9 @@ import { findAllDuplicatesEducational } from "./educational";
 import typescriptSource from "./sources/find-all-duplicates.ts?raw";
 import pythonSource from "./sources/find-all-duplicates.py?raw";
 import javaSource from "./sources/FindAllDuplicates.java?raw";
+import rustSource from "./sources/find-all-duplicates.rs?raw";
+import cppSource from "./sources/FindAllDuplicates.cpp?raw";
+import goSource from "./sources/find-all-duplicates.go?raw";
 
 interface FindAllDuplicatesInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const findAllDuplicatesDefinition: AlgorithmDefinition<FindAllDuplicatesInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [4, 3, 2, 7, 8, 2, 3, 1],
     },
@@ -44,6 +47,9 @@ const findAllDuplicatesDefinition: AlgorithmDefinition<FindAllDuplicatesInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

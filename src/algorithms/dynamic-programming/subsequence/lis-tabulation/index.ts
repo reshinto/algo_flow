@@ -9,6 +9,9 @@ import { lisTabulationEducational } from "./educational";
 import typescriptSource from "./sources/lis-tabulation.ts?raw";
 import pythonSource from "./sources/lis-tabulation.py?raw";
 import javaSource from "./sources/LisTabulation.java?raw";
+import rustSource from "./sources/lis-tabulation.rs?raw";
+import cppSource from "./sources/LisTabulation.cpp?raw";
+import goSource from "./sources/lis-tabulation.go?raw";
 
 interface LISInput {
   sequence: number[];
@@ -28,7 +31,7 @@ const lisTabulationDefinition: AlgorithmDefinition<LISInput> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { sequence: [10, 9, 2, 5, 3, 7, 101, 18] },
   },
   execute: (input: LISInput) => lisLength(input.sequence),
@@ -38,6 +41,9 @@ const lisTabulationDefinition: AlgorithmDefinition<LISInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -14,6 +14,9 @@ import { quickSort3WayEducational } from "./educational";
 import typescriptSource from "./sources/quick-sort-3-way.ts?raw";
 import pythonSource from "./sources/quick-sort-3-way.py?raw";
 import javaSource from "./sources/QuickSort3Way.java?raw";
+import rustSource from "./sources/quick-sort-3-way.rs?raw";
+import cppSource from "./sources/QuickSort3Way.cpp?raw";
+import goSource from "./sources/quick-sort-3-way.go?raw";
 
 const quickSort3WayDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const quickSort3WayDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(log n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: quickSort3Way,
@@ -39,6 +42,9 @@ const quickSort3WayDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

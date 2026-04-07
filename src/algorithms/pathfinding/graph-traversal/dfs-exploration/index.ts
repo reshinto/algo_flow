@@ -9,6 +9,9 @@ import { dfsExplorationEducational } from "./educational";
 import typescriptSource from "./sources/dfs-exploration.ts?raw";
 import pythonSource from "./sources/dfs-exploration.py?raw";
 import javaSource from "./sources/DfsExploration.java?raw";
+import rustSource from "./sources/dfs-exploration.rs?raw";
+import cppSource from "./sources/DfsExploration.cpp?raw";
+import goSource from "./sources/dfs-exploration.go?raw";
 
 /** Builds the initial pathfinding grid with start position and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -88,7 +91,7 @@ const dfsExplorationDefinition: AlgorithmDefinition<DfsExplorationInput> = {
       worst: "O(V + E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -102,6 +105,9 @@ const dfsExplorationDefinition: AlgorithmDefinition<DfsExplorationInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

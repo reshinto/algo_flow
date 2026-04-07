@@ -29,7 +29,7 @@ paths:
 ### Code Panel
 
 - Monaco editor in read-only mode (default)
-- Language tabs: TypeScript, Python, Java
+- Language tabs: TypeScript, Python, Java, Rust, C++, Go
 - Synchronized line highlighting per current step
 - Temporary editable mode (non-persistent)
 

@@ -8,6 +8,9 @@ import { intersectionOfTwoArraysEducational } from "./educational";
 import typescriptSource from "./sources/intersection-of-two-arrays.ts?raw";
 import pythonSource from "./sources/intersection-of-two-arrays.py?raw";
 import javaSource from "./sources/IntersectionOfTwoArrays.java?raw";
+import rustSource from "./sources/intersection-of-two-arrays.rs?raw";
+import cppSource from "./sources/IntersectionOfTwoArrays.cpp?raw";
+import goSource from "./sources/intersection-of-two-arrays.go?raw";
 
 function executeIntersection(input: IntersectionOfTwoArraysInput): number[] {
   const setA = new Set(input.numbersA);
@@ -30,13 +33,20 @@ const definition: AlgorithmDefinition<IntersectionOfTwoArraysInput> = {
     description: "Find common elements between two arrays using a hash set",
     timeComplexity: { best: "O(n+m)", average: "O(n+m)", worst: "O(n+m)" },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numbersA: [1, 2, 2, 1], numbersB: [2, 2] },
   },
   execute: executeIntersection,
   generateSteps: generateIntersectionOfTwoArraysSteps,
   educational: intersectionOfTwoArraysEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(definition);

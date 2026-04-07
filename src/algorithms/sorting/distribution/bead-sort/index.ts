@@ -14,6 +14,9 @@ import { beadSortEducational } from "./educational";
 import typescriptSource from "./sources/bead-sort.ts?raw";
 import pythonSource from "./sources/bead-sort.py?raw";
 import javaSource from "./sources/BeadSort.java?raw";
+import rustSource from "./sources/bead-sort.rs?raw";
+import cppSource from "./sources/BeadSort.cpp?raw";
+import goSource from "./sources/bead-sort.go?raw";
 
 const beadSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const beadSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n × max)",
     },
     spaceComplexity: "O(n × max)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [6, 3, 5, 1, 2, 4, 9],
   },
   execute: beadSort,
@@ -39,6 +42,9 @@ const beadSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

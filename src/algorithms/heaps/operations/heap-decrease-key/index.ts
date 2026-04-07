@@ -10,6 +10,9 @@ import { heapDecreaseKeyEducational } from "./educational";
 import typescriptSource from "./sources/heap-decrease-key.ts?raw";
 import pythonSource from "./sources/heap-decrease-key.py?raw";
 import javaSource from "./sources/HeapDecreaseKey.java?raw";
+import rustSource from "./sources/heap-decrease-key.rs?raw";
+import cppSource from "./sources/HeapDecreaseKey.cpp?raw";
+import goSource from "./sources/heap-decrease-key.go?raw";
 
 function executeHeapDecreaseKey(input: HeapDecreaseKeyInput): number[] {
   return heapDecreaseKey(input.array, input.targetIndex, input.newValue) as number[];
@@ -29,7 +32,7 @@ const heapDecreaseKeyDefinition: AlgorithmDefinition<HeapDecreaseKeyInput> = {
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [1, 5, 3, 7, 9, 8, 6], targetIndex: 3, newValue: 2 },
   },
   execute: executeHeapDecreaseKey,
@@ -39,6 +42,9 @@ const heapDecreaseKeyDefinition: AlgorithmDefinition<HeapDecreaseKeyInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

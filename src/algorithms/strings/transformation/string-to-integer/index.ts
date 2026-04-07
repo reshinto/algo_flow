@@ -12,6 +12,9 @@ import { stringToIntegerEducational } from "./educational";
 import typescriptSource from "./sources/string-to-integer.ts?raw";
 import pythonSource from "./sources/string-to-integer.py?raw";
 import javaSource from "./sources/StringToInteger.java?raw";
+import rustSource from "./sources/string-to-integer.rs?raw";
+import cppSource from "./sources/StringToInteger.cpp?raw";
+import goSource from "./sources/string-to-integer.go?raw";
 
 function executeStringToInteger(input: StringToIntegerInput): number {
   return stringToInteger(input.text) as number;
@@ -31,7 +34,7 @@ const stringToIntegerDefinition: AlgorithmDefinition<StringToIntegerInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "   -42" },
   },
   execute: executeStringToInteger,
@@ -41,6 +44,9 @@ const stringToIntegerDefinition: AlgorithmDefinition<StringToIntegerInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

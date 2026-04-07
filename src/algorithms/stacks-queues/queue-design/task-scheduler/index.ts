@@ -10,6 +10,9 @@ import { taskSchedulerEducational } from "./educational";
 import typescriptSource from "./sources/task-scheduler.ts?raw";
 import pythonSource from "./sources/task-scheduler.py?raw";
 import javaSource from "./sources/TaskScheduler.java?raw";
+import rustSource from "./sources/task-scheduler.rs?raw";
+import cppSource from "./sources/TaskScheduler.cpp?raw";
+import goSource from "./sources/task-scheduler.go?raw";
 
 function executeTaskScheduler(input: TaskSchedulerInput): number {
   return taskSchedulerQueue(input.tasks, input.cooldown) as number;
@@ -29,7 +32,7 @@ const taskSchedulerDefinition: AlgorithmDefinition<TaskSchedulerInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { tasks: ["A", "A", "A", "B", "B", "B"], cooldown: 2 },
   },
   execute: executeTaskScheduler,
@@ -39,6 +42,9 @@ const taskSchedulerDefinition: AlgorithmDefinition<TaskSchedulerInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

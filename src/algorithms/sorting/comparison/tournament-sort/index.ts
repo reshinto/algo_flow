@@ -14,6 +14,9 @@ import { tournamentSortEducational } from "./educational";
 import typescriptSource from "./sources/tournament-sort.ts?raw";
 import pythonSource from "./sources/tournament-sort.py?raw";
 import javaSource from "./sources/TournamentSort.java?raw";
+import rustSource from "./sources/tournament-sort.rs?raw";
+import cppSource from "./sources/TournamentSort.cpp?raw";
+import goSource from "./sources/tournament-sort.go?raw";
 
 const tournamentSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const tournamentSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [4, 2, 7, 1, 5, 3, 6],
   },
   execute: tournamentSort,
@@ -39,6 +42,9 @@ const tournamentSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

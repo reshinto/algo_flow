@@ -9,6 +9,9 @@ import { dijkstraEducational } from "./educational";
 import typescriptSource from "./sources/dijkstra.ts?raw";
 import pythonSource from "./sources/dijkstra.py?raw";
 import javaSource from "./sources/Dijkstra.java?raw";
+import rustSource from "./sources/dijkstra.rs?raw";
+import cppSource from "./sources/Dijkstra.cpp?raw";
+import goSource from "./sources/dijkstra.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -82,7 +85,7 @@ const dijkstraDefinition: AlgorithmDefinition<DijkstraInput> = {
       worst: "O(V²)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -96,6 +99,9 @@ const dijkstraDefinition: AlgorithmDefinition<DijkstraInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

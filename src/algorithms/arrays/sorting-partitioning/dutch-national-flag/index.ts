@@ -13,6 +13,9 @@ import { dutchNationalFlagEducational } from "./educational";
 import typescriptSource from "./sources/dutch-national-flag.ts?raw";
 import pythonSource from "./sources/dutch-national-flag.py?raw";
 import javaSource from "./sources/DutchNationalFlag.java?raw";
+import rustSource from "./sources/dutch-national-flag.rs?raw";
+import cppSource from "./sources/DutchNationalFlag.cpp?raw";
+import goSource from "./sources/dutch-national-flag.go?raw";
 
 interface DutchNationalFlagInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const dutchNationalFlagDefinition: AlgorithmDefinition<DutchNationalFlagInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [2, 0, 1, 2, 1, 0, 0, 2, 1],
     },
@@ -44,6 +47,9 @@ const dutchNationalFlagDefinition: AlgorithmDefinition<DutchNationalFlagInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

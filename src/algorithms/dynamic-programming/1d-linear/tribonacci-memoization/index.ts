@@ -9,6 +9,9 @@ import { tribonacciMemoizationEducational } from "./educational";
 import typescriptSource from "./sources/tribonacci-memoization.ts?raw";
 import pythonSource from "./sources/tribonacci-memoization.py?raw";
 import javaSource from "./sources/TribonacciMemoization.java?raw";
+import rustSource from "./sources/tribonacci-memoization.rs?raw";
+import cppSource from "./sources/TribonacciMemoization.cpp?raw";
+import goSource from "./sources/tribonacci-memoization.go?raw";
 
 interface TribonacciInput {
   targetIndex: number;
@@ -28,7 +31,7 @@ const tribonacciMemoizationDefinition: AlgorithmDefinition<TribonacciInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { targetIndex: 10 },
   },
   execute: (input: TribonacciInput) => tribonacciMemoization(input.targetIndex),
@@ -38,6 +41,9 @@ const tribonacciMemoizationDefinition: AlgorithmDefinition<TribonacciInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

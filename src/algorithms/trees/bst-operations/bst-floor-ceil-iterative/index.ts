@@ -10,6 +10,9 @@ import { bstFloorCeilIterativeEducational } from "./educational";
 import typescriptSource from "./sources/bst-floor-ceil-iterative.ts?raw";
 import pythonSource from "./sources/bst-floor-ceil-iterative.py?raw";
 import javaSource from "./sources/BSTFloorCeilIterative.java?raw";
+import rustSource from "./sources/bst-floor-ceil-iterative.rs?raw";
+import cppSource from "./sources/BSTFloorCeilIterative.cpp?raw";
+import goSource from "./sources/bst-floor-ceil-iterative.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -110,13 +113,20 @@ const bstFloorCeilIterativeDefinition: AlgorithmDefinition<BstFloorCeilIterative
     description: "Find floor and ceil iteratively: track candidates while walking left or right",
     timeComplexity: { best: "O(log n)", average: "O(log n)", worst: "O(n)" },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", targetValue: 4 },
   },
   execute: executeBstFloorCeilIterative,
   generateSteps: generateBstFloorCeilIterativeSteps,
   educational: bstFloorCeilIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstFloorCeilIterativeDefinition);

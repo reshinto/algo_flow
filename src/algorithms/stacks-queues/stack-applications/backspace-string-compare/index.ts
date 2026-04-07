@@ -10,6 +10,9 @@ import { backspaceStringCompareEducational } from "./educational";
 import typescriptSource from "./sources/backspace-string-compare.ts?raw";
 import pythonSource from "./sources/backspace-string-compare.py?raw";
 import javaSource from "./sources/BackspaceStringCompare.java?raw";
+import rustSource from "./sources/backspace-string-compare.rs?raw";
+import cppSource from "./sources/BackspaceStringCompare.cpp?raw";
+import goSource from "./sources/backspace-string-compare.go?raw";
 
 function executeBackspaceStringCompare(input: BackspaceStringCompareInput): boolean {
   return backspaceStringCompare(input.firstString, input.secondString) as boolean;
@@ -29,7 +32,7 @@ const backspaceStringCompareDefinition: AlgorithmDefinition<BackspaceStringCompa
       worst: "O(n+m)",
     },
     spaceComplexity: "O(n+m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { firstString: "ab#c", secondString: "ad#c" },
   },
   execute: executeBackspaceStringCompare,
@@ -39,6 +42,9 @@ const backspaceStringCompareDefinition: AlgorithmDefinition<BackspaceStringCompa
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

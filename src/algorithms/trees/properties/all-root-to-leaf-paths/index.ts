@@ -10,6 +10,9 @@ import { allRootToLeafPathsEducational } from "./educational";
 import typescriptSource from "./sources/all-root-to-leaf-paths.ts?raw";
 import pythonSource from "./sources/all-root-to-leaf-paths.py?raw";
 import javaSource from "./sources/AllRootToLeafPaths.java?raw";
+import rustSource from "./sources/all-root-to-leaf-paths.rs?raw";
+import cppSource from "./sources/AllRootToLeafPaths.cpp?raw";
+import goSource from "./sources/all-root-to-leaf-paths.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const allRootToLeafPathsDefinition: AlgorithmDefinition<AllRootToLeafPathsInput>
       'Collects all root-to-leaf paths as strings (e.g., "4->2->1") using recursive DFS with path accumulation',
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeAllRootToLeafPaths,
   generateSteps: generateAllRootToLeafPathsSteps,
   educational: allRootToLeafPathsEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(allRootToLeafPathsDefinition);

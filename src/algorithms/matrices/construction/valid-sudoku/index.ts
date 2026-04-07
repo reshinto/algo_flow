@@ -10,6 +10,9 @@ import { validSudokuEducational } from "./educational";
 import typescriptSource from "./sources/valid-sudoku.ts?raw";
 import pythonSource from "./sources/valid-sudoku.py?raw";
 import javaSource from "./sources/ValidSudoku.java?raw";
+import rustSource from "./sources/valid-sudoku.rs?raw";
+import cppSource from "./sources/ValidSudoku.cpp?raw";
+import goSource from "./sources/valid-sudoku.go?raw";
 
 function executeValidSudoku(input: ValidSudokuInput): boolean {
   return validSudoku(input.board) as boolean;
@@ -29,7 +32,7 @@ const validSudokuDefinition: AlgorithmDefinition<ValidSudokuInput> = {
       worst: "O(1)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       board: [
         [5, 3, 0, 0, 7, 0, 0, 0, 0],
@@ -51,6 +54,9 @@ const validSudokuDefinition: AlgorithmDefinition<ValidSudokuInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

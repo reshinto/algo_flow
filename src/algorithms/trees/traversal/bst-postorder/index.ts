@@ -10,6 +10,9 @@ import { bstPostorderEducational } from "./educational";
 import typescriptSource from "./sources/bst-postorder.ts?raw";
 import pythonSource from "./sources/bst-postorder.py?raw";
 import javaSource from "./sources/BSTPostorder.java?raw";
+import rustSource from "./sources/bst-postorder.rs?raw";
+import cppSource from "./sources/BSTPostorder.cpp?raw";
+import goSource from "./sources/bst-postorder.go?raw";
 
 /** Build a balanced 7-node BST: [4,2,6,1,3,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -114,7 +117,7 @@ const bstPostorderDefinition: AlgorithmDefinition<BstPostorderInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       nodes: defaultNodes,
       rootId: "n4",
@@ -127,6 +130,9 @@ const bstPostorderDefinition: AlgorithmDefinition<BstPostorderInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

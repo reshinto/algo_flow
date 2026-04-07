@@ -10,6 +10,9 @@ import { topKFrequentElementsEducational } from "./educational";
 import typescriptSource from "./sources/top-k-frequent-elements.ts?raw";
 import pythonSource from "./sources/top-k-frequent-elements.py?raw";
 import javaSource from "./sources/TopKFrequentElements.java?raw";
+import rustSource from "./sources/top-k-frequent-elements.rs?raw";
+import cppSource from "./sources/TopKFrequentElements.cpp?raw";
+import goSource from "./sources/top-k-frequent-elements.go?raw";
 
 function executeTopKFrequentElements(input: TopKFrequentElementsInput): number[] {
   return topKFrequentElements(input.numbers, input.topK) as number[];
@@ -29,7 +32,7 @@ const topKFrequentElementsDefinition: AlgorithmDefinition<TopKFrequentElementsIn
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numbers: [1, 1, 1, 2, 2, 3], topK: 2 },
   },
   execute: executeTopKFrequentElements,
@@ -39,6 +42,9 @@ const topKFrequentElementsDefinition: AlgorithmDefinition<TopKFrequentElementsIn
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

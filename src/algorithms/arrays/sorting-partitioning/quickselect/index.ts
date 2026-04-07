@@ -13,6 +13,9 @@ import { quickselectEducational } from "./educational";
 import typescriptSource from "./sources/quickselect.ts?raw";
 import pythonSource from "./sources/quickselect.py?raw";
 import javaSource from "./sources/Quickselect.java?raw";
+import rustSource from "./sources/quickselect.rs?raw";
+import cppSource from "./sources/Quickselect.cpp?raw";
+import goSource from "./sources/quickselect.go?raw";
 
 interface QuickselectInput {
   inputArray: number[];
@@ -33,7 +36,7 @@ const quickselectDefinition: AlgorithmDefinition<QuickselectInput> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(log n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [7, 2, 1, 6, 8, 5, 3, 4],
       targetK: 4,
@@ -46,6 +49,9 @@ const quickselectDefinition: AlgorithmDefinition<QuickselectInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { kCombinationsEducational } from "./educational";
 import typescriptSource from "./sources/k-combinations.ts?raw";
 import pythonSource from "./sources/k-combinations.py?raw";
 import javaSource from "./sources/KCombinations.java?raw";
+import rustSource from "./sources/k-combinations.rs?raw";
+import cppSource from "./sources/KCombinations.cpp?raw";
+import goSource from "./sources/k-combinations.go?raw";
 
 function executeKCombinations(input: KCombinationsInput): number[][] {
   return kCombinations(input.elements, input.chooseK) as number[][];
@@ -29,7 +32,7 @@ const kCombinationsDefinition: AlgorithmDefinition<KCombinationsInput> = {
       worst: "O(k × C(n,k))",
     },
     spaceComplexity: "O(k × C(n,k))",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { elements: [1, 2, 3, 4, 5], chooseK: 3 },
   },
   execute: executeKCombinations,
@@ -39,6 +42,9 @@ const kCombinationsDefinition: AlgorithmDefinition<KCombinationsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

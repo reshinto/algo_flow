@@ -13,6 +13,9 @@ import { upperBoundSearchEducational } from "./educational";
 import typescriptSource from "./sources/upper-bound-search.ts?raw";
 import pythonSource from "./sources/upper-bound-search.py?raw";
 import javaSource from "./sources/UpperBoundSearch.java?raw";
+import rustSource from "./sources/upper-bound-search.rs?raw";
+import cppSource from "./sources/UpperBoundSearch.cpp?raw";
+import goSource from "./sources/upper-bound-search.go?raw";
 
 const upperBoundSearchDefinition: AlgorithmDefinition<{
   sortedArray: number[];
@@ -31,7 +34,7 @@ const upperBoundSearchDefinition: AlgorithmDefinition<{
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [1, 3, 3, 5, 5, 5, 8, 12],
       targetValue: 5,
@@ -44,6 +47,9 @@ const upperBoundSearchDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -14,6 +14,9 @@ import { pigeonholeSortEducational } from "./educational";
 import typescriptSource from "./sources/pigeonhole-sort.ts?raw";
 import pythonSource from "./sources/pigeonhole-sort.py?raw";
 import javaSource from "./sources/PigeonholeSort.java?raw";
+import rustSource from "./sources/pigeonhole-sort.rs?raw";
+import cppSource from "./sources/PigeonholeSort.cpp?raw";
+import goSource from "./sources/pigeonhole-sort.go?raw";
 
 const pigeonholeSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const pigeonholeSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n + range)",
     },
     spaceComplexity: "O(range)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: pigeonholeSort,
@@ -39,6 +42,9 @@ const pigeonholeSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

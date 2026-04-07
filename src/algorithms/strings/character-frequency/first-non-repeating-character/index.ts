@@ -12,6 +12,9 @@ import { firstNonRepeatingCharacterEducational } from "./educational";
 import typescriptSource from "./sources/first-non-repeating-character.ts?raw";
 import pythonSource from "./sources/first-non-repeating-character.py?raw";
 import javaSource from "./sources/FirstNonRepeatingCharacter.java?raw";
+import rustSource from "./sources/first-non-repeating-character.rs?raw";
+import cppSource from "./sources/FirstNonRepeatingCharacter.cpp?raw";
+import goSource from "./sources/first-non-repeating-character.go?raw";
 
 function executeFirstNonRepeatingCharacter(input: FirstNonRepeatingCharacterInput): number {
   return firstNonRepeatingCharacter(input.text) as number;
@@ -31,7 +34,7 @@ const firstNonRepeatingCharacterDefinition: AlgorithmDefinition<FirstNonRepeatin
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "leetcode" },
   },
   execute: executeFirstNonRepeatingCharacter,
@@ -41,6 +44,9 @@ const firstNonRepeatingCharacterDefinition: AlgorithmDefinition<FirstNonRepeatin
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

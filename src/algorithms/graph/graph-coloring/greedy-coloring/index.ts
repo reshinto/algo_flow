@@ -13,6 +13,9 @@ import { greedyColoringEducational } from "./educational";
 import typescriptSource from "./sources/greedy-coloring.ts?raw";
 import pythonSource from "./sources/greedy-coloring.py?raw";
 import javaSource from "./sources/GreedyColoring.java?raw";
+import rustSource from "./sources/greedy-coloring.rs?raw";
+import cppSource from "./sources/GreedyColoring.cpp?raw";
+import goSource from "./sources/greedy-coloring.go?raw";
 
 const CIRCLE_RADIUS = 150;
 const CENTER_X = 200;
@@ -83,7 +86,7 @@ const greedyColoringDefinition: AlgorithmDefinition<GreedyColoringInput> = {
       worst: "O(V²)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: GreedyColoringInput) => greedyColoring(input.adjacencyList, input.nodeIds),
@@ -93,6 +96,9 @@ const greedyColoringDefinition: AlgorithmDefinition<GreedyColoringInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

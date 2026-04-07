@@ -10,6 +10,9 @@ import { sortNearlySortedEducational } from "./educational";
 import typescriptSource from "./sources/sort-nearly-sorted.ts?raw";
 import pythonSource from "./sources/sort-nearly-sorted.py?raw";
 import javaSource from "./sources/SortNearlySorted.java?raw";
+import rustSource from "./sources/sort-nearly-sorted.rs?raw";
+import cppSource from "./sources/SortNearlySorted.cpp?raw";
+import goSource from "./sources/sort-nearly-sorted.go?raw";
 
 function executeSortNearlySorted(input: SortNearlySortedInput): number[] {
   return sortNearlySorted(input.array, input.kValue) as number[];
@@ -29,7 +32,7 @@ const sortNearlySortedDefinition: AlgorithmDefinition<SortNearlySortedInput> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [6, 5, 3, 2, 8, 10, 9], kValue: 3 },
   },
   execute: executeSortNearlySorted,
@@ -39,6 +42,9 @@ const sortNearlySortedDefinition: AlgorithmDefinition<SortNearlySortedInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

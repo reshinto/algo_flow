@@ -13,6 +13,9 @@ import { prefixSumEducational } from "./educational";
 import typescriptSource from "./sources/prefix-sum.ts?raw";
 import pythonSource from "./sources/prefix-sum.py?raw";
 import javaSource from "./sources/PrefixSum.java?raw";
+import rustSource from "./sources/prefix-sum.rs?raw";
+import cppSource from "./sources/PrefixSum.cpp?raw";
+import goSource from "./sources/prefix-sum.go?raw";
 
 interface PrefixSumInput {
   inputArray: number[];
@@ -33,7 +36,7 @@ const prefixSumDefinition: AlgorithmDefinition<PrefixSumInput> = {
       worst: "O(n) build + O(1) query",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [2, 4, 1, 3, 5, 2],
       queries: [
@@ -50,6 +53,9 @@ const prefixSumDefinition: AlgorithmDefinition<PrefixSumInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -17,7 +17,7 @@ import type { ExecutionStep } from "./execution";
 export type AlgorithmCategory = string;
 
 /** Languages with source file implementations. */
-export type SupportedLanguage = "typescript" | "python" | "java";
+export type SupportedLanguage = "typescript" | "python" | "java" | "rust" | "cpp" | "go";
 
 /** Best/average/worst time complexity for UI display. */
 export interface ComplexitySpec {

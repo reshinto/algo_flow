@@ -10,6 +10,9 @@ import { setPermutationsEducational } from "./educational";
 import typescriptSource from "./sources/set-permutations.ts?raw";
 import pythonSource from "./sources/set-permutations.py?raw";
 import javaSource from "./sources/SetPermutations.java?raw";
+import rustSource from "./sources/set-permutations.rs?raw";
+import cppSource from "./sources/SetPermutations.cpp?raw";
+import goSource from "./sources/set-permutations.go?raw";
 
 function executeSetPermutations(input: SetPermutationsInput): number[][] {
   return setPermutations(input.elements) as number[][];
@@ -29,7 +32,7 @@ const setPermutationsDefinition: AlgorithmDefinition<SetPermutationsInput> = {
       worst: "O(n × n!)",
     },
     spaceComplexity: "O(n × n!)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { elements: [1, 2, 3] },
   },
   execute: executeSetPermutations,
@@ -39,6 +42,9 @@ const setPermutationsDefinition: AlgorithmDefinition<SetPermutationsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

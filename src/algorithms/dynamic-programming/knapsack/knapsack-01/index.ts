@@ -9,6 +9,9 @@ import { knapsack01Educational } from "./educational";
 import typescriptSource from "./sources/knapsack-01.ts?raw";
 import pythonSource from "./sources/knapsack-01.py?raw";
 import javaSource from "./sources/Knapsack01.java?raw";
+import rustSource from "./sources/knapsack-01.rs?raw";
+import cppSource from "./sources/Knapsack01.cpp?raw";
+import goSource from "./sources/knapsack-01.go?raw";
 
 export interface KnapsackInput {
   weights: number[];
@@ -30,7 +33,7 @@ const knapsack01Definition: AlgorithmDefinition<KnapsackInput> = {
       worst: "O(n × capacity)",
     },
     spaceComplexity: "O(capacity)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { weights: [2, 3, 4, 5], values: [3, 4, 5, 6], capacity: 8 },
   },
   execute: (input: KnapsackInput) => knapsack01(input.weights, input.values, input.capacity),
@@ -40,6 +43,9 @@ const knapsack01Definition: AlgorithmDefinition<KnapsackInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

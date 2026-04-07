@@ -10,6 +10,9 @@ import { evaluateReversePolishEducational } from "./educational";
 import typescriptSource from "./sources/evaluate-reverse-polish.ts?raw";
 import pythonSource from "./sources/evaluate-reverse-polish.py?raw";
 import javaSource from "./sources/EvaluateReversePolish.java?raw";
+import rustSource from "./sources/evaluate-reverse-polish.rs?raw";
+import cppSource from "./sources/EvaluateReversePolish.cpp?raw";
+import goSource from "./sources/evaluate-reverse-polish.go?raw";
 
 function executeEvaluateReversePolish(input: EvaluateReversePolishInput): number {
   return evaluateReversePolish(input.tokens) as number;
@@ -29,7 +32,7 @@ const evaluateReversePolishDefinition: AlgorithmDefinition<EvaluateReversePolish
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { tokens: ["2", "1", "+", "3", "*"] },
   },
   execute: executeEvaluateReversePolish,
@@ -39,6 +42,9 @@ const evaluateReversePolishDefinition: AlgorithmDefinition<EvaluateReversePolish
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

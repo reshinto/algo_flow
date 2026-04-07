@@ -9,6 +9,9 @@ import { countBitsEducational } from "./educational";
 import typescriptSource from "./sources/count-bits.ts?raw";
 import pythonSource from "./sources/count-bits.py?raw";
 import javaSource from "./sources/CountBits.java?raw";
+import rustSource from "./sources/count-bits.rs?raw";
+import cppSource from "./sources/CountBits.cpp?raw";
+import goSource from "./sources/count-bits.go?raw";
 
 interface CountBitsInput {
   targetNumber: number;
@@ -28,7 +31,7 @@ const countBitsDefinition: AlgorithmDefinition<CountBitsInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { targetNumber: 15 },
   },
   execute: (input: CountBitsInput) => countBits(input.targetNumber),
@@ -38,6 +41,9 @@ const countBitsDefinition: AlgorithmDefinition<CountBitsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

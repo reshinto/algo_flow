@@ -13,6 +13,9 @@ import { boruvkasEducational } from "./educational";
 import typescriptSource from "./sources/boruvkas.ts?raw";
 import pythonSource from "./sources/boruvkas.py?raw";
 import javaSource from "./sources/Boruvkas.java?raw";
+import rustSource from "./sources/boruvkas.rs?raw";
+import cppSource from "./sources/Boruvkas.cpp?raw";
+import goSource from "./sources/boruvkas.go?raw";
 
 const CIRCLE_RADIUS = 150;
 const CENTER_X = 200;
@@ -93,7 +96,7 @@ const boruvkasDefinition: AlgorithmDefinition<BoruvkasInput> = {
       worst: "O(E log V)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: BoruvkasInput) => boruvkasAlgorithm(input.edges, input.nodeIds),
@@ -103,6 +106,9 @@ const boruvkasDefinition: AlgorithmDefinition<BoruvkasInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

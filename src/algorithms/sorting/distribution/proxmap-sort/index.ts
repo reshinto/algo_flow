@@ -14,6 +14,9 @@ import { proxmapSortEducational } from "./educational";
 import typescriptSource from "./sources/proxmap-sort.ts?raw";
 import pythonSource from "./sources/proxmap-sort.py?raw";
 import javaSource from "./sources/ProxmapSort.java?raw";
+import rustSource from "./sources/proxmap-sort.rs?raw";
+import cppSource from "./sources/ProxmapSort.cpp?raw";
+import goSource from "./sources/proxmap-sort.go?raw";
 
 const proxmapSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const proxmapSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: proxmapSort,
@@ -39,6 +42,9 @@ const proxmapSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -24,7 +24,13 @@
     "e2e:headed": "playwright test --config=e2e/playwright.config.ts --headed",
     "e2e:debug": "playwright test --config=e2e/playwright.config.ts --debug",
     "demo:record": "node scripts/record-demo.mjs",
-    "demo:gif": "node scripts/record-demo.mjs --gif-only"
+    "demo:gif": "node scripts/record-demo.mjs --gif-only",
+    "test:python": "bash scripts/test-python.sh",
+    "test:java": "bash scripts/test-java.sh",
+    "test:rust": "bash scripts/test-rust.sh",
+    "test:cpp": "bash scripts/test-cpp.sh",
+    "test:go": "bash scripts/test-go.sh",
+    "test:all-languages": "npm run test:python && npm run test:java && npm run test:rust && npm run test:cpp && npm run test:go"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",

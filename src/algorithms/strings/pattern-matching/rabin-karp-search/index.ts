@@ -10,6 +10,9 @@ import { rabinKarpSearchEducational } from "./educational";
 import typescriptSource from "./sources/rabin-karp-search.ts?raw";
 import pythonSource from "./sources/rabin-karp-search.py?raw";
 import javaSource from "./sources/RabinKarpSearch.java?raw";
+import rustSource from "./sources/rabin-karp-search.rs?raw";
+import cppSource from "./sources/RabinKarpSearch.cpp?raw";
+import goSource from "./sources/rabin-karp-search.go?raw";
 
 function executeRabinKarpSearch(input: RabinKarpSearchInput): number {
   return rabinKarpSearch(input.text, input.pattern) as number;
@@ -29,7 +32,7 @@ const rabinKarpSearchDefinition: AlgorithmDefinition<RabinKarpSearchInput> = {
       worst: "O(n * m)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "GEEKS FOR GEEKS", pattern: "GEEK" },
   },
   execute: executeRabinKarpSearch,
@@ -39,6 +42,9 @@ const rabinKarpSearchDefinition: AlgorithmDefinition<RabinKarpSearchInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

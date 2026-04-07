@@ -10,6 +10,9 @@ import { buildFromPostorderInorderEducational } from "./educational";
 import typescriptSource from "./sources/build-from-postorder-inorder.ts?raw";
 import pythonSource from "./sources/build-from-postorder-inorder.py?raw";
 import javaSource from "./sources/BuildFromPostorderInorder.java?raw";
+import rustSource from "./sources/build-from-postorder-inorder.rs?raw";
+import cppSource from "./sources/BuildFromPostorderInorder.cpp?raw";
+import goSource from "./sources/build-from-postorder-inorder.go?raw";
 
 function executeBuildFromPostorderInorder(input: BuildFromPostorderInorderInput): number | null {
   const result = buildFromPostorderInorder(input.postorder, input.inorder) as {
@@ -32,7 +35,7 @@ const buildFromPostorderInorderDefinition: AlgorithmDefinition<BuildFromPostorde
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       postorder: [1, 3, 2, 5, 7, 6, 4],
       inorder: [1, 2, 3, 4, 5, 6, 7],
@@ -45,6 +48,9 @@ const buildFromPostorderInorderDefinition: AlgorithmDefinition<BuildFromPostorde
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

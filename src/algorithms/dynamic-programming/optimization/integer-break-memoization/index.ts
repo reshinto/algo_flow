@@ -9,6 +9,9 @@ import { integerBreakMemoizationEducational } from "./educational";
 import typescriptSource from "./sources/integer-break-memoization.ts?raw";
 import pythonSource from "./sources/integer-break-memoization.py?raw";
 import javaSource from "./sources/IntegerBreakMemoization.java?raw";
+import rustSource from "./sources/integer-break-memoization.rs?raw";
+import cppSource from "./sources/IntegerBreakMemoization.cpp?raw";
+import goSource from "./sources/integer-break-memoization.go?raw";
 
 interface IntegerBreakInput {
   targetNumber: number;
@@ -28,7 +31,7 @@ const integerBreakMemoizationDefinition: AlgorithmDefinition<IntegerBreakInput> 
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { targetNumber: 10 },
   },
   execute: (input: IntegerBreakInput) => integerBreakMemoization(input.targetNumber),
@@ -38,6 +41,9 @@ const integerBreakMemoizationDefinition: AlgorithmDefinition<IntegerBreakInput> 
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

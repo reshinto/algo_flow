@@ -10,6 +10,9 @@ import { pqDequeueEducational } from "./educational";
 import typescriptSource from "./sources/pq-dequeue.ts?raw";
 import pythonSource from "./sources/pq-dequeue.py?raw";
 import javaSource from "./sources/PqDequeue.java?raw";
+import rustSource from "./sources/pq-dequeue.rs?raw";
+import cppSource from "./sources/PqDequeue.cpp?raw";
+import goSource from "./sources/pq-dequeue.go?raw";
 
 function executePqDequeue(input: PqDequeueInput): {
   dequeuedValue: number;
@@ -32,7 +35,7 @@ const pqDequeueDefinition: AlgorithmDefinition<PqDequeueInput> = {
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [2, 5, 3, 10, 15, 8, 7] },
   },
   execute: executePqDequeue,
@@ -42,6 +45,9 @@ const pqDequeueDefinition: AlgorithmDefinition<PqDequeueInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

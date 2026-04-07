@@ -13,6 +13,9 @@ import { hashSearchEducational } from "./educational";
 import typescriptSource from "./sources/hash-search.ts?raw";
 import pythonSource from "./sources/hash-search.py?raw";
 import javaSource from "./sources/HashSearch.java?raw";
+import rustSource from "./sources/hash-search.rs?raw";
+import cppSource from "./sources/HashSearch.cpp?raw";
+import goSource from "./sources/hash-search.go?raw";
 
 const hashSearchDefinition: AlgorithmDefinition<{
   array: number[];
@@ -31,7 +34,7 @@ const hashSearchDefinition: AlgorithmDefinition<{
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       array: [4, 2, 7, 1, 9, 3, 8, 5],
       targetValue: 9,
@@ -44,6 +47,9 @@ const hashSearchDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { sameTreeIterativeEducational } from "./educational";
 import typescriptSource from "./sources/same-tree-iterative.ts?raw";
 import pythonSource from "./sources/same-tree-iterative.py?raw";
 import javaSource from "./sources/SameTreeIterative.java?raw";
+import rustSource from "./sources/same-tree-iterative.rs?raw";
+import cppSource from "./sources/SameTreeIterative.cpp?raw";
+import goSource from "./sources/same-tree-iterative.go?raw";
 
 /** Standard 7-node balanced BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -121,7 +124,7 @@ const sameTreeIterativeDefinition: AlgorithmDefinition<SameTreeIterativeInput> =
       "Queue-based iterative comparison that processes node pairs level by level to determine whether two binary trees are structurally identical",
     timeComplexity: { best: "O(1)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(w)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       nodes: defaultNodes,
       rootId: "n4",
@@ -132,7 +135,14 @@ const sameTreeIterativeDefinition: AlgorithmDefinition<SameTreeIterativeInput> =
   execute: executeSameTreeIterative,
   generateSteps: generateSameTreeIterativeSteps,
   educational: sameTreeIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(sameTreeIterativeDefinition);

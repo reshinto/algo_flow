@@ -13,6 +13,9 @@ import { ternarySearchEducational } from "./educational";
 import typescriptSource from "./sources/ternary-search.ts?raw";
 import pythonSource from "./sources/ternary-search.py?raw";
 import javaSource from "./sources/TernarySearch.java?raw";
+import rustSource from "./sources/ternary-search.rs?raw";
+import cppSource from "./sources/TernarySearch.cpp?raw";
+import goSource from "./sources/ternary-search.go?raw";
 
 const ternarySearchDefinition: AlgorithmDefinition<{
   sortedArray: number[];
@@ -31,7 +34,7 @@ const ternarySearchDefinition: AlgorithmDefinition<{
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [2, 5, 8, 12, 16, 23, 38, 56, 72, 91],
       targetValue: 72,
@@ -44,6 +47,9 @@ const ternarySearchDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

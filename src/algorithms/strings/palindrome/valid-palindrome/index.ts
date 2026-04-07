@@ -12,6 +12,9 @@ import { validPalindromeEducational } from "./educational";
 import typescriptSource from "./sources/valid-palindrome.ts?raw";
 import pythonSource from "./sources/valid-palindrome.py?raw";
 import javaSource from "./sources/ValidPalindrome.java?raw";
+import rustSource from "./sources/valid-palindrome.rs?raw";
+import cppSource from "./sources/ValidPalindrome.cpp?raw";
+import goSource from "./sources/valid-palindrome.go?raw";
 
 function executeValidPalindrome(input: ValidPalindromeInput): boolean {
   return validPalindrome(input.text) as boolean;
@@ -31,7 +34,7 @@ const validPalindromeDefinition: AlgorithmDefinition<ValidPalindromeInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "A man, a plan, a canal: Panama" },
   },
   execute: executeValidPalindrome,
@@ -41,6 +44,9 @@ const validPalindromeDefinition: AlgorithmDefinition<ValidPalindromeInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

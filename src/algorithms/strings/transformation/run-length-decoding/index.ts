@@ -12,6 +12,9 @@ import { runLengthDecodingEducational } from "./educational";
 import typescriptSource from "./sources/run-length-decoding.ts?raw";
 import pythonSource from "./sources/run-length-decoding.py?raw";
 import javaSource from "./sources/RunLengthDecoding.java?raw";
+import rustSource from "./sources/run-length-decoding.rs?raw";
+import cppSource from "./sources/RunLengthDecoding.cpp?raw";
+import goSource from "./sources/run-length-decoding.go?raw";
 
 function executeRunLengthDecoding(input: RunLengthDecodingInput): string {
   return runLengthDecoding(input.text) as string;
@@ -31,7 +34,7 @@ const runLengthDecodingDefinition: AlgorithmDefinition<RunLengthDecodingInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "3a2b4c" },
   },
   execute: executeRunLengthDecoding,
@@ -41,6 +44,9 @@ const runLengthDecodingDefinition: AlgorithmDefinition<RunLengthDecodingInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -13,6 +13,9 @@ import { lowerBoundSearchEducational } from "./educational";
 import typescriptSource from "./sources/lower-bound-search.ts?raw";
 import pythonSource from "./sources/lower-bound-search.py?raw";
 import javaSource from "./sources/LowerBoundSearch.java?raw";
+import rustSource from "./sources/lower-bound-search.rs?raw";
+import cppSource from "./sources/LowerBoundSearch.cpp?raw";
+import goSource from "./sources/lower-bound-search.go?raw";
 
 const lowerBoundSearchDefinition: AlgorithmDefinition<{
   sortedArray: number[];
@@ -31,7 +34,7 @@ const lowerBoundSearchDefinition: AlgorithmDefinition<{
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [1, 3, 3, 5, 5, 5, 8, 12],
       targetValue: 5,
@@ -44,6 +47,9 @@ const lowerBoundSearchDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

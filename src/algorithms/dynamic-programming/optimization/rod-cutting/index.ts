@@ -9,6 +9,9 @@ import { rodCuttingEducational } from "./educational";
 import typescriptSource from "./sources/rod-cutting.ts?raw";
 import pythonSource from "./sources/rod-cutting.py?raw";
 import javaSource from "./sources/RodCutting.java?raw";
+import rustSource from "./sources/rod-cutting.rs?raw";
+import cppSource from "./sources/RodCutting.cpp?raw";
+import goSource from "./sources/rod-cutting.go?raw";
 
 export interface RodCuttingInput {
   prices: number[];
@@ -28,7 +31,7 @@ const rodCuttingDefinition: AlgorithmDefinition<RodCuttingInput> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { prices: [1, 5, 8, 9, 10, 17, 17, 20] },
   },
   execute: (input: RodCuttingInput) => rodCutting(input.prices),
@@ -38,6 +41,9 @@ const rodCuttingDefinition: AlgorithmDefinition<RodCuttingInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

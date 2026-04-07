@@ -10,6 +10,9 @@ import { kmpSearchEducational } from "./educational";
 import typescriptSource from "./sources/kmp-search.ts?raw";
 import pythonSource from "./sources/kmp-search.py?raw";
 import javaSource from "./sources/KmpSearch.java?raw";
+import rustSource from "./sources/kmp-search.rs?raw";
+import cppSource from "./sources/KmpSearch.cpp?raw";
+import goSource from "./sources/kmp-search.go?raw";
 
 function executeKmpSearch(input: KmpSearchInput): number {
   return kmpSearch(input.text, input.pattern) as number;
@@ -29,7 +32,7 @@ const kmpSearchDefinition: AlgorithmDefinition<KmpSearchInput> = {
       worst: "O(n + m)",
     },
     spaceComplexity: "O(m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "ABABDABACDABABCABAB", pattern: "ABABCABAB" },
   },
   execute: executeKmpSearch,
@@ -39,6 +42,9 @@ const kmpSearchDefinition: AlgorithmDefinition<KmpSearchInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

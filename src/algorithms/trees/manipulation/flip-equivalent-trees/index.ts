@@ -10,6 +10,9 @@ import { flipEquivalentTreesEducational } from "./educational";
 import typescriptSource from "./sources/flip-equivalent-trees.ts?raw";
 import pythonSource from "./sources/flip-equivalent-trees.py?raw";
 import javaSource from "./sources/FlipEquivalentTrees.java?raw";
+import rustSource from "./sources/flip-equivalent-trees.rs?raw";
+import cppSource from "./sources/FlipEquivalentTrees.cpp?raw";
+import goSource from "./sources/flip-equivalent-trees.go?raw";
 
 /** Tree A: standard 7-node balanced BST */
 const defaultNodes: TreeNode[] = [
@@ -180,13 +183,20 @@ const flipEquivalentTreesDefinition: AlgorithmDefinition<FlipEquivalentTreesInpu
       "Recursively checks whether two binary trees can be made identical by flipping left/right children at any number of nodes",
     timeComplexity: { best: "O(1)", average: "O(n)", worst: "O(n²)" },
     spaceComplexity: "O(min(h1,h2))",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", secondaryNodes, secondaryRootId: "m4" },
   },
   execute: executeFlipEquivalentTrees,
   generateSteps: generateFlipEquivalentTreesSteps,
   educational: flipEquivalentTreesEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(flipEquivalentTreesDefinition);

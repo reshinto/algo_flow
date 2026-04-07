@@ -10,6 +10,9 @@ import { interleaveFirstHalfQueueEducational } from "./educational";
 import typescriptSource from "./sources/interleave-first-half-queue.ts?raw";
 import pythonSource from "./sources/interleave-first-half-queue.py?raw";
 import javaSource from "./sources/InterleaveFirstHalfQueue.java?raw";
+import rustSource from "./sources/interleave-first-half-queue.rs?raw";
+import cppSource from "./sources/InterleaveFirstHalfQueue.cpp?raw";
+import goSource from "./sources/interleave-first-half-queue.go?raw";
 
 function executeInterleaveFirstHalfQueue(input: InterleaveFirstHalfQueueInput): number[] {
   return interleaveFirstHalfQueue(input.values) as number[];
@@ -29,7 +32,7 @@ const interleaveFirstHalfQueueDefinition: AlgorithmDefinition<InterleaveFirstHal
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { values: [1, 2, 3, 4, 5, 6] },
   },
   execute: executeInterleaveFirstHalfQueue,
@@ -39,6 +42,9 @@ const interleaveFirstHalfQueueDefinition: AlgorithmDefinition<InterleaveFirstHal
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

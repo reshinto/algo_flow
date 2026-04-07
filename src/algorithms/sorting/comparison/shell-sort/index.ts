@@ -14,6 +14,9 @@ import { shellSortEducational } from "./educational";
 import typescriptSource from "./sources/shell-sort.ts?raw";
 import pythonSource from "./sources/shell-sort.py?raw";
 import javaSource from "./sources/ShellSort.java?raw";
+import rustSource from "./sources/shell-sort.rs?raw";
+import cppSource from "./sources/ShellSort.cpp?raw";
+import goSource from "./sources/shell-sort.go?raw";
 
 const shellSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const shellSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: shellSort,
@@ -39,6 +42,9 @@ const shellSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

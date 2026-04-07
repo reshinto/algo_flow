@@ -10,6 +10,9 @@ import { findMedianStreamEducational } from "./educational";
 import typescriptSource from "./sources/find-median-stream.ts?raw";
 import pythonSource from "./sources/find-median-stream.py?raw";
 import javaSource from "./sources/FindMedianStream.java?raw";
+import rustSource from "./sources/find-median-stream.rs?raw";
+import cppSource from "./sources/FindMedianStream.cpp?raw";
+import goSource from "./sources/find-median-stream.go?raw";
 
 function executeFindMedianStream(input: FindMedianStreamInput): number[] {
   return findMedianStream(input.stream) as number[];
@@ -29,7 +32,7 @@ const findMedianStreamDefinition: AlgorithmDefinition<FindMedianStreamInput> = {
       worst: "O(log n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { stream: [5, 2, 8, 1, 9, 3, 7] },
   },
   execute: executeFindMedianStream,
@@ -39,6 +42,9 @@ const findMedianStreamDefinition: AlgorithmDefinition<FindMedianStreamInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

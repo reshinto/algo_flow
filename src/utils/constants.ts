@@ -31,15 +31,26 @@ export const LANGUAGE_LABELS: Record<SupportedLanguage, string> = {
   typescript: "TypeScript",
   python: "Python",
   java: "Java",
+  rust: "Rust",
+  cpp: "C++",
+  go: "Go",
 };
 
 /** Derived from LANGUAGE_LABELS keys — single source of truth for supported languages */
 export const SUPPORTED_LANGUAGES = Object.keys(LANGUAGE_LABELS) as SupportedLanguage[];
 
-/** Derived from LANGUAGE_LABELS values lowercased — Monaco parser identifiers */
-export const MONACO_LANGUAGE_MAP = Object.fromEntries(
-  Object.entries(LANGUAGE_LABELS).map(([key, label]) => [key, label.toLowerCase()]),
-) as Record<SupportedLanguage, string>;
+/**
+ * Monaco parser identifiers per language.
+ * Hardcoded (not derived) because "C++".toLowerCase() = "c++" which Monaco does not accept — it expects "cpp".
+ */
+export const MONACO_LANGUAGE_MAP: Record<SupportedLanguage, string> = {
+  typescript: "typescript",
+  python: "python",
+  java: "java",
+  rust: "rust",
+  cpp: "cpp",
+  go: "go",
+};
 
 /**
  * Intelligent Algorithm Registry auto-discovery map.

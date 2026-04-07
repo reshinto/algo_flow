@@ -9,6 +9,9 @@ import { integerBreakTabulationEducational } from "./educational";
 import typescriptSource from "./sources/integer-break-tabulation.ts?raw";
 import pythonSource from "./sources/integer-break-tabulation.py?raw";
 import javaSource from "./sources/IntegerBreakTabulation.java?raw";
+import rustSource from "./sources/integer-break-tabulation.rs?raw";
+import cppSource from "./sources/IntegerBreakTabulation.cpp?raw";
+import goSource from "./sources/integer-break-tabulation.go?raw";
 
 interface IntegerBreakInput {
   targetNumber: number;
@@ -28,7 +31,7 @@ const integerBreakTabulationDefinition: AlgorithmDefinition<IntegerBreakInput> =
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { targetNumber: 10 },
   },
   execute: (input: IntegerBreakInput) => integerBreakTabulation(input.targetNumber),
@@ -38,6 +41,9 @@ const integerBreakTabulationDefinition: AlgorithmDefinition<IntegerBreakInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

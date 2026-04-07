@@ -8,6 +8,9 @@ import { firstUniqueCharacterEducational } from "./educational";
 import typescriptSource from "./sources/first-unique-character.ts?raw";
 import pythonSource from "./sources/first-unique-character.py?raw";
 import javaSource from "./sources/FirstUniqueCharacter.java?raw";
+import rustSource from "./sources/first-unique-character.rs?raw";
+import cppSource from "./sources/FirstUniqueCharacter.cpp?raw";
+import goSource from "./sources/first-unique-character.go?raw";
 
 function executeFirstUniqueCharacter(input: FirstUniqueCharacterInput): number {
   const { text } = input;
@@ -31,13 +34,20 @@ const definition: AlgorithmDefinition<FirstUniqueCharacterInput> = {
       "Find the index of the first non-repeating character in a string using a two-pass frequency count",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "leetcode" },
   },
   execute: executeFirstUniqueCharacter,
   generateSteps: generateFirstUniqueCharacterSteps,
   educational: firstUniqueCharacterEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(definition);

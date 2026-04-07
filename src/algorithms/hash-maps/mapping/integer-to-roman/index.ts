@@ -8,6 +8,9 @@ import { integerToRomanEducational } from "./educational";
 import typescriptSource from "./sources/integer-to-roman.ts?raw";
 import pythonSource from "./sources/integer-to-roman.py?raw";
 import javaSource from "./sources/IntegerToRoman.java?raw";
+import rustSource from "./sources/integer-to-roman.rs?raw";
+import cppSource from "./sources/IntegerToRoman.cpp?raw";
+import goSource from "./sources/integer-to-roman.go?raw";
 
 function executeIntegerToRoman(input: IntegerToRomanInput): string {
   const valuePairs: [number, string][] = [
@@ -46,13 +49,20 @@ const definition: AlgorithmDefinition<IntegerToRomanInput> = {
       "Convert an integer to its Roman numeral representation using a greedy value-symbol lookup",
     timeComplexity: { best: "O(1)", average: "O(1)", worst: "O(1)" },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { number: 1994 },
   },
   execute: executeIntegerToRoman,
   generateSteps: generateIntegerToRomanSteps,
   educational: integerToRomanEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(definition);

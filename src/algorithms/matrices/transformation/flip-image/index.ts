@@ -10,6 +10,9 @@ import { flipImageEducational } from "./educational";
 import typescriptSource from "./sources/flip-image.ts?raw";
 import pythonSource from "./sources/flip-image.py?raw";
 import javaSource from "./sources/FlipImage.java?raw";
+import rustSource from "./sources/flip-image.rs?raw";
+import cppSource from "./sources/FlipImage.cpp?raw";
+import goSource from "./sources/flip-image.go?raw";
 
 function executeFlipImage(input: FlipImageInput): number[][] {
   const matrixCopy = input.matrix.map((row) => [...row]);
@@ -30,7 +33,7 @@ const flipImageDefinition: AlgorithmDefinition<FlipImageInput> = {
       worst: "O(m × n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [1, 1, 0],
@@ -46,6 +49,9 @@ const flipImageDefinition: AlgorithmDefinition<FlipImageInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

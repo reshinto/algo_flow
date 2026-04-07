@@ -12,6 +12,9 @@ import { stalinSortEducational } from "./educational";
 import typescriptSource from "./sources/stalin-sort.ts?raw";
 import pythonSource from "./sources/stalin-sort.py?raw";
 import javaSource from "./sources/StalinSort.java?raw";
+import rustSource from "./sources/stalin-sort.rs?raw";
+import cppSource from "./sources/StalinSort.cpp?raw";
+import goSource from "./sources/stalin-sort.go?raw";
 
 const stalinSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -27,7 +30,7 @@ const stalinSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [3, 1, 4, 2, 5],
   },
   execute: stalinSort,
@@ -37,6 +40,9 @@ const stalinSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

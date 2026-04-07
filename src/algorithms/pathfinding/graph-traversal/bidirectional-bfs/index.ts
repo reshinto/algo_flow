@@ -9,6 +9,9 @@ import { bidirectionalBfsEducational } from "./educational";
 import typescriptSource from "./sources/bidirectional-bfs-grid.ts?raw";
 import pythonSource from "./sources/bidirectional-bfs-grid.py?raw";
 import javaSource from "./sources/BidirectionalBfsGrid.java?raw";
+import rustSource from "./sources/bidirectional-bfs-grid.rs?raw";
+import cppSource from "./sources/BidirectionalBfsGrid.cpp?raw";
+import goSource from "./sources/bidirectional-bfs-grid.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -78,7 +81,7 @@ const bidirectionalBfsDefinition: AlgorithmDefinition<BidirectionalBfsInput> = {
       worst: "O(V + E)",
     },
     spaceComplexity: "O(b^(d/2))",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -93,6 +96,9 @@ const bidirectionalBfsDefinition: AlgorithmDefinition<BidirectionalBfsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

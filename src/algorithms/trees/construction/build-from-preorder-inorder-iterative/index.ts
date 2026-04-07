@@ -10,6 +10,9 @@ import { buildFromPreorderInorderIterativeEducational } from "./educational";
 import typescriptSource from "./sources/build-from-preorder-inorder-iterative.ts?raw";
 import pythonSource from "./sources/build-from-preorder-inorder-iterative.py?raw";
 import javaSource from "./sources/BuildFromPreorderInorderIterative.java?raw";
+import rustSource from "./sources/build-from-preorder-inorder-iterative.rs?raw";
+import cppSource from "./sources/BuildFromPreorderInorderIterative.cpp?raw";
+import goSource from "./sources/build-from-preorder-inorder-iterative.go?raw";
 
 function executeBuildFromPreorderInorderIterative(
   input: BuildFromPreorderInorderIterativeInput,
@@ -35,7 +38,7 @@ const buildFromPreorderInorderIterativeDefinition: AlgorithmDefinition<BuildFrom
         worst: "O(n)",
       },
       spaceComplexity: "O(n)",
-      supportedLanguages: ["typescript", "python", "java"],
+      supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
       defaultInput: {
         preorder: [4, 2, 1, 3, 6, 5, 7],
         inorder: [1, 2, 3, 4, 5, 6, 7],
@@ -48,6 +51,9 @@ const buildFromPreorderInorderIterativeDefinition: AlgorithmDefinition<BuildFrom
       typescript: typescriptSource,
       python: pythonSource,
       java: javaSource,
+      rust: rustSource,
+      cpp: cppSource,
+      go: goSource,
     },
   };
 

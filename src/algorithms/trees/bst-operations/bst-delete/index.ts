@@ -10,6 +10,9 @@ import { bstDeleteEducational } from "./educational";
 import typescriptSource from "./sources/bst-delete.ts?raw";
 import pythonSource from "./sources/bst-delete.py?raw";
 import javaSource from "./sources/BSTDelete.java?raw";
+import rustSource from "./sources/bst-delete.rs?raw";
+import cppSource from "./sources/BSTDelete.cpp?raw";
+import goSource from "./sources/bst-delete.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -106,13 +109,20 @@ const bstDeleteDefinition: AlgorithmDefinition<BstDeleteInput> = {
       "Recursive BST deletion: handle leaf, one-child, and two-children cases with inorder successor",
     timeComplexity: { best: "O(log n)", average: "O(log n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", deleteValue: 2 },
   },
   execute: executeBstDelete,
   generateSteps: generateBstDeleteSteps,
   educational: bstDeleteEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstDeleteDefinition);

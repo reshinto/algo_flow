@@ -14,6 +14,9 @@ import { dfsTopologicalEducational } from "./educational";
 import typescriptSource from "./sources/dfs-topological.ts?raw";
 import pythonSource from "./sources/dfs-topological.py?raw";
 import javaSource from "./sources/DfsTopological.java?raw";
+import rustSource from "./sources/dfs-topological.rs?raw";
+import cppSource from "./sources/DfsTopological.cpp?raw";
+import goSource from "./sources/dfs-topological.go?raw";
 
 /** Layered left-to-right positions for a DAG with 6 nodes */
 const NODE_POSITIONS: Record<string, { x: number; y: number }> = {
@@ -76,7 +79,7 @@ const dfsTopologicalDefinition: AlgorithmDefinition<DfsTopologicalInput> = {
       worst: "O(V+E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: DfsTopologicalInput) => dfsTopologicalSort(input.adjacencyList, input.nodeIds),
@@ -86,6 +89,9 @@ const dfsTopologicalDefinition: AlgorithmDefinition<DfsTopologicalInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

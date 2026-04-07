@@ -14,6 +14,9 @@ import { bucketSortEducational } from "./educational";
 import typescriptSource from "./sources/bucket-sort.ts?raw";
 import pythonSource from "./sources/bucket-sort.py?raw";
 import javaSource from "./sources/BucketSort.java?raw";
+import rustSource from "./sources/bucket-sort.rs?raw";
+import cppSource from "./sources/BucketSort.cpp?raw";
+import goSource from "./sources/bucket-sort.go?raw";
 
 const bucketSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const bucketSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n + k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: bucketSort,
@@ -39,6 +42,9 @@ const bucketSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

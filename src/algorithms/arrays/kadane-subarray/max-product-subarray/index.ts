@@ -13,6 +13,9 @@ import { maxProductSubarrayEducational } from "./educational";
 import typescriptSource from "./sources/max-product-subarray.ts?raw";
 import pythonSource from "./sources/max-product-subarray.py?raw";
 import javaSource from "./sources/MaxProductSubarray.java?raw";
+import rustSource from "./sources/max-product-subarray.rs?raw";
+import cppSource from "./sources/MaxProductSubarray.cpp?raw";
+import goSource from "./sources/max-product-subarray.go?raw";
 
 interface MaxProductSubarrayInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const maxProductSubarrayDefinition: AlgorithmDefinition<MaxProductSubarrayInput>
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [2, 3, -2, 4, -1, 2],
     },
@@ -44,6 +47,9 @@ const maxProductSubarrayDefinition: AlgorithmDefinition<MaxProductSubarrayInput>
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { bstValidationIterativeEducational } from "./educational";
 import typescriptSource from "./sources/bst-validation-iterative.ts?raw";
 import pythonSource from "./sources/bst-validation-iterative.py?raw";
 import javaSource from "./sources/BSTValidationIterative.java?raw";
+import rustSource from "./sources/bst-validation-iterative.rs?raw";
+import cppSource from "./sources/BSTValidationIterative.cpp?raw";
+import goSource from "./sources/bst-validation-iterative.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -105,13 +108,20 @@ const bstValidationIterativeDefinition: AlgorithmDefinition<BstValidationIterati
       "Stack-based in-order traversal BST validation: check that each value is strictly ascending",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeBstValidationIterative,
   generateSteps: generateBstValidationIterativeSteps,
   educational: bstValidationIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstValidationIterativeDefinition);

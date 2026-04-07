@@ -13,6 +13,9 @@ import { cyclicSortEducational } from "./educational";
 import typescriptSource from "./sources/cyclic-sort.ts?raw";
 import pythonSource from "./sources/cyclic-sort.py?raw";
 import javaSource from "./sources/CyclicSort.java?raw";
+import rustSource from "./sources/cyclic-sort.rs?raw";
+import cppSource from "./sources/CyclicSort.cpp?raw";
+import goSource from "./sources/cyclic-sort.go?raw";
 
 interface CyclicSortInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const cyclicSortDefinition: AlgorithmDefinition<CyclicSortInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [3, 5, 2, 1, 4, 6],
     },
@@ -44,6 +47,9 @@ const cyclicSortDefinition: AlgorithmDefinition<CyclicSortInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { simplifyPathEducational } from "./educational";
 import typescriptSource from "./sources/simplify-path.ts?raw";
 import pythonSource from "./sources/simplify-path.py?raw";
 import javaSource from "./sources/SimplifyPath.java?raw";
+import rustSource from "./sources/simplify-path.rs?raw";
+import cppSource from "./sources/SimplifyPath.cpp?raw";
+import goSource from "./sources/simplify-path.go?raw";
 
 function executeSimplifyPath(input: SimplifyPathInput): string {
   return simplifyPath(input.inputString) as string;
@@ -29,7 +32,7 @@ const simplifyPathDefinition: AlgorithmDefinition<SimplifyPathInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { inputString: "/a/./b/../../c/" },
   },
   execute: executeSimplifyPath,
@@ -39,6 +42,9 @@ const simplifyPathDefinition: AlgorithmDefinition<SimplifyPathInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

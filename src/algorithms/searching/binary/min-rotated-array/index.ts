@@ -13,6 +13,9 @@ import { minRotatedArrayEducational } from "./educational";
 import typescriptSource from "./sources/min-rotated-array.ts?raw";
 import pythonSource from "./sources/min-rotated-array.py?raw";
 import javaSource from "./sources/MinRotatedArray.java?raw";
+import rustSource from "./sources/min-rotated-array.rs?raw";
+import cppSource from "./sources/MinRotatedArray.cpp?raw";
+import goSource from "./sources/min-rotated-array.go?raw";
 
 const minRotatedArrayDefinition: AlgorithmDefinition<{ sortedArray: number[] }> = {
   meta: {
@@ -28,7 +31,7 @@ const minRotatedArrayDefinition: AlgorithmDefinition<{ sortedArray: number[] }> 
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [4, 5, 6, 7, 0, 1, 2],
     },
@@ -40,6 +43,9 @@ const minRotatedArrayDefinition: AlgorithmDefinition<{ sortedArray: number[] }> 
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

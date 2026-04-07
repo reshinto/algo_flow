@@ -13,6 +13,9 @@ import { firstNegativeInWindowEducational } from "./educational";
 import typescriptSource from "./sources/first-negative-in-window.ts?raw";
 import pythonSource from "./sources/first-negative-in-window.py?raw";
 import javaSource from "./sources/FirstNegativeInWindow.java?raw";
+import rustSource from "./sources/first-negative-in-window.rs?raw";
+import cppSource from "./sources/FirstNegativeInWindow.cpp?raw";
+import goSource from "./sources/first-negative-in-window.go?raw";
 
 interface FirstNegativeInWindowInput {
   inputArray: number[];
@@ -33,7 +36,7 @@ const firstNegativeInWindowDefinition: AlgorithmDefinition<FirstNegativeInWindow
       worst: "O(n)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [12, -1, -7, 8, -15, 30, 16, 28],
       windowSize: 3,
@@ -47,6 +50,9 @@ const firstNegativeInWindowDefinition: AlgorithmDefinition<FirstNegativeInWindow
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

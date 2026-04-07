@@ -10,6 +10,9 @@ import { pathSumIterativeEducational } from "./educational";
 import typescriptSource from "./sources/path-sum-iterative.ts?raw";
 import pythonSource from "./sources/path-sum-iterative.py?raw";
 import javaSource from "./sources/PathSumIterative.java?raw";
+import rustSource from "./sources/path-sum-iterative.rs?raw";
+import cppSource from "./sources/PathSumIterative.cpp?raw";
+import goSource from "./sources/path-sum-iterative.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7]. Path 4→2→1 sums to 7. */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const pathSumIterativeDefinition: AlgorithmDefinition<PathSumIterativeInput> = {
       "Stack-based path sum check — pairs each node with its running path sum during DFS traversal",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", targetSum: 7 },
   },
   execute: executePathSumIterative,
   generateSteps: generatePathSumIterativeSteps,
   educational: pathSumIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(pathSumIterativeDefinition);

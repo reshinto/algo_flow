@@ -10,6 +10,9 @@ import { numberOfRecentCallsEducational } from "./educational";
 import typescriptSource from "./sources/number-of-recent-calls.ts?raw";
 import pythonSource from "./sources/number-of-recent-calls.py?raw";
 import javaSource from "./sources/NumberOfRecentCalls.java?raw";
+import rustSource from "./sources/number-of-recent-calls.rs?raw";
+import cppSource from "./sources/NumberOfRecentCalls.cpp?raw";
+import goSource from "./sources/number-of-recent-calls.go?raw";
 
 function executeNumberOfRecentCalls(input: NumberOfRecentCallsInput): number[] {
   return numberOfRecentCalls(input.timestamps) as number[];
@@ -29,7 +32,7 @@ const numberOfRecentCallsDefinition: AlgorithmDefinition<NumberOfRecentCallsInpu
       worst: "O(n)",
     },
     spaceComplexity: "O(w)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { timestamps: [1, 100, 3001, 3002] },
   },
   execute: executeNumberOfRecentCalls,
@@ -39,6 +42,9 @@ const numberOfRecentCallsDefinition: AlgorithmDefinition<NumberOfRecentCallsInpu
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

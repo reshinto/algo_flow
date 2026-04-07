@@ -9,6 +9,9 @@ import { maxSubarrayKadaneEducational } from "./educational";
 import typescriptSource from "./sources/max-subarray-kadane.ts?raw";
 import pythonSource from "./sources/max-subarray-kadane.py?raw";
 import javaSource from "./sources/MaxSubarrayKadane.java?raw";
+import rustSource from "./sources/max-subarray-kadane.rs?raw";
+import cppSource from "./sources/MaxSubarrayKadane.cpp?raw";
+import goSource from "./sources/max-subarray-kadane.go?raw";
 
 interface MaxSubarrayInput {
   array: number[];
@@ -28,7 +31,7 @@ const maxSubarrayKadaneDefinition: AlgorithmDefinition<MaxSubarrayInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [-2, 1, -3, 4, -1, 2, 1, -5, 4] },
   },
   execute: (input: MaxSubarrayInput) => maxSubarrayKadane(input.array),
@@ -38,6 +41,9 @@ const maxSubarrayKadaneDefinition: AlgorithmDefinition<MaxSubarrayInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

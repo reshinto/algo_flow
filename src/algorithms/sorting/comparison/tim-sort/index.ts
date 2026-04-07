@@ -14,6 +14,9 @@ import { timSortEducational } from "./educational";
 import typescriptSource from "./sources/tim-sort.ts?raw";
 import pythonSource from "./sources/tim-sort.py?raw";
 import javaSource from "./sources/TimSort.java?raw";
+import rustSource from "./sources/tim-sort.rs?raw";
+import cppSource from "./sources/TimSort.cpp?raw";
+import goSource from "./sources/tim-sort.go?raw";
 
 const timSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const timSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [8, 3, 6, 1, 5, 2, 7, 4],
   },
   execute: timSort,
@@ -39,6 +42,9 @@ const timSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -35,7 +35,7 @@ Write tests in this order:
    - Test `generateSteps()` produces expected step count
    - Test step types match expected sequence
    - Test final `visualState` matches expected result
-   - Test `highlightedLines` are present for all 3 languages
+   - Test `highlightedLines` are present for all 6 languages
 
 3. **Pipeline story** (`<AlgorithmName>Pipeline.stories.tsx`)
 

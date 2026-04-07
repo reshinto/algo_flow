@@ -10,6 +10,9 @@ import { cuckooFilterEducational } from "./educational";
 import typescriptSource from "./sources/cuckoo-filter.ts?raw";
 import pythonSource from "./sources/cuckoo-filter.py?raw";
 import javaSource from "./sources/CuckooFilter.java?raw";
+import rustSource from "./sources/cuckoo-filter.rs?raw";
+import cppSource from "./sources/CuckooFilter.cpp?raw";
+import goSource from "./sources/cuckoo-filter.go?raw";
 
 function executeCuckooFilter(input: CuckooFilterInput): {
   results: { value: number; found: boolean }[];
@@ -36,7 +39,7 @@ const cuckooFilterDefinition: AlgorithmDefinition<CuckooFilterInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       elements: [3, 7, 11, 15],
       queries: [3, 5, 7, 9],
@@ -50,6 +53,9 @@ const cuckooFilterDefinition: AlgorithmDefinition<CuckooFilterInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { mergeBinaryTreesIterativeEducational } from "./educational";
 import typescriptSource from "./sources/merge-binary-trees-iterative.ts?raw";
 import pythonSource from "./sources/merge-binary-trees-iterative.py?raw";
 import javaSource from "./sources/MergeBinaryTreesIterative.java?raw";
+import rustSource from "./sources/merge-binary-trees-iterative.rs?raw";
+import cppSource from "./sources/MergeBinaryTreesIterative.cpp?raw";
+import goSource from "./sources/merge-binary-trees-iterative.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -188,13 +191,20 @@ const mergeBinaryTreesIterativeDefinition: AlgorithmDefinition<MergeBinaryTreesI
       "Stack-based iterative merge of two binary trees by summing overlapping node values and adopting non-overlapping subtrees",
     timeComplexity: { best: "O(1)", average: "O(min(n,m))", worst: "O(min(n,m))" },
     spaceComplexity: "O(min(h1,h2))",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", secondaryNodes, secondaryRootId: "m4" },
   },
   execute: executeMergeBinaryTreesIterative,
   generateSteps: generateMergeBinaryTreesIterativeSteps,
   educational: mergeBinaryTreesIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(mergeBinaryTreesIterativeDefinition);

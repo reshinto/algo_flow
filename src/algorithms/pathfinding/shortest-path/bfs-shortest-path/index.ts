@@ -9,6 +9,9 @@ import { bfsShortestPathEducational } from "./educational";
 import typescriptSource from "./sources/bfs-shortest-path.ts?raw";
 import pythonSource from "./sources/bfs-shortest-path.py?raw";
 import javaSource from "./sources/BfsShortestPath.java?raw";
+import rustSource from "./sources/bfs-shortest-path.rs?raw";
+import cppSource from "./sources/BfsShortestPath.cpp?raw";
+import goSource from "./sources/bfs-shortest-path.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -82,7 +85,7 @@ const bfsShortestPathDefinition: AlgorithmDefinition<BfsInput> = {
       worst: "O(V + E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -96,6 +99,9 @@ const bfsShortestPathDefinition: AlgorithmDefinition<BfsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { asteroidCollisionEducational } from "./educational";
 import typescriptSource from "./sources/asteroid-collision.ts?raw";
 import pythonSource from "./sources/asteroid-collision.py?raw";
 import javaSource from "./sources/AsteroidCollision.java?raw";
+import rustSource from "./sources/asteroid-collision.rs?raw";
+import cppSource from "./sources/AsteroidCollision.cpp?raw";
+import goSource from "./sources/asteroid-collision.go?raw";
 
 function executeAsteroidCollision(input: AsteroidCollisionInput): number[] {
   return asteroidCollision(input.asteroids) as number[];
@@ -29,7 +32,7 @@ const asteroidCollisionDefinition: AlgorithmDefinition<AsteroidCollisionInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { asteroids: [5, 10, -5] },
   },
   execute: executeAsteroidCollision,
@@ -39,6 +42,9 @@ const asteroidCollisionDefinition: AlgorithmDefinition<AsteroidCollisionInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

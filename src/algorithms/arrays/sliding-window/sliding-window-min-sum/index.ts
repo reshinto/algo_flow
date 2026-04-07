@@ -13,6 +13,9 @@ import { slidingWindowMinSumEducational } from "./educational";
 import typescriptSource from "./sources/sliding-window-min-sum.ts?raw";
 import pythonSource from "./sources/sliding-window-min-sum.py?raw";
 import javaSource from "./sources/SlidingWindowMinSum.java?raw";
+import rustSource from "./sources/sliding-window-min-sum.rs?raw";
+import cppSource from "./sources/SlidingWindowMinSum.cpp?raw";
+import goSource from "./sources/sliding-window-min-sum.go?raw";
 
 interface SlidingWindowMinSumInput {
   inputArray: number[];
@@ -33,7 +36,7 @@ const slidingWindowMinSumDefinition: AlgorithmDefinition<SlidingWindowMinSumInpu
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [4, 2, 1, 7, 8, 1, 2, 8, 1, 0],
       windowSize: 3,
@@ -46,6 +49,9 @@ const slidingWindowMinSumDefinition: AlgorithmDefinition<SlidingWindowMinSumInpu
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

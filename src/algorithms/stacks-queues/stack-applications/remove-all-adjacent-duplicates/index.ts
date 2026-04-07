@@ -10,6 +10,9 @@ import { removeAllAdjacentDuplicatesEducational } from "./educational";
 import typescriptSource from "./sources/remove-all-adjacent-duplicates.ts?raw";
 import pythonSource from "./sources/remove-all-adjacent-duplicates.py?raw";
 import javaSource from "./sources/RemoveAllAdjacentDuplicates.java?raw";
+import rustSource from "./sources/remove-all-adjacent-duplicates.rs?raw";
+import cppSource from "./sources/RemoveAllAdjacentDuplicates.cpp?raw";
+import goSource from "./sources/remove-all-adjacent-duplicates.go?raw";
 
 function executeRemoveAllAdjacentDuplicates(input: RemoveAllAdjacentDuplicatesInput): string {
   return removeAllAdjacentDuplicates(input.inputString) as string;
@@ -30,7 +33,7 @@ const removeAllAdjacentDuplicatesDefinition: AlgorithmDefinition<RemoveAllAdjace
         worst: "O(n)",
       },
       spaceComplexity: "O(n)",
-      supportedLanguages: ["typescript", "python", "java"],
+      supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
       defaultInput: { inputString: "abbaca" },
     },
     execute: executeRemoveAllAdjacentDuplicates,
@@ -40,6 +43,9 @@ const removeAllAdjacentDuplicatesDefinition: AlgorithmDefinition<RemoveAllAdjace
       typescript: typescriptSource,
       python: pythonSource,
       java: javaSource,
+      rust: rustSource,
+      cpp: cppSource,
+      go: goSource,
     },
   };
 

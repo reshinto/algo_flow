@@ -10,6 +10,9 @@ import { setComplementEducational } from "./educational";
 import typescriptSource from "./sources/set-complement.ts?raw";
 import pythonSource from "./sources/set-complement.py?raw";
 import javaSource from "./sources/SetComplement.java?raw";
+import rustSource from "./sources/set-complement.rs?raw";
+import cppSource from "./sources/SetComplement.cpp?raw";
+import goSource from "./sources/set-complement.go?raw";
 
 function executeSetComplement(input: SetComplementInput): number[] {
   return setComplement(input.arrayA, input.universalSet) as number[];
@@ -29,7 +32,7 @@ const setComplementDefinition: AlgorithmDefinition<SetComplementInput> = {
       worst: "O(n + u)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { arrayA: [2, 4, 6], universalSet: [1, 2, 3, 4, 5, 6, 7, 8] },
   },
   execute: executeSetComplement,
@@ -39,6 +42,9 @@ const setComplementDefinition: AlgorithmDefinition<SetComplementInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

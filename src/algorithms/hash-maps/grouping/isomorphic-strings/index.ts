@@ -8,6 +8,9 @@ import { isomorphicStringsEducational } from "./educational";
 import typescriptSource from "./sources/isomorphic-strings.ts?raw";
 import pythonSource from "./sources/isomorphic-strings.py?raw";
 import javaSource from "./sources/IsomorphicStrings.java?raw";
+import rustSource from "./sources/isomorphic-strings.rs?raw";
+import cppSource from "./sources/IsomorphicStrings.cpp?raw";
+import goSource from "./sources/isomorphic-strings.go?raw";
 
 function executeIsomorphicStrings(input: IsomorphicStringsInput): boolean {
   const { textA, textB } = input;
@@ -38,13 +41,20 @@ const definition: AlgorithmDefinition<IsomorphicStringsInput> = {
     description: "Check if two strings are isomorphic using bidirectional character mapping",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { textA: "egg", textB: "add" },
   },
   execute: executeIsomorphicStrings,
   generateSteps: generateIsomorphicStringsSteps,
   educational: isomorphicStringsEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(definition);

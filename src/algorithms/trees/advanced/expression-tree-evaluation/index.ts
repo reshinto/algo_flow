@@ -10,6 +10,9 @@ import { expressionTreeEvaluationEducational } from "./educational";
 import typescriptSource from "./sources/expression-tree-evaluation.ts?raw";
 import pythonSource from "./sources/expression-tree-evaluation.py?raw";
 import javaSource from "./sources/ExpressionTreeEvaluation.java?raw";
+import rustSource from "./sources/expression-tree-evaluation.rs?raw";
+import cppSource from "./sources/ExpressionTreeEvaluation.cpp?raw";
+import goSource from "./sources/expression-tree-evaluation.go?raw";
 
 function executeExpressionTreeEvaluation(input: ExpressionTreeEvaluationInput): number {
   return expressionTreeEvaluation(input.expression) as number;
@@ -25,13 +28,20 @@ const expressionTreeEvaluationDefinition: AlgorithmDefinition<ExpressionTreeEval
       "Build an expression tree from a postfix expression then evaluate bottom-up — leaves are operands, internal nodes are operators",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { expression: "3 4 + 2 * 7 /" },
   },
   execute: executeExpressionTreeEvaluation,
   generateSteps: generateExpressionTreeEvaluationSteps,
   educational: expressionTreeEvaluationEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(expressionTreeEvaluationDefinition);

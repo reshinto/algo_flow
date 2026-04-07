@@ -13,6 +13,9 @@ import { moveZerosEducational } from "./educational";
 import typescriptSource from "./sources/move-zeros.ts?raw";
 import pythonSource from "./sources/move-zeros.py?raw";
 import javaSource from "./sources/MoveZeros.java?raw";
+import rustSource from "./sources/move-zeros.rs?raw";
+import cppSource from "./sources/MoveZeros.cpp?raw";
+import goSource from "./sources/move-zeros.go?raw";
 
 interface MoveZerosInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const moveZerosDefinition: AlgorithmDefinition<MoveZerosInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [0, 1, 0, 3, 12, 0, 5],
     },
@@ -44,6 +47,9 @@ const moveZerosDefinition: AlgorithmDefinition<MoveZerosInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

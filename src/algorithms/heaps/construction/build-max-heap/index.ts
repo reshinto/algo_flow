@@ -10,6 +10,9 @@ import { buildMaxHeapEducational } from "./educational";
 import typescriptSource from "./sources/build-max-heap.ts?raw";
 import pythonSource from "./sources/build-max-heap.py?raw";
 import javaSource from "./sources/BuildMaxHeap.java?raw";
+import rustSource from "./sources/build-max-heap.rs?raw";
+import cppSource from "./sources/BuildMaxHeap.cpp?raw";
+import goSource from "./sources/build-max-heap.go?raw";
 
 function executeBuildMaxHeap(input: BuildMaxHeapInput): number[] {
   return buildMaxHeap(input.array) as number[];
@@ -29,7 +32,7 @@ const buildMaxHeapDefinition: AlgorithmDefinition<BuildMaxHeapInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [9, 5, 7, 1, 3, 8, 2, 6, 4] },
   },
   execute: executeBuildMaxHeap,
@@ -39,6 +42,9 @@ const buildMaxHeapDefinition: AlgorithmDefinition<BuildMaxHeapInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

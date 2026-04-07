@@ -10,6 +10,9 @@ import { meetingRoomsIIEducational } from "./educational";
 import typescriptSource from "./sources/meeting-rooms-ii.ts?raw";
 import pythonSource from "./sources/meeting-rooms-ii.py?raw";
 import javaSource from "./sources/MeetingRoomsII.java?raw";
+import rustSource from "./sources/meeting-rooms-ii.rs?raw";
+import cppSource from "./sources/MeetingRoomsII.cpp?raw";
+import goSource from "./sources/meeting-rooms-ii.go?raw";
 
 function executeMeetingRoomsII(input: MeetingRoomsIIInput): number {
   return meetingRoomsII(input.intervals) as number;
@@ -29,7 +32,7 @@ const meetingRoomsIIDefinition: AlgorithmDefinition<MeetingRoomsIIInput> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       intervals: [
         [0, 30],
@@ -46,6 +49,9 @@ const meetingRoomsIIDefinition: AlgorithmDefinition<MeetingRoomsIIInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

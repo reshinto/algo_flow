@@ -12,6 +12,9 @@ import { wildcardMatchingEducational } from "./educational";
 import typescriptSource from "./sources/wildcard-matching.ts?raw";
 import pythonSource from "./sources/wildcard-matching.py?raw";
 import javaSource from "./sources/WildcardMatching.java?raw";
+import rustSource from "./sources/wildcard-matching.rs?raw";
+import cppSource from "./sources/WildcardMatching.cpp?raw";
+import goSource from "./sources/wildcard-matching.go?raw";
 
 function executeWildcardMatching(input: WildcardMatchingInput): boolean {
   return wildcardMatching(input.text, input.pattern) as boolean;
@@ -31,7 +34,7 @@ const wildcardMatchingDefinition: AlgorithmDefinition<WildcardMatchingInput> = {
       worst: "O(nm)",
     },
     spaceComplexity: "O(nm)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "adceb", pattern: "*a*b" },
   },
   execute: executeWildcardMatching,
@@ -41,6 +44,9 @@ const wildcardMatchingDefinition: AlgorithmDefinition<WildcardMatchingInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

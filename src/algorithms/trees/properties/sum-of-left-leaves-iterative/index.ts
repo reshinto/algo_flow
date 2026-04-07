@@ -10,6 +10,9 @@ import { sumOfLeftLeavesIterativeEducational } from "./educational";
 import typescriptSource from "./sources/sum-of-left-leaves-iterative.ts?raw";
 import pythonSource from "./sources/sum-of-left-leaves-iterative.py?raw";
 import javaSource from "./sources/SumOfLeftLeavesIterative.java?raw";
+import rustSource from "./sources/sum-of-left-leaves-iterative.rs?raw";
+import cppSource from "./sources/SumOfLeftLeavesIterative.cpp?raw";
+import goSource from "./sources/sum-of-left-leaves-iterative.go?raw";
 
 /** Balanced 7-node BST: root=4, left leaves are 1 and 5 (sum=6) */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const sumOfLeftLeavesIterativeDefinition: AlgorithmDefinition<SumOfLeftLeavesIte
       "Stack-based DFS that tracks whether each node was reached as a left child to identify left leaves",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeSumOfLeftLeavesIterative,
   generateSteps: generateSumOfLeftLeavesIterativeSteps,
   educational: sumOfLeftLeavesIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(sumOfLeftLeavesIterativeDefinition);

@@ -12,6 +12,9 @@ import { stoogeSortEducational } from "./educational";
 import typescriptSource from "./sources/stooge-sort.ts?raw";
 import pythonSource from "./sources/stooge-sort.py?raw";
 import javaSource from "./sources/StoogeSort.java?raw";
+import rustSource from "./sources/stooge-sort.rs?raw";
+import cppSource from "./sources/StoogeSort.cpp?raw";
+import goSource from "./sources/stooge-sort.go?raw";
 
 const stoogeSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -27,7 +30,7 @@ const stoogeSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n^2.71)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [5, 3, 1, 4, 2],
   },
   execute: stoogeSort,
@@ -37,6 +40,9 @@ const stoogeSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

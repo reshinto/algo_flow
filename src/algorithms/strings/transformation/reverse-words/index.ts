@@ -12,6 +12,9 @@ import { reverseWordsEducational } from "./educational";
 import typescriptSource from "./sources/reverse-words.ts?raw";
 import pythonSource from "./sources/reverse-words.py?raw";
 import javaSource from "./sources/ReverseWords.java?raw";
+import rustSource from "./sources/reverse-words.rs?raw";
+import cppSource from "./sources/ReverseWords.cpp?raw";
+import goSource from "./sources/reverse-words.go?raw";
 
 function executeReverseWords(input: ReverseWordsInput): string {
   return reverseWords(input.text) as string;
@@ -32,7 +35,7 @@ const reverseWordsDefinition: AlgorithmDefinition<ReverseWordsInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "the sky is blue" },
   },
   execute: executeReverseWords,
@@ -42,6 +45,9 @@ const reverseWordsDefinition: AlgorithmDefinition<ReverseWordsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

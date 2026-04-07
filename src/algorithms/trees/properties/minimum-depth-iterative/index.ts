@@ -10,6 +10,9 @@ import { minimumDepthIterativeEducational } from "./educational";
 import typescriptSource from "./sources/minimum-depth-iterative.ts?raw";
 import pythonSource from "./sources/minimum-depth-iterative.py?raw";
 import javaSource from "./sources/MinimumDepthIterative.java?raw";
+import rustSource from "./sources/minimum-depth-iterative.rs?raw";
+import cppSource from "./sources/MinimumDepthIterative.cpp?raw";
+import goSource from "./sources/minimum-depth-iterative.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const minimumDepthIterativeDefinition: AlgorithmDefinition<MinimumDepthIterative
       "BFS-based minimum depth — the first leaf node encountered during level-order traversal is at minimum depth",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(w)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeMinimumDepthIterative,
   generateSteps: generateMinimumDepthIterativeSteps,
   educational: minimumDepthIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(minimumDepthIterativeDefinition);

@@ -14,6 +14,9 @@ import { cubeSortEducational } from "./educational";
 import typescriptSource from "./sources/cube-sort.ts?raw";
 import pythonSource from "./sources/cube-sort.py?raw";
 import javaSource from "./sources/CubeSort.java?raw";
+import rustSource from "./sources/cube-sort.rs?raw";
+import cppSource from "./sources/CubeSort.cpp?raw";
+import goSource from "./sources/cube-sort.go?raw";
 
 const cubeSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const cubeSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: cubeSort,
@@ -39,6 +42,9 @@ const cubeSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

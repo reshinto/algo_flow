@@ -9,6 +9,9 @@ import { pascalsTriangleRowEducational } from "./educational";
 import typescriptSource from "./sources/pascals-triangle-row.ts?raw";
 import pythonSource from "./sources/pascals-triangle-row.py?raw";
 import javaSource from "./sources/PascalsTriangleRow.java?raw";
+import rustSource from "./sources/pascals-triangle-row.rs?raw";
+import cppSource from "./sources/PascalsTriangleRow.cpp?raw";
+import goSource from "./sources/pascals-triangle-row.go?raw";
 
 interface PascalsTriangleInput {
   rowIndex: number;
@@ -28,7 +31,7 @@ const pascalsTriangleRowDefinition: AlgorithmDefinition<PascalsTriangleInput> = 
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { rowIndex: 8 },
   },
   execute: (input: PascalsTriangleInput) => pascalsTriangleRow(input.rowIndex),
@@ -38,6 +41,9 @@ const pascalsTriangleRowDefinition: AlgorithmDefinition<PascalsTriangleInput> = 
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

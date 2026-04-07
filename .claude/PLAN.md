@@ -199,7 +199,7 @@ algo_flow/
 ### Phase 4: Bubble Sort (Full Pipeline Proof-of-Concept)
 
 - Pure `bubbleSort()` implementation + unit tests
-- Source files: TypeScript, Python, Java
+- Source files: TypeScript, Python, Java, Rust, C++, Go
 - Step generator using SortingTracker + line map
 - Educational content (all 7 sections)
 - CodePanel with Monaco: read-only, language tabs, line highlighting

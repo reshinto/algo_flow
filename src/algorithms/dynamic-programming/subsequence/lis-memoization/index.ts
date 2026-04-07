@@ -9,6 +9,9 @@ import { lisMemoizationEducational } from "./educational";
 import typescriptSource from "./sources/lis-memoization.ts?raw";
 import pythonSource from "./sources/lis-memoization.py?raw";
 import javaSource from "./sources/LisMemoization.java?raw";
+import rustSource from "./sources/lis-memoization.rs?raw";
+import cppSource from "./sources/LisMemoization.cpp?raw";
+import goSource from "./sources/lis-memoization.go?raw";
 
 interface LISInput {
   sequence: number[];
@@ -28,7 +31,7 @@ const lisMemoizationDefinition: AlgorithmDefinition<LISInput> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { sequence: [10, 9, 2, 5, 3, 7, 101, 18] },
   },
   execute: (input: LISInput) => lisMemoization(input.sequence),
@@ -38,6 +41,9 @@ const lisMemoizationDefinition: AlgorithmDefinition<LISInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

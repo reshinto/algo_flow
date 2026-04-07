@@ -10,6 +10,9 @@ import { binaryTreeTiltEducational } from "./educational";
 import typescriptSource from "./sources/binary-tree-tilt.ts?raw";
 import pythonSource from "./sources/binary-tree-tilt.py?raw";
 import javaSource from "./sources/BinaryTreeTilt.java?raw";
+import rustSource from "./sources/binary-tree-tilt.rs?raw";
+import cppSource from "./sources/BinaryTreeTilt.cpp?raw";
+import goSource from "./sources/binary-tree-tilt.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const binaryTreeTiltDefinition: AlgorithmDefinition<BinaryTreeTiltInput> = {
       "Computes the total tilt of all nodes. Tilt of a node = abs(left subtree sum - right subtree sum). Uses post-order traversal.",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeBinaryTreeTilt,
   generateSteps: generateBinaryTreeTiltSteps,
   educational: binaryTreeTiltEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(binaryTreeTiltDefinition);

@@ -9,6 +9,9 @@ import { recursiveDivisionEducational } from "./educational";
 import typescriptSource from "./sources/recursive-division.ts?raw";
 import pythonSource from "./sources/recursive-division.py?raw";
 import javaSource from "./sources/RecursiveDivision.java?raw";
+import rustSource from "./sources/recursive-division.rs?raw";
+import cppSource from "./sources/RecursiveDivision.cpp?raw";
+import goSource from "./sources/recursive-division.go?raw";
 
 /** Builds an all-EMPTY grid for Recursive Division (this algorithm adds walls, not carves). */
 function createDefaultGrid(): GridCell[][] {
@@ -59,7 +62,7 @@ const recursiveDivisionDefinition: AlgorithmDefinition<MazeInput> = {
       worst: "O(V)",
     },
     spaceComplexity: "O(log V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -74,6 +77,9 @@ const recursiveDivisionDefinition: AlgorithmDefinition<MazeInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

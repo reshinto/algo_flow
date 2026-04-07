@@ -12,6 +12,9 @@ import { oddEvenMergeSortEducational } from "./educational";
 import typescriptSource from "./sources/odd-even-merge-sort.ts?raw";
 import pythonSource from "./sources/odd-even-merge-sort.py?raw";
 import javaSource from "./sources/OddEvenMergeSort.java?raw";
+import rustSource from "./sources/odd-even-merge-sort.rs?raw";
+import cppSource from "./sources/OddEvenMergeSort.cpp?raw";
+import goSource from "./sources/odd-even-merge-sort.go?raw";
 
 const oddEvenMergeSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -27,7 +30,7 @@ const oddEvenMergeSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log²n)",
     },
     spaceComplexity: "O(log²n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [6, 3, 8, 1, 7, 2, 5, 4],
   },
   execute: oddEvenMergeSort,
@@ -37,6 +40,9 @@ const oddEvenMergeSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

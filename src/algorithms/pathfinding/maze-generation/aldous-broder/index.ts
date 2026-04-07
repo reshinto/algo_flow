@@ -9,6 +9,9 @@ import { aldousBroderEducational } from "./educational";
 import typescriptSource from "./sources/aldous-broder.ts?raw";
 import pythonSource from "./sources/aldous-broder.py?raw";
 import javaSource from "./sources/AldousBroder.java?raw";
+import rustSource from "./sources/aldous-broder.rs?raw";
+import cppSource from "./sources/AldousBroder.cpp?raw";
+import goSource from "./sources/aldous-broder.go?raw";
 
 /** Builds an all-walls grid for maze generation with start/end positions marked. */
 function createDefaultGrid(): GridCell[][] {
@@ -59,7 +62,7 @@ const aldousBroderDefinition: AlgorithmDefinition<MazeInput> = {
       worst: "O(V²)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -73,6 +76,9 @@ const aldousBroderDefinition: AlgorithmDefinition<MazeInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

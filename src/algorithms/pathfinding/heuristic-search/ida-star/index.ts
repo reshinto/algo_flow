@@ -9,6 +9,9 @@ import { idaStarEducational } from "./educational";
 import typescriptSource from "./sources/ida-star.ts?raw";
 import pythonSource from "./sources/ida-star.py?raw";
 import javaSource from "./sources/IdaStar.java?raw";
+import rustSource from "./sources/ida-star.rs?raw";
+import cppSource from "./sources/IdaStar.cpp?raw";
+import goSource from "./sources/ida-star.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -84,7 +87,7 @@ const idaStarDefinition: AlgorithmDefinition<IDAInput> = {
       worst: "O(b^d)",
     },
     spaceComplexity: "O(d)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -98,6 +101,9 @@ const idaStarDefinition: AlgorithmDefinition<IDAInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

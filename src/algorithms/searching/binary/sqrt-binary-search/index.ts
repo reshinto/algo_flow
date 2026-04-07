@@ -13,6 +13,9 @@ import { sqrtBinarySearchEducational } from "./educational";
 import typescriptSource from "./sources/sqrt-binary-search.ts?raw";
 import pythonSource from "./sources/sqrt-binary-search.py?raw";
 import javaSource from "./sources/SqrtBinarySearch.java?raw";
+import rustSource from "./sources/sqrt-binary-search.rs?raw";
+import cppSource from "./sources/SqrtBinarySearch.cpp?raw";
+import goSource from "./sources/sqrt-binary-search.go?raw";
 
 const sqrtBinarySearchDefinition: AlgorithmDefinition<{ targetValue: number }> = {
   meta: {
@@ -28,7 +31,7 @@ const sqrtBinarySearchDefinition: AlgorithmDefinition<{ targetValue: number }> =
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       targetValue: 49,
     },
@@ -40,6 +43,9 @@ const sqrtBinarySearchDefinition: AlgorithmDefinition<{ targetValue: number }> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

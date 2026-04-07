@@ -10,6 +10,9 @@ import { designCircularQueueEducational } from "./educational";
 import typescriptSource from "./sources/design-circular-queue.ts?raw";
 import pythonSource from "./sources/design-circular-queue.py?raw";
 import javaSource from "./sources/DesignCircularQueue.java?raw";
+import rustSource from "./sources/design-circular-queue.rs?raw";
+import cppSource from "./sources/DesignCircularQueue.cpp?raw";
+import goSource from "./sources/design-circular-queue.go?raw";
 
 function executeDesignCircularQueue(input: DesignCircularQueueInput): string[] {
   return designCircularQueue(input.operations, input.capacity) as string[];
@@ -29,7 +32,7 @@ const designCircularQueueDefinition: AlgorithmDefinition<DesignCircularQueueInpu
       worst: "O(1)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       operations: ["enqueue 1", "enqueue 2", "dequeue", "enqueue 3"],
       capacity: 3,
@@ -42,6 +45,9 @@ const designCircularQueueDefinition: AlgorithmDefinition<DesignCircularQueueInpu
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

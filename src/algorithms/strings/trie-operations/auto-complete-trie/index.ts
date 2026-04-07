@@ -12,6 +12,9 @@ import { autoCompleteTrieEducational } from "./educational";
 import typescriptSource from "./sources/auto-complete-trie.ts?raw";
 import pythonSource from "./sources/auto-complete-trie.py?raw";
 import javaSource from "./sources/AutoCompleteTrie.java?raw";
+import rustSource from "./sources/auto-complete-trie.rs?raw";
+import cppSource from "./sources/AutoCompleteTrie.cpp?raw";
+import goSource from "./sources/auto-complete-trie.go?raw";
 
 function executeAutoCompleteTrie(input: AutoCompleteTrieInput): string[] {
   return autoCompleteTrie(input.words, input.prefix) as string[];
@@ -31,7 +34,7 @@ const autoCompleteTrieDefinition: AlgorithmDefinition<AutoCompleteTrieInput> = {
       worst: "O(m + k)",
     },
     spaceComplexity: "O(n × m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { words: ["apple", "app", "apricot", "banana", "bat"], prefix: "ap" },
   },
   execute: executeAutoCompleteTrie,
@@ -41,6 +44,9 @@ const autoCompleteTrieDefinition: AlgorithmDefinition<AutoCompleteTrieInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

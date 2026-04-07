@@ -13,6 +13,9 @@ import { singleNumberEducational } from "./educational";
 import typescriptSource from "./sources/single-number.ts?raw";
 import pythonSource from "./sources/single-number.py?raw";
 import javaSource from "./sources/SingleNumber.java?raw";
+import rustSource from "./sources/single-number.rs?raw";
+import cppSource from "./sources/SingleNumber.cpp?raw";
+import goSource from "./sources/single-number.go?raw";
 
 interface SingleNumberInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const singleNumberDefinition: AlgorithmDefinition<SingleNumberInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [4, 1, 2, 1, 2],
     },
@@ -44,6 +47,9 @@ const singleNumberDefinition: AlgorithmDefinition<SingleNumberInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

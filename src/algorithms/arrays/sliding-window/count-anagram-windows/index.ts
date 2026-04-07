@@ -13,6 +13,9 @@ import { countAnagramWindowsEducational } from "./educational";
 import typescriptSource from "./sources/count-anagram-windows.ts?raw";
 import pythonSource from "./sources/count-anagram-windows.py?raw";
 import javaSource from "./sources/CountAnagramWindows.java?raw";
+import rustSource from "./sources/count-anagram-windows.rs?raw";
+import cppSource from "./sources/CountAnagramWindows.cpp?raw";
+import goSource from "./sources/count-anagram-windows.go?raw";
 
 interface CountAnagramWindowsInput {
   text: number[];
@@ -33,7 +36,7 @@ const countAnagramWindowsDefinition: AlgorithmDefinition<CountAnagramWindowsInpu
       worst: "O(n)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       text: [1, 2, 3, 1, 2, 1, 3, 2, 1],
       pattern: [1, 2, 3],
@@ -46,6 +49,9 @@ const countAnagramWindowsDefinition: AlgorithmDefinition<CountAnagramWindowsInpu
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { movingAverageFromStreamEducational } from "./educational";
 import typescriptSource from "./sources/moving-average-from-stream.ts?raw";
 import pythonSource from "./sources/moving-average-from-stream.py?raw";
 import javaSource from "./sources/MovingAverageFromStream.java?raw";
+import rustSource from "./sources/moving-average-from-stream.rs?raw";
+import cppSource from "./sources/MovingAverageFromStream.cpp?raw";
+import goSource from "./sources/moving-average-from-stream.go?raw";
 
 function executeMovingAverageFromStream(input: MovingAverageFromStreamInput): number[] {
   return movingAverageFromStream(input.values, input.windowSize) as number[];
@@ -29,7 +32,7 @@ const movingAverageFromStreamDefinition: AlgorithmDefinition<MovingAverageFromSt
       worst: "O(1)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { values: [1, 10, 3, 5], windowSize: 3 },
   },
   execute: executeMovingAverageFromStream,
@@ -39,6 +42,9 @@ const movingAverageFromStreamDefinition: AlgorithmDefinition<MovingAverageFromSt
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

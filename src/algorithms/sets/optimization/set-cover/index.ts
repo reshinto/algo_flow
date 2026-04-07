@@ -10,6 +10,9 @@ import { setCoverEducational } from "./educational";
 import typescriptSource from "./sources/set-cover.ts?raw";
 import pythonSource from "./sources/set-cover.py?raw";
 import javaSource from "./sources/SetCover.java?raw";
+import rustSource from "./sources/set-cover.rs?raw";
+import cppSource from "./sources/SetCover.cpp?raw";
+import goSource from "./sources/set-cover.go?raw";
 
 function executeSetCover(input: SetCoverInput): {
   selectedIndices: number[];
@@ -35,7 +38,7 @@ const setCoverDefinition: AlgorithmDefinition<SetCoverInput> = {
       worst: "O(n × m)",
     },
     spaceComplexity: "O(n + m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       universe: [1, 2, 3, 4, 5, 6, 7, 8],
       sets: [
@@ -54,6 +57,9 @@ const setCoverDefinition: AlgorithmDefinition<SetCoverInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

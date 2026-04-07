@@ -10,6 +10,9 @@ import { isBalancedTreeIterativeEducational } from "./educational";
 import typescriptSource from "./sources/is-balanced-tree-iterative.ts?raw";
 import pythonSource from "./sources/is-balanced-tree-iterative.py?raw";
 import javaSource from "./sources/IsBalancedTreeIterative.java?raw";
+import rustSource from "./sources/is-balanced-tree-iterative.rs?raw";
+import cppSource from "./sources/IsBalancedTreeIterative.cpp?raw";
+import goSource from "./sources/is-balanced-tree-iterative.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const isBalancedTreeIterativeDefinition: AlgorithmDefinition<IsBalancedTreeItera
       "Iterative balance check using a simulated post-order traversal with explicit stack and a height-tracking map",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeIsBalancedTreeIterative,
   generateSteps: generateIsBalancedTreeIterativeSteps,
   educational: isBalancedTreeIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(isBalancedTreeIterativeDefinition);

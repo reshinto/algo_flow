@@ -13,6 +13,9 @@ import { lomutoPartitionEducational } from "./educational";
 import typescriptSource from "./sources/lomuto-partition.ts?raw";
 import pythonSource from "./sources/lomuto-partition.py?raw";
 import javaSource from "./sources/LomutoPartition.java?raw";
+import rustSource from "./sources/lomuto-partition.rs?raw";
+import cppSource from "./sources/LomutoPartition.cpp?raw";
+import goSource from "./sources/lomuto-partition.go?raw";
 
 interface LomutoPartitionInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const lomutoPartitionDefinition: AlgorithmDefinition<LomutoPartitionInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [8, 3, 6, 1, 5, 9, 2, 7],
     },
@@ -44,6 +47,9 @@ const lomutoPartitionDefinition: AlgorithmDefinition<LomutoPartitionInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

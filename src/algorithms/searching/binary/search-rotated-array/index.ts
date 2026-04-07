@@ -13,6 +13,9 @@ import { searchRotatedArrayEducational } from "./educational";
 import typescriptSource from "./sources/search-rotated-array.ts?raw";
 import pythonSource from "./sources/search-rotated-array.py?raw";
 import javaSource from "./sources/SearchRotatedArray.java?raw";
+import rustSource from "./sources/search-rotated-array.rs?raw";
+import cppSource from "./sources/SearchRotatedArray.cpp?raw";
+import goSource from "./sources/search-rotated-array.go?raw";
 
 const searchRotatedArrayDefinition: AlgorithmDefinition<{
   sortedArray: number[];
@@ -31,7 +34,7 @@ const searchRotatedArrayDefinition: AlgorithmDefinition<{
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [4, 5, 6, 7, 0, 1, 2],
       targetValue: 0,
@@ -44,6 +47,9 @@ const searchRotatedArrayDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

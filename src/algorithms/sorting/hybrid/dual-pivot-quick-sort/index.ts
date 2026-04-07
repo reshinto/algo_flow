@@ -14,6 +14,9 @@ import { dualPivotQuickSortEducational } from "./educational";
 import typescriptSource from "./sources/dual-pivot-quick-sort.ts?raw";
 import pythonSource from "./sources/dual-pivot-quick-sort.py?raw";
 import javaSource from "./sources/DualPivotQuickSort.java?raw";
+import rustSource from "./sources/dual-pivot-quick-sort.rs?raw";
+import cppSource from "./sources/DualPivotQuickSort.cpp?raw";
+import goSource from "./sources/dual-pivot-quick-sort.go?raw";
 
 const dualPivotQuickSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const dualPivotQuickSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(log n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: dualPivotQuickSort,
@@ -39,6 +42,9 @@ const dualPivotQuickSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

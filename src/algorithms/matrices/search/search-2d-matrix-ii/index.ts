@@ -10,6 +10,9 @@ import { search2DMatrixIIEducational } from "./educational";
 import typescriptSource from "./sources/search-2d-matrix-ii.ts?raw";
 import pythonSource from "./sources/search-2d-matrix-ii.py?raw";
 import javaSource from "./sources/Search2DMatrixII.java?raw";
+import rustSource from "./sources/search-2d-matrix-ii.rs?raw";
+import cppSource from "./sources/Search2DMatrixII.cpp?raw";
+import goSource from "./sources/search-2d-matrix-ii.go?raw";
 
 function executeSearch2DMatrixII(input: Search2DMatrixIIInput): boolean {
   return search2DMatrixII(input.matrix, input.target) as boolean;
@@ -29,7 +32,7 @@ const search2DMatrixIIDefinition: AlgorithmDefinition<Search2DMatrixIIInput> = {
       worst: "O(m + n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [1, 4, 7, 11, 15],
@@ -48,6 +51,9 @@ const search2DMatrixIIDefinition: AlgorithmDefinition<Search2DMatrixIIInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { sumRootToLeafNumbersIterativeEducational } from "./educational";
 import typescriptSource from "./sources/sum-root-to-leaf-numbers-iterative.ts?raw";
 import pythonSource from "./sources/sum-root-to-leaf-numbers-iterative.py?raw";
 import javaSource from "./sources/SumRootToLeafNumbersIterative.java?raw";
+import rustSource from "./sources/sum-root-to-leaf-numbers-iterative.rs?raw";
+import cppSource from "./sources/SumRootToLeafNumbersIterative.cpp?raw";
+import goSource from "./sources/sum-root-to-leaf-numbers-iterative.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7]. Paths: 421+423+465+467=1776. */
 const defaultNodes: TreeNode[] = [
@@ -109,13 +112,20 @@ const sumRootToLeafNumbersIterativeDefinition: AlgorithmDefinition<SumRootToLeaf
         "Iterative stack-based number formation — each stack entry carries the node and its running decimal number",
       timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
       spaceComplexity: "O(h)",
-      supportedLanguages: ["typescript", "python", "java"],
+      supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
       defaultInput: { nodes: defaultNodes, rootId: "n4" },
     },
     execute: executeSumRootToLeafNumbersIterative,
     generateSteps: generateSumRootToLeafNumbersIterativeSteps,
     educational: sumRootToLeafNumbersIterativeEducational,
-    sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+    sources: {
+      typescript: typescriptSource,
+      python: pythonSource,
+      java: javaSource,
+      rust: rustSource,
+      cpp: cppSource,
+      go: goSource,
+    },
   };
 
 registry.register(sumRootToLeafNumbersIterativeDefinition);

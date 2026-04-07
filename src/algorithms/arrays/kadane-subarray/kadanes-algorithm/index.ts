@@ -13,6 +13,9 @@ import { kadanesEducational } from "./educational";
 import typescriptSource from "./sources/kadanes-algorithm.ts?raw";
 import pythonSource from "./sources/kadanes-algorithm.py?raw";
 import javaSource from "./sources/KadanesAlgorithm.java?raw";
+import rustSource from "./sources/kadanes-algorithm.rs?raw";
+import cppSource from "./sources/KadanesAlgorithm.cpp?raw";
+import goSource from "./sources/kadanes-algorithm.go?raw";
 
 interface KadanesInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const kadanesDefinition: AlgorithmDefinition<KadanesInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [-2, 1, -3, 4, -1, 2, 1, -5, 4],
     },
@@ -44,6 +47,9 @@ const kadanesDefinition: AlgorithmDefinition<KadanesInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

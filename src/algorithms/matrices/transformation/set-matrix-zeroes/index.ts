@@ -10,6 +10,9 @@ import { setMatrixZeroesEducational } from "./educational";
 import typescriptSource from "./sources/set-matrix-zeroes.ts?raw";
 import pythonSource from "./sources/set-matrix-zeroes.py?raw";
 import javaSource from "./sources/SetMatrixZeroes.java?raw";
+import rustSource from "./sources/set-matrix-zeroes.rs?raw";
+import cppSource from "./sources/SetMatrixZeroes.cpp?raw";
+import goSource from "./sources/set-matrix-zeroes.go?raw";
 
 function executeSetMatrixZeroes(input: SetMatrixZeroesInput): number[][] {
   const matrixCopy = input.matrix.map((row) => [...row]);
@@ -30,7 +33,7 @@ const setMatrixZeroesDefinition: AlgorithmDefinition<SetMatrixZeroesInput> = {
       worst: "O(m × n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [0, 1, 2, 0],
@@ -46,6 +49,9 @@ const setMatrixZeroesDefinition: AlgorithmDefinition<SetMatrixZeroesInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

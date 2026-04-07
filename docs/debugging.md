@@ -83,7 +83,7 @@ flowchart TD
 **Common causes:**
 
 - The step key in a source file (`// @step:compare`) doesn't match the `type` or `lineMapKey` passed to the tracker call — even a small typo (e.g., `comparee`) silently produces no highlight
-- Language files use different step keys — keys must be identical across TypeScript, Python, and Java source files
+- Language files use different step keys — keys must be identical across TypeScript, Python, Java, Rust, C++, and Go source files
 - A `@step:` marker is missing entirely for a step type — that step will produce no highlighted lines
 
 **Debug pattern:** Call `buildLineMapFromSources(algorithmId)` in a test and inspect the output to verify all expected keys are present with correct line numbers for every language:
