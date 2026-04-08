@@ -19,8 +19,8 @@ Review code changes for quality, correctness, and adherence to project standards
 3. **Types**: Proper TypeScript usage. No `any`. Discriminated unions used correctly.
 4. **DRY**: No duplicated logic. Reused strings centralized in constants.
 5. **Tests**: Algorithm implementations have unit tests. Step generators tested.
-6. **Educational content**: Present and complete for all 7 sections.
-7. **Source files**: Exist for all 6 languages (TypeScript, Python, Java, Rust, C++, Go).
+6. **Educational content**: Present and complete for all 7 sections per `rules/algorithms.md`.
+7. **Source files**: Exist for all supported languages per `rules/algorithms.md`.
 8. **Line mappings**: Accurate per source file.
 9. **Non-persistence**: Input edits and grid edits are temporary.
 

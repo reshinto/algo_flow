@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # SessionStart + branch creation hook: auto-switch plugins based on git branch prefix.
-# Reads plugin-profiles.json and updates settings.json enabledPlugins.
+# Reads plugin-profiles.json and updates settings.local.json enabledPlugins.
+# settings.json has all plugins enabled as baseline; this hook selectively
+# enables/disables per branch in the local override file.
 # Uses Node.js for JSON manipulation (no jq dependency).
 # Always exits 0 — never blocks session start.
 
@@ -8,12 +10,17 @@ set -euo pipefail
 
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$(git rev-parse --show-toplevel 2>/dev/null || pwd)}"
 PROFILES="$PROJECT_DIR/.claude/hooks/plugin-profiles.json"
-SETTINGS="$PROJECT_DIR/.claude/settings.json"
+SETTINGS="$PROJECT_DIR/.claude/settings.local.json"
 
-# Guard: profiles and settings must exist
-if [ ! -f "$PROFILES" ] || [ ! -f "$SETTINGS" ]; then
-  echo "WARN: plugin-profiles.json or settings.json missing — plugin auto-switching disabled" >&2
+# Guard: profiles must exist; settings.local.json is created if missing
+if [ ! -f "$PROFILES" ]; then
+  echo "WARN: plugin-profiles.json missing — plugin auto-switching disabled" >&2
   exit 0
+fi
+
+# Create settings.local.json if it doesn't exist
+if [ ! -f "$SETTINGS" ]; then
+  echo '{}' > "$SETTINGS"
 fi
 
 # Guard: Node.js must be available
@@ -33,7 +40,7 @@ if [ -n "${1:-}" ]; then
   BRANCH="$1"
 fi
 
-# Use Node.js to update settings.json atomically
+# Use Node.js to update settings.local.json atomically
 node -e "
 const fs = require('fs');
 

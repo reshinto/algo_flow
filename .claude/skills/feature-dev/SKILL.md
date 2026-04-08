@@ -42,16 +42,19 @@ For structural changes:
 For new algorithms, create the directory structure:
 
 ```
-src/algorithms/<category>/<algorithm>/
+src/algorithms/<category>/<technique>/<algorithm>/
 ├── index.ts                           # registry.register(definition)
-├── <algorithm>.ts                     # Pure implementation
 ├── step-generator.ts                  # generateSteps() using tracker
-├── educational.ts                     # All 7 sections
-├── <Algorithm>Pipeline.stories.tsx    # Pipeline story
-└── sources/
-    ├── <algorithm>.ts                 # TypeScript source
-    ├── <algorithm>.py                 # Python source
-    └── <algorithm>.java               # Java source
+├── educational.ts                     # All 7 sections per rules/algorithms.md
+├── sources/                           # 6-language source implementations
+│   ├── <algorithm>.ts                 # TypeScript source with @step: markers
+│   ├── <algorithm>.py                 # Python, Java, Rust, C++, Go sources
+│   └── ...
+└── __tests__/                         # All tests and pipeline story
+    ├── <algorithm>.test.ts            # Correctness tests
+    ├── step-generator.test.ts         # Step generation tests
+    ├── <Algorithm>Pipeline.stories.tsx # Pipeline story
+    └── <algorithm>_test.{py,java,rs,cpp,go}  # Language tests
 ```
 
 Import in `src/algorithms/index.ts` barrel.
@@ -68,12 +71,12 @@ Code review checklist:
 ### Step 6: QA Validation
 
 - Unit tests: correctness + step generation
-- Coverage: 80/75/80/80 thresholds
-- E2E: per-category spec files in `e2e/specs/` auto-discover from registry; add to `e2e/specs/input-editors.spec.ts` only if algorithm has a custom input editor
+- Coverage: per `rules/testing.md` (80/75/80/80)
+- E2E: auto-discovers from registry — see `rules/testing.md`
 - Security: no unsafe patterns, npm audit clean
 
 ### Step 7: Technical Writer Review
 
-- Educational content: all 7 sections complete and accurate
+- Educational content: all 7 sections per `rules/algorithms.md`
 - Documentation: README, docs/ updated per trigger table
 - ELI5: explanations accessible to CS101 students

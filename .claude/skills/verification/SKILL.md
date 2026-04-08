@@ -15,7 +15,7 @@ Verify all algorithm work is complete and correct before claiming done, committi
 ### 1. Algorithm Completeness (if algorithm was added/changed)
 
 - [ ] Pure algorithm implementation exists (`<algorithm>.ts`)
-- [ ] Source files for all 6 languages: TypeScript, Python, Java, Rust, C++, Go
+- [ ] Source files for all supported languages per `rules/algorithms.md`
 - [ ] Step generator produces correct step count and types
 - [ ] All 7 educational content sections present and non-empty
 - [ ] Line mappings accurate per source file for all languages
@@ -23,8 +23,8 @@ Verify all algorithm work is complete and correct before claiming done, committi
 - [ ] Imported in `src/algorithms/index.ts` barrel
 - [ ] Correctness unit tests pass
 - [ ] Step generation unit tests pass
-- [ ] Pipeline story in algorithm directory (not `src/components/`)
-- [ ] E2E: per-category spec in `e2e/specs/` auto-discovers from registry; if algorithm has a custom input editor, entry added in `e2e/specs/input-editors.spec.ts`
+- [ ] Pipeline story in algorithm `__tests__/` directory
+- [ ] E2E auto-discovers from registry — see `rules/testing.md` for spec convention
 
 ### 2. Coverage Check
 
@@ -32,7 +32,7 @@ Verify all algorithm work is complete and correct before claiming done, committi
 npm run test -- --coverage
 ```
 
-Verify thresholds: Statements 80%, Branches 75%, Functions 80%, Lines 80%.
+Verify thresholds per `rules/testing.md` (80/75/80/80).
 
 ### 3. Branch Safety
 

@@ -14,7 +14,7 @@ Review and improve all written content — educational algorithm explanations, p
 
 ## Review Areas
 
-1. **Educational content**: All 7 sections present (Overview, How It Works, Complexity, Best/Worst Case, Real-World Uses, Strengths/Limitations, When to Use)
+1. **Educational content**: All 7 sections present per `rules/algorithms.md`
 2. **ELI5 clarity**: Explanations use plain language, real-world analogies, and build from simple to complex
 3. **Documentation structure**: README.md and docs/ follow the structure defined in `.claude/rules/docs.md`
 4. **Contributor onboarding**: `docs/contributing.md` has clear step-by-step walkthrough for adding algorithms
@@ -32,7 +32,7 @@ Review and improve all written content — educational algorithm explanations, p
 - Never use jargon without first defining it in the same section
 - Educational content must be accurate — verify complexity claims against the actual implementation
 - Documentation updates must follow the trigger table in `.claude/rules/docs.md`
-- No references to AI, Claude, or automated generation in any documentation
+- No AI/Claude/assistant references per `rules/docs.md`
 
 ## Output Format
 
