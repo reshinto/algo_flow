@@ -14,6 +14,18 @@ export const kmpSearchEducational: EducationalContent = {
     "Index:    0  1  2  3  4  5  6  7  8\n" +
     "Failure:  0  0  1  2  0  1  2  3  4\n" +
     "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  BUILD["build failure table\\nABAB → [0,0,1,2]"]:::start\n' +
+    '  M1["text[0..3] = ABAB\\npatternIdx advances to 4"]:::matched\n' +
+    "  MISS[\"text[4] = 'D'\\npat[4] = 'C' ✗\\nshift: patternIdx = failure[3] = 2\"]:::current\n" +
+    '  M2["resume at patternIdx=2\\nno re-scan of text"]:::matched\n' +
+    "  BUILD --> M1 --> MISS --> M2\n" +
+    "  classDef start fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef matched fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "On a mismatch at `patternIdx = 4`, KMP uses `failure[3] = 2` to skip back inside the pattern without moving `textIdx` — the text is never re-scanned.\n\n" +
     "**Phase 2 — Search** (O(n)):\n\n" +
     "Two pointers, `textIdx` and `patternIdx`, advance through their respective strings:\n\n" +
     "1. **Match** — `text[textIdx] == pattern[patternIdx]`: advance both. If `patternIdx` reaches `m`, pattern found.\n" +

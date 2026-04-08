@@ -12,7 +12,21 @@ export const bellmanFordEducational: EducationalContent = {
     "3. Perform one final relaxation pass:\n" +
     "   * If any distance can still be reduced, a **negative cycle** is reachable from the source — mark it.\n\n" +
     "### Why V − 1 passes suffice\n\n" +
-    "The shortest path between any two nodes in a graph without negative cycles can use at most `V − 1` edges. Each pass of Bellman-Ford guarantees that all shortest paths of length `≤ passIndex` are correctly computed.",
+    "The shortest path between any two nodes in a graph without negative cycles can use at most `V − 1` edges. Each pass of Bellman-Ford guarantees that all shortest paths of length `≤ passIndex` are correctly computed.\n\n" +
+    "### Bellman-Ford with a Negative Edge\n\n" +
+    "```mermaid\n" +
+    "graph LR\n" +
+    '  S((S)) -->|"4"| A((A))\n' +
+    '  S((S)) -->|"5"| B((B))\n' +
+    '  A((A)) -->|"-3"| B((B))\n' +
+    '  A((A)) -->|"2"| C((C))\n' +
+    '  B((B)) -->|"3"| C((C))\n' +
+    "  style S fill:#06b6d4,stroke:#0891b2\n" +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "After pass 1: dist[A]=4, dist[B]=5. After pass 2: edge A→B(-3) updates dist[B] to 4+(-3)=1. After pass 3: dist[C] = min(4+2, 1+3) = 4. The negative edge is handled correctly across multiple relaxation rounds.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V × E)`**\n\n" +

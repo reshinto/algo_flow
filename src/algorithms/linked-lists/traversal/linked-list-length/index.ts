@@ -10,6 +10,9 @@ import { linkedListLengthEducational } from "./educational";
 import typescriptSource from "./sources/linked-list-length.ts?raw";
 import pythonSource from "./sources/linked-list-length.py?raw";
 import javaSource from "./sources/LinkedListLength.java?raw";
+import rustSource from "./sources/linked-list-length.rs?raw";
+import cppSource from "./sources/LinkedListLength.cpp?raw";
+import goSource from "./sources/linked-list-length.go?raw";
 
 /** Convert an array of values to a ?fn-compatible linked list and call the algorithm. */
 function executeLinkedListLength(input: LinkedListLengthInput): number {
@@ -42,7 +45,7 @@ const linkedListLengthDefinition: AlgorithmDefinition<LinkedListLengthInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { values: [1, 2, 3, 4, 5] },
   },
   execute: executeLinkedListLength,
@@ -52,6 +55,9 @@ const linkedListLengthDefinition: AlgorithmDefinition<LinkedListLengthInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

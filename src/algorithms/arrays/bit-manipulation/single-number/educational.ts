@@ -22,7 +22,21 @@ export const singleNumberEducational: EducationalContent = {
     "XOR 2:          6  ^ 2  = 4   (first 2 cancels with second 2)\n" +
     "Result: 4  ✓\n" +
     "```\n\n" +
-    "**Contrast with Hash Map approach:** A hash map counts occurrences in one pass and returns the key with an odd count. It also runs in `O(n)` time but requires `O(n)` space for the frequency table. XOR achieves the same answer with no auxiliary storage.",
+    "**Contrast with Hash Map approach:** A hash map counts occurrences in one pass and returns the key with an odd count. It also runs in `O(n)` time but requires `O(n)` space for the frequency table. XOR achieves the same answer with no auxiliary storage.\n\n" +
+    "### XOR Cancellation Diagram (`[4, 1, 2, 1, 2]`)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["4"] -->|"XOR 4 → 4"| B["1"]\n' +
+    '  B -->|"XOR 1 → 5"| C["2"]\n' +
+    '  C -->|"XOR 2 → 7"| D["1"]\n' +
+    '  D -->|"XOR 1 → 6"| E["2"]\n' +
+    '  E -->|"XOR 2 → 4"| F["result=4"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Pairs `1^1` and `2^2` each cancel to `0`, leaving only the unpaired `4` in the accumulator.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

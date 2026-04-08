@@ -14,6 +14,9 @@ import { doubleSelectionSortEducational } from "./educational";
 import typescriptSource from "./sources/double-selection-sort.ts?raw";
 import pythonSource from "./sources/double-selection-sort.py?raw";
 import javaSource from "./sources/DoubleSelectionSort.java?raw";
+import rustSource from "./sources/double-selection-sort.rs?raw";
+import cppSource from "./sources/DoubleSelectionSort.cpp?raw";
+import goSource from "./sources/double-selection-sort.go?raw";
 
 const doubleSelectionSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const doubleSelectionSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: doubleSelectionSort,
@@ -39,6 +42,9 @@ const doubleSelectionSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

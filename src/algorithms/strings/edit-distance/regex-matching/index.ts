@@ -12,6 +12,9 @@ import { regexMatchingEducational } from "./educational";
 import typescriptSource from "./sources/regex-matching.ts?raw";
 import pythonSource from "./sources/regex-matching.py?raw";
 import javaSource from "./sources/RegexMatching.java?raw";
+import rustSource from "./sources/regex-matching.rs?raw";
+import cppSource from "./sources/RegexMatching.cpp?raw";
+import goSource from "./sources/regex-matching.go?raw";
 
 function executeRegexMatching(input: RegexMatchingInput): boolean {
   return regexMatching(input.text, input.pattern) as boolean;
@@ -31,7 +34,7 @@ const regexMatchingDefinition: AlgorithmDefinition<RegexMatchingInput> = {
       worst: "O(nm)",
     },
     spaceComplexity: "O(nm)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "aab", pattern: "c*a*b" },
   },
   execute: executeRegexMatching,
@@ -41,6 +44,9 @@ const regexMatchingDefinition: AlgorithmDefinition<RegexMatchingInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

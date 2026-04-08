@@ -10,6 +10,9 @@ import { invertBinaryTreeEducational } from "./educational";
 import typescriptSource from "./sources/invert-binary-tree.ts?raw";
 import pythonSource from "./sources/invert-binary-tree.py?raw";
 import javaSource from "./sources/InvertBinaryTree.java?raw";
+import rustSource from "./sources/invert-binary-tree.rs?raw";
+import cppSource from "./sources/InvertBinaryTree.cpp?raw";
+import goSource from "./sources/invert-binary-tree.go?raw";
 
 /** Standard 7-node balanced BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -121,13 +124,20 @@ const invertBinaryTreeDefinition: AlgorithmDefinition<InvertBinaryTreeInput> = {
       "Recursively mirrors a binary tree by swapping left and right children at every node, producing a reflected version of the original tree",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeInvertBinaryTree,
   generateSteps: generateInvertBinaryTreeSteps,
   educational: invertBinaryTreeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(invertBinaryTreeDefinition);

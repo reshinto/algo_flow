@@ -17,7 +17,22 @@ export const topKFrequentElementsEducational: EducationalContent = {
     "          idx: 0   1    2    3   4   5   6\n" +
     "scan from bucket[6] → collect 1, bucket[3] → collect 2, done\n" +
     "result: [1, 2]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["[1,1,1,2,2,3] k=2"]:::input --> B["freq: {1:3, 2:2, 3:1}"]\n' +
+    '  B --> C["buckets[3] ← 1"]:::checking\n' +
+    '  B --> D["buckets[2] ← 2"]:::checking\n' +
+    '  B --> E["buckets[1] ← 3"]:::checking\n' +
+    '  C --> F["collect 1 (1 of 2)"]:::found\n' +
+    '  D --> G["collect 2 (2 of 2) → done"]:::found\n' +
+    '  F --> H["result: [1, 2]"]:::found\n' +
+    "  G --> H\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef checking fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef found fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Scanning buckets from the highest index down collects results in descending frequency order. Extraction stops as soon as `k` elements are gathered, so the scan rarely reaches `buckets[1]`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

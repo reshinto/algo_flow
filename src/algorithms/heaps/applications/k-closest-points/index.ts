@@ -10,6 +10,9 @@ import { kClosestPointsEducational } from "./educational";
 import typescriptSource from "./sources/k-closest-points.ts?raw";
 import pythonSource from "./sources/k-closest-points.py?raw";
 import javaSource from "./sources/KClosestPoints.java?raw";
+import rustSource from "./sources/k-closest-points.rs?raw";
+import cppSource from "./sources/KClosestPoints.cpp?raw";
+import goSource from "./sources/k-closest-points.go?raw";
 
 function executeKClosestPoints(input: KClosestPointsInput): [number, number][] {
   return kClosestPoints(input.points, input.kValue) as [number, number][];
@@ -29,7 +32,7 @@ const kClosestPointsDefinition: AlgorithmDefinition<KClosestPointsInput> = {
       worst: "O(n log k)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       points: [
         [3, 3],
@@ -50,6 +53,9 @@ const kClosestPointsDefinition: AlgorithmDefinition<KClosestPointsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

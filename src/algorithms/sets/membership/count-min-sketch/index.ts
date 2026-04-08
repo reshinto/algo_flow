@@ -10,6 +10,9 @@ import { countMinSketchEducational } from "./educational";
 import typescriptSource from "./sources/count-min-sketch.ts?raw";
 import pythonSource from "./sources/count-min-sketch.py?raw";
 import javaSource from "./sources/CountMinSketch.java?raw";
+import rustSource from "./sources/count-min-sketch.rs?raw";
+import cppSource from "./sources/CountMinSketch.cpp?raw";
+import goSource from "./sources/count-min-sketch.go?raw";
 
 function executeCountMinSketch(input: CountMinSketchInput): {
   results: { value: number; estimatedCount: number }[];
@@ -33,7 +36,7 @@ const countMinSketchDefinition: AlgorithmDefinition<CountMinSketchInput> = {
       worst: "O(d)",
     },
     spaceComplexity: "O(d × w)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       elements: [3, 3, 7, 7, 7, 11],
       queries: [3, 7, 11, 5],
@@ -48,6 +51,9 @@ const countMinSketchDefinition: AlgorithmDefinition<CountMinSketchInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

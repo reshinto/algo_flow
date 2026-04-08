@@ -12,6 +12,9 @@ import { suffixArrayConstructionEducational } from "./educational";
 import typescriptSource from "./sources/suffix-array-construction.ts?raw";
 import pythonSource from "./sources/suffix-array-construction.py?raw";
 import javaSource from "./sources/SuffixArrayConstruction.java?raw";
+import rustSource from "./sources/suffix-array-construction.rs?raw";
+import cppSource from "./sources/SuffixArrayConstruction.cpp?raw";
+import goSource from "./sources/suffix-array-construction.go?raw";
 
 function executeSuffixArrayConstruction(input: SuffixArrayConstructionInput): number[] {
   return suffixArrayConstruction(input.text) as number[];
@@ -31,7 +34,7 @@ const suffixArrayConstructionDefinition: AlgorithmDefinition<SuffixArrayConstruc
       worst: "O(n log²n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "banana" },
   },
   execute: executeSuffixArrayConstruction,
@@ -41,6 +44,9 @@ const suffixArrayConstructionDefinition: AlgorithmDefinition<SuffixArrayConstruc
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

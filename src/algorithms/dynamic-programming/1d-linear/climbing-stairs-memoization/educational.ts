@@ -21,7 +21,25 @@ export const climbingStairsMemoizationEducational: EducationalContent = {
     "│   └── S(1) → 1  (cache hit)\n" +
     "└── S(2) → 2  (cache hit)\n" +
     "```\n\n" +
-    "Once `S(2)` is cached, the second call to `S(2)` returns instantly instead of branching again.",
+    "Once `S(2)` is cached, the second call to `S(2)` returns instantly instead of branching again.\n\n" +
+    "### Memoization Tree for S(4)\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '  A["S(4) = 5"] --> B["S(3) = 3"]\n' +
+    '  A --> C["S(2) = 2 ✓ cached"]\n' +
+    '  B --> D["S(2) = 2"]\n' +
+    '  B --> E["S(1) = 1 base"]\n' +
+    '  D --> F["S(1) = 1 base"]\n' +
+    '  D --> G["S(0) = 1 base"]\n' +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#06b6d4,stroke:#0891b2\n" +
+    "  style F fill:#06b6d4,stroke:#0891b2\n" +
+    "  style G fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Cyan nodes are base cases, amber nodes are active recursive calls, and green nodes are cache hits or freshly cached results — `S(2)` is computed once then reused.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

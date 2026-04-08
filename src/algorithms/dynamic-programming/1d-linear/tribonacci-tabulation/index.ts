@@ -9,6 +9,9 @@ import { tribonacciTabulationEducational } from "./educational";
 import typescriptSource from "./sources/tribonacci-tabulation.ts?raw";
 import pythonSource from "./sources/tribonacci-tabulation.py?raw";
 import javaSource from "./sources/TribonacciTabulation.java?raw";
+import rustSource from "./sources/tribonacci-tabulation.rs?raw";
+import cppSource from "./sources/TribonacciTabulation.cpp?raw";
+import goSource from "./sources/tribonacci-tabulation.go?raw";
 
 interface TribonacciInput {
   targetIndex: number;
@@ -28,7 +31,7 @@ const tribonacciTabulationDefinition: AlgorithmDefinition<TribonacciInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { targetIndex: 10 },
   },
   execute: (input: TribonacciInput) => tribonacciTabulation(input.targetIndex),
@@ -38,6 +41,9 @@ const tribonacciTabulationDefinition: AlgorithmDefinition<TribonacciInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

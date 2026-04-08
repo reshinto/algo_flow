@@ -9,6 +9,9 @@ import { bfsExplorationEducational } from "./educational";
 import typescriptSource from "./sources/bfs-exploration.ts?raw";
 import pythonSource from "./sources/bfs-exploration.py?raw";
 import javaSource from "./sources/BfsExploration.java?raw";
+import rustSource from "./sources/bfs-exploration.rs?raw";
+import cppSource from "./sources/BfsExploration.cpp?raw";
+import goSource from "./sources/bfs-exploration.go?raw";
 
 /** Builds the initial pathfinding grid with start position and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -88,7 +91,7 @@ const bfsExplorationDefinition: AlgorithmDefinition<BfsExplorationInput> = {
       worst: "O(V + E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -102,6 +105,9 @@ const bfsExplorationDefinition: AlgorithmDefinition<BfsExplorationInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -13,6 +13,9 @@ import { findMissingNumberEducational } from "./educational";
 import typescriptSource from "./sources/find-missing-number.ts?raw";
 import pythonSource from "./sources/find-missing-number.py?raw";
 import javaSource from "./sources/FindMissingNumber.java?raw";
+import rustSource from "./sources/find-missing-number.rs?raw";
+import cppSource from "./sources/FindMissingNumber.cpp?raw";
+import goSource from "./sources/find-missing-number.go?raw";
 
 interface FindMissingNumberInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const findMissingNumberDefinition: AlgorithmDefinition<FindMissingNumberInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [3, 0, 1],
     },
@@ -44,6 +47,9 @@ const findMissingNumberDefinition: AlgorithmDefinition<FindMissingNumberInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

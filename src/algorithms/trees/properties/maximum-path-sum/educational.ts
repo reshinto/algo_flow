@@ -12,7 +12,17 @@ export const maximumPathSumEducational: EducationalContent = {
     "2. Compute `rightGain = max(maxGain(right), 0)` — only use if positive.\n" +
     "3. Compute `pathThroughNode = node.value + leftGain + rightGain`.\n" +
     "4. Update the global maximum with `pathThroughNode`.\n" +
-    "5. **Return** `node.value + max(leftGain, rightGain)` — the node can only contribute one branch to its parent.",
+    "5. **Return** `node.value + max(leftGain, rightGain)` — the node can only contribute one branch to its parent.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((-10)):::visited --> B((9)):::visited\n" +
+    "  A --> C((20)):::current\n" +
+    "  C --> D((15)):::visited\n" +
+    "  C --> E((7)):::visited\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "At node 20: leftGain=15, rightGain=7, pathThrough=42. At root -10: leftGain=9, rightGain=42, pathThrough=41. Global maximum stays at 42 — the winning path is 15 → 20 → 7.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — each node is visited once.\n\n" +

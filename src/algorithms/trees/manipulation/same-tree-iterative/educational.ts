@@ -13,7 +13,29 @@ export const sameTreeIterativeEducational: EducationalContent = {
     "5. **Different values** — return `false` (value mismatch).\n" +
     "6. **Enqueue children** — add `(nodeA.left, nodeB.left)` and `(nodeA.right, nodeB.right)` to the queue.\n" +
     "7. **Repeat** — continue until queue is empty.\n" +
-    "8. **Return true** — all pairs matched.",
+    "8. **Return true** — all pairs matched.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  subgraph TreeB [Tree B]\n" +
+    "    P((4)) --> Q((2))\n" +
+    "    P --> R((6))\n" +
+    "    Q --> S((1))\n" +
+    "    Q --> T((3))\n" +
+    "  end\n" +
+    "  subgraph TreeA [Tree A]\n" +
+    "    A((4)) --> B((2))\n" +
+    "    A --> C((6))\n" +
+    "    B --> D((1))\n" +
+    "    B --> E((3))\n" +
+    "  end\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style P fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style Q fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style S fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "The BFS queue processes pairs level by level: (4,4) → (2,2),(6,6) → (1,1),(3,3). All values match and structures align, so the result is `true`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(min(n, m))`**\n\n" +

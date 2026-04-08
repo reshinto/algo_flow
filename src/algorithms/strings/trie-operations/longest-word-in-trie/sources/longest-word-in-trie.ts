@@ -13,7 +13,7 @@ function createTrieNode(): TrieNodeInternal {
   return { children: new Map(), isEnd: false }; // @step:initialize
 }
 
-export function longestWordInTrie(words: string[]): string {
+function longestWordInTrie(words: string[]): string {
   const root = createTrieNode(); // @step:initialize
 
   for (const word of words) {

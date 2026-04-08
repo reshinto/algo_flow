@@ -10,6 +10,9 @@ import { countCompleteTreeNodesEducational } from "./educational";
 import typescriptSource from "./sources/count-complete-tree-nodes.ts?raw";
 import pythonSource from "./sources/count-complete-tree-nodes.py?raw";
 import javaSource from "./sources/CountCompleteTreeNodes.java?raw";
+import rustSource from "./sources/count-complete-tree-nodes.rs?raw";
+import cppSource from "./sources/CountCompleteTreeNodes.cpp?raw";
+import goSource from "./sources/count-complete-tree-nodes.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const countCompleteTreeNodesDefinition: AlgorithmDefinition<CountCompleteTreeNod
       "Counts nodes in a complete binary tree in O(log²n) by exploiting the property that a subtree with equal left and right heights is a perfect binary tree",
     timeComplexity: { best: "O(log²n)", average: "O(log²n)", worst: "O(log²n)" },
     spaceComplexity: "O(log n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeCountCompleteTreeNodes,
   generateSteps: generateCountCompleteTreeNodesSteps,
   educational: countCompleteTreeNodesEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(countCompleteTreeNodesDefinition);

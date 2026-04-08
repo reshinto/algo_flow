@@ -21,7 +21,24 @@ export const countMinSketchEducational: EducationalContent = {
     "Query 7  → min(3, 3, 3) = 3  ✓ (true count: 3)\n" +
     "Query 3  → min(2, 2, 2) = 2  ✓ (true count: 2)\n" +
     "Query 5  → min(0, 0, 0) = 0  → not found (true count: 0)\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  EL["insert 7 × 3"]:::input\n' +
+    '  ER["insert 3 × 2"]:::input\n' +
+    '  R0["row 0: h0(x) → col"]:::current\n' +
+    '  R1["row 1: h1(x) → col"]:::current\n' +
+    '  R2["row 2: h2(x) → col"]:::current\n' +
+    '  Q7["query 7 → min(3,3,3) = 3"]:::result\n' +
+    '  Q3["query 3 → min(2,2,2) = 2"]:::result\n' +
+    "  EL --> R0 & R1 & R2\n" +
+    "  ER --> R0 & R1 & R2\n" +
+    "  R0 & R1 & R2 --> Q7 & Q3\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each insert increments one counter per row (d=3 rows). A query takes the minimum across all rows to cancel out collisions, returning the closest estimate to the true frequency.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(d)` per operation**\n\n" +

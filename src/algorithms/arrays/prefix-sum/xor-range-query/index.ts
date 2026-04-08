@@ -13,6 +13,9 @@ import { xorRangeQueryEducational } from "./educational";
 import typescriptSource from "./sources/xor-range-query.ts?raw";
 import pythonSource from "./sources/xor-range-query.py?raw";
 import javaSource from "./sources/XorRangeQuery.java?raw";
+import rustSource from "./sources/xor-range-query.rs?raw";
+import cppSource from "./sources/XorRangeQuery.cpp?raw";
+import goSource from "./sources/xor-range-query.go?raw";
 
 interface XorRangeQueryInput {
   inputArray: number[];
@@ -33,7 +36,7 @@ const xorRangeQueryDefinition: AlgorithmDefinition<XorRangeQueryInput> = {
       worst: "O(n) build + O(1) query",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [3, 5, 2, 7, 1, 4],
       queries: [
@@ -50,6 +53,9 @@ const xorRangeQueryDefinition: AlgorithmDefinition<XorRangeQueryInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

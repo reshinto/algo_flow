@@ -24,7 +24,30 @@ export const subsetCheckEducational: EducationalContent = {
     "  A[0]=2 → found   → condition holds\n" +
     "  A[1]=4 → found   → condition holds\n" +
     "All elements checked → isSubset: true\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph A["Set A (candidate subset)"]\n' +
+    '    a1["2"]:::input\n' +
+    '    a2["4"]:::input\n' +
+    "  end\n" +
+    '  subgraph B["Set B (superset candidate)"]\n' +
+    '    b1["1"]:::input\n' +
+    '    b2["2"]:::input\n' +
+    '    b3["3"]:::input\n' +
+    '    b4["4"]:::input\n' +
+    '    b5["5"]:::input\n' +
+    "  end\n" +
+    '  subgraph R["Result"]\n' +
+    '    r1["isSubset: true"]:::result\n' +
+    "  end\n" +
+    "  A --> R\n" +
+    "  B --> R\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef excluded fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Every element of A (2 and 4) is found in B's hash set, so A ⊆ B holds. If any element of A were missing from B, the algorithm would short-circuit and return false immediately.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + m)`**\n\n" +

@@ -2,7 +2,7 @@ import type { AlgorithmDefinition } from "@/types";
 import { registry } from "@/registry";
 import { ALGORITHM_ID, CATEGORY } from "@/utils/constants";
 
-import { containsDuplicateII } from "./sources/contains-duplicate-ii";
+import { containsDuplicateII } from "./sources/contains-duplicate-ii.ts?fn";
 import { generateContainsDuplicateIISteps } from "./step-generator";
 import type { ContainsDuplicateIIInput } from "./step-generator";
 import { containsDuplicateIIEducational } from "./educational";
@@ -10,6 +10,9 @@ import { containsDuplicateIIEducational } from "./educational";
 import typescriptSource from "./sources/contains-duplicate-ii.ts?raw";
 import pythonSource from "./sources/contains-duplicate-ii.py?raw";
 import javaSource from "./sources/ContainsDuplicateII.java?raw";
+import rustSource from "./sources/contains-duplicate-ii.rs?raw";
+import cppSource from "./sources/ContainsDuplicateII.cpp?raw";
+import goSource from "./sources/contains-duplicate-ii.go?raw";
 
 function executeContainsDuplicateII(input: ContainsDuplicateIIInput): boolean {
   return containsDuplicateII(input.numbers, input.maxDistance);
@@ -29,7 +32,7 @@ const containsDuplicateIIDefinition: AlgorithmDefinition<ContainsDuplicateIIInpu
       worst: "O(n)",
     },
     spaceComplexity: "O(min(n, k))",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numbers: [1, 2, 3, 1], maxDistance: 3 },
   },
   execute: executeContainsDuplicateII,
@@ -39,6 +42,9 @@ const containsDuplicateIIDefinition: AlgorithmDefinition<ContainsDuplicateIIInpu
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

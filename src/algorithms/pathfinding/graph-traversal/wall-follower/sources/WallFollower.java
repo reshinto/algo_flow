@@ -25,8 +25,8 @@ public class WallFollower {
             // Check if we reached the end
             if (currentRow == end[0] && currentCol == end[1]) {
                 Map<String, Object> found = new HashMap<>(); // @step:trace-path
-                found.put("path", path.toArray(new int[0][]));
-                found.put("visited", visited.toArray(new int[0][]));
+                found.put("path", path);
+                found.put("visited", visited);
                 return found;
             }
 
@@ -53,8 +53,8 @@ public class WallFollower {
         }
 
         Map<String, Object> notFound = new HashMap<>(); // @step:complete
-        notFound.put("path", new int[0][]);
-        notFound.put("visited", visited.toArray(new int[0][]));
+        notFound.put("path", new ArrayList<int[]>());
+        notFound.put("visited", visited);
         return notFound;
     }
 

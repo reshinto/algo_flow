@@ -10,6 +10,9 @@ import { removeKDigitsEducational } from "./educational";
 import typescriptSource from "./sources/remove-k-digits.ts?raw";
 import pythonSource from "./sources/remove-k-digits.py?raw";
 import javaSource from "./sources/RemoveKDigits.java?raw";
+import rustSource from "./sources/remove-k-digits.rs?raw";
+import cppSource from "./sources/RemoveKDigits.cpp?raw";
+import goSource from "./sources/remove-k-digits.go?raw";
 
 function executeRemoveKDigits(input: RemoveKDigitsInput): string {
   return removeKDigits(input.num, input.removalCount) as string;
@@ -29,7 +32,7 @@ const removeKDigitsDefinition: AlgorithmDefinition<RemoveKDigitsInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { num: "1432219", removalCount: 3 },
   },
   execute: executeRemoveKDigits,
@@ -39,6 +42,9 @@ const removeKDigitsDefinition: AlgorithmDefinition<RemoveKDigitsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

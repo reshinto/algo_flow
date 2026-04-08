@@ -9,6 +9,7 @@ How to build, deploy, and serve AlgoFlow in production. Covers Docker containeri
 ## Contents
 
 - [Docker](#docker)
+- [Docker Test Environment](#docker-test-environment)
 - [CI/CD Pipelines](#cicd-pipelines)
 
 ## Docker
@@ -43,6 +44,24 @@ The nginx config provides:
 - Cache headers: `expires 1y; Cache-Control: public, immutable` for hashed assets
 - Health check: `wget -qO- http://localhost/` every 30 seconds (5-second start period)
 
+## Docker Test Environment
+
+A separate Docker setup for running all multi-language tests without installing any toolchains on your host machine.
+
+### Quick Start
+
+```bash
+npm run docker:test:build    # Build the test image (once)
+npm run docker:test          # Run all 6 language test suites
+```
+
+`Dockerfile.test` builds on Ubuntu 24.04 with all 6 language toolchains (Node, Python, Java, Rust, g++, Go). The `docker-compose.test.yml` file defines one service per language (`test-all`, `test-typescript`, `test-python`, etc.), all sharing the same image.
+
+See [Testing — Docker Test Environment](testing.md#docker-test-environment) for the full service list, image contents, and advanced usage.
+
+> [!NOTE]
+> This is separate from the production `Dockerfile` (nginx) and `docker-compose.yml` (port 3000). The test image is for development and CI use only.
+
 ## CI/CD Pipelines
 
 Two GitHub Actions workflows are in `.github/workflows/`:
@@ -54,8 +73,13 @@ Triggers on all pull requests to `main`. Runs these jobs in parallel:
 | Job                          | What It Does                                                                                          |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------- |
 | **Type Check & Lint**        | `npm run typecheck`, `npm run lint`, `npm run format:check`                                           |
-| **Unit Tests**               | `npm run test` — sharded 12 ways; results aggregated under the **Unit Tests Status** required check   |
-| **E2E Tests**                | `npm run e2e` — sharded 16 ways (15-min timeout per shard); aggregated under the **E2E Status** check |
+| **Unit Tests**               | `npm run test` — sharded across parallel jobs; aggregated under **Unit Tests Status**                  |
+| **Python Tests**             | `test-python.sh` — sharded with parallel workers; aggregated under **Python Tests Status**             |
+| **Java Tests**               | `test-java.sh` — sharded with parallel workers; aggregated under **Java Tests Status**                 |
+| **Rust Tests**               | `test-rust.sh` — sharded with parallel workers; aggregated under **Rust Tests Status**                 |
+| **C++ Tests**                | `test-cpp.sh` — sharded with parallel workers; aggregated under **C++ Tests Status**                   |
+| **Go Tests**                 | `test-go.sh` — sharded with parallel workers; aggregated under **Go Tests Status**                     |
+| **E2E Tests**                | `npm run e2e` — sharded across parallel jobs; aggregated under **E2E Status**                          |
 | **Storybook Build**          | `npm run storybook:build`                                                                             |
 | **Visual Tests (Chromatic)** | Runs after Storybook build; requires `CHROMATIC_PROJECT_TOKEN` secret                                 |
 

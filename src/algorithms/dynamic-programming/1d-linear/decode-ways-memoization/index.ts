@@ -9,6 +9,9 @@ import { decodeWaysMemoizationEducational } from "./educational";
 import typescriptSource from "./sources/decode-ways-memoization.ts?raw";
 import pythonSource from "./sources/decode-ways-memoization.py?raw";
 import javaSource from "./sources/DecodeWaysMemoization.java?raw";
+import rustSource from "./sources/decode-ways-memoization.rs?raw";
+import cppSource from "./sources/DecodeWaysMemoization.cpp?raw";
+import goSource from "./sources/decode-ways-memoization.go?raw";
 
 interface DecodeWaysInput {
   digits: string;
@@ -28,7 +31,7 @@ const decodeWaysMemoizationDefinition: AlgorithmDefinition<DecodeWaysInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { digits: "12321" },
   },
   execute: (input: DecodeWaysInput) => decodeWaysMemoization(input.digits),
@@ -38,6 +41,9 @@ const decodeWaysMemoizationDefinition: AlgorithmDefinition<DecodeWaysInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

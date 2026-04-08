@@ -16,7 +16,21 @@ export const firstNegativeInWindowEducational: EducationalContent = {
     "   - If the new incoming element is negative, push its index to the back of the deque.\n" +
     "   - Record `arr[deque.front]` (or `0`) as the result for this window.\n" +
     "5. Return the result array containing one entry per window.\n\n" +
-    "The deque always holds candidate negative indices in the order they appear, so the front is always the leftmost (first) negative in the current window.",
+    "The deque always holds candidate negative indices in the order they appear, so the front is always the leftmost (first) negative in the current window.\n\n" +
+    "### Example: `[12, -1, -7, 8, 15]`, k = 3\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["12"] --> B["-1"] --> C["-7"] --> D["8"] --> E["15"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#06b6d4,stroke:#0891b2\n" +
+    "  style E fill:#06b6d4,stroke:#0891b2\n" +
+    '  R1["result[0] = -1"] -. front of deque .-> B\n' +
+    '  R2["result[1] = -1"] -. front of deque .-> B\n' +
+    "```\n\n" +
+    "For window `[12, -1, -7]` the deque front points to index 1 (value `-1`). " +
+    "When the window slides to `[-1, -7, 8]`, `-1` is still the front — the result stays `-1`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

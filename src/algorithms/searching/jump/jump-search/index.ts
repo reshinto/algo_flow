@@ -13,6 +13,9 @@ import { jumpSearchEducational } from "./educational";
 import typescriptSource from "./sources/jump-search.ts?raw";
 import pythonSource from "./sources/jump-search.py?raw";
 import javaSource from "./sources/JumpSearch.java?raw";
+import rustSource from "./sources/jump-search.rs?raw";
+import cppSource from "./sources/JumpSearch.cpp?raw";
+import goSource from "./sources/jump-search.go?raw";
 
 const jumpSearchDefinition: AlgorithmDefinition<{
   sortedArray: number[];
@@ -31,7 +34,7 @@ const jumpSearchDefinition: AlgorithmDefinition<{
       worst: "O(√n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [2, 5, 8, 12, 16, 23, 38, 56, 72, 91],
       targetValue: 56,
@@ -44,6 +47,9 @@ const jumpSearchDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -22,7 +22,17 @@ export const kthSmallestElementEducational: EducationalContent = {
     "Element 15 > root 7 → skip\n" +
     "Element 8 > root 7 → skip\n\n" +
     "Root = 7 → 3rd smallest ✓\n" +
-    "```",
+    "```\n\n" +
+    "### Max-Heap (size k=3) — Final State\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    r7((7)) --> r3((3))\n" +
+    "    r7 --> r4((4))\n" +
+    "    style r7 fill:#f59e0b,stroke:#d97706\n" +
+    "    style r3 fill:#14532d,stroke:#22c55e\n" +
+    "    style r4 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The root (amber) is the largest of the bottom-3 — value 7 — which is the 3rd smallest in the array. Children (green) are the two confirmed smaller values.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log k)`**\n\n" +

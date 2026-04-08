@@ -20,7 +20,26 @@ export const islandCountEducational: EducationalContent = {
     "0  0  1  1\n" +
     "0  0  0  0\n" +
     "```\n\n" +
-    "Islands: top-left cluster (3 cells), isolated `1` at (1,3) + (2,2)+(2,3) cluster → **3 islands**.",
+    "Islands: top-left cluster (3 cells), isolated `1` at (1,3) + (2,2)+(2,3) cluster → **3 islands**.\n\n" +
+    "### Diagram: DFS flood fill consuming island A\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  Start["Scan finds (0,0)=1 → island++"]\n' +
+    '  Start --> N00["DFS (0,0): mark→0"]\n' +
+    '  N00 --> N01["DFS (0,1): mark→0"]\n' +
+    '  N00 --> N10["DFS (1,0): mark→0"]\n' +
+    '  N01 --> OOB1["(0,2)=0 stop"]\n' +
+    '  N10 --> OOB2["(2,0)=0 stop"]\n' +
+    '  N10 --> OOB3["(1,1)=0 stop"]\n' +
+    '  Done["Island A consumed — continue scan"]\n' +
+    "  N01 --> Done\n" +
+    "  N10 --> Done\n" +
+    "  style Start fill:#06b6d4,stroke:#0891b2\n" +
+    "  style N00 fill:#f59e0b,stroke:#d97706\n" +
+    "  style N01 fill:#14532d,stroke:#22c55e\n" +
+    "  style N10 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Cyan marks the scan entry point that triggers a new island; amber is the DFS root; green cells are recursively marked to 0, preventing any future re-count.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m × n)`**\n\n" +

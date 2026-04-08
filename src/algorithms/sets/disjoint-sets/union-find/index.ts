@@ -10,6 +10,9 @@ import { unionFindEducational } from "./educational";
 import typescriptSource from "./sources/union-find.ts?raw";
 import pythonSource from "./sources/union-find.py?raw";
 import javaSource from "./sources/UnionFind.java?raw";
+import rustSource from "./sources/union-find.rs?raw";
+import cppSource from "./sources/UnionFind.cpp?raw";
+import goSource from "./sources/union-find.go?raw";
 
 function executeUnionFind(input: UnionFindInput): { components: number[][] } {
   return unionFind(input.elementCount, input.operations) as { components: number[][] };
@@ -31,7 +34,7 @@ const unionFindDefinition: AlgorithmDefinition<UnionFindInput> = {
       worst: "O(α(n))",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       elementCount: 8,
       operations: [
@@ -52,6 +55,9 @@ const unionFindDefinition: AlgorithmDefinition<UnionFindInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

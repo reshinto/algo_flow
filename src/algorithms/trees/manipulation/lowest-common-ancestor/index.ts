@@ -10,6 +10,9 @@ import { lowestCommonAncestorEducational } from "./educational";
 import typescriptSource from "./sources/lowest-common-ancestor.ts?raw";
 import pythonSource from "./sources/lowest-common-ancestor.py?raw";
 import javaSource from "./sources/LowestCommonAncestor.java?raw";
+import rustSource from "./sources/lowest-common-ancestor.rs?raw";
+import cppSource from "./sources/LowestCommonAncestor.cpp?raw";
+import goSource from "./sources/lowest-common-ancestor.go?raw";
 
 /** Standard 7-node balanced BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -115,13 +118,20 @@ const lowestCommonAncestorDefinition: AlgorithmDefinition<LowestCommonAncestorIn
       "Recursive post-order search that finds the deepest node in a general binary tree that is an ancestor of both given target node values",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", nodeValueA: 1, nodeValueB: 3 },
   },
   execute: executeLowestCommonAncestor,
   generateSteps: generateLowestCommonAncestorSteps,
   educational: lowestCommonAncestorEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(lowestCommonAncestorDefinition);

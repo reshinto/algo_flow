@@ -38,16 +38,14 @@ def block_merge_sort(input_array: list[int]) -> list[int]:  # @step:initialize
                     left_pointer += 1  # @step:swap
                     right_pointer += 1  # @step:swap
 
-            if boundary_index + 3 <= len(run_boundaries) - 1:
-                next_boundaries.append(merge_end)  # @step:merge
+            next_boundaries.append(merge_end)  # @step:merge
             boundary_index += 2
 
-        # If there is an odd run left, carry it over unchanged
+        # If there is an odd run left, carry its end boundary over unchanged
         if (len(run_boundaries) - 1) % 2 == 1:
-            next_boundaries.append(run_boundaries[-2])  # @step:merge
-        next_boundaries.append(array_length)  # @step:merge
+            next_boundaries.append(array_length)  # @step:merge
 
-        run_boundaries = next_boundaries  # @step:merge
+        run_boundaries = list(next_boundaries)  # @step:merge
 
         # @step:mark-sorted
 

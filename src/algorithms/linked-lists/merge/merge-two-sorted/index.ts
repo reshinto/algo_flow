@@ -10,6 +10,9 @@ import { mergeTwoSortedEducational } from "./educational";
 import typescriptSource from "./sources/merge-two-sorted.ts?raw";
 import pythonSource from "./sources/merge-two-sorted.py?raw";
 import javaSource from "./sources/MergeTwoSorted.java?raw";
+import rustSource from "./sources/merge-two-sorted.rs?raw";
+import cppSource from "./sources/MergeTwoSorted.cpp?raw";
+import goSource from "./sources/merge-two-sorted.go?raw";
 
 /** Convert arrays to linked lists and merge them using the algorithm. */
 function executeMergeTwoSorted(input: MergeTwoSortedInput): number[] {
@@ -54,7 +57,7 @@ const mergeTwoSortedDefinition: AlgorithmDefinition<MergeTwoSortedInput> = {
       worst: "O(n + m)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { listA: [1, 3, 5, 7], listB: [2, 4, 6, 8] },
   },
   execute: executeMergeTwoSorted,
@@ -64,6 +67,9 @@ const mergeTwoSortedDefinition: AlgorithmDefinition<MergeTwoSortedInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

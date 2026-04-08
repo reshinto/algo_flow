@@ -10,6 +10,9 @@ import { multisetUnionEducational } from "./educational";
 import typescriptSource from "./sources/multiset-union.ts?raw";
 import pythonSource from "./sources/multiset-union.py?raw";
 import javaSource from "./sources/MultisetUnion.java?raw";
+import rustSource from "./sources/multiset-union.rs?raw";
+import cppSource from "./sources/MultisetUnion.cpp?raw";
+import goSource from "./sources/multiset-union.go?raw";
 
 function executeMultisetUnion(input: MultisetUnionInput): number[] {
   return multisetUnion(input.arrayA, input.arrayB) as number[];
@@ -29,7 +32,7 @@ const multisetUnionDefinition: AlgorithmDefinition<MultisetUnionInput> = {
       worst: "O(n + m)",
     },
     spaceComplexity: "O(n + m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { arrayA: [1, 1, 2, 3, 3, 3], arrayB: [1, 1, 1, 2, 2, 3] },
   },
   execute: executeMultisetUnion,
@@ -39,6 +42,9 @@ const multisetUnionDefinition: AlgorithmDefinition<MultisetUnionInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

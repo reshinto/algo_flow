@@ -16,7 +16,24 @@ export const coinChangeMinTabulationEducational: EducationalContent = {
     "Amount: 0  1  2  3  4  5  6  7  8  9  10  11\n" +
     "dp:     0  1  2  3  4  1  2  3  4  5   1   2\n" +
     "```\n\n" +
-    "Each cell is computed from previously computed cells — no redundant recomputation.",
+    "Each cell is computed from previously computed cells — no redundant recomputation.\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  A["dp[0]=0"]:::base\n' +
+    '  B["dp[1]=1\\n(1 coin: 1)"]:::cached\n' +
+    '  C["dp[5]=1\\n(1 coin: 5)"]:::cached\n' +
+    '  D["dp[10]=1\\n(1 coin: 10)"]:::cached\n' +
+    '  E["dp[11]=2\\n(10+1)"]:::current\n' +
+    "  A --> B\n" +
+    "  A --> C\n" +
+    "  A --> D\n" +
+    "  B --> E\n" +
+    "  D --> E\n" +
+    "  classDef base fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef cached fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "`dp[11]` pulls from the already-cached `dp[10]` and `dp[1]`, picking the minimum path — 2 coins via 10+1.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(amount × |coins|)`**\n\n" +

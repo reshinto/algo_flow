@@ -13,6 +13,9 @@ import { subarraySumEqualsKEducational } from "./educational";
 import typescriptSource from "./sources/subarray-sum-equals-k.ts?raw";
 import pythonSource from "./sources/subarray-sum-equals-k.py?raw";
 import javaSource from "./sources/SubarraySumEqualsK.java?raw";
+import rustSource from "./sources/subarray-sum-equals-k.rs?raw";
+import cppSource from "./sources/SubarraySumEqualsK.cpp?raw";
+import goSource from "./sources/subarray-sum-equals-k.go?raw";
 
 interface SubarraySumEqualsKInput {
   inputArray: number[];
@@ -33,7 +36,7 @@ const subarraySumEqualsKDefinition: AlgorithmDefinition<SubarraySumEqualsKInput>
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [1, 2, 3, -1, 1, 2],
       target: 3,
@@ -46,6 +49,9 @@ const subarraySumEqualsKDefinition: AlgorithmDefinition<SubarraySumEqualsKInput>
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

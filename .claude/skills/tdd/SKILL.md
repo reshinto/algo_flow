@@ -35,14 +35,14 @@ Write tests in this order:
    - Test `generateSteps()` produces expected step count
    - Test step types match expected sequence
    - Test final `visualState` matches expected result
-   - Test `highlightedLines` are present for all 3 languages
+   - Test `highlightedLines` are present for all supported languages
 
 3. **Pipeline story** (`<AlgorithmName>Pipeline.stories.tsx`)
 
-   - Place in `src/algorithms/<category>/<algo>/`, NOT `src/components/`
+   - Place in `src/algorithms/<category>/<technique>/<algo>/__tests__/`
    - Story renders the full pipeline with sample input
 
-4. **E2E coverage** — per-category spec files in `e2e/specs/` auto-discover algorithms from the registry; no manual entry needed for basic smoke testing. Add a test in `e2e/specs/input-editors.spec.ts` only if the algorithm has a custom input editor.
+4. **E2E coverage** — auto-discovers from registry. See `rules/testing.md` for spec file convention.
 
 ### New Component
 
@@ -65,6 +65,6 @@ Write tests in this order:
 ## Rules
 
 - Tests go before implementation — no exceptions
-- Coverage thresholds: Statements 80%, Branches 75%, Functions 80%, Lines 80%
+- Coverage thresholds per `rules/testing.md` (80/75/80/80)
 - Use `vitest` for unit tests, Playwright for E2E
-- Pipeline stories use algorithm directory, not `src/components/`
+- Pipeline stories in algorithm `__tests__/` directory

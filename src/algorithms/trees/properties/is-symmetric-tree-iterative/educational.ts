@@ -12,7 +12,20 @@ export const isSymmetricTreeIterativeEducational: EducationalContent = {
     "3. If both null — symmetric, continue.\n" +
     "4. If one null or values differ — return `false`.\n" +
     "5. Enqueue outer pair `[left.left, right.right]` and inner pair `[left.right, right.left]`.\n" +
-    "6. If the queue empties without failure — return `true`.",
+    "6. If the queue empties without failure — return `true`.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((1)):::root --> B((2)):::visited\n" +
+    "  A --> C((2)):::visited\n" +
+    "  B --> D((3)):::current\n" +
+    "  B --> E((4)):::current\n" +
+    "  C --> F((4)):::current\n" +
+    "  C --> G((3)):::current\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "Queue starts with pair `[2, 2]` — values match. Enqueues outer pair `[3, 3]` and inner pair `[4, 4]`. Both pairs match, queue empties — returns `true`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — all node pairs are processed.\n\n" +

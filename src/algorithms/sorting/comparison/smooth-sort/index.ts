@@ -14,6 +14,9 @@ import { smoothSortEducational } from "./educational";
 import typescriptSource from "./sources/smooth-sort.ts?raw";
 import pythonSource from "./sources/smooth-sort.py?raw";
 import javaSource from "./sources/SmoothSort.java?raw";
+import rustSource from "./sources/smooth-sort.rs?raw";
+import cppSource from "./sources/SmoothSort.cpp?raw";
+import goSource from "./sources/smooth-sort.go?raw";
 
 const smoothSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const smoothSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: smoothSort,
@@ -39,6 +42,9 @@ const smoothSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

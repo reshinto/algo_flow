@@ -13,6 +13,9 @@ import { trappingRainWaterEducational } from "./educational";
 import typescriptSource from "./sources/trapping-rain-water.ts?raw";
 import pythonSource from "./sources/trapping-rain-water.py?raw";
 import javaSource from "./sources/TrappingRainWater.java?raw";
+import rustSource from "./sources/trapping-rain-water.rs?raw";
+import cppSource from "./sources/TrappingRainWater.cpp?raw";
+import goSource from "./sources/trapping-rain-water.go?raw";
 
 interface TrappingRainWaterInput {
   heights: number[];
@@ -32,7 +35,7 @@ const trappingRainWaterDefinition: AlgorithmDefinition<TrappingRainWaterInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       heights: [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1],
     },
@@ -44,6 +47,9 @@ const trappingRainWaterDefinition: AlgorithmDefinition<TrappingRainWaterInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

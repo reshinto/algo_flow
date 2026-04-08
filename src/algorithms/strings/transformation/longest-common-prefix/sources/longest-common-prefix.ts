@@ -2,7 +2,7 @@
 // Returns the longest prefix shared by every word in the input array.
 // Time: O(n*m) where n = number of strings, m = min string length  Space: O(1)
 
-export function longestCommonPrefix(words: string[]): string {
+function longestCommonPrefix(words: string[]): string {
   if (words.length === 0) return ""; // @step:initialize
 
   let prefixLength = 0; // @step:initialize

@@ -21,7 +21,23 @@ export const lastStoneWeightEducational: EducationalContent = {
     "Round 3: Extract 2 and 1. 2 ≠ 1 → insert 1. Heap: [1, 1, 1]\n" +
     "Round 4: Extract 1 and 1. 1 == 1 → both destroyed. Heap: [1]\n\n" +
     "Result: 1 (one stone of weight 1 remains)\n" +
-    "```",
+    "```\n\n" +
+    "### Max-Heap — Initial State for stones = [2, 7, 4, 1, 8, 1]\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    s8((8)) --> s7((7))\n" +
+    "    s8 --> s4((4))\n" +
+    "    s7 --> s1a((1))\n" +
+    "    s7 --> s2((2))\n" +
+    "    s4 --> s1b((1))\n" +
+    "    style s8 fill:#f59e0b,stroke:#d97706\n" +
+    "    style s7 fill:#f59e0b,stroke:#d97706\n" +
+    "    style s4 fill:#14532d,stroke:#22c55e\n" +
+    "    style s1a fill:#14532d,stroke:#22c55e\n" +
+    "    style s2 fill:#14532d,stroke:#22c55e\n" +
+    "    style s1b fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The two amber nodes (8 and 7) are extracted first and smashed — their difference 1 is reinserted. The process repeats until one stone remains.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log n)`**\n\n" +

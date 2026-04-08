@@ -15,6 +15,9 @@ import { iddfsEducational } from "./educational";
 import typescriptSource from "./sources/iddfs.ts?raw";
 import pythonSource from "./sources/iddfs.py?raw";
 import javaSource from "./sources/IDDFS.java?raw";
+import rustSource from "./sources/iddfs.rs?raw";
+import cppSource from "./sources/IDDFS.cpp?raw";
+import goSource from "./sources/iddfs.go?raw";
 
 /** Pre-computed positions for 6 nodes arranged in a circle layout */
 const CIRCLE_RADIUS = 150;
@@ -79,7 +82,7 @@ const iddfsDefinition: AlgorithmDefinition<IddfsInput> = {
       worst: "O(b^d)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: IddfsInput) =>
@@ -90,6 +93,9 @@ const iddfsDefinition: AlgorithmDefinition<IddfsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

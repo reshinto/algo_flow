@@ -10,6 +10,9 @@ import { pqEnqueueEducational } from "./educational";
 import typescriptSource from "./sources/pq-enqueue.ts?raw";
 import pythonSource from "./sources/pq-enqueue.py?raw";
 import javaSource from "./sources/PqEnqueue.java?raw";
+import rustSource from "./sources/pq-enqueue.rs?raw";
+import cppSource from "./sources/PqEnqueue.cpp?raw";
+import goSource from "./sources/pq-enqueue.go?raw";
 
 function executePqEnqueue(input: PqEnqueueInput): number[] {
   return pqEnqueue(input.array, input.value) as number[];
@@ -29,7 +32,7 @@ const pqEnqueueDefinition: AlgorithmDefinition<PqEnqueueInput> = {
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [2, 5, 8, 10, 15], value: 3 },
   },
   execute: executePqEnqueue,
@@ -39,6 +42,9 @@ const pqEnqueueDefinition: AlgorithmDefinition<PqEnqueueInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

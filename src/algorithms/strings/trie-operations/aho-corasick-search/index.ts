@@ -12,6 +12,9 @@ import { ahoCorasickSearchEducational } from "./educational";
 import typescriptSource from "./sources/aho-corasick-search.ts?raw";
 import pythonSource from "./sources/aho-corasick-search.py?raw";
 import javaSource from "./sources/AhoCorasickSearch.java?raw";
+import rustSource from "./sources/aho-corasick-search.rs?raw";
+import cppSource from "./sources/AhoCorasickSearch.cpp?raw";
+import goSource from "./sources/aho-corasick-search.go?raw";
 
 function executeAhoCorasickSearch(input: AhoCorasickSearchInput): string[] {
   return ahoCorasickSearch(input.text, input.patterns) as string[];
@@ -31,7 +34,7 @@ const ahoCorasickSearchDefinition: AlgorithmDefinition<AhoCorasickSearchInput> =
       worst: "O(n + m + z)",
     },
     spaceComplexity: "O(m × k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "ahishers", patterns: ["he", "she", "his", "hers"] },
   },
   execute: executeAhoCorasickSearch,
@@ -41,6 +44,9 @@ const ahoCorasickSearchDefinition: AlgorithmDefinition<AhoCorasickSearchInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

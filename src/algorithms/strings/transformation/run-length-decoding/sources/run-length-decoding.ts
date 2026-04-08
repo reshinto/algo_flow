@@ -2,7 +2,7 @@
 // Parses leading digit sequences as repeat counts, then repeats the following character.
 // Time: O(output length)  Space: O(output length)
 
-export function runLengthDecoding(text: string): string {
+function runLengthDecoding(text: string): string {
   const output: string[] = []; // @step:initialize
 
   let readIndex = 0; // @step:initialize

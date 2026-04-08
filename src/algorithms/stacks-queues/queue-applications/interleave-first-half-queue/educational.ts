@@ -12,6 +12,21 @@ export const interleaveFirstHalfQueueEducational: EducationalContent = {
     "4. **Move first half (reversed) to stack again** — dequeue the first `n/2` elements (the reversed first half) and push them onto the stack. The stack now holds first-half elements in original order (top = first element).\n" +
     "5. **Interleave** — alternately pop from the stack (first-half elements in order) and dequeue from the queue (second-half elements in order) to produce the final interleaved sequence.\n\n" +
     "### Example trace on `[1, 2, 3, 4, 5, 6]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    subgraph Phase1["Phase 1-2: push first half to stack, restore to rear"]\n' +
+    '        Q1["queue: 4 5 6"] --> S1["stack top→ 3 2 1"]\n' +
+    '        S1 -->|pop to rear| Q2["queue: 4 5 6 3 2 1"]\n' +
+    "    end\n" +
+    '    subgraph Phase5["Phase 4-5: re-stack first half, interleave"]\n' +
+    '        Q3["queue: 4 5 6"] --> S2["stack top→ 1 2 3"]\n' +
+    '        S2 -->|pop| R(["1 4 2 5 3 6"])\n' +
+    "        Q3 -->|dequeue| R\n" +
+    "    end\n" +
+    "    style R fill:#14532d,stroke:#22c55e\n" +
+    "    style S2 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "After phase 2 the queue tail holds `[3, 2, 1]` (reversed first half). Phase 3 rotates the second half behind it, then phase 4 pushes the reversed first half back onto the stack — restoring original order (top = 1). Phase 5 alternately pops the stack and dequeues to produce `[1, 4, 2, 5, 3, 6]`.\n\n" +
     "```\n" +
     "After phase 1:  queue=[4,5,6]        stack=[1,2,3] (top=3)\n" +
     "After phase 2:  queue=[4,5,6,3,2,1]  stack=[]\n" +

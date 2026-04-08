@@ -13,7 +13,22 @@ export const huffmanCodingTreeEducational: EducationalContent = {
     "   - Push the internal node back into the heap.\n" +
     "4. The last remaining node is the **Huffman tree root**.\n" +
     "5. **Assign codes:** Traverse the tree, appending `0` for left edges and `1` for right edges until reaching a leaf.\n\n" +
-    "**Example:** For `{a:5, b:9, c:12, d:13, e:16, f:45}`, `f` gets code `0` (shortest), while `a` gets `1100` (longest).",
+    "**Example:** For `{a:5, b:9, c:12, d:13, e:16, f:45}`, `f` gets code `0` (shortest), while `a` gets `1100` (longest).\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((100)):::current --> B((f:45)):::visited\n" +
+    "  A --> C((55)):::active\n" +
+    "  C --> D((25)):::active\n" +
+    "  C --> E((30)):::active\n" +
+    "  D --> F((a:5)):::visited\n" +
+    "  D --> G((b:9+c:12)):::visited\n" +
+    "  E --> H((d:13)):::visited\n" +
+    "  E --> I((e:16)):::visited\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Leaf nodes (green) are characters; internal amber nodes are merged frequency totals. The cyan root holds the total frequency. Left edges encode `0`, right edges encode `1` — so `f` at depth 1 gets code `0`, while `a` at depth 3 gets `110`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log n)`** — each of n iterations pops and pushes from a heap in O(log n).\n\n" +

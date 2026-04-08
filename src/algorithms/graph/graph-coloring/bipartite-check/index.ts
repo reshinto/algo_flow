@@ -13,6 +13,9 @@ import { bipartiteCheckEducational } from "./educational";
 import typescriptSource from "./sources/bipartite-check.ts?raw";
 import pythonSource from "./sources/bipartite-check.py?raw";
 import javaSource from "./sources/BipartiteCheck.java?raw";
+import rustSource from "./sources/bipartite-check.rs?raw";
+import cppSource from "./sources/BipartiteCheck.cpp?raw";
+import goSource from "./sources/bipartite-check.go?raw";
 
 const LEFT_X = 100;
 const RIGHT_X = 320;
@@ -74,7 +77,7 @@ const bipartiteCheckDefinition: AlgorithmDefinition<BipartiteCheckInput> = {
       worst: "O(V+E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: BipartiteCheckInput) => bipartiteCheck(input.adjacencyList, input.nodeIds),
@@ -84,6 +87,9 @@ const bipartiteCheckDefinition: AlgorithmDefinition<BipartiteCheckInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

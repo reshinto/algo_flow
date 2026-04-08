@@ -9,6 +9,9 @@ import { wordBreakMemoizationEducational } from "./educational";
 import typescriptSource from "./sources/word-break-memoization.ts?raw";
 import pythonSource from "./sources/word-break-memoization.py?raw";
 import javaSource from "./sources/WordBreakMemoization.java?raw";
+import rustSource from "./sources/word-break-memoization.rs?raw";
+import cppSource from "./sources/WordBreakMemoization.cpp?raw";
+import goSource from "./sources/word-break-memoization.go?raw";
 
 interface WordBreakInput {
   text: string;
@@ -29,7 +32,7 @@ const wordBreakMemoizationDefinition: AlgorithmDefinition<WordBreakInput> = {
       worst: "O(n × m × k)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "leetcode", dictionary: ["leet", "code"] },
   },
   execute: (input: WordBreakInput) => wordBreakMemoization(input.text, input.dictionary),
@@ -39,6 +42,9 @@ const wordBreakMemoizationDefinition: AlgorithmDefinition<WordBreakInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

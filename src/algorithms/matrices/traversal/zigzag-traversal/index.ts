@@ -10,6 +10,9 @@ import { zigzagTraversalEducational } from "./educational";
 import typescriptSource from "./sources/zigzag-traversal.ts?raw";
 import pythonSource from "./sources/zigzag-traversal.py?raw";
 import javaSource from "./sources/ZigzagTraversal.java?raw";
+import rustSource from "./sources/zigzag-traversal.rs?raw";
+import cppSource from "./sources/ZigzagTraversal.cpp?raw";
+import goSource from "./sources/zigzag-traversal.go?raw";
 
 function executeZigzagTraversal(input: ZigzagTraversalInput): number[] {
   return zigzagTraversal(input.matrix) as number[];
@@ -29,7 +32,7 @@ const zigzagTraversalDefinition: AlgorithmDefinition<ZigzagTraversalInput> = {
       worst: "O(m × n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [1, 2, 3],
@@ -45,6 +48,9 @@ const zigzagTraversalDefinition: AlgorithmDefinition<ZigzagTraversalInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -14,6 +14,9 @@ import { quickSortEducational } from "./educational";
 import typescriptSource from "./sources/quick-sort.ts?raw";
 import pythonSource from "./sources/quick-sort.py?raw";
 import javaSource from "./sources/QuickSort.java?raw";
+import rustSource from "./sources/quick-sort.rs?raw";
+import cppSource from "./sources/QuickSort.cpp?raw";
+import goSource from "./sources/quick-sort.go?raw";
 
 const quickSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const quickSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(log n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: quickSortLomuto,
@@ -39,6 +42,9 @@ const quickSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

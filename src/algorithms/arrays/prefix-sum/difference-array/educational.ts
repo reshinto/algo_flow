@@ -18,7 +18,18 @@ export const differenceArrayEducational: EducationalContent = {
     "prefix: [0,  3,  3,  3,  0,  0]   prefix sum\n" +
     "result: [0,  3,  3,  3,  0]       final values (length n)\n" +
     "```\n\n" +
-    "Multiple overlapping updates accumulate in `diff` and are resolved correctly by the prefix sum.",
+    "Multiple overlapping updates accumulate in `diff` and are resolved correctly by the prefix sum.\n\n" +
+    "### Difference Array Update Diagram (update `[1, 3, +3]` on length-5 array)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["diff\\n[0,0,0,0,0,0]"] -->|"diff[1]+=3"| B["diff\\n[0,3,0,0,0,0]"]\n' +
+    '  B -->|"diff[4]-=3"| C["diff\\n[0,3,0,0,-3,0]"]\n' +
+    '  C -->|"prefix sum"| D["result\\n[0,3,3,3,0]"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Only two positions in `diff` are written per update. The prefix sum pass propagates the `+3` delta across indices 1–3 and cancels it at index 4.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + q)`**\n\n" +

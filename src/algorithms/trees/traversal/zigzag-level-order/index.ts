@@ -10,6 +10,9 @@ import { zigzagLevelOrderEducational } from "./educational";
 import typescriptSource from "./sources/zigzag-level-order.ts?raw";
 import pythonSource from "./sources/zigzag-level-order.py?raw";
 import javaSource from "./sources/ZigzagLevelOrder.java?raw";
+import rustSource from "./sources/zigzag-level-order.rs?raw";
+import cppSource from "./sources/ZigzagLevelOrder.cpp?raw";
+import goSource from "./sources/zigzag-level-order.go?raw";
 
 /** Build a balanced 7-node BST: [4,2,6,1,3,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -114,7 +117,7 @@ const zigzagLevelOrderDefinition: AlgorithmDefinition<ZigzagLevelOrderInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(w)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       nodes: defaultNodes,
       rootId: "n4",
@@ -127,6 +130,9 @@ const zigzagLevelOrderDefinition: AlgorithmDefinition<ZigzagLevelOrderInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

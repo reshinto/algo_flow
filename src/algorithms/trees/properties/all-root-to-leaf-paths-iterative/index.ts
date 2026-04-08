@@ -10,6 +10,9 @@ import { allRootToLeafPathsIterativeEducational } from "./educational";
 import typescriptSource from "./sources/all-root-to-leaf-paths-iterative.ts?raw";
 import pythonSource from "./sources/all-root-to-leaf-paths-iterative.py?raw";
 import javaSource from "./sources/AllRootToLeafPathsIterative.java?raw";
+import rustSource from "./sources/all-root-to-leaf-paths-iterative.rs?raw";
+import cppSource from "./sources/AllRootToLeafPathsIterative.cpp?raw";
+import goSource from "./sources/all-root-to-leaf-paths-iterative.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -109,13 +112,20 @@ const allRootToLeafPathsIterativeDefinition: AlgorithmDefinition<AllRootToLeafPa
         "Stack-based DFS path collection — each stack entry carries the node and the path string accumulated so far",
       timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
       spaceComplexity: "O(h)",
-      supportedLanguages: ["typescript", "python", "java"],
+      supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
       defaultInput: { nodes: defaultNodes, rootId: "n4" },
     },
     execute: executeAllRootToLeafPathsIterative,
     generateSteps: generateAllRootToLeafPathsIterativeSteps,
     educational: allRootToLeafPathsIterativeEducational,
-    sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+    sources: {
+      typescript: typescriptSource,
+      python: pythonSource,
+      java: javaSource,
+      rust: rustSource,
+      cpp: cppSource,
+      go: goSource,
+    },
   };
 
 registry.register(allRootToLeafPathsIterativeDefinition);

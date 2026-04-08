@@ -4,7 +4,7 @@ interface ListNode {
   next: ListNode | null;
 }
 
-export function removeDuplicatesSorted(head: ListNode | null): ListNode | null {
+function removeDuplicatesSorted(head: ListNode | null): ListNode | null {
   let current: ListNode | null = head; // @step:initialize
   while (current !== null && current.next !== null) {
     // @step:compare

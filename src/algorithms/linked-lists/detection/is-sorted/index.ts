@@ -10,6 +10,9 @@ import { isSortedEducational } from "./educational";
 import typescriptSource from "./sources/is-sorted.ts?raw";
 import pythonSource from "./sources/is-sorted.py?raw";
 import javaSource from "./sources/IsSorted.java?raw";
+import rustSource from "./sources/is-sorted.rs?raw";
+import cppSource from "./sources/IsSorted.cpp?raw";
+import goSource from "./sources/is-sorted.go?raw";
 
 /** Convert an array of values to a linked list and check if sorted. */
 function executeIsSorted(input: IsSortedInput): boolean {
@@ -42,7 +45,7 @@ const isSortedDefinition: AlgorithmDefinition<IsSortedInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { values: [1, 3, 5, 7, 9] },
   },
   execute: executeIsSorted,
@@ -52,6 +55,9 @@ const isSortedDefinition: AlgorithmDefinition<IsSortedInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -13,6 +13,9 @@ import { slidingWindowMaxDequeEducational } from "./educational";
 import typescriptSource from "./sources/sliding-window-max-deque.ts?raw";
 import pythonSource from "./sources/sliding-window-max-deque.py?raw";
 import javaSource from "./sources/SlidingWindowMaxDeque.java?raw";
+import rustSource from "./sources/sliding-window-max-deque.rs?raw";
+import cppSource from "./sources/SlidingWindowMaxDeque.cpp?raw";
+import goSource from "./sources/sliding-window-max-deque.go?raw";
 
 interface SlidingWindowMaxDequeInput {
   inputArray: number[];
@@ -33,7 +36,7 @@ const slidingWindowMaxDequeDefinition: AlgorithmDefinition<SlidingWindowMaxDeque
       worst: "O(n)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [1, 3, -1, -3, 5, 3, 6, 7],
       windowSize: 3,
@@ -47,6 +50,9 @@ const slidingWindowMaxDequeDefinition: AlgorithmDefinition<SlidingWindowMaxDeque
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

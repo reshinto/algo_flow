@@ -2,7 +2,7 @@ import type { AlgorithmDefinition } from "@/types";
 import { registry } from "@/registry";
 import { ALGORITHM_ID, CATEGORY } from "@/utils/constants";
 
-import { containsDuplicate } from "./sources/contains-duplicate";
+import { containsDuplicate } from "./sources/contains-duplicate.ts?fn";
 import { generateContainsDuplicateSteps } from "./step-generator";
 import type { ContainsDuplicateInput } from "./step-generator";
 import { containsDuplicateEducational } from "./educational";
@@ -10,6 +10,9 @@ import { containsDuplicateEducational } from "./educational";
 import typescriptSource from "./sources/contains-duplicate.ts?raw";
 import pythonSource from "./sources/contains-duplicate.py?raw";
 import javaSource from "./sources/ContainsDuplicate.java?raw";
+import rustSource from "./sources/contains-duplicate.rs?raw";
+import cppSource from "./sources/ContainsDuplicate.cpp?raw";
+import goSource from "./sources/contains-duplicate.go?raw";
 
 function executeContainsDuplicate(input: ContainsDuplicateInput): boolean {
   return containsDuplicate(input.numbers);
@@ -29,7 +32,7 @@ const containsDuplicateDefinition: AlgorithmDefinition<ContainsDuplicateInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numbers: [1, 2, 3, 1] },
   },
   execute: executeContainsDuplicate,
@@ -39,6 +42,9 @@ const containsDuplicateDefinition: AlgorithmDefinition<ContainsDuplicateInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

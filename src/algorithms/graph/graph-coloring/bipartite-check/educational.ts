@@ -18,7 +18,22 @@ export const bipartiteCheckEducational: EducationalContent = {
     "               +-----------+\n\n" +
     "Not bipartite: A — B — C — A     (odd cycle, conflict at A)\n" +
     "```\n\n" +
-    "A graph is bipartite **if and only if** it contains no odd-length cycles.",
+    "A graph is bipartite **if and only if** it contains no odd-length cycles.\n\n" +
+    "### BFS 2-Coloring on a Bipartite Graph\n\n" +
+    "```mermaid\n" +
+    "graph LR\n" +
+    "  A((A:0)) --- B((B:1))\n" +
+    "  A((A:0)) --- D((D:1))\n" +
+    "  B((B:1)) --- C((C:0))\n" +
+    "  D((D:1)) --- C((C:0))\n" +
+    "  B((B:1)) --- E((E:0))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#06b6d4,stroke:#0891b2\n" +
+    "  style E fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Cyan nodes are color `0` (group 1), green nodes are color `1` (group 2). Every edge crosses between the two groups — no two adjacent nodes share a color, confirming bipartiteness.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: O(V + E)**\n\n" +

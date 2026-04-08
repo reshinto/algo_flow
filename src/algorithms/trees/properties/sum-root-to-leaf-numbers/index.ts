@@ -10,6 +10,9 @@ import { sumRootToLeafNumbersEducational } from "./educational";
 import typescriptSource from "./sources/sum-root-to-leaf-numbers.ts?raw";
 import pythonSource from "./sources/sum-root-to-leaf-numbers.py?raw";
 import javaSource from "./sources/SumRootToLeafNumbers.java?raw";
+import rustSource from "./sources/sum-root-to-leaf-numbers.rs?raw";
+import cppSource from "./sources/SumRootToLeafNumbers.cpp?raw";
+import goSource from "./sources/sum-root-to-leaf-numbers.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7]. Paths: 421+423+465+467=1776. */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const sumRootToLeafNumbersDefinition: AlgorithmDefinition<SumRootToLeafNumbersIn
       "Treats each root-to-leaf path as a decimal number (e.g., 4→2→1 = 421) and returns the sum of all such numbers",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeSumRootToLeafNumbers,
   generateSteps: generateSumRootToLeafNumbersSteps,
   educational: sumRootToLeafNumbersEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(sumRootToLeafNumbersDefinition);

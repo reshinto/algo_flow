@@ -23,12 +23,37 @@ public class PairwiseSortingNetwork {
             return networkArray; // @step:complete
         }
 
-        for (int outerStride = 1; outerStride < networkLength; outerStride *= 2) { // @step:compare
-            for (int innerStride = outerStride; innerStride >= 1; innerStride /= 2) { // @step:compare
-                for (int baseIndex = innerStride % outerStride; baseIndex + innerStride < networkLength; baseIndex += innerStride * 2) { // @step:compare
-                    for (int pairIndex = 0; pairIndex < innerStride && baseIndex + pairIndex + innerStride < networkLength; pairIndex++) { // @step:compare
-                        compareAndSwap(baseIndex + pairIndex, baseIndex + pairIndex + innerStride); // @step:compare
+        // Phase 1: Sort adjacent pairs
+        for (int pairStart = 0; pairStart + 1 < networkLength; pairStart += 2) { // @step:compare
+            compareAndSwap(pairStart, pairStart + 1); // @step:compare
+        }
+
+        // Phase 2: Merge using Shell-sort-like gap sequence (powers of 2, decreasing)
+        for (int gap = 2; gap < networkLength; gap *= 2) { // @step:compare
+            // Compare elements at distance gap within each merged block
+            for (int blockStart = 0; blockStart < networkLength; blockStart += gap * 2) { // @step:compare
+                for (int offset = 0; offset < gap && blockStart + offset + gap < networkLength; offset++) { // @step:compare
+                    compareAndSwap(blockStart + offset, blockStart + offset + gap); // @step:compare
+                }
+            }
+            // Reconciliation: fix local inversions created by the block merge
+            for (int reconcileGap = gap / 2; reconcileGap >= 1; reconcileGap /= 2) { // @step:compare
+                for (int reconcileStart = reconcileGap; reconcileStart + reconcileGap < networkLength; reconcileStart += reconcileGap * 2) { // @step:compare
+                    for (int reconcileOffset = 0; reconcileOffset < reconcileGap && reconcileStart + reconcileOffset < networkLength - 1; reconcileOffset++) { // @step:compare
+                        compareAndSwap(reconcileStart + reconcileOffset, reconcileStart + reconcileOffset + 1); // @step:compare
                     }
+                }
+            }
+        }
+
+        // Final pass to ensure complete sortedness (odd-even transposition pass)
+        boolean swapped = true;
+        while (swapped) {
+            swapped = false;
+            for (int finalIndex = 0; finalIndex + 1 < networkLength; finalIndex++) {
+                if (networkArray[finalIndex] > networkArray[finalIndex + 1]) {
+                    compareAndSwap(finalIndex, finalIndex + 1);
+                    swapped = true;
                 }
             }
         }

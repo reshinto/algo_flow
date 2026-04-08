@@ -12,6 +12,9 @@ import { bozoSortEducational } from "./educational";
 import typescriptSource from "./sources/bozo-sort.ts?raw";
 import pythonSource from "./sources/bozo-sort.py?raw";
 import javaSource from "./sources/BozoSort.java?raw";
+import rustSource from "./sources/bozo-sort.rs?raw";
+import cppSource from "./sources/BozoSort.cpp?raw";
+import goSource from "./sources/bozo-sort.go?raw";
 
 const bozoSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -27,7 +30,7 @@ const bozoSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(∞)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [3, 1, 2],
   },
   execute: bozoSort,
@@ -37,6 +40,9 @@ const bozoSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { minRemoveToMakeValidEducational } from "./educational";
 import typescriptSource from "./sources/min-remove-to-make-valid.ts?raw";
 import pythonSource from "./sources/min-remove-to-make-valid.py?raw";
 import javaSource from "./sources/MinRemoveToMakeValid.java?raw";
+import rustSource from "./sources/min-remove-to-make-valid.rs?raw";
+import cppSource from "./sources/MinRemoveToMakeValid.cpp?raw";
+import goSource from "./sources/min-remove-to-make-valid.go?raw";
 
 function executeMinRemoveToMakeValid(input: MinRemoveToMakeValidInput): string {
   return minRemoveToMakeValid(input.inputString) as string;
@@ -29,7 +32,7 @@ const minRemoveToMakeValidDefinition: AlgorithmDefinition<MinRemoveToMakeValidIn
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { inputString: "a(b(c)d" },
   },
   execute: executeMinRemoveToMakeValid,
@@ -39,6 +42,9 @@ const minRemoveToMakeValidDefinition: AlgorithmDefinition<MinRemoveToMakeValidIn
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

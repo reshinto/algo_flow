@@ -18,7 +18,21 @@ export const longestConsecutiveSequenceEducational: EducationalContent = {
     "  3 — predecessor 2 in set     → skip\n" +
     "  2 — predecessor 1 in set     → skip\n" +
     "```\n\n" +
-    "Each element is touched at most twice across both phases, giving linear time.",
+    "Each element is touched at most twice across both phases, giving linear time.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["nums=[100,4,200,1,3,2]"]:::input --> B["set={100,4,200,1,3,2}"]\n' +
+    '  B --> C["100: no pred 99 → run=1"]:::checking\n' +
+    '  C --> D["200: no pred 199 → run=1"]:::checking\n' +
+    '  D --> E["1: no pred 0 → count fwd"]:::checking\n' +
+    '  E --> F["1→2→3→4 run=4"]:::found\n' +
+    '  F --> G["4,3,2: pred in set → skip"]\n' +
+    '  G --> H["longest: 4"]:::found\n' +
+    "  classDef input fill:#06b6d4,stroke:#0891b2,color:#fff\n" +
+    "  classDef checking fill:#f59e0b,stroke:#d97706,color:#000\n" +
+    "  classDef found fill:#14532d,stroke:#22c55e,color:#fff\n" +
+    "```\n\n" +
+    "Only numbers with no predecessor start a chain — this ensures each run is counted exactly once.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

@@ -11,7 +11,21 @@ export const deleteLeavesWithValueEducational: EducationalContent = {
     "3. **Recurse right** — recursively process the right subtree.\n" +
     "4. **Check deletion** — if the current node is now a leaf (both children are null) and its value equals `targetValue`, return null to delete it.\n" +
     "5. **Keep** — otherwise return the current node.\n\n" +
-    "Post-order ensures that any internal node that becomes a leaf after its children are pruned is also deleted in the same pass.",
+    "Post-order ensures that any internal node that becomes a leaf after its children are pruned is also deleted in the same pass.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((1)) --> B((2))\n" +
+    "  A --> C((1))\n" +
+    "  B --> D((2))\n" +
+    "  B --> E((2))\n" +
+    "  C --> F((1))\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#f59e0b,stroke:#d97706\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n" +
+    "Target = 2. Leaves D and E are deleted first; B then becomes a leaf with value 2 and is also deleted in the same post-order pass.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

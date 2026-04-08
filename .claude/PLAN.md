@@ -4,7 +4,7 @@
 
 Build a learner-focused algorithm visualization web app from scratch. The app provides synchronized code-line highlighting with step-by-step algorithm execution, multi-language code display, interactive pathfinding grid editing, and rich educational content. The project includes a full `.claude` system (rules, agents, skills, hooks) for maintainable development workflow.
 
-**Working directory**: `/Users/springfield/dev/algo_flow` (currently empty, not a git repo)
+**Working directory**: `/Users/springfield/dev/algo_flow`
 
 ---
 
@@ -89,7 +89,6 @@ algo_flow/
 │   │   ├── tech-lead-architect.md
 │   │   ├── product-strategist.md
 │   │   ├── technical-writer.md
-│   │   ├── marketing-engine.md
 │   │   ├── claude-system-architect.md
 │   │   ├── silent-failure-hunter.md
 │   │   ├── code-simplifier.md
@@ -98,9 +97,7 @@ algo_flow/
 │   │   ├── implementation-planning/SKILL.md
 │   │   ├── algorithm-learning-content/SKILL.md
 │   │   ├── pathfinding-scenario-editing/SKILL.md
-│   │   ├── repository-quality-gate/SKILL.md
 │   │   ├── branch-safety-check/SKILL.md
-│   │   ├── cifix/SKILL.md
 │   │   ├── accessibility-audit/SKILL.md
 │   │   ├── architecture-review/SKILL.md
 │   │   ├── strict-typescript-review/SKILL.md
@@ -115,23 +112,30 @@ algo_flow/
 │   │   └── debugging/SKILL.md
 │   └── hooks/
 │       ├── session-start-branch-check.sh
+│       ├── session-end-unified-gate.sh
 │       ├── session-end-quality-gate.sh
 │       ├── session-end-readme-check.sh
 │       ├── session-end-comments-check.sh
 │       ├── session-end-e2e-check.sh
 │       ├── session-end-security-check.sh
 │       ├── session-end-claude-system-check.sh
+│       ├── auto-plugin-mode.sh
+│       ├── auto-pr-after-push.sh
+│       ├── ban-hardcoded-waits.sh
 │       ├── block-ai-attribution.sh
 │       ├── block-main-branch-commits.sh
+│       ├── enforce-branch-naming.sh
+│       ├── pre-commit-fn-import-check.sh
 │       ├── pre-commit-quality-check.sh
-│       ├── auto-pr-after-push.sh
-│       ├── post-edit-typescript-check.sh
-│       └── post-edit-accessibility-check.sh
+│       ├── post-edit-accessibility-check.sh
+│       ├── post-edit-java-check.sh
+│       ├── post-edit-python-check.sh
+│       └── post-edit-typescript-check.sh
 ├── src/
 │   ├── types/                       # All TypeScript interfaces
 │   ├── registry/                    # AlgorithmRegistry singleton
 │   ├── engine/                      # Step generator
-│   ├── trackers/                    # BaseTracker + 6 category trackers
+│   ├── trackers/                    # BaseTracker + category subdirectories
 │   ├── store/                       # Zustand 4-slice store
 │   ├── algorithms/
 │   │   ├── sorting/bubble-sort/     # definition, algo, steps, educational, sources/
@@ -199,7 +203,7 @@ algo_flow/
 ### Phase 4: Bubble Sort (Full Pipeline Proof-of-Concept)
 
 - Pure `bubbleSort()` implementation + unit tests
-- Source files: TypeScript, Python, Java
+- Source files: TypeScript, Python, Java, Rust, C++, Go
 - Step generator using SortingTracker + line map
 - Educational content (all 7 sections)
 - CodePanel with Monaco: read-only, language tabs, line highlighting
@@ -277,6 +281,3 @@ algo_flow/
 
 ---
 
-## File Count Estimate
-
-~206 files total: 22 `.claude/` config, 8 types, 4 registry/engine, 12 trackers, 8 store, 48 algorithm files, 18 source display files, 50 components+stories, 8 hooks, 5 utils, 5 e2e, 12 config, 6 infra.

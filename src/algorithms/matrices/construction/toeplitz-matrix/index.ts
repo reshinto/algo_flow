@@ -10,6 +10,9 @@ import { toeplitzMatrixEducational } from "./educational";
 import typescriptSource from "./sources/toeplitz-matrix.ts?raw";
 import pythonSource from "./sources/toeplitz-matrix.py?raw";
 import javaSource from "./sources/ToeplitzMatrix.java?raw";
+import rustSource from "./sources/toeplitz-matrix.rs?raw";
+import cppSource from "./sources/ToeplitzMatrix.cpp?raw";
+import goSource from "./sources/toeplitz-matrix.go?raw";
 
 function executeToeplitzMatrix(input: ToeplitzMatrixInput): boolean {
   return toeplitzMatrix(input.matrix) as boolean;
@@ -29,7 +32,7 @@ const toeplitzMatrixDefinition: AlgorithmDefinition<ToeplitzMatrixInput> = {
       worst: "O(m × n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [1, 2, 3, 4],
@@ -45,6 +48,9 @@ const toeplitzMatrixDefinition: AlgorithmDefinition<ToeplitzMatrixInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

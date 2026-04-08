@@ -13,6 +13,9 @@ import { firstMissingPositiveEducational } from "./educational";
 import typescriptSource from "./sources/first-missing-positive.ts?raw";
 import pythonSource from "./sources/first-missing-positive.py?raw";
 import javaSource from "./sources/FirstMissingPositive.java?raw";
+import rustSource from "./sources/first-missing-positive.rs?raw";
+import cppSource from "./sources/FirstMissingPositive.cpp?raw";
+import goSource from "./sources/first-missing-positive.go?raw";
 
 interface FirstMissingPositiveInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const firstMissingPositiveDefinition: AlgorithmDefinition<FirstMissingPositiveIn
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [3, 4, -1, 1, 7, 5, 2],
     },
@@ -44,6 +47,9 @@ const firstMissingPositiveDefinition: AlgorithmDefinition<FirstMissingPositiveIn
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

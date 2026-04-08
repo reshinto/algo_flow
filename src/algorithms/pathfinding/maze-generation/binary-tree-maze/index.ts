@@ -9,6 +9,9 @@ import { binaryTreeMazeEducational } from "./educational";
 import typescriptSource from "./sources/binary-tree-maze.ts?raw";
 import pythonSource from "./sources/binary-tree-maze.py?raw";
 import javaSource from "./sources/BinaryTreeMaze.java?raw";
+import rustSource from "./sources/binary-tree-maze.rs?raw";
+import cppSource from "./sources/BinaryTreeMaze.cpp?raw";
+import goSource from "./sources/binary-tree-maze.go?raw";
 
 /** Builds an all-walls grid for maze generation with start/end positions marked. */
 function createDefaultGrid(): GridCell[][] {
@@ -59,7 +62,7 @@ const binaryTreeMazeDefinition: AlgorithmDefinition<MazeInput> = {
       worst: "O(V)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -73,6 +76,9 @@ const binaryTreeMazeDefinition: AlgorithmDefinition<MazeInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -8,6 +8,9 @@ import { contiguousArrayEducational } from "./educational";
 import typescriptSource from "./sources/contiguous-array.ts?raw";
 import pythonSource from "./sources/contiguous-array.py?raw";
 import javaSource from "./sources/ContiguousArray.java?raw";
+import rustSource from "./sources/contiguous-array.rs?raw";
+import cppSource from "./sources/ContiguousArray.cpp?raw";
+import goSource from "./sources/contiguous-array.go?raw";
 
 function executeContiguousArray(input: ContiguousArrayInput): number {
   const { numbers } = input;
@@ -36,13 +39,20 @@ const definition: AlgorithmDefinition<ContiguousArrayInput> = {
     description: "Find the longest subarray with equal 0s and 1s using prefix sum and hash map",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numbers: [0, 1, 0, 1, 1, 0] },
   },
   execute: executeContiguousArray,
   generateSteps: generateContiguousArraySteps,
   educational: contiguousArrayEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(definition);

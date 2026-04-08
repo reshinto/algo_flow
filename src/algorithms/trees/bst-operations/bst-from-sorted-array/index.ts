@@ -10,6 +10,9 @@ import { bstFromSortedArrayEducational } from "./educational";
 import typescriptSource from "./sources/bst-from-sorted-array.ts?raw";
 import pythonSource from "./sources/bst-from-sorted-array.py?raw";
 import javaSource from "./sources/BSTFromSortedArray.java?raw";
+import rustSource from "./sources/bst-from-sorted-array.rs?raw";
+import cppSource from "./sources/BSTFromSortedArray.cpp?raw";
+import goSource from "./sources/bst-from-sorted-array.go?raw";
 
 interface BSTNodeShape {
   value: number;
@@ -32,13 +35,20 @@ const bstFromSortedArrayDefinition: AlgorithmDefinition<BstFromSortedArrayInput>
       "Build a height-balanced BST from a sorted array by recursively picking the middle element as root",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { sortedArray: [1, 2, 3, 4, 5, 6, 7] },
   },
   execute: executeBstFromSortedArray,
   generateSteps: generateBstFromSortedArraySteps,
   educational: bstFromSortedArrayEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstFromSortedArrayDefinition);

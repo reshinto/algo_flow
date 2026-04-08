@@ -14,6 +14,9 @@ import { articulationPointsEducational } from "./educational";
 import typescriptSource from "./sources/articulation-points.ts?raw";
 import pythonSource from "./sources/articulation-points.py?raw";
 import javaSource from "./sources/ArticulationPoints.java?raw";
+import rustSource from "./sources/articulation-points.rs?raw";
+import cppSource from "./sources/ArticulationPoints.cpp?raw";
+import goSource from "./sources/articulation-points.go?raw";
 
 /** Positions 7 nodes so the two articulation points (C and D) are visually central */
 function apPosition(index: number): { x: number; y: number } {
@@ -95,7 +98,7 @@ const articulationPointsDefinition: AlgorithmDefinition<ArticulationPointsInput>
       worst: "O(V+E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: ArticulationPointsInput) =>
@@ -106,6 +109,9 @@ const articulationPointsDefinition: AlgorithmDefinition<ArticulationPointsInput>
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

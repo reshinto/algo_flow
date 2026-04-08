@@ -30,7 +30,22 @@ export const lomutoPartitionEducational: EducationalContent = {
     "| 5         | 9         | no    | skip                     | 4             |\n" +
     "| 6         | 2         | yes   | swap(4, 6) → [3, 6, 1, 5, 2, 9, 8, ...]| 5 |\n" +
     "| end       | —         | —     | swap pivot(7) with idx 5 | —             |\n\n" +
-    "**Result**: `[3, 6, 1, 5, 2, 7, 8, 9]` — pivot 7 is at index 5.",
+    "**Result**: `[3, 6, 1, 5, 2, 7, 8, 9]` — pivot 7 is at index 5.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["3"] --> B["6"] --> C["1"] --> D["5"] --> E["2"] --> F["7"] --> G["8"] --> H["9"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#06b6d4,stroke:#0891b2\n" +
+    "  style H fill:#06b6d4,stroke:#0891b2\n" +
+    '  P["pivot=7\\nfinal pos"] -. placed .-> F\n' +
+    "```\n\n" +
+    "Green = elements ≤ pivot (left partition), amber = pivot in its final sorted position, cyan = elements > pivot (right partition). " +
+    "The pivot will never move again.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** per partition call\n\n" +

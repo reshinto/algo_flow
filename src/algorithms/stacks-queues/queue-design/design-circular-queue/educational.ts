@@ -17,6 +17,25 @@ export const designCircularQueueEducational: EducationalContent = {
     "4. Otherwise advance `front = (front + 1) % capacity`, decrement `size`.\n\n" +
     '**Front / Rear peek** — return `buffer[front]` or `buffer[rear]`; return `"empty"` if the queue is empty.\n\n' +
     "### Example trace (capacity = 3)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    subgraph Full["After enqueue 1,2,3 (full)"]\n' +
+    '        A(["slot 0: 1"])\n' +
+    '        B(["slot 1: 2"])\n' +
+    '        C(["slot 2: 3"])\n' +
+    "        A -->|front| B --> C\n" +
+    "    end\n" +
+    '    subgraph Wrapped["After dequeue + enqueue 4 (wrap)"]\n' +
+    '        D(["slot 0: 4"])\n' +
+    '        E(["slot 1: 2"])\n' +
+    '        F(["slot 2: 3"])\n' +
+    "        E -->|front| F --> D\n" +
+    "    end\n" +
+    "    style A fill:#14532d,stroke:#22c55e\n" +
+    "    style D fill:#f59e0b,stroke:#d97706\n" +
+    "    style E fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "When slot 2 (rear) is full and slot 0 is freed by a dequeue, the rear pointer wraps to slot 0 via `(rear + 1) % 3`. The buffer reuses freed space without shifting any elements.\n\n" +
     "```\n" +
     "op            buffer         front  rear  size\n" +
     "init          [_, _, _]       -1    -1     0\n" +

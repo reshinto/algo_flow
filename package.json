@@ -24,7 +24,15 @@
     "e2e:headed": "playwright test --config=e2e/playwright.config.ts --headed",
     "e2e:debug": "playwright test --config=e2e/playwright.config.ts --debug",
     "demo:record": "node scripts/record-demo.mjs",
-    "demo:gif": "node scripts/record-demo.mjs --gif-only"
+    "demo:gif": "node scripts/record-demo.mjs --gif-only",
+    "docker:test:build": "docker compose -f docker-compose.test.yml build",
+    "docker:test": "docker compose -f docker-compose.test.yml run --rm test-all",
+    "docker:test:typescript": "docker compose -f docker-compose.test.yml run --rm test-typescript",
+    "docker:test:python": "docker compose -f docker-compose.test.yml run --rm test-python",
+    "docker:test:java": "docker compose -f docker-compose.test.yml run --rm test-java",
+    "docker:test:rust": "docker compose -f docker-compose.test.yml run --rm test-rust",
+    "docker:test:cpp": "docker compose -f docker-compose.test.yml run --rm test-cpp",
+    "docker:test:go": "docker compose -f docker-compose.test.yml run --rm test-go"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.7.0",

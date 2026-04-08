@@ -4,11 +4,7 @@ interface ListNode {
   next: ListNode | null;
 }
 
-export function insertAtPosition(
-  head: ListNode | null,
-  value: number,
-  position: number,
-): ListNode | null {
+function insertAtPosition(head: ListNode | null, value: number, position: number): ListNode | null {
   const newNode: ListNode = { value, next: null }; // @step:initialize
 
   if (position === 0) {

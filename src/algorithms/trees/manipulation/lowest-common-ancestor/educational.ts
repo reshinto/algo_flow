@@ -12,7 +12,21 @@ export const lowestCommonAncestorEducational: EducationalContent = {
     "4. **Recurse right** — search the right subtree for either target.\n" +
     "5. **Both found** — if both left and right return non-null, the current node is the LCA.\n" +
     "6. **One found** — return whichever side is non-null (the other target must be in this subtree or is this node itself).\n\n" +
-    "For the default 7-node BST with targets 1 and 3, the LCA is node 2.",
+    "For the default 7-node BST with targets 1 and 3, the LCA is node 2.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)) --> B((2))\n" +
+    "  A --> C((6))\n" +
+    "  B --> D((1))\n" +
+    "  B --> E((3))\n" +
+    "  C --> F((5))\n" +
+    "  C --> G((7))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "Searching for targets 1 and 3: the left subtree returns node 1, the right returns node 3, so node 2 is identified as the LCA since both sides returned non-null.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

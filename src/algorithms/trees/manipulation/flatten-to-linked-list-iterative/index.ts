@@ -10,6 +10,9 @@ import { flattenToLinkedListIterativeEducational } from "./educational";
 import typescriptSource from "./sources/flatten-to-linked-list-iterative.ts?raw";
 import pythonSource from "./sources/flatten-to-linked-list-iterative.py?raw";
 import javaSource from "./sources/FlattenToLinkedListIterative.java?raw";
+import rustSource from "./sources/flatten-to-linked-list-iterative.rs?raw";
+import cppSource from "./sources/FlattenToLinkedListIterative.cpp?raw";
+import goSource from "./sources/flatten-to-linked-list-iterative.go?raw";
 
 /** Standard 7-node balanced BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -119,13 +122,20 @@ const flattenToLinkedListIterativeDefinition: AlgorithmDefinition<FlattenToLinke
         "Iteratively flattens a binary tree into a right-skewed linked list in-place using a Morris-like predecessor-threading approach with O(1) extra space",
       timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
       spaceComplexity: "O(1)",
-      supportedLanguages: ["typescript", "python", "java"],
+      supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
       defaultInput: { nodes: defaultNodes, rootId: "n4" },
     },
     execute: executeFlattenToLinkedListIterative,
     generateSteps: generateFlattenToLinkedListIterativeSteps,
     educational: flattenToLinkedListIterativeEducational,
-    sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+    sources: {
+      typescript: typescriptSource,
+      python: pythonSource,
+      java: javaSource,
+      rust: rustSource,
+      cpp: cppSource,
+      go: goSource,
+    },
   };
 
 registry.register(flattenToLinkedListIterativeDefinition);

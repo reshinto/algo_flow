@@ -26,6 +26,26 @@ export const designCircularDequeEducational: EducationalContent = {
     "4. Otherwise retreat `rear = (rear - 1 + capacity) % capacity`, decrement `size`.\n\n" +
     '**PeekFront / PeekRear** — return `buffer[front]` or `buffer[rear]`; return `"empty"` if the deque is empty.\n\n' +
     "### Example trace (capacity = 3)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    subgraph After_pushFront2["After pushBack(1) then pushFront(2)"]\n' +
+    '        SL2(["slot 2: 2"])\n' +
+    '        SL0(["slot 0: 1"])\n' +
+    '        SL1(["slot 1: _"])\n' +
+    "        SL2 -->|front| SL0\n" +
+    "        SL0 -->|rear| SL1\n" +
+    "    end\n" +
+    '    subgraph After_pushBack3["After popBack then pushBack(3)"]\n' +
+    '        SL2B(["slot 2: 2"])\n' +
+    '        SL0B(["slot 0: _"])\n' +
+    '        SL1B(["slot 1: 3"])\n' +
+    "        SL2B -->|front| SL1B\n" +
+    "    end\n" +
+    "    style SL2 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style SL1B fill:#14532d,stroke:#22c55e\n" +
+    "    style SL2B fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "The front pointer wraps backwards (slot 2 ← slot 0) when pushing to the front, while the rear pointer advances forward. Both directions use modular arithmetic on the same ring buffer.\n\n" +
     "```\n" +
     "op              buffer         front  rear  size\n" +
     "init            [_, _, _]       -1    -1     0\n" +

@@ -10,6 +10,9 @@ import { maximumDepthEducational } from "./educational";
 import typescriptSource from "./sources/maximum-depth.ts?raw";
 import pythonSource from "./sources/maximum-depth.py?raw";
 import javaSource from "./sources/MaximumDepth.java?raw";
+import rustSource from "./sources/maximum-depth.rs?raw";
+import cppSource from "./sources/MaximumDepth.cpp?raw";
+import goSource from "./sources/maximum-depth.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const maximumDepthDefinition: AlgorithmDefinition<MaximumDepthInput> = {
       "Recursively computes the maximum depth (height) of a binary tree by returning max(leftDepth, rightDepth) + 1 at each node",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeMaximumDepth,
   generateSteps: generateMaximumDepthSteps,
   educational: maximumDepthEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(maximumDepthDefinition);

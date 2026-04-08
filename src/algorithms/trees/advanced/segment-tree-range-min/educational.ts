@@ -10,7 +10,20 @@ export const segmentTreeRangeMinEducational: EducationalContent = {
     "1. If the node's range is outside `[L, R]`, return `∞` (infinity).\n" +
     "2. If completely inside `[L, R]`, return the stored minimum.\n" +
     "3. Otherwise, recurse into both children and return `min(leftResult, rightResult)`.\n\n" +
-    "**Example:** Array `[2,5,1,4,9,3]`, query `[0,2]` → min of `[2,5,1]` = **1**.",
+    "**Example:** Array `[2,5,1,4,9,3]`, query `[0,2]` → min of `[2,5,1]` = **1**.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((min=1)):::current --> B((min=1)):::visited\n" +
+    "  A --> C((min=3)):::active\n" +
+    "  B --> D((min=2)):::visited\n" +
+    "  B --> E((min=1)):::visited\n" +
+    "  C --> F((min=4)):::active\n" +
+    "  C --> G((min=3)):::active\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "The root (cyan) holds the global minimum of the entire array. For query `[0,2]`, only the green left subtree is visited — the amber right subtree is outside the range and returns `∞`.",
 
   timeAndSpaceComplexity:
     "**Build: `O(n)`** — each of the ~2n nodes computed exactly once.\n\n" +

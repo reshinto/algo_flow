@@ -9,7 +9,21 @@ export const bstInsertEducational: EducationalContent = {
     "2. If `insertValue < node.value` — recurse left and link the returned subtree back.\n" +
     "3. If `insertValue > node.value` — recurse right.\n" +
     "4. Duplicates are ignored.\n\n" +
-    "The recursion naturally 'threads' the new node into the correct leaf position.",
+    "The recursion naturally 'threads' the new node into the correct leaf position.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((20)) --> B((10))\n" +
+    "  A --> C((30))\n" +
+    "  B --> D((5))\n" +
+    "  B --> E((15))\n" +
+    "  E --> F((13))\n" +
+    "  E --> G((null))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "Inserting 13: recursive call chain is insert(20)→insert(10)→insert(15)→insert(null). The null slot becomes node 13, returned upward and linked as the left child of 15.",
 
   timeAndSpaceComplexity:
     "**Time: `O(h)`** — path from root to insertion point.\n\n**Space: `O(h)`** — call stack depth.",

@@ -3,7 +3,7 @@
 // replacements) required to transform source into target.
 // Time: O(nm), Space: O(nm) where n = source.length, m = target.length
 
-export function levenshteinDistance(source: string, target: string): number {
+function levenshteinDistance(source: string, target: string): number {
   const sourceLength = source.length; // @step:initialize
   const targetLength = target.length; // @step:initialize
 

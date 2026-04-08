@@ -19,7 +19,19 @@ export const lisTabulationEducational: EducationalContent = {
     "dp:     1   1   1   2   2   3    4   4\n" +
     "```\n\n" +
     "`dp[5] = 3` because `[2, 5, 7]` is a length-3 increasing subsequence ending at index 5.\n" +
-    "`dp[6] = 4` because `[2, 5, 7, 101]` is the longest — and `max(dp) = 4`.",
+    "`dp[6] = 4` because `[2, 5, 7, 101]` is the longest — and `max(dp) = 4`.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["idx 2: val=2\\ndp=1"]:::base\n' +
+    '  B["idx 3: val=5\\ndp=2\\n(extends 2)"]:::cached\n' +
+    '  C["idx 5: val=7\\ndp=3\\n(extends 2,5)"]:::cached\n' +
+    '  D["idx 6: val=101\\ndp=4\\n(extends 2,5,7)"]:::current\n' +
+    "  A --> B --> C --> D\n" +
+    "  classDef base fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef cached fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Each cell extends the longest subsequence ending at an earlier index where the value is strictly smaller.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

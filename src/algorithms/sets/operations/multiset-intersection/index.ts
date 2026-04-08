@@ -10,6 +10,9 @@ import { multisetIntersectionEducational } from "./educational";
 import typescriptSource from "./sources/multiset-intersection.ts?raw";
 import pythonSource from "./sources/multiset-intersection.py?raw";
 import javaSource from "./sources/MultisetIntersection.java?raw";
+import rustSource from "./sources/multiset-intersection.rs?raw";
+import cppSource from "./sources/MultisetIntersection.cpp?raw";
+import goSource from "./sources/multiset-intersection.go?raw";
 
 function executeMultisetIntersection(input: MultisetIntersectionInput): number[] {
   return multisetIntersection(input.arrayA, input.arrayB) as number[];
@@ -29,7 +32,7 @@ const multisetIntersectionDefinition: AlgorithmDefinition<MultisetIntersectionIn
       worst: "O(n + m)",
     },
     spaceComplexity: "O(n + m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { arrayA: [1, 1, 2, 3, 3, 3], arrayB: [1, 1, 1, 2, 2, 3] },
   },
   execute: executeMultisetIntersection,
@@ -39,6 +42,9 @@ const multisetIntersectionDefinition: AlgorithmDefinition<MultisetIntersectionIn
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

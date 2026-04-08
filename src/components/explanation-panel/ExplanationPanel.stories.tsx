@@ -32,7 +32,7 @@ const sampleDefinition = {
   },
   execute: () => [],
   generateSteps: () => [],
-  sources: { typescript: "", python: "", java: "" },
+  sources: { typescript: "", python: "", java: "", rust: "", cpp: "", go: "" },
 };
 
 const initializeStep: ExecutionStep = {

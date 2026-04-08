@@ -13,5 +13,3 @@ function findAllDuplicates(numbers: number[]): number[] {
   }
   return duplicates; // @step:complete
 }
-
-export { findAllDuplicates };

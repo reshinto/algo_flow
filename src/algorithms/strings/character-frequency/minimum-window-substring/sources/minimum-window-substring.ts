@@ -4,7 +4,7 @@
 // Time: O(n + m) where n = text.length, m = pattern.length
 // Space: O(σ) — frequency maps bounded by alphabet size
 
-export function minimumWindowSubstring(text: string, pattern: string): string {
+function minimumWindowSubstring(text: string, pattern: string): string {
   if (pattern.length === 0 || text.length < pattern.length) return ""; // @step:initialize
 
   const targetFrequency = new Map<string, number>(); // @step:initialize

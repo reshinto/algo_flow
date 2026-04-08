@@ -9,7 +9,18 @@ export const sumRootToLeafNumbersEducational: EducationalContent = {
     "A recursive DFS carries a `runningNumber` built by digit shifting:\n\n" +
     "1. At each node: `currentNumber = runningNumber * 10 + node.value`.\n" +
     "2. At a leaf, `currentNumber` is the fully formed path number — return it.\n" +
-    "3. Otherwise, return `dfs(left, currentNumber) + dfs(right, currentNumber)`.",
+    "3. Otherwise, return `dfs(left, currentNumber) + dfs(right, currentNumber)`.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)):::root --> B((9)):::visited\n" +
+    "  A --> C((0)):::visited\n" +
+    "  B --> D((5)):::current\n" +
+    "  B --> E((1)):::current\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "DFS: root 4 → node 9 computes `4*10+9=49` → leaf 5 computes `49*10+5=495`. Leaf 1 computes `49*10+1=491`. Right path: `4*10+0=40` (leaf). Total = 495 + 491 + 40 = 1026.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — each node is visited once.\n\n" +

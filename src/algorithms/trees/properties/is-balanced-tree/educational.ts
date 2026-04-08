@@ -13,7 +13,19 @@ export const isBalancedTreeEducational: EducationalContent = {
     "2. Recurse right — same short-circuit.\n" +
     "3. Check `abs(leftHeight - rightHeight) <= 1`.\n" +
     "4. If balanced, return `max(leftHeight, rightHeight) + 1`.\n\n" +
-    "This avoids recomputing heights in a separate pass, achieving O(n) time.",
+    "This avoids recomputing heights in a separate pass, achieving O(n) time.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((1)):::root --> B((2)):::visited\n" +
+    "  A --> C((3)):::visited\n" +
+    "  B --> D((4)):::visited\n" +
+    "  B --> E((5)):::current\n" +
+    "  E --> F((9)):::current\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "At node 2: leftHeight=1 (node 4), rightHeight=2 (node 5 → 9). `abs(1-2)=1 ≤ 1` — balanced. At node 1: leftHeight=3, rightHeight=1. `abs(3-1)=2 > 1` — returns `-1` immediately, short-circuiting the rest.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — each node is checked once with short-circuit on imbalance.\n\n" +

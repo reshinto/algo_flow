@@ -10,6 +10,21 @@ export const movingAverageFromStreamEducational: EducationalContent = {
     "2. **Evict** — if the queue now holds more than `k` elements, shift the front value off and subtract it from `runningSum`.\n" +
     "3. **Compute** the average: `runningSum / queue.length`.\n\n" +
     "### Example trace (`values = [1, 10, 3, 5]`, `k = 3`)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    subgraph Step3["After value=3 (window full)"]\n' +
+    '        W1(["1"]) --> W2(["10"]) --> W3(["3"])\n' +
+    '        W3 -->|sum=14, avg=4.67| AVG1(["4.67"])\n' +
+    "    end\n" +
+    '    subgraph Step4["After value=5 (evict 1)"]\n' +
+    '        X1(["10"]) --> X2(["3"]) --> X3(["5"])\n' +
+    '        X3 -->|sum=18, avg=6.00| AVG2(["6.00"])\n' +
+    "    end\n" +
+    "    style W1 fill:#14532d,stroke:#22c55e\n" +
+    "    style X3 fill:#f59e0b,stroke:#d97706\n" +
+    "    style AVG2 fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "When value `5` arrives, the oldest element `1` is evicted from the front and subtracted from `runningSum`. Only one add and one subtract keep the sum current — no re-summing needed.\n\n" +
     "```\n" +
     "value   queue after enqueue   evict?   sum    avg\n" +
     "  1     [1]                   no       1      1.00\n" +

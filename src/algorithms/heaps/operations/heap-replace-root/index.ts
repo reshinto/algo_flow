@@ -10,6 +10,9 @@ import { heapReplaceRootEducational } from "./educational";
 import typescriptSource from "./sources/heap-replace-root.ts?raw";
 import pythonSource from "./sources/heap-replace-root.py?raw";
 import javaSource from "./sources/HeapReplaceRoot.java?raw";
+import rustSource from "./sources/heap-replace-root.rs?raw";
+import cppSource from "./sources/HeapReplaceRoot.cpp?raw";
+import goSource from "./sources/heap-replace-root.go?raw";
 
 function executeHeapReplaceRoot(input: HeapReplaceRootInput): {
   replacedValue: number;
@@ -35,7 +38,7 @@ const heapReplaceRootDefinition: AlgorithmDefinition<HeapReplaceRootInput> = {
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [1, 3, 5, 7, 9, 8, 6], newValue: 10 },
   },
   execute: executeHeapReplaceRoot,
@@ -45,6 +48,9 @@ const heapReplaceRootDefinition: AlgorithmDefinition<HeapReplaceRootInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

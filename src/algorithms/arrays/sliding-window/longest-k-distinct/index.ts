@@ -13,6 +13,9 @@ import { longestKDistinctEducational } from "./educational";
 import typescriptSource from "./sources/longest-k-distinct.ts?raw";
 import pythonSource from "./sources/longest-k-distinct.py?raw";
 import javaSource from "./sources/LongestKDistinct.java?raw";
+import rustSource from "./sources/longest-k-distinct.rs?raw";
+import cppSource from "./sources/LongestKDistinct.cpp?raw";
+import goSource from "./sources/longest-k-distinct.go?raw";
 
 interface LongestKDistinctInput {
   inputArray: number[];
@@ -33,7 +36,7 @@ const longestKDistinctDefinition: AlgorithmDefinition<LongestKDistinctInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [1, 2, 1, 2, 3, 3, 4, 1],
       maxDistinct: 2,
@@ -46,6 +49,9 @@ const longestKDistinctDefinition: AlgorithmDefinition<LongestKDistinctInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -14,6 +14,9 @@ import { connectedComponentsEducational } from "./educational";
 import typescriptSource from "./sources/connected-components.ts?raw";
 import pythonSource from "./sources/connected-components.py?raw";
 import javaSource from "./sources/ConnectedComponents.java?raw";
+import rustSource from "./sources/connected-components.rs?raw";
+import cppSource from "./sources/ConnectedComponents.cpp?raw";
+import goSource from "./sources/connected-components.go?raw";
 
 /** Positions 8 nodes in two stacked rows of 4 for a compact multi-component layout */
 function rowPosition(index: number): { x: number; y: number } {
@@ -85,7 +88,7 @@ const connectedComponentsDefinition: AlgorithmDefinition<ConnectedComponentsInpu
       worst: "O(V+E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: ConnectedComponentsInput) =>
@@ -96,6 +99,9 @@ const connectedComponentsDefinition: AlgorithmDefinition<ConnectedComponentsInpu
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

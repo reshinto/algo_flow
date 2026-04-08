@@ -21,7 +21,28 @@ export const jaroWinklerSimilarityEducational: EducationalContent = {
     "**Step 5 — Winkler prefix bonus:**\n\n" +
     "Count how many leading characters match (up to 4). Call this `p`.\n\n" +
     "```\njaro_winkler = jaro + p × 0.1 × (1 - jaro)\n```\n\n" +
-    "The `0.1` scaling factor (the *winkler constant*) prevents the bonus from exceeding 1.0.",
+    "The `0.1` scaling factor (the *winkler constant*) prevents the bonus from exceeding 1.0.\n\n" +
+    '### Example: Comparing `"martha"` and `"marhta"`\n\n' +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    subgraph S["source: martha"]\n' +
+    '        M1["m"] --> A1["a"] --> R1["r"] --> T1["t"] --> H1["h"] --> A2["a"]\n' +
+    "    end\n" +
+    '    subgraph T["target: marhta"]\n' +
+    '        M2["m"] --> A3["a"] --> R2["r"] --> H2["h"] --> T2["t"] --> A4["a"]\n' +
+    "    end\n" +
+    "    M1 -.matched.- M2\n" +
+    "    A1 -.matched.- A3\n" +
+    "    R1 -.matched.- R2\n" +
+    "    T1 -.transposed.- H2\n" +
+    "    style M1 fill:#14532d,stroke:#22c55e\n" +
+    "    style M2 fill:#14532d,stroke:#22c55e\n" +
+    "    style A1 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style A3 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style T1 fill:#f59e0b,stroke:#d97706\n" +
+    "    style H2 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "The shared prefix `mar` (green/cyan) earns a Winkler bonus. `t` and `h` (amber) are transposed — counted as 1 transposition. Final score: 0.9611.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × m)`**\n\n" +

@@ -12,6 +12,9 @@ import { slowSortEducational } from "./educational";
 import typescriptSource from "./sources/slow-sort.ts?raw";
 import pythonSource from "./sources/slow-sort.py?raw";
 import javaSource from "./sources/SlowSort.java?raw";
+import rustSource from "./sources/slow-sort.rs?raw";
+import cppSource from "./sources/SlowSort.cpp?raw";
+import goSource from "./sources/slow-sort.go?raw";
 
 const slowSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -27,7 +30,7 @@ const slowSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "Ω(n^(log n))",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [5, 3, 1, 4, 2],
   },
   execute: slowSort,
@@ -37,6 +40,9 @@ const slowSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -13,6 +13,9 @@ import { floydCycleDetectionEducational } from "./educational";
 import typescriptSource from "./sources/floyd-cycle-detection.ts?raw";
 import pythonSource from "./sources/floyd-cycle-detection.py?raw";
 import javaSource from "./sources/FloydCycleDetection.java?raw";
+import rustSource from "./sources/floyd-cycle-detection.rs?raw";
+import cppSource from "./sources/FloydCycleDetection.cpp?raw";
+import goSource from "./sources/floyd-cycle-detection.go?raw";
 
 interface FloydCycleDetectionInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const floydCycleDetectionDefinition: AlgorithmDefinition<FloydCycleDetectionInpu
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [1, 3, 4, 2, 2],
     },
@@ -44,6 +47,9 @@ const floydCycleDetectionDefinition: AlgorithmDefinition<FloydCycleDetectionInpu
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -14,18 +14,22 @@ export const removeKDigitsEducational: EducationalContent = {
     "4. **Trim the tail** — if removals still remain after scanning all digits, pop from the end of the stack (removing the largest remaining digits).\n" +
     '5. **Strip leading zeros** — join the stack and remove any leading `0` characters; return `"0"` if the result is empty.\n\n' +
     '### Example trace on `num = "1432219"`, `k = 3`\n\n' +
-    "```\n" +
-    "digit  action              stack         removals left\n" +
-    "1      push                [1]           3\n" +
-    "4      push                [1,4]         3\n" +
-    "3      pop 4 (4>3), push   [1,3]         2\n" +
-    "2      pop 3 (3>2), push   [1,2]         1\n" +
-    "2      push (2==2)         [1,2,2]       1\n" +
-    "1      pop 2 (2>1), push   [1,2,1]       0  — wait, 2>1 so pop\n" +
-    "       actually pop 2, push [1,2,1]      0\n" +
-    "9      push (no removals)  [1,2,1,9]     0\n" +
-    'result = "1219"\n' +
-    "```",
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph Remove phase k=3\n" +
+    '    A["[1,4] k=3"] -->|"3<4 → pop 4, k=2"| B["[1,3] k=2"]\n' +
+    '    B -->|"2<3 → pop 3, k=1"| C["[1,2] k=1"]\n' +
+    '    C -->|"push 2"| D["[1,2,2] k=1"]\n' +
+    '    D -->|"1<2 → pop 2, k=0"| E["[1,2,1] k=0"]\n' +
+    "    end\n" +
+    "    subgraph No removals left\n" +
+    '    E -->|"push 9 (k=0)"| F["[1,2,1,9] → \\"1219\\""]\n' +
+    "    end\n" +
+    "    style A fill:#06b6d4,stroke:#0891b2\n" +
+    "    style D fill:#f59e0b,stroke:#d97706\n" +
+    "    style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each pop removes a digit that is larger than its successor, shrinking the number's magnitude greedily from left to right.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

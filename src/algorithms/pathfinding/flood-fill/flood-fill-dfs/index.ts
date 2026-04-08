@@ -9,6 +9,9 @@ import { floodFillDfsEducational } from "./educational";
 import typescriptSource from "./sources/flood-fill-dfs.ts?raw";
 import pythonSource from "./sources/flood-fill-dfs.py?raw";
 import javaSource from "./sources/FloodFillDfs.java?raw";
+import rustSource from "./sources/flood-fill-dfs.rs?raw";
+import cppSource from "./sources/FloodFillDfs.cpp?raw";
+import goSource from "./sources/flood-fill-dfs.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -90,7 +93,7 @@ const floodFillDfsDefinition: AlgorithmDefinition<FloodFillDfsInput> = {
       worst: "O(V + E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -104,6 +107,9 @@ const floodFillDfsDefinition: AlgorithmDefinition<FloodFillDfsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

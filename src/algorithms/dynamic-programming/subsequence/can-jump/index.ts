@@ -9,6 +9,9 @@ import { canJumpEducational } from "./educational";
 import typescriptSource from "./sources/can-jump.ts?raw";
 import pythonSource from "./sources/can-jump.py?raw";
 import javaSource from "./sources/CanJump.java?raw";
+import rustSource from "./sources/can-jump.rs?raw";
+import cppSource from "./sources/CanJump.cpp?raw";
+import goSource from "./sources/can-jump.go?raw";
 
 export interface CanJumpInput {
   nums: number[];
@@ -28,7 +31,7 @@ const canJumpDefinition: AlgorithmDefinition<CanJumpInput> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nums: [2, 3, 1, 1, 4] },
   },
   execute: (input: CanJumpInput) => canJump(input.nums),
@@ -38,6 +41,9 @@ const canJumpDefinition: AlgorithmDefinition<CanJumpInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

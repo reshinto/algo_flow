@@ -22,7 +22,17 @@ export const zigzagTraversalEducational: EducationalContent = {
     "7  8  9\n" +
     "```\n\n" +
     "Diagonal 0 (up): `[1]` → Diagonal 1 (down): `[2, 4]` → Diagonal 2 (up): `[7, 5, 3]` → Diagonal 3 (down): `[6, 8]` → Diagonal 4 (up): `[9]`\n\n" +
-    "Result: `[1, 2, 4, 7, 5, 3, 6, 8, 9]`",
+    "Result: `[1, 2, 4, 7, 5, 3, 6, 8, 9]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  D0["d=0 ↑\\n[1]"] --> D1["d=1 ↓\\n[2,4]"] --> D2["d=2 ↑\\n[7,5,3]"] --> D3["d=3 ↓\\n[6,8]"] --> D4["d=4 ↑\\n[9]"]\n' +
+    "  style D0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D1 fill:#f59e0b,stroke:#d97706\n" +
+    "  style D2 fill:#14532d,stroke:#22c55e\n" +
+    "  style D3 fill:#f59e0b,stroke:#d97706\n" +
+    "  style D4 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Even diagonals travel upward (row--, col++), odd diagonals travel downward (row++, col--), producing the characteristic zigzag pattern that groups spatially close values for entropy coding.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m × n)`**\n\n" +

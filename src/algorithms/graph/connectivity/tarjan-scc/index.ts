@@ -14,6 +14,9 @@ import { tarjanSccEducational } from "./educational";
 import typescriptSource from "./sources/tarjan-scc.ts?raw";
 import pythonSource from "./sources/tarjan-scc.py?raw";
 import javaSource from "./sources/TarjanSCC.java?raw";
+import rustSource from "./sources/tarjan-scc.rs?raw";
+import cppSource from "./sources/TarjanSCC.cpp?raw";
+import goSource from "./sources/tarjan-scc.go?raw";
 
 /** Positions 8 nodes in two clusters to reflect the SCC structure visually */
 function sccPosition(index: number): { x: number; y: number } {
@@ -87,7 +90,7 @@ const tarjanSccDefinition: AlgorithmDefinition<TarjanSccInput> = {
       worst: "O(V+E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: TarjanSccInput) => tarjanSCC(input.adjacencyList, input.nodeIds),
@@ -97,6 +100,9 @@ const tarjanSccDefinition: AlgorithmDefinition<TarjanSccInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

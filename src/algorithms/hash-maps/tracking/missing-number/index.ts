@@ -8,6 +8,9 @@ import { missingNumberEducational } from "./educational";
 import typescriptSource from "./sources/missing-number.ts?raw";
 import pythonSource from "./sources/missing-number.py?raw";
 import javaSource from "./sources/MissingNumber.java?raw";
+import rustSource from "./sources/missing-number.rs?raw";
+import cppSource from "./sources/MissingNumber.cpp?raw";
+import goSource from "./sources/missing-number.go?raw";
 
 function executeMissingNumber(input: MissingNumberInput): number {
   const numberSet = new Set(input.numbers);
@@ -26,13 +29,20 @@ const definition: AlgorithmDefinition<MissingNumberInput> = {
     description: "Find the missing number in range [0, n] using a hash set",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numbers: [3, 0, 1] },
   },
   execute: executeMissingNumber,
   generateSteps: generateMissingNumberSteps,
   educational: missingNumberEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(definition);

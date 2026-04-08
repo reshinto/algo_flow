@@ -10,6 +10,9 @@ import { deleteByValueEducational } from "./educational";
 import typescriptSource from "./sources/delete-by-value.ts?raw";
 import pythonSource from "./sources/delete-by-value.py?raw";
 import javaSource from "./sources/DeleteByValue.java?raw";
+import rustSource from "./sources/delete-by-value.rs?raw";
+import cppSource from "./sources/DeleteByValue.cpp?raw";
+import goSource from "./sources/delete-by-value.go?raw";
 
 function executeDeleteByValue(input: DeleteByValueInput): number[] {
   interface ListNode {
@@ -47,7 +50,7 @@ const deleteByValueDefinition: AlgorithmDefinition<DeleteByValueInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { values: [1, 2, 3, 4, 5], target: 3 },
   },
   execute: executeDeleteByValue,
@@ -57,6 +60,9 @@ const deleteByValueDefinition: AlgorithmDefinition<DeleteByValueInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { binaryIndexedTreeEducational } from "./educational";
 import typescriptSource from "./sources/binary-indexed-tree.ts?raw";
 import pythonSource from "./sources/binary-indexed-tree.py?raw";
 import javaSource from "./sources/BinaryIndexedTree.java?raw";
+import rustSource from "./sources/binary-indexed-tree.rs?raw";
+import cppSource from "./sources/BinaryIndexedTree.cpp?raw";
+import goSource from "./sources/binary-indexed-tree.go?raw";
 
 function executeBinaryIndexedTree(input: BinaryIndexedTreeInput): number[] {
   return binaryIndexedTree(input.array, input.queries) as number[];
@@ -25,7 +28,7 @@ const binaryIndexedTreeDefinition: AlgorithmDefinition<BinaryIndexedTreeInput> =
       "Build a Fenwick Tree for O(log n) prefix sum queries and point updates using the LSB bit trick",
     timeComplexity: { best: "O(n + q log n)", average: "O(n + q log n)", worst: "O(n + q log n)" },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       array: [3, 2, 4, 5, 1, 1, 5, 3],
       queries: [
@@ -37,7 +40,14 @@ const binaryIndexedTreeDefinition: AlgorithmDefinition<BinaryIndexedTreeInput> =
   execute: executeBinaryIndexedTree,
   generateSteps: generateBinaryIndexedTreeSteps,
   educational: binaryIndexedTreeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(binaryIndexedTreeDefinition);

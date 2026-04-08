@@ -32,7 +32,25 @@ export const heapDecreaseKeyEducational: EducationalContent = {
     "      5  9 8  6\n\n" +
     "Sift-up index 1: parent at index 0 is 1; 2 ≥ 1, stop.\n" +
     "Result: [1, 2, 3, 5, 9, 8, 6]\n" +
-    "```",
+    "```\n\n" +
+    "### After Decrease-Key: Node 2 Settled at Its New Position\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n1((1)) --> n2((2))\n" +
+    "    n1 --> n3((3))\n" +
+    "    n2 --> n5((5))\n" +
+    "    n2 --> n9((9))\n" +
+    "    n3 --> n8((8))\n" +
+    "    n3 --> n6((6))\n" +
+    "    style n1 fill:#14532d,stroke:#22c55e\n" +
+    "    style n2 fill:#f59e0b,stroke:#d97706\n" +
+    "    style n3 fill:#14532d,stroke:#22c55e\n" +
+    "    style n5 fill:#14532d,stroke:#22c55e\n" +
+    "    style n9 fill:#14532d,stroke:#22c55e\n" +
+    "    style n8 fill:#14532d,stroke:#22c55e\n" +
+    "    style n6 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Amber node (2) was originally 7 at index 3 — after the key decrease it sifted up one level past its parent (5), stopping when it reached a node smaller than itself (1). All green nodes remained undisturbed.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)`**\n\n" +

@@ -13,6 +13,9 @@ import { dfsCycleDirectedEducational } from "./educational";
 import typescriptSource from "./sources/dfs-cycle-directed.ts?raw";
 import pythonSource from "./sources/dfs-cycle-directed.py?raw";
 import javaSource from "./sources/DfsCycleDirected.java?raw";
+import rustSource from "./sources/dfs-cycle-directed.rs?raw";
+import cppSource from "./sources/DfsCycleDirected.cpp?raw";
+import goSource from "./sources/dfs-cycle-directed.go?raw";
 
 const CIRCLE_RADIUS = 150;
 const CENTER_X = 200;
@@ -72,7 +75,7 @@ const dfsCycleDirectedDefinition: AlgorithmDefinition<DfsCycleDirectedInput> = {
       worst: "O(V+E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: DfsCycleDirectedInput) =>
@@ -83,6 +86,9 @@ const dfsCycleDirectedDefinition: AlgorithmDefinition<DfsCycleDirectedInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -37,15 +37,7 @@ This guide covers the most common failure modes in AlgoFlow and how to fix them 
 
 `generateSteps()` returns an empty array (or fewer steps than expected) when the tracker's `pushStep()` is never called, called with wrong arguments, or when the algorithm logic exits early.
 
-```mermaid
-flowchart TD
-    GS["generateSteps(input)"] --> T["new CategoryTracker(input, lineMap)"]
-    T --> M["tracker.methodName(args)"]
-    M --> PS["pushStep({type, description, variables, visualState})"]
-    PS --> RL["resolveLines(lineMapKey ?? type)"]
-    RL --> ES["ExecutionStep added to steps[]"]
-    ES --> GS2["tracker.getSteps() returns ExecutionStep[]"]
-```
+![Step Generation Flow](assets/step-generation-flow.png)
 
 **Common causes:**
 
@@ -69,21 +61,12 @@ If the array is empty, add a `console.log` immediately before the first `pushSte
 
 Lines in the code panel are highlighted based on a `LineMap` built from `@step:` marker comments in each source file. A mismatch between the marker key and the step type causes no lines (or the wrong lines) to highlight.
 
-```mermaid
-flowchart TD
-    SF["Source file with @step: markers"] --> PM["parseStepMarkers(source)"]
-    PM --> SM["stepMap: {key → [lineNumbers]}"]
-    SM --> BL["buildLineMapFromSources(algorithmId)"]
-    BL --> LM["LineMap: {key → {ts: lines, py: lines, java: lines}}"]
-    LM --> TC["new Tracker(input, lineMap)"]
-    TC --> PS["pushStep({type: 'compare'})"]
-    PS --> RL["resolveLines('compare') → LineHighlight[]"]
-```
+![Line Mapping Flow](assets/line-mapping-flow.png)
 
 **Common causes:**
 
 - The step key in a source file (`// @step:compare`) doesn't match the `type` or `lineMapKey` passed to the tracker call — even a small typo (e.g., `comparee`) silently produces no highlight
-- Language files use different step keys — keys must be identical across TypeScript, Python, and Java source files
+- Language files use different step keys — keys must be identical across TypeScript, Python, Java, Rust, C++, and Go source files
 - A `@step:` marker is missing entirely for a step type — that step will produce no highlighted lines
 
 **Debug pattern:** Call `buildLineMapFromSources(algorithmId)` in a test and inspect the output to verify all expected keys are present with correct line numbers for every language:
@@ -101,35 +84,15 @@ Cross-reference each key in the map against the step `type` values produced by `
 
 The visualization panel renders nothing (blank panel) when the `VisualState.kind` produced by the tracker does not match any registered visualizer.
 
-**Valid `kind` values** — the `VisualState` discriminated union currently has 17 members:
-
-| `kind`              | Use case                                   |
-| ------------------- | ------------------------------------------ |
-| `array`             | Sorting, searching, sliding window         |
-| `graph`             | BFS, DFS, graph traversal                  |
-| `grid`              | Pathfinding (Dijkstra, A\*)                |
-| `dp-table`          | Dynamic programming (Fibonacci tabulation) |
-| `tree`              | Binary trees, heaps (display)              |
-| `linked-list`       | Linked list algorithms                     |
-| `heap`              | Priority queue / heap operations           |
-| `stack-queue`       | Stack or queue walkthroughs                |
-| `hash-map`          | Hash table algorithms                      |
-| `string`            | General string matching                    |
-| `string-palindrome` | Palindrome detection algorithms            |
-| `string-frequency`  | Character frequency and anagram algorithms |
-| `string-transform`  | String edit and transformation algorithms  |
-| `string-trie`       | Trie construction and search algorithms    |
-| `string-distance`   | Edit distance and alignment algorithms     |
-| `matrix`            | 2-D matrix traversals                      |
-| `set`               | Set operations                             |
+**Valid `kind` values** — see the full `VisualState` discriminated union in [Glossary — VisualState](glossary.md#visualstate). Common kinds: `array`, `graph`, `grid`, `dp-table`, `tree`, `linked-list`, `heap`, `stack-queue`, `hash-map`, `string`, `matrix`, `set`.
 
 **Common causes:**
 
 - Returning a `kind` that is misspelled or not in the union (TypeScript strict mode should catch this at compile time, but a cast can bypass it)
-- Copying a tracker from a different category and forgetting to change the `kind` field in the `visualState` builder
+- Copying a tracker from a different category and forgetting to change the `kind` field
 - The visualizer switch/dispatch has not been updated to handle a newly added `kind`
 
-**Debug pattern:** Log the `visualState.kind` of each step and confirm it matches one of the 17 values above:
+**Debug pattern:** Log the `visualState.kind` of each step:
 
 ```ts
 const steps = generateSteps(knownInput);
@@ -222,7 +185,7 @@ Segment tree algorithms expose a `queryRange` field `[left, right]` on the `tree
 
 ## E2E Test Failures
 
-The E2E suite uses `@playwright/test`. Spec files live in `e2e/specs/` (21 files, ~950 tests). Config is at `e2e/playwright.config.ts`. The `webServer` block auto-starts Vite on port 5174 so no manual dev server is needed.
+The E2E suite uses `@playwright/test`. Spec files live in `e2e/specs/`, config at `e2e/playwright.config.ts`. The `webServer` block auto-starts Vite on port 5174 so no manual dev server is needed.
 
 **How the suite runs:**
 

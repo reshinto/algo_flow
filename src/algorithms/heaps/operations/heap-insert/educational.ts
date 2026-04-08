@@ -29,7 +29,25 @@ export const heapInsertEducational: EducationalContent = {
     "               / \\ / \\ \\\n" +
     "              7  9 8  6  5\n" +
     "```\n\n" +
-    "Parent of index `i` is always at `⌊(i-1)/2⌋`, making traversal upward `O(log n)`.",
+    "Parent of index `i` is always at `⌊(i-1)/2⌋`, making traversal upward `O(log n)`.\n\n" +
+    "### Diagram: After inserting 2 into [1, 3, 5, 7, 9, 8, 6]\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n1((1)) --> n3((3))\n" +
+    "    n1 --> n2((2))\n" +
+    "    n3 --> n7((7))\n" +
+    "    n3 --> n9((9))\n" +
+    "    n2 --> n8((8))\n" +
+    "    n2 --> n5((5))\n" +
+    "    style n1 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n2 fill:#f59e0b,stroke:#d97706\n" +
+    "    style n3 fill:#14532d,stroke:#22c55e\n" +
+    "    style n7 fill:#14532d,stroke:#22c55e\n" +
+    "    style n9 fill:#14532d,stroke:#22c55e\n" +
+    "    style n8 fill:#14532d,stroke:#22c55e\n" +
+    "    style n5 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Node 2 (amber) was appended as a leaf under 5 and sifted up — it swapped with 5 to reach its correct position. The root (cyan, value 1) retains the global minimum.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)`**\n\n" +

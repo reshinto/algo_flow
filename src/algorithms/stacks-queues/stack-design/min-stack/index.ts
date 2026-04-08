@@ -10,6 +10,9 @@ import { minStackEducational } from "./educational";
 import typescriptSource from "./sources/min-stack.ts?raw";
 import pythonSource from "./sources/min-stack.py?raw";
 import javaSource from "./sources/MinStack.java?raw";
+import rustSource from "./sources/min-stack.rs?raw";
+import cppSource from "./sources/MinStack.cpp?raw";
+import goSource from "./sources/min-stack.go?raw";
 
 function executeMinStack(input: MinStackInput): number {
   return minStack(input.values) as number;
@@ -29,7 +32,7 @@ const minStackDefinition: AlgorithmDefinition<MinStackInput> = {
       worst: "O(1)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { values: [5, 3, 7, 1, 8] },
   },
   execute: executeMinStack,
@@ -39,6 +42,9 @@ const minStackDefinition: AlgorithmDefinition<MinStackInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

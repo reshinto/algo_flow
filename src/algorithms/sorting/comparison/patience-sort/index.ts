@@ -14,6 +14,9 @@ import { patienceSortEducational } from "./educational";
 import typescriptSource from "./sources/patience-sort.ts?raw";
 import pythonSource from "./sources/patience-sort.py?raw";
 import javaSource from "./sources/PatienceSort.java?raw";
+import rustSource from "./sources/patience-sort.rs?raw";
+import cppSource from "./sources/PatienceSort.cpp?raw";
+import goSource from "./sources/patience-sort.go?raw";
 
 const patienceSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const patienceSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [3, 1, 4, 1, 5, 9, 2, 6],
   },
   execute: patienceSort,
@@ -39,6 +42,9 @@ const patienceSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

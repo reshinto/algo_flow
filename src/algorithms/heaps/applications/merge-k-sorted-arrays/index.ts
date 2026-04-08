@@ -10,6 +10,9 @@ import { mergeKSortedArraysEducational } from "./educational";
 import typescriptSource from "./sources/merge-k-sorted-arrays.ts?raw";
 import pythonSource from "./sources/merge-k-sorted-arrays.py?raw";
 import javaSource from "./sources/MergeKSortedArrays.java?raw";
+import rustSource from "./sources/merge-k-sorted-arrays.rs?raw";
+import cppSource from "./sources/MergeKSortedArrays.cpp?raw";
+import goSource from "./sources/merge-k-sorted-arrays.go?raw";
 
 function executeMergeKSortedArrays(input: MergeKSortedArraysInput): number[] {
   return mergeKSortedArrays(input.arrays) as number[];
@@ -29,7 +32,7 @@ const mergeKSortedArraysDefinition: AlgorithmDefinition<MergeKSortedArraysInput>
       worst: "O(N log k)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       arrays: [
         [1, 4, 7],
@@ -45,6 +48,9 @@ const mergeKSortedArraysDefinition: AlgorithmDefinition<MergeKSortedArraysInput>
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

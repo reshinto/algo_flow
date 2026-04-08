@@ -10,6 +10,9 @@ import { reorganizeStringEducational } from "./educational";
 import typescriptSource from "./sources/reorganize-string.ts?raw";
 import pythonSource from "./sources/reorganize-string.py?raw";
 import javaSource from "./sources/ReorganizeString.java?raw";
+import rustSource from "./sources/reorganize-string.rs?raw";
+import cppSource from "./sources/ReorganizeString.cpp?raw";
+import goSource from "./sources/reorganize-string.go?raw";
 
 function executeReorganizeString(input: ReorganizeStringInput): string {
   return reorganizeString(input.text) as string;
@@ -29,7 +32,7 @@ const reorganizeStringDefinition: AlgorithmDefinition<ReorganizeStringInput> = {
       worst: "O(n log k)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "aabbc" },
   },
   execute: executeReorganizeString,
@@ -39,6 +42,9 @@ const reorganizeStringDefinition: AlgorithmDefinition<ReorganizeStringInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

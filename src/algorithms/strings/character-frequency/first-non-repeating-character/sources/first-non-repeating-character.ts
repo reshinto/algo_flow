@@ -3,7 +3,7 @@
 // Time: O(n) — two passes over the string (bounded by alphabet size)
 // Space: O(1) — frequency map bounded by alphabet size (26 letters)
 
-export function firstNonRepeatingCharacter(text: string): number {
+function firstNonRepeatingCharacter(text: string): number {
   const frequencyMap = new Map<string, number>(); // @step:initialize
 
   for (const char of text) {

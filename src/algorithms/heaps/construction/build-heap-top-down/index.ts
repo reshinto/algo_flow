@@ -10,6 +10,9 @@ import { buildHeapTopDownEducational } from "./educational";
 import typescriptSource from "./sources/build-heap-top-down.ts?raw";
 import pythonSource from "./sources/build-heap-top-down.py?raw";
 import javaSource from "./sources/BuildHeapTopDown.java?raw";
+import rustSource from "./sources/build-heap-top-down.rs?raw";
+import cppSource from "./sources/BuildHeapTopDown.cpp?raw";
+import goSource from "./sources/build-heap-top-down.go?raw";
 
 function executeBuildHeapTopDown(input: BuildHeapTopDownInput): number[] {
   return buildHeapTopDown(input.array) as number[];
@@ -29,7 +32,7 @@ const buildHeapTopDownDefinition: AlgorithmDefinition<BuildHeapTopDownInput> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [9, 5, 7, 1, 3, 8, 2, 6, 4] },
   },
   execute: executeBuildHeapTopDown,
@@ -39,6 +42,9 @@ const buildHeapTopDownDefinition: AlgorithmDefinition<BuildHeapTopDownInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -1,5 +1,5 @@
 // Tarjan's SCC — finds strongly connected components using DFS with discovery and low-link values
-export function tarjanSCC(adjacencyList: Record<string, string[]>, nodeIds: string[]): string[][] {
+function tarjanSCC(adjacencyList: Record<string, string[]>, nodeIds: string[]): string[][] {
   const discoveryTime: Record<string, number> = {}; // @step:initialize
   const lowLink: Record<string, number> = {}; // @step:initialize
   const onStack: Record<string, boolean> = {}; // @step:initialize

@@ -14,6 +14,9 @@ import { introSortEducational } from "./educational";
 import typescriptSource from "./sources/intro-sort.ts?raw";
 import pythonSource from "./sources/intro-sort.py?raw";
 import javaSource from "./sources/IntroSort.java?raw";
+import rustSource from "./sources/intro-sort.rs?raw";
+import cppSource from "./sources/IntroSort.cpp?raw";
+import goSource from "./sources/intro-sort.go?raw";
 
 const introSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const introSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(log n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: introSort,
@@ -39,6 +42,9 @@ const introSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

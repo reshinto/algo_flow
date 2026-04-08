@@ -13,6 +13,9 @@ import { primsEducational } from "./educational";
 import typescriptSource from "./sources/prims.ts?raw";
 import pythonSource from "./sources/prims.py?raw";
 import javaSource from "./sources/Prims.java?raw";
+import rustSource from "./sources/prims.rs?raw";
+import cppSource from "./sources/Prims.cpp?raw";
+import goSource from "./sources/prims.go?raw";
 
 const CIRCLE_RADIUS = 150;
 const CENTER_X = 200;
@@ -112,7 +115,7 @@ const primsDefinition: AlgorithmDefinition<PrimsInput> = {
       worst: "O((V+E) log V)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: PrimsInput) => primsAlgorithm(input.adjacencyList, input.startNodeId),
@@ -122,6 +125,9 @@ const primsDefinition: AlgorithmDefinition<PrimsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

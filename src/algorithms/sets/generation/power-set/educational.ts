@@ -31,7 +31,24 @@ export const powerSetEducational: EducationalContent = {
     "  include 3 → emit [3]\n" +
     "  backtrack → remove 3\n" +
     "Result: [], [1], [1,2], [1,2,3], [1,3], [2], [2,3], [3]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '  Root["emit [ ]"]:::result\n' +
+    '  N1["include 1 → emit [1]"]:::current\n' +
+    '  N12["include 2 → emit [1,2]"]:::current\n' +
+    '  N123["include 3 → emit [1,2,3]"]:::result\n' +
+    '  N13["include 3 → emit [1,3]"]:::result\n' +
+    '  N2["include 2 → emit [2]"]:::current\n' +
+    '  N23["include 3 → emit [2,3]"]:::result\n' +
+    "  Root --> N1 & N2\n" +
+    "  N1 --> N12 & N13\n" +
+    "  N12 --> N123\n" +
+    "  N2 --> N23\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Every node in the tree emits a subset the moment it is reached. The 8 emitted subsets for [1,2,3] correspond exactly to the 2³ = 8 leaves and internal nodes of the binary decision tree.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × 2^n)`**\n\n" +

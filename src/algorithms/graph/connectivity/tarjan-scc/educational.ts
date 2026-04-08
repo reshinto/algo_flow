@@ -11,7 +11,23 @@ export const tarjanSccEducational: EducationalContent = {
     "4. For neighbors already on the stack (back edges), update: `low[u] = min(low[u], disc[v])`.\n" +
     "5. When `low[u] == disc[u]`, the current node is an **SCC root** — pop nodes off the stack until reaching `u` to collect the SCC.\n\n" +
     "### Low-Link Value Intuition\n\n" +
-    "The low-link `low[u]` tracks the smallest discovery time reachable from the subtree rooted at `u` via back edges. When `low[u]` equals `disc[u]`, no node in `u`'s subtree can escape to an ancestor — making `u` the root of a complete SCC.",
+    "The low-link `low[u]` tracks the smallest discovery time reachable from the subtree rooted at `u` via back edges. When `low[u]` equals `disc[u]`, no node in `u`'s subtree can escape to an ancestor — making `u` the root of a complete SCC.\n\n" +
+    "### Example: Identifying SCCs with Low-Link Values\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((A)) --> B((B))\n" +
+    "  B((B)) --> C((C))\n" +
+    "  C((C)) --> A((A))\n" +
+    "  B((B)) --> D((D))\n" +
+    "  D((D)) --> E((E))\n" +
+    "  E((E)) --> D((D))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "When `low[A] == disc[A]`, Tarjan's pops {A, B, C} (cyan/green) off the stack as one SCC. The back-edge D→E→D causes `low[D] == disc[D]`, popping {D, E} (amber) as a second SCC.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

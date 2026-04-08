@@ -12,7 +12,19 @@ export const countCompleteTreeNodesEducational: EducationalContent = {
     "2. Compute the **rightmost height** (always follow right children).\n" +
     "3. If equal, the subtree is a **perfect binary tree** with `2^h - 1` nodes — return immediately.\n" +
     "4. If not equal, recurse on both subtrees and sum their counts.\n\n" +
-    "The key insight is that in a complete binary tree, at least one of the two subtrees is always perfect.",
+    "The key insight is that in a complete binary tree, at least one of the two subtrees is always perfect.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((1)):::root --> B((2)):::visited\n" +
+    "  A --> C((3)):::visited\n" +
+    "  B --> D((4)):::visited\n" +
+    "  B --> E((5)):::visited\n" +
+    "  C --> F((6)):::current\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "Left subtree (root 2) has leftmost height 2 and rightmost height 2 — perfect, so count = `2^2 - 1` = 3. Right subtree (root 3) has leftmost height 2 but rightmost height 1 — not perfect, so recurse. Total = 3 + 2 + 1 = 6.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log² n)`** — height computation is `O(log n)` and there are `O(log n)` recursive calls.\n\n" +

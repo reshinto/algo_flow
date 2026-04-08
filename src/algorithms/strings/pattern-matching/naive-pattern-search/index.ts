@@ -12,6 +12,9 @@ import { naivePatternSearchEducational } from "./educational";
 import typescriptSource from "./sources/naive-pattern-search.ts?raw";
 import pythonSource from "./sources/naive-pattern-search.py?raw";
 import javaSource from "./sources/NaivePatternSearch.java?raw";
+import rustSource from "./sources/naive-pattern-search.rs?raw";
+import cppSource from "./sources/NaivePatternSearch.cpp?raw";
+import goSource from "./sources/naive-pattern-search.go?raw";
 
 function executeNaivePatternSearch(input: NaivePatternSearchInput): number {
   return naivePatternSearch(input.text, input.pattern) as number;
@@ -31,7 +34,7 @@ const naivePatternSearchDefinition: AlgorithmDefinition<NaivePatternSearchInput>
       worst: "O(nm)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "AABAACAADAABAABA", pattern: "AABA" },
   },
   execute: executeNaivePatternSearch,
@@ -41,6 +44,9 @@ const naivePatternSearchDefinition: AlgorithmDefinition<NaivePatternSearchInput>
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -19,7 +19,20 @@ export const buildFromPreorderInorderEducational: EducationalContent = {
     "Recurse left:  preorder=[2,1,3], inorder=[1,2,3] → root=2\n" +
     "Recurse right: preorder=[6,5,7], inorder=[5,6,7] → root=6\n" +
     "```\n\n" +
-    "Base case: an empty preorder or inorder slice returns `null`.",
+    "Base case: an empty preorder or inorder slice returns `null`.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)):::current --> B((2)):::visited\n" +
+    "  A --> C((6)):::visited\n" +
+    "  B --> D((1)):::active\n" +
+    "  B --> E((3)):::active\n" +
+    "  C --> F((5)):::active\n" +
+    "  C --> G((7)):::active\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Root 4 (cyan) comes from `preorder[0]`. Its inorder index 3 partitions the sequence: green nodes 2 and 6 become recursive subtree roots; amber leaves 1, 3, 5, 7 are base cases where the slice has one element.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)` naive, `O(n)` with hash map**\n\n" +

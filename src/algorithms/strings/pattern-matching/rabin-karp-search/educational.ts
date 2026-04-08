@@ -21,7 +21,20 @@ export const rabinKarpSearchEducational: EducationalContent = {
     "2. **Hash match** — hashes equal → verify characters one-by-one.\n" +
     "   - All characters match → pattern found at position `s`.\n" +
     "   - Any mismatch → **hash collision** (false positive), roll hash and continue.\n\n" +
-    "The rolling hash lets each window update happen in constant time, avoiding recomputing from scratch.",
+    "The rolling hash lets each window update happen in constant time, avoiding recomputing from scratch.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  PAT["pattern \\"ABC\\"\\nhash=42"]:::start\n' +
+    '  W0["window \\"XYZ\\"\\nhash=17 ≠ 42\\nskip"]:::current\n' +
+    '  W1["roll hash\\n→ \\"YZA\\"\\nhash=29 ≠ 42\\nskip"]:::current\n' +
+    '  W2["roll hash\\n→ \\"ABC\\"\\nhash=42 match!\\nverify chars"]:::current\n' +
+    '  FOUND["A=A B=B C=C ✓\\n→ found at offset 2"]:::matched\n' +
+    "  PAT --> W0 --> W1 --> W2 --> FOUND\n" +
+    "  classDef start fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef matched fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Hash mismatches let the window skip character-by-character comparison entirely; only when the rolling hash equals the pattern hash does a full character verification occur.",
 
   timeAndSpaceComplexity:
     "**Time Complexity**\n\n" +

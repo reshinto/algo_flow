@@ -10,6 +10,9 @@ import { kthSmallestSortedMatrixEducational } from "./educational";
 import typescriptSource from "./sources/kth-smallest-sorted-matrix.ts?raw";
 import pythonSource from "./sources/kth-smallest-sorted-matrix.py?raw";
 import javaSource from "./sources/KthSmallestSortedMatrix.java?raw";
+import rustSource from "./sources/kth-smallest-sorted-matrix.rs?raw";
+import cppSource from "./sources/KthSmallestSortedMatrix.cpp?raw";
+import goSource from "./sources/kth-smallest-sorted-matrix.go?raw";
 
 function executeKthSmallestSortedMatrix(input: KthSmallestSortedMatrixInput): number {
   return kthSmallestSortedMatrix(input.matrix, input.targetK) as number;
@@ -29,7 +32,7 @@ const kthSmallestSortedMatrixDefinition: AlgorithmDefinition<KthSmallestSortedMa
       worst: "O(n × log(max − min))",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [1, 5, 9],
@@ -46,6 +49,9 @@ const kthSmallestSortedMatrixDefinition: AlgorithmDefinition<KthSmallestSortedMa
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -14,6 +14,9 @@ import { dagShortestPathEducational } from "./educational";
 import typescriptSource from "./sources/dag-shortest-path.ts?raw";
 import pythonSource from "./sources/dag-shortest-path.py?raw";
 import javaSource from "./sources/DagShortestPath.java?raw";
+import rustSource from "./sources/dag-shortest-path.rs?raw";
+import cppSource from "./sources/DagShortestPath.cpp?raw";
+import goSource from "./sources/dag-shortest-path.go?raw";
 
 /** Pre-computed positions for 6 nodes arranged in a left-to-right DAG layout */
 const NODE_POSITIONS: Record<string, { x: number; y: number }> = {
@@ -81,7 +84,7 @@ const dagShortestPathDefinition: AlgorithmDefinition<DagShortestPathInput> = {
       worst: "O(V+E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: DagShortestPathInput) =>
@@ -92,6 +95,9 @@ const dagShortestPathDefinition: AlgorithmDefinition<DagShortestPathInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

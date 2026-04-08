@@ -13,6 +13,9 @@ import { fibonacciSearchEducational } from "./educational";
 import typescriptSource from "./sources/fibonacci-search.ts?raw";
 import pythonSource from "./sources/fibonacci-search.py?raw";
 import javaSource from "./sources/FibonacciSearch.java?raw";
+import rustSource from "./sources/fibonacci-search.rs?raw";
+import cppSource from "./sources/FibonacciSearch.cpp?raw";
+import goSource from "./sources/fibonacci-search.go?raw";
 
 const fibonacciSearchDefinition: AlgorithmDefinition<{
   sortedArray: number[];
@@ -31,7 +34,7 @@ const fibonacciSearchDefinition: AlgorithmDefinition<{
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [2, 5, 8, 12, 16, 23, 38, 56, 72, 91],
       targetValue: 38,
@@ -44,6 +47,9 @@ const fibonacciSearchDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

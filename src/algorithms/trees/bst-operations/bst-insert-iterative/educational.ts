@@ -8,7 +8,21 @@ export const bstInsertIterativeEducational: EducationalContent = {
     "1. Create the new node.\n" +
     "2. Walk from root: at each node, compare `insertValue` to decide left or right.\n" +
     "3. When the child slot is `null`, set it to the new node and stop.\n" +
-    "4. If the root is `null`, return the new node as the new root.",
+    "4. If the root is `null`, return the new node as the new root.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((20)) --> B((10))\n" +
+    "  A --> C((30))\n" +
+    "  B --> D((5))\n" +
+    "  B --> E((15))\n" +
+    "  C --> F((25))\n" +
+    "  C --> G((13))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "Inserting 13: pointer walks 20 (go left) → 10 (go right) → 15 (go left, slot is null). Node 13 is linked as the left child of 15. No call stack is needed — only the current and parent pointer variables.",
 
   timeAndSpaceComplexity:
     "**Time: `O(h)`** — single path to leaf.\n\n**Space: `O(1)`** — no call stack, only pointer variables.",

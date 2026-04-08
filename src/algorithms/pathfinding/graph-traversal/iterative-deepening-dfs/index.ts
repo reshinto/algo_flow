@@ -9,6 +9,9 @@ import { iterativeDeepeningDfsEducational } from "./educational";
 import typescriptSource from "./sources/iterative-deepening-dfs.ts?raw";
 import pythonSource from "./sources/iterative-deepening-dfs.py?raw";
 import javaSource from "./sources/IterativeDeepeningDfs.java?raw";
+import rustSource from "./sources/iterative-deepening-dfs.rs?raw";
+import cppSource from "./sources/IterativeDeepeningDfs.cpp?raw";
+import goSource from "./sources/iterative-deepening-dfs.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls.
  *  Uses custom close targets to prevent IDDFS exponential expansion O(b^d) crash.
@@ -97,7 +100,7 @@ const iterativeDeepeningDfsDefinition: AlgorithmDefinition<IddfsInput> = {
       worst: "O(b^d)",
     },
     spaceComplexity: "O(d)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [6, 10],
@@ -112,6 +115,9 @@ const iterativeDeepeningDfsDefinition: AlgorithmDefinition<IddfsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

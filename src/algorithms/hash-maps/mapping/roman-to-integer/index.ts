@@ -10,6 +10,9 @@ import { romanToIntegerEducational } from "./educational";
 import typescriptSource from "./sources/roman-to-integer.ts?raw";
 import pythonSource from "./sources/roman-to-integer.py?raw";
 import javaSource from "./sources/RomanToInteger.java?raw";
+import rustSource from "./sources/roman-to-integer.rs?raw";
+import cppSource from "./sources/RomanToInteger.cpp?raw";
+import goSource from "./sources/roman-to-integer.go?raw";
 
 function executeRomanToInteger(input: RomanToIntegerInput): number {
   return romanToInteger(input.text) as number;
@@ -29,7 +32,7 @@ const romanToIntegerDefinition: AlgorithmDefinition<RomanToIntegerInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "MCMXCIV" },
   },
   execute: executeRomanToInteger,
@@ -39,6 +42,9 @@ const romanToIntegerDefinition: AlgorithmDefinition<RomanToIntegerInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

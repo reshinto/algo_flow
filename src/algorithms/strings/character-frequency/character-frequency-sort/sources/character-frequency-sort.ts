@@ -3,7 +3,7 @@
 // Time: O(n) where n = length of text (bucket sort avoids O(n log n) comparison sort)
 // Space: O(n) — frequency map and output string both scale with input size
 
-export function characterFrequencySort(text: string): string {
+function characterFrequencySort(text: string): string {
   if (text.length === 0) return ""; // @step:initialize
 
   const frequencyMap = new Map<string, number>(); // @step:initialize

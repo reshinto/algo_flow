@@ -14,6 +14,9 @@ import { cocktailShakerSortEducational } from "./educational";
 import typescriptSource from "./sources/cocktail-shaker-sort.ts?raw";
 import pythonSource from "./sources/cocktail-shaker-sort.py?raw";
 import javaSource from "./sources/CocktailShakerSort.java?raw";
+import rustSource from "./sources/cocktail-shaker-sort.rs?raw";
+import cppSource from "./sources/CocktailShakerSort.cpp?raw";
+import goSource from "./sources/cocktail-shaker-sort.go?raw";
 
 const cocktailShakerSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const cocktailShakerSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: cocktailShakerSort,
@@ -39,6 +42,9 @@ const cocktailShakerSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

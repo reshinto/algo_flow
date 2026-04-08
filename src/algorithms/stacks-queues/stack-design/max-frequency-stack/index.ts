@@ -10,6 +10,9 @@ import { maxFrequencyStackEducational } from "./educational";
 import typescriptSource from "./sources/max-frequency-stack.ts?raw";
 import pythonSource from "./sources/max-frequency-stack.py?raw";
 import javaSource from "./sources/MaxFrequencyStack.java?raw";
+import rustSource from "./sources/max-frequency-stack.rs?raw";
+import cppSource from "./sources/MaxFrequencyStack.cpp?raw";
+import goSource from "./sources/max-frequency-stack.go?raw";
 
 function executeMaxFrequencyStack(input: MaxFrequencyStackInput): number[] {
   return maxFrequencyStack(input.values) as number[];
@@ -29,7 +32,7 @@ const maxFrequencyStackDefinition: AlgorithmDefinition<MaxFrequencyStackInput> =
       worst: "O(1)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { values: [5, 7, 5, 7, 4, 5] },
   },
   execute: executeMaxFrequencyStack,
@@ -39,6 +42,9 @@ const maxFrequencyStackDefinition: AlgorithmDefinition<MaxFrequencyStackInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

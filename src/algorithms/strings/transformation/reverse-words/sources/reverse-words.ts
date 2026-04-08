@@ -2,7 +2,7 @@
 // Trims leading/trailing whitespace and collapses multiple spaces between words.
 // Time: O(n)  Space: O(n)
 
-export function reverseWords(text: string): string {
+function reverseWords(text: string): string {
   const words = text.trim().split(/\s+/); // @step:initialize
 
   let leftIndex = 0; // @step:initialize

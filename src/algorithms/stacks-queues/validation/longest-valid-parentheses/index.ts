@@ -10,6 +10,9 @@ import { longestValidParenthesesEducational } from "./educational";
 import typescriptSource from "./sources/longest-valid-parentheses.ts?raw";
 import pythonSource from "./sources/longest-valid-parentheses.py?raw";
 import javaSource from "./sources/LongestValidParentheses.java?raw";
+import rustSource from "./sources/longest-valid-parentheses.rs?raw";
+import cppSource from "./sources/LongestValidParentheses.cpp?raw";
+import goSource from "./sources/longest-valid-parentheses.go?raw";
 
 function executeLongestValidParentheses(input: LongestValidParenthesesInput): number {
   return longestValidParentheses(input.inputString) as number;
@@ -29,7 +32,7 @@ const longestValidParenthesesDefinition: AlgorithmDefinition<LongestValidParenth
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { inputString: "(()())" },
   },
   execute: executeLongestValidParentheses,
@@ -39,6 +42,9 @@ const longestValidParenthesesDefinition: AlgorithmDefinition<LongestValidParenth
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

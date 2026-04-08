@@ -10,7 +10,18 @@ export const allRootToLeafPathsEducational: EducationalContent = {
     "1. Append the current node's value to the path string.\n" +
     "2. At a leaf, push the completed path string into the result array.\n" +
     "3. Recurse left and right with the updated path string.\n\n" +
-    "Since each recursive call creates a new string, there's no need to backtrack manually.",
+    "Since each recursive call creates a new string, there's no need to backtrack manually.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)):::root --> B((2)):::visited\n" +
+    "  A --> C((7)):::visited\n" +
+    "  B --> D((1)):::visited\n" +
+    "  B --> E((3)):::visited\n" +
+    "  C --> F((6)):::visited\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    'DFS visits 4 → 2 → 1 (leaf, records `"4->2->1"`), backtracks to 2 → 3 (leaf, records `"4->2->3"`), then 4 → 7 → 6 (leaf, records `"4->7->6"`). Result: three path strings.',
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n * h)`** — path string construction is `O(h)` per leaf, and there are `O(n)` nodes.\n\n" +

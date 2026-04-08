@@ -10,6 +10,9 @@ import { bstIteratorEducational } from "./educational";
 import typescriptSource from "./sources/bst-iterator.ts?raw";
 import pythonSource from "./sources/bst-iterator.py?raw";
 import javaSource from "./sources/BSTIterator.java?raw";
+import rustSource from "./sources/bst-iterator.rs?raw";
+import cppSource from "./sources/BSTIterator.cpp?raw";
+import goSource from "./sources/bst-iterator.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -105,13 +108,20 @@ const bstIteratorDefinition: AlgorithmDefinition<BstIteratorInput> = {
       "Stack-based BST iterator that yields values in sorted order via hasNext/next interface",
     timeComplexity: { best: "O(1)", average: "O(1)", worst: "O(h)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeBstIterator,
   generateSteps: generateBstIteratorSteps,
   educational: bstIteratorEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstIteratorDefinition);

@@ -10,6 +10,9 @@ import { heapifySingleNodeEducational } from "./educational";
 import typescriptSource from "./sources/heapify-single-node.ts?raw";
 import pythonSource from "./sources/heapify-single-node.py?raw";
 import javaSource from "./sources/HeapifySingleNode.java?raw";
+import rustSource from "./sources/heapify-single-node.rs?raw";
+import cppSource from "./sources/HeapifySingleNode.cpp?raw";
+import goSource from "./sources/heapify-single-node.go?raw";
 
 function executeHeapifySingleNode(input: HeapifySingleNodeInput): number[] {
   return heapifySingleNode(input.array, input.targetIndex) as number[];
@@ -29,7 +32,7 @@ const heapifySingleNodeDefinition: AlgorithmDefinition<HeapifySingleNodeInput> =
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [9, 1, 7, 2, 3, 8, 5, 6, 4], targetIndex: 0 },
   },
   execute: executeHeapifySingleNode,
@@ -39,6 +42,9 @@ const heapifySingleNodeDefinition: AlgorithmDefinition<HeapifySingleNodeInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

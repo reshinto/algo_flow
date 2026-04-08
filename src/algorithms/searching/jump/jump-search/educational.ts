@@ -18,7 +18,20 @@ export const jumpSearchEducational: EducationalContent = {
     "Jump 2: check index 5 (value 23) → 23 < 56, jump again\n" +
     "Jump 3: check index 8 (value 72) → 72 >= 56, STOP\n\n" +
     "Linear scan: indices 6, 7 → found 56 at index 7\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["idx=2\\nval=8 < 56"] -->|"jump +3"| B["idx=5\\nval=23 < 56"]\n' +
+    '  B -->|"jump +3"| C["idx=8\\nval=72 ≥ 56\\nSTOP"]\n' +
+    '  C -->|"linear scan back"| D["idx=6 → 38"]\n' +
+    '  D --> E["idx=7 → 56"]\n' +
+    '  E --> F["✓ Found at index 7"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Jump phase leaps forward in √n steps; once a block boundary exceeds the target, a short backward linear scan pinpoints the exact position.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(√n)`**\n\n" +

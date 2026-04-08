@@ -19,7 +19,17 @@ export const hashSearchEducational: EducationalContent = {
     "  hashMap = { 4→0, 2→1, 7→2, 1→3, 9→4, 3→5, 8→6, 5→7 }\n\n" +
     "Search phase:\n" +
     "  hashMap.get(9) → 4   ✓ found at index 4\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["Array\\n[4,2,7,1,9,3]"] -->|"build O(n)"| B["Hash Map\\n4→0, 2→1, 7→2\\n1→3, 9→4, 3→5"]\n' +
+    '  B -->|"get(9)"| C["Index 4\\nreturned"]\n' +
+    '  C --> D["✓ Found\\narray[4] = 9"]\n' +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "The build phase visits every element once to populate the map; the lookup phase is a single O(1) hash probe that returns the index directly — no scanning required.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)` build + `O(1)` lookup**\n\n" +

@@ -26,7 +26,23 @@ export const heapDeleteArbitraryEducational: EducationalContent = {
     "      7  9 8\n\n" +
     "6 > parent 1 → sift-down: compare 6 with children 8 — 6 is smallest, no swap needed.\n" +
     "Result: [1, 3, 6, 7, 9, 8]\n" +
-    "```",
+    "```\n\n" +
+    "### After Deleting Index 2: Replacement Node 6 Settled In-Place\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n1((1)) --> n3((3))\n" +
+    "    n1 --> n6((6))\n" +
+    "    n3 --> n7((7))\n" +
+    "    n3 --> n9((9))\n" +
+    "    n6 --> n8((8))\n" +
+    "    style n1 fill:#14532d,stroke:#22c55e\n" +
+    "    style n3 fill:#14532d,stroke:#22c55e\n" +
+    "    style n6 fill:#f59e0b,stroke:#d97706\n" +
+    "    style n7 fill:#14532d,stroke:#22c55e\n" +
+    "    style n9 fill:#14532d,stroke:#22c55e\n" +
+    "    style n8 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Amber node (6) is the replacement — it was moved from the last position into the deleted slot at index 2. A sift-down check confirmed it is already smaller than its only child (8), so no swap was needed. All green nodes are settled.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)`**\n\n" +

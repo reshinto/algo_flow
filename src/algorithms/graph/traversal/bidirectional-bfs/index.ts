@@ -15,6 +15,9 @@ import { bidirectionalBfsEducational } from "./educational";
 import typescriptSource from "./sources/bidirectional-bfs.ts?raw";
 import pythonSource from "./sources/bidirectional-bfs.py?raw";
 import javaSource from "./sources/BidirectionalBFS.java?raw";
+import rustSource from "./sources/bidirectional-bfs.rs?raw";
+import cppSource from "./sources/BidirectionalBFS.cpp?raw";
+import goSource from "./sources/bidirectional-bfs.go?raw";
 
 /** Pre-computed positions for 6 nodes arranged in a circle layout */
 const CIRCLE_RADIUS = 150;
@@ -90,7 +93,7 @@ const bidirectionalBfsDefinition: AlgorithmDefinition<BidirectionalBfsInput> = {
       worst: "O(V+E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: BidirectionalBfsInput) =>
@@ -101,6 +104,9 @@ const bidirectionalBfsDefinition: AlgorithmDefinition<BidirectionalBfsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

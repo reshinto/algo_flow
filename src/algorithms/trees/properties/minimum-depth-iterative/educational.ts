@@ -11,7 +11,18 @@ export const minimumDepthIterativeEducational: EducationalContent = {
     "2. Process each node from the queue:\n" +
     "   - If it is a leaf (no children), **immediately return the current depth**.\n" +
     "   - Otherwise, enqueue its children at depth + 1.\n\n" +
-    "The early return makes this approach significantly faster than the recursive version when the minimum depth leaf is shallow.",
+    "The early return makes this approach significantly faster than the recursive version when the minimum depth leaf is shallow.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((1)):::root --> B((2)):::current\n" +
+    "  A --> C((3)):::visited\n" +
+    "  C --> D((4)):::visited\n" +
+    "  C --> E((5)):::visited\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "BFS processes level 1 (node 1), then level 2. Node 2 is a leaf — returns depth 2 immediately without visiting nodes 4 or 5. Early exit saves processing the entire right subtree.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** worst case, but often much less in practice due to early termination.\n\n" +

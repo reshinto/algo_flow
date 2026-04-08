@@ -24,7 +24,20 @@ export const ternarySearchEducational: EducationalContent = {
     "Iteration 2: low=7, high=9, mid1=7, mid2=8\n" +
     "  array[7]=56, array[8]=72\n" +
     "  72 === array[8] → FOUND at index 8\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  A["low=0 high=9\\nmid1=3 mid2=6"] -->|"72 > arr[6]=38"| B["Right third\\nlow=7 high=9"]\n' +
+    '  A -->|"target < arr[3]"| L["Left third\\nhigh=mid1-1"]\n' +
+    '  A -->|"arr[3] ≤ target ≤ arr[6]"| M["Middle third\\nlow=mid1+1 high=mid2-1"]\n' +
+    '  B --> C["mid1=7 mid2=8\\narr[8]=72 = 72"]\n' +
+    '  C --> D["✓ Found at index 8"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Two midpoints divide the range into three regions each iteration; the target's relationship to both midpoints selects exactly one region to recurse into.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log₃ n)`**\n\n" +

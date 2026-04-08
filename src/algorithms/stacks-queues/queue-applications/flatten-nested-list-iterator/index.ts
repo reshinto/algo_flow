@@ -10,6 +10,9 @@ import { flattenNestedListIteratorEducational } from "./educational";
 import typescriptSource from "./sources/flatten-nested-list-iterator.ts?raw";
 import pythonSource from "./sources/flatten-nested-list-iterator.py?raw";
 import javaSource from "./sources/FlattenNestedListIterator.java?raw";
+import rustSource from "./sources/flatten-nested-list-iterator.rs?raw";
+import cppSource from "./sources/FlattenNestedListIterator.cpp?raw";
+import goSource from "./sources/flatten-nested-list-iterator.go?raw";
 
 function executeFlattenNestedListIterator(input: FlattenNestedListIteratorInput): number[] {
   return flattenNestedListIterator(input.nestedList) as number[];
@@ -29,7 +32,7 @@ const flattenNestedListIteratorDefinition: AlgorithmDefinition<FlattenNestedList
       worst: "O(n)",
     },
     spaceComplexity: "O(d)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nestedList: [[1, [2]], 3, [4, [5, 6]]] },
   },
   execute: executeFlattenNestedListIterator,
@@ -39,6 +42,9 @@ const flattenNestedListIteratorDefinition: AlgorithmDefinition<FlattenNestedList
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

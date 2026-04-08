@@ -1,7 +1,7 @@
 import java.util.*;
 
 // Bidirectional BFS — BFS from start and end simultaneously, meeting in the middle
-public class BidirectionalBfs {
+public class BidirectionalBfsGrid {
     public static Map<String, Object> bidirectionalBfs(int[][] grid, int[] start, int[] end) {
         int rowCount = grid.length; // @step:initialize
         int colCount = grid[0].length; // @step:initialize
@@ -49,7 +49,7 @@ public class BidirectionalBfs {
                     forwardQueue.add(new int[]{neighborRow, neighborCol}); // @step:open-node
 
                     if (backwardVisited[neighborRow][neighborCol]) {
-                        int[][] path = buildPath(forwardParent, backwardParent, new int[]{neighborRow, neighborCol});
+                        List<int[]> path = buildPath(forwardParent, backwardParent, new int[]{neighborRow, neighborCol});
                         Map<String, Object> result = new HashMap<>(); // @step:trace-path
                         result.put("path", path);
                         result.put("visited", allVisited);
@@ -77,7 +77,7 @@ public class BidirectionalBfs {
                     backwardQueue.add(new int[]{neighborRow, neighborCol}); // @step:open-node
 
                     if (forwardVisited[neighborRow][neighborCol]) {
-                        int[][] path = buildPath(forwardParent, backwardParent, new int[]{neighborRow, neighborCol});
+                        List<int[]> path = buildPath(forwardParent, backwardParent, new int[]{neighborRow, neighborCol});
                         Map<String, Object> result = new HashMap<>(); // @step:trace-path
                         result.put("path", path);
                         result.put("visited", allVisited);
@@ -88,12 +88,12 @@ public class BidirectionalBfs {
         }
 
         Map<String, Object> result = new HashMap<>(); // @step:complete
-        result.put("path", new int[0][]);
+        result.put("path", new ArrayList<int[]>());
         result.put("visited", allVisited);
         return result;
     }
 
-    private static int[][] buildPath(int[][][] forwardParent, int[][][] backwardParent, int[] meetingPoint) {
+    private static List<int[]> buildPath(int[][][] forwardParent, int[][][] backwardParent, int[] meetingPoint) {
         List<int[]> forwardPath = new ArrayList<>();
         int[] current = meetingPoint;
         while (current != null) {
@@ -109,6 +109,6 @@ public class BidirectionalBfs {
         }
 
         forwardPath.addAll(backwardPath);
-        return forwardPath.toArray(new int[0][]);
+        return forwardPath;
     }
 }

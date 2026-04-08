@@ -13,19 +13,23 @@ export const evaluateReversePolishEducational: EducationalContent = {
     "   - Push the result back onto the stack.\n" +
     "3. **End of tokens** → the single value remaining on the stack is the answer.\n\n" +
     '### Example trace on `["2", "1", "+", "3", "*"]`\n\n' +
-    "```\n" +
-    "token  action              stack\n" +
-    "2      push                [2]\n" +
-    "1      push                [2, 1]\n" +
-    "+      pop 1, pop 2        []\n" +
-    "       compute 2 + 1 = 3\n" +
-    "       push 3              [3]\n" +
-    "3      push                [3, 3]\n" +
-    "*      pop 3, pop 3        []\n" +
-    "       compute 3 * 3 = 9\n" +
-    "       push 9              [9]\n" +
-    "end    return stack[0] = 9\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph Tokens\n" +
+    '    T1["2"] --> T2["1"] --> T3["+"] --> T4["3"] --> T5["*"]\n' +
+    "    end\n" +
+    "    subgraph Stack Evolution\n" +
+    '    S1["[2]"] -->|push 1| S2["[2, 1]"]\n' +
+    '    S2 -->|"+ → pop both, push 3"| S3["[3]"]\n' +
+    '    S3 -->|push 3| S4["[3, 3]"]\n' +
+    '    S4 -->|"* → pop both, push 9"| S5["[9] → return 9"]\n' +
+    "    end\n" +
+    "    style T3 fill:#f59e0b,stroke:#d97706\n" +
+    "    style T5 fill:#f59e0b,stroke:#d97706\n" +
+    "    style S5 fill:#14532d,stroke:#22c55e\n" +
+    "    style S1 fill:#06b6d4,stroke:#0891b2\n" +
     "```\n\n" +
+    "Each number pushes; each operator pops two operands, computes, and pushes the result back — the final stack value is the answer.\n\n" +
     "Division truncates toward zero (matching LeetCode 150's requirement), so `-7 / 2 = -3`, not `-4`.",
 
   timeAndSpaceComplexity:

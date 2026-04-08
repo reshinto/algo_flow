@@ -10,6 +10,9 @@ import { bstRangeSumEducational } from "./educational";
 import typescriptSource from "./sources/bst-range-sum.ts?raw";
 import pythonSource from "./sources/bst-range-sum.py?raw";
 import javaSource from "./sources/BSTRangeSum.java?raw";
+import rustSource from "./sources/bst-range-sum.rs?raw";
+import cppSource from "./sources/BSTRangeSum.cpp?raw";
+import goSource from "./sources/bst-range-sum.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -104,13 +107,20 @@ const bstRangeSumDefinition: AlgorithmDefinition<BstRangeSumInput> = {
     description: "Recursive sum of all BST nodes with values within [low, high] using BST pruning",
     timeComplexity: { best: "O(log n)", average: "O(log n + k)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", lowValue: 2, highValue: 6 },
   },
   execute: executeBstRangeSum,
   generateSteps: generateBstRangeSumSteps,
   educational: bstRangeSumEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstRangeSumDefinition);

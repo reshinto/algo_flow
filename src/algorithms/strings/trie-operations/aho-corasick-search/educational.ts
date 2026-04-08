@@ -27,7 +27,26 @@ export const ahoCorasickSearchEducational: EducationalContent = {
     "1. Start at root. For each text character `c`:\n" +
     "   - While the current node has no child edge `c`, follow failure links.\n" +
     "   - If a child edge `c` exists, move to that child.\n" +
-    "   - Collect all output patterns at the current node (matches at this text position).",
+    "   - Collect all output patterns at the current node (matches at this text position).\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  R((root)) -->|h| H((h))\n" +
+    "  R -->|s| S((s))\n" +
+    "  H -->|e| HE((he ✓))\n" +
+    "  H -->|i| HI((hi ✓))\n" +
+    "  S -->|h| SH((sh))\n" +
+    "  SH -->|e| SHE((she ✓))\n" +
+    "  HE -.->|fail| S\n" +
+    "  SHE -.->|fail| HE\n" +
+    "  style R fill:#06b6d4,stroke:#0891b2\n" +
+    "  style HE fill:#14532d,stroke:#22c55e\n" +
+    "  style HI fill:#14532d,stroke:#22c55e\n" +
+    "  style SHE fill:#14532d,stroke:#22c55e\n" +
+    "  style H fill:#f59e0b,stroke:#d97706\n" +
+    "  style S fill:#f59e0b,stroke:#d97706\n" +
+    "  style SH fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Patterns `he`, `hi`, `she` are woven into a single trie. Dashed failure links let the automaton recover from a mismatch — `she` falling back to `he` means both patterns can be reported at the same text position.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + m + z)`**\n\n" +

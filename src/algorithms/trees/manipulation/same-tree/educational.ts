@@ -12,7 +12,29 @@ export const sameTreeEducational: EducationalContent = {
     "4. **Recurse left** — check if left subtrees are the same.\n" +
     "5. **Recurse right** — check if right subtrees are the same.\n" +
     "6. **Return** — `leftMatch && rightMatch`.\n\n" +
-    "The algorithm short-circuits on the first mismatch, so it runs faster in practice on dissimilar trees.",
+    "The algorithm short-circuits on the first mismatch, so it runs faster in practice on dissimilar trees.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  subgraph TreeB [Tree B — different]\n" +
+    "    P((4)) --> Q((2))\n" +
+    "    P --> R((9))\n" +
+    "    Q --> S((1))\n" +
+    "    Q --> T((3))\n" +
+    "  end\n" +
+    "  subgraph TreeA [Tree A]\n" +
+    "    A((4)) --> B((2))\n" +
+    "    A --> C((6))\n" +
+    "    B --> D((1))\n" +
+    "    B --> E((3))\n" +
+    "  end\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style P fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style R fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style S fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "Tree A and Tree B differ at the right child of the root (6 vs 9). The recursion short-circuits at that node and returns `false` without visiting deeper nodes.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(min(n, m))`** where `n` and `m` are the sizes of the two trees\n\n" +

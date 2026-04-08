@@ -21,6 +21,24 @@ export const taskSchedulerEducational: EducationalContent = {
     "2. At each time unit: release any cooling tasks whose wait has ended, then execute the highest-frequency ready task and push it to the cooldown queue with `availableAt = currentTime + cooldown + 1`.\n" +
     "3. Repeat until all tasks are exhausted.\n\n" +
     "### Example: `tasks = [A,A,A,B,B,B]`, `n = 2`\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '    subgraph Frame1["Frame 1 (slots 1-3)"]\n' +
+    '        T1(["A"]) --> T2(["B"]) --> T3(["idle"])\n' +
+    "    end\n" +
+    '    subgraph Frame2["Frame 2 (slots 4-6)"]\n' +
+    '        T4(["A"]) --> T5(["B"]) --> T6(["idle"])\n' +
+    "    end\n" +
+    '    subgraph Frame3["Frame 3 (slots 7-8, partial)"]\n' +
+    '        T7(["A"]) --> T8(["B"])\n' +
+    "    end\n" +
+    "    Frame1 --> Frame2 --> Frame3\n" +
+    "    style T1 fill:#f59e0b,stroke:#d97706\n" +
+    "    style T4 fill:#f59e0b,stroke:#d97706\n" +
+    "    style T7 fill:#14532d,stroke:#22c55e\n" +
+    "    style T8 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each frame is `cooldown + 1 = 3` slots wide. The last frame is partial — it only needs one slot per max-frequency task (`maxFreqCount = 2`), giving total length `(3-1)×3 + 2 = 8`.\n\n" +
     "```\n" +
     "freqA = 3, freqB = 3  →  maxFreq = 3, maxFreqCount = 2\n" +
     "formula = (3-1) × (2+1) + 2 = 6 + 2 = 8\n" +

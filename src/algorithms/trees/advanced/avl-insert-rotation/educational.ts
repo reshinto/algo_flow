@@ -14,7 +14,19 @@ export const avlInsertRotationEducational: EducationalContent = {
     "| **RR** | Right-heavy, inserted in right subtree | Single left rotation |\n" +
     "| **LR** | Left-heavy, inserted in left's right subtree | Left then right rotation |\n" +
     "| **RL** | Right-heavy, inserted in right's left subtree | Right then left rotation |\n\n" +
-    "After each rotation, heights are recalculated and the tree is balanced again.",
+    "After each rotation, heights are recalculated and the tree is balanced again.\n\n" +
+    "**RR rotation example** — inserting 30 into [10, 20] triggers a left rotation on node 10:\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((10)):::current --> B((20)):::active\n" +
+    "  B --> C((30)):::visited\n" +
+    "  D((20)):::visited --> E((10)):::active\n" +
+    "  D --> F((30)):::visited\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Left side shows the unbalanced state (balance factor = −2 at node 10); right side shows the tree after a single left rotation restoring balance.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)` per insertion**\n\n" +

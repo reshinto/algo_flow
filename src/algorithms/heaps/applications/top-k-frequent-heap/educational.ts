@@ -24,7 +24,15 @@ export const topKFrequentHeapEducational: EducationalContent = {
     "  heap = [(3,1),(4,3)]\n" +
     "Insert 4 (freq 1): 1 ≤ root(3) → discard\n\n" +
     "Result: [1, 3]  (elements with freq 3 and 4)\n" +
-    "```",
+    "```\n\n" +
+    "### Min-Heap of Size k=2 After Processing All Elements\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '    root("(freq=3, val=1)") --> child("(freq=4, val=3)")\n' +
+    "    style root fill:#06b6d4,stroke:#0891b2\n" +
+    "    style child fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The root (cyan) is the minimum-frequency keeper — any new element with frequency ≤ 3 is discarded. The settled child (green) has frequency 4 and is safely in the top-2.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log k)`**\n\n" +

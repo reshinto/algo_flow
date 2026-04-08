@@ -26,7 +26,21 @@ export const buildMinHeapEducational: EducationalContent = {
     "         / \\\n" +
     "        9   5\n" +
     "```\n\n" +
-    "Array form: `[1, 3, 7, 9, 5]` — every parent ≤ its children.",
+    "Array form: `[1, 3, 7, 9, 5]` — every parent ≤ its children.\n\n" +
+    "### Final Min-Heap Structure\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n1((1)) --> n3((3))\n" +
+    "    n1 --> n7((7))\n" +
+    "    n3 --> n9((9))\n" +
+    "    n3 --> n5((5))\n" +
+    "    style n1 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n3 fill:#14532d,stroke:#22c55e\n" +
+    "    style n7 fill:#14532d,stroke:#22c55e\n" +
+    "    style n9 fill:#14532d,stroke:#22c55e\n" +
+    "    style n5 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The cyan root (1) holds the global minimum. All green nodes are settled — sift-down swapped 9 and 5 downward while 1 and 3 rose to satisfy the min-heap property.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

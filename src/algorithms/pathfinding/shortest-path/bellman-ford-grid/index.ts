@@ -9,6 +9,9 @@ import { bellmanFordGridEducational } from "./educational";
 import typescriptSource from "./sources/bellman-ford-grid.ts?raw";
 import pythonSource from "./sources/bellman-ford-grid.py?raw";
 import javaSource from "./sources/BellmanFordGrid.java?raw";
+import rustSource from "./sources/bellman-ford-grid.rs?raw";
+import cppSource from "./sources/BellmanFordGrid.cpp?raw";
+import goSource from "./sources/bellman-ford-grid.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -90,7 +93,7 @@ const bellmanFordGridDefinition: AlgorithmDefinition<BellmanFordInput> = {
       worst: "O(V²)",
     },
     spaceComplexity: "O(V + E)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -105,6 +108,9 @@ const bellmanFordGridDefinition: AlgorithmDefinition<BellmanFordInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

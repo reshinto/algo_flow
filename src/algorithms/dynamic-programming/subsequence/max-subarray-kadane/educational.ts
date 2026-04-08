@@ -20,7 +20,20 @@ export const maxSubarrayKadaneEducational: EducationalContent = {
     "Array: -2   1  -3   4  -1   2   1  -5   4\n" +
     "dp:    -2   1  -2   4   3   5   6   1   5\n" +
     "```\n\n" +
-    "Global maximum = `dp[6] = 6`, produced by the subarray `[4, -1, 2, 1]`.",
+    "Global maximum = `dp[6] = 6`, produced by the subarray `[4, -1, 2, 1]`.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["dp[0]=-2\\n(restart at -2)"]:::base\n' +
+    '  B["dp[1]=1\\n(restart at 1)"]:::cached\n' +
+    '  C["dp[3]=4\\n(restart at 4)"]:::cached\n' +
+    '  D["dp[5]=5\\n(extend: 4-1+2)"]:::cached\n' +
+    '  E["dp[6]=6\\n(extend: 5+1) ✓"]:::current\n' +
+    "  A --> B --> C --> D --> E\n" +
+    "  classDef base fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef cached fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "At each step the algorithm picks the larger of `array[i]` (restart) and `dp[i-1] + array[i]` (extend) — negative prefixes are abandoned, positive runs accumulate.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

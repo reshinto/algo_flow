@@ -20,7 +20,22 @@ export const groupAnagramsEducational: EducationalContent = {
     "nat    ant          append → { ant: ['tan','nat'] }\n" +
     "bat    abt          insert { abt: ['bat'] }\n" +
     "```\n\n" +
-    "Result: `[['eat','tea','ate'], ['tan','nat'], ['bat']]`",
+    "Result: `[['eat','tea','ate'], ['tan','nat'], ['bat']]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "  A[\"'eat'\"] -->|sort| B[\"key: 'aet'\"]\n" +
+    "  C[\"'tea'\"] -->|sort| B\n" +
+    "  D[\"'ate'\"] -->|sort| B\n" +
+    "  B -->|group| E[\"['eat','tea','ate']\"]\n" +
+    "  F[\"'tan'\"] -->|sort| G[\"key: 'ant'\"]\n" +
+    "  H[\"'nat'\"] -->|sort| G\n" +
+    "  G -->|group| I[\"['tan','nat']\"]\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style I fill:#14532d,stroke:#22c55e\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style F fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Sorting each word produces a canonical key — all anagrams share the same key and land in the same group.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n · k log k)`**\n\n" +

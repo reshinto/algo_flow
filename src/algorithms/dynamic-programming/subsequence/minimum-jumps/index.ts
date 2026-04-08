@@ -9,6 +9,9 @@ import { minimumJumpsEducational } from "./educational";
 import typescriptSource from "./sources/minimum-jumps.ts?raw";
 import pythonSource from "./sources/minimum-jumps.py?raw";
 import javaSource from "./sources/MinimumJumps.java?raw";
+import rustSource from "./sources/minimum-jumps.rs?raw";
+import cppSource from "./sources/MinimumJumps.cpp?raw";
+import goSource from "./sources/minimum-jumps.go?raw";
 
 interface MinimumJumpsInput {
   jumps: number[];
@@ -28,7 +31,7 @@ const minimumJumpsDefinition: AlgorithmDefinition<MinimumJumpsInput> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { jumps: [2, 3, 1, 1, 4] },
   },
   execute: (input: MinimumJumpsInput) => minimumJumps(input.jumps),
@@ -38,6 +41,9 @@ const minimumJumpsDefinition: AlgorithmDefinition<MinimumJumpsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

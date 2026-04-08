@@ -22,7 +22,20 @@ export const fibonacciSearchEducational: EducationalContent = {
     "Step 3: compareIndex = min(4+1, 9) = 5 → value 23 < 38 → advance offset to 5\n" +
     "        fibM=2, fibM1=1, fibM2=1\n" +
     "Step 4: compareIndex = min(5+1, 9) = 6 → value 38 === 38 → FOUND at index 6\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  S["Start\\noffset=-1\\nfibM=13"] -->|"idx=4, val=16 < 38"| B["Advance offset→4\\nfibM=8, fibM2=3"]\n' +
+    '  B -->|"idx=7, val=56 > 38"| C["Shrink left\\nfibM=3, fibM2=1"]\n' +
+    '  C -->|"idx=5, val=23 < 38"| D["Advance offset→5\\nfibM=2, fibM2=1"]\n' +
+    '  D -->|"idx=6, val=38 = 38"| E["✓ Found at index 6"]\n' +
+    "  style S fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each step shifts two Fibonacci numbers down (advance) or one (shrink), narrowing the window without ever computing a division.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)`**\n\n" +

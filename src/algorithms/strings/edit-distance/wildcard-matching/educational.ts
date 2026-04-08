@@ -25,7 +25,26 @@ export const wildcardMatchingEducational: EducationalContent = {
     "else:\n" +
     "    dp[rowIdx][colIdx] = false\n" +
     "```\n\n" +
-    "**3. Result:** `dp[textLength][patternLength]` is `true` if the entire text matches the entire pattern.",
+    "**3. Result:** `dp[textLength][patternLength]` is `true` if the entire text matches the entire pattern.\n\n" +
+    '### Example: Matching `"adceb"` against pattern `"*a*b"`\n\n' +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    P1["*\\n(match empty)"] --> P2["a\\n(match a)"] --> P3["*\\n(match dce)"] --> P4["b\\n(match b)"]\n' +
+    '    T1["(empty)"] --> T2["a"] --> T3["dce"] --> T4["b"]\n' +
+    "    P1 -.matches.- T1\n" +
+    "    P2 -.matches.- T2\n" +
+    "    P3 -.matches.- T3\n" +
+    "    P4 -.matches.- T4\n" +
+    "    style P1 fill:#f59e0b,stroke:#d97706\n" +
+    "    style T1 fill:#f59e0b,stroke:#d97706\n" +
+    "    style P2 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style T2 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style P3 fill:#f59e0b,stroke:#d97706\n" +
+    "    style T3 fill:#f59e0b,stroke:#d97706\n" +
+    "    style P4 fill:#14532d,stroke:#22c55e\n" +
+    "    style T4 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The first `*` (amber) matches zero characters. `a` (cyan) matches the literal `a`. The second `*` (amber) matches `dce`. `b` (green) matches the final character — `dp[5][4] = true`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × m)`**\n\n" +

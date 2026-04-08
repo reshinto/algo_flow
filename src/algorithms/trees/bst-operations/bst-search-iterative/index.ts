@@ -10,6 +10,9 @@ import { bstSearchIterativeEducational } from "./educational";
 import typescriptSource from "./sources/bst-search-iterative.ts?raw";
 import pythonSource from "./sources/bst-search-iterative.py?raw";
 import javaSource from "./sources/BSTSearchIterative.java?raw";
+import rustSource from "./sources/bst-search-iterative.rs?raw";
+import cppSource from "./sources/BSTSearchIterative.cpp?raw";
+import goSource from "./sources/bst-search-iterative.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -105,13 +108,20 @@ const bstSearchIterativeDefinition: AlgorithmDefinition<BstSearchIterativeInput>
     description: "Iterative binary search using a while loop: compare and move left or right",
     timeComplexity: { best: "O(log n)", average: "O(log n)", worst: "O(n)" },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", targetValue: 5 },
   },
   execute: executeBstSearchIterative,
   generateSteps: generateBstSearchIterativeSteps,
   educational: bstSearchIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstSearchIterativeDefinition);

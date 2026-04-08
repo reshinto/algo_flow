@@ -15,5 +15,3 @@ function longestSubstringWithoutRepeating(text: string): number {
   }
   return maxLength; // @step:complete
 }
-
-export { longestSubstringWithoutRepeating };

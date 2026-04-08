@@ -9,6 +9,9 @@ import { minCostClimbingStairsTabulationEducational } from "./educational";
 import typescriptSource from "./sources/min-cost-climbing-stairs-tabulation.ts?raw";
 import pythonSource from "./sources/min-cost-climbing-stairs-tabulation.py?raw";
 import javaSource from "./sources/MinCostClimbingStairsTabulation.java?raw";
+import rustSource from "./sources/min-cost-climbing-stairs-tabulation.rs?raw";
+import cppSource from "./sources/MinCostClimbingStairsTabulation.cpp?raw";
+import goSource from "./sources/min-cost-climbing-stairs-tabulation.go?raw";
 
 interface MinCostStairsInput {
   costs: number[];
@@ -28,7 +31,7 @@ const minCostClimbingStairsTabulationDefinition: AlgorithmDefinition<MinCostStai
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { costs: [10, 15, 20, 5, 25, 10] },
   },
   execute: (input: MinCostStairsInput) => minCostClimbingStairsTabulation(input.costs),
@@ -38,6 +41,9 @@ const minCostClimbingStairsTabulationDefinition: AlgorithmDefinition<MinCostStai
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

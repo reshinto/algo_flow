@@ -10,6 +10,9 @@ import { bstFloorCeilEducational } from "./educational";
 import typescriptSource from "./sources/bst-floor-ceil.ts?raw";
 import pythonSource from "./sources/bst-floor-ceil.py?raw";
 import javaSource from "./sources/BSTFloorCeil.java?raw";
+import rustSource from "./sources/bst-floor-ceil.rs?raw";
+import cppSource from "./sources/BSTFloorCeil.cpp?raw";
+import goSource from "./sources/bst-floor-ceil.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -108,13 +111,20 @@ const bstFloorCeilDefinition: AlgorithmDefinition<BstFloorCeilInput> = {
       "Find largest value ≤ target (floor) and smallest value ≥ target (ceil) using recursion",
     timeComplexity: { best: "O(log n)", average: "O(log n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", targetValue: 4 },
   },
   execute: executeBstFloorCeil,
   generateSteps: generateBstFloorCeilSteps,
   educational: bstFloorCeilEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstFloorCeilDefinition);

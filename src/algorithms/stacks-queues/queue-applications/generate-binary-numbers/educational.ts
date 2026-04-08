@@ -14,15 +14,17 @@ export const generateBinaryNumbersEducational: EducationalContent = {
     "   - **Enqueue** `current + '1'` (right child).\n" +
     "3. **Return** the result array after N iterations.\n\n" +
     "### Example trace for N = 5\n\n" +
-    "```\n" +
-    "Step  Dequeue  Enqueue        Queue after\n" +
-    "0     '1'      '10', '11'     ['10', '11']\n" +
-    "1     '10'     '100', '101'   ['11', '100', '101']\n" +
-    "2     '11'     '110', '111'   ['100', '101', '110', '111']\n" +
-    "3     '100'    '1000', '1001' ['101', '110', '111', '1000', '1001']\n" +
-    "4     '101'    '1010', '1011' ['110', '111', '1000', '1001', '1010', '1011']\n" +
-    "Result: ['1', '10', '11', '100', '101']\n" +
-    "```",
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    "    R([\"queue: ['1']\"]) -->|\"dequeue '1'\"| L1([\"enqueue '10','11'\"])\n" +
+    "    L1 -->|\"dequeue '10'\"| L2([\"enqueue '100','101'\\nqueue: ['11','100','101']\"])\n" +
+    "    L2 -->|\"dequeue '11'\"| L3([\"enqueue '110','111'\\nqueue: ['100','101','110','111']\"])\n" +
+    "    L3 -->|\"dequeue '100','101'\"| L4([\"result: ['1','10','11','100','101']\"])\n" +
+    "    style R fill:#06b6d4,stroke:#0891b2\n" +
+    "    style L2 fill:#f59e0b,stroke:#d97706\n" +
+    "    style L4 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each dequeued string spawns two children by appending `'0'` and `'1'`, producing BFS-order binary strings without any division or bit-manipulation.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

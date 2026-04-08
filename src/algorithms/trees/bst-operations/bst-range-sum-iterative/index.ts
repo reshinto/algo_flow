@@ -10,6 +10,9 @@ import { bstRangeSumIterativeEducational } from "./educational";
 import typescriptSource from "./sources/bst-range-sum-iterative.ts?raw";
 import pythonSource from "./sources/bst-range-sum-iterative.py?raw";
 import javaSource from "./sources/BSTRangeSumIterative.java?raw";
+import rustSource from "./sources/bst-range-sum-iterative.rs?raw";
+import cppSource from "./sources/BSTRangeSumIterative.cpp?raw";
+import goSource from "./sources/bst-range-sum-iterative.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -105,13 +108,20 @@ const bstRangeSumIterativeDefinition: AlgorithmDefinition<BstRangeSumIterativeIn
       "Stack-based DFS to sum all BST nodes in [low, high], skipping out-of-range subtrees",
     timeComplexity: { best: "O(log n)", average: "O(log n + k)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", lowValue: 2, highValue: 6 },
   },
   execute: executeBstRangeSumIterative,
   generateSteps: generateBstRangeSumIterativeSteps,
   educational: bstRangeSumIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstRangeSumIterativeDefinition);

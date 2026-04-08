@@ -10,6 +10,9 @@ import { bstRecoverSwappedEducational } from "./educational";
 import typescriptSource from "./sources/bst-recover-swapped.ts?raw";
 import pythonSource from "./sources/bst-recover-swapped.py?raw";
 import javaSource from "./sources/BSTRecoverSwapped.java?raw";
+import rustSource from "./sources/bst-recover-swapped.rs?raw";
+import cppSource from "./sources/BSTRecoverSwapped.cpp?raw";
+import goSource from "./sources/bst-recover-swapped.go?raw";
 
 /** Build the default BST with nodes 3 and 7 swapped (violating BST property) */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const bstRecoverSwappedDefinition: AlgorithmDefinition<BstRecoverSwappedInput> =
       "In-order traversal detects two nodes that violate BST order; swapping their values restores the tree",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeBstRecoverSwapped,
   generateSteps: generateBstRecoverSwappedSteps,
   educational: bstRecoverSwappedEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstRecoverSwappedDefinition);

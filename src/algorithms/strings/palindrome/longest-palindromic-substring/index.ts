@@ -12,6 +12,9 @@ import { longestPalindromicSubstringEducational } from "./educational";
 import typescriptSource from "./sources/longest-palindromic-substring.ts?raw";
 import pythonSource from "./sources/longest-palindromic-substring.py?raw";
 import javaSource from "./sources/LongestPalindromicSubstring.java?raw";
+import rustSource from "./sources/longest-palindromic-substring.rs?raw";
+import cppSource from "./sources/LongestPalindromicSubstring.cpp?raw";
+import goSource from "./sources/longest-palindromic-substring.go?raw";
 
 function executeLongestPalindromicSubstring(input: LongestPalindromicSubstringInput): string {
   return longestPalindromicSubstring(input.text) as string;
@@ -32,7 +35,7 @@ const longestPalindromicSubstringDefinition: AlgorithmDefinition<LongestPalindro
         worst: "O(n²)",
       },
       spaceComplexity: "O(1)",
-      supportedLanguages: ["typescript", "python", "java"],
+      supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
       defaultInput: { text: "babad" },
     },
     execute: executeLongestPalindromicSubstring,
@@ -42,6 +45,9 @@ const longestPalindromicSubstringDefinition: AlgorithmDefinition<LongestPalindro
       typescript: typescriptSource,
       python: pythonSource,
       java: javaSource,
+      rust: rustSource,
+      cpp: cppSource,
+      go: goSource,
     },
   };
 

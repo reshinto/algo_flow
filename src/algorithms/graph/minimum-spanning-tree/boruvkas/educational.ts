@@ -18,7 +18,21 @@ export const boruvkasEducational: EducationalContent = {
     "Round 2: Fewer, larger components → merge again\n" +
     "Round 3: Single component → done\n" +
     "```\n\n" +
-    "Each round at least halves the number of components, guaranteeing `O(log V)` rounds total.",
+    "Each round at least halves the number of components, guaranteeing `O(log V)` rounds total.\n\n" +
+    "### Borůvka's Round 1: Each Component Picks Its Cheapest Edge\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '  A((A)) -->|"1"| B((B))\n' +
+    '  A((A)) -->|"4"| C((C))\n' +
+    '  B((B)) -->|"3"| C((C))\n' +
+    '  B((B)) -->|"2"| D((D))\n' +
+    '  C((C)) -->|"5"| D((D))\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Round 1: A picks edge A→B (weight 1, cyan), B picks B→D (weight 2, amber). After merging, components {A,B,D} and {C} remain. Round 2 adds the cheapest inter-component edge to complete the MST.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(E log V)`**\n\n" +

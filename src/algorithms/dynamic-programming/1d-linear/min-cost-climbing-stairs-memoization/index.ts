@@ -9,6 +9,9 @@ import { minCostClimbingStairsMemoizationEducational } from "./educational";
 import typescriptSource from "./sources/min-cost-climbing-stairs-memoization.ts?raw";
 import pythonSource from "./sources/min-cost-climbing-stairs-memoization.py?raw";
 import javaSource from "./sources/MinCostClimbingStairsMemoization.java?raw";
+import rustSource from "./sources/min-cost-climbing-stairs-memoization.rs?raw";
+import cppSource from "./sources/MinCostClimbingStairsMemoization.cpp?raw";
+import goSource from "./sources/min-cost-climbing-stairs-memoization.go?raw";
 
 export interface MinCostStairsInput {
   costs: number[];
@@ -28,7 +31,7 @@ const minCostClimbingStairsMemoizationDefinition: AlgorithmDefinition<MinCostSta
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { costs: [10, 15, 20, 5, 25, 10] },
   },
   execute: (input: MinCostStairsInput) => minCostClimbingStairsMemoization(input.costs),
@@ -38,6 +41,9 @@ const minCostClimbingStairsMemoizationDefinition: AlgorithmDefinition<MinCostSta
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

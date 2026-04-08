@@ -15,7 +15,17 @@ export const firstUniqueCharacterEducational: EducationalContent = {
     "Pass 1 — counts: { l:1, e:3, t:1, c:1, o:1, d:1 }\n" +
     "Pass 2 — index 0 'l' → count 1 → return 0\n" +
     "```\n\n" +
-    "The second pass preserves order, guaranteeing the *first* unique is returned rather than any unique.",
+    "The second pass preserves order, guaranteeing the *first* unique is returned rather than any unique.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["\'leetcode\'"]:::input --> B["Pass 1: {l:1, e:3, t:1, c:1, o:1, d:1}"]\n' +
+    "  B --> C[\"index 0 'l' → count 1\"]:::checking\n" +
+    '  C --> D["return index 0"]:::found\n' +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef checking fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef found fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Pass 1 builds the full frequency map; Pass 2 scans left to right and stops at the first character whose count is exactly 1.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

@@ -10,6 +10,9 @@ import { distributeCoinsEducational } from "./educational";
 import typescriptSource from "./sources/distribute-coins.ts?raw";
 import pythonSource from "./sources/distribute-coins.py?raw";
 import javaSource from "./sources/DistributeCoins.java?raw";
+import rustSource from "./sources/distribute-coins.rs?raw";
+import cppSource from "./sources/DistributeCoins.cpp?raw";
+import goSource from "./sources/distribute-coins.go?raw";
 
 /**
  * 7-node tree where node values represent coin counts.
@@ -114,13 +117,20 @@ const distributeCoinsDefinition: AlgorithmDefinition<DistributeCoinsInput> = {
       "DFS that computes the minimum number of moves to give every node exactly one coin by tracking the excess or deficit flowing through each edge",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n1" },
   },
   execute: executeDistributeCoins,
   generateSteps: generateDistributeCoinsSteps,
   educational: distributeCoinsEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(distributeCoinsDefinition);

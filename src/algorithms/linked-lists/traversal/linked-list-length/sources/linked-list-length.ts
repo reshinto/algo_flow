@@ -4,7 +4,7 @@ interface ListNode {
   next: ListNode | null;
 }
 
-export function linkedListLength(head: ListNode | null): number {
+function linkedListLength(head: ListNode | null): number {
   let count = 0; // @step:initialize
   let current: ListNode | null = head; // @step:initialize
   while (current !== null) {

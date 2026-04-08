@@ -29,7 +29,22 @@ export const unionFindEducational: EducationalContent = {
     "union(0,1):    {0,1} {2} {3} {4} {5} {6} {7}  — parent[1] = 0\n" +
     "union(2,3):    {0,1} {2,3} {4} {5} {6} {7}    — parent[3] = 2\n" +
     "union(0,2):    {0,1,2,3} {4} {5} {6} {7}      — parent[2] = 0\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '  A["0 (root)"]:::root\n' +
+    '  B["1"]:::child\n' +
+    '  C["2"]:::child\n' +
+    '  D["3"]:::child\n' +
+    '  E["4"]:::start\n' +
+    "  B --> A\n" +
+    "  C --> A\n" +
+    "  D --> A\n" +
+    "  classDef root fill:#14532d,stroke:#22c55e\n" +
+    "  classDef child fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef start fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "After `union(0,2)`, path compression flattens the tree so nodes 1, 2, and 3 all point directly to root 0. Node 4 remains its own independent component.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: O(α(n)) amortized per operation**\n\n" +

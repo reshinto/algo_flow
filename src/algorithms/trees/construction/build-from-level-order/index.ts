@@ -10,6 +10,9 @@ import { buildFromLevelOrderEducational } from "./educational";
 import typescriptSource from "./sources/build-from-level-order.ts?raw";
 import pythonSource from "./sources/build-from-level-order.py?raw";
 import javaSource from "./sources/BuildFromLevelOrder.java?raw";
+import rustSource from "./sources/build-from-level-order.rs?raw";
+import cppSource from "./sources/BuildFromLevelOrder.cpp?raw";
+import goSource from "./sources/build-from-level-order.go?raw";
 
 function executeBuildFromLevelOrder(input: BuildFromLevelOrderInput): number | null {
   const result = buildFromLevelOrder(input.levelOrder) as { value: number } | null;
@@ -30,7 +33,7 @@ const buildFromLevelOrderDefinition: AlgorithmDefinition<BuildFromLevelOrderInpu
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       levelOrder: [4, 2, 6, 1, 3, 5, 7],
     },
@@ -42,6 +45,9 @@ const buildFromLevelOrderDefinition: AlgorithmDefinition<BuildFromLevelOrderInpu
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

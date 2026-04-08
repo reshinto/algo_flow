@@ -26,7 +26,34 @@ export const setComplementEducational: EducationalContent = {
     "  U[5]=6  → in A     → skip\n" +
     "  U[6]=7  → not in A → result: [1, 3, 5, 7]\n" +
     "  U[7]=8  → not in A → result: [1, 3, 5, 7, 8]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph A["Set A"]\n' +
+    '    a1["2"]:::input\n' +
+    '    a2["4"]:::input\n' +
+    '    a3["6"]:::input\n' +
+    "  end\n" +
+    '  subgraph U["Universal Set U"]\n' +
+    '    u1["1"]:::start\n' +
+    '    u2["2"]:::excluded\n' +
+    '    u3["3"]:::start\n' +
+    '    u4["4"]:::excluded\n' +
+    '    u5["5"]:::start\n' +
+    "  end\n" +
+    '  subgraph R["Complement U \\\\ A"]\n' +
+    '    r1["1"]:::result\n' +
+    '    r2["3"]:::result\n' +
+    '    r3["5"]:::result\n' +
+    "  end\n" +
+    "  U --> R\n" +
+    "  A -. skip .-> R\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef start fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef excluded fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Elements in A (amber) are skipped; elements in U but not in A (cyan input) pass through to the complement result (green).",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + u)`**\n\n" +

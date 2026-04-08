@@ -22,8 +22,7 @@ public class BlockMergeSort {
             List<Integer> nextBoundaries = new ArrayList<>(); // @step:merge
             nextBoundaries.add(0); // @step:merge
 
-            int boundaryIndex = 0;
-            while (boundaryIndex + 2 <= runBoundaries.size() - 1) {
+            for (int boundaryIndex = 0; boundaryIndex + 2 <= runBoundaries.size() - 1; boundaryIndex += 2) {
                 int leftStart = runBoundaries.get(boundaryIndex); // @step:merge
                 int rightStart = runBoundaries.get(boundaryIndex + 1); // @step:merge
                 int mergeEnd = runBoundaries.get(boundaryIndex + 2); // @step:merge
@@ -47,17 +46,13 @@ public class BlockMergeSort {
                     }
                 }
 
-                if (boundaryIndex + 3 <= runBoundaries.size() - 1) {
-                    nextBoundaries.add(mergeEnd); // @step:merge
-                }
-                boundaryIndex += 2;
+                nextBoundaries.add(mergeEnd); // @step:merge
             }
 
-            // If there is an odd run left, carry it over unchanged
+            // If there is an odd run left, carry its end boundary over unchanged
             if ((runBoundaries.size() - 1) % 2 == 1) { // @step:merge
-                nextBoundaries.add(runBoundaries.get(runBoundaries.size() - 2)); // @step:merge
+                nextBoundaries.add(arrayLength); // @step:merge
             }
-            nextBoundaries.add(arrayLength); // @step:merge
 
             runBoundaries = nextBoundaries; // @step:merge
 

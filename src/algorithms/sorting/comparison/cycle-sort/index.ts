@@ -14,6 +14,9 @@ import { cycleSortEducational } from "./educational";
 import typescriptSource from "./sources/cycle-sort.ts?raw";
 import pythonSource from "./sources/cycle-sort.py?raw";
 import javaSource from "./sources/CycleSort.java?raw";
+import rustSource from "./sources/cycle-sort.rs?raw";
+import cppSource from "./sources/CycleSort.cpp?raw";
+import goSource from "./sources/cycle-sort.go?raw";
 
 const cycleSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const cycleSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [3, 1, 5, 2, 4, 6, 0],
   },
   execute: cycleSort,
@@ -39,6 +42,9 @@ const cycleSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

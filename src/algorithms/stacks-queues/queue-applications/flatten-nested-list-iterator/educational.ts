@@ -13,19 +13,18 @@ export const flattenNestedListIteratorEducational: EducationalContent = {
     "   - If it is an **array**, push its elements onto the stack in reverse order so its first element becomes the new top.\n" +
     "3. **Return** the result array.\n\n" +
     "### Example trace for `[[1,[2]],3,[4,[5,6]]]`\n\n" +
-    "```\n" +
-    "Initial stack (top → bottom): [1,[2]]  3  [4,[5,6]]\n" +
-    "Pop [1,[2]] → array  → push [2] then 1   stack: 1 [2] 3 [4,[5,6]]\n" +
-    "Pop 1       → number → result=[1]         stack: [2] 3 [4,[5,6]]\n" +
-    "Pop [2]     → array  → push 2             stack: 2 3 [4,[5,6]]\n" +
-    "Pop 2       → number → result=[1,2]        stack: 3 [4,[5,6]]\n" +
-    "Pop 3       → number → result=[1,2,3]      stack: [4,[5,6]]\n" +
-    "Pop [4,[5,6]]→ array → push [5,6] then 4  stack: 4 [5,6]\n" +
-    "Pop 4       → number → result=[1,2,3,4]    stack: [5,6]\n" +
-    "Pop [5,6]   → array  → push 6 then 5      stack: 5 6\n" +
-    "Pop 5       → number → result=[1,2,3,4,5]  stack: 6\n" +
-    "Pop 6       → number → result=[1,2,3,4,5,6] stack: []\n" +
-    "```",
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '    A(["init stack: [1,[2]] | 3 | [4,[5,6]]"]) -->|"pop [1,[2]] → array"| B(["push 1,[2]\\nstack: 1 [2] 3 [4,[5,6]]"])\n' +
+    '    B -->|"pop 1 → number"| C(["result=[1]\\nstack: [2] 3 [4,[5,6]]"])\n' +
+    '    C -->|"pop [2] → array, pop 2 → number"| D(["result=[1,2,3]\\nstack: [4,[5,6]]"])\n' +
+    '    D -->|"pop [4,[5,6]] → array"| E(["push 4,[5,6]\\nstack: 4 [5,6]"])\n' +
+    '    E -->|"collect 4,5,6"| F(["result=[1,2,3,4,5,6]"])\n' +
+    "    style A fill:#06b6d4,stroke:#0891b2\n" +
+    "    style E fill:#f59e0b,stroke:#d97706\n" +
+    "    style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Arrays expand on the stack in reverse order so the first element surfaces immediately; integers are collected as they are popped.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** where n is the total number of integers across all nesting levels.\n\n" +

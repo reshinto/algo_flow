@@ -18,7 +18,29 @@ export const matrixDiagonalSumEducational: EducationalContent = {
     "```\n\n" +
     "Primary: 1 + 5 + 9 = 15  \n" +
     "Secondary: 3 + 5 + 7 = 15  \n" +
-    "Center overlap (5) subtracted once → **Result: 25**",
+    "Center overlap (5) subtracted once → **Result: 25**\n\n" +
+    "### Diagram: 3 × 3 diagonal cells collected\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  subgraph Matrix["3 × 3 matrix"]\n' +
+    '    R0["1  2  3"]\n' +
+    '    R1["4  5  6"]\n' +
+    '    R2["7  8  9"]\n' +
+    "  end\n" +
+    '  P0["Primary[0] = 1"] --> Sum\n' +
+    '  P1["Primary[1] = 5 (overlap)"] --> Sum\n' +
+    '  P2["Primary[2] = 9"] --> Sum\n' +
+    '  S0["Secondary[0] = 3"] --> Sum\n' +
+    '  S2["Secondary[2] = 7"] --> Sum\n' +
+    '  Sum["Sum = 25"]\n' +
+    "  style P1 fill:#f59e0b,stroke:#d97706\n" +
+    "  style P0 fill:#14532d,stroke:#22c55e\n" +
+    "  style P2 fill:#14532d,stroke:#22c55e\n" +
+    "  style S0 fill:#14532d,stroke:#22c55e\n" +
+    "  style S2 fill:#14532d,stroke:#22c55e\n" +
+    "  style Sum fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Amber marks the center cell counted on both diagonals; it is added once during the primary pass and subtracted at the end to avoid double-counting.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

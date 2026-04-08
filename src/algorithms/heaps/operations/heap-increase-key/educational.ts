@@ -32,7 +32,25 @@ export const heapIncreaseKeyEducational: EducationalContent = {
     "     10  9 8  6\n\n" +
     "Sift-down index 3 (value 10): no children in range; stop.\n" +
     "Result: [1, 7, 5, 10, 9, 8, 6]\n" +
-    "```",
+    "```\n\n" +
+    "### Diagram: After increasing index 1 from 3 to 10\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n1((1)) --> n7((7))\n" +
+    "    n1 --> n5((5))\n" +
+    "    n7 --> n10((10))\n" +
+    "    n7 --> n9((9))\n" +
+    "    n5 --> n8((8))\n" +
+    "    n5 --> n6((6))\n" +
+    "    style n1 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n10 fill:#f59e0b,stroke:#d97706\n" +
+    "    style n7 fill:#14532d,stroke:#22c55e\n" +
+    "    style n5 fill:#14532d,stroke:#22c55e\n" +
+    "    style n9 fill:#14532d,stroke:#22c55e\n" +
+    "    style n8 fill:#14532d,stroke:#22c55e\n" +
+    "    style n6 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The root (cyan, value 1) remains the global minimum. Node 10 (amber) was increased from 3 and sifted down to a leaf — it swapped with its smallest child 7 to restore heap order.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)`**\n\n" +

@@ -23,7 +23,23 @@ export const search2DMatrixEducational: EducationalContent = {
     "10  11  16  20\n" +
     "23  30  34  60\n" +
     "```\n\n" +
-    "Virtual range: `[0, 11]`. Mid = 5 → `[1][1]` = 11 → found!",
+    "Virtual range: `[0, 11]`. Mid = 5 → `[1][1]` = 11 → found!\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph Virtual["Virtual indices 0–11"]\n' +
+    '    L["left=0"] --> M\n' +
+    '    M["mid=5 → [1][1]=11 ✓"] --> R["right=11"]\n' +
+    "  end\n" +
+    '  subgraph Matrix["Matrix"]\n' +
+    '    R0["1  3  5  7"]\n' +
+    '    R1["10  ●11  16  20"]\n' +
+    '    R2["23  30  34  60"]\n' +
+    "  end\n" +
+    '  M -->|"maps to"| R1\n' +
+    "  style M fill:#f59e0b,stroke:#d97706\n" +
+    "  style R1 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Index 5 maps to row `⌊5/4⌋ = 1`, col `5 % 4 = 1` — a single binary search step lands directly on the target.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log(m × n))`**\n\n" +

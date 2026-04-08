@@ -10,6 +10,9 @@ import { sortCharactersByFrequencyEducational } from "./educational";
 import typescriptSource from "./sources/sort-characters-by-frequency.ts?raw";
 import pythonSource from "./sources/sort-characters-by-frequency.py?raw";
 import javaSource from "./sources/SortCharactersByFrequency.java?raw";
+import rustSource from "./sources/sort-characters-by-frequency.rs?raw";
+import cppSource from "./sources/SortCharactersByFrequency.cpp?raw";
+import goSource from "./sources/sort-characters-by-frequency.go?raw";
 
 function executeSortCharactersByFrequency(input: SortCharactersByFrequencyInput): string {
   return sortCharactersByFrequency(input.text) as string;
@@ -29,7 +32,7 @@ const sortCharactersByFrequencyDefinition: AlgorithmDefinition<SortCharactersByF
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "tree" },
   },
   execute: executeSortCharactersByFrequency,
@@ -39,6 +42,9 @@ const sortCharactersByFrequencyDefinition: AlgorithmDefinition<SortCharactersByF
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

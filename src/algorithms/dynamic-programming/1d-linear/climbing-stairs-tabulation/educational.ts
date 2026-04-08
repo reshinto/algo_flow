@@ -15,7 +15,29 @@ export const climbingStairsTabulationEducational: EducationalContent = {
     "Step:   0  1  2  3  4  5  6\n" +
     "Ways:   1  1  2  3  5  8  13\n" +
     "```\n\n" +
-    "Each cell is filled exactly once — no redundant recomputation.",
+    "Each cell is filled exactly once — no redundant recomputation.\n\n" +
+    "### DP Table Fill for n=6\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  S0["S(0)=1"] --> S2["S(2)=2"]\n' +
+    '  S1["S(1)=1"] --> S2\n' +
+    '  S1 --> S3["S(3)=3"]\n' +
+    "  S2 --> S3\n" +
+    '  S2 --> S4["S(4)=5"]\n' +
+    "  S3 --> S4\n" +
+    '  S3 --> S5["S(5)=8"]\n' +
+    "  S4 --> S5\n" +
+    '  S4 --> S6["S(6)=13"]\n' +
+    "  S5 --> S6\n" +
+    "  style S0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style S1 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style S2 fill:#14532d,stroke:#22c55e\n" +
+    "  style S3 fill:#14532d,stroke:#22c55e\n" +
+    "  style S4 fill:#14532d,stroke:#22c55e\n" +
+    "  style S5 fill:#14532d,stroke:#22c55e\n" +
+    "  style S6 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Cyan nodes are base cases, green nodes are filled cells, and amber is the final answer being computed.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

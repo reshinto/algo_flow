@@ -1,8 +1,5 @@
 // Kosaraju's SCC — two-pass DFS: first pass collects finish order, second pass on transposed graph
-export function kosarajuSCC(
-  adjacencyList: Record<string, string[]>,
-  nodeIds: string[],
-): string[][] {
+function kosarajuSCC(adjacencyList: Record<string, string[]>, nodeIds: string[]): string[][] {
   const visitedSet = new Set<string>(); // @step:initialize
   const finishOrder: string[] = []; // @step:initialize
 

@@ -23,7 +23,25 @@ export const cartesianProductEducational: EducationalContent = {
     "Result: [[1,4],[1,5],[2,4],[2,5],[3,4],[3,5]]  (6 pairs)\n" +
     "```\n\n" +
     "The result is always ordered: all pairs with `a=1` come before pairs with `a=2`, " +
-    "reflecting the outer-loop ordering.",
+    "reflecting the outer-loop ordering.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A1["1"]:::input\n' +
+    '  A2["2"]:::input\n' +
+    '  B4["4"]:::input\n' +
+    '  B5["5"]:::input\n' +
+    '  R14["[1,4]"]:::result\n' +
+    '  R15["[1,5]"]:::result\n' +
+    '  R24["[2,4]"]:::result\n' +
+    '  R25["[2,5]"]:::result\n' +
+    "  A1 --> R14 & R15\n" +
+    "  A2 --> R24 & R25\n" +
+    "  B4 --> R14 & R24\n" +
+    "  B5 --> R15 & R25\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each element of A pairs with every element of B, producing 2×2 = 4 ordered pairs. Arrows show which source elements contribute to each output pair.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × m)`**\n\n" +

@@ -13,17 +13,22 @@ export const onlineStockSpanEducational: EducationalContent = {
     "3. **Push** `(todayPrice, spanCount)` onto the stack.\n" +
     "4. Record `spanCount` as today's result.\n\n" +
     "### Example trace on `[100, 80, 60, 70, 60, 75, 85]`\n\n" +
-    "```\n" +
-    "day  price  stack (price, span)           span\n" +
-    " 0   100    [(100,1)]                      1\n" +
-    " 1    80    [(100,1),(80,1)]               1\n" +
-    " 2    60    [(100,1),(80,1),(60,1)]         1\n" +
-    " 3    70    [(100,1),(80,1),(70,2)]         2   pop 60\n" +
-    " 4    60    [(100,1),(80,1),(70,2),(60,1)]  1\n" +
-    " 5    75    [(100,1),(80,1),(75,4)]         4   pop 60,70\n" +
-    " 6    85    [(100,1),(85,6)]                6   pop 80,75\n" +
-    "result: [1,1,1,2,1,4,6]\n" +
-    "```",
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph Day 3 price=70\n" +
+    '    A["stack: (100,1)(80,1)(60,1)"] -->|"pop 60≤70, span+=1"| B["(100,1)(80,1)"]\n' +
+    '    B -->|"push (70,2)"| C["(100,1)(80,1)(70,2)"]\n' +
+    "    end\n" +
+    "    subgraph Day 6 price=85\n" +
+    '    D["(100,1)(80,1)(75,4)"] -->|"pop 75≤85, span+=4"| E["(100,1)(80,1)"]\n' +
+    '    E -->|"pop 80≤85, span+=1"| F["(100,1)"]\n' +
+    '    F -->|"push (85,6)"| G["(100,1)(85,6) → span=6"]\n' +
+    "    end\n" +
+    "    style A fill:#06b6d4,stroke:#0891b2\n" +
+    "    style C fill:#f59e0b,stroke:#d97706\n" +
+    "    style G fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Popped entries donate their accumulated spans to the new price, so each push already encodes the consecutive streak it represents.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)` amortized**\n\n" +

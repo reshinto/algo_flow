@@ -27,7 +27,13 @@ def dijkstra(
         # Check if we reached the end
         if current_row == end[0] and current_col == end[1]:  # @step:trace-path
             path = reconstruct_path(parent, end)  # @step:trace-path
-            return {"path": path, "visited": []}
+            visited_cells = [
+                (row_idx, col_idx)
+                for row_idx in range(row_count)
+                for col_idx in range(col_count)
+                if visited_set[row_idx][col_idx]
+            ]
+            return {"path": path, "visited": visited_cells}
 
         # Explore 4-directional neighbors
         for delta_row, delta_col in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
@@ -49,7 +55,13 @@ def dijkstra(
                 parent[neighbor_row][neighbor_col] = (current_row, current_col)
                 heapq.heappush(open_set, (new_distance, neighbor_row, neighbor_col))
 
-    return {"path": [], "visited": []}  # @step:complete
+    visited_cells = [
+        (row_idx, col_idx)
+        for row_idx in range(row_count)
+        for col_idx in range(col_count)
+        if visited_set[row_idx][col_idx]
+    ]
+    return {"path": [], "visited": visited_cells}  # @step:complete
 
 
 def reconstruct_path(

@@ -14,6 +14,9 @@ import { heapSortEducational } from "./educational";
 import typescriptSource from "./sources/heap-sort.ts?raw";
 import pythonSource from "./sources/heap-sort.py?raw";
 import javaSource from "./sources/HeapSort.java?raw";
+import rustSource from "./sources/heap-sort.rs?raw";
+import cppSource from "./sources/HeapSort.cpp?raw";
+import goSource from "./sources/heap-sort.go?raw";
 
 const heapSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const heapSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: heapSort,
@@ -39,6 +42,9 @@ const heapSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

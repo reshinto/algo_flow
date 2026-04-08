@@ -1,7 +1,7 @@
 /** Step generator for BST Kth Smallest (Iterative) — stack-based in-order with counter. */
 
 import type { ExecutionStep, TreeNode } from "@/types";
-import { BSTOperationTracker } from "@/trackers/bst-operation-tracker";
+import { BSTOperationTracker } from "@/trackers";
 import { ALGORITHM_ID } from "@/utils/constants";
 import { buildLineMapFromSources } from "@/utils/source-loader";
 

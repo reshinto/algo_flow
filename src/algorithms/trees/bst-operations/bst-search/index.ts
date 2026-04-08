@@ -10,6 +10,9 @@ import { bstSearchEducational } from "./educational";
 import typescriptSource from "./sources/bst-search.ts?raw";
 import pythonSource from "./sources/bst-search.py?raw";
 import javaSource from "./sources/BSTSearch.java?raw";
+import rustSource from "./sources/bst-search.rs?raw";
+import cppSource from "./sources/BSTSearch.cpp?raw";
+import goSource from "./sources/bst-search.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -106,13 +109,20 @@ const bstSearchDefinition: AlgorithmDefinition<BstSearchInput> = {
       "Recursive binary search: compare target to current node and recurse left or right",
     timeComplexity: { best: "O(log n)", average: "O(log n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", targetValue: 5 },
   },
   execute: executeBstSearch,
   generateSteps: generateBstSearchSteps,
   educational: bstSearchEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstSearchDefinition);

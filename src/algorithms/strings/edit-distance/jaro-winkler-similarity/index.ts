@@ -12,6 +12,9 @@ import { jaroWinklerSimilarityEducational } from "./educational";
 import typescriptSource from "./sources/jaro-winkler-similarity.ts?raw";
 import pythonSource from "./sources/jaro-winkler-similarity.py?raw";
 import javaSource from "./sources/JaroWinklerSimilarity.java?raw";
+import rustSource from "./sources/jaro-winkler-similarity.rs?raw";
+import cppSource from "./sources/JaroWinklerSimilarity.cpp?raw";
+import goSource from "./sources/jaro-winkler-similarity.go?raw";
 
 function executeJaroWinklerSimilarity(input: JaroWinklerSimilarityInput): number {
   return jaroWinklerSimilarity(input.source, input.target) as number;
@@ -31,7 +34,7 @@ const jaroWinklerSimilarityDefinition: AlgorithmDefinition<JaroWinklerSimilarity
       worst: "O(nm)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { source: "martha", target: "marhta" },
   },
   execute: executeJaroWinklerSimilarity,
@@ -41,6 +44,9 @@ const jaroWinklerSimilarityDefinition: AlgorithmDefinition<JaroWinklerSimilarity
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

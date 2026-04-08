@@ -17,6 +17,17 @@ export const boyerMooreSearchEducational: EducationalContent = {
     "Index:    0  1  2\n" +
     "badChar:  A→0, B→1, C→2  (all others → -1)\n" +
     "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  T["text: X A B C D\\nalign pattern at 0"]:::start\n' +
+    "  CMP[\"compare right-to-left\\ntext[2]='C' == pat[2]='C' ✓\\ntext[1]='B' == pat[1]='B' ✓\\ntext[0]='A' == pat[0]='A' ✓\"]:::current\n" +
+    '  FOUND["full match at\\noffset 1\\n→ found ABC"]:::matched\n' +
+    "  T --> CMP --> FOUND\n" +
+    "  classDef start fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef matched fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Boyer-Moore compares right-to-left within the window: a mismatch on `text[2]` lets the bad character table skip forward multiple positions, while a full right-to-left match (as shown) reports the pattern found.\n\n" +
     "**Phase 2 — Search** (right-to-left character comparisons):\n\n" +
     "1. Align the pattern at the current offset in the text.\n" +
     "2. Compare pattern characters **right-to-left** against the text.\n" +

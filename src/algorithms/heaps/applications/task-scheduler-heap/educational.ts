@@ -24,7 +24,17 @@ export const taskSchedulerHeapEducational: EducationalContent = {
     "Round 3 (slots: A, B): Extract A(1→0), B(1→0). Heap empty after reinsertion.\n" +
     "  Intervals += 2 (tasks only, no idle). Total=8.\n\n" +
     "Result: 8 intervals\n" +
-    "```",
+    "```\n\n" +
+    "### Max-Heap State After Round 1 (frequencies as nodes)\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    r((3)) --> a((2))\n" +
+    "    r --> b((2))\n" +
+    "    style r fill:#06b6d4,stroke:#0891b2\n" +
+    "    style a fill:#f59e0b,stroke:#d97706\n" +
+    "    style b fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "The root (cyan) holds the highest remaining frequency. Amber nodes are the two tasks just reinserted after Round 1 — each will be extracted again next round.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log k)`** where n = total tasks, k ≤ 26 (unique task types)\n\n" +

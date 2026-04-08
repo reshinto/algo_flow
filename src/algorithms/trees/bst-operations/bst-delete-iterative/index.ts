@@ -10,6 +10,9 @@ import { bstDeleteIterativeEducational } from "./educational";
 import typescriptSource from "./sources/bst-delete-iterative.ts?raw";
 import pythonSource from "./sources/bst-delete-iterative.py?raw";
 import javaSource from "./sources/BSTDeleteIterative.java?raw";
+import rustSource from "./sources/bst-delete-iterative.rs?raw";
+import cppSource from "./sources/BSTDeleteIterative.cpp?raw";
+import goSource from "./sources/bst-delete-iterative.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -105,13 +108,20 @@ const bstDeleteIterativeDefinition: AlgorithmDefinition<BstDeleteIterativeInput>
     description: "Iterative BST deletion: find target with parent tracking, handle all 3 cases",
     timeComplexity: { best: "O(log n)", average: "O(log n)", worst: "O(n)" },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", deleteValue: 2 },
   },
   execute: executeBstDeleteIterative,
   generateSteps: generateBstDeleteIterativeSteps,
   educational: bstDeleteIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstDeleteIterativeDefinition);

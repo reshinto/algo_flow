@@ -10,6 +10,9 @@ import { bstToGreaterTreeEducational } from "./educational";
 import typescriptSource from "./sources/bst-to-greater-tree.ts?raw";
 import pythonSource from "./sources/bst-to-greater-tree.py?raw";
 import javaSource from "./sources/BSTToGreaterTree.java?raw";
+import rustSource from "./sources/bst-to-greater-tree.rs?raw";
+import cppSource from "./sources/BSTToGreaterTree.cpp?raw";
+import goSource from "./sources/bst-to-greater-tree.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -106,13 +109,20 @@ const bstToGreaterTreeDefinition: AlgorithmDefinition<BstToGreaterTreeInput> = {
       "Reverse in-order traversal accumulates a running sum, replacing each node's value",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeBstToGreaterTree,
   generateSteps: generateBstToGreaterTreeSteps,
   educational: bstToGreaterTreeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstToGreaterTreeDefinition);

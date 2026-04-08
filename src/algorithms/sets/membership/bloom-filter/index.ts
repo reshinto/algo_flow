@@ -10,6 +10,9 @@ import { bloomFilterEducational } from "./educational";
 import typescriptSource from "./sources/bloom-filter.ts?raw";
 import pythonSource from "./sources/bloom-filter.py?raw";
 import javaSource from "./sources/BloomFilter.java?raw";
+import rustSource from "./sources/bloom-filter.rs?raw";
+import cppSource from "./sources/BloomFilter.cpp?raw";
+import goSource from "./sources/bloom-filter.go?raw";
 
 function executeBloomFilter(input: BloomFilterInput): {
   results: { value: number; found: boolean }[];
@@ -35,7 +38,7 @@ const bloomFilterDefinition: AlgorithmDefinition<BloomFilterInput> = {
       worst: "O(k)",
     },
     spaceComplexity: "O(m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       elements: [3, 7, 11, 15],
       queries: [3, 5, 7, 9, 11],
@@ -50,6 +53,9 @@ const bloomFilterDefinition: AlgorithmDefinition<BloomFilterInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

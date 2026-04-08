@@ -10,6 +10,9 @@ import { cousinsInBinaryTreeEducational } from "./educational";
 import typescriptSource from "./sources/cousins-in-binary-tree.ts?raw";
 import pythonSource from "./sources/cousins-in-binary-tree.py?raw";
 import javaSource from "./sources/CousinsInBinaryTree.java?raw";
+import rustSource from "./sources/cousins-in-binary-tree.rs?raw";
+import cppSource from "./sources/CousinsInBinaryTree.cpp?raw";
+import goSource from "./sources/cousins-in-binary-tree.go?raw";
 
 /** Balanced 7-node BST: root=4, nodes 1 and 5 are cousins (depth 2, different parents 2 and 6) */
 const defaultNodes: TreeNode[] = [
@@ -112,13 +115,20 @@ const cousinsInBinaryTreeDefinition: AlgorithmDefinition<CousinsInBinaryTreeInpu
       "Determines if two nodes are cousins — same depth in the tree but with different parents. Uses BFS to track depth and parent for both target nodes.",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(w)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", nodeValueA: 1, nodeValueB: 5 },
   },
   execute: executeCousinsInBinaryTree,
   generateSteps: generateCousinsInBinaryTreeSteps,
   educational: cousinsInBinaryTreeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(cousinsInBinaryTreeDefinition);

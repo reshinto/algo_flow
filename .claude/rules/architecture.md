@@ -22,13 +22,21 @@
 
 ### Source Files
 
-- Real `.ts`, `.py`, `.java` files loaded via Vite `?raw` glob imports
+- Real `.ts`, `.py`, `.java`, `.rs`, `.cpp`, `.go` files loaded via Vite `?raw` glob imports
 - Source files are lintable, formattable artifacts - not embedded strings
 - Line mappings defined as static lookup tables in step generators
 
+### Directory Organization
+
+- Trackers: `src/trackers/<category>/` — grouped by algorithm category
+- Visualizers: `src/components/visualization/<category>/` — grouped by algorithm category
+- Algorithm tests + stories: `src/algorithms/<category>/<technique>/<algorithm>/__tests__/`
+- Source implementations: `src/algorithms/<category>/<technique>/<algorithm>/sources/`
+
 ### Adding New Algorithms
 
-1. Create `src/algorithms/<category>/<algorithm>/` directory
-2. Implement: index.ts, <algorithm>.ts, step-generator.ts, educational.ts, sources/
-3. Import in `src/algorithms/index.ts` barrel
-4. All UI works automatically via registry
+1. Create `src/algorithms/<category>/<technique>/<algorithm>/` directory
+2. Implement: index.ts, step-generator.ts, educational.ts, sources/ (6 languages)
+3. Add tests + pipeline story in `__tests__/`
+4. Import in `src/algorithms/index.ts` barrel
+5. All UI works automatically via registry

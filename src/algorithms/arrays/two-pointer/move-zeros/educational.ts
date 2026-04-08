@@ -19,7 +19,24 @@ export const moveZerosEducational: EducationalContent = {
     "Step 4: read=3 (3)   → non-zero, swap with write=1 → [1, 3, 0, 0, 12], write=2\n" +
     "Step 5: read=4 (12)  → non-zero, swap with write=2 → [1, 3, 12, 0, 0], write=3\n" +
     "Result: [1, 3, 12, 0, 0]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["0"] --> B["1"] --> C["0"] --> D["3"] --> E["12"]\n' +
+    '  B -->|"swap→write=0"| F["1"]\n' +
+    '  D -->|"swap→write=1"| G["3"]\n' +
+    '  E -->|"swap→write=2"| H["12"]\n' +
+    '  F --> G --> H --> I["0"] --> J["0"]\n' +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style B fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D fill:#06b6d4,stroke:#0891b2\n" +
+    "  style E fill:#06b6d4,stroke:#0891b2\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "  style H fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Zeros (amber) are skipped by the read pointer; non-zeros (cyan) are swapped into the write pointer position. The result (green) has all non-zeros compacted at the front with zeros pushed to the tail.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

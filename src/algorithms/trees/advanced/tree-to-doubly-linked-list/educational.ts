@@ -11,7 +11,20 @@ export const treeToDoublyLinkedListEducational: EducationalContent = {
     "3. Advance `tail` to the current node.\n" +
     "4. Recurse into the right subtree.\n\n" +
     "After traversal, close the circle: `tail.right = head; head.left = tail`.\n\n" +
-    "**Result:** The BST becomes a sorted circular DLL where `left = prev` and `right = next`.",
+    "**Result:** The BST becomes a sorted circular DLL where `left = prev` and `right = next`.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)):::current --> B((2)):::visited\n" +
+    "  A --> C((6)):::visited\n" +
+    "  B --> D((1)):::active\n" +
+    "  B --> E((3)):::active\n" +
+    "  C --> F((5)):::active\n" +
+    "  C --> G((7)):::active\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "In-order traversal visits nodes in sorted order 1→2→3→4→5→6→7. As each node (amber leaves first, then green parents) is processed, its `right` pointer is set to the next node and its `left` pointer to the previous, threading all nodes into a circular doubly-linked list.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — every node is visited exactly once.\n\n" +

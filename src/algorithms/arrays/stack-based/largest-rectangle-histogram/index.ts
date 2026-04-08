@@ -13,6 +13,9 @@ import { largestRectangleHistogramEducational } from "./educational";
 import typescriptSource from "./sources/largest-rectangle-histogram.ts?raw";
 import pythonSource from "./sources/largest-rectangle-histogram.py?raw";
 import javaSource from "./sources/LargestRectangleHistogram.java?raw";
+import rustSource from "./sources/largest-rectangle-histogram.rs?raw";
+import cppSource from "./sources/LargestRectangleHistogram.cpp?raw";
+import goSource from "./sources/largest-rectangle-histogram.go?raw";
 
 interface LargestRectangleHistogramInput {
   heights: number[];
@@ -32,7 +35,7 @@ const largestRectangleHistogramDefinition: AlgorithmDefinition<LargestRectangleH
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       heights: [2, 1, 5, 6, 2, 3],
     },
@@ -44,6 +47,9 @@ const largestRectangleHistogramDefinition: AlgorithmDefinition<LargestRectangleH
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { islandCountEducational } from "./educational";
 import typescriptSource from "./sources/island-count.ts?raw";
 import pythonSource from "./sources/island-count.py?raw";
 import javaSource from "./sources/IslandCount.java?raw";
+import rustSource from "./sources/island-count.rs?raw";
+import cppSource from "./sources/IslandCount.cpp?raw";
+import goSource from "./sources/island-count.go?raw";
 
 function executeIslandCount(input: IslandCountInput): number {
   // Pass a deep copy so the source function's grid mutation does not affect the stored input
@@ -31,7 +34,7 @@ const islandCountDefinition: AlgorithmDefinition<IslandCountInput> = {
       worst: "O(m × n)",
     },
     spaceComplexity: "O(m × n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: [
         [1, 1, 0, 0, 0],
@@ -48,6 +51,9 @@ const islandCountDefinition: AlgorithmDefinition<IslandCountInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

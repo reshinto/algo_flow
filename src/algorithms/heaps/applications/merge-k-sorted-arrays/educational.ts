@@ -24,7 +24,17 @@ export const mergeKSortedArraysEducational: EducationalContent = {
     "Extract 3 → insert 6 → heap: [(4,arr0,1),(6,arr2,1),(5,arr1,1)]\n" +
     "Extract 4 → insert 7 → ...\n\n" +
     "Result: [1, 2, 3, 4, 5, 6, 7, 8, 9]\n" +
-    "```",
+    "```\n\n" +
+    "### Min-Heap — After Extracting 1 and Inserting 4\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '    v2("2\\narr1[0]") --> v4("4\\narr0[1]")\n' +
+    '    v2 --> v3("3\\narr2[0]")\n' +
+    "    style v2 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style v3 fill:#14532d,stroke:#22c55e\n" +
+    "    style v4 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "The root (cyan) is value 2 from array 1 — the globally smallest remaining element. The amber node (4) was just advanced from array 0 after extracting 1. Each leaf represents the current front of a different source array.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(N log k)`**\n\n" +

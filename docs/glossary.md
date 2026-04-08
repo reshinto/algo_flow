@@ -168,7 +168,7 @@ The `tree` VisualState also carries a `childrenIds` field on each `TreeNode`, wh
 
 An abstract base class used inside `generateSteps()` to build up the `ExecutionStep[]` array. Each tracker subclass provides domain-specific recording methods that internally call `pushStep()`. You construct a tracker, call its methods as you trace through your algorithm logic, and at the end collect the completed step array.
 
-There are 34 category-specific tracker subclasses (e.g. `SortingTracker`, `ArrayTracker`, `GraphTracker`). You never use `Tracker` directly — you use the appropriate subclass for your algorithm's data structure.
+Category-specific tracker subclasses (e.g. `SortingTracker`, `ArrayTracker`, `GraphTracker`) are organized in `src/trackers/<category>/`. You never use `Tracker` directly — you use the appropriate subclass for your algorithm's data structure.
 
 **Defined in:** `src/trackers/base-tracker.ts`
 **Used by:** every algorithm's `generateSteps()` function.
@@ -179,7 +179,7 @@ Key concept: the tracker constructor takes a `LineMap` so it knows which source 
 
 ### LineMap
 
-A lookup table that maps a step key (e.g. `"compare"`, `"swap"`) to the line numbers that should be highlighted in each language's source file when a step of that type is recorded. This is what keeps the Monaco Editor in sync with algorithm execution — every step knows exactly which lines to light up in TypeScript, Python, and Java simultaneously.
+A lookup table that maps a step key (e.g. `"compare"`, `"swap"`) to the line numbers that should be highlighted in each language's source file when a step of that type is recorded. This is what keeps the Monaco Editor in sync with algorithm execution — every step knows exactly which lines to light up in TypeScript, Python, Java, Rust, C++, and Go simultaneously.
 
 **Defined in:** `src/trackers/base-tracker.ts` (as a type alias)
 
@@ -331,7 +331,7 @@ Fields: `id`, `name`, `category`, `description`, `timeComplexity` (`ComplexitySp
 
 ### SupportedLanguage
 
-The union of language identifiers the app supports for source display: `"typescript" | "python" | "java"`.
+The union of language identifiers the app supports for source display: `"typescript" | "python" | "java" | "rust" | "cpp" | "go"`.
 
 **Defined in:** `src/types/algorithm.ts`
 **Used by:** `LineMap`, `LineHighlight`, `AlgorithmMeta.supportedLanguages`, the Code Panel language tabs, and source file loading utilities.

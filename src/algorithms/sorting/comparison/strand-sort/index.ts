@@ -14,6 +14,9 @@ import { strandSortEducational } from "./educational";
 import typescriptSource from "./sources/strand-sort.ts?raw";
 import pythonSource from "./sources/strand-sort.py?raw";
 import javaSource from "./sources/StrandSort.java?raw";
+import rustSource from "./sources/strand-sort.rs?raw";
+import cppSource from "./sources/StrandSort.cpp?raw";
+import goSource from "./sources/strand-sort.go?raw";
 
 const strandSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const strandSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: strandSort,
@@ -39,6 +42,9 @@ const strandSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

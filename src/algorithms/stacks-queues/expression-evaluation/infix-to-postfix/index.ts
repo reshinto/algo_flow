@@ -10,6 +10,9 @@ import { infixToPostfixEducational } from "./educational";
 import typescriptSource from "./sources/infix-to-postfix.ts?raw";
 import pythonSource from "./sources/infix-to-postfix.py?raw";
 import javaSource from "./sources/InfixToPostfix.java?raw";
+import rustSource from "./sources/infix-to-postfix.rs?raw";
+import cppSource from "./sources/InfixToPostfix.cpp?raw";
+import goSource from "./sources/infix-to-postfix.go?raw";
 
 function executeInfixToPostfix(input: InfixToPostfixInput): string {
   return infixToPostfix(input.expression) as string;
@@ -29,7 +32,7 @@ const infixToPostfixDefinition: AlgorithmDefinition<InfixToPostfixInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { expression: "a+b*(c-d)" },
   },
   execute: executeInfixToPostfix,
@@ -39,6 +42,9 @@ const infixToPostfixDefinition: AlgorithmDefinition<InfixToPostfixInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

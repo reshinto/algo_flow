@@ -18,7 +18,19 @@ export const containsDuplicateIIEducational: EducationalContent = {
     "     2           3        —            —       insert { 3: 2 }\n" +
     "     3           1        0            3       3 ≤ 3 → return true\n" +
     "```\n\n" +
-    "Storing only the **most recent** index is sufficient: if a closer future occurrence existed, it would also satisfy the constraint.",
+    "Storing only the **most recent** index is sufficient: if a closer future occurrence existed, it would also satisfy the constraint.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["idx 0: val=1"] -->|insert| B["map:{1:0}"]\n' +
+    '  B --> C["idx 1: val=2"]\n' +
+    '  C -->|insert| D["map:{1:0, 2:1}"]\n' +
+    '  D --> E["idx 3: val=1"]\n' +
+    '  E -->|storedIdx=0, dist=3 ≤ k=3| F["return true"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The map tracks the last seen index of each value — when the distance to a repeated value is within k, the answer is found.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

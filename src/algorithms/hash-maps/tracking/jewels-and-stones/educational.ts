@@ -19,7 +19,23 @@ export const jewelsAndStonesEducational: EducationalContent = {
     'Stone "b" → not in set\n' +
     'Stone "b" → not in set\n' +
     "Result: 3\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "  A[\"jewels='aA'\"]:::input --> B[\"set={'a','A'}\"]\n" +
+    "  B --> C[\"stone 'a' → in set ✓\"]:::checking\n" +
+    '  C --> D["count=1"]:::found\n' +
+    "  D --> E[\"stone 'A' → in set ✓\"]:::checking\n" +
+    '  E --> F["count=2"]:::found\n' +
+    "  F --> G[\"stone 'A' → in set ✓\"]:::checking\n" +
+    '  G --> H["count=3"]:::found\n' +
+    "  H --> I[\"stone 'b' → not in set ✗\"]\n" +
+    '  I --> J["result: 3"]:::found\n' +
+    "  classDef input fill:#06b6d4,stroke:#0891b2,color:#fff\n" +
+    "  classDef checking fill:#f59e0b,stroke:#d97706,color:#000\n" +
+    "  classDef found fill:#14532d,stroke:#22c55e,color:#fff\n" +
+    "```\n\n" +
+    "The jewel set is built once; every stone lookup is O(1) — no inner loop needed.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(|jewels| + |stones|)`**\n\n" +

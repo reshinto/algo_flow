@@ -12,5 +12,3 @@ function missingNumber(numbers: number[]): number {
   }
   return -1; // @step:complete
 }
-
-export { missingNumber };

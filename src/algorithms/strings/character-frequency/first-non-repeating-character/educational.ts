@@ -16,6 +16,16 @@ export const firstNonRepeatingCharacterEducational: EducationalContent = {
     "**Pass 2 — Scan for first unique** (O(n)):\n\n" +
     "Iterate over the string again from left to right. For each character, check its count in the map. Return the index of the first character whose count equals `1`:\n\n" +
     "```\nindex 0: 'l' → count 1 → return 0\n```\n\n" +
+    '### Example: Finding the first unique in `"leetcode"`\n\n' +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    L["l\\ncount=1"] --> E1["e\\ncount=3"] --> E2["e\\ncount=3"] --> T["t\\ncount=1"] --> C["c\\ncount=1"] --> O["o\\ncount=1"] --> D["d\\ncount=1"] --> E3["e\\ncount=3"]\n' +
+    "    style L fill:#14532d,stroke:#22c55e\n" +
+    "    style E1 fill:#f59e0b,stroke:#d97706\n" +
+    "    style E2 fill:#f59e0b,stroke:#d97706\n" +
+    "    style E3 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Pass 2 checks each character left-to-right. `'l'` (green) at index 0 has count 1 — it is returned immediately. The `'e'` characters (amber) are skipped because their count is 3.\n\n" +
     "If no character has count `1` after the full scan, return `-1`.",
 
   timeAndSpaceComplexity:

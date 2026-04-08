@@ -14,6 +14,9 @@ import { combSortEducational } from "./educational";
 import typescriptSource from "./sources/comb-sort.ts?raw";
 import pythonSource from "./sources/comb-sort.py?raw";
 import javaSource from "./sources/CombSort.java?raw";
+import rustSource from "./sources/comb-sort.rs?raw";
+import cppSource from "./sources/CombSort.cpp?raw";
+import goSource from "./sources/comb-sort.go?raw";
 
 const combSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const combSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: combSort,
@@ -39,6 +42,9 @@ const combSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

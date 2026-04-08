@@ -15,7 +15,23 @@ export const dijkstraEducational: EducationalContent = {
     "   * If `tentativeDist < knownDist[neighbor]`, update the distance and re-enqueue.\n" +
     "4. When the queue empties, `distances` holds the shortest path cost from the source to every reachable node.\n\n" +
     "### Why the greedy choice is safe\n\n" +
-    "Because all edge weights are non-negative, once a node is dequeued with distance `d`, no future path can improve on `d`. This invariant lets Dijkstra finalize distances one node at a time without backtracking.",
+    "Because all edge weights are non-negative, once a node is dequeued with distance `d`, no future path can improve on `d`. This invariant lets Dijkstra finalize distances one node at a time without backtracking.\n\n" +
+    "### Dijkstra's Expansion from Source S\n\n" +
+    "```mermaid\n" +
+    "graph LR\n" +
+    '  S((S)) -->|"1"| A((A))\n' +
+    '  S((S)) -->|"4"| B((B))\n' +
+    '  A((A)) -->|"2"| B((B))\n' +
+    '  A((A)) -->|"5"| C((C))\n' +
+    '  B((B)) -->|"1"| C((C))\n' +
+    '  B((B)) -->|"3"| D((D))\n' +
+    "  style S fill:#06b6d4,stroke:#0891b2\n" +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Dequeue S(0) → relax A(1), B(4). Dequeue A(1) → relax B to min(4,3)=3, C(6). Dequeue B(3) → relax C to min(6,4)=4, D(6). Green nodes are finalized; amber nodes are tentatively settled and being processed.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O((V + E) log V)`**\n\n" +

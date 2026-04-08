@@ -10,7 +10,18 @@ export const sumOfLeftLeavesEducational: EducationalContent = {
     "1. If `node` is a leaf AND `isLeft` is `true`, add its value to the sum.\n" +
     "2. Recurse left with `isLeft = true`.\n" +
     "3. Recurse right with `isLeft = false`.\n\n" +
-    "The root is called with `isLeft = false` since it has no parent.",
+    "The root is called with `isLeft = false` since it has no parent.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((3)):::root --> B((9)):::current\n" +
+    "  A --> C((20)):::visited\n" +
+    "  C --> D((15)):::current\n" +
+    "  C --> E((7)):::visited\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "Node 9 is reached with `isLeft=true` and is a leaf — counted. Node 15 is reached with `isLeft=true` and is a leaf — counted. Node 7 is reached with `isLeft=false` — skipped. Sum of left leaves = 9 + 15 = 24.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — all nodes are visited.\n\n" +

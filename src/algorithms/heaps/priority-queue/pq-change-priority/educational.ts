@@ -37,7 +37,25 @@ export const pqChangePriorityEducational: EducationalContent = {
     "              2   3\n" +
     "             / \\ / \\\n" +
     "           10   5 8  7\n" +
-    "```",
+    "```\n\n" +
+    "### Diagram: After changing index 4 from 15 to 1 (sift-up)\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n1((1)) --> n2((2))\n" +
+    "    n1 --> n3((3))\n" +
+    "    n2 --> n10((10))\n" +
+    "    n2 --> n5((5))\n" +
+    "    n3 --> n8((8))\n" +
+    "    n3 --> n7((7))\n" +
+    "    style n1 fill:#f59e0b,stroke:#d97706\n" +
+    "    style n2 fill:#14532d,stroke:#22c55e\n" +
+    "    style n3 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n10 fill:#14532d,stroke:#22c55e\n" +
+    "    style n5 fill:#14532d,stroke:#22c55e\n" +
+    "    style n8 fill:#14532d,stroke:#22c55e\n" +
+    "    style n7 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Node 1 (amber) was previously 15 at index 4 — it sifted up two levels past 5 and 2 to become the new root. The old root 2 (now at cyan) was displaced downward as part of the upward sift chain.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)`**\n\n" +

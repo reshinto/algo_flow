@@ -15,6 +15,9 @@ import { hierholzersEducational } from "./educational";
 import typescriptSource from "./sources/hierholzers.ts?raw";
 import pythonSource from "./sources/hierholzers.py?raw";
 import javaSource from "./sources/Hierholzers.java?raw";
+import rustSource from "./sources/hierholzers.rs?raw";
+import cppSource from "./sources/Hierholzers.cpp?raw";
+import goSource from "./sources/hierholzers.go?raw";
 
 /** Pre-computed positions for 6 nodes arranged in a circle layout */
 const CIRCLE_RADIUS = 150;
@@ -88,7 +91,7 @@ const hierholzersDefinition: AlgorithmDefinition<HierholzersInput> = {
       worst: "O(V+E)",
     },
     spaceComplexity: "O(E)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: HierholzersInput) =>
@@ -99,6 +102,9 @@ const hierholzersDefinition: AlgorithmDefinition<HierholzersInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

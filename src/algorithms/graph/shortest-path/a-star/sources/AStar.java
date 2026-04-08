@@ -44,7 +44,7 @@ public class AStar {
             List<Object[]> neighbors = adjacencyList.getOrDefault(currentNodeId, Collections.emptyList());
             for (Object[] neighbor : neighbors) {
                 String neighborId = (String) neighbor[0];
-                double edgeWeight = (Double) neighbor[1];
+                double edgeWeight = ((Number) neighbor[1]).doubleValue();
                 if (visited.contains(neighborId)) continue;
                 double tentativeGCost = gCosts.getOrDefault(currentNodeId, Double.MAX_VALUE) + edgeWeight; // @step:relax-edge
                 if (tentativeGCost < gCosts.getOrDefault(neighborId, Double.MAX_VALUE)) {

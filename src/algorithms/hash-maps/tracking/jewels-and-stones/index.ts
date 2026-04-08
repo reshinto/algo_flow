@@ -9,6 +9,9 @@ import { jewelsAndStonesEducational } from "./educational";
 import typescriptSource from "./sources/jewels-and-stones.ts?raw";
 import pythonSource from "./sources/jewels-and-stones.py?raw";
 import javaSource from "./sources/JewelsAndStones.java?raw";
+import rustSource from "./sources/jewels-and-stones.rs?raw";
+import cppSource from "./sources/JewelsAndStones.cpp?raw";
+import goSource from "./sources/jewels-and-stones.go?raw";
 
 function executeJewelsAndStones(input: JewelsAndStonesInput): number {
   return jewelsAndStones(input.jewels, input.stones);
@@ -28,7 +31,7 @@ const jewelsAndStonesDefinition: AlgorithmDefinition<JewelsAndStonesInput> = {
       worst: "O(|jewels| + |stones|)",
     },
     spaceComplexity: "O(|jewels|)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { jewels: "aA", stones: "aAAbbbb" },
   },
   execute: executeJewelsAndStones,
@@ -38,6 +41,9 @@ const jewelsAndStonesDefinition: AlgorithmDefinition<JewelsAndStonesInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -4,7 +4,7 @@
 // Uses dynamic programming: dp[rowIdx][colIdx] = true if text[0..rowIdx-1] matches pattern[0..colIdx-1].
 // Time: O(nm), Space: O(nm) where n = text.length, m = pattern.length
 
-export function wildcardMatching(text: string, pattern: string): boolean {
+function wildcardMatching(text: string, pattern: string): boolean {
   const textLength = text.length; // @step:initialize
   const patternLength = pattern.length; // @step:initialize
 

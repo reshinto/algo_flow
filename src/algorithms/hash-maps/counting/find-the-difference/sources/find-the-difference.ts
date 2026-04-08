@@ -13,5 +13,3 @@ function findTheDifference(original: string, modified: string): string {
   }
   return ""; // @step:complete
 }
-
-export { findTheDifference };

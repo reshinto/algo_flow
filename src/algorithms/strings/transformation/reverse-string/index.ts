@@ -10,6 +10,9 @@ import { reverseStringEducational } from "./educational";
 import typescriptSource from "./sources/reverse-string.ts?raw";
 import pythonSource from "./sources/reverse-string.py?raw";
 import javaSource from "./sources/ReverseString.java?raw";
+import rustSource from "./sources/reverse-string.rs?raw";
+import cppSource from "./sources/ReverseString.cpp?raw";
+import goSource from "./sources/reverse-string.go?raw";
 
 function executeReverseString(input: ReverseStringInput): string {
   return reverseString(input.text) as string;
@@ -29,7 +32,7 @@ const reverseStringDefinition: AlgorithmDefinition<ReverseStringInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "hello" },
   },
   execute: executeReverseString,
@@ -39,6 +42,9 @@ const reverseStringDefinition: AlgorithmDefinition<ReverseStringInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

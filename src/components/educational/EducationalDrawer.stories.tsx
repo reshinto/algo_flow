@@ -63,7 +63,7 @@ function WithOpenDrawer(Story: React.ComponentType) {
         educational: sampleEducational,
         execute: () => [],
         generateSteps: () => [],
-        sources: { typescript: "", python: "", java: "" },
+        sources: { typescript: "", python: "", java: "", rust: "", cpp: "", go: "" },
       },
     });
 

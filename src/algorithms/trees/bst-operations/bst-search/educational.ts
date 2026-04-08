@@ -9,7 +9,20 @@ export const bstSearchEducational: EducationalContent = {
     "2. **Match:** If the current node's value equals the target — return the node.\n" +
     "3. **Go left:** If target is smaller than the current value — recurse into the left subtree.\n" +
     "4. **Go right:** If target is larger — recurse into the right subtree.\n\n" +
-    "Each comparison halves the search space in a balanced BST, mirroring binary search on a sorted array.",
+    "Each comparison halves the search space in a balanced BST, mirroring binary search on a sorted array.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((20)) --> B((10))\n" +
+    "  A --> C((30))\n" +
+    "  B --> D((5))\n" +
+    "  B --> E((15))\n" +
+    "  C --> F((25))\n" +
+    "  C --> G((40))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "Searching for 15: search(20) → 15<20, recurse left → search(10) → 15>10, recurse right → search(15) → match, return node. Three recursive frames, three comparisons — O(log n) on this balanced tree.",
 
   timeAndSpaceComplexity:
     "**Time: `O(log n)` average, `O(n)` worst case**\n\nFor a balanced BST the height `h = log n`, so the path to any node spans at most `log n` comparisons. A degenerate (linear) BST degrades to `O(n)`.\n\n**Space: `O(h)` call stack**\n\nOne stack frame per level of recursion.",

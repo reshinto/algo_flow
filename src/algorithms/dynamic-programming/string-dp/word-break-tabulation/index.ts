@@ -9,6 +9,9 @@ import { wordBreakTabulationEducational } from "./educational";
 import typescriptSource from "./sources/word-break-tabulation.ts?raw";
 import pythonSource from "./sources/word-break-tabulation.py?raw";
 import javaSource from "./sources/WordBreakTabulation.java?raw";
+import rustSource from "./sources/word-break-tabulation.rs?raw";
+import cppSource from "./sources/WordBreakTabulation.cpp?raw";
+import goSource from "./sources/word-break-tabulation.go?raw";
 
 interface WordBreakInput {
   text: string;
@@ -29,7 +32,7 @@ const wordBreakTabulationDefinition: AlgorithmDefinition<WordBreakInput> = {
       worst: "O(n × m × k)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "leetcode", dictionary: ["leet", "code"] },
   },
   execute: (input: WordBreakInput) => wordBreakTabulation(input.text, input.dictionary),
@@ -39,6 +42,9 @@ const wordBreakTabulationDefinition: AlgorithmDefinition<WordBreakInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { decodeStringEducational } from "./educational";
 import typescriptSource from "./sources/decode-string.ts?raw";
 import pythonSource from "./sources/decode-string.py?raw";
 import javaSource from "./sources/DecodeString.java?raw";
+import rustSource from "./sources/decode-string.rs?raw";
+import cppSource from "./sources/DecodeString.cpp?raw";
+import goSource from "./sources/decode-string.go?raw";
 
 function executeDecodeString(input: DecodeStringInput): string {
   return decodeString(input.inputString) as string;
@@ -29,7 +32,7 @@ const decodeStringDefinition: AlgorithmDefinition<DecodeStringInput> = {
       worst: "O(n*k)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { inputString: "3[a2[c]]" },
   },
   execute: executeDecodeString,
@@ -39,6 +42,9 @@ const decodeStringDefinition: AlgorithmDefinition<DecodeStringInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

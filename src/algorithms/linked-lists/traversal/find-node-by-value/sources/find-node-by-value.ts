@@ -4,7 +4,7 @@ interface ListNode {
   next: ListNode | null;
 }
 
-export function findNodeByValue(head: ListNode | null, target: number): ListNode | null {
+function findNodeByValue(head: ListNode | null, target: number): ListNode | null {
   let current: ListNode | null = head; // @step:initialize
   while (current !== null) {
     if (current.value === target) {

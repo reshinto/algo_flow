@@ -23,7 +23,23 @@ export const houseRobberTabulationEducational: EducationalContent = {
     "- `dp[2] = max(7, 2+9) = 11` — rob houses 0 and 2\n" +
     "- `dp[3] = max(11, 7+3) = 11` — skipping house 3 is equally good\n" +
     "- `dp[4] = max(11, 11+1) = 12` — rob houses 0, 2, and 4\n\n" +
-    "Each cell is filled exactly once with an `O(1)` decision.",
+    "Each cell is filled exactly once with an `O(1)` decision.\n\n" +
+    "### DP Table for [2, 7, 9, 3, 1]\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  H0["dp[0]=2 rob h0"] --> H2["dp[2]=11 rob h0+h2"]\n' +
+    '  H1["dp[1]=7 rob h1"] --> H2\n' +
+    '  H1 --> H3["dp[3]=11 skip h3"]\n' +
+    "  H2 --> H3\n" +
+    '  H2 --> H4["dp[4]=12 rob h0+h2+h4"]\n' +
+    "  H3 --> H4\n" +
+    "  style H0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style H1 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style H2 fill:#14532d,stroke:#22c55e\n" +
+    "  style H3 fill:#14532d,stroke:#22c55e\n" +
+    "  style H4 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Each node shows the best haul achievable up to that house. The two incoming arrows represent the skip (from `dp[i-1]`) and rob (from `dp[i-2] + house[i]`) choices — the maximum is kept.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

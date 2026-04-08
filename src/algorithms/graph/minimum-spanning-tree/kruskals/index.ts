@@ -13,6 +13,9 @@ import { kruskalsEducational } from "./educational";
 import typescriptSource from "./sources/kruskals.ts?raw";
 import pythonSource from "./sources/kruskals.py?raw";
 import javaSource from "./sources/Kruskals.java?raw";
+import rustSource from "./sources/kruskals.rs?raw";
+import cppSource from "./sources/Kruskals.cpp?raw";
+import goSource from "./sources/kruskals.go?raw";
 
 const CIRCLE_RADIUS = 150;
 const CENTER_X = 200;
@@ -93,7 +96,7 @@ const kruskalsDefinition: AlgorithmDefinition<KruskalsInput> = {
       worst: "O(E log E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: KruskalsInput) => kruskalsAlgorithm(input.edges, input.nodeIds),
@@ -103,6 +106,9 @@ const kruskalsDefinition: AlgorithmDefinition<KruskalsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

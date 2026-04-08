@@ -14,6 +14,19 @@ export const decodeStringEducational: EducationalContent = {
     "3. **`]`** → pop the saved count and string, set `currentString = prevString + currentString.repeat(count)`.\n" +
     "4. **Letter** → append to `currentString`.\n\n" +
     "### Example trace on `3[a2[c]]`\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '    A["scan: 3["] -->|"push(3, empty)"| B["countStack: 3\\nstrStack: \'\'"]\n' +
+    "    B -->|\"append a, scan 2[\"| C[\"push(2, 'a')\\ncurrent: ''\"]\n" +
+    '    C -->|"append c"| D["current: \'c\'"]\n' +
+    "    D -->|\"pop 2, 'a'\\n'a' + repeat('c',2)\"| E[\"current: 'acc'\"]\n" +
+    "    E -->|\"pop 3, ''\\n'' + repeat('acc',3)\"| F[\"'accaccacc'\"]\n" +
+    "    style A fill:#06b6d4,stroke:#0891b2\n" +
+    "    style D fill:#f59e0b,stroke:#d97706\n" +
+    "    style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "On each `[`, the current context is saved to a stack. On each `]`, the saved string " +
+    "and count are popped and the inner segment is repeated and appended.\n\n" +
     "```\n" +
     "char  action                        currentString  currentCount\n" +
     '3     digit                         ""             3\n' +

@@ -13,6 +13,9 @@ import { subarrayProductLessThanKEducational } from "./educational";
 import typescriptSource from "./sources/subarray-product-less-than-k.ts?raw";
 import pythonSource from "./sources/subarray-product-less-than-k.py?raw";
 import javaSource from "./sources/SubarrayProductLessThanK.java?raw";
+import rustSource from "./sources/subarray-product-less-than-k.rs?raw";
+import cppSource from "./sources/SubarrayProductLessThanK.cpp?raw";
+import goSource from "./sources/subarray-product-less-than-k.go?raw";
 
 interface SubarrayProductInput {
   inputArray: number[];
@@ -33,7 +36,7 @@ const subarrayProductDefinition: AlgorithmDefinition<SubarrayProductInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [10, 5, 2, 6, 1, 3],
       threshold: 100,
@@ -47,6 +50,9 @@ const subarrayProductDefinition: AlgorithmDefinition<SubarrayProductInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

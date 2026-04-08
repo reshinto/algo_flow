@@ -10,6 +10,9 @@ import { bstInorderEducational } from "./educational";
 import typescriptSource from "./sources/bst-inorder.ts?raw";
 import pythonSource from "./sources/bst-inorder.py?raw";
 import javaSource from "./sources/BSTInorder.java?raw";
+import rustSource from "./sources/bst-inorder.rs?raw";
+import cppSource from "./sources/BSTInorder.cpp?raw";
+import goSource from "./sources/bst-inorder.go?raw";
 
 /** Build a balanced 7-node BST: [4,2,6,1,3,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -114,7 +117,7 @@ const bstInorderDefinition: AlgorithmDefinition<BstInorderInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       nodes: defaultNodes,
       rootId: "n4",
@@ -127,6 +130,9 @@ const bstInorderDefinition: AlgorithmDefinition<BstInorderInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

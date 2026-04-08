@@ -19,7 +19,20 @@ export const romanToIntegerEducational: EducationalContent = {
     "C     100    I     add            1990\n" +
     "I     1      V     subtract       1989\n" +
     "V     5      —     add            1994\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["\'MCMXCIV\'"] --> B["M=1000, next=C: add → 1000"]\n' +
+    '  B --> C["C=100, next=M: subtract → 900"]\n' +
+    '  C --> D["M=1000, next=X: add → 1900"]\n' +
+    '  D --> E["XC=subtract → 1890, C=add → 1990"]\n' +
+    '  E --> F["I=1, next=V: subtract → 1989"]\n' +
+    '  F --> G["V=5, last: add → 1994"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The map gives O(1) lookup for each symbol. The one-symbol lookahead detects subtractive pairs like CM and IV without backtracking.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

@@ -10,6 +10,9 @@ import { firstNonRepeatingCharStreamEducational } from "./educational";
 import typescriptSource from "./sources/first-non-repeating-char-stream.ts?raw";
 import pythonSource from "./sources/first-non-repeating-char-stream.py?raw";
 import javaSource from "./sources/FirstNonRepeatingCharStream.java?raw";
+import rustSource from "./sources/first-non-repeating-char-stream.rs?raw";
+import cppSource from "./sources/FirstNonRepeatingCharStream.cpp?raw";
+import goSource from "./sources/first-non-repeating-char-stream.go?raw";
 
 function executeFirstNonRepeatingCharStream(input: FirstNonRepeatingCharStreamInput): string[] {
   return firstNonRepeatingCharStream(input.inputString) as string[];
@@ -30,7 +33,7 @@ const firstNonRepeatingCharStreamDefinition: AlgorithmDefinition<FirstNonRepeati
         worst: "O(n)",
       },
       spaceComplexity: "O(k)",
-      supportedLanguages: ["typescript", "python", "java"],
+      supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
       defaultInput: { inputString: "aabcbcd" },
     },
     execute: executeFirstNonRepeatingCharStream,
@@ -40,6 +43,9 @@ const firstNonRepeatingCharStreamDefinition: AlgorithmDefinition<FirstNonRepeati
       typescript: typescriptSource,
       python: pythonSource,
       java: javaSource,
+      rust: rustSource,
+      cpp: cppSource,
+      go: goSource,
     },
   };
 

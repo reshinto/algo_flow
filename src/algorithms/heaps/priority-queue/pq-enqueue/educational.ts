@@ -29,7 +29,23 @@ export const pqEnqueueEducational: EducationalContent = {
     "                      / \\ /\n" +
     "                     10 15 8\n" +
     "```\n\n" +
-    "The Priority Queue ADT guarantees `dequeue()` always returns 2 (the minimum) next.",
+    "The Priority Queue ADT guarantees `dequeue()` always returns 2 (the minimum) next.\n\n" +
+    "### Diagram: After enqueuing 3 into [2, 5, 8, 10, 15]\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n2((2)) --> n5((5))\n" +
+    "    n2 --> n3((3))\n" +
+    "    n5 --> n10((10))\n" +
+    "    n5 --> n15((15))\n" +
+    "    n3 --> n8((8))\n" +
+    "    style n2 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n3 fill:#f59e0b,stroke:#d97706\n" +
+    "    style n5 fill:#14532d,stroke:#22c55e\n" +
+    "    style n10 fill:#14532d,stroke:#22c55e\n" +
+    "    style n15 fill:#14532d,stroke:#22c55e\n" +
+    "    style n8 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Node 3 (amber) was appended as a leaf under 8, then sifted up — swapping with parent 8 — to reach its correct position. The root (cyan, value 2) remains the highest-priority element.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)`**\n\n" +

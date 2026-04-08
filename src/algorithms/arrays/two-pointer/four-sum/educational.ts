@@ -30,7 +30,22 @@ export const fourSumEducational: EducationalContent = {
     "first=-1(1), second=0(2): left=0(3), right=2(5) → -1+0+0+2=1 > 0 → right--\n" +
     "  left=0(3), right=1(4) → -1+0+0+1=0 → quadruplet! [-1,0,0,1]\n" +
     "Result: [[-2,-1,1,2], [-2,0,0,2], [-1,0,0,1]]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["-2"] --> B["-1"]\n' +
+    '  B --> C["0"]\n' +
+    '  C --> D["0"]\n' +
+    '  D --> E["1"]\n' +
+    '  E --> F["2"]\n' +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#06b6d4,stroke:#0891b2\n" +
+    "  style F fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Sorted array `[-2, -1, 0, 0, 1, 2]`: the two outer fixed pointers (amber) pin -2 and -1, while the two-pointer inner scan (cyan = left, green = inner processed) converges to find the quadruplet `[-2, -1, 1, 2]` summing to 0.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n³)`**\n\n" +

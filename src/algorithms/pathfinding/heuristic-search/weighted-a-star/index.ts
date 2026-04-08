@@ -9,6 +9,9 @@ import { weightedAStarEducational } from "./educational";
 import typescriptSource from "./sources/weighted-a-star.ts?raw";
 import pythonSource from "./sources/weighted-a-star.py?raw";
 import javaSource from "./sources/WeightedAStar.java?raw";
+import rustSource from "./sources/weighted-a-star.rs?raw";
+import cppSource from "./sources/WeightedAStar.cpp?raw";
+import goSource from "./sources/weighted-a-star.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -82,7 +85,7 @@ const weightedAStarDefinition: AlgorithmDefinition<WeightedAStarInput> = {
       worst: "O(b^d)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -98,6 +101,9 @@ const weightedAStarDefinition: AlgorithmDefinition<WeightedAStarInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

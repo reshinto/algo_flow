@@ -8,6 +8,9 @@ import { ransomNoteEducational } from "./educational";
 import typescriptSource from "./sources/ransom-note.ts?raw";
 import pythonSource from "./sources/ransom-note.py?raw";
 import javaSource from "./sources/RansomNote.java?raw";
+import rustSource from "./sources/ransom-note.rs?raw";
+import cppSource from "./sources/RansomNote.cpp?raw";
+import goSource from "./sources/ransom-note.go?raw";
 
 function executeRansomNote(input: RansomNoteInput): boolean {
   const { ransomNote: ransomNoteText, magazine } = input;
@@ -33,13 +36,20 @@ const definition: AlgorithmDefinition<RansomNoteInput> = {
       "Check if a ransom note can be constructed from magazine characters using a frequency count map",
     timeComplexity: { best: "O(m)", average: "O(m + n)", worst: "O(m + n)" },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { ransomNote: "aa", magazine: "aab" },
   },
   execute: executeRansomNote,
   generateSteps: generateRansomNoteSteps,
   educational: ransomNoteEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(definition);

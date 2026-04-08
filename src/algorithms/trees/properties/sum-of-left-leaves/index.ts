@@ -10,6 +10,9 @@ import { sumOfLeftLeavesEducational } from "./educational";
 import typescriptSource from "./sources/sum-of-left-leaves.ts?raw";
 import pythonSource from "./sources/sum-of-left-leaves.py?raw";
 import javaSource from "./sources/SumOfLeftLeaves.java?raw";
+import rustSource from "./sources/sum-of-left-leaves.rs?raw";
+import cppSource from "./sources/SumOfLeftLeaves.cpp?raw";
+import goSource from "./sources/sum-of-left-leaves.go?raw";
 
 /** Balanced 7-node BST: root=4, left leaves are 1 and 5 (sum=6) */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const sumOfLeftLeavesDefinition: AlgorithmDefinition<SumOfLeftLeavesInput> = {
       "Sums the values of all left leaf nodes. A leaf is a node with no children. A left leaf is a leaf that is the left child of its parent.",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeSumOfLeftLeaves,
   generateSteps: generateSumOfLeftLeavesSteps,
   educational: sumOfLeftLeavesEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(sumOfLeftLeavesDefinition);

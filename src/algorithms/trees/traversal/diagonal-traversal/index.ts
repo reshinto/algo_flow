@@ -10,6 +10,9 @@ import { diagonalTraversalEducational } from "./educational";
 import typescriptSource from "./sources/tree-diagonal-traversal.ts?raw";
 import pythonSource from "./sources/tree-diagonal-traversal.py?raw";
 import javaSource from "./sources/TreeDiagonalTraversal.java?raw";
+import rustSource from "./sources/tree-diagonal-traversal.rs?raw";
+import cppSource from "./sources/TreeDiagonalTraversal.cpp?raw";
+import goSource from "./sources/tree-diagonal-traversal.go?raw";
 
 /** Build a balanced 7-node BST: [4,2,6,1,3,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -114,7 +117,7 @@ const diagonalTraversalDefinition: AlgorithmDefinition<DiagonalTraversalInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       nodes: defaultNodes,
       rootId: "n4",
@@ -127,6 +130,9 @@ const diagonalTraversalDefinition: AlgorithmDefinition<DiagonalTraversalInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

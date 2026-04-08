@@ -26,7 +26,20 @@ export const firstMissingPositiveEducational: EducationalContent = {
     "  Final: [1, 2, 3, 4, 5, 7, −1] (values 1-5 placed, 6 absent, 7 at index 5)\n" +
     "Scan phase:\n" +
     "  i=0..4: match ✓  i=5: 7≠6 → answer = 6\n" +
-    "```",
+    "```\n\n" +
+    "### Placement Phase Diagram (`[3, 4, -1, 1]`, n=4)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["[3, 4, -1, 1]"] -->|"swap 3→idx 2"| B["[-1, 4, 3, 1]"]\n' +
+    '  B -->|"-1 out of range, advance"| C["[−1, 4, 3, 1]"]\n' +
+    '  C -->|"swap 4→idx 3"| D["[-1, 1, 3, 4]"]\n' +
+    '  D -->|"swap 1→idx 0"| E["[1, -1, 3, 4]"]\n' +
+    '  E -->|"scan: idx 1 mismatch"| F["answer = 2"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "After placement, index `1` holds `-1` instead of `2`, so the scan immediately identifies `2` as the first missing positive.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

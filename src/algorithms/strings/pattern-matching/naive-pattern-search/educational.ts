@@ -17,6 +17,18 @@ export const naivePatternSearchEducational: EducationalContent = {
     "         A  A  B  A          (offset = 1, after mismatch at index 1)\n" +
     "            A  A  B  A       (offset = 2, ...) \n" +
     "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  OFF0["offset=0\\nAABA vs AABA\\n→ match!"]:::matched\n' +
+    '  OFF1["offset=1\\nABAA vs AABA\\nA=A ✓ B≠A ✗\\nslide right"]:::current\n' +
+    '  OFF2["offset=2\\nBAAC vs AABA\\nB≠A ✗\\nslide right"]:::current\n' +
+    '  OFF3["offset=3\\n...continue"]:::start\n' +
+    "  OFF0 ~~~ OFF1 --> OFF2 --> OFF3\n" +
+    "  classDef start fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef matched fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Each window is compared from scratch: a mismatch at any position causes the pattern to slide one step right with no reuse of prior comparisons.\n\n" +
     "**Inner loop** — compares `text[textIdx + patternIdx]` against `pattern[patternIdx]` for each `patternIdx` from `0` to `m - 1`:\n\n" +
     "1. **Match** — `text[textIdx + patternIdx] == pattern[patternIdx]`: increment `patternIdx`.\n" +
     "2. **All matched** — `patternIdx == m`: pattern found at `textIdx`, return immediately.\n" +

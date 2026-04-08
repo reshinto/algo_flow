@@ -10,6 +10,9 @@ import { wordPatternEducational } from "./educational";
 import typescriptSource from "./sources/word-pattern.ts?raw";
 import pythonSource from "./sources/word-pattern.py?raw";
 import javaSource from "./sources/WordPattern.java?raw";
+import rustSource from "./sources/word-pattern.rs?raw";
+import cppSource from "./sources/WordPattern.cpp?raw";
+import goSource from "./sources/word-pattern.go?raw";
 
 function executeWordPattern(input: WordPatternInput): boolean {
   return wordPattern(input.pattern, input.sentence) as boolean;
@@ -29,7 +32,7 @@ const wordPatternDefinition: AlgorithmDefinition<WordPatternInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { pattern: "abba", sentence: "dog cat cat dog" },
   },
   execute: executeWordPattern,
@@ -39,6 +42,9 @@ const wordPatternDefinition: AlgorithmDefinition<WordPatternInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

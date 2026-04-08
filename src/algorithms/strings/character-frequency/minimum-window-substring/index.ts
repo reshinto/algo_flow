@@ -12,6 +12,9 @@ import { minimumWindowSubstringEducational } from "./educational";
 import typescriptSource from "./sources/minimum-window-substring.ts?raw";
 import pythonSource from "./sources/minimum-window-substring.py?raw";
 import javaSource from "./sources/MinimumWindowSubstring.java?raw";
+import rustSource from "./sources/minimum-window-substring.rs?raw";
+import cppSource from "./sources/MinimumWindowSubstring.cpp?raw";
+import goSource from "./sources/minimum-window-substring.go?raw";
 
 function executeMinimumWindowSubstring(input: MinimumWindowSubstringInput): string {
   return minimumWindowSubstring(input.text, input.pattern) as string;
@@ -31,7 +34,7 @@ const minimumWindowSubstringDefinition: AlgorithmDefinition<MinimumWindowSubstri
       worst: "O(n+m)",
     },
     spaceComplexity: "O(σ)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "ADOBECODEBANC", pattern: "ABC" },
   },
   execute: executeMinimumWindowSubstring,
@@ -41,6 +44,9 @@ const minimumWindowSubstringDefinition: AlgorithmDefinition<MinimumWindowSubstri
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

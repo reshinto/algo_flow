@@ -32,7 +32,7 @@ public class Dijkstra {
             List<Object[]> neighbors = adjacencyList.getOrDefault(currentNodeId, Collections.emptyList());
             for (Object[] neighbor : neighbors) {
                 String neighborId = (String) neighbor[0];
-                double edgeWeight = (Double) neighbor[1];
+                double edgeWeight = ((Number) neighbor[1]).doubleValue();
                 double tentativeDistance = currentDist + edgeWeight; // @step:relax-edge
                 if (tentativeDistance < distances.getOrDefault(neighborId, Double.MAX_VALUE)) {
                     distances.put(neighborId, tentativeDistance); // @step:update-distance

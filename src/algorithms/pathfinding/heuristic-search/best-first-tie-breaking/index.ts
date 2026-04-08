@@ -9,6 +9,9 @@ import { bestFirstTieBreakingEducational } from "./educational";
 import typescriptSource from "./sources/best-first-tie-breaking.ts?raw";
 import pythonSource from "./sources/best-first-tie-breaking.py?raw";
 import javaSource from "./sources/BestFirstTieBreaking.java?raw";
+import rustSource from "./sources/best-first-tie-breaking.rs?raw";
+import cppSource from "./sources/BestFirstTieBreaking.cpp?raw";
+import goSource from "./sources/best-first-tie-breaking.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -80,7 +83,7 @@ const bestFirstTieBreakingDefinition: AlgorithmDefinition<TieBreakingInput> = {
       worst: "O((V+E) log V)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -95,6 +98,9 @@ const bestFirstTieBreakingDefinition: AlgorithmDefinition<TieBreakingInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

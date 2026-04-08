@@ -10,6 +10,9 @@ import { insertAtPositionEducational } from "./educational";
 import typescriptSource from "./sources/insert-at-position.ts?raw";
 import pythonSource from "./sources/insert-at-position.py?raw";
 import javaSource from "./sources/InsertAtPosition.java?raw";
+import rustSource from "./sources/insert-at-position.rs?raw";
+import cppSource from "./sources/InsertAtPosition.cpp?raw";
+import goSource from "./sources/insert-at-position.go?raw";
 
 function executeInsertAtPosition(input: InsertAtPositionInput): number[] {
   interface ListNode {
@@ -47,7 +50,7 @@ const insertAtPositionDefinition: AlgorithmDefinition<InsertAtPositionInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { values: [1, 3, 5, 7], insertValue: 4, position: 2 },
   },
   execute: executeInsertAtPosition,
@@ -57,6 +60,9 @@ const insertAtPositionDefinition: AlgorithmDefinition<InsertAtPositionInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

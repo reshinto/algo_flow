@@ -1,0 +1,56 @@
+# Docker Compose for running multi-language tests.
+# Usage:
+#   docker compose -f docker-compose.test.yml build
+#   docker compose -f docker-compose.test.yml run --rm test-all
+#   docker compose -f docker-compose.test.yml run --rm test-python
+
+services:
+  test-all:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: >
+      bash -c "
+        npm test &&
+        bash scripts/test-python.sh --workers=2 &&
+        bash scripts/test-java.sh --workers=2 &&
+        bash scripts/test-rust.sh --workers=2 &&
+        bash scripts/test-cpp.sh --workers=2 &&
+        bash scripts/test-go.sh --workers=2
+      "
+
+  test-typescript:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: npm test
+
+  test-python:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: bash scripts/test-python.sh --workers=2
+
+  test-java:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: bash scripts/test-java.sh --workers=2
+
+  test-rust:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: bash scripts/test-rust.sh --workers=2
+
+  test-cpp:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: bash scripts/test-cpp.sh --workers=2
+
+  test-go:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: bash scripts/test-go.sh --workers=2

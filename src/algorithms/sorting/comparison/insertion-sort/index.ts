@@ -14,6 +14,9 @@ import { insertionSortEducational } from "./educational";
 import typescriptSource from "./sources/insertion-sort.ts?raw";
 import pythonSource from "./sources/insertion-sort.py?raw";
 import javaSource from "./sources/InsertionSort.java?raw";
+import rustSource from "./sources/insertion-sort.rs?raw";
+import cppSource from "./sources/InsertionSort.cpp?raw";
+import goSource from "./sources/insertion-sort.go?raw";
 
 const insertionSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const insertionSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: insertionSort,
@@ -39,6 +42,9 @@ const insertionSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

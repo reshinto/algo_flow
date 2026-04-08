@@ -12,6 +12,9 @@ import { bogoSortEducational } from "./educational";
 import typescriptSource from "./sources/bogo-sort.ts?raw";
 import pythonSource from "./sources/bogo-sort.py?raw";
 import javaSource from "./sources/BogoSort.java?raw";
+import rustSource from "./sources/bogo-sort.rs?raw";
+import cppSource from "./sources/BogoSort.cpp?raw";
+import goSource from "./sources/bogo-sort.go?raw";
 
 const bogoSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -27,7 +30,7 @@ const bogoSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(∞)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [3, 1, 2],
   },
   execute: bogoSort,
@@ -37,6 +40,9 @@ const bogoSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

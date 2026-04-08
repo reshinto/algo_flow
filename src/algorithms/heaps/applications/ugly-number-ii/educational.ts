@@ -22,7 +22,23 @@ export const uglyNumberIiEducational: EducationalContent = {
     "Extract 4  → insert 8,12,20    Heap: [5,6,6,8,9,10,12,15,20]\n" +
     "Extract 5  → insert 10,15,25   Heap: [6,6,8,9,10,10,12,15,20,25]\n" +
     "Extract 6  → nth=6 → return 6\n" +
-    "```",
+    "```\n\n" +
+    "### Min-Heap After Extracting 1, 2, 3 (candidates pending)\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    r((4)) --> n5((5))\n" +
+    "    r --> n6((6))\n" +
+    "    n5 --> n9((9))\n" +
+    "    n5 --> n10((10))\n" +
+    "    n6 --> n15((15))\n" +
+    "    style r fill:#f59e0b,stroke:#d97706\n" +
+    "    style n5 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n6 fill:#14532d,stroke:#22c55e\n" +
+    "    style n9 fill:#14532d,stroke:#22c55e\n" +
+    "    style n10 fill:#14532d,stroke:#22c55e\n" +
+    "    style n15 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The amber root (4) is next to be extracted. Cyan node (5) is the next candidate after that. Green nodes are settled candidates waiting their turn.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log n)`**\n\n" +

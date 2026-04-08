@@ -8,6 +8,9 @@ import { findAllDuplicatesEducational } from "./educational";
 import typescriptSource from "./sources/find-all-duplicates.ts?raw";
 import pythonSource from "./sources/find-all-duplicates.py?raw";
 import javaSource from "./sources/FindAllDuplicates.java?raw";
+import rustSource from "./sources/find-all-duplicates.rs?raw";
+import cppSource from "./sources/FindAllDuplicates.cpp?raw";
+import goSource from "./sources/find-all-duplicates.go?raw";
 
 function executeFindAllDuplicates(input: FindAllDuplicatesInput): number[] {
   const seenSet = new Set<number>();
@@ -28,13 +31,20 @@ const definition: AlgorithmDefinition<FindAllDuplicatesInput> = {
     description: "Find all elements appearing twice using a hash set",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numbers: [4, 3, 2, 7, 8, 2, 3, 1] },
   },
   execute: executeFindAllDuplicates,
   generateSteps: generateFindAllDuplicatesSteps,
   educational: findAllDuplicatesEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(definition);

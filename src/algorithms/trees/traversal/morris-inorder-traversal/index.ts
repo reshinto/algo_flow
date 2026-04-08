@@ -10,6 +10,9 @@ import { morrisInorderTraversalEducational } from "./educational";
 import typescriptSource from "./sources/morris-inorder-traversal.ts?raw";
 import pythonSource from "./sources/morris-inorder-traversal.py?raw";
 import javaSource from "./sources/MorrisInorderTraversal.java?raw";
+import rustSource from "./sources/morris-inorder-traversal.rs?raw";
+import cppSource from "./sources/MorrisInorderTraversal.cpp?raw";
+import goSource from "./sources/morris-inorder-traversal.go?raw";
 
 /** Build a balanced 7-node BST: [4,2,6,1,3,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -114,7 +117,7 @@ const morrisInorderTraversalDefinition: AlgorithmDefinition<MorrisInorderTravers
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       nodes: defaultNodes,
       rootId: "n4",
@@ -127,6 +130,9 @@ const morrisInorderTraversalDefinition: AlgorithmDefinition<MorrisInorderTravers
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

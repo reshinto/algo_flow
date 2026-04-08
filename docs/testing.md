@@ -9,18 +9,26 @@ AlgoFlow uses three layers of testing to ensure algorithm correctness, visual co
 ## Contents
 
 - [Unit Tests](#unit-tests)
+- [Multi-Language Source Tests](#multi-language-source-tests)
+- [Docker Test Environment](#docker-test-environment)
 - [E2E Browser Tests (Playwright)](#e2e-browser-tests-playwright)
 - [Storybook & Visual Regression Testing](#storybook--visual-regression-testing)
 
 ## Unit Tests
 
 ```bash
-npm run test            # Run all unit tests
-npm run test:coverage   # Run with coverage report
-npm run test:watch      # Watch mode during development
+npm run test                 # Run all unit tests
+npm run test:coverage        # Run with coverage report
+npm run test:watch           # Watch mode during development
+npm run test:python          # Run Python source tests
+npm run test:java            # Run Java source tests
+npm run test:rust            # Run Rust source tests
+npm run test:cpp             # Run C++ source tests
+npm run test:go              # Run Go source tests
+npm run test:all-languages   # Run all 5 language source test suites
 ```
 
-Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 452 algorithms in 14 categories.
+Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all algorithms and categories. Multi-language source tests cover correctness of the Python, Java, Rust, C++, and Go implementations.
 
 ### Vitest Projects Configuration
 
@@ -31,30 +39,32 @@ The Vitest config uses the `projects` feature to split the test suite into two i
 | `algorithms`   | `node`      | Algorithm correctness, step generators, trackers, store  |
 | `components`   | `jsdom`     | React component tests requiring a DOM environment        |
 
-This avoids the overhead of loading `jsdom` for pure algorithm tests and removes the need for manual timeout configuration in `test-setup.ts`.
-
-CI shards unit tests 12 ways (aggregated under the **Unit Tests Status** job) and E2E tests 16 ways (aggregated under the **E2E Status** job).
+This avoids the overhead of loading `jsdom` for pure algorithm tests and removes the need for manual timeout configuration in `test-setup.ts`. CI shards unit tests across parallel jobs — see [Deployment](deployment.md#cicd-pipelines) for shard configuration.
 
 > [!TIP]
 > Run a subset of tests with `npx vitest --filter <pattern>` (e.g., `npx vitest --filter bubble-sort`).
 
 ### What to Test for Each Algorithm
 
-| Test File                | What to Verify                                              |
-| ------------------------ | ----------------------------------------------------------- |
-| `<algorithm>.test.ts`    | Pure algorithm correctness (input → expected output)        |
-| `step-generator.test.ts` | Step count, step types, final visual state for known inputs |
+| Test File                              | What to Verify                                              |
+| -------------------------------------- | ----------------------------------------------------------- |
+| `__tests__/<algorithm>.test.ts`        | Pure algorithm correctness (input → expected output)        |
+| `__tests__/step-generator.test.ts`     | Step count, step types, final visual state for known inputs |
+| `__tests__/<algorithm>_test.{py,java,rs,cpp,go}` | Correctness of each language's source implementation |
 
 Additionally verify:
 
 - Educational content is non-empty for all 7 sections
-- Source files exist for all supported languages (TypeScript, Python, Java)
+- Source files exist for all supported languages (TypeScript, Python, Java, Rust, C++, Go)
+
+> [!NOTE]
+> All test files and pipeline stories live in the algorithm's `__tests__/` subdirectory. Implementation files (`index.ts`, `step-generator.ts`, `educational.ts`) and source files (`sources/`) remain at the algorithm root.
 
 #### Example: Algorithm Correctness Test
 
 ```typescript
 import { describe, expect, it } from "vitest";
-import { bubbleSort } from "./sources/bubble-sort.ts?fn";
+import { bubbleSort } from "../sources/bubble-sort.ts?fn";
 
 describe("bubbleSort", () => {
   it("sorts an unsorted array", () => {
@@ -96,6 +106,102 @@ describe("bubbleSort", () => {
 
 > [!TIP]
 > Coverage thresholds are verified automatically by the `session-end-security-check.sh` Stop hook whenever `src/` files change. The same hook scans for unsafe patterns (`eval`, `innerHTML`, `dangerouslySetInnerHTML`, `new Function`) and runs `npm audit --audit-level=high`. Violations block git operations for the session.
+
+## Multi-Language Source Tests
+
+Every algorithm has source implementations in 6 languages. Each language has its own test suite with standalone test files that verify algorithm correctness.
+
+### Running Language Tests
+
+```bash
+npm run test:python          # Run Python source tests
+npm run test:java            # Run Java source tests
+npm run test:rust            # Run Rust source tests
+npm run test:cpp             # Run C++ source tests
+npm run test:go              # Run Go source tests
+npm run test:all-languages   # Run all 5 language suites sequentially
+```
+
+### Prerequisites
+
+Each script requires its language toolchain on PATH:
+
+| Language | Required Tool | Minimum Version | Install (Ubuntu) | Install (macOS) |
+| -------- | ------------- | --------------- | ----------------- | --------------- |
+| Python   | `python3`     | 3.10+           | `apt install python3` | `brew install python3` |
+| Java     | `javac`, `java` | 17+           | `apt install openjdk-21-jdk-headless` | `brew install openjdk` |
+| Rust     | `rustc`       | 1.70+           | `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \| sh` | same |
+| C++      | `g++`         | C++17 support   | `apt install g++` | Xcode CLT |
+| Go       | `go`          | 1.21+           | [go.dev/dl](https://go.dev/dl/) | `brew install go` |
+
+> [!TIP]
+> To skip installing toolchains locally, use the [Docker test environment](#docker-test-environment) instead — it has everything pre-installed.
+
+### Sharding and Parallel Workers
+
+All language test scripts support `--shard=M/N` for deterministic file splitting and `--workers=W` for parallel execution within a shard:
+
+```bash
+# Run shard 1 of 4 with 2 parallel workers
+bash scripts/test-python.sh --shard=1/4 --workers=2
+
+# Run all tests with 4 parallel workers
+bash scripts/test-rust.sh --workers=4
+```
+
+Each test has a 30-second timeout to prevent hangs from infinite loops.
+
+### CI Configuration
+
+Language tests run as sharded matrix jobs in GitHub Actions. Shard counts are optimized per language based on compilation overhead:
+
+| Language   | Shards | Workers | Toolchain Setup Action |
+| ---------- | ------ | ------- | ---------------------- |
+| Python     | 2      | 2       | `actions/setup-python@v5` (3.12) |
+| Java       | 4      | 2       | `actions/setup-java@v4` (Temurin 21) |
+| Rust       | 8      | 2       | `dtolnay/rust-toolchain@stable` |
+| C++        | 4      | 2       | Pre-installed `g++` on `ubuntu-latest` |
+| Go         | 4      | 2       | `actions/setup-go@v5` (stable) |
+
+Each language has an aggregation status job (e.g., **Python Tests Status**) that gates downstream jobs.
+
+## Docker Test Environment
+
+A self-contained Docker image with all 6 language toolchains pre-installed. No tools need to be installed on your machine — only Docker is required.
+
+### Build the Test Image
+
+```bash
+npm run docker:test:build
+```
+
+This builds `Dockerfile.test` based on Ubuntu 24.04 with Node 22, Python 3.12, Java 21, Rust stable, g++ 13, and Go pre-installed. The image includes the full source tree and `node_modules`.
+
+### Run Tests in Docker
+
+```bash
+npm run docker:test              # Run ALL test suites (TypeScript + 5 languages)
+npm run docker:test:typescript   # TypeScript unit tests only
+npm run docker:test:python       # Python tests only
+npm run docker:test:java         # Java tests only
+npm run docker:test:rust         # Rust tests only
+npm run docker:test:cpp          # C++ tests only
+npm run docker:test:go           # Go tests only
+```
+
+### Advanced Usage
+
+```bash
+# Run with custom shard and worker flags
+docker compose -f docker-compose.test.yml run --rm test-python \
+  bash scripts/test-python.sh --shard=1/4 --workers=4
+
+# Interactive shell inside the container
+docker compose -f docker-compose.test.yml run --rm test-all bash
+```
+
+> [!NOTE]
+> The Docker image is ~1.5 GB and is cached after the first build. Subsequent builds only re-run the `COPY` and `npm ci` layers if dependencies change.
 
 ## E2E Browser Tests (Playwright)
 
@@ -140,7 +246,7 @@ e2e/
 └── helpers/                      # Shared Playwright helpers and selectors
 ```
 
-~950 tests across 21 spec files. Per-category spec files use `test.describe.configure({ mode: "serial" })` to run tests in declaration order. Workers: 2 locally, 4 on CI. In CI the suite is sharded 16 ways, aggregated under the **E2E Status** check.
+Per-category spec files use `test.describe.configure({ mode: "serial" })` to run tests in declaration order. Workers: 2 locally, 4 on CI. CI shards the E2E suite across parallel jobs, aggregated under the **E2E Status** check.
 
 ### What the Suite Covers
 
@@ -165,21 +271,7 @@ New algorithms are auto-discovered from the registry — no manual update is nee
 
 ## Pre-commit Hook
 
-A pre-commit hook at `.githooks/pre-commit` runs automatically before every `git commit`. It:
-
-1. Runs **Prettier** (auto-fixes formatting)
-2. Runs **ESLint** with `--fix` (auto-fixes lint issues)
-3. Runs **TypeScript type-checking** (`tsc --noEmit`)
-4. Re-stages any files that were auto-fixed
-
-Activate it once after cloning:
-
-```bash
-git config core.hooksPath .githooks
-```
-
-> [!NOTE]
-> Markdown files are excluded from Prettier via `.prettierignore`, so documentation edits will not be reformatted by the hook.
+A pre-commit hook enforces lint, format, and typecheck on every commit. See [Contributing — Quality Gate](contributing.md#quality-gate) for details.
 
 ## Storybook & Visual Regression Testing
 
@@ -192,21 +284,21 @@ npm run chromatic       # Run Chromatic visual tests
 
 ### Story Inventory
 
-**483 story files** organized into:
+Story files are organized into:
 
 | Category                   | Location                                 | Stories                                                                                                                                                                                                                                   |
 | -------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Shared Primitives**      | `src/components/shared/`                 | Button, Badge, IconButton, Select                                                                                                                                                                                                         |
 | **Code Panel**             | `src/components/code-panel/`             | CodePanel, LanguageTabs                                                                                                                                                                                                                   |
-| **Individual Visualizers** | `src/components/visualization/`          | ArrayVisualizer, DPTableVisualizer, GraphVisualizer, GridVisualizer, HashMapVisualizer, HeapVisualizer, LinkedListVisualizer, MatrixVisualizer, SetVisualizer, StackQueueVisualizer, StringVisualizer, TreeVisualizer, VisualizationPanel |
+| **Individual Visualizers** | `src/components/visualization/<category>/` | ArrayVisualizer, DPTableVisualizer, GraphVisualizer, GridVisualizer, HashMapVisualizer, HeapVisualizer, LinkedListVisualizer, MatrixVisualizer, SetVisualizer, StackQueueVisualizer, StringVisualizer, PalindromeVisualizer, TransformVisualizer, DistanceVisualizer, FrequencyVisualizer, TrieVisualizer, TreeVisualizer, VisualizationPanel |
 | **Layout**                 | `src/components/layout/`                 | AlgorithmSelectorModal, AppShell, Header, MobileLayout, TabletLayout, DesktopLayout                                                                                                                                                       |
 | **Educational**            | `src/components/educational/`            | EducationalDrawer, MermaidDiagram                                                                                                                                                                                                         |
 | **Input Editor**           | `src/components/input-editor/`           | ArrayInputEditor, InputEditor                                                                                                                                                                                                             |
 | **Explanation Panel**      | `src/components/explanation-panel/`      | ExplanationPanel                                                                                                                                                                                                                          |
 | **Playback**               | `src/components/playback/`               | PlaybackControls                                                                                                                                                                                                                          |
-| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/` | 452 algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                             |
+| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/__tests__/` | Per-algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                             |
 
-Pipeline stories (`*.Pipeline.stories.tsx`) live alongside their algorithm implementation, not with the visualizer components. Component stories remain co-located with their components in `src/components/`.
+Pipeline stories (`*.Pipeline.stories.tsx`) live in the algorithm's `__tests__/` directory alongside test files. Component stories remain co-located with their components in `src/components/visualization/<category>/`.
 
 ### Chromatic Visual Regression
 

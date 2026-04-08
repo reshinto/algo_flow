@@ -28,7 +28,19 @@ export const boyerMooreVotingEducational: EducationalContent = {
     "| 4     | 1       | set-candidate | 1         | 1         |\n" +
     "| 5     | 2       | decrement     | 1         | 0         |\n" +
     "| 6     | 2       | set-candidate | 2         | 1         |\n\n" +
-    "**Result**: `candidate = 2`, which appears 4 out of 7 times (majority confirmed).",
+    "**Result**: `candidate = 2`, which appears 4 out of 7 times (majority confirmed).\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["2"] --> B["2"] --> C["1"] --> D["1"] --> E["1"] --> F["2"] --> G["2"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "  style G fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Array `[2, 2, 1, 1, 1, 2, 2]`: cyan = positions where candidate 2 is set or re-confirmed; amber = challengers (1s) that cancel votes; green = increments that build vote count. Despite cancellations, candidate 2 survives as the majority.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

@@ -14,6 +14,9 @@ import { floydWarshallEducational } from "./educational";
 import typescriptSource from "./sources/floyd-warshall.ts?raw";
 import pythonSource from "./sources/floyd-warshall.py?raw";
 import javaSource from "./sources/FloydWarshall.java?raw";
+import rustSource from "./sources/floyd-warshall.rs?raw";
+import cppSource from "./sources/FloydWarshall.cpp?raw";
+import goSource from "./sources/floyd-warshall.go?raw";
 
 const CIRCLE_RADIUS = 150;
 const CENTER_X = 200;
@@ -79,7 +82,7 @@ const floydWarshallDefinition: AlgorithmDefinition<FloydWarshallInput> = {
       worst: "O(V³)",
     },
     spaceComplexity: "O(V²)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: FloydWarshallInput) => floydWarshall(input.adjacencyList, input.nodeIds),
@@ -89,6 +92,9 @@ const floydWarshallDefinition: AlgorithmDefinition<FloydWarshallInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

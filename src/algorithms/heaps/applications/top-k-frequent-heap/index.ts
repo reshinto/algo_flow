@@ -10,6 +10,9 @@ import { topKFrequentHeapEducational } from "./educational";
 import typescriptSource from "./sources/top-k-frequent-heap.ts?raw";
 import pythonSource from "./sources/top-k-frequent-heap.py?raw";
 import javaSource from "./sources/TopKFrequentHeap.java?raw";
+import rustSource from "./sources/top-k-frequent-heap.rs?raw";
+import cppSource from "./sources/TopKFrequentHeap.cpp?raw";
+import goSource from "./sources/top-k-frequent-heap.go?raw";
 
 function executeTopKFrequentHeap(input: TopKFrequentHeapInput): number[] {
   return topKFrequentHeap(input.array, input.kValue) as number[];
@@ -29,7 +32,7 @@ const topKFrequentHeapDefinition: AlgorithmDefinition<TopKFrequentHeapInput> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [1, 1, 1, 2, 2, 3, 3, 3, 3, 4], kValue: 2 },
   },
   execute: executeTopKFrequentHeap,
@@ -39,6 +42,9 @@ const topKFrequentHeapDefinition: AlgorithmDefinition<TopKFrequentHeapInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

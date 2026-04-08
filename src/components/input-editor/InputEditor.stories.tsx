@@ -32,7 +32,7 @@ const sortingDefinition = {
   },
   execute: () => [],
   generateSteps: () => [],
-  sources: { typescript: "", python: "", java: "" },
+  sources: { typescript: "", python: "", java: "", rust: "", cpp: "", go: "" },
 };
 
 function WithSortingAlgorithm(Story: React.ComponentType) {

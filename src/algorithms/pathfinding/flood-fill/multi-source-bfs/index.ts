@@ -9,6 +9,9 @@ import { multiSourceBfsEducational } from "./educational";
 import typescriptSource from "./sources/multi-source-bfs.ts?raw";
 import pythonSource from "./sources/multi-source-bfs.py?raw";
 import javaSource from "./sources/MultiSourceBfs.java?raw";
+import rustSource from "./sources/multi-source-bfs.rs?raw";
+import cppSource from "./sources/MultiSourceBfs.cpp?raw";
+import goSource from "./sources/multi-source-bfs.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -90,7 +93,7 @@ const multiSourceBfsDefinition: AlgorithmDefinition<MultiSourceBfsInput> = {
       worst: "O(V + E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -104,6 +107,9 @@ const multiSourceBfsDefinition: AlgorithmDefinition<MultiSourceBfsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -12,6 +12,9 @@ import { longestRepeatedSubstringEducational } from "./educational";
 import typescriptSource from "./sources/longest-repeated-substring.ts?raw";
 import pythonSource from "./sources/longest-repeated-substring.py?raw";
 import javaSource from "./sources/LongestRepeatedSubstring.java?raw";
+import rustSource from "./sources/longest-repeated-substring.rs?raw";
+import cppSource from "./sources/LongestRepeatedSubstring.cpp?raw";
+import goSource from "./sources/longest-repeated-substring.go?raw";
 
 function executeLongestRepeatedSubstring(input: LongestRepeatedSubstringInput): string {
   return longestRepeatedSubstring(input.text) as string;
@@ -31,7 +34,7 @@ const longestRepeatedSubstringDefinition: AlgorithmDefinition<LongestRepeatedSub
       worst: "O(n²)",
     },
     spaceComplexity: "O(n²)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "banana" },
   },
   execute: executeLongestRepeatedSubstring,
@@ -41,6 +44,9 @@ const longestRepeatedSubstringDefinition: AlgorithmDefinition<LongestRepeatedSub
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

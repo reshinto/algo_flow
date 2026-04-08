@@ -15,6 +15,9 @@ import { bfsEducational } from "./educational";
 import typescriptSource from "./sources/bfs.ts?raw";
 import pythonSource from "./sources/bfs.py?raw";
 import javaSource from "./sources/BFS.java?raw";
+import rustSource from "./sources/bfs.rs?raw";
+import cppSource from "./sources/BFS.cpp?raw";
+import goSource from "./sources/bfs.go?raw";
 
 /** Pre-computed positions for 6 nodes arranged in a circle layout */
 const CIRCLE_RADIUS = 150;
@@ -79,7 +82,7 @@ const bfsDefinition: AlgorithmDefinition<BfsInput> = {
       worst: "O(V+E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: BfsInput) => breadthFirstSearch(input.adjacencyList, input.startNodeId),
@@ -89,6 +92,9 @@ const bfsDefinition: AlgorithmDefinition<BfsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

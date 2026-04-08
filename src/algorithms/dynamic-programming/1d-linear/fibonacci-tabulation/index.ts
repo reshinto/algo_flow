@@ -9,6 +9,9 @@ import { fibonacciTabulationEducational } from "./educational";
 import typescriptSource from "./sources/fibonacci-tabulation.ts?raw";
 import pythonSource from "./sources/fibonacci-tabulation.py?raw";
 import javaSource from "./sources/FibonacciTabulation.java?raw";
+import rustSource from "./sources/fibonacci-tabulation.rs?raw";
+import cppSource from "./sources/FibonacciTabulation.cpp?raw";
+import goSource from "./sources/fibonacci-tabulation.go?raw";
 
 interface FibonacciInput {
   targetIndex: number;
@@ -28,7 +31,7 @@ const fibonacciTabulationDefinition: AlgorithmDefinition<FibonacciInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { targetIndex: 8 },
   },
   execute: (input: FibonacciInput) => fibonacciTabulation(input.targetIndex),
@@ -38,6 +41,9 @@ const fibonacciTabulationDefinition: AlgorithmDefinition<FibonacciInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

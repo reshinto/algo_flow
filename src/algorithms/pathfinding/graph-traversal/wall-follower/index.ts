@@ -9,6 +9,9 @@ import { wallFollowerEducational } from "./educational";
 import typescriptSource from "./sources/wall-follower.ts?raw";
 import pythonSource from "./sources/wall-follower.py?raw";
 import javaSource from "./sources/WallFollower.java?raw";
+import rustSource from "./sources/wall-follower.rs?raw";
+import cppSource from "./sources/WallFollower.cpp?raw";
+import goSource from "./sources/wall-follower.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and a simple corridor maze. */
 function createDefaultGrid(): GridCell[][] {
@@ -88,7 +91,7 @@ const wallFollowerDefinition: AlgorithmDefinition<WallFollowerInput> = {
       worst: "O(V)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -103,6 +106,9 @@ const wallFollowerDefinition: AlgorithmDefinition<WallFollowerInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

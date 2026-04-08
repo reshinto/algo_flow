@@ -18,7 +18,24 @@ export const connectedComponentsEducational: EducationalContent = {
     "Graph:  A—B—C   D—E   F—G—H\n" +
     "        Component 0  Component 1  Component 2\n" +
     "```\n\n" +
-    "A BFS starting at A discovers {A, B, C}. Then D starts component {D, E}. Finally F starts {F, G, H}.",
+    "A BFS starting at A discovers {A, B, C}. Then D starts component {D, E}. Finally F starts {F, G, H}.\n\n" +
+    "```mermaid\n" +
+    "graph LR\n" +
+    "  A((A)) --- B((B))\n" +
+    "  B((B)) --- C((C))\n" +
+    "  D((D)) --- E((E))\n" +
+    "  F((F)) --- G((G))\n" +
+    "  G((G)) --- H((H))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#06b6d4,stroke:#0891b2\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#06b6d4,stroke:#0891b2\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "  style H fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Cyan nodes are the BFS start of each component. Green nodes are discovered within that component. The three clusters are fully disconnected from one another.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

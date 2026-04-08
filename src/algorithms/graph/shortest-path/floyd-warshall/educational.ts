@@ -12,7 +12,21 @@ export const floydWarshallEducational: EducationalContent = {
     "       * If `dist[i][k] + dist[k][j] < dist[i][j]`, update `dist[i][j]`.\n" +
     "3. After processing all `V` intermediate nodes, `dist[i][j]` holds the shortest path between every pair `(i, j)`.\n\n" +
     "### The key insight\n\n" +
-    "After the `k`-th outer iteration, `dist[i][j]` contains the shortest path from `i` to `j` that uses only nodes `{0, 1, …, k}` as intermediates. By the time `k = V`, all intermediates have been considered.",
+    "After the `k`-th outer iteration, `dist[i][j]` contains the shortest path from `i` to `j` that uses only nodes `{0, 1, …, k}` as intermediates. By the time `k = V`, all intermediates have been considered.\n\n" +
+    "### All-Pairs Example: Using B as Intermediate\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '  A((A)) -->|"3"| B((B))\n' +
+    '  B((B)) -->|"2"| C((C))\n' +
+    '  A((A)) -->|"8"| C((C))\n' +
+    '  C((C)) -->|"1"| D((D))\n' +
+    '  B((B)) -->|"5"| D((D))\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "When k=B (amber): dist[A][C] = min(8, dist[A][B] + dist[B][C]) = min(8, 3+2) = 5. Floyd-Warshall discovers that routing through B shortens the A to C path from 8 to 5.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V³)`**\n\n" +

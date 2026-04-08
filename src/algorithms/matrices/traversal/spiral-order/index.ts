@@ -10,6 +10,9 @@ import { spiralOrderEducational } from "./educational";
 import typescriptSource from "./sources/spiral-order.ts?raw";
 import pythonSource from "./sources/spiral-order.py?raw";
 import javaSource from "./sources/SpiralOrder.java?raw";
+import rustSource from "./sources/spiral-order.rs?raw";
+import cppSource from "./sources/SpiralOrder.cpp?raw";
+import goSource from "./sources/spiral-order.go?raw";
 
 function executeSpiralOrder(input: SpiralOrderInput): number[] {
   return spiralOrder(input.matrix) as number[];
@@ -29,7 +32,7 @@ const spiralOrderDefinition: AlgorithmDefinition<SpiralOrderInput> = {
       worst: "O(m × n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [1, 2, 3, 4],
@@ -46,6 +49,9 @@ const spiralOrderDefinition: AlgorithmDefinition<SpiralOrderInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

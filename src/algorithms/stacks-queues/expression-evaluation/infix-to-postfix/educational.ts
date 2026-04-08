@@ -13,19 +13,23 @@ export const infixToPostfixEducational: EducationalContent = {
     "4. **`)`** → pop and output all operators until the matching `(` is found, then discard the `(`.\n" +
     "5. **End of input** → pop and output all remaining operators from the stack.\n\n" +
     "### Example trace on `a+b*(c-d)`\n\n" +
-    "```\n" +
-    "token  action                    output          stack\n" +
-    "a      operand → output          [a]             []\n" +
-    "+      push (stack empty)        [a]             [+]\n" +
-    "b      operand → output          [a b]           [+]\n" +
-    "*      prec(*) > prec(+), push   [a b]           [+ *]\n" +
-    "(      push paren                [a b]           [+ * (]\n" +
-    "c      operand → output          [a b c]         [+ * (]\n" +
-    "-      push (barrier at '(')     [a b c]         [+ * ( -]\n" +
-    "d      operand → output          [a b c d]       [+ * ( -]\n" +
-    ")      pop until '(': output -   [a b c d -]     [+ *]\n" +
-    "end    drain stack: * then +     [a b c d - * +] []\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    "    subgraph Op Stack\n" +
+    '    OS1["+"] --> OS2["+ *"] --> OS3["+ * ("] --> OS4["+ * ( -"]\n' +
+    "    OS4 -->|\"')' pops until '('\"| OS5[\"+ *\"]\n" +
+    '    OS5 -->|"end: drain"| OS6["empty"]\n' +
+    "    end\n" +
+    "    subgraph Output\n" +
+    '    O1["a"] --> O2["a b"] --> O3["a b c"] --> O4["a b c d"]\n' +
+    '    O4 -->|"pop -"| O5["a b c d -"]\n' +
+    '    O5 -->|"pop * then +"| O6["a b c d - * +"]\n' +
+    "    end\n" +
+    "    style O6 fill:#14532d,stroke:#22c55e\n" +
+    "    style OS3 fill:#f59e0b,stroke:#d97706\n" +
+    "    style O1 fill:#06b6d4,stroke:#0891b2\n" +
     "```\n\n" +
+    "Operands flow straight to output; the stack holds pending operators and releases them when a lower-precedence operator or `)` is seen.\n\n" +
     "Result: `a b c d - * +`",
 
   timeAndSpaceComplexity:

@@ -24,21 +24,14 @@ Registry-driven, pre-computed steps, tracker abstraction, discriminated `VisualS
 - Types: `src/types/`
 - Registry: `src/registry/`
 - Trackers: `src/trackers/`
-- Algorithms: `src/algorithms/<category>/<algorithm>/`
+- Algorithms: `src/algorithms/<category>/<technique>/<algorithm>/`
 - Store: `src/store/`
 - Components: `src/components/`
 - Plan: `.claude/PLAN.md`
 
 ## Rules
 
-See `.claude/rules/` for full constraints. Most commonly violated:
-
-- No single-char variable names, no `any` types — use `unknown` with narrowing
-- `@/` path alias required for all src-relative imports
-- `noUncheckedIndexedAccess` enabled — use tuple types (`[number, number][]`) for coordinate arrays
-- Pipeline stories (`*.Pipeline.stories.tsx`) live in algorithm directories, not `src/components/`
-- Branch-per-task mandatory — every new task starts on a fresh branch from main
-- All edits to input and pathfinding grids are temporary (non-persistent)
+See `.claude/rules/` for full constraints. Most commonly violated: naming (no single-char), no `any`, `@/` imports, `noUncheckedIndexedAccess` tuple types, `__tests__/` for stories, branch-per-task, non-persistent edits.
 
 ## General Guidelines
 
@@ -53,14 +46,11 @@ See `.claude/rules/` for full constraints. Most commonly violated:
 
 ## Git Workflow
 
-- When working on branches, always verify the current branch and its commit history before starting work. Never create a new branch from main when continuing prior work — check for existing feature branches first.
+Branch-per-task mandatory. Check existing feature branches before creating new ones. See `.claude/rules/workflow.md`.
 
 ## Testing
 
-- Run CI checks in sequence and fix iteratively until all pass green: `npm run lint` → `npm run format` → `npm run typecheck` → `npm test`
-- Do not stop after fixing just one category — keep going until everything is clean
-- For E2E tests, the dev server starts automatically via hooks — do not start it manually
-- Every new algorithm needs: correctness tests + step generation tests + pipeline story in algorithm directory + E2E registration — see `.claude/rules/testing.md`
+CI sequence: `lint` → `format` → `typecheck` → `test` — fix iteratively until all green. Dev server auto-starts for E2E. Every new algorithm needs tests + story in `__tests__/`. See `.claude/rules/testing.md`.
 
 ## Workflow
 

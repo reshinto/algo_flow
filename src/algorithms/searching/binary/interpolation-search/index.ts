@@ -13,6 +13,9 @@ import { interpolationSearchEducational } from "./educational";
 import typescriptSource from "./sources/interpolation-search.ts?raw";
 import pythonSource from "./sources/interpolation-search.py?raw";
 import javaSource from "./sources/InterpolationSearch.java?raw";
+import rustSource from "./sources/interpolation-search.rs?raw";
+import cppSource from "./sources/InterpolationSearch.cpp?raw";
+import goSource from "./sources/interpolation-search.go?raw";
 
 const interpolationSearchDefinition: AlgorithmDefinition<{
   sortedArray: number[];
@@ -31,7 +34,7 @@ const interpolationSearchDefinition: AlgorithmDefinition<{
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [2, 5, 8, 12, 16, 23, 38, 56, 72, 91],
       targetValue: 23,
@@ -44,6 +47,9 @@ const interpolationSearchDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

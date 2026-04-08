@@ -13,6 +13,9 @@ import { minSizeSubarraySumEducational } from "./educational";
 import typescriptSource from "./sources/min-size-subarray-sum.ts?raw";
 import pythonSource from "./sources/min-size-subarray-sum.py?raw";
 import javaSource from "./sources/MinSizeSubarraySum.java?raw";
+import rustSource from "./sources/min-size-subarray-sum.rs?raw";
+import cppSource from "./sources/MinSizeSubarraySum.cpp?raw";
+import goSource from "./sources/min-size-subarray-sum.go?raw";
 
 interface MinSizeSubarraySumInput {
   inputArray: number[];
@@ -33,7 +36,7 @@ const minSizeSubarraySumDefinition: AlgorithmDefinition<MinSizeSubarraySumInput>
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [2, 3, 1, 2, 4, 3],
       target: 7,
@@ -46,6 +49,9 @@ const minSizeSubarraySumDefinition: AlgorithmDefinition<MinSizeSubarraySumInput>
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

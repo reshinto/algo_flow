@@ -27,7 +27,23 @@ export const regexMatchingEducational: EducationalContent = {
     "    dp[rowIdx][colIdx] = false\n" +
     "```\n\n" +
     "Where `match(rowIdx, colIdx-1)` checks if the preceding pattern character (the one before `*`) matches `text[rowIdx-1]` — either as a `.` wildcard or an exact character.\n\n" +
-    "**3. Result:** `dp[textLength][patternLength]` is `true` if the entire text matches the entire pattern.",
+    "**3. Result:** `dp[textLength][patternLength]` is `true` if the entire text matches the entire pattern.\n\n" +
+    '### Example: Matching `"aab"` against pattern `"c*a*b"`\n\n' +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    P1["c*\\n(zero c)"] --> P2["a*\\n(two a)"] --> P3["b\\n(match b)"]\n' +
+    '    T1["(empty)"] --> T2["aa"] --> T3["b"]\n' +
+    "    P1 -.matches.- T1\n" +
+    "    P2 -.matches.- T2\n" +
+    "    P3 -.matches.- T3\n" +
+    "    style P1 fill:#f59e0b,stroke:#d97706\n" +
+    "    style T1 fill:#f59e0b,stroke:#d97706\n" +
+    "    style P2 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style T2 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style P3 fill:#14532d,stroke:#22c55e\n" +
+    "    style T3 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "`c*` (amber) consumes zero characters. `a*` (cyan) consumes both `a`s. `b` (green) matches the final character — `dp[3][5] = true`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × m)`**\n\n" +

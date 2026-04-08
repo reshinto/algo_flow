@@ -10,6 +10,9 @@ import { bstLowestCommonAncestorEducational } from "./educational";
 import typescriptSource from "./sources/bst-lowest-common-ancestor.ts?raw";
 import pythonSource from "./sources/bst-lowest-common-ancestor.py?raw";
 import javaSource from "./sources/BSTLowestCommonAncestor.java?raw";
+import rustSource from "./sources/bst-lowest-common-ancestor.rs?raw";
+import cppSource from "./sources/BSTLowestCommonAncestor.cpp?raw";
+import goSource from "./sources/bst-lowest-common-ancestor.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -110,13 +113,20 @@ const bstLowestCommonAncestorDefinition: AlgorithmDefinition<BstLowestCommonAnce
       "Recursive LCA using BST property: split point where two values diverge left and right",
     timeComplexity: { best: "O(log n)", average: "O(log n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", nodeValueA: 1, nodeValueB: 3 },
   },
   execute: executeBstLowestCommonAncestor,
   generateSteps: generateBstLowestCommonAncestorSteps,
   educational: bstLowestCommonAncestorEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstLowestCommonAncestorDefinition);

@@ -64,7 +64,7 @@ public class PrimsMaze {
             // Add new frontier neighbors
             for (int[] direction : directions) {
                 int neighborRow = pickedRow + direction[0];
-                int neighborCol = pickedRow + direction[1];
+                int neighborCol = pickedCol + direction[1];
                 if (neighborRow < 1 || neighborRow >= rowCount - 1) continue;
                 if (neighborCol < 1 || neighborCol >= colCount - 1) continue;
                 if (!inMaze[neighborRow][neighborCol]) {

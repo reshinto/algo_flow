@@ -10,6 +10,22 @@ export const numberOfRecentCallsEducational: EducationalContent = {
     "2. **Expire old entries:** while the front of the queue is less than `t - 3000`, dequeue it.\n" +
     "3. **Count:** the queue length is the number of recent calls in `[t - 3000, t]`.\n\n" +
     "### Example trace on `[1, 100, 3001, 3002]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    subgraph T3001["t=3001: window [1, 3001]"]\n' +
+    '        A(["1"]) --> B(["100"]) --> C(["3001"])\n' +
+    '        C -->|count=3| CNT1(["3"])\n' +
+    "    end\n" +
+    '    subgraph T3002["t=3002: window [2, 3002], expire t=1"]\n' +
+    '        D(["100"]) --> E(["3001"]) --> F(["3002"])\n' +
+    '        F -->|count=3| CNT2(["3"])\n' +
+    "    end\n" +
+    '    T3001 -->|"evict 1 (1 < 3002-3000)"| T3002\n' +
+    "    style A fill:#14532d,stroke:#22c55e\n" +
+    "    style F fill:#f59e0b,stroke:#d97706\n" +
+    "    style CNT2 fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Timestamp `1` falls outside the window `[3002 - 3000, 3002] = [2, 3002]` and is evicted. The queue always contains exactly the timestamps in range, so its length is the answer.\n\n" +
     "```\n" +
     "t=1     queue=[1]              window=[−2999, 1]    count=1\n" +
     "t=100   queue=[1, 100]         window=[−2900, 100]  count=2\n" +

@@ -13,6 +13,9 @@ import { slidingWindowEducational } from "./educational";
 import typescriptSource from "./sources/sliding-window.ts?raw";
 import pythonSource from "./sources/sliding-window.py?raw";
 import javaSource from "./sources/SlidingWindow.java?raw";
+import rustSource from "./sources/sliding-window.rs?raw";
+import cppSource from "./sources/SlidingWindow.cpp?raw";
+import goSource from "./sources/sliding-window.go?raw";
 
 interface SlidingWindowInput {
   inputArray: number[];
@@ -33,7 +36,7 @@ const slidingWindowDefinition: AlgorithmDefinition<SlidingWindowInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [2, 1, 5, 1, 3, 2, 8, 4, 3, 5],
       windowSize: 3,
@@ -46,6 +49,9 @@ const slidingWindowDefinition: AlgorithmDefinition<SlidingWindowInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

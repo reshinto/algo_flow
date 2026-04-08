@@ -17,7 +17,19 @@ export const buildHeapTopDownEducational: EducationalContent = {
     "Insert 1:   [5, 9, 7, 1] — 1 < 9, swap → [5, 1, 7, 9]\n" +
     "                         — 1 < 5, swap → [1, 5, 7, 9]\n" +
     "```\n\n" +
-    "Final result: `[1, 5, 7, 9]` — a valid min-heap.",
+    "Final result: `[1, 5, 7, 9]` — a valid min-heap.\n\n" +
+    "### Final Min-Heap After Inserting All Four Nodes\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n1((1)) --> n5((5))\n" +
+    "    n1 --> n7((7))\n" +
+    "    n5 --> n9((9))\n" +
+    "    style n1 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n5 fill:#14532d,stroke:#22c55e\n" +
+    "    style n7 fill:#14532d,stroke:#22c55e\n" +
+    "    style n9 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The cyan root (1) bubbled up twice via sift-up after being inserted at the bottom. All green nodes are settled — each parent is smaller than its children.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log n)`**\n\n" +

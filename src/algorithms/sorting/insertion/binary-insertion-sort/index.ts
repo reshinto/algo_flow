@@ -14,6 +14,9 @@ import { binaryInsertionSortEducational } from "./educational";
 import typescriptSource from "./sources/binary-insertion-sort.ts?raw";
 import pythonSource from "./sources/binary-insertion-sort.py?raw";
 import javaSource from "./sources/BinaryInsertionSort.java?raw";
+import rustSource from "./sources/binary-insertion-sort.rs?raw";
+import cppSource from "./sources/BinaryInsertionSort.cpp?raw";
+import goSource from "./sources/binary-insertion-sort.go?raw";
 
 const binaryInsertionSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const binaryInsertionSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: binaryInsertionSort,
@@ -39,6 +42,9 @@ const binaryInsertionSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

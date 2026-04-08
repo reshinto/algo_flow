@@ -23,7 +23,18 @@ export const diagonalTraversalEducational: EducationalContent = {
     "- d=3: [4, 7, 10]\n" +
     "- d=4: [8, 11]\n" +
     "- d=5: [12]\n\n" +
-    "Result: `[1, 2, 5, 3, 6, 9, 4, 7, 10, 8, 11, 12]`",
+    "Result: `[1, 2, 5, 3, 6, 9, 4, 7, 10, 8, 11, 12]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  D0["d=0\\n[1]"] --> D1["d=1\\n[2,5]"] --> D2["d=2\\n[3,6,9]"] --> D3["d=3\\n[4,7,10]"] --> D4["d=4\\n[8,11]"] --> D5["d=5\\n[12]"]\n' +
+    "  style D0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D1 fill:#14532d,stroke:#22c55e\n" +
+    "  style D2 fill:#f59e0b,stroke:#d97706\n" +
+    "  style D3 fill:#14532d,stroke:#22c55e\n" +
+    "  style D4 fill:#14532d,stroke:#22c55e\n" +
+    "  style D5 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each node is one diagonal; elements within it are collected by walking down-left from the start cell. Diagonal `d=2` is the longest, spanning all 3 rows of the 3×4 matrix.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m × n)`**\n\n" +

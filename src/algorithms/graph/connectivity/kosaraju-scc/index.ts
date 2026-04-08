@@ -14,6 +14,9 @@ import { kosarajuSccEducational } from "./educational";
 import typescriptSource from "./sources/kosaraju-scc.ts?raw";
 import pythonSource from "./sources/kosaraju-scc.py?raw";
 import javaSource from "./sources/KosarajuSCC.java?raw";
+import rustSource from "./sources/kosaraju-scc.rs?raw";
+import cppSource from "./sources/KosarajuSCC.cpp?raw";
+import goSource from "./sources/kosaraju-scc.go?raw";
 
 function sccPosition(index: number): { x: number; y: number } {
   const positions = [
@@ -86,7 +89,7 @@ const kosarajuSccDefinition: AlgorithmDefinition<KosarajuSccInput> = {
       worst: "O(V+E)",
     },
     spaceComplexity: "O(V+E)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: KosarajuSccInput) => kosarajuSCC(input.adjacencyList, input.nodeIds),
@@ -96,6 +99,9 @@ const kosarajuSccDefinition: AlgorithmDefinition<KosarajuSccInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

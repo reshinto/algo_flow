@@ -5,20 +5,20 @@ def block_sort(input_array: list[int]) -> list[int]:  # @step:initialize
     if array_length <= 1:  # @step:initialize
         return sorted_array  # @step:initialize
 
+    def reverse_segment(start_index: int, end_index: int) -> None:  # @step:rotate
+        low = start_index
+        high = end_index
+        while low < high:  # @step:swap
+            temporary_value = sorted_array[low]  # @step:swap
+            sorted_array[low] = sorted_array[high]  # @step:swap
+            sorted_array[high] = temporary_value  # @step:swap
+            low += 1
+            high -= 1
+
     def rotate_left(left_start: int, mid_point: int, right_end: int) -> None:  # @step:rotate
-        left_index = left_start
-        right_index = mid_point
-
-        while left_index < right_index <= right_end:  # @step:swap
-            sorted_array[left_index], sorted_array[right_index] = (  # @step:swap
-                sorted_array[right_index],
-                sorted_array[left_index],
-            )
-            left_index += 1
-            right_index += 1
-
-        if left_index < right_index:
-            rotate_left(left_index, right_index, right_end)
+        reverse_segment(left_start, mid_point - 1)
+        reverse_segment(mid_point, right_end)
+        reverse_segment(left_start, right_end)
 
     def merge_in_place(run_start: int, run_mid: int, run_end: int) -> None:  # @step:merge
         if run_start >= run_mid or run_mid > run_end:  # @step:merge

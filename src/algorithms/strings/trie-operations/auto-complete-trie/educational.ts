@@ -28,7 +28,22 @@ export const autoCompleteTrieEducational: EducationalContent = {
     "   - Otherwise, follow the edge.\n" +
     "3. After reaching the prefix end node, perform a DFS from it:\n" +
     "   - At each node: if `isEnd = true`, record the accumulated path as a suggestion.\n" +
-    "   - Recurse into every child, appending its character to the current path.",
+    "   - Recurse into every child, appending its character to the current path.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  R((root)) -->|c| C((c))\n" +
+    "  C -->|a| CA((ca))\n" +
+    "  CA -->|r| CAR((car ✓))\n" +
+    "  CA -->|t| CAT((cat ✓))\n" +
+    "  CAR -->|d| CARD((card ✓))\n" +
+    "  style R fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style CA fill:#f59e0b,stroke:#d97706\n" +
+    "  style CAR fill:#14532d,stroke:#22c55e\n" +
+    "  style CAT fill:#14532d,stroke:#22c55e\n" +
+    "  style CARD fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Querying prefix `ca` navigates the trie to the amber node, then DFS collects all green end-nodes below it — returning `car`, `cat`, and `card` as suggestions.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m + k)`**\n\n" +

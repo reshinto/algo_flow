@@ -15,6 +15,9 @@ import { hungarianBipartiteEducational } from "./educational";
 import typescriptSource from "./sources/hungarian-bipartite.ts?raw";
 import pythonSource from "./sources/hungarian-bipartite.py?raw";
 import javaSource from "./sources/HungarianBipartite.java?raw";
+import rustSource from "./sources/hungarian-bipartite.rs?raw";
+import cppSource from "./sources/HungarianBipartite.cpp?raw";
+import goSource from "./sources/hungarian-bipartite.go?raw";
 
 const defaultNodes: GraphNode[] = [
   { id: "L1", label: "L1", state: "default", position: { x: 100, y: 100 } },
@@ -74,7 +77,7 @@ const hungarianBipartiteDefinition: AlgorithmDefinition<HungarianBipartiteInput>
       worst: "O(V×E)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: HungarianBipartiteInput) =>
@@ -85,6 +88,9 @@ const hungarianBipartiteDefinition: AlgorithmDefinition<HungarianBipartiteInput>
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { rotateLayerByLayerEducational } from "./educational";
 import typescriptSource from "./sources/rotate-layer-by-layer.ts?raw";
 import pythonSource from "./sources/rotate-layer-by-layer.py?raw";
 import javaSource from "./sources/RotateLayerByLayer.java?raw";
+import rustSource from "./sources/rotate-layer-by-layer.rs?raw";
+import cppSource from "./sources/RotateLayerByLayer.cpp?raw";
+import goSource from "./sources/rotate-layer-by-layer.go?raw";
 
 function executeRotateLayerByLayer(input: RotateLayerByLayerInput): number[][] {
   const matrixCopy = input.matrix.map((row) => [...row]);
@@ -30,7 +33,7 @@ const rotateLayerByLayerDefinition: AlgorithmDefinition<RotateLayerByLayerInput>
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [1, 2, 3, 4],
@@ -47,6 +50,9 @@ const rotateLayerByLayerDefinition: AlgorithmDefinition<RotateLayerByLayerInput>
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

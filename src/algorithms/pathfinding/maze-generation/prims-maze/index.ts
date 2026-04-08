@@ -9,6 +9,9 @@ import { primsMazeEducational } from "./educational";
 import typescriptSource from "./sources/prims-maze.ts?raw";
 import pythonSource from "./sources/prims-maze.py?raw";
 import javaSource from "./sources/PrimsMaze.java?raw";
+import rustSource from "./sources/prims-maze.rs?raw";
+import cppSource from "./sources/PrimsMaze.cpp?raw";
+import goSource from "./sources/prims-maze.go?raw";
 
 /** Builds an all-walls grid for maze generation with start/end positions marked. */
 function createDefaultGrid(): GridCell[][] {
@@ -59,7 +62,7 @@ const primsMazeDefinition: AlgorithmDefinition<MazeInput> = {
       worst: "O(V log V)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -73,6 +76,9 @@ const primsMazeDefinition: AlgorithmDefinition<MazeInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

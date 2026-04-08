@@ -28,10 +28,13 @@ This guide walks you through everything you need to set up, understand, and exte
 | npm         | 10+     | Ships with Node 22                            |
 | Git         | 2.30+   | Required for branch workflow                  |
 | Claude Code | Latest  | CLI or IDE extension                          |
+| Docker      | 20+     | Optional — for running multi-language tests without local toolchains |
+
+**For multi-language source tests** (Python, Java, Rust, C++, Go), you can either install each toolchain locally or use the Docker test environment. See [Testing — Docker Test Environment](testing.md#docker-test-environment) for the zero-install option.
 
 ### Plugin Installation
 
-The project uses 17 Claude Code plugins for development workflow automation. Plugins are enabled in `.claude/settings.json` and are installed automatically when Claude Code loads the project. To manually enable a plugin:
+The project uses Claude Code plugins for development workflow automation. Plugins are enabled in `.claude/settings.json` and are installed automatically when Claude Code loads the project. To manually enable a plugin:
 
 ```bash
 claude plugins install <plugin-name>
@@ -141,18 +144,30 @@ This is the most common contribution. Each algorithm lives in its own directory 
 ### Directory Structure
 
 ```
-src/algorithms/<category>/<algorithm>/
+src/algorithms/<category>/<technique>/<algorithm>/
+├── index.ts                               # AlgorithmDefinition + registry.register()
 ├── step-generator.ts                      # Produces ExecutionStep[] using a tracker
 ├── educational.ts                         # 7 learning sections
-├── index.ts                               # AlgorithmDefinition + registry.register()
-├── <algorithm>.test.ts                    # Algorithm correctness tests
-├── step-generator.test.ts                 # Step generation tests
-├── <Algorithm>Pipeline.stories.tsx        # Storybook pipeline story
-└── sources/
-    ├── <algorithm>.ts                     # TypeScript source with @step: markers
-    ├── <algorithm>.py                     # Python source with @step: markers
-    └── <Algorithm>.java                   # Java source with @step: markers
+├── sources/                               # 6-language source implementations
+│   ├── <algorithm>.ts                     #   TypeScript source with @step: markers
+│   ├── <algorithm>.py                     #   Python source with @step: markers
+│   ├── <Algorithm>.java                   #   Java source with @step: markers
+│   ├── <algorithm>.rs                     #   Rust source with @step: markers
+│   ├── <Algorithm>.cpp                    #   C++ source with @step: markers
+│   └── <algorithm>.go                     #   Go source with @step: markers
+└── __tests__/                             # All tests and pipeline story
+    ├── <algorithm>.test.ts                #   Algorithm correctness tests
+    ├── step-generator.test.ts             #   Step generation tests
+    ├── <Algorithm>Pipeline.stories.tsx     #   Storybook pipeline story
+    ├── <algorithm>_test.py                #   Python correctness tests
+    ├── <Algorithm>_test.java              #   Java correctness tests
+    ├── <algorithm>_test.rs                #   Rust correctness tests
+    ├── <Algorithm>_test.cpp               #   C++ correctness tests
+    └── <algorithm>_test.go                #   Go correctness tests
 ```
+
+> [!NOTE]
+> Implementation files (`index.ts`, `step-generator.ts`, `educational.ts`) and source files (`sources/`) live at the algorithm root. All test and story files live in `__tests__/` to keep the directory clean.
 
 ### Step 1: Write the Source Files
 
@@ -370,12 +385,12 @@ registry.register(definition);
    - Add its display label to `CATEGORY_LABELS` — this automatically creates a pill in the algorithm selector's category filter row
    - Add an entry to `CATEGORY_ACCENT_MAP` in `src/utils/constants.ts` to assign an accent color to the new category's dot and group header border
 2. Import the new algorithm in `src/algorithms/index.ts` — this triggers self-registration
-3. Add a Storybook pipeline story in the algorithm directory: `src/algorithms/<category>/<algorithm>/<Algorithm>Pipeline.stories.tsx`
+3. Add a Storybook pipeline story in the algorithm's `__tests__/` directory: `src/algorithms/<category>/<technique>/<algorithm>/__tests__/<Algorithm>Pipeline.stories.tsx`
 
 > [!NOTE] > **Technique labels are auto-discovered.** `discoverTechniqueLabels()` derives technique display labels from the directory structure at build time. Adding a new technique directory (e.g. `src/algorithms/sorting/radix/`) is enough — no manual label registration is needed.
 
 > [!NOTE]
-> Pipeline stories (end-to-end visualization stories) live with their algorithm. Component stories (e.g., `ArrayVisualizer.stories.tsx`, `Button.stories.tsx`) remain co-located with their components in `src/components/`.
+> Pipeline stories live in the algorithm's `__tests__/` directory alongside test files. Component stories (e.g., `ArrayVisualizer.stories.tsx`, `Button.stories.tsx`) remain co-located with their components in `src/components/visualization/<category>/`.
 
 > [!WARNING]
 > Forgetting the import in `src/algorithms/index.ts` is the most common mistake. The algorithm will silently not appear in the UI because `registry.register()` never executes.
@@ -408,49 +423,12 @@ The E2E suite auto-discovers algorithms from the registry — no manual update i
 
 > [!WARNING] > **Algorithm doesn't appear in the UI?** You forgot to import it in `src/algorithms/index.ts`. The registry only fires when the module is imported.
 
-<details>
-<summary><strong>Line highlighting doesn't work / shows wrong lines</strong></summary>
+- **Line highlighting wrong?** Check `@step:` markers match tracker calls across all languages.
+- **`T | undefined` errors?** Use tuple types (`[number, number][]`) or non-null assertion — project uses `noUncheckedIndexedAccess`.
+- **`?fn` import broken?** Only works for `.ts` files in `sources/` via `vite-plugin-fn-import.ts`.
+- **Peer dependency warnings?** Expected — `.npmrc` uses `legacy-peer-deps=true` for React 19.
 
-- Check that your source files have `// @step:<key>` markers
-- Verify the step keys match the `type` or `lineMapKey` in your tracker calls
-- Ensure all language files use the same step keys
-- Run `buildLineMapFromSources()` in a test to inspect the parsed output
-
-</details>
-
-<details>
-<summary><strong>TypeScript errors about <code>T | undefined</code> on array access</strong></summary>
-
-The project uses `noUncheckedIndexedAccess: true`. Array indexing returns `T | undefined`, not `T`. Solutions:
-
-- Use non-null assertion (`arr[i]!`) when you are certain the index is valid
-- Use explicit tuple types (`[number, number][]`) instead of `number[][]` for coordinate pairs
-
-</details>
-
-<details>
-<summary><strong><code>?fn</code> import not working</strong></summary>
-
-The `?fn` suffix only works for `.ts` files in `sources/` directories. It is powered by a custom Vite plugin (`vite-plugin-fn-import.ts`). Python and Java files are always imported via `?raw` only.
-
-</details>
-
-<details>
-<summary><strong>E2E tests fail locally but pass in CI</strong></summary>
-
-- The `webServer` config in `e2e/playwright.config.ts` auto-starts Vite on port 5174 — you do not need a running dev server before running `npm run e2e`
-- Check that your local Node version matches 22 (`node --version`)
-- Clear Playwright cache: `npx playwright install chromium`
-- Use `npm run e2e:debug` to open the Playwright inspector for step-through debugging
-
-</details>
-
-<details>
-<summary><strong>Peer dependency warnings during <code>npm install</code></strong></summary>
-
-This is expected. The `.npmrc` file sets `legacy-peer-deps=true` due to React 19 addon compatibility. These warnings are safe to ignore.
-
-</details>
+See [Debugging Guide](debugging.md) for detailed step-generation, line-mapping, and E2E troubleshooting.
 
 ---
 

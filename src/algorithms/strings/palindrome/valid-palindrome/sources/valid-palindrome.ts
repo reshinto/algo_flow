@@ -2,7 +2,7 @@
 // Returns true if the string is a palindrome when only alphanumeric characters are considered.
 // Time: O(n), Space: O(1)
 
-export function validPalindrome(text: string): boolean {
+function validPalindrome(text: string): boolean {
   let leftIndex = 0; // @step:initialize
   let rightIndex = text.length - 1; // @step:initialize
 

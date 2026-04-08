@@ -4,7 +4,7 @@
 // source[rowIdx-1] and target[colIdx-1]. Resets to 0 on mismatch.
 // Time: O(nm), Space: O(nm) where n = source.length, m = target.length
 
-export function longestCommonSubstring(source: string, target: string): number {
+function longestCommonSubstring(source: string, target: string): number {
   const sourceLength = source.length; // @step:initialize
   const targetLength = target.length; // @step:initialize
 

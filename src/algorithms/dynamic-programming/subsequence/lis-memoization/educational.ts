@@ -21,7 +21,26 @@ export const lisMemoizationEducational: EducationalContent = {
     "  lis(4=3) → lis(5=7) [cached] → L(4)=2\n" +
     "  L(2) = 1 + max(L(3), L(4), L(5)) = 1 + 2 = 3\n" +
     "```\n\n" +
-    "Once `L(5)` is cached, the second call from `lis(4)` returns instantly.",
+    "Once `L(5)` is cached, the second call from `lis(4)` returns instantly.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '  A["lis(2=2)"]:::current\n' +
+    '  B["lis(3=5)"]:::cached\n' +
+    '  C["lis(4=3)"]:::cached\n' +
+    '  D["lis(5=7) → L=1"]:::base\n' +
+    '  E["L(3)=2"]:::cached\n' +
+    '  F["L(4)=2 (cached L5)"]:::cached\n' +
+    '  G["L(2)=3"]:::current\n' +
+    "  A --> B --> D --> E\n" +
+    "  A --> C --> D\n" +
+    "  C --> F\n" +
+    "  E --> G\n" +
+    "  F --> G\n" +
+    "  classDef base fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef cached fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "`lis(5=7)` is computed once and cached — both `lis(3)` and `lis(4)` share the same cached result, avoiding redundant recursion.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

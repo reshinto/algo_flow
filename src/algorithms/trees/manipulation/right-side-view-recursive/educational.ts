@@ -11,7 +11,22 @@ export const rightSideViewRecursiveEducational: EducationalContent = {
     "3. **Record if new depth** — if `depth === result.length`, this is the first (rightmost) node at this depth; add its value.\n" +
     "4. **Recurse right first** — visit right child at `depth + 1`.\n" +
     "5. **Recurse left** — visit left child at `depth + 1`.\n\n" +
-    "Because the right subtree is always visited before the left, the first node encountered at each depth is guaranteed to be the rightmost visible node.",
+    "Because the right subtree is always visited before the left, the first node encountered at each depth is guaranteed to be the rightmost visible node.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)) --> B((2))\n" +
+    "  A --> C((6))\n" +
+    "  B --> D((1))\n" +
+    "  B --> E((3))\n" +
+    "  C --> F((5))\n" +
+    "  C --> G((7))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "DFS visits right before left: depth 0 → node 4, depth 1 → node 6 (right visited first, so 6 is recorded before 2), depth 2 → node 7. Right-side view = [4, 6, 7].",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

@@ -32,7 +32,24 @@ export const bloomFilterEducational: EducationalContent = {
     "Query 5  → at least one bit unset → definitely NOT in set\n" +
     "Query 7  → all 3 bits set → possibly in set (true positive)\n" +
     "```\n\n" +
-    "**False positives** arise when bits for a query value happen to all be set due to other inserted elements sharing those positions.",
+    "**False positives** arise when bits for a query value happen to all be set due to other inserted elements sharing those positions.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  E7["insert 7"]:::input\n' +
+    '  E3["insert 3"]:::input\n' +
+    '  H1["h1(x) mod 16"]:::current\n' +
+    '  H2["h2(x) mod 16"]:::current\n' +
+    '  BA["bit array [16 bits]"]:::current\n' +
+    '  Q3["query 3 → all bits set → present"]:::result\n' +
+    '  Q5["query 5 → bit 0 found → absent"]:::input\n' +
+    "  E7 --> H1 & H2 --> BA\n" +
+    "  E3 --> H1 & H2\n" +
+    "  BA --> Q3 & Q5\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each inserted element sets k=2 bit positions. A query returns 'present' only when all k positions are 1. Element 5 was never inserted, so at least one of its hash positions is 0.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(k)` per operation**\n\n" +

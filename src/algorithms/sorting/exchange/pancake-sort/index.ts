@@ -14,6 +14,9 @@ import { pancakeSortEducational } from "./educational";
 import typescriptSource from "./sources/pancake-sort.ts?raw";
 import pythonSource from "./sources/pancake-sort.py?raw";
 import javaSource from "./sources/PancakeSort.java?raw";
+import rustSource from "./sources/pancake-sort.rs?raw";
+import cppSource from "./sources/PancakeSort.cpp?raw";
+import goSource from "./sources/pancake-sort.go?raw";
 
 const pancakeSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const pancakeSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: pancakeSort,
@@ -39,6 +42,9 @@ const pancakeSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

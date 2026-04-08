@@ -30,7 +30,20 @@ export const cyclicSortEducational: EducationalContent = {
     "| 0            | [1, 2, 3, 4, 5, 6]     | arr[0]=1 → in place, advance   |\n" +
     "| 1            | [1, 2, 3, 4, 5, 6]     | arr[1]=2 → in place, advance   |\n" +
     "| ...          | [1, 2, 3, 4, 5, 6]     | all remaining in place         |\n\n" +
-    "**Result**: `[1, 2, 3, 4, 5, 6]` — sorted in 4 swaps.",
+    "**Result**: `[1, 2, 3, 4, 5, 6]` — sorted in 4 swaps.\n\n" +
+    "### Swap Chain Diagram (first cycle on `[3, 5, 2, 1, 4]`)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["idx 0\\n3"] -->|"swap→idx 2"| B["idx 2\\n2"]\n' +
+    '  B -->|"swap→idx 1"| C["idx 1\\n5"]\n' +
+    '  C -->|"swap→idx 4"| D["idx 4\\n4"]\n' +
+    '  D -->|"swap→idx 3"| E["idx 3\\n1"]\n' +
+    '  E -->|"swap→idx 0"| F["idx 0\\n1 ✓"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Each swap sends a value directly to its correct index (`value - 1`). The cycle completes when value `1` lands at index `0`, and `currentIndex` advances.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

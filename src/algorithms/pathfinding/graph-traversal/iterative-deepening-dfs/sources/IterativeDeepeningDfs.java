@@ -14,7 +14,7 @@ public class IterativeDeepeningDfs {
 
             if (result != null) {
                 Map<String, Object> found = new HashMap<>(); // @step:trace-path
-                found.put("path", result.toArray(new int[0][]));
+                found.put("path", result);
                 found.put("visited", allVisited);
                 found.put("depthReached", depthLimit);
                 return found;
@@ -22,7 +22,7 @@ public class IterativeDeepeningDfs {
         }
 
         Map<String, Object> notFound = new HashMap<>(); // @step:complete
-        notFound.put("path", new int[0][]);
+        notFound.put("path", new ArrayList<int[]>());
         notFound.put("visited", allVisited);
         notFound.put("depthReached", 0);
         return notFound;

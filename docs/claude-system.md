@@ -9,10 +9,10 @@ AlgoFlow uses a structured development workflow powered by agents, skills, sessi
 ## Contents
 
 - [Overview](#overview)
-- [Agents (10)](#agents-10)
-- [Skills (16)](#skills-16)
-- [Session Hooks (13)](#session-hooks-13)
-- [Plugins (17)](#plugins-17)
+- [Agents](#agents)
+- [Skills](#skills)
+- [Session Hooks](#session-hooks)
+- [Plugins](#plugins)
 - [Branch Naming and Plugin Auto-Detection](#branch-naming-and-plugin-auto-detection)
 - [Rules Files and Path Scoping](#rules-files-and-path-scoping)
 - [Plugin vs. Project Wrapper](#plugin-vs-project-wrapper)
@@ -30,7 +30,7 @@ The `.claude/` directory contains configuration that automates development workf
 
 ---
 
-## Agents (10)
+## Agents
 
 | Agent                           | Role                                                                            |
 | ------------------------------- | ------------------------------------------------------------------------------- |
@@ -49,7 +49,7 @@ Agent definitions live in `.claude/agents/`. Each file defines the agent's role,
 
 ---
 
-## Skills (16)
+## Skills
 
 Reusable prompt modules invoked via `/skill-name`:
 
@@ -76,7 +76,7 @@ Skill definitions live in `.claude/skills/<skill-name>/SKILL.md`.
 
 ---
 
-## Session Hooks (13)
+## Session Hooks
 
 Hooks run automatically during development sessions. They are configured in `.claude/settings.json`.
 
@@ -126,7 +126,7 @@ Hook scripts live in `.claude/hooks/`.
 
 ---
 
-## Plugins (17)
+## Plugins
 
 Claude Code plugins provide system-level capabilities. They are enabled in `.claude/settings.json` under `enabledPlugins`.
 
@@ -159,7 +159,6 @@ These 11 plugins are disabled by default and enabled automatically via `auto-plu
 | `ralph-loop`           | Recurring task execution                 | `chore/loop-*`                |
 | `security-guidance`    | Security analysis and guidance           | `fix/security-*`              |
 | `claude-md-management` | CLAUDE.md auditing and updates           | `chore/claude-md-*`           |
-| `code-simplifier`      | Code quality and clarity refinement      | `refactor/*`                  |
 
 ---
 

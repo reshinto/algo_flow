@@ -10,6 +10,9 @@ import { slidingWindowMaximumEducational } from "./educational";
 import typescriptSource from "./sources/sliding-window-maximum.ts?raw";
 import pythonSource from "./sources/sliding-window-maximum.py?raw";
 import javaSource from "./sources/SlidingWindowMaximum.java?raw";
+import rustSource from "./sources/sliding-window-maximum.rs?raw";
+import cppSource from "./sources/SlidingWindowMaximum.cpp?raw";
+import goSource from "./sources/sliding-window-maximum.go?raw";
 
 function executeSlidingWindowMaximum(input: SlidingWindowMaximumInput): number[] {
   return slidingWindowMaxMonotonic(input.nums, input.windowSize) as number[];
@@ -29,7 +32,7 @@ const slidingWindowMaximumDefinition: AlgorithmDefinition<SlidingWindowMaximumIn
       worst: "O(n)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nums: [1, 3, -1, -3, 5, 3, 6, 7], windowSize: 3 },
   },
   execute: executeSlidingWindowMaximum,
@@ -39,6 +42,9 @@ const slidingWindowMaximumDefinition: AlgorithmDefinition<SlidingWindowMaximumIn
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

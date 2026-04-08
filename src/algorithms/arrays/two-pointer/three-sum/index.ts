@@ -13,6 +13,9 @@ import { threeSumEducational } from "./educational";
 import typescriptSource from "./sources/three-sum.ts?raw";
 import pythonSource from "./sources/three-sum.py?raw";
 import javaSource from "./sources/ThreeSum.java?raw";
+import rustSource from "./sources/three-sum.rs?raw";
+import cppSource from "./sources/ThreeSum.cpp?raw";
+import goSource from "./sources/three-sum.go?raw";
 
 interface ThreeSumInput {
   inputArray: number[];
@@ -32,7 +35,7 @@ const threeSumDefinition: AlgorithmDefinition<ThreeSumInput> = {
       worst: "O(n^2)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [-1, 0, 1, 2, -1, -4],
     },
@@ -44,6 +47,9 @@ const threeSumDefinition: AlgorithmDefinition<ThreeSumInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

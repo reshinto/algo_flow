@@ -10,6 +10,9 @@ import { flattenToLinkedListEducational } from "./educational";
 import typescriptSource from "./sources/flatten-to-linked-list.ts?raw";
 import pythonSource from "./sources/flatten-to-linked-list.py?raw";
 import javaSource from "./sources/FlattenToLinkedList.java?raw";
+import rustSource from "./sources/flatten-to-linked-list.rs?raw";
+import cppSource from "./sources/FlattenToLinkedList.cpp?raw";
+import goSource from "./sources/flatten-to-linked-list.go?raw";
 
 /** Standard 7-node balanced BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -119,13 +122,20 @@ const flattenToLinkedListDefinition: AlgorithmDefinition<FlattenToLinkedListInpu
       "Recursively flattens a binary tree into a right-skewed linked list in-place using preorder traversal order",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeFlattenToLinkedList,
   generateSteps: generateFlattenToLinkedListSteps,
   educational: flattenToLinkedListEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(flattenToLinkedListDefinition);

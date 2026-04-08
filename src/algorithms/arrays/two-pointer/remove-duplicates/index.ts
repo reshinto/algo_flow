@@ -13,6 +13,9 @@ import { removeDuplicatesEducational } from "./educational";
 import typescriptSource from "./sources/remove-duplicates.ts?raw";
 import pythonSource from "./sources/remove-duplicates.py?raw";
 import javaSource from "./sources/RemoveDuplicates.java?raw";
+import rustSource from "./sources/remove-duplicates.rs?raw";
+import cppSource from "./sources/RemoveDuplicates.cpp?raw";
+import goSource from "./sources/remove-duplicates.go?raw";
 
 interface RemoveDuplicatesInput {
   sortedArray: number[];
@@ -32,7 +35,7 @@ const removeDuplicatesDefinition: AlgorithmDefinition<RemoveDuplicatesInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [1, 1, 2, 2, 3, 4, 4, 5],
     },
@@ -44,6 +47,9 @@ const removeDuplicatesDefinition: AlgorithmDefinition<RemoveDuplicatesInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

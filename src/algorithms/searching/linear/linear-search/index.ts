@@ -13,6 +13,9 @@ import { linearSearchEducational } from "./educational";
 import typescriptSource from "./sources/linear-search.ts?raw";
 import pythonSource from "./sources/linear-search.py?raw";
 import javaSource from "./sources/LinearSearch.java?raw";
+import rustSource from "./sources/linear-search.rs?raw";
+import cppSource from "./sources/LinearSearch.cpp?raw";
+import goSource from "./sources/linear-search.go?raw";
 
 const linearSearchDefinition: AlgorithmDefinition<{
   array: number[];
@@ -31,7 +34,7 @@ const linearSearchDefinition: AlgorithmDefinition<{
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       array: [4, 2, 7, 1, 9, 3, 8, 5],
       targetValue: 7,
@@ -44,6 +47,9 @@ const linearSearchDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

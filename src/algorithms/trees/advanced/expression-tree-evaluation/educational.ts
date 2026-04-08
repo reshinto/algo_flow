@@ -21,7 +21,20 @@ export const expressionTreeEvaluationEducational: EducationalContent = {
     "  / \\\n" +
     " 3   4\n" +
     "```\n" +
-    "Evaluation: `(3+4)=7`, `7*2=14`, `14/7=2`.",
+    "Evaluation: `(3+4)=7`, `7*2=14`, `14/7=2`.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '  A((/)):::current --> B(("*")):::active\n' +
+    "  A --> C((7)):::visited\n" +
+    '  B --> D(("+")):::active\n' +
+    "  B --> E((2)):::visited\n" +
+    "  D --> F((3)):::visited\n" +
+    "  D --> G((4)):::visited\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Post-order evaluation visits leaves first (green), then propagates results up through operators (amber) to the root `/` (cyan).",
 
   timeAndSpaceComplexity:
     "**Build: `O(n)`** — one pass over n tokens, each push/pop is O(1).\n\n" +

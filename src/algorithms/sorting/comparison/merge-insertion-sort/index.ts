@@ -14,6 +14,9 @@ import { mergeInsertionSortEducational } from "./educational";
 import typescriptSource from "./sources/merge-insertion-sort.ts?raw";
 import pythonSource from "./sources/merge-insertion-sort.py?raw";
 import javaSource from "./sources/MergeInsertionSort.java?raw";
+import rustSource from "./sources/merge-insertion-sort.rs?raw";
+import cppSource from "./sources/MergeInsertionSort.cpp?raw";
+import goSource from "./sources/merge-insertion-sort.go?raw";
 
 const mergeInsertionSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const mergeInsertionSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: mergeInsertionSort,
@@ -39,6 +42,9 @@ const mergeInsertionSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

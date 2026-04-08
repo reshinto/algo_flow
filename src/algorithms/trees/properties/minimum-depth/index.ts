@@ -10,6 +10,9 @@ import { minimumDepthEducational } from "./educational";
 import typescriptSource from "./sources/minimum-depth.ts?raw";
 import pythonSource from "./sources/minimum-depth.py?raw";
 import javaSource from "./sources/MinimumDepth.java?raw";
+import rustSource from "./sources/minimum-depth.rs?raw";
+import cppSource from "./sources/MinimumDepth.cpp?raw";
+import goSource from "./sources/minimum-depth.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const minimumDepthDefinition: AlgorithmDefinition<MinimumDepthInput> = {
       "Recursively finds the minimum depth — shortest path from root to any leaf node. Handles single-child nodes correctly.",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeMinimumDepth,
   generateSteps: generateMinimumDepthSteps,
   educational: minimumDepthEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(minimumDepthDefinition);

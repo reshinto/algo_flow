@@ -10,14 +10,19 @@ export const reverseLinkedListEducational: EducationalContent = {
     "2. **Reverse** `current.next = prev` — point the current node backward.\n" +
     "3. **Advance** `prev = current`, then `current = next` — move both pointers one step forward.\n\n" +
     "### Example: Reversing [1 → 2 → 3]\n\n" +
-    "```\n" +
-    "Start:   prev=null  current=1 → 2 → 3\n" +
-    "Step 1:  prev=null  current=1,  next=2  →  1.next = null\n" +
-    "Step 2:  prev=1     current=2,  next=3  →  2.next = 1\n" +
-    "Step 3:  prev=2     current=3,  next=null →  3.next = 2\n" +
-    "Result:  prev=3 (new head)  →  3 → 2 → 1\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph Original\n" +
+    '    A1["1"] --> A2["2"] --> A3["3"] --> AN["null"]\n' +
+    "    end\n" +
+    "    subgraph Reversed\n" +
+    '    B3["3"] --> B2["2"] --> B1["1"] --> BN["null"]\n' +
+    "    end\n" +
+    "    style B3 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style B2 fill:#14532d,stroke:#22c55e\n" +
+    "    style B1 fill:#14532d,stroke:#22c55e\n" +
     "```\n\n" +
-    "When `current` becomes `null`, `prev` points to the new head of the reversed list.",
+    "Each edge is reversed one at a time. Node 3 (cyan) becomes the new head. When `current` reaches `null`, `prev` points to the new head.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

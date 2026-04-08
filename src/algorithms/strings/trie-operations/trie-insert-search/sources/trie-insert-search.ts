@@ -12,7 +12,7 @@ function createNode(): TrieNodeInternal {
   return { children: new Map(), isEnd: false }; // @step:initialize
 }
 
-export function trieInsertSearch(words: string[], search: string): boolean {
+function trieInsertSearch(words: string[], search: string): boolean {
   const root = createNode(); // @step:initialize
 
   for (const word of words) {

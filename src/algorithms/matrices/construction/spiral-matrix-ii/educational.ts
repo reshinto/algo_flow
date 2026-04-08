@@ -23,7 +23,26 @@ export const spiralMatrixIIEducational: EducationalContent = {
     "1  2  3\n" +
     "8  9  4\n" +
     "7  6  5\n" +
-    "```",
+    "```\n\n" +
+    "### Diagram: fill order for n = 3\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  subgraph Ring0["Outer ring (values 1–8)"]\n' +
+    '    C00["1"] --> C01["2"] --> C02["3"]\n' +
+    '    C02 --> C12["4"] --> C22["5"]\n' +
+    '    C22 --> C21["6"] --> C20["7"]\n' +
+    '    C20 --> C10["8"]\n' +
+    "  end\n" +
+    '  subgraph Center["Center"]\n' +
+    '    C11["9"]\n' +
+    "  end\n" +
+    "  C10 --> C11\n" +
+    "  style C00 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C11 fill:#14532d,stroke:#22c55e\n" +
+    "  style C01 fill:#f59e0b,stroke:#d97706\n" +
+    "  style C02 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Cyan marks the starting cell (top-left), amber shows the active outer ring being filled, and green marks the final center cell placed last.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

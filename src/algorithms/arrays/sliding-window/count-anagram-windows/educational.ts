@@ -15,6 +15,20 @@ export const countAnagramWindowsEducational: EducationalContent = {
     "   - Increment the count for the incoming (right) element.\n" +
     "5. After each slide, compare the window map with the pattern map.\n" +
     "6. Collect all matching start positions and return them with the total count.\n\n" +
+    "### Example: text = `[a,b,c,a,b]`, pattern = `[a,b,c]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["a"] --> B["b"] --> C["c"] --> D["a"] --> E["b"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    '  W1["window\\n[a,b,c] ✓"] -. match .-> A\n' +
+    '  W2["window\\n[b,c,a] ✓"] -. match .-> B\n' +
+    "```\n\n" +
+    "Windows `[a,b,c]` and `[b,c,a]` both match the pattern — both are anagrams. " +
+    "The green elements have been fully processed; amber marks the sliding frontier.\n\n" +
     "### Why frequency maps?\n\n" +
     "Sorting both windows on every slide would cost `O(k log k)` per position, giving `O(n·k log k)` overall. " +
     "Maintaining an incremental frequency map reduces each slide to `O(1)`, yielding the optimal `O(n)` total.",

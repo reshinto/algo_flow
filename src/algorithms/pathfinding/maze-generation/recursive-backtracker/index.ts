@@ -9,6 +9,9 @@ import { recursiveBacktrackerEducational } from "./educational";
 import typescriptSource from "./sources/recursive-backtracker.ts?raw";
 import pythonSource from "./sources/recursive-backtracker.py?raw";
 import javaSource from "./sources/RecursiveBacktracker.java?raw";
+import rustSource from "./sources/recursive-backtracker.rs?raw";
+import cppSource from "./sources/RecursiveBacktracker.cpp?raw";
+import goSource from "./sources/recursive-backtracker.go?raw";
 
 /** Builds an all-walls grid for maze generation with start/end positions marked. */
 function createDefaultGrid(): GridCell[][] {
@@ -59,7 +62,7 @@ const recursiveBacktrackerDefinition: AlgorithmDefinition<MazeInput> = {
       worst: "O(V)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -73,6 +76,9 @@ const recursiveBacktrackerDefinition: AlgorithmDefinition<MazeInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

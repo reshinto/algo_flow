@@ -13,6 +13,9 @@ import { twoPointerSumEducational } from "./educational";
 import typescriptSource from "./sources/two-pointer-sum.ts?raw";
 import pythonSource from "./sources/two-pointer-sum.py?raw";
 import javaSource from "./sources/TwoPointerSum.java?raw";
+import rustSource from "./sources/two-pointer-sum.rs?raw";
+import cppSource from "./sources/TwoPointerSum.cpp?raw";
+import goSource from "./sources/two-pointer-sum.go?raw";
 
 interface TwoPointerSumInput {
   sortedArray: number[];
@@ -33,7 +36,7 @@ const twoPointerSumDefinition: AlgorithmDefinition<TwoPointerSumInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [1, 2, 4, 6, 8, 11, 15],
       target: 10,
@@ -46,6 +49,9 @@ const twoPointerSumDefinition: AlgorithmDefinition<TwoPointerSumInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

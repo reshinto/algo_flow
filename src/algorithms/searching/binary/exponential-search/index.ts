@@ -13,6 +13,9 @@ import { exponentialSearchEducational } from "./educational";
 import typescriptSource from "./sources/exponential-search.ts?raw";
 import pythonSource from "./sources/exponential-search.py?raw";
 import javaSource from "./sources/ExponentialSearch.java?raw";
+import rustSource from "./sources/exponential-search.rs?raw";
+import cppSource from "./sources/ExponentialSearch.cpp?raw";
+import goSource from "./sources/exponential-search.go?raw";
 
 const exponentialSearchDefinition: AlgorithmDefinition<{
   sortedArray: number[];
@@ -31,7 +34,7 @@ const exponentialSearchDefinition: AlgorithmDefinition<{
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       sortedArray: [2, 5, 8, 12, 16, 23, 38, 56, 72, 91],
       targetValue: 8,
@@ -44,6 +47,9 @@ const exponentialSearchDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

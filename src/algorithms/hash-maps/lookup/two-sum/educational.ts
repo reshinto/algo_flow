@@ -15,7 +15,17 @@ export const twoSumEducational: EducationalContent = {
     " 0    2       7       not found         insert { 2: 0 }\n" +
     " 1    7       2       found at idx 0!   return [0, 1]\n" +
     "```\n\n" +
-    "The key insight: instead of scanning backward for the complement, we pre-store every value we've seen so the lookup is `O(1)`.",
+    "The key insight: instead of scanning backward for the complement, we pre-store every value we've seen so the lookup is `O(1)`.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["idx 0: num=2, complement=7"] -->|7 not in map| B["map:{2:0}"]\n' +
+    '  B --> C["idx 1: num=7, complement=2"]\n' +
+    '  C -->|2 found at idx 0!| D["return [0, 1]"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The map stores each value as we pass it — when a complement is found in the map, both indices are immediately returned.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

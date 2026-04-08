@@ -9,6 +9,9 @@ import { coinChangeMinTabulationEducational } from "./educational";
 import typescriptSource from "./sources/coin-change-min-tabulation.ts?raw";
 import pythonSource from "./sources/coin-change-min-tabulation.py?raw";
 import javaSource from "./sources/CoinChangeMinTabulation.java?raw";
+import rustSource from "./sources/coin-change-min-tabulation.rs?raw";
+import cppSource from "./sources/CoinChangeMinTabulation.cpp?raw";
+import goSource from "./sources/coin-change-min-tabulation.go?raw";
 
 interface CoinChangeInput {
   amount: number;
@@ -29,7 +32,7 @@ const coinChangeMinTabulationDefinition: AlgorithmDefinition<CoinChangeInput> = 
       worst: "O(amount × coins)",
     },
     spaceComplexity: "O(amount)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { amount: 11, coins: [1, 5, 10, 25] },
   },
   execute: (input: CoinChangeInput) => coinChangeMinTabulation(input.amount, input.coins),
@@ -39,6 +42,9 @@ const coinChangeMinTabulationDefinition: AlgorithmDefinition<CoinChangeInput> = 
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

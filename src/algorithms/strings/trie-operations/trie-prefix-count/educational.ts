@@ -24,7 +24,25 @@ export const triePrefixCountEducational: EducationalContent = {
     "2. For each character `c` in the prefix:\n" +
     "   - If no child edge labelled `c` exists → return `0` (no words match).\n" +
     "   - Otherwise, follow the edge.\n" +
-    "3. Return `prefixCount` of the node reached after consuming all prefix characters.",
+    "3. Return `prefixCount` of the node reached after consuming all prefix characters.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  R((root)) -->|a| A((a·3))\n" +
+    "  A -->|p| AP((ap·2))\n" +
+    "  AP -->|p| APP((app·1))\n" +
+    "  APP -->|l| APPL((appl·1))\n" +
+    "  APPL -->|e| APPLE((apple ✓))\n" +
+    "  AP -->|e| APE((ape ✓))\n" +
+    "  A -->|r| AR((ar·1))\n" +
+    "  AR -->|t| ART((art ✓))\n" +
+    "  style R fill:#06b6d4,stroke:#0891b2\n" +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style AP fill:#f59e0b,stroke:#d97706\n" +
+    "  style APPLE fill:#14532d,stroke:#22c55e\n" +
+    "  style APE fill:#14532d,stroke:#22c55e\n" +
+    "  style ART fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each node label shows its `prefixCount`. Querying prefix `ap` navigates to the amber `ap·2` node and returns `2` instantly — representing `apple` and `ape` — without enumerating them.",
 
   timeAndSpaceComplexity:
     "**Time Complexity:**\n\n" +

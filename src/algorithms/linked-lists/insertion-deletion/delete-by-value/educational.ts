@@ -16,14 +16,19 @@ export const deleteByValueEducational: EducationalContent = {
     "- When the target is found, rewire `previous.next = current.next`.\n" +
     "- This splices the node out of the chain.\n\n" +
     "### Example: Delete 3 from [1 → 2 → 3 → 4 → 5]\n\n" +
-    "```\n" +
-    "Initial:  1 → 2 → 3 → 4 → 5\n" +
-    "Step 1:   current at 1, previous = null\n" +
-    "Step 2:   current at 2, previous = 1\n" +
-    "Step 3:   current at 3, found target\n" +
-    "Step 4:   previous.next = 3.next (2 → 4)\n" +
-    "Result:   1 → 2 → 4 → 5\n" +
-    "```",
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph Before\n" +
+    '    A1["1"] --> A2["2"] --> A3["3"] --> A4["4"] --> A5["5"]\n' +
+    "    end\n" +
+    "    subgraph After\n" +
+    '    B1["1"] --> B2["2"] --> B4["4"] --> B5["5"]\n' +
+    "    end\n" +
+    "    style A3 fill:#f59e0b,stroke:#d97706\n" +
+    "    style B2 fill:#14532d,stroke:#22c55e\n" +
+    "    style B4 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Node 3 (amber) is found, then `previous.next` (node 2) is rewired to skip it, linking directly to node 4.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** where n is the list length\n\n" +

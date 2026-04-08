@@ -25,7 +25,18 @@ export const productExceptSelfEducational: EducationalContent = {
     "  index 1: result[1] = 1 × 12 = 12 (suffixProduct becomes 24)\n" +
     "  index 0: result[0] = 1 × 24 = 24\n" +
     "Final:              [24, 12, 8, 6]\n" +
-    "```",
+    "```\n\n" +
+    "### Two-Pass Diagram (`[1, 2, 3, 4]`)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["[1, 2, 3, 4]"] -->|"prefix pass →"| B["prefix\\n[1, 1, 2, 6]"]\n' +
+    '  B -->|"suffix pass ←"| C["suffix\\n×24, ×12, ×4, ×1"]\n' +
+    '  C -->|"multiply"| D["result\\n[24, 12, 8, 6]"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The prefix pass stores the product of everything to the left of each index. The suffix pass multiplies in the product of everything to the right, completing each slot without using division.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

@@ -18,7 +18,7 @@ function createAhoCorasickNode(): AhoCorasickNode {
   return { children: new Map(), failureLink: null, outputPatterns: [], isEnd: false }; // @step:initialize
 }
 
-export function ahoCorasickSearch(text: string, patterns: string[]): string[] {
+function ahoCorasickSearch(text: string, patterns: string[]): string[] {
   const root = createAhoCorasickNode(); // @step:initialize
 
   // Phase 1: Insert all patterns into the trie

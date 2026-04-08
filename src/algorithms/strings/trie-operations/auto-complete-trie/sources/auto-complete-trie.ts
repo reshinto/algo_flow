@@ -23,7 +23,7 @@ function collectWords(node: TrieNodeInternal, currentPrefix: string, results: st
   }
 }
 
-export function autoCompleteTrie(words: string[], prefix: string): string[] {
+function autoCompleteTrie(words: string[], prefix: string): string[] {
   const root = createNode(); // @step:initialize
 
   for (const word of words) {

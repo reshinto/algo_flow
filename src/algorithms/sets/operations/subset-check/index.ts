@@ -10,6 +10,9 @@ import { subsetCheckEducational } from "./educational";
 import typescriptSource from "./sources/subset-check.ts?raw";
 import pythonSource from "./sources/subset-check.py?raw";
 import javaSource from "./sources/SubsetCheck.java?raw";
+import rustSource from "./sources/subset-check.rs?raw";
+import cppSource from "./sources/SubsetCheck.cpp?raw";
+import goSource from "./sources/subset-check.go?raw";
 
 function executeSubsetCheck(input: SubsetCheckInput): { isSubset: boolean } {
   return subsetCheck(input.arrayA, input.arrayB) as { isSubset: boolean };
@@ -29,7 +32,7 @@ const subsetCheckDefinition: AlgorithmDefinition<SubsetCheckInput> = {
       worst: "O(n + m)",
     },
     spaceComplexity: "O(m)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { arrayA: [2, 4], arrayB: [1, 2, 3, 4, 5] },
   },
   execute: executeSubsetCheck,
@@ -39,6 +42,9 @@ const subsetCheckDefinition: AlgorithmDefinition<SubsetCheckInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

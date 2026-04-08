@@ -19,7 +19,20 @@ export const buildFromPostorderInorderEducational: EducationalContent = {
     "Root = 4 (postorder[-1])\n" +
     "Inorder index of 4 = 3 → left has [1,2,3], right has [5,6,7]\n" +
     "Left postorder = [1,3,2], right postorder = [5,7,6]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)):::current --> B((2)):::visited\n" +
+    "  A --> C((6)):::visited\n" +
+    "  B --> D((1)):::active\n" +
+    "  B --> E((3)):::active\n" +
+    "  C --> F((5)):::active\n" +
+    "  C --> G((7)):::active\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Root 4 (cyan) is taken from `postorder[-1]`. Its inorder index 3 splits the sequence: green nodes 2 and 6 become subtree roots in recursive calls; amber leaves 1, 3, 5, 7 are base cases with single-element slices.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)` naive, `O(n)` with hash map**\n\n" +

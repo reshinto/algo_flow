@@ -10,6 +10,9 @@ import { rightSideViewEducational } from "./educational";
 import typescriptSource from "./sources/right-side-view.ts?raw";
 import pythonSource from "./sources/right-side-view.py?raw";
 import javaSource from "./sources/RightSideView.java?raw";
+import rustSource from "./sources/right-side-view.rs?raw";
+import cppSource from "./sources/RightSideView.cpp?raw";
+import goSource from "./sources/right-side-view.go?raw";
 
 /** Standard 7-node balanced BST: root=4, left subtree [2,1,3], right subtree [6,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -110,13 +113,20 @@ const rightSideViewDefinition: AlgorithmDefinition<RightSideViewInput> = {
       "BFS level-order traversal that collects the rightmost node at each depth level, returning the values visible when viewing the tree from the right",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(w)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4" },
   },
   execute: executeRightSideView,
   generateSteps: generateRightSideViewSteps,
   educational: rightSideViewEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(rightSideViewDefinition);

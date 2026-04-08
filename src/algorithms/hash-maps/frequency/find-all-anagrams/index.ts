@@ -10,6 +10,9 @@ import { findAllAnagramsEducational } from "./educational";
 import typescriptSource from "./sources/find-all-anagrams.ts?raw";
 import pythonSource from "./sources/find-all-anagrams.py?raw";
 import javaSource from "./sources/FindAllAnagrams.java?raw";
+import rustSource from "./sources/find-all-anagrams.rs?raw";
+import cppSource from "./sources/FindAllAnagrams.cpp?raw";
+import goSource from "./sources/find-all-anagrams.go?raw";
 
 function executeFindAllAnagrams(input: FindAllAnagramsInput): number[] {
   return findAllAnagrams(input.text, input.pattern) as number[];
@@ -29,7 +32,7 @@ const findAllAnagramsDefinition: AlgorithmDefinition<FindAllAnagramsInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { text: "cbaebabacd", pattern: "abc" },
   },
   execute: executeFindAllAnagrams,
@@ -39,6 +42,9 @@ const findAllAnagramsDefinition: AlgorithmDefinition<FindAllAnagramsInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

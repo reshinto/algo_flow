@@ -13,6 +13,9 @@ import { sentinelLinearSearchEducational } from "./educational";
 import typescriptSource from "./sources/sentinel-linear-search.ts?raw";
 import pythonSource from "./sources/sentinel-linear-search.py?raw";
 import javaSource from "./sources/SentinelLinearSearch.java?raw";
+import rustSource from "./sources/sentinel-linear-search.rs?raw";
+import cppSource from "./sources/SentinelLinearSearch.cpp?raw";
+import goSource from "./sources/sentinel-linear-search.go?raw";
 
 const sentinelLinearSearchDefinition: AlgorithmDefinition<{
   array: number[];
@@ -31,7 +34,7 @@ const sentinelLinearSearchDefinition: AlgorithmDefinition<{
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       array: [4, 2, 7, 1, 9, 3, 8, 5],
       targetValue: 9,
@@ -44,6 +47,9 @@ const sentinelLinearSearchDefinition: AlgorithmDefinition<{
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

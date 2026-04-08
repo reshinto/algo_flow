@@ -12,7 +12,18 @@ export const maximumDepthIterativeEducational: EducationalContent = {
     "2. For each level, snapshot the current queue size — that is how many nodes are at this level.\n" +
     "3. Process exactly that many nodes, enqueueing their children.\n" +
     "4. Increment depth by 1 after processing each complete level.\n\n" +
-    "When the queue empties, depth holds the maximum tree depth.",
+    "When the queue empties, depth holds the maximum tree depth.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((3)):::root --> B((9)):::visited\n" +
+    "  A --> C((20)):::visited\n" +
+    "  C --> D((15)):::current\n" +
+    "  C --> E((7)):::current\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "BFS level 1: processes node 3 (depth=1). Level 2: processes nodes 9 and 20 (depth=2). Level 3: processes nodes 15 and 7 (depth=3). Queue empties — maximum depth is 3.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — every node is visited once.\n\n" +

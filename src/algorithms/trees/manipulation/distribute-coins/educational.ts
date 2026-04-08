@@ -12,7 +12,20 @@ export const distributeCoinsEducational: EducationalContent = {
     "3. **Accumulate moves** — `totalMoves += |leftExcess| + |rightExcess|`.\n" +
     "   - Each coin that crosses an edge from/to a child adds one move.\n" +
     "4. **Return** — the final `totalMoves` count.\n\n" +
-    "For a tree where root=4 (4 coins), left=0, right=0, leftleft=3, the minimum moves is 4.",
+    "For a tree where root=4 (4 coins), left=0, right=0, leftleft=3, the minimum moves is 4.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)) --> B((0))\n" +
+    "  A --> C((0))\n" +
+    "  B --> D((3))\n" +
+    "  B --> E((0))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "Node D has excess 2 coins (3−1), node B passes 2 coins up, and node A redistributes to C and E. Total moves = 4.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

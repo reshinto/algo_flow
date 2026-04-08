@@ -24,7 +24,23 @@ export const previousSmallerElementEducational: EducationalContent = {
     "Index 6, value=3:  stack=[0(4),...] → pop 15,8,5,4(all>=3) → stack=[] → result[6]=-1  stack=[6]\n" +
     "Index 7, value=12: stack=[6(3)]   → 3 < 12, keep → result[7]=3  stack=[6,7]\n" +
     "Result: [-1, 4, 4, 5, 8, 8, -1, 3]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["-1"] -->|"PSE"| B["4"]\n' +
+    '  B -->|"PSE=4"| C["10"]\n' +
+    '  B -->|"PSE=4"| D["5"]\n' +
+    '  D -->|"PSE=5"| E["8"]\n' +
+    '  F["-1"] -->|"PSE"| G["3"]\n' +
+    "  style B fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style F fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "For `[4, 10, 5, 8]`: element 4 (cyan) is the previous smaller for both 10 and 5. Amber nodes show positions with no smaller predecessor (-1). Green = resolved with a known PSE.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

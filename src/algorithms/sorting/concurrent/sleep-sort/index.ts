@@ -12,6 +12,9 @@ import { sleepSortEducational } from "./educational";
 import typescriptSource from "./sources/sleep-sort.ts?raw";
 import pythonSource from "./sources/sleep-sort.py?raw";
 import javaSource from "./sources/SleepSort.java?raw";
+import rustSource from "./sources/sleep-sort.rs?raw";
+import cppSource from "./sources/SleepSort.cpp?raw";
+import goSource from "./sources/sleep-sort.go?raw";
 
 const sleepSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -27,7 +30,7 @@ const sleepSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(max)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [5, 3, 8, 1, 4, 2, 7, 6],
   },
   execute: sleepSort,
@@ -37,6 +40,9 @@ const sleepSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

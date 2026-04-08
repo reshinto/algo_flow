@@ -10,6 +10,9 @@ import { transposeMatrixEducational } from "./educational";
 import typescriptSource from "./sources/transpose-matrix.ts?raw";
 import pythonSource from "./sources/transpose-matrix.py?raw";
 import javaSource from "./sources/TransposeMatrix.java?raw";
+import rustSource from "./sources/transpose-matrix.rs?raw";
+import cppSource from "./sources/TransposeMatrix.cpp?raw";
+import goSource from "./sources/transpose-matrix.go?raw";
 
 function executeTransposeMatrix(input: TransposeMatrixInput): number[][] {
   const matrixCopy = input.matrix.map((row) => [...row]);
@@ -30,7 +33,7 @@ const transposeMatrixDefinition: AlgorithmDefinition<TransposeMatrixInput> = {
       worst: "O(m × n)",
     },
     spaceComplexity: "O(1) square / O(m × n) non-square",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       matrix: [
         [1, 2, 3],
@@ -46,6 +49,9 @@ const transposeMatrixDefinition: AlgorithmDefinition<TransposeMatrixInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

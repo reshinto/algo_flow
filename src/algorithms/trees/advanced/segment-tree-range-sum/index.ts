@@ -10,6 +10,9 @@ import { segmentTreeRangeSumEducational } from "./educational";
 import typescriptSource from "./sources/segment-tree-range-sum.ts?raw";
 import pythonSource from "./sources/segment-tree-range-sum.py?raw";
 import javaSource from "./sources/SegmentTreeRangeSum.java?raw";
+import rustSource from "./sources/segment-tree-range-sum.rs?raw";
+import cppSource from "./sources/SegmentTreeRangeSum.cpp?raw";
+import goSource from "./sources/segment-tree-range-sum.go?raw";
 
 function executeSegmentTreeRangeSum(input: SegmentTreeRangeSumInput): number[] {
   return segmentTreeRangeSum(input.array, input.queries) as number[];
@@ -25,7 +28,7 @@ const segmentTreeRangeSumDefinition: AlgorithmDefinition<SegmentTreeRangeSumInpu
       "Build a segment tree from an array and answer range sum queries in O(log n) per query",
     timeComplexity: { best: "O(n + q log n)", average: "O(n + q log n)", worst: "O(n + q log n)" },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       array: [1, 3, 5, 7, 9, 11],
       queries: [
@@ -37,7 +40,14 @@ const segmentTreeRangeSumDefinition: AlgorithmDefinition<SegmentTreeRangeSumInpu
   execute: executeSegmentTreeRangeSum,
   generateSteps: generateSegmentTreeRangeSumSteps,
   educational: segmentTreeRangeSumEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(segmentTreeRangeSumDefinition);

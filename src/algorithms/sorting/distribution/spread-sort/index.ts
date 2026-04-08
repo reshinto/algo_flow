@@ -14,6 +14,9 @@ import { spreadSortEducational } from "./educational";
 import typescriptSource from "./sources/spread-sort.ts?raw";
 import pythonSource from "./sources/spread-sort.py?raw";
 import javaSource from "./sources/SpreadSort.java?raw";
+import rustSource from "./sources/spread-sort.rs?raw";
+import cppSource from "./sources/SpreadSort.cpp?raw";
+import goSource from "./sources/spread-sort.go?raw";
 
 const spreadSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const spreadSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: spreadSort,
@@ -39,6 +42,9 @@ const spreadSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

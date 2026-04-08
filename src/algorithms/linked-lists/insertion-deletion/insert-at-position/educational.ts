@@ -14,13 +14,18 @@ export const insertAtPositionEducational: EducationalContent = {
     "2. **Link** — Set `newNode.next = current.next` (preserve the forward chain).\n" +
     "3. **Splice** — Set `current.next = newNode` (insert the new node).\n\n" +
     "### Example: Insert 4 at position 2 in [1 → 3 → 5 → 7]\n\n" +
-    "```\n" +
-    "Initial:  1 → 3 → 5 → 7\n" +
-    "Step 1:   current = node at position 1 (value 3)\n" +
-    "Step 2:   newNode.next = current.next (point to 5)\n" +
-    "Step 3:   current.next = newNode (link 3 → 4)\n" +
-    "Result:   1 → 3 → 4 → 5 → 7\n" +
-    "```",
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph Before\n" +
+    '    A1["1"] --> A3["3"] --> A5["5"] --> A7["7"]\n' +
+    "    end\n" +
+    "    subgraph After\n" +
+    '    B1["1"] --> B3["3"] --> B4["4"] --> B5["5"] --> B7["7"]\n' +
+    "    end\n" +
+    "    style B4 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style B3 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The new node 4 (cyan) is spliced in at position 2. Node 3 (green) is the predecessor — its `next` pointer is rewired to link to the new node.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** where n is the position index\n\n" +

@@ -25,7 +25,22 @@ export const dfsTopologicalEducational: EducationalContent = {
     "  C finishes   → prepend C  → order: [C, E, B, D, F]\n" +
     "A finishes     → prepend A  → order: [A, C, E, B, D, F]\n" +
     "```\n\n" +
-    "Every edge `u→v` is guaranteed to have `u` earlier than `v` because `v` finishes before `u`.",
+    "Every edge `u→v` is guaranteed to have `u` earlier than `v` because `v` finishes before `u`.\n\n" +
+    "### DFS Topological Sort on a Task DAG\n\n" +
+    "```mermaid\n" +
+    "graph LR\n" +
+    "  A((A)) --> B((B))\n" +
+    "  A((A)) --> C((C))\n" +
+    "  B((B)) --> D((D))\n" +
+    "  C((C)) --> D((D))\n" +
+    "  D((D)) --> E((E))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "DFS from A (cyan): recurses into B (amber) then D then E. E finishes first (prepended), then D, then B. Backtracks to C (amber), which finishes next. Finally A finishes. Result: [A, C, B, D, E] — a valid topological order.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

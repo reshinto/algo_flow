@@ -1,0 +1,81 @@
+package main
+
+import (
+	"reflect"
+	"testing"
+)
+
+func TestSortsUnsortedArrayOfPowerOf2Size(t *testing.T) {
+	result := bitonicSortNetwork([]int{6, 3, 8, 1, 7, 2, 5, 4})
+	expected := []int{1, 2, 3, 4, 5, 6, 7, 8}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+func TestSortsArrayThatIsNotAPowerOf2(t *testing.T) {
+	result := bitonicSortNetwork([]int{5, 3, 1, 4, 2})
+	expected := []int{1, 2, 3, 4, 5}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+func TestHandlesAlreadySortedArray(t *testing.T) {
+	result := bitonicSortNetwork([]int{1, 2, 3, 4})
+	expected := []int{1, 2, 3, 4}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+func TestHandlesReverseSortedArray(t *testing.T) {
+	result := bitonicSortNetwork([]int{4, 3, 2, 1})
+	expected := []int{1, 2, 3, 4}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+func TestHandlesArrayWithDuplicateValues(t *testing.T) {
+	result := bitonicSortNetwork([]int{3, 1, 4, 1, 5, 9, 2, 6})
+	expected := []int{1, 1, 2, 3, 4, 5, 6, 9}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+func TestHandlesSingleElementArray(t *testing.T) {
+	result := bitonicSortNetwork([]int{42})
+	expected := []int{42}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+func TestHandlesEmptyArray(t *testing.T) {
+	result := bitonicSortNetwork([]int{})
+	if len(result) != 0 {
+		t.Errorf("expected empty slice, got %v", result)
+	}
+}
+
+func TestHandlesArrayWithNegativeNumbers(t *testing.T) {
+	result := bitonicSortNetwork([]int{3, -1, 0, -5, 2})
+	expected := []int{-5, -1, 0, 2, 3}
+	if !reflect.DeepEqual(result, expected) {
+		t.Errorf("expected %v, got %v", expected, result)
+	}
+}
+
+func TestDoesNotMutateOriginalArray(t *testing.T) {
+	original := []int{4, 2, 3, 1}
+	originalCopy := []int{4, 2, 3, 1}
+	sorted := bitonicSortNetwork(original)
+	if !reflect.DeepEqual(sorted, []int{1, 2, 3, 4}) {
+		t.Errorf("expected sorted [1 2 3 4], got %v", sorted)
+	}
+	if !reflect.DeepEqual(original, originalCopy) {
+		t.Errorf("original array was mutated: got %v", original)
+	}
+}

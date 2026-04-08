@@ -8,6 +8,9 @@ import { numberOfGoodPairsEducational } from "./educational";
 import typescriptSource from "./sources/number-of-good-pairs.ts?raw";
 import pythonSource from "./sources/number-of-good-pairs.py?raw";
 import javaSource from "./sources/NumberOfGoodPairs.java?raw";
+import rustSource from "./sources/number-of-good-pairs.rs?raw";
+import cppSource from "./sources/NumberOfGoodPairs.cpp?raw";
+import goSource from "./sources/number-of-good-pairs.go?raw";
 
 function executeNumberOfGoodPairs(input: NumberOfGoodPairsInput): number {
   const { numbers } = input;
@@ -29,13 +32,20 @@ const definition: AlgorithmDefinition<NumberOfGoodPairsInput> = {
     description: "Count pairs of equal elements using frequency tracking",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numbers: [1, 2, 3, 1, 1, 3] },
   },
   execute: executeNumberOfGoodPairs,
   generateSteps: generateNumberOfGoodPairsSteps,
   educational: numberOfGoodPairsEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(definition);

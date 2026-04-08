@@ -26,7 +26,25 @@ export const setMatrixZeroesEducational: EducationalContent = {
     "1  1  1          1  0  1\n" +
     "1  0  1    →     0  0  0\n" +
     "1  1  1          1  0  1\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  subgraph Phase1["Phase 1 — Mark"]\n' +
+    '    Z["[1][1]=0 found"]\n' +
+    '    Z -->|"mark row"| MR["matrix[1][0] = 0"]\n' +
+    '    Z -->|"mark col"| MC["matrix[0][1] = 0"]\n' +
+    "  end\n" +
+    '  subgraph Phase2["Phase 2 — Zero inner cells"]\n' +
+    '    MC -->|"col 1 marked"| C1["[0][1],[2][1] → 0"]\n' +
+    '    MR -->|"row 1 marked"| R1["[1][0],[1][2] → 0"]\n' +
+    "  end\n" +
+    "  style Z fill:#f59e0b,stroke:#d97706\n" +
+    "  style MR fill:#06b6d4,stroke:#0891b2\n" +
+    "  style MC fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C1 fill:#14532d,stroke:#22c55e\n" +
+    "  style R1 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The single zero at `[1][1]` propagates through the first-row/first-column markers, zeroing the entire containing row and column without touching other cells.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m × n)`**\n\n" +

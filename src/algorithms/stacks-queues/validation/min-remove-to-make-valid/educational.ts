@@ -17,6 +17,23 @@ export const minRemoveToMakeValidEducational: EducationalContent = {
     "**Pass 2 — Build result:**\n" +
     "Reconstruct the string, skipping all indices from the unmatched set.\n\n" +
     "### Example trace on `a(b(c)d`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph Pass 1 - identify unmatched\n" +
+    '        S0["idx 1 \'(\' push"] -->|"idx 3 \'(\' push"| S1["stack: 1 3"]\n' +
+    '        S1 -->|"idx 5 \')\' pop 3 matched"| S2["stack: 1"]\n' +
+    '        S2 -->|"end: idx 1 unmatched"| S3["remove idx: {1}"]\n' +
+    "    end\n" +
+    "    subgraph Pass 2 - rebuild\n" +
+    '        R["skip idx 1 → ab(c)d"]\n' +
+    "    end\n" +
+    "    S3 --> R\n" +
+    "    style S0 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style S3 fill:#f59e0b,stroke:#d97706\n" +
+    "    style R fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The inner `(c)` at indices 3–5 matches cleanly. The outer `(` at index 1 is never closed, " +
+    "so it is the single character removed to produce the valid result.\n\n" +
     "```\n" +
     "idx  char  action              stack         unmatched_close\n" +
     "0    a     non-paren, skip     []            {}\n" +

@@ -10,6 +10,9 @@ import { supersetCheckEducational } from "./educational";
 import typescriptSource from "./sources/superset-check.ts?raw";
 import pythonSource from "./sources/superset-check.py?raw";
 import javaSource from "./sources/SupersetCheck.java?raw";
+import rustSource from "./sources/superset-check.rs?raw";
+import cppSource from "./sources/SupersetCheck.cpp?raw";
+import goSource from "./sources/superset-check.go?raw";
 
 function executeSupersetCheck(input: SupersetCheckInput): { isSuperset: boolean } {
   return supersetCheck(input.arrayA, input.arrayB) as { isSuperset: boolean };
@@ -29,7 +32,7 @@ const supersetCheckDefinition: AlgorithmDefinition<SupersetCheckInput> = {
       worst: "O(n + m)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { arrayA: [1, 2, 3, 4, 5], arrayB: [2, 4] },
   },
   execute: executeSupersetCheck,
@@ -39,6 +42,9 @@ const supersetCheckDefinition: AlgorithmDefinition<SupersetCheckInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

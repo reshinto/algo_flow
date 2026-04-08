@@ -11,16 +11,23 @@ export const firstNonRepeatingCharStreamEducational: EducationalContent = {
     "2. **Candidate queue** — every new character is pushed to the rear.\n\n" +
     "After each enqueue, characters are removed from the **front** while `freqMap[front] > 1` — those characters are repeated and can never be the answer again. The front of the remaining queue is the first non-repeating character, or `#` if the queue is empty.\n\n" +
     "### Example trace on `aabcbcd`\n\n" +
-    "```\n" +
-    "step  char  freqMap               queue     answer\n" +
-    "1     a     {a:1}                 [a]       a\n" +
-    "2     a     {a:2}                 []        #\n" +
-    "3     b     {a:2, b:1}            [b]       b\n" +
-    "4     c     {a:2, b:1, c:1}       [b,c]     b\n" +
-    "5     b     {a:2, b:2, c:1}       [c]       c\n" +
-    "6     c     {a:2, b:2, c:2}       []        #  → wait... d not yet seen\n" +
-    "7     d     {a:2, b:2, c:2, d:1}  [d]       d\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph After step 4 char=c\n" +
+    '    Q1["queue: [b, c]"] -->|"answer = front"| A1(["b"])\n' +
+    "    end\n" +
+    "    subgraph After step 5 char=b\n" +
+    '    Q2["enqueue b\\nfreq[b]=2"] -->|"prune front b (freq>1)"| Q3["queue: [c]"]\n' +
+    '    Q3 -->|"answer = front"| A2(["c"])\n' +
+    "    end\n" +
+    "    subgraph After step 7 char=d\n" +
+    '    Q4["enqueue d\\nqueue: [d]"] -->|"answer = front"| A3(["d"])\n' +
+    "    end\n" +
+    "    style Q1 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style Q2 fill:#f59e0b,stroke:#d97706\n" +
+    "    style A3 fill:#14532d,stroke:#22c55e\n" +
     "```\n\n" +
+    "Repeated characters are pruned from the queue front lazily; the surviving front is always the first non-repeating character.\n\n" +
     'Result array: `["a", "#", "b", "b", "c", "#", "d"]`',
 
   timeAndSpaceComplexity:

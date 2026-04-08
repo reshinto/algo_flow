@@ -10,6 +10,9 @@ import { bstPostorderIterativeEducational } from "./educational";
 import typescriptSource from "./sources/bst-postorder-iterative.ts?raw";
 import pythonSource from "./sources/bst-postorder-iterative.py?raw";
 import javaSource from "./sources/BSTPostorderIterative.java?raw";
+import rustSource from "./sources/bst-postorder-iterative.rs?raw";
+import cppSource from "./sources/BSTPostorderIterative.cpp?raw";
+import goSource from "./sources/bst-postorder-iterative.go?raw";
 
 /** Build a balanced 7-node BST: [4,2,6,1,3,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -114,7 +117,7 @@ const bstPostorderIterativeDefinition: AlgorithmDefinition<BstPostorderIterative
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       nodes: defaultNodes,
       rootId: "n4",
@@ -127,6 +130,9 @@ const bstPostorderIterativeDefinition: AlgorithmDefinition<BstPostorderIterative
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

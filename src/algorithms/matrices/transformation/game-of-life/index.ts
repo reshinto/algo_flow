@@ -10,6 +10,9 @@ import { gameOfLifeEducational } from "./educational";
 import typescriptSource from "./sources/game-of-life.ts?raw";
 import pythonSource from "./sources/game-of-life.py?raw";
 import javaSource from "./sources/GameOfLife.java?raw";
+import rustSource from "./sources/game-of-life.rs?raw";
+import cppSource from "./sources/GameOfLife.cpp?raw";
+import goSource from "./sources/game-of-life.go?raw";
 
 function executeGameOfLife(input: GameOfLifeInput): number[][] {
   const boardCopy = input.board.map((row) => [...row]);
@@ -30,7 +33,7 @@ const gameOfLifeDefinition: AlgorithmDefinition<GameOfLifeInput> = {
       worst: "O(m × n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       board: [
         [0, 1, 0],
@@ -47,6 +50,9 @@ const gameOfLifeDefinition: AlgorithmDefinition<GameOfLifeInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

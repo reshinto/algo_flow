@@ -9,6 +9,9 @@ import { dijkstraBidirectionalEducational } from "./educational";
 import typescriptSource from "./sources/dijkstra-bidirectional.ts?raw";
 import pythonSource from "./sources/dijkstra-bidirectional.py?raw";
 import javaSource from "./sources/DijkstraBidirectional.java?raw";
+import rustSource from "./sources/dijkstra-bidirectional.rs?raw";
+import cppSource from "./sources/DijkstraBidirectional.cpp?raw";
+import goSource from "./sources/dijkstra-bidirectional.go?raw";
 
 /** Builds the initial pathfinding grid with start/end positions and preset walls. */
 function createDefaultGrid(): GridCell[][] {
@@ -78,7 +81,7 @@ const dijkstraBidirectionalDefinition: AlgorithmDefinition<BidirectionalInput> =
       worst: "O((V+E) log V)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       grid: defaultGrid,
       startPosition: [...GRID_DEFAULTS.startPosition],
@@ -93,6 +96,9 @@ const dijkstraBidirectionalDefinition: AlgorithmDefinition<BidirectionalInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

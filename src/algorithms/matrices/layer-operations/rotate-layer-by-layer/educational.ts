@@ -23,7 +23,26 @@ export const rotateLayerByLayerEducational: EducationalContent = {
     "4  5  6   →    8  5  2\n" +
     "7  8  9        9  6  3\n" +
     "```\n\n" +
-    "Layer 0 cycles (0,0)↔(0,2)↔(2,2)↔(2,0), then (0,1)↔(1,2)↔(2,1)↔(1,0). The center (1,1) never moves.",
+    "Layer 0 cycles (0,0)↔(0,2)↔(2,2)↔(2,0), then (0,1)↔(1,2)↔(2,1)↔(1,0). The center (1,1) never moves.\n\n" +
+    "### Diagram: one 4-way cyclic swap at offset 0, layer 0\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  Top["Top (0,0) = 1"]\n' +
+    '  Right["Right (0,2) = 3"]\n' +
+    '  Bottom["Bottom (2,2) = 9"]\n' +
+    '  Left["Left (2,0) = 7"]\n' +
+    '  Center["Center (1,1) = 5 — unchanged"]\n' +
+    '  Left -->|"left → top"| Top\n' +
+    '  Bottom -->|"bottom → left"| Left\n' +
+    '  Right -->|"right → bottom"| Bottom\n' +
+    '  Top -->|"temp → right"| Right\n' +
+    "  style Top fill:#f59e0b,stroke:#d97706\n" +
+    "  style Right fill:#14532d,stroke:#22c55e\n" +
+    "  style Bottom fill:#14532d,stroke:#22c55e\n" +
+    "  style Left fill:#14532d,stroke:#22c55e\n" +
+    "  style Center fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "The four corner cells rotate clockwise in a single cyclic swap; the center cell (cyan) is never touched.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

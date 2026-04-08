@@ -10,6 +10,9 @@ import { subtreeOfAnotherTreeEducational } from "./educational";
 import typescriptSource from "./sources/subtree-of-another-tree.ts?raw";
 import pythonSource from "./sources/subtree-of-another-tree.py?raw";
 import javaSource from "./sources/SubtreeOfAnotherTree.java?raw";
+import rustSource from "./sources/subtree-of-another-tree.rs?raw";
+import cppSource from "./sources/SubtreeOfAnotherTree.cpp?raw";
+import goSource from "./sources/subtree-of-another-tree.go?raw";
 
 /** Main tree: standard 7-node balanced BST */
 const defaultNodes: TreeNode[] = [
@@ -144,13 +147,20 @@ const subtreeOfAnotherTreeDefinition: AlgorithmDefinition<SubtreeOfAnotherTreeIn
       "Recursively checks whether a smaller binary tree appears as an exact structural match anywhere within a larger binary tree",
     timeComplexity: { best: "O(m)", average: "O(n×m)", worst: "O(n×m)" },
     spaceComplexity: "O(h1+h2)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", secondaryNodes, secondaryRootId: "s2" },
   },
   execute: executeSubtreeOfAnotherTree,
   generateSteps: generateSubtreeOfAnotherTreeSteps,
   educational: subtreeOfAnotherTreeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(subtreeOfAnotherTreeDefinition);

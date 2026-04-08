@@ -9,6 +9,9 @@ import { partitionEqualSubsetEducational } from "./educational";
 import typescriptSource from "./sources/partition-equal-subset.ts?raw";
 import pythonSource from "./sources/partition-equal-subset.py?raw";
 import javaSource from "./sources/PartitionEqualSubset.java?raw";
+import rustSource from "./sources/partition-equal-subset.rs?raw";
+import cppSource from "./sources/PartitionEqualSubset.cpp?raw";
+import goSource from "./sources/partition-equal-subset.go?raw";
 
 export interface PartitionSubsetInput {
   numbers: number[];
@@ -28,7 +31,7 @@ const partitionEqualSubsetDefinition: AlgorithmDefinition<PartitionSubsetInput> 
       worst: "O(n × sum)",
     },
     spaceComplexity: "O(sum)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numbers: [1, 5, 11, 5] },
   },
   execute: (input: PartitionSubsetInput) => partitionEqualSubset(input.numbers),
@@ -38,6 +41,9 @@ const partitionEqualSubsetDefinition: AlgorithmDefinition<PartitionSubsetInput> 
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

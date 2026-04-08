@@ -13,6 +13,9 @@ import { maxConsecutiveOnesEducational } from "./educational";
 import typescriptSource from "./sources/max-consecutive-ones.ts?raw";
 import pythonSource from "./sources/max-consecutive-ones.py?raw";
 import javaSource from "./sources/MaxConsecutiveOnes.java?raw";
+import rustSource from "./sources/max-consecutive-ones.rs?raw";
+import cppSource from "./sources/MaxConsecutiveOnes.cpp?raw";
+import goSource from "./sources/max-consecutive-ones.go?raw";
 
 interface MaxConsecutiveOnesInput {
   inputArray: number[];
@@ -33,7 +36,7 @@ const maxConsecutiveOnesDefinition: AlgorithmDefinition<MaxConsecutiveOnesInput>
       worst: "O(n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       inputArray: [1, 1, 0, 0, 1, 1, 1, 0, 1, 1],
       maxFlips: 2,
@@ -46,6 +49,9 @@ const maxConsecutiveOnesDefinition: AlgorithmDefinition<MaxConsecutiveOnesInput>
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -14,6 +14,9 @@ import { cartesianTreeSortEducational } from "./educational";
 import typescriptSource from "./sources/cartesian-tree-sort.ts?raw";
 import pythonSource from "./sources/cartesian-tree-sort.py?raw";
 import javaSource from "./sources/CartesianTreeSort.java?raw";
+import rustSource from "./sources/cartesian-tree-sort.rs?raw";
+import cppSource from "./sources/CartesianTreeSort.cpp?raw";
+import goSource from "./sources/cartesian-tree-sort.go?raw";
 
 const cartesianTreeSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const cartesianTreeSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: cartesianTreeSort,
@@ -39,6 +42,9 @@ const cartesianTreeSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

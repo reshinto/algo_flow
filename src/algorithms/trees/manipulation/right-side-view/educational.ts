@@ -12,7 +12,22 @@ export const rightSideViewEducational: EducationalContent = {
     "4. **Record rightmost** — when `position === levelSize - 1`, the current node is the last at this depth; add its value to results.\n" +
     "5. **Enqueue children** — add left then right children for the next level.\n" +
     "6. **Repeat** — continue until the queue is empty.\n\n" +
-    "For the default 7-node BST, the right side view is `[4, 6, 7]`.",
+    "For the default 7-node BST, the right side view is `[4, 6, 7]`.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)) --> B((2))\n" +
+    "  A --> C((6))\n" +
+    "  B --> D((1))\n" +
+    "  B --> E((3))\n" +
+    "  C --> F((5))\n" +
+    "  C --> G((7))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "The highlighted nodes (4, 6, 7) form the right-side view. BFS processes each level and records the last node dequeued: 4 at level 0, 6 at level 1, 7 at level 2.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

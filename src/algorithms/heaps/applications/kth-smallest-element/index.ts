@@ -10,6 +10,9 @@ import { kthSmallestElementEducational } from "./educational";
 import typescriptSource from "./sources/kth-smallest-element.ts?raw";
 import pythonSource from "./sources/kth-smallest-element.py?raw";
 import javaSource from "./sources/KthSmallestElement.java?raw";
+import rustSource from "./sources/kth-smallest-element.rs?raw";
+import cppSource from "./sources/KthSmallestElement.cpp?raw";
+import goSource from "./sources/kth-smallest-element.go?raw";
 
 function executeKthSmallestElement(input: KthSmallestElementInput): number {
   return kthSmallestElement(input.array, input.kValue) as number;
@@ -29,7 +32,7 @@ const kthSmallestElementDefinition: AlgorithmDefinition<KthSmallestElementInput>
       worst: "O(n log k)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [7, 10, 4, 3, 20, 15, 8], kValue: 3 },
   },
   execute: executeKthSmallestElement,
@@ -39,6 +42,9 @@ const kthSmallestElementDefinition: AlgorithmDefinition<KthSmallestElementInput>
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

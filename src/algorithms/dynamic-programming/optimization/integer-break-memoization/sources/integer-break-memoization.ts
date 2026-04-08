@@ -1,6 +1,6 @@
 // Integer Break memoization — top-down recursion to maximize product of parts
 
-export function integerBreakMemoization(
+function integerBreakMemoization(
   targetNumber: number,
   memo: Map<number, number> = new Map(),
 ): number {

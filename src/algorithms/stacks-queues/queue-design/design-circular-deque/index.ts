@@ -10,6 +10,9 @@ import { designCircularDequeEducational } from "./educational";
 import typescriptSource from "./sources/design-circular-deque.ts?raw";
 import pythonSource from "./sources/design-circular-deque.py?raw";
 import javaSource from "./sources/DesignCircularDeque.java?raw";
+import rustSource from "./sources/design-circular-deque.rs?raw";
+import cppSource from "./sources/DesignCircularDeque.cpp?raw";
+import goSource from "./sources/design-circular-deque.go?raw";
 
 function executeDesignCircularDeque(input: DesignCircularDequeInput): string[] {
   return designCircularDeque(input.operations, input.capacity) as string[];
@@ -29,7 +32,7 @@ const designCircularDequeDefinition: AlgorithmDefinition<DesignCircularDequeInpu
       worst: "O(1)",
     },
     spaceComplexity: "O(k)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       operations: ["pushBack 1", "pushFront 2", "popBack", "pushBack 3"],
       capacity: 3,
@@ -42,6 +45,9 @@ const designCircularDequeDefinition: AlgorithmDefinition<DesignCircularDequeInpu
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

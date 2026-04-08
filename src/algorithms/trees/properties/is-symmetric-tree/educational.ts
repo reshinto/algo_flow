@@ -11,7 +11,20 @@ export const isSymmetricTreeEducational: EducationalContent = {
     "2. **One null** — asymmetric, return `false`.\n" +
     "3. **Values differ** — return `false`.\n" +
     "4. **Recurse:** outer pair `(left.left, right.right)` AND inner pair `(left.right, right.left)` must both be mirrors.\n\n" +
-    "Start by calling `isMirror(root.left, root.right)`.",
+    "Start by calling `isMirror(root.left, root.right)`.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((1)):::root --> B((2)):::visited\n" +
+    "  A --> C((2)):::visited\n" +
+    "  B --> D((3)):::current\n" +
+    "  B --> E((4)):::current\n" +
+    "  C --> F((4)):::current\n" +
+    "  C --> G((3)):::current\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "`isMirror(2, 2)` → values match. Recurse outer `isMirror(3, 3)` → match. Recurse inner `isMirror(4, 4)` → match. All pairs mirror correctly — returns `true`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — each node pair is compared once.\n\n" +

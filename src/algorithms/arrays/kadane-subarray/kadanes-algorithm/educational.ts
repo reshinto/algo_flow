@@ -30,7 +30,21 @@ export const kadanesEducational: EducationalContent = {
     "| 6     | 1       | 6      | 1       | extend   | 6          | 6        |\n" +
     "| 7     | -5      | 1      | -5      | extend   | 1          | 6        |\n" +
     "| 8     | 4       | 5      | 4       | extend   | 5          | 6        |\n\n" +
-    "**Result**: Maximum subarray sum = `6`, from subarray `[4, -1, 2, 1]` (indices 3–6).",
+    "**Result**: Maximum subarray sum = `6`, from subarray `[4, -1, 2, 1]` (indices 3–6).\n\n" +
+    "### Extend-or-Restart Diagram (key steps from `[-2, 1, -3, 4, -1, 2, 1]`)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["-2\\ncur=-2"] -->|"restart"| B["1\\ncur=1"]\n' +
+    '  B -->|"extend→-2, restart"| C["-3\\ncur=-2"]\n' +
+    '  C -->|"restart"| D["4\\ncur=4"]\n' +
+    '  D -->|"extend"| E["-1\\ncur=3"]\n' +
+    '  E -->|"extend"| F["2\\ncur=5"]\n' +
+    '  F -->|"extend"| G["1\\ncur=6 ✓"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Negative running sums at `-2` and `-3` trigger restarts. Once the subarray anchors at `4`, extending through `-1`, `2`, and `1` grows the sum to the global maximum of `6`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

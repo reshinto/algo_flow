@@ -25,7 +25,18 @@ export const rotateArrayEducational: EducationalContent = {
     "| Full reverse | [7, 6, 5, 4, 3, 2, 1] | reverse entire array              |\n" +
     "| Left reverse | [5, 6, 7, 4, 3, 2, 1] | reverse [0..2] = [7,6,5] → [5,6,7] |\n" +
     "| Right reverse| [5, 6, 7, 1, 2, 3, 4] | reverse [3..6] = [4,3,2,1] → [1,2,3,4] |\n\n" +
-    "**Result**: `[5, 6, 7, 1, 2, 3, 4]`",
+    "**Result**: `[5, 6, 7, 1, 2, 3, 4]`\n\n" +
+    "### Three-Reversal Diagram (`[1,2,3,4,5,6,7]`, k=3)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["[1, 2, 3, 4, 5, 6, 7]"] -->|"reverse all"| B["[7, 6, 5, 4, 3, 2, 1]"]\n' +
+    '  B -->|"reverse [0..2]"| C["[5, 6, 7, 4, 3, 2, 1]"]\n' +
+    '  C -->|"reverse [3..6]"| D["[5, 6, 7, 1, 2, 3, 4]"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Reversing the full array brings the last `k` elements to the front but in reverse order. Two targeted reversals restore both segments to their correct forward order.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

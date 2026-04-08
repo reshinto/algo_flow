@@ -12,6 +12,9 @@ import { longestConsecutiveSequenceEducational } from "./educational";
 import typescriptSource from "./sources/longest-consecutive-sequence.ts?raw";
 import pythonSource from "./sources/longest-consecutive-sequence.py?raw";
 import javaSource from "./sources/LongestConsecutiveSequence.java?raw";
+import rustSource from "./sources/longest-consecutive-sequence.rs?raw";
+import cppSource from "./sources/LongestConsecutiveSequence.cpp?raw";
+import goSource from "./sources/longest-consecutive-sequence.go?raw";
 
 function executeLongestConsecutiveSequence(input: LongestConsecutiveSequenceInput): number {
   return longestConsecutiveSequence(input.numbers);
@@ -31,7 +34,7 @@ const longestConsecutiveSequenceDefinition: AlgorithmDefinition<LongestConsecuti
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { numbers: [100, 4, 200, 1, 3, 2] },
   },
   execute: executeLongestConsecutiveSequence,
@@ -41,6 +44,9 @@ const longestConsecutiveSequenceDefinition: AlgorithmDefinition<LongestConsecuti
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

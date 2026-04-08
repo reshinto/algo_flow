@@ -14,6 +14,9 @@ import { mergeSortEducational } from "./educational";
 import typescriptSource from "./sources/merge-sort.ts?raw";
 import pythonSource from "./sources/merge-sort.py?raw";
 import javaSource from "./sources/MergeSort.java?raw";
+import rustSource from "./sources/merge-sort.rs?raw";
+import cppSource from "./sources/MergeSort.cpp?raw";
+import goSource from "./sources/merge-sort.go?raw";
 
 const mergeSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const mergeSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: mergeSort,
@@ -39,6 +42,9 @@ const mergeSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

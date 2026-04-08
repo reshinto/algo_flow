@@ -14,6 +14,9 @@ import { bellmanFordEducational } from "./educational";
 import typescriptSource from "./sources/bellman-ford.ts?raw";
 import pythonSource from "./sources/bellman-ford.py?raw";
 import javaSource from "./sources/BellmanFord.java?raw";
+import rustSource from "./sources/bellman-ford.rs?raw";
+import cppSource from "./sources/BellmanFord.cpp?raw";
+import goSource from "./sources/bellman-ford.go?raw";
 
 const CIRCLE_RADIUS = 150;
 const CENTER_X = 200;
@@ -87,7 +90,7 @@ const bellmanFordDefinition: AlgorithmDefinition<BellmanFordInput> = {
       worst: "O(VE)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: BellmanFordInput) =>
@@ -98,6 +101,9 @@ const bellmanFordDefinition: AlgorithmDefinition<BellmanFordInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

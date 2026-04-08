@@ -14,15 +14,25 @@ export const mergeTwoSortedEducational: EducationalContent = {
     "3. **Attach remainder** — link `tail.next` to whichever list has remaining nodes (if any).\n" +
     "4. **Return** `dummy.next` (the head of the merged list).\n\n" +
     "### Example: Merging [1 → 3 → 5] and [2 → 4 → 6]\n\n" +
-    "```\n" +
-    "Step 1:      Compare 1 and 2 (1 ≤ 2) → link dummy→1, currentA→3\n" +
-    "Step 2:      Compare 3 and 2 (3 > 2) → link 1→2, currentB→4\n" +
-    "Step 3:      Compare 3 and 4 (3 ≤ 4) → link 2→3, currentA→5\n" +
-    "Step 4:      Compare 5 and 4 (5 > 4) → link 3→4, currentB→6\n" +
-    "Step 5:      Compare 5 and 6 (5 ≤ 6) → link 4→5, currentA→null\n" +
-    "Step 6:      currentA is null, attach remaining → link 5→6\n" +
-    "Result:      dummy→1→2→3→4→5→6\n" +
-    "```",
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph List A\n" +
+    '    LA1["1"] --> LA3["3"] --> LA5["5"]\n' +
+    "    end\n" +
+    "    subgraph List B\n" +
+    '    LB2["2"] --> LB4["4"] --> LB6["6"]\n' +
+    "    end\n" +
+    "    subgraph Merged\n" +
+    '    M1["1"] --> M2["2"] --> M3["3"] --> M4["4"] --> M5["5"] --> M6["6"]\n' +
+    "    end\n" +
+    "    style M1 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style M3 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style M5 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style M2 fill:#14532d,stroke:#22c55e\n" +
+    "    style M4 fill:#14532d,stroke:#22c55e\n" +
+    "    style M6 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Nodes from List A (cyan) and List B (green) are interleaved by comparing heads. The smaller value is linked to `tail` each step, producing a fully sorted merged list.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + m)`** where `n` and `m` are the lengths of the two input lists.\n\n" +

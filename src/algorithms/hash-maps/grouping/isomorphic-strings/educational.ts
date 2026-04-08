@@ -26,7 +26,19 @@ export const isomorphicStringsEducational: EducationalContent = {
     " 0    f      b     {}    insert f→b\n" +
     " 1    o      a     {f:b} insert o→a\n" +
     " 2    o      r     {f:b, o:a} mismatch: o already maps to a, not r → false\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["idx 0: e → a"] -->|insert aToB+bToA| B["aToB:{e:a} bToA:{a:e}"]\n' +
+    '  B --> C["idx 1: g → d"]\n' +
+    '  C -->|insert| D["aToB:{e:a,g:d} bToA:{a:e,d:g}"]\n' +
+    '  D --> E["idx 2: g → d"]\n' +
+    '  E -->|both match ✓| F["return true"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Both maps must agree at every position — a mismatch in either direction immediately returns false.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

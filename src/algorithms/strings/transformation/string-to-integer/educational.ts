@@ -24,7 +24,20 @@ export const stringToIntegerEducational: EducationalContent = {
     "Phase 3: read '4'       → result = 4\n" +
     "         read '2'       → result = 42\n" +
     "Output: -42\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["·  ·  ·"] -->|"skip spaces"| B["−"]\n' +
+    '  B -->|"sign = −1"| C["4"]\n' +
+    '  C -->|"result = 4"| D["2"]\n' +
+    '  D -->|"result = 42"| E["−42"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The pointer advances left to right through three phases — whitespace, sign, digits — never backtracking, accumulating the integer value one digit at a time.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

@@ -14,6 +14,9 @@ import { bubbleSortEducational } from "./educational";
 import typescriptSource from "./sources/bubble-sort.ts?raw";
 import pythonSource from "./sources/bubble-sort.py?raw";
 import javaSource from "./sources/BubbleSort.java?raw";
+import rustSource from "./sources/bubble-sort.rs?raw";
+import cppSource from "./sources/BubbleSort.cpp?raw";
+import goSource from "./sources/bubble-sort.go?raw";
 
 const bubbleSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const bubbleSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: bubbleSort,
@@ -39,6 +42,9 @@ const bubbleSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

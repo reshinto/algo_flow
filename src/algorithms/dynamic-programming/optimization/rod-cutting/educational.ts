@@ -20,7 +20,20 @@ export const rodCuttingEducational: EducationalContent = {
     "dp:     0  1  5  8  10 13 17 18 22\n" +
     "```\n\n" +
     "Length 4 yields 10 (two pieces of length 2 at $5 each), and length 8 yields 22 (four pieces of length 2).\n\n" +
-    "Each cell reuses previously computed optimal sub-rod values — no redundant recomputation.",
+    "Each cell reuses previously computed optimal sub-rod values — no redundant recomputation.\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  A["dp[0]=0"]:::base\n' +
+    '  B["dp[1]=1\\n(cut len 1: $1)"]:::cached\n' +
+    '  C["dp[2]=5\\n(cut len 2: $5)"]:::cached\n' +
+    '  D["dp[4]=10\\n(2×len2: $10)"]:::cached\n' +
+    '  E["dp[8]=22\\n(4×len2: $22)"]:::current\n' +
+    "  A --> B --> C --> D --> E\n" +
+    "  classDef base fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef cached fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "At each length, all possible first-cut sizes are tried and the best sub-rod revenue is reused from prior cells.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

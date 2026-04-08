@@ -14,6 +14,9 @@ import { blockSortEducational } from "./educational";
 import typescriptSource from "./sources/block-sort.ts?raw";
 import pythonSource from "./sources/block-sort.py?raw";
 import javaSource from "./sources/BlockSort.java?raw";
+import rustSource from "./sources/block-sort.rs?raw";
+import cppSource from "./sources/BlockSort.cpp?raw";
+import goSource from "./sources/block-sort.go?raw";
 
 const blockSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const blockSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: blockSort,
@@ -39,6 +42,9 @@ const blockSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

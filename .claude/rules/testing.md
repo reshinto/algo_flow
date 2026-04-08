@@ -12,13 +12,14 @@ paths:
 ### Unit Tests (Vitest)
 
 - Unit tests must target actual algorithm implementations, not only step generators
-- Every algorithm needs: correctness tests (pure execute) + step generation tests
+- Every algorithm needs: correctness tests (pure execute) + step generation tests in `__tests__/`
 - Test tracker methods produce correct ExecutionStep with correct type/metrics
 - Test store slice state transitions for all actions
 - Test custom hooks with `renderHook`
 - Meaningful test variable names (no single chars)
 - Vitest uses the `projects` feature: `algorithms` project runs in `node` environment, `components` project runs in `jsdom`. This keeps total test time ~20 seconds and removes the need for manual timeout hooks in `test-setup.ts`
-- CI shards unit tests 8 ways; aggregation job is named **Unit Tests Status**
+- CI shards unit tests 12 ways; aggregation job is named **Unit Tests Status**
+- Language tests (Python, Java, Rust, C++, Go) sharded separately per language in CI
 
 ### Coverage Thresholds
 
@@ -47,4 +48,4 @@ paths:
 - Step count and step types for known inputs
 - Final visual state matches expected
 - Educational content is non-empty for all sections
-- Source files exist for all supported languages
+- Source files exist for all supported languages (TypeScript, Python, Java, Rust, C++, Go)

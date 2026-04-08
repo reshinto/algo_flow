@@ -14,6 +14,9 @@ import { exchangeSortEducational } from "./educational";
 import typescriptSource from "./sources/exchange-sort.ts?raw";
 import pythonSource from "./sources/exchange-sort.py?raw";
 import javaSource from "./sources/ExchangeSort.java?raw";
+import rustSource from "./sources/exchange-sort.rs?raw";
+import cppSource from "./sources/ExchangeSort.cpp?raw";
+import goSource from "./sources/exchange-sort.go?raw";
 
 const exchangeSortDefinition: AlgorithmDefinition<number[]> = {
   meta: {
@@ -29,7 +32,7 @@ const exchangeSortDefinition: AlgorithmDefinition<number[]> = {
       worst: "O(n²)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: [64, 34, 25, 12, 22, 11, 90],
   },
   execute: exchangeSort,
@@ -39,6 +42,9 @@ const exchangeSortDefinition: AlgorithmDefinition<number[]> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

@@ -10,6 +10,9 @@ import { pathSumEducational } from "./educational";
 import typescriptSource from "./sources/path-sum.ts?raw";
 import pythonSource from "./sources/path-sum.py?raw";
 import javaSource from "./sources/PathSum.java?raw";
+import rustSource from "./sources/path-sum.rs?raw";
+import cppSource from "./sources/PathSum.cpp?raw";
+import goSource from "./sources/path-sum.go?raw";
 
 /** Balanced 7-node BST: root=4, left subtree [2,1,3], right subtree [6,5,7]. Path 4→2→1 sums to 7. */
 const defaultNodes: TreeNode[] = [
@@ -108,13 +111,20 @@ const pathSumDefinition: AlgorithmDefinition<PathSumInput> = {
       "Checks if any root-to-leaf path in the tree sums to the target value using recursive DFS with running subtraction",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", targetSum: 7 },
   },
   execute: executePathSum,
   generateSteps: generatePathSumSteps,
   educational: pathSumEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(pathSumDefinition);

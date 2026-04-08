@@ -10,6 +10,9 @@ import { deleteLeavesWithValueEducational } from "./educational";
 import typescriptSource from "./sources/delete-leaves-with-value.ts?raw";
 import pythonSource from "./sources/delete-leaves-with-value.py?raw";
 import javaSource from "./sources/DeleteLeavesWithValue.java?raw";
+import rustSource from "./sources/delete-leaves-with-value.rs?raw";
+import cppSource from "./sources/DeleteLeavesWithValue.cpp?raw";
+import goSource from "./sources/delete-leaves-with-value.go?raw";
 
 /** Standard 7-node balanced BST. Target=1 will delete leaf n1, then check if n2 becomes a leaf. */
 const defaultNodes: TreeNode[] = [
@@ -120,13 +123,20 @@ const deleteLeavesWithValueDefinition: AlgorithmDefinition<DeleteLeavesWithValue
       "Post-order recursive deletion of all leaf nodes whose value equals the target, cascading upward as former internal nodes become leaves",
     timeComplexity: { best: "O(n)", average: "O(n)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", targetValue: 1 },
   },
   execute: executeDeleteLeavesWithValue,
   generateSteps: generateDeleteLeavesWithValueSteps,
   educational: deleteLeavesWithValueEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(deleteLeavesWithValueDefinition);

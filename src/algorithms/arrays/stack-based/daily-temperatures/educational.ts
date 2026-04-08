@@ -31,7 +31,20 @@ export const dailyTemperaturesEducational: EducationalContent = {
     "Day 7 (73): 76>73 → push 7                  → stack=[6,7]\n" +
     "Remaining: indices 6,7 → wait stays 0\n" +
     "Result: [1, 1, 4, 2, 1, 1, 0, 0]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["73"] --> B["74"]\n' +
+    '  B --> C["75"]\n' +
+    '  C --> D["71"]\n' +
+    '  D --> E["72"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "When day 4 (72°) is processed, it resolves the pending stack: 71° waited 1 day, 75° waited 4 days. Green = already resolved, amber = pending in stack, cyan = current day being processed.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

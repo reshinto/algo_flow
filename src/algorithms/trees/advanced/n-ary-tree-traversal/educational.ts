@@ -14,7 +14,21 @@ export const nAryTreeTraversalEducational: EducationalContent = {
     "    for child in node.children:\n" +
     "        preorder(child)\n" +
     "```\n\n" +
-    "For a 3-ary tree of 9 nodes (root with 3 children, each having 2 children), the preorder sequence is: **root → child₁ → grandchild₁₁ → grandchild₁₂ → child₂ → ...**",
+    "For a 3-ary tree of 9 nodes (root with 3 children, each having 2 children), the preorder sequence is: **root → child₁ → grandchild₁₁ → grandchild₁₂ → child₂ → ...**\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((1)):::current --> B((2)):::visited\n" +
+    "  A --> C((5)):::visited\n" +
+    "  A --> D((8)):::visited\n" +
+    "  B --> E((3)):::active\n" +
+    "  B --> F((4)):::active\n" +
+    "  C --> G((6)):::active\n" +
+    "  C --> H((7)):::active\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Cyan marks the root (visited first); green nodes are second-level children visited next; amber leaves are visited last. Preorder output: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — every node is visited exactly once.\n\n" +

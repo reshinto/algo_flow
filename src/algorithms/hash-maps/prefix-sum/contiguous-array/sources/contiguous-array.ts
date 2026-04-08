@@ -16,5 +16,3 @@ function contiguousArray(numbers: number[]): number {
   }
   return maxLength; // @step:complete
 }
-
-export { contiguousArray };

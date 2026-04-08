@@ -10,6 +10,9 @@ import { powerSetEducational } from "./educational";
 import typescriptSource from "./sources/power-set.ts?raw";
 import pythonSource from "./sources/power-set.py?raw";
 import javaSource from "./sources/PowerSet.java?raw";
+import rustSource from "./sources/power-set.rs?raw";
+import cppSource from "./sources/PowerSet.cpp?raw";
+import goSource from "./sources/power-set.go?raw";
 
 function executePowerSet(input: PowerSetInput): number[][] {
   return powerSet(input.elements) as number[][];
@@ -29,7 +32,7 @@ const powerSetDefinition: AlgorithmDefinition<PowerSetInput> = {
       worst: "O(n × 2^n)",
     },
     spaceComplexity: "O(n × 2^n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { elements: [1, 2, 3, 4] },
   },
   execute: executePowerSet,
@@ -39,6 +42,9 @@ const powerSetDefinition: AlgorithmDefinition<PowerSetInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

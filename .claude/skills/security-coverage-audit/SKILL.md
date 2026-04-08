@@ -22,9 +22,8 @@ Run a combined security and test coverage audit to verify the project meets qual
 ### 2. E2E Test Validation
 
 - Run `npm run e2e` (dev server starts automatically via hooks)
-- Verify per-category spec files in `e2e/specs/` auto-discover new algorithms (confirm import in `src/algorithms/index.ts`)
+- E2E auto-discovers from registry — see `rules/testing.md` for spec convention
 - Confirm 3-viewport coverage: desktop (1280px), tablet (768px), mobile (375px)
-- Check that algorithms with custom input editors have entries in `e2e/specs/input-editors.spec.ts`
 
 ### 3. OWASP Client-Side Security
 

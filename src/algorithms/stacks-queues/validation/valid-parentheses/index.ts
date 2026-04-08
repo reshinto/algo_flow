@@ -10,6 +10,9 @@ import { validParenthesesEducational } from "./educational";
 import typescriptSource from "./sources/valid-parentheses.ts?raw";
 import pythonSource from "./sources/valid-parentheses.py?raw";
 import javaSource from "./sources/ValidParentheses.java?raw";
+import rustSource from "./sources/valid-parentheses.rs?raw";
+import cppSource from "./sources/ValidParentheses.cpp?raw";
+import goSource from "./sources/valid-parentheses.go?raw";
 
 function executeValidParentheses(input: ValidParenthesesInput): boolean {
   return validParentheses(input.inputString) as boolean;
@@ -29,7 +32,7 @@ const validParenthesesDefinition: AlgorithmDefinition<ValidParenthesesInput> = {
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { inputString: "({[]})" },
   },
   execute: executeValidParentheses,
@@ -39,6 +42,9 @@ const validParenthesesDefinition: AlgorithmDefinition<ValidParenthesesInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

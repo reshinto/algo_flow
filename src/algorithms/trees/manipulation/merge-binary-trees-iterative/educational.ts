@@ -12,7 +12,32 @@ export const mergeBinaryTreesIterativeEducational: EducationalContent = {
     "4. **Handle right** — if `nodeA.right` is null, assign `nodeB.right`; otherwise push `(nodeA.right, nodeB.right)`.\n" +
     "5. **Handle left** — if `nodeA.left` is null, assign `nodeB.left`; otherwise push `(nodeA.left, nodeB.left)`.\n" +
     "6. **Repeat** — continue until the stack is empty.\n" +
-    "7. **Return** — return the modified Tree A.",
+    "7. **Return** — return the modified Tree A.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  subgraph Result [Result Tree]\n" +
+    "    R((3)) --> S((5))\n" +
+    "    R --> T((4))\n" +
+    "    S --> U((5))\n" +
+    "    S --> V((4))\n" +
+    "  end\n" +
+    "  subgraph TreeB [Tree B]\n" +
+    "    P((2)) --> Q((3))\n" +
+    "    P --> BB((1))\n" +
+    "    Q --> BL((2))\n" +
+    "  end\n" +
+    "  subgraph TreeA [Tree A]\n" +
+    "    A((1)) --> B((2))\n" +
+    "    A --> C((3))\n" +
+    "    B --> D((3))\n" +
+    "    B --> E((4))\n" +
+    "  end\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style P fill:#06b6d4,stroke:#0891b2\n" +
+    "  style R fill:#14532d,stroke:#22c55e\n" +
+    "  style S fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "Overlapping nodes sum their values (1+2=3, 2+3=5); node C has no match in Tree B so it is kept as-is (3→4 absorbed from A's right, +1 from B).",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(min(n, m))`**\n\n" +

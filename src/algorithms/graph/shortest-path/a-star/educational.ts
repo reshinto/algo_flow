@@ -16,7 +16,23 @@ export const aStarEducational: EducationalContent = {
     "   * If `tentativeG < g(v)`, update `g(v)`, record `u` as `v`'s predecessor, and push `v` with `f = tentativeG + h(v)` onto the queue.\n" +
     "4. If the queue empties without reaching the target, no path exists.\n\n" +
     "### Why the heuristic matters\n\n" +
-    "An **admissible** heuristic (one that never overestimates) guarantees optimality. Euclidean distance is admissible for physical maps. A heuristic of `0` turns A\\* into Dijkstra's algorithm; a heuristic equal to the true remaining cost makes A\\* explore only the optimal path with no wasted work.",
+    "An **admissible** heuristic (one that never overestimates) guarantees optimality. Euclidean distance is admissible for physical maps. A heuristic of `0` turns A\\* into Dijkstra's algorithm; a heuristic equal to the true remaining cost makes A\\* explore only the optimal path with no wasted work.\n\n" +
+    "### A* Guided Search: f = g + h\n\n" +
+    "```mermaid\n" +
+    "graph LR\n" +
+    '  S((S)) -->|"2"| A((A))\n' +
+    '  S((S)) -->|"5"| B((B))\n' +
+    '  A((A)) -->|"3"| C((C))\n' +
+    '  A((A)) -->|"6"| T((T))\n' +
+    '  C((C)) -->|"1"| T((T))\n' +
+    '  B((B)) -->|"4"| T((T))\n' +
+    "  style S fill:#06b6d4,stroke:#0891b2\n" +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style T fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "S (cyan) starts with g=0. A* prioritizes A (amber) because its f = g(2) + h(4) = 6 beats B's f = g(5) + h(3) = 8. From A, path S→A→C→T (total cost 6) is discovered before the suboptimal S→A→T (cost 8).",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O((V + E) log V)`**\n\n" +

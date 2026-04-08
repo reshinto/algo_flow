@@ -6,7 +6,7 @@ def basic_calculator(expression: str) -> int:
     running_total: int = 0  # @step:initialize
     current_sign: int = 1  # @step:initialize
 
-    tokens = re.findall(r'\d+|[+\-()] ', expression) or re.findall(r'\d+|[+\-()]', expression)  # @step:initialize
+    tokens = re.findall(r'\d+|[+\-()]', expression)  # @step:initialize
 
     for current_token in tokens:  # @step:visit
         current_token = current_token.strip()

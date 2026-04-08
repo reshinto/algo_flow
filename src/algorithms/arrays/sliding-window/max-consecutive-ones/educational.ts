@@ -13,7 +13,23 @@ export const maxConsecutiveOnesEducational: EducationalContent = {
     "3. Return `maxLength` and the start index of the best window.\n\n" +
     "### Example with `[1,1,0,0,1,1,1,0,1,1]`, `maxFlips = 2`\n\n" +
     "- The optimal window is `[1,1,0,0,1,1,1]` (indices 0–6), length **7**.\n" +
-    "- It contains exactly 2 zeros — both can be flipped — giving 7 consecutive ones.",
+    "- It contains exactly 2 zeros — both can be flipped — giving 7 consecutive ones.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["1"] --> B["1"] --> C["0"] --> D["0"] --> E["1"] --> F["1"] --> G["1"] --> H["0"] --> I["1"] --> J["1"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "  style H fill:#06b6d4,stroke:#0891b2\n" +
+    "  style I fill:#06b6d4,stroke:#0891b2\n" +
+    "  style J fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Green = ones in the optimal window, amber = the 2 flipped zeros, cyan = elements outside the best window. " +
+    "The window spans indices 0–6 for a length of **7**.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

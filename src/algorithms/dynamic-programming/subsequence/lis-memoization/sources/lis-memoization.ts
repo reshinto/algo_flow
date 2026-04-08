@@ -1,6 +1,6 @@
 // LIS (Longest Increasing Subsequence) memoization — top-down recursion with cached subproblems
 
-export function lisMemoization(sequence: number[]): number {
+function lisMemoization(sequence: number[]): number {
   // @step:initialize
   const sequenceLength = sequence.length; // @step:initialize
   if (sequenceLength === 0) return 0; // @step:initialize

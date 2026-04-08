@@ -9,6 +9,9 @@ import { coinChangeWaysEducational } from "./educational";
 import typescriptSource from "./sources/coin-change-ways.ts?raw";
 import pythonSource from "./sources/coin-change-ways.py?raw";
 import javaSource from "./sources/CoinChangeWays.java?raw";
+import rustSource from "./sources/coin-change-ways.rs?raw";
+import cppSource from "./sources/CoinChangeWays.cpp?raw";
+import goSource from "./sources/coin-change-ways.go?raw";
 
 export interface CoinChangeWaysInput {
   amount: number;
@@ -29,7 +32,7 @@ const coinChangeWaysDefinition: AlgorithmDefinition<CoinChangeWaysInput> = {
       worst: "O(amount × |coins|)",
     },
     spaceComplexity: "O(amount)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { amount: 5, coins: [1, 2, 5] },
   },
   execute: (input: CoinChangeWaysInput) => coinChangeWays(input.amount, input.coins),
@@ -39,6 +42,9 @@ const coinChangeWaysDefinition: AlgorithmDefinition<CoinChangeWaysInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

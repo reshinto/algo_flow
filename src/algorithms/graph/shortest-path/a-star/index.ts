@@ -15,6 +15,9 @@ import { aStarEducational } from "./educational";
 import typescriptSource from "./sources/a-star.ts?raw";
 import pythonSource from "./sources/a-star.py?raw";
 import javaSource from "./sources/AStar.java?raw";
+import rustSource from "./sources/a-star.rs?raw";
+import cppSource from "./sources/AStar.cpp?raw";
+import goSource from "./sources/a-star.go?raw";
 
 /** Pre-computed positions for 6 nodes arranged in a circle layout */
 const CIRCLE_RADIUS = 150;
@@ -101,7 +104,7 @@ const aStarDefinition: AlgorithmDefinition<AStarInput> = {
       worst: "O((V+E)logV)",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: AStarInput) =>
@@ -112,6 +115,9 @@ const aStarDefinition: AlgorithmDefinition<AStarInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

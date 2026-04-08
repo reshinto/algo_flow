@@ -5,7 +5,20 @@ export const bstFloorCeilEducational: EducationalContent = {
     "**BST Floor & Ceil (Recursive)** finds two boundary values simultaneously:\n- **Floor:** the largest value in the BST that is ≤ the target.\n- **Ceil:** the smallest value in the BST that is ≥ the target.\n\nThese are useful for range queries, nearest-neighbor lookups, and scheduling algorithms.",
 
   howItWorks:
-    "**Floor:** At each node, if the target equals the node value, that value is the floor. If the target is smaller, the floor must be in the left subtree. If the target is larger, the current node is a candidate floor — check the right subtree for a better (larger) candidate.\n\n**Ceil:** Mirror logic — if the target is larger, check right; if smaller, the current node is a candidate ceil and a better one may exist in the left subtree.",
+    "**Floor:** At each node, if the target equals the node value, that value is the floor. If the target is smaller, the floor must be in the left subtree. If the target is larger, the current node is a candidate floor — check the right subtree for a better (larger) candidate.\n\n**Ceil:** Mirror logic — if the target is larger, check right; if smaller, the current node is a candidate ceil and a better one may exist in the left subtree.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((20)) --> B((10))\n" +
+    "  A --> C((30))\n" +
+    "  B --> D((5))\n" +
+    "  B --> E((15))\n" +
+    "  C --> F((25))\n" +
+    "  C --> G((40))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "Searching for target 17: floor path visits 20→10→15 (floor=15). Ceil path visits 20→10→15→null, backtracking through 20 (ceil=20). Both traversals share the same O(h) depth.",
 
   timeAndSpaceComplexity:
     "**Time: `O(h)`** — each of floor and ceil makes one root-to-leaf pass.\n\n**Space: `O(h)`** — recursive call stack depth equals tree height.",

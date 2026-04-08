@@ -41,7 +41,20 @@ export const floydCycleDetectionEducational: EducationalContent = {
     "  Actually: reset tortoise=0, hare stays at 2 (meeting point)\n" +
     "  tortoise=0→1→3→2, hare=2→4→2 → meet at 2\n" +
     "  cycleStart = 2 ✓\n" +
-    "```",
+    "```\n\n" +
+    "### Tortoise & Hare Pointer Diagram (`[1, 3, 4, 2, 2]`)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  N0["idx 0\\nval 1"] -->|"points to"| N1["idx 1\\nval 3"]\n' +
+    '  N1 -->|"points to"| N3["idx 3\\nval 2"]\n' +
+    '  N3 -->|"points to"| N2["idx 2\\nval 4"]\n' +
+    '  N2 -->|"points to"| N4["idx 4\\nval 2"]\n' +
+    '  N4 -->|"cycle back"| N2\n' +
+    "  style N0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style N2 fill:#f59e0b,stroke:#d97706\n" +
+    "  style N4 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Index 2 and index 4 both hold value `2`, creating the cycle. Phase 2 resets the tortoise to index 0 and both pointers converge at the cycle entrance (index 2 = duplicate value `2`).",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

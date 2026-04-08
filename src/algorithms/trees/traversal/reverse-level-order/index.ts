@@ -10,6 +10,9 @@ import { reverseLevelOrderEducational } from "./educational";
 import typescriptSource from "./sources/reverse-level-order.ts?raw";
 import pythonSource from "./sources/reverse-level-order.py?raw";
 import javaSource from "./sources/ReverseLevelOrder.java?raw";
+import rustSource from "./sources/reverse-level-order.rs?raw";
+import cppSource from "./sources/ReverseLevelOrder.cpp?raw";
+import goSource from "./sources/reverse-level-order.go?raw";
 
 /** Build a balanced 7-node BST: [4,2,6,1,3,5,7] */
 const defaultNodes: TreeNode[] = [
@@ -114,7 +117,7 @@ const reverseLevelOrderDefinition: AlgorithmDefinition<ReverseLevelOrderInput> =
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: {
       nodes: defaultNodes,
       rootId: "n4",
@@ -127,6 +130,9 @@ const reverseLevelOrderDefinition: AlgorithmDefinition<ReverseLevelOrderInput> =
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

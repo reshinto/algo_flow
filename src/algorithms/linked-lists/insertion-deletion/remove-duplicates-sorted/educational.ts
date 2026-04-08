@@ -13,14 +13,23 @@ export const removeDuplicatesSortedEducational: EducationalContent = {
     "   - If not equal, advance: `current = current.next`.\n" +
     "3. **Return** the head of the deduplicated list.\n\n" +
     "### Example: Deduplicate [1 → 1 → 2 → 3 → 3 → 3 → 4]\n\n" +
-    "```\n" +
-    "Start:        1 → 1 → 2 → 3 → 3 → 3 → 4\n" +
-    "Step 1:       current at first 1, sees duplicate, skip to 2\n" +
-    "Result step:  1 → 2 → 3 → 3 → 3 → 4\n" +
-    "Step 2:       current at 2, no duplicate, advance\n" +
-    "Step 3:       current at 3, sees duplicate, skip\n" +
-    "Result:       1 → 2 → 3 → 4\n" +
-    "```",
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph Before\n" +
+    '    A1["1"] --> A1b["1"] --> A2["2"] --> A3["3"] --> A3b["3"] --> A3c["3"] --> A4["4"]\n' +
+    "    end\n" +
+    "    subgraph After\n" +
+    '    B1["1"] --> B2["2"] --> B3["3"] --> B4["4"]\n' +
+    "    end\n" +
+    "    style A1b fill:#f59e0b,stroke:#d97706\n" +
+    "    style A3b fill:#f59e0b,stroke:#d97706\n" +
+    "    style A3c fill:#f59e0b,stroke:#d97706\n" +
+    "    style B1 fill:#14532d,stroke:#22c55e\n" +
+    "    style B2 fill:#14532d,stroke:#22c55e\n" +
+    "    style B3 fill:#14532d,stroke:#22c55e\n" +
+    "    style B4 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Duplicate nodes (amber) are skipped by rewiring `current.next` to the next distinct value. The result (green) contains only unique values.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** where n is the number of nodes\n\n" +

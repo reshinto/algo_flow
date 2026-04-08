@@ -13,6 +13,9 @@ import { unionFindCycleEducational } from "./educational";
 import typescriptSource from "./sources/union-find-cycle.ts?raw";
 import pythonSource from "./sources/union-find-cycle.py?raw";
 import javaSource from "./sources/UnionFindCycle.java?raw";
+import rustSource from "./sources/union-find-cycle.rs?raw";
+import cppSource from "./sources/UnionFindCycle.cpp?raw";
+import goSource from "./sources/union-find-cycle.go?raw";
 
 const CIRCLE_RADIUS = 150;
 const CENTER_X = 200;
@@ -81,7 +84,7 @@ const unionFindCycleDefinition: AlgorithmDefinition<UnionFindCycleInput> = {
       worst: "O(E·α(V))",
     },
     spaceComplexity: "O(V)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput,
   },
   execute: (input: UnionFindCycleInput) => unionFindCycle(input.edges, input.nodeIds) as boolean,
@@ -91,6 +94,9 @@ const unionFindCycleDefinition: AlgorithmDefinition<UnionFindCycleInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

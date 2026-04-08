@@ -1,5 +1,5 @@
 // Contains Duplicate — determine if any value appears at least twice using a hash set
-export function containsDuplicate(numbers: number[]): boolean {
+function containsDuplicate(numbers: number[]): boolean {
   const seen = new Set<number>(); // @step:initialize
   for (let elementIndex = 0; elementIndex < numbers.length; elementIndex++) {
     const current = numbers[elementIndex]!;

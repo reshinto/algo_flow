@@ -10,6 +10,9 @@ import { sumOfSubarrayMinimumsEducational } from "./educational";
 import typescriptSource from "./sources/sum-of-subarray-minimums.ts?raw";
 import pythonSource from "./sources/sum-of-subarray-minimums.py?raw";
 import javaSource from "./sources/SumOfSubarrayMinimums.java?raw";
+import rustSource from "./sources/sum-of-subarray-minimums.rs?raw";
+import cppSource from "./sources/SumOfSubarrayMinimums.cpp?raw";
+import goSource from "./sources/sum-of-subarray-minimums.go?raw";
 
 function executeSumOfSubarrayMinimums(input: SumOfSubarrayMinimumsInput): number {
   return sumOfSubarrayMinimums(input.arr) as number;
@@ -29,7 +32,7 @@ const sumOfSubarrayMinimumsDefinition: AlgorithmDefinition<SumOfSubarrayMinimums
       worst: "O(n)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { arr: [3, 1, 2, 4] },
   },
   execute: executeSumOfSubarrayMinimums,
@@ -39,6 +42,9 @@ const sumOfSubarrayMinimumsDefinition: AlgorithmDefinition<SumOfSubarrayMinimums
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

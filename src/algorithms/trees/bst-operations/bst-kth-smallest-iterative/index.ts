@@ -10,6 +10,9 @@ import { bstKthSmallestIterativeEducational } from "./educational";
 import typescriptSource from "./sources/bst-kth-smallest-iterative.ts?raw";
 import pythonSource from "./sources/bst-kth-smallest-iterative.py?raw";
 import javaSource from "./sources/BSTKthSmallestIterative.java?raw";
+import rustSource from "./sources/bst-kth-smallest-iterative.rs?raw";
+import cppSource from "./sources/BSTKthSmallestIterative.cpp?raw";
+import goSource from "./sources/bst-kth-smallest-iterative.go?raw";
 
 const defaultNodes: TreeNode[] = [
   {
@@ -104,13 +107,20 @@ const bstKthSmallestIterativeDefinition: AlgorithmDefinition<BstKthSmallestItera
     description: "Stack-based in-order traversal counting nodes to find the kth smallest value",
     timeComplexity: { best: "O(k)", average: "O(k)", worst: "O(n)" },
     spaceComplexity: "O(h)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { nodes: defaultNodes, rootId: "n4", kthPosition: 3 },
   },
   execute: executeBstKthSmallestIterative,
   generateSteps: generateBstKthSmallestIterativeSteps,
   educational: bstKthSmallestIterativeEducational,
-  sources: { typescript: typescriptSource, python: pythonSource, java: javaSource },
+  sources: {
+    typescript: typescriptSource,
+    python: pythonSource,
+    java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
+  },
 };
 
 registry.register(bstKthSmallestIterativeDefinition);

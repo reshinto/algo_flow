@@ -10,6 +10,9 @@ import { setIntersectionEducational } from "./educational";
 import typescriptSource from "./sources/set-intersection.ts?raw";
 import pythonSource from "./sources/set-intersection.py?raw";
 import javaSource from "./sources/SetIntersection.java?raw";
+import rustSource from "./sources/set-intersection.rs?raw";
+import cppSource from "./sources/SetIntersection.cpp?raw";
+import goSource from "./sources/set-intersection.go?raw";
 
 function executeSetIntersection(input: SetIntersectionInput): number[] {
   return setIntersection(input.arrayA, input.arrayB) as number[];
@@ -29,7 +32,7 @@ const setIntersectionDefinition: AlgorithmDefinition<SetIntersectionInput> = {
       worst: "O(n + m)",
     },
     spaceComplexity: "O(n)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { arrayA: [1, 2, 3, 4, 5, 8], arrayB: [2, 4, 6, 8, 10] },
   },
   execute: executeSetIntersection,
@@ -39,6 +42,9 @@ const setIntersectionDefinition: AlgorithmDefinition<SetIntersectionInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

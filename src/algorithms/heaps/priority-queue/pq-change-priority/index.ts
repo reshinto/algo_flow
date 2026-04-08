@@ -10,6 +10,9 @@ import { pqChangePriorityEducational } from "./educational";
 import typescriptSource from "./sources/pq-change-priority.ts?raw";
 import pythonSource from "./sources/pq-change-priority.py?raw";
 import javaSource from "./sources/PqChangePriority.java?raw";
+import rustSource from "./sources/pq-change-priority.rs?raw";
+import cppSource from "./sources/PqChangePriority.cpp?raw";
+import goSource from "./sources/pq-change-priority.go?raw";
 
 function executePqChangePriority(input: PqChangePriorityInput): number[] {
   return pqChangePriority(input.array, input.targetIndex, input.newValue) as number[];
@@ -29,7 +32,7 @@ const pqChangePriorityDefinition: AlgorithmDefinition<PqChangePriorityInput> = {
       worst: "O(log n)",
     },
     spaceComplexity: "O(1)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { array: [2, 5, 3, 10, 15, 8, 7], targetIndex: 4, newValue: 1 },
   },
   execute: executePqChangePriority,
@@ -39,6 +42,9 @@ const pqChangePriorityDefinition: AlgorithmDefinition<PqChangePriorityInput> = {
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 

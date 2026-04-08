@@ -19,7 +19,21 @@ export const primsEducational: EducationalContent = {
     "MST = {A, C}      → cheapest: (A-C,2) → add C\n" +
     "MST = {A, C, B}   → cheapest: (B-C,1)? already done; next: ...\n" +
     "```\n\n" +
-    "At every step the algorithm is locally optimal — it picks the smallest available bridge into unexplored territory.",
+    "At every step the algorithm is locally optimal — it picks the smallest available bridge into unexplored territory.\n\n" +
+    "### Prim's Growing MST from Node A\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '  A((A)) -->|"2"| C((C))\n' +
+    '  A((A)) -->|"4"| B((B))\n' +
+    '  C((C)) -->|"1"| B((B))\n' +
+    '  C((C)) -->|"3"| D((D))\n' +
+    '  B((B)) -->|"5"| D((D))\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Starting at A (cyan): cheapest edge is A–C(2), add C (green). Then cheapest from {A,C} is C–B(1), add B (green). Then cheapest from {A,B,C} to remaining is C–D(3), add D (amber). MST weight = 6.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O((V + E) log V)`**\n\n" +

@@ -12,6 +12,9 @@ import { longestCommonSubsequenceEducational } from "./educational";
 import typescriptSource from "./sources/longest-common-subsequence.ts?raw";
 import pythonSource from "./sources/longest-common-subsequence.py?raw";
 import javaSource from "./sources/LongestCommonSubsequence.java?raw";
+import rustSource from "./sources/longest-common-subsequence.rs?raw";
+import cppSource from "./sources/LongestCommonSubsequence.cpp?raw";
+import goSource from "./sources/longest-common-subsequence.go?raw";
 
 function executeLongestCommonSubsequence(input: LongestCommonSubsequenceInput): number {
   return longestCommonSubsequence(input.source, input.target) as number;
@@ -31,7 +34,7 @@ const longestCommonSubsequenceDefinition: AlgorithmDefinition<LongestCommonSubse
       worst: "O(nm)",
     },
     spaceComplexity: "O(nm)",
-    supportedLanguages: ["typescript", "python", "java"],
+    supportedLanguages: ["typescript", "python", "java", "rust", "cpp", "go"],
     defaultInput: { source: "ABCBDAB", target: "BDCAB" },
   },
   execute: executeLongestCommonSubsequence,
@@ -41,6 +44,9 @@ const longestCommonSubsequenceDefinition: AlgorithmDefinition<LongestCommonSubse
     typescript: typescriptSource,
     python: pythonSource,
     java: javaSource,
+    rust: rustSource,
+    cpp: cppSource,
+    go: goSource,
   },
 };
 
