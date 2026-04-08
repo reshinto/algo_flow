@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateOnlineStockSpanSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateOnlineStockSpanSteps({ prices: [100, 80, 60, 70, 60, 75, 85] });
 const increasingSteps = generateOnlineStockSpanSteps({ prices: [10, 20, 30, 40, 50] });

@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { SetVisualState } from "@/types";
 import { generateMultisetUnionSteps } from "./step-generator";
-import SetVisualizer from "@/components/visualization/SetVisualizer";
+import SetVisualizer from "@/components/visualization/sets/SetVisualizer";
 
 const steps = generateMultisetUnionSteps({
   arrayA: [1, 1, 2, 3, 3, 3],

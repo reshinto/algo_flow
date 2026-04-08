@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { TransformVisualState } from "@/types";
 import { generateStringRotationCheckSteps } from "./step-generator";
-import TransformVisualizer from "@/components/visualization/TransformVisualizer";
+import TransformVisualizer from "@/components/visualization/strings/TransformVisualizer";
 
 const steps = generateStringRotationCheckSteps({ text: "waterbottle", pattern: "erbottlewat" });
 

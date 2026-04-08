@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { HashMapVisualState } from "@/types";
 import { generateContainsDuplicateIISteps } from "./step-generator";
-import HashMapVisualizer from "@/components/visualization/HashMapVisualizer";
+import HashMapVisualizer from "@/components/visualization/hash-maps/HashMapVisualizer";
 
 const steps = generateContainsDuplicateIISteps({ numbers: [1, 2, 3, 1], maxDistance: 3 });
 

@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ArrayVisualState } from "@/types";
 import { generateFirstNegativeInWindowSteps } from "./step-generator";
-import ArrayVisualizer from "@/components/visualization/ArrayVisualizer";
+import ArrayVisualizer from "@/components/visualization/arrays/ArrayVisualizer";
 
 const steps = generateFirstNegativeInWindowSteps({
   inputArray: [12, -1, -7, 8, -15, 30, 16, 28],

@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { DPTableVisualState } from "@/types";
 import { generateMinCostClimbingStairsMemoizationSteps } from "./step-generator";
-import DPTableVisualizer from "@/components/visualization/DPTableVisualizer";
+import DPTableVisualizer from "@/components/visualization/dynamic-programming/DPTableVisualizer";
 
 const steps = generateMinCostClimbingStairsMemoizationSteps({
   costs: [10, 15, 20, 5, 25, 10],

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { HashMapVisualState } from "@/types";
 import { generateFindAllDuplicatesSteps } from "./step-generator";
-import HashMapVisualizer from "@/components/visualization/HashMapVisualizer";
+import HashMapVisualizer from "@/components/visualization/hash-maps/HashMapVisualizer";
 
 const steps = generateFindAllDuplicatesSteps({ numbers: [4, 3, 2, 7, 8, 2, 3, 1] });
 const meta: Meta<typeof HashMapVisualizer> = {

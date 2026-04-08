@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ArrayVisualState } from "@/types";
 import { generateRotateArrayCyclicSteps } from "./step-generator";
-import ArrayVisualizer from "@/components/visualization/ArrayVisualizer";
+import ArrayVisualizer from "@/components/visualization/arrays/ArrayVisualizer";
 
 const steps = generateRotateArrayCyclicSteps({
   inputArray: [1, 2, 3, 4, 5, 6],

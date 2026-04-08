@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateImplementStackUsingQueuesSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateImplementStackUsingQueuesSteps({ values: [1, 2, 3, 4, 5] });
 const smallSteps = generateImplementStackUsingQueuesSteps({ values: [10, 20, 30] });

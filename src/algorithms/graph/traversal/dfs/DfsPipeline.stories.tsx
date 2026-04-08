@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import type { GraphVisualState, GraphNode, GraphEdge } from "@/types";
 import { generateDfsSteps } from "./step-generator";
 type AdjacencyList = Record<string, string[]>;
-import GraphVisualizer from "@/components/visualization/GraphVisualizer";
+import GraphVisualizer from "@/components/visualization/graph/GraphVisualizer";
 
 /** Compute circular layout positions for graph nodes */
 function circlePosition(index: number, totalNodes: number): { x: number; y: number } {

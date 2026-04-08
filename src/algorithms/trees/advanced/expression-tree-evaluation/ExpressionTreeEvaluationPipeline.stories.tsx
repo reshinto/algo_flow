@@ -4,7 +4,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { TreeVisualState } from "@/types";
 import { generateExpressionTreeEvaluationSteps } from "./step-generator";
-import TreeVisualizer from "@/components/visualization/TreeVisualizer";
+import TreeVisualizer from "@/components/visualization/trees/TreeVisualizer";
 
 const steps = generateExpressionTreeEvaluationSteps({ expression: "3 4 + 2 * 7 /" });
 

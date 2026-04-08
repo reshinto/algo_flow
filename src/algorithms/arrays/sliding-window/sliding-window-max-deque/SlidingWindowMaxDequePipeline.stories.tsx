@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ArrayVisualState } from "@/types";
 import { generateSlidingWindowMaxDequeSteps } from "./step-generator";
-import ArrayVisualizer from "@/components/visualization/ArrayVisualizer";
+import ArrayVisualizer from "@/components/visualization/arrays/ArrayVisualizer";
 
 const steps = generateSlidingWindowMaxDequeSteps({
   inputArray: [1, 3, -1, -3, 5, 3, 6, 7],

@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { DPTableVisualState } from "@/types";
 import { generateRodCuttingSteps } from "./step-generator";
-import DPTableVisualizer from "@/components/visualization/DPTableVisualizer";
+import DPTableVisualizer from "@/components/visualization/dynamic-programming/DPTableVisualizer";
 
 const steps = generateRodCuttingSteps({ prices: [1, 5, 8, 9, 10, 17, 17, 20] });
 

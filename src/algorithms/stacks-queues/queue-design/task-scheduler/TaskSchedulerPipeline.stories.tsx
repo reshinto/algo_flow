@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateTaskSchedulerSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateTaskSchedulerSteps({
   tasks: ["A", "A", "A", "B", "B", "B"],

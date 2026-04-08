@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateEvaluateReversePolishSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateEvaluateReversePolishSteps({ tokens: ["2", "1", "+", "3", "*"] });
 const complexSteps = generateEvaluateReversePolishSteps({

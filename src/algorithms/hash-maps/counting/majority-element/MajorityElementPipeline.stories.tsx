@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { HashMapVisualState } from "@/types";
 import { generateMajorityElementSteps } from "./step-generator";
-import HashMapVisualizer from "@/components/visualization/HashMapVisualizer";
+import HashMapVisualizer from "@/components/visualization/hash-maps/HashMapVisualizer";
 
 const steps = generateMajorityElementSteps({ numbers: [2, 2, 1, 1, 1, 2, 2] });
 

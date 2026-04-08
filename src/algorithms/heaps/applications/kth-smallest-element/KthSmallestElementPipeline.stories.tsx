@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { HeapVisualState } from "@/types";
 import { generateKthSmallestElementSteps } from "./step-generator";
-import HeapVisualizer from "@/components/visualization/HeapVisualizer";
+import HeapVisualizer from "@/components/visualization/heaps/HeapVisualizer";
 
 const steps = generateKthSmallestElementSteps({ array: [7, 10, 4, 3, 20, 15, 8], kValue: 3 });
 

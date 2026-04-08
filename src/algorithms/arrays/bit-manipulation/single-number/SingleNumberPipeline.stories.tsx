@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ArrayVisualState } from "@/types";
 import { generateSingleNumberSteps } from "./step-generator";
-import ArrayVisualizer from "@/components/visualization/ArrayVisualizer";
+import ArrayVisualizer from "@/components/visualization/arrays/ArrayVisualizer";
 
 const steps = generateSingleNumberSteps({
   inputArray: [4, 1, 2, 1, 2],

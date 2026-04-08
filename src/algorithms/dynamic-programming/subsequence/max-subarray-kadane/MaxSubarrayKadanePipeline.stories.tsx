@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { DPTableVisualState } from "@/types";
 import { generateMaxSubarrayKadaneSteps } from "./step-generator";
-import DPTableVisualizer from "@/components/visualization/DPTableVisualizer";
+import DPTableVisualizer from "@/components/visualization/dynamic-programming/DPTableVisualizer";
 
 const steps = generateMaxSubarrayKadaneSteps({ array: [-2, 1, -3, 4, -1, 2, 1, -5, 4] });
 

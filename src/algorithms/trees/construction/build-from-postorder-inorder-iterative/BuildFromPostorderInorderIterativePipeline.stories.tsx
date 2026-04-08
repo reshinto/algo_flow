@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { TreeVisualState } from "@/types";
 import { generateBuildFromPostorderInorderIterativeSteps } from "./step-generator";
-import TreeVisualizer from "@/components/visualization/TreeVisualizer";
+import TreeVisualizer from "@/components/visualization/trees/TreeVisualizer";
 
 const steps = generateBuildFromPostorderInorderIterativeSteps({
   postorder: [1, 3, 2, 5, 7, 6, 4],

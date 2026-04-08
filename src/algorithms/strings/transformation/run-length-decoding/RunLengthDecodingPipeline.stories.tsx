@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { TransformVisualState } from "@/types";
 import { generateRunLengthDecodingSteps } from "./step-generator";
-import TransformVisualizer from "@/components/visualization/TransformVisualizer";
+import TransformVisualizer from "@/components/visualization/strings/TransformVisualizer";
 
 const steps = generateRunLengthDecodingSteps({ text: "3a2b4c" });
 

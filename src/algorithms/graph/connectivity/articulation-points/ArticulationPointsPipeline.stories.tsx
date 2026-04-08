@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { GraphVisualState, GraphNode, GraphEdge } from "@/types";
 import { generateArticulationPointsSteps } from "./step-generator";
-import GraphVisualizer from "@/components/visualization/GraphVisualizer";
+import GraphVisualizer from "@/components/visualization/graph/GraphVisualizer";
 
 function apPosition(index: number): { x: number; y: number } {
   const positions = [

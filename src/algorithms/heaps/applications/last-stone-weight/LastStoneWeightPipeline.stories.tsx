@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { HeapVisualState } from "@/types";
 import { generateLastStoneWeightSteps } from "./step-generator";
-import HeapVisualizer from "@/components/visualization/HeapVisualizer";
+import HeapVisualizer from "@/components/visualization/heaps/HeapVisualizer";
 
 const steps = generateLastStoneWeightSteps({ array: [2, 7, 4, 1, 8, 1] });
 

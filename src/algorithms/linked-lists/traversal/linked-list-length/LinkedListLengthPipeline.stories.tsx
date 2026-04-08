@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { LinkedListVisualState } from "@/types";
 import { generateLinkedListLengthSteps } from "./step-generator";
-import LinkedListVisualizer from "@/components/visualization/LinkedListVisualizer";
+import LinkedListVisualizer from "@/components/visualization/linked-lists/LinkedListVisualizer";
 
 const steps = generateLinkedListLengthSteps({ values: [1, 2, 3, 4, 5] });
 

@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateMaxFrequencyStackSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateMaxFrequencyStackSteps({ values: [5, 7, 5, 7, 4, 5] });
 const uniformSteps = generateMaxFrequencyStackSteps({ values: [3, 3, 3] });

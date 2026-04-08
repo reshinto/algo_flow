@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateDecodeStringSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateDecodeStringSteps({ inputString: "3[a2[c]]" });
 const multiGroupSteps = generateDecodeStringSteps({ inputString: "2[abc]3[cd]ef" });

@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateSumOfSubarrayMinimumsSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateSumOfSubarrayMinimumsSteps({ arr: [3, 1, 2, 4] });
 const duplicateSteps = generateSumOfSubarrayMinimumsSteps({ arr: [2, 2, 2] });

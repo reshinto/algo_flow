@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { TreeVisualState } from "@/types";
 import { generateBstFromSortedArraySteps } from "./step-generator";
-import TreeVisualizer from "@/components/visualization/TreeVisualizer";
+import TreeVisualizer from "@/components/visualization/trees/TreeVisualizer";
 
 const steps = generateBstFromSortedArraySteps({ sortedArray: [1, 2, 3, 4, 5, 6, 7] });
 

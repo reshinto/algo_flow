@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { GridVisualState, GridCell } from "@/types";
 import { generateWallFollowerSteps } from "./step-generator";
-import GridVisualizer from "@/components/visualization/GridVisualizer";
+import GridVisualizer from "@/components/visualization/graph/GridVisualizer";
 
 /** Build a small simply-connected maze for the story demonstration */
 function buildStoryGrid(): GridCell[][] {

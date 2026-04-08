@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { SetVisualState } from "@/types";
 import { generateSetEqualitySteps } from "./step-generator";
-import SetVisualizer from "@/components/visualization/SetVisualizer";
+import SetVisualizer from "@/components/visualization/sets/SetVisualizer";
 
 const steps = generateSetEqualitySteps({
   arrayA: [3, 1, 2],

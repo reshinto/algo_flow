@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { LinkedListVisualState } from "@/types";
 import { generateFindNodeByValueSteps } from "./step-generator";
-import LinkedListVisualizer from "@/components/visualization/LinkedListVisualizer";
+import LinkedListVisualizer from "@/components/visualization/linked-lists/LinkedListVisualizer";
 
 const steps = generateFindNodeByValueSteps({
   values: [4, 2, 7, 1, 9],

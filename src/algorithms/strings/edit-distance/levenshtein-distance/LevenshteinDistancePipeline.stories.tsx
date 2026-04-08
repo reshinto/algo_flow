@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { DistanceVisualState } from "@/types";
 import { generateLevenshteinDistanceSteps } from "./step-generator";
-import DistanceVisualizer from "@/components/visualization/DistanceVisualizer";
+import DistanceVisualizer from "@/components/visualization/strings/DistanceVisualizer";
 
 const steps = generateLevenshteinDistanceSteps({
   source: "kitten",

@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { GraphVisualState, GraphNode, GraphEdge } from "@/types";
 import { generateUnionFindCycleSteps } from "./step-generator";
-import GraphVisualizer from "@/components/visualization/GraphVisualizer";
+import GraphVisualizer from "@/components/visualization/graph/GraphVisualizer";
 
 function circlePosition(index: number, totalNodes: number): { x: number; y: number } {
   const angle = (2 * Math.PI * index) / totalNodes - Math.PI / 2;

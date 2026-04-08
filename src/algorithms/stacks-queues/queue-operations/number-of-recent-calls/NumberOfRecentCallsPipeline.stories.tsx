@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateNumberOfRecentCallsSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateNumberOfRecentCallsSteps({ timestamps: [1, 100, 3001, 3002] });
 const burstSteps = generateNumberOfRecentCallsSteps({ timestamps: [100, 200, 300, 400, 500] });

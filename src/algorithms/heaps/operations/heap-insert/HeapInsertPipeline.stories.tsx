@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { HeapVisualState } from "@/types";
 import { generateHeapInsertSteps } from "./step-generator";
-import HeapVisualizer from "@/components/visualization/HeapVisualizer";
+import HeapVisualizer from "@/components/visualization/heaps/HeapVisualizer";
 
 const steps = generateHeapInsertSteps({ array: [1, 3, 5, 7, 9, 8, 6], value: 2 });
 

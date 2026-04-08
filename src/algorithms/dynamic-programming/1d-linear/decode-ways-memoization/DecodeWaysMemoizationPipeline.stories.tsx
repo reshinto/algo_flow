@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { DPTableVisualState } from "@/types";
 import { generateDecodeWaysMemoizationSteps } from "./step-generator";
-import DPTableVisualizer from "@/components/visualization/DPTableVisualizer";
+import DPTableVisualizer from "@/components/visualization/dynamic-programming/DPTableVisualizer";
 
 const steps = generateDecodeWaysMemoizationSteps({ digits: "12321" });
 

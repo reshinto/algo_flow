@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { MatrixVisualState } from "@/types";
 import { generateAntiDiagonalTraversalSteps } from "./step-generator";
-import MatrixVisualizer from "@/components/visualization/MatrixVisualizer";
+import MatrixVisualizer from "@/components/visualization/matrices/MatrixVisualizer";
 
 const steps = generateAntiDiagonalTraversalSteps({
   matrix: [

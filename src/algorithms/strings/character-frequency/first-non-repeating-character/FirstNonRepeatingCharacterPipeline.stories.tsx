@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { FrequencyVisualState } from "@/types";
 import { generateFirstNonRepeatingCharacterSteps } from "./step-generator";
-import FrequencyVisualizer from "@/components/visualization/FrequencyVisualizer";
+import FrequencyVisualizer from "@/components/visualization/strings/FrequencyVisualizer";
 
 const defaultSteps = generateFirstNonRepeatingCharacterSteps({
   text: "leetcode",

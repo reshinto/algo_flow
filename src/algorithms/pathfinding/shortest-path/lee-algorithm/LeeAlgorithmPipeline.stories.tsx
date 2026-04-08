@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { GridVisualState, GridCell } from "@/types";
 import { generateLeeAlgorithmSteps } from "./step-generator";
-import GridVisualizer from "@/components/visualization/GridVisualizer";
+import GridVisualizer from "@/components/visualization/graph/GridVisualizer";
 
 /** Build a small grid with walls for the story demonstration */
 function buildStoryGrid(): GridCell[][] {

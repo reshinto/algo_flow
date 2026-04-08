@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { TreeVisualState, TreeNode } from "@/types";
 import { generateSubtreeOfAnotherTreeSteps } from "./step-generator";
-import TreeVisualizer from "@/components/visualization/TreeVisualizer";
+import TreeVisualizer from "@/components/visualization/trees/TreeVisualizer";
 
 const mainTreeNodes: TreeNode[] = [
   {

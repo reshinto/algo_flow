@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateAsteroidCollisionSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateAsteroidCollisionSteps({ asteroids: [5, 10, -5] });
 const annihilationSteps = generateAsteroidCollisionSteps({ asteroids: [8, -8] });

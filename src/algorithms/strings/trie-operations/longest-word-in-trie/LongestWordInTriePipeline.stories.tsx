@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { TrieVisualState } from "@/types";
 import { generateLongestWordInTrieSteps } from "./step-generator";
-import TrieVisualizer from "@/components/visualization/TrieVisualizer";
+import TrieVisualizer from "@/components/visualization/strings/TrieVisualizer";
 
 const steps = generateLongestWordInTrieSteps({
   words: ["w", "wo", "wor", "worl", "world"],

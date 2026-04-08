@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { PalindromeVisualState } from "@/types";
 import { generateValidPalindromeSteps } from "./step-generator";
-import PalindromeVisualizer from "@/components/visualization/PalindromeVisualizer";
+import PalindromeVisualizer from "@/components/visualization/strings/PalindromeVisualizer";
 
 const steps = generateValidPalindromeSteps({ text: "A man, a plan, a canal: Panama" });
 

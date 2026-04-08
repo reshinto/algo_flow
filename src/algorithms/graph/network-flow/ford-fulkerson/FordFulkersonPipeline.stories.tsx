@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import type { GraphVisualState, GraphNode, GraphEdge } from "@/types";
 import { generateFordFulkersonSteps } from "./step-generator";
 import type { FordFulkersonInput } from "./step-generator";
-import GraphVisualizer from "@/components/visualization/GraphVisualizer";
+import GraphVisualizer from "@/components/visualization/graph/GraphVisualizer";
 
 const CIRCLE_RADIUS = 150;
 const CENTER_X = 220;

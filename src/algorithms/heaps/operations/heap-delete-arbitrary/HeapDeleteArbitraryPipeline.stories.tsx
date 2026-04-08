@@ -5,7 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { HeapVisualState } from "@/types";
 import { generateHeapDeleteArbitrarySteps } from "./step-generator";
-import HeapVisualizer from "@/components/visualization/HeapVisualizer";
+import HeapVisualizer from "@/components/visualization/heaps/HeapVisualizer";
 
 const steps = generateHeapDeleteArbitrarySteps({ array: [1, 3, 5, 7, 9, 8, 6], targetIndex: 2 });
 

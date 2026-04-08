@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { LinkedListVisualState } from "@/types";
 import { generateReverseLinkedListSteps } from "./step-generator";
-import LinkedListVisualizer from "@/components/visualization/LinkedListVisualizer";
+import LinkedListVisualizer from "@/components/visualization/linked-lists/LinkedListVisualizer";
 
 const steps = generateReverseLinkedListSteps({ values: [1, 2, 3, 4, 5] });
 

@@ -7,7 +7,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import type { GraphVisualState, GraphNode, GraphEdge } from "@/types";
 import { generateDfsTopologicalSteps } from "./step-generator";
 import type { DfsTopologicalInput } from "./step-generator";
-import GraphVisualizer from "@/components/visualization/GraphVisualizer";
+import GraphVisualizer from "@/components/visualization/graph/GraphVisualizer";
 
 type AdjacencyList = Record<string, string[]>;
 

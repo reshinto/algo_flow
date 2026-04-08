@@ -7,7 +7,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { ArrayVisualState } from "@/types";
 import { generateDailyTemperaturesSteps } from "./step-generator";
-import ArrayVisualizer from "@/components/visualization/ArrayVisualizer";
+import ArrayVisualizer from "@/components/visualization/arrays/ArrayVisualizer";
 
 const steps = generateDailyTemperaturesSteps({
   temperatures: [73, 74, 75, 71, 69, 72, 76, 73],

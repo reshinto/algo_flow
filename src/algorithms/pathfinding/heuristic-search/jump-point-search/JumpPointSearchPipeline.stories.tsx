@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { GridVisualState, GridCell } from "@/types";
 import { generateJumpPointSearchSteps } from "./step-generator";
-import GridVisualizer from "@/components/visualization/GridVisualizer";
+import GridVisualizer from "@/components/visualization/graph/GridVisualizer";
 
 /** Build a small grid with a wall to trigger forced-neighbor jump points */
 function buildStoryGrid(): GridCell[][] {

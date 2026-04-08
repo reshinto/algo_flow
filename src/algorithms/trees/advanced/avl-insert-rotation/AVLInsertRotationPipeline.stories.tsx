@@ -5,7 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { TreeVisualState } from "@/types";
 import { generateAvlInsertRotationSteps } from "./step-generator";
-import TreeVisualizer from "@/components/visualization/TreeVisualizer";
+import TreeVisualizer from "@/components/visualization/trees/TreeVisualizer";
 
 const steps = generateAvlInsertRotationSteps({ values: [10, 20, 30, 25, 28, 27] });
 

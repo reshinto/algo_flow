@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { HeapVisualState } from "@/types";
 import { generateTaskSchedulerHeapSteps } from "./step-generator";
-import HeapVisualizer from "@/components/visualization/HeapVisualizer";
+import HeapVisualizer from "@/components/visualization/heaps/HeapVisualizer";
 
 const steps = generateTaskSchedulerHeapSteps({
   tasks: ["A", "A", "A", "B", "B", "B"],

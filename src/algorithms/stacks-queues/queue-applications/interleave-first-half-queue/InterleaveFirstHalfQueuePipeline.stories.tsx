@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateInterleaveFirstHalfQueueSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateInterleaveFirstHalfQueueSteps({ values: [1, 2, 3, 4, 5, 6] });
 const smallSteps = generateInterleaveFirstHalfQueueSteps({ values: [1, 2, 3, 4] });

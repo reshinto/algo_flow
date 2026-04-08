@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StringVisualState } from "@/types";
 import { generateKmpSearchSteps } from "./step-generator";
-import StringVisualizer from "@/components/visualization/StringVisualizer";
+import StringVisualizer from "@/components/visualization/strings/StringVisualizer";
 
 const steps = generateKmpSearchSteps({
   text: "ABABDABACDABABCABAB",

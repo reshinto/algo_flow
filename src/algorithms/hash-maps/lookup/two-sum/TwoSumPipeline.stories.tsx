@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { HashMapVisualState } from "@/types";
 import { generateTwoSumSteps } from "./step-generator";
-import HashMapVisualizer from "@/components/visualization/HashMapVisualizer";
+import HashMapVisualizer from "@/components/visualization/hash-maps/HashMapVisualizer";
 
 const steps = generateTwoSumSteps({ numbers: [2, 7, 11, 15], target: 9 });
 

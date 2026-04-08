@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { GridVisualState, GridCell } from "@/types";
 import { generateKruskalsMazeSteps } from "./step-generator";
-import GridVisualizer from "@/components/visualization/GridVisualizer";
+import GridVisualizer from "@/components/visualization/graph/GridVisualizer";
 
 /** Build a small all-walls grid for the Kruskal's maze story */
 function buildStoryGrid(): GridCell[][] {

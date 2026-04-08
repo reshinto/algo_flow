@@ -4,7 +4,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { TreeVisualState } from "@/types";
 import { generateBinaryIndexedTreeSteps } from "./step-generator";
-import TreeVisualizer from "@/components/visualization/TreeVisualizer";
+import TreeVisualizer from "@/components/visualization/trees/TreeVisualizer";
 
 const steps = generateBinaryIndexedTreeSteps({
   array: [3, 2, 4, 5, 1, 1, 5, 3],

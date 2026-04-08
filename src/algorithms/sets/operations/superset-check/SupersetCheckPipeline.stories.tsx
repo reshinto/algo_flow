@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { SetVisualState } from "@/types";
 import { generateSupersetCheckSteps } from "./step-generator";
-import SetVisualizer from "@/components/visualization/SetVisualizer";
+import SetVisualizer from "@/components/visualization/sets/SetVisualizer";
 
 const steps = generateSupersetCheckSteps({
   arrayA: [1, 2, 3, 4, 5],

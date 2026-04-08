@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { LinkedListVisualState } from "@/types";
 import { generateIsSortedSteps } from "./step-generator";
-import LinkedListVisualizer from "@/components/visualization/LinkedListVisualizer";
+import LinkedListVisualizer from "@/components/visualization/linked-lists/LinkedListVisualizer";
 
 const stepsForSortedList = generateIsSortedSteps({ values: [1, 3, 5, 7, 9] });
 const stepsForUnsortedList = generateIsSortedSteps({ values: [1, 5, 3, 7, 9] });

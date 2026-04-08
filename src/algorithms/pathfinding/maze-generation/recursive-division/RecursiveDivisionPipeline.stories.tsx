@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { GridVisualState, GridCell } from "@/types";
 import { generateRecursiveDivisionSteps } from "./step-generator";
-import GridVisualizer from "@/components/visualization/GridVisualizer";
+import GridVisualizer from "@/components/visualization/graph/GridVisualizer";
 
 /** Build a small open grid for Recursive Division (starts with empty cells) */
 function buildStoryGrid(): GridCell[][] {

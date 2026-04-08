@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateFirstNonRepeatingCharStreamSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateFirstNonRepeatingCharStreamSteps({ inputString: "aabcbcd" });
 const allUniqueSteps = generateFirstNonRepeatingCharStreamSteps({ inputString: "abcd" });

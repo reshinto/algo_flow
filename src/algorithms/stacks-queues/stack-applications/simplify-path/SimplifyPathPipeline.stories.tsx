@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateSimplifyPathSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateSimplifyPathSteps({ inputString: "/a/./b/../../c/" });
 const deepSteps = generateSimplifyPathSteps({ inputString: "/home/user/docs/../downloads" });

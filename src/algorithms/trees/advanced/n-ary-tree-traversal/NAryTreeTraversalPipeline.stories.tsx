@@ -4,7 +4,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { TreeNode, TreeVisualState } from "@/types";
 import { generateNAryTreeTraversalSteps } from "./step-generator";
-import TreeVisualizer from "@/components/visualization/TreeVisualizer";
+import TreeVisualizer from "@/components/visualization/trees/TreeVisualizer";
 
 const defaultNodes: TreeNode[] = [
   {

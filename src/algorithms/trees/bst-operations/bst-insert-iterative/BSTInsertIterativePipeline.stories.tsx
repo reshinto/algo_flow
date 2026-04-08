@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { TreeVisualState, TreeNode } from "@/types";
 import { generateBstInsertIterativeSteps } from "./step-generator";
-import TreeVisualizer from "@/components/visualization/TreeVisualizer";
+import TreeVisualizer from "@/components/visualization/trees/TreeVisualizer";
 
 const defaultNodes: TreeNode[] = [
   {

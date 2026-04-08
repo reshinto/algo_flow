@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { TransformVisualState } from "@/types";
 import { generateReverseWordsSteps } from "./step-generator";
-import TransformVisualizer from "@/components/visualization/TransformVisualizer";
+import TransformVisualizer from "@/components/visualization/strings/TransformVisualizer";
 
 const steps = generateReverseWordsSteps({ text: "the sky is blue" });
 

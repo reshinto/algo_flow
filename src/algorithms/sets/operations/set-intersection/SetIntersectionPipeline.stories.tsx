@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { SetVisualState } from "@/types";
 import { generateSetIntersectionSteps } from "./step-generator";
-import SetVisualizer from "@/components/visualization/SetVisualizer";
+import SetVisualizer from "@/components/visualization/sets/SetVisualizer";
 
 const steps = generateSetIntersectionSteps({
   arrayA: [1, 2, 3, 4, 5, 8],

@@ -1,7 +1,7 @@
 /** Step generator for BST From Sorted Array (Recursive) — build balanced BST. */
 
 import type { ExecutionStep, TreeNode } from "@/types";
-import { BSTOperationTracker } from "@/trackers/bst-operation-tracker";
+import { BSTOperationTracker } from "@/trackers";
 import { ALGORITHM_ID } from "@/utils/constants";
 import { buildLineMapFromSources } from "@/utils/source-loader";
 

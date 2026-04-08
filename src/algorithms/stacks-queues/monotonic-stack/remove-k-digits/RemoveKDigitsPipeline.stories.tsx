@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateRemoveKDigitsSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateRemoveKDigitsSteps({ num: "1432219", removalCount: 3 });
 const allRemovedSteps = generateRemoveKDigitsSteps({ num: "10", removalCount: 2 });

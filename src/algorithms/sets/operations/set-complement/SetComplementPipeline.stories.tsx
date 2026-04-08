@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { SetVisualState } from "@/types";
 import { generateSetComplementSteps } from "./step-generator";
-import SetVisualizer from "@/components/visualization/SetVisualizer";
+import SetVisualizer from "@/components/visualization/sets/SetVisualizer";
 
 const steps = generateSetComplementSteps({
   arrayA: [2, 4, 6],

@@ -6,7 +6,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import type { StackQueueVisualState } from "@/types";
 import { generateBasicCalculatorSteps } from "./step-generator";
-import StackQueueVisualizer from "@/components/visualization/StackQueueVisualizer";
+import StackQueueVisualizer from "@/components/visualization/stacks-queues/StackQueueVisualizer";
 
 const defaultSteps = generateBasicCalculatorSteps({ expression: "1 + (2 - 3)" });
 const complexSteps = generateBasicCalculatorSteps({ expression: "(1+(4+5+2)-3)+(6+8)" });
