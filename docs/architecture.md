@@ -41,7 +41,7 @@ The `.claude/` directory defines agents, skills, session hooks, and plugins for 
 
 How critical files connect across the system — from algorithm registration through step generation to visual rendering:
 
-![Architecture Overview](assets/architecture-overview.svg)
+![Architecture Overview](assets/architecture-overview.png)
 
 ### Reading the Diagram
 
@@ -54,7 +54,7 @@ How critical files connect across the system — from algorithm registration thr
 
 ## Data Flow
 
-![Data Flow](assets/data-flow.svg)
+![Data Flow](assets/data-flow.png)
 
 ## Core Pattern
 
@@ -131,7 +131,7 @@ Zustand with 4 slices merged into a single `AppStore`, using immer middleware fo
 > [!NOTE]
 > `selectAlgorithm()` and `recompute()` atomically reset `currentStepIndex: 0` and `isPlaying: false` in the same store update as the step array replacement. This prevents a frame where the old step index exceeds the new step array length.
 
-![State Management](assets/state-management.svg)
+![State Management](assets/state-management.png)
 
 Access state in components via:
 

@@ -37,7 +37,7 @@ This guide covers the most common failure modes in AlgoFlow and how to fix them 
 
 `generateSteps()` returns an empty array (or fewer steps than expected) when the tracker's `pushStep()` is never called, called with wrong arguments, or when the algorithm logic exits early.
 
-![Step Generation Flow](assets/step-generation-flow.svg)
+![Step Generation Flow](assets/step-generation-flow.png)
 
 **Common causes:**
 
@@ -61,7 +61,7 @@ If the array is empty, add a `console.log` immediately before the first `pushSte
 
 Lines in the code panel are highlighted based on a `LineMap` built from `@step:` marker comments in each source file. A mismatch between the marker key and the step type causes no lines (or the wrong lines) to highlight.
 
-![Line Mapping Flow](assets/line-mapping-flow.svg)
+![Line Mapping Flow](assets/line-mapping-flow.png)
 
 **Common causes:**
 
