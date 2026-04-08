@@ -34,7 +34,7 @@ This guide walks you through everything you need to set up, understand, and exte
 
 ### Plugin Installation
 
-The project uses 17 Claude Code plugins for development workflow automation. Plugins are enabled in `.claude/settings.json` and are installed automatically when Claude Code loads the project. To manually enable a plugin:
+The project uses Claude Code plugins for development workflow automation. Plugins are enabled in `.claude/settings.json` and are installed automatically when Claude Code loads the project. To manually enable a plugin:
 
 ```bash
 claude plugins install <plugin-name>
@@ -423,49 +423,12 @@ The E2E suite auto-discovers algorithms from the registry — no manual update i
 
 > [!WARNING] > **Algorithm doesn't appear in the UI?** You forgot to import it in `src/algorithms/index.ts`. The registry only fires when the module is imported.
 
-<details>
-<summary><strong>Line highlighting doesn't work / shows wrong lines</strong></summary>
+- **Line highlighting wrong?** Check `@step:` markers match tracker calls across all languages.
+- **`T | undefined` errors?** Use tuple types (`[number, number][]`) or non-null assertion — project uses `noUncheckedIndexedAccess`.
+- **`?fn` import broken?** Only works for `.ts` files in `sources/` via `vite-plugin-fn-import.ts`.
+- **Peer dependency warnings?** Expected — `.npmrc` uses `legacy-peer-deps=true` for React 19.
 
-- Check that your source files have `// @step:<key>` markers
-- Verify the step keys match the `type` or `lineMapKey` in your tracker calls
-- Ensure all language files use the same step keys
-- Run `buildLineMapFromSources()` in a test to inspect the parsed output
-
-</details>
-
-<details>
-<summary><strong>TypeScript errors about <code>T | undefined</code> on array access</strong></summary>
-
-The project uses `noUncheckedIndexedAccess: true`. Array indexing returns `T | undefined`, not `T`. Solutions:
-
-- Use non-null assertion (`arr[i]!`) when you are certain the index is valid
-- Use explicit tuple types (`[number, number][]`) instead of `number[][]` for coordinate pairs
-
-</details>
-
-<details>
-<summary><strong><code>?fn</code> import not working</strong></summary>
-
-The `?fn` suffix only works for `.ts` files in `sources/` directories. It is powered by a custom Vite plugin (`vite-plugin-fn-import.ts`). Python, Java, Rust, C++, and Go files are always imported via `?raw` only.
-
-</details>
-
-<details>
-<summary><strong>E2E tests fail locally but pass in CI</strong></summary>
-
-- The `webServer` config in `e2e/playwright.config.ts` auto-starts Vite on port 5174 — you do not need a running dev server before running `npm run e2e`
-- Check that your local Node version matches 22 (`node --version`)
-- Clear Playwright cache: `npx playwright install chromium`
-- Use `npm run e2e:debug` to open the Playwright inspector for step-through debugging
-
-</details>
-
-<details>
-<summary><strong>Peer dependency warnings during <code>npm install</code></strong></summary>
-
-This is expected. The `.npmrc` file sets `legacy-peer-deps=true` due to React 19 addon compatibility. These warnings are safe to ignore.
-
-</details>
+See [Debugging Guide](debugging.md) for detailed step-generation, line-mapping, and E2E troubleshooting.
 
 ---
 

@@ -55,32 +55,9 @@ npm run docker:test:build    # Build the test image (once)
 npm run docker:test          # Run all 6 language test suites
 ```
 
-### Available Services
+`Dockerfile.test` builds on Ubuntu 24.04 with all 6 language toolchains (Node, Python, Java, Rust, g++, Go). The `docker-compose.test.yml` file defines one service per language (`test-all`, `test-typescript`, `test-python`, etc.), all sharing the same image.
 
-| Command | What It Runs |
-| ------- | ------------ |
-| `npm run docker:test` | TypeScript + Python + Java + Rust + C++ + Go |
-| `npm run docker:test:typescript` | Vitest unit tests (911 test files) |
-| `npm run docker:test:python` | Python source tests (452 files) |
-| `npm run docker:test:java` | Java source tests (452 files) |
-| `npm run docker:test:rust` | Rust source tests (452 files) |
-| `npm run docker:test:cpp` | C++ source tests (452 files) |
-| `npm run docker:test:go` | Go source tests (452 directories) |
-
-### Image Contents
-
-`Dockerfile.test` builds on Ubuntu 24.04 with all toolchains pre-installed:
-
-| Toolchain | Version | Install Method |
-| --------- | ------- | -------------- |
-| Node.js   | 22      | NodeSource apt repo |
-| Python    | 3.12    | `apt install python3` |
-| Java      | 21      | `apt install openjdk-21-jdk-headless` |
-| Rust      | stable  | `rustup` via official installer |
-| g++       | 13      | `apt install g++` |
-| Go        | 1.23    | Official tarball from go.dev |
-
-The image copies the full source tree and runs `npm ci`, so it is self-contained. The `docker-compose.test.yml` file defines one service per language, all sharing the same image.
+See [Testing — Docker Test Environment](testing.md#docker-test-environment) for the full service list, image contents, and advanced usage.
 
 > [!NOTE]
 > This is separate from the production `Dockerfile` (nginx) and `docker-compose.yml` (port 3000). The test image is for development and CI use only.
@@ -96,13 +73,13 @@ Triggers on all pull requests to `main`. Runs these jobs in parallel:
 | Job                          | What It Does                                                                                          |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------- |
 | **Type Check & Lint**        | `npm run typecheck`, `npm run lint`, `npm run format:check`                                           |
-| **Unit Tests**               | `npm run test` — sharded 12 ways; aggregated under **Unit Tests Status**                              |
-| **Python Tests**             | `test-python.sh` — sharded 2 ways with 2 workers; aggregated under **Python Tests Status**            |
-| **Java Tests**               | `test-java.sh` — sharded 4 ways with 2 workers; aggregated under **Java Tests Status**                |
-| **Rust Tests**               | `test-rust.sh` — sharded 8 ways with 2 workers; aggregated under **Rust Tests Status**                |
-| **C++ Tests**                | `test-cpp.sh` — sharded 4 ways with 2 workers; aggregated under **C++ Tests Status**                  |
-| **Go Tests**                 | `test-go.sh` — sharded 4 ways with 2 workers; aggregated under **Go Tests Status**                    |
-| **E2E Tests**                | `npm run e2e` — sharded 16 ways (15-min timeout per shard); aggregated under **E2E Status**            |
+| **Unit Tests**               | `npm run test` — sharded across parallel jobs; aggregated under **Unit Tests Status**                  |
+| **Python Tests**             | `test-python.sh` — sharded with parallel workers; aggregated under **Python Tests Status**             |
+| **Java Tests**               | `test-java.sh` — sharded with parallel workers; aggregated under **Java Tests Status**                 |
+| **Rust Tests**               | `test-rust.sh` — sharded with parallel workers; aggregated under **Rust Tests Status**                 |
+| **C++ Tests**                | `test-cpp.sh` — sharded with parallel workers; aggregated under **C++ Tests Status**                   |
+| **Go Tests**                 | `test-go.sh` — sharded with parallel workers; aggregated under **Go Tests Status**                     |
+| **E2E Tests**                | `npm run e2e` — sharded across parallel jobs; aggregated under **E2E Status**                          |
 | **Storybook Build**          | `npm run storybook:build`                                                                             |
 | **Visual Tests (Chromatic)** | Runs after Storybook build; requires `CHROMATIC_PROJECT_TOKEN` secret                                 |
 

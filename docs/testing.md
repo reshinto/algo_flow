@@ -28,7 +28,7 @@ npm run test:go              # Run Go source tests
 npm run test:all-languages   # Run all 5 language source test suites
 ```
 
-Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 452 algorithms in 14 categories. Multi-language source tests cover correctness of the Python, Java, Rust, C++, and Go implementations.
+Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all algorithms and categories. Multi-language source tests cover correctness of the Python, Java, Rust, C++, and Go implementations.
 
 ### Vitest Projects Configuration
 
@@ -39,9 +39,7 @@ The Vitest config uses the `projects` feature to split the test suite into two i
 | `algorithms`   | `node`      | Algorithm correctness, step generators, trackers, store  |
 | `components`   | `jsdom`     | React component tests requiring a DOM environment        |
 
-This avoids the overhead of loading `jsdom` for pure algorithm tests and removes the need for manual timeout configuration in `test-setup.ts`.
-
-CI shards unit tests 12 ways (aggregated under the **Unit Tests Status** job) and E2E tests 16 ways (aggregated under the **E2E Status** job).
+This avoids the overhead of loading `jsdom` for pure algorithm tests and removes the need for manual timeout configuration in `test-setup.ts`. CI shards unit tests across parallel jobs — see [Deployment](deployment.md#cicd-pipelines) for shard configuration.
 
 > [!TIP]
 > Run a subset of tests with `npx vitest --filter <pattern>` (e.g., `npx vitest --filter bubble-sort`).
@@ -116,11 +114,11 @@ Every algorithm has source implementations in 6 languages. Each language has its
 ### Running Language Tests
 
 ```bash
-npm run test:python          # Run all 452 Python tests
-npm run test:java            # Run all 452 Java tests
-npm run test:rust            # Run all 452 Rust tests
-npm run test:cpp             # Run all 452 C++ tests
-npm run test:go              # Run all 452 Go tests
+npm run test:python          # Run Python source tests
+npm run test:java            # Run Java source tests
+npm run test:rust            # Run Rust source tests
+npm run test:cpp             # Run C++ source tests
+npm run test:go              # Run Go source tests
 npm run test:all-languages   # Run all 5 language suites sequentially
 ```
 
@@ -248,7 +246,7 @@ e2e/
 └── helpers/                      # Shared Playwright helpers and selectors
 ```
 
-~950 tests across 21 spec files. Per-category spec files use `test.describe.configure({ mode: "serial" })` to run tests in declaration order. Workers: 2 locally, 4 on CI. In CI the suite is sharded 16 ways, aggregated under the **E2E Status** check.
+Per-category spec files use `test.describe.configure({ mode: "serial" })` to run tests in declaration order. Workers: 2 locally, 4 on CI. CI shards the E2E suite across parallel jobs, aggregated under the **E2E Status** check.
 
 ### What the Suite Covers
 
@@ -273,21 +271,7 @@ New algorithms are auto-discovered from the registry — no manual update is nee
 
 ## Pre-commit Hook
 
-A pre-commit hook at `.githooks/pre-commit` runs automatically before every `git commit`. It:
-
-1. Runs **Prettier** (auto-fixes formatting)
-2. Runs **ESLint** with `--fix` (auto-fixes lint issues)
-3. Runs **TypeScript type-checking** (`tsc --noEmit`)
-4. Re-stages any files that were auto-fixed
-
-Activate it once after cloning:
-
-```bash
-git config core.hooksPath .githooks
-```
-
-> [!NOTE]
-> Markdown files are excluded from Prettier via `.prettierignore`, so documentation edits will not be reformatted by the hook.
+A pre-commit hook enforces lint, format, and typecheck on every commit. See [Contributing — Quality Gate](contributing.md#quality-gate) for details.
 
 ## Storybook & Visual Regression Testing
 
@@ -300,7 +284,7 @@ npm run chromatic       # Run Chromatic visual tests
 
 ### Story Inventory
 
-**488 story files** organized into:
+Story files are organized into:
 
 | Category                   | Location                                 | Stories                                                                                                                                                                                                                                   |
 | -------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -312,7 +296,7 @@ npm run chromatic       # Run Chromatic visual tests
 | **Input Editor**           | `src/components/input-editor/`           | ArrayInputEditor, InputEditor                                                                                                                                                                                                             |
 | **Explanation Panel**      | `src/components/explanation-panel/`      | ExplanationPanel                                                                                                                                                                                                                          |
 | **Playback**               | `src/components/playback/`               | PlaybackControls                                                                                                                                                                                                                          |
-| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/__tests__/` | 452 algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                             |
+| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/__tests__/` | Per-algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                             |
 
 Pipeline stories (`*.Pipeline.stories.tsx`) live in the algorithm's `__tests__/` directory alongside test files. Component stories remain co-located with their components in `src/components/visualization/<category>/`.
 
