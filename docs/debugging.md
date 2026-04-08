@@ -37,15 +37,7 @@ This guide covers the most common failure modes in AlgoFlow and how to fix them 
 
 `generateSteps()` returns an empty array (or fewer steps than expected) when the tracker's `pushStep()` is never called, called with wrong arguments, or when the algorithm logic exits early.
 
-```mermaid
-flowchart TD
-    GS["generateSteps(input)"] --> T["new CategoryTracker(input, lineMap)"]
-    T --> M["tracker.methodName(args)"]
-    M --> PS["pushStep({type, description, variables, visualState})"]
-    PS --> RL["resolveLines(lineMapKey ?? type)"]
-    RL --> ES["ExecutionStep added to steps[]"]
-    ES --> GS2["tracker.getSteps() returns ExecutionStep[]"]
-```
+![Step Generation Flow](assets/step-generation-flow.svg)
 
 **Common causes:**
 
@@ -69,16 +61,7 @@ If the array is empty, add a `console.log` immediately before the first `pushSte
 
 Lines in the code panel are highlighted based on a `LineMap` built from `@step:` marker comments in each source file. A mismatch between the marker key and the step type causes no lines (or the wrong lines) to highlight.
 
-```mermaid
-flowchart TD
-    SF["Source file with @step: markers"] --> PM["parseStepMarkers(source)"]
-    PM --> SM["stepMap: {key → [lineNumbers]}"]
-    SM --> BL["buildLineMapFromSources(algorithmId)"]
-    BL --> LM["LineMap: {key → {ts: lines, py: lines, java: lines}}"]
-    LM --> TC["new Tracker(input, lineMap)"]
-    TC --> PS["pushStep({type: 'compare'})"]
-    PS --> RL["resolveLines('compare') → LineHighlight[]"]
-```
+![Line Mapping Flow](assets/line-mapping-flow.svg)
 
 **Common causes:**
 
