@@ -38,7 +38,7 @@ function checkFfmpeg() {
   }
 }
 
-// ── Server utilities (reused from e2e/algoflow_e2e.mjs) ─────────────────────
+// ── Server utilities ───────────────────────────────────────────────────────
 
 function isReachable(url) {
   return new Promise((resolve) => {
@@ -87,7 +87,7 @@ async function selectAlgorithm(page, name) {
   await page.waitForSelector("[role='dialog']", { timeout: 3000 });
 
   const searchInput = page.locator("#algo-search-input");
-  await searchInput.fill(name.slice(0, 8));
+  await searchInput.fill(name.slice(0, 10));
 
   const optionBtn = page.locator("[role='dialog'] button").filter({ hasText: name }).first();
   await optionBtn.waitFor({ timeout: 3000 });
@@ -105,63 +105,53 @@ async function waitMs(page, milliseconds) {
   await page.waitForTimeout(milliseconds);
 }
 
+async function playFor(page, durationMs) {
+  const playBtn = page.locator("button[aria-label='Play']");
+  await playBtn.click();
+  await waitMs(page, durationMs);
+  const pauseBtn = page.locator("button[aria-label='Pause']");
+  await pauseBtn.click();
+  await waitMs(page, 200);
+}
+
 // ── Demo scenario ───────────────────────────────────────────────────────────
 
 async function runDemoScenario(page) {
-  console.log("  Scene 1: Bubble Sort playback with code highlighting...");
-  // App loads with Bubble Sort pre-selected
-  await waitMs(page, 600);
+  // Scene 1: Bubble Sort — array bar chart + code highlighting
+  console.log("  Scene 1: Bubble Sort with bar chart visualization...");
+  await waitMs(page, 400);
+  await playFor(page, 1800);
 
-  // Play the sorting animation
-  const playBtn = page.locator("button[aria-label='Play']");
-  await playBtn.click();
-  await waitMs(page, 2000);
-
-  // Pause and step forward slowly
-  const pauseBtn = page.locator("button[aria-label='Pause']");
-  await pauseBtn.click();
-  await waitMs(page, 300);
-
+  // Scene 2: Step-by-step control
   console.log("  Scene 2: Step-by-step control...");
+  const resetBtn = page.locator("button[aria-label='Reset']");
+  await resetBtn.click();
+  await waitMs(page, 200);
   const stepFwdBtn = page.locator("button[aria-label='Step forward']");
-  for (let stepIndex = 0; stepIndex < 2; stepIndex++) {
+  for (let stepIndex = 0; stepIndex < 3; stepIndex++) {
     await stepFwdBtn.click();
-    await waitMs(page, 500);
+    await waitMs(page, 350);
   }
 
-  console.log("  Scene 3: Algorithm selection → Dijkstra...");
+  // Scene 3: Dijkstra — grid pathfinding wavefront
+  console.log("  Scene 3: Dijkstra pathfinding wavefront...");
   await selectAlgorithm(page, "Dijkstra's Algorithm");
-  await waitMs(page, 500);
-
-  // Play Dijkstra wavefront
-  console.log("  Scene 4: Dijkstra wavefront expansion...");
-  const playBtn2 = page.locator("button[aria-label='Play']");
-  await playBtn2.click();
-  await waitMs(page, 2500);
-
-  const pauseBtn2 = page.locator("button[aria-label='Pause']");
-  await pauseBtn2.click();
   await waitMs(page, 300);
+  await playFor(page, 2200);
 
-  // Open educational drawer
-  console.log("  Scene 5: Educational drawer...");
-  await page.keyboard.press("l");
-  await waitMs(page, 1200);
-  await page.keyboard.press("Escape");
+  // Scene 4: BST In-Order — tree visualization
+  console.log("  Scene 4: BST In-Order tree traversal...");
+  await selectAlgorithm(page, "BST In-Order Traversal");
   await waitMs(page, 300);
+  await playFor(page, 1500);
 
-  // Switch to BFS
-  console.log("  Scene 6: BFS graph traversal...");
+  // Scene 5: BFS — graph traversal
+  console.log("  Scene 5: BFS graph traversal...");
   await selectAlgorithm(page, "Breadth-First Search");
-  await waitMs(page, 500);
-
-  const playBtn3 = page.locator("button[aria-label='Play']");
-  await playBtn3.click();
-  await waitMs(page, 1500);
-
-  const pauseBtn3 = page.locator("button[aria-label='Pause']");
-  await pauseBtn3.click();
   await waitMs(page, 300);
+  await playFor(page, 1500);
+
+  await waitMs(page, 200);
 }
 
 // ── Recording ───────────────────────────────────────────────────────────────
@@ -178,16 +168,14 @@ async function recordDemo(baseUrl) {
 
   await page.goto(baseUrl, { waitUntil: "networkidle" });
   await page.waitForSelector("button[aria-label='Search algorithms']", { timeout: 8000 });
-  await waitMs(page, 1000);
+  await waitMs(page, 800);
 
   await runDemoScenario(page);
 
-  // Get video path before closing context
   const videoPath = await page.video().path();
   await context.close();
   await browser.close();
 
-  // Rename UUID-named file to demo.webm
   if (fs.existsSync(videoPath) && videoPath !== WEBM_PATH) {
     fs.renameSync(videoPath, WEBM_PATH);
   }
@@ -270,4 +258,4 @@ for (const fileName of remainingWebm) {
   fs.unlinkSync(path.join(ASSETS_DIR, fileName));
 }
 
-console.log("\nDone! Add to README with: ![AlgoFlow Demo](docs/assets/demo.gif)");
+console.log("\nDone! Demo GIF at docs/assets/demo.gif");
