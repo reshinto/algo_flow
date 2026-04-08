@@ -62,12 +62,12 @@ run_single_test() {
   TEST_BASENAME="$(basename "$TEST_FILE")"
   TEST_CLASS="${TEST_BASENAME%.java}"
 
-  if (cd "$TEST_DIR" && timeout 30 bash -c "javac -d . sources/*.java \"$TEST_BASENAME\" 2>&1 && java -ea \"$TEST_CLASS\" 2>&1") > /dev/null 2>&1; then
+  if (cd "$TEST_DIR" && timeout 30 bash -c "javac -d . ../sources/*.java \"$TEST_BASENAME\" 2>&1 && java -ea \"$TEST_CLASS\" 2>&1") > /dev/null 2>&1; then
     echo "PASS: $TEST_FILE"
   else
     echo "FAIL: $TEST_FILE"
     echo "$TEST_FILE" >> "$FAIL_LOG_PATH"
-    (cd "$TEST_DIR" && timeout 30 bash -c "javac -d . sources/*.java \"$TEST_BASENAME\" 2>&1 && java -ea \"$TEST_CLASS\" 2>&1") 2>&1 | tail -10 || true
+    (cd "$TEST_DIR" && timeout 30 bash -c "javac -d . ../sources/*.java \"$TEST_BASENAME\" 2>&1 && java -ea \"$TEST_CLASS\" 2>&1") 2>&1 | tail -10 || true
   fi
 
   find "$TEST_DIR" -name "*.class" -delete 2>/dev/null || true

@@ -144,18 +144,30 @@ This is the most common contribution. Each algorithm lives in its own directory 
 ### Directory Structure
 
 ```
-src/algorithms/<category>/<algorithm>/
+src/algorithms/<category>/<technique>/<algorithm>/
+├── index.ts                               # AlgorithmDefinition + registry.register()
 ├── step-generator.ts                      # Produces ExecutionStep[] using a tracker
 ├── educational.ts                         # 7 learning sections
-├── index.ts                               # AlgorithmDefinition + registry.register()
-├── <algorithm>.test.ts                    # Algorithm correctness tests
-├── step-generator.test.ts                 # Step generation tests
-├── <Algorithm>Pipeline.stories.tsx        # Storybook pipeline story
-└── sources/
-    ├── <algorithm>.ts                     # TypeScript source with @step: markers
-    ├── <algorithm>.py                     # Python source with @step: markers
-    └── <Algorithm>.java                   # Java source with @step: markers
+├── sources/                               # 6-language source implementations
+│   ├── <algorithm>.ts                     #   TypeScript source with @step: markers
+│   ├── <algorithm>.py                     #   Python source with @step: markers
+│   ├── <Algorithm>.java                   #   Java source with @step: markers
+│   ├── <algorithm>.rs                     #   Rust source with @step: markers
+│   ├── <Algorithm>.cpp                    #   C++ source with @step: markers
+│   └── <algorithm>.go                     #   Go source with @step: markers
+└── __tests__/                             # All tests and pipeline story
+    ├── <algorithm>.test.ts                #   Algorithm correctness tests
+    ├── step-generator.test.ts             #   Step generation tests
+    ├── <Algorithm>Pipeline.stories.tsx     #   Storybook pipeline story
+    ├── <algorithm>_test.py                #   Python correctness tests
+    ├── <Algorithm>_test.java              #   Java correctness tests
+    ├── <algorithm>_test.rs                #   Rust correctness tests
+    ├── <Algorithm>_test.cpp               #   C++ correctness tests
+    └── <algorithm>_test.go                #   Go correctness tests
 ```
+
+> [!NOTE]
+> Implementation files (`index.ts`, `step-generator.ts`, `educational.ts`) and source files (`sources/`) live at the algorithm root. All test and story files live in `__tests__/` to keep the directory clean.
 
 ### Step 1: Write the Source Files
 
@@ -373,12 +385,12 @@ registry.register(definition);
    - Add its display label to `CATEGORY_LABELS` — this automatically creates a pill in the algorithm selector's category filter row
    - Add an entry to `CATEGORY_ACCENT_MAP` in `src/utils/constants.ts` to assign an accent color to the new category's dot and group header border
 2. Import the new algorithm in `src/algorithms/index.ts` — this triggers self-registration
-3. Add a Storybook pipeline story in the algorithm directory: `src/algorithms/<category>/<algorithm>/<Algorithm>Pipeline.stories.tsx`
+3. Add a Storybook pipeline story in the algorithm's `__tests__/` directory: `src/algorithms/<category>/<technique>/<algorithm>/__tests__/<Algorithm>Pipeline.stories.tsx`
 
 > [!NOTE] > **Technique labels are auto-discovered.** `discoverTechniqueLabels()` derives technique display labels from the directory structure at build time. Adding a new technique directory (e.g. `src/algorithms/sorting/radix/`) is enough — no manual label registration is needed.
 
 > [!NOTE]
-> Pipeline stories (end-to-end visualization stories) live with their algorithm. Component stories (e.g., `ArrayVisualizer.stories.tsx`, `Button.stories.tsx`) remain co-located with their components in `src/components/`.
+> Pipeline stories live in the algorithm's `__tests__/` directory alongside test files. Component stories (e.g., `ArrayVisualizer.stories.tsx`, `Button.stories.tsx`) remain co-located with their components in `src/components/visualization/<category>/`.
 
 > [!WARNING]
 > Forgetting the import in `src/algorithms/index.ts` is the most common mistake. The algorithm will silently not appear in the UI because `registry.register()` never executes.

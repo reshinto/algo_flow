@@ -48,21 +48,25 @@ CI shards unit tests 12 ways (aggregated under the **Unit Tests Status** job) an
 
 ### What to Test for Each Algorithm
 
-| Test File                | What to Verify                                              |
-| ------------------------ | ----------------------------------------------------------- |
-| `<algorithm>.test.ts`    | Pure algorithm correctness (input → expected output)        |
-| `step-generator.test.ts` | Step count, step types, final visual state for known inputs |
+| Test File                              | What to Verify                                              |
+| -------------------------------------- | ----------------------------------------------------------- |
+| `__tests__/<algorithm>.test.ts`        | Pure algorithm correctness (input → expected output)        |
+| `__tests__/step-generator.test.ts`     | Step count, step types, final visual state for known inputs |
+| `__tests__/<algorithm>_test.{py,java,rs,cpp,go}` | Correctness of each language's source implementation |
 
 Additionally verify:
 
 - Educational content is non-empty for all 7 sections
 - Source files exist for all supported languages (TypeScript, Python, Java, Rust, C++, Go)
 
+> [!NOTE]
+> All test files and pipeline stories live in the algorithm's `__tests__/` subdirectory. Implementation files (`index.ts`, `step-generator.ts`, `educational.ts`) and source files (`sources/`) remain at the algorithm root.
+
 #### Example: Algorithm Correctness Test
 
 ```typescript
 import { describe, expect, it } from "vitest";
-import { bubbleSort } from "./sources/bubble-sort.ts?fn";
+import { bubbleSort } from "../sources/bubble-sort.ts?fn";
 
 describe("bubbleSort", () => {
   it("sorts an unsorted array", () => {
@@ -296,21 +300,21 @@ npm run chromatic       # Run Chromatic visual tests
 
 ### Story Inventory
 
-**483 story files** organized into:
+**488 story files** organized into:
 
 | Category                   | Location                                 | Stories                                                                                                                                                                                                                                   |
 | -------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Shared Primitives**      | `src/components/shared/`                 | Button, Badge, IconButton, Select                                                                                                                                                                                                         |
 | **Code Panel**             | `src/components/code-panel/`             | CodePanel, LanguageTabs                                                                                                                                                                                                                   |
-| **Individual Visualizers** | `src/components/visualization/`          | ArrayVisualizer, DPTableVisualizer, GraphVisualizer, GridVisualizer, HashMapVisualizer, HeapVisualizer, LinkedListVisualizer, MatrixVisualizer, SetVisualizer, StackQueueVisualizer, StringVisualizer, TreeVisualizer, VisualizationPanel |
+| **Individual Visualizers** | `src/components/visualization/<category>/` | ArrayVisualizer, DPTableVisualizer, GraphVisualizer, GridVisualizer, HashMapVisualizer, HeapVisualizer, LinkedListVisualizer, MatrixVisualizer, SetVisualizer, StackQueueVisualizer, StringVisualizer, PalindromeVisualizer, TransformVisualizer, DistanceVisualizer, FrequencyVisualizer, TrieVisualizer, TreeVisualizer, VisualizationPanel |
 | **Layout**                 | `src/components/layout/`                 | AlgorithmSelectorModal, AppShell, Header, MobileLayout, TabletLayout, DesktopLayout                                                                                                                                                       |
 | **Educational**            | `src/components/educational/`            | EducationalDrawer, MermaidDiagram                                                                                                                                                                                                         |
 | **Input Editor**           | `src/components/input-editor/`           | ArrayInputEditor, InputEditor                                                                                                                                                                                                             |
 | **Explanation Panel**      | `src/components/explanation-panel/`      | ExplanationPanel                                                                                                                                                                                                                          |
 | **Playback**               | `src/components/playback/`               | PlaybackControls                                                                                                                                                                                                                          |
-| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/` | 452 algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                             |
+| **Algorithm Pipelines**    | `src/algorithms/<category>/<algorithm>/__tests__/` | 452 algorithm pipelines — initial, mid-execution, and final states using real step generators                                                                                                                                             |
 
-Pipeline stories (`*.Pipeline.stories.tsx`) live alongside their algorithm implementation, not with the visualizer components. Component stories remain co-located with their components in `src/components/`.
+Pipeline stories (`*.Pipeline.stories.tsx`) live in the algorithm's `__tests__/` directory alongside test files. Component stories remain co-located with their components in `src/components/visualization/<category>/`.
 
 ### Chromatic Visual Regression
 

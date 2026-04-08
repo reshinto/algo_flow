@@ -102,7 +102,8 @@
       "Bash(rustc --test \"/Users/springfield/dev/algo_flow/src/algorithms/trees/construction/build-from-postorder-inorder-iterative/sources/build-from-postorder-inorder-iterative_test.rs\" -o /tmp/rust_test_bin)",
       "Bash(rustc --test \"/Users/springfield/dev/algo_flow/src/algorithms/trees/construction/build-from-preorder-inorder-iterative/sources/build-from-preorder-inorder-iterative_test.rs\" -o /tmp/rust_test_bin)",
       "Bash(rustc --test \"/Users/springfield/dev/algo_flow/src/algorithms/pathfinding/maze-generation/aldous-broder/sources/aldous-broder_test.rs\" -o /tmp/rust_test_bin)",
-      "Bash(head -20 src/algorithms/strings/transformation/string-to-integer/sources/*_test.go)"
+      "Bash(head -20 src/algorithms/strings/transformation/string-to-integer/sources/*_test.go)",
+      "Bash(docker compose:*)"
     ]
   },
   "hooks": {

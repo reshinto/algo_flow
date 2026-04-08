@@ -37,25 +37,24 @@ The `.claude/` directory defines 11 agents, 18 skills, 13 session hooks, and 17 
 | Animation   | Framer Motion                          | Bar swaps, grid waves, spring transitions            |
 | Testing     | Vitest + Testing Library + Storybook 8 | Unit, visual, and integration testing                |
 
+## High-Level Code Architecture
+
+How critical files connect across the system — from algorithm registration through step generation to visual rendering:
+
+![Architecture Overview](assets/architecture-overview.svg)
+
+### Reading the Diagram
+
+| Layer | What It Does |
+|-------|-------------|
+| **Algorithm Directory** | Each algorithm has `index.ts` (registration), `step-generator.ts` (step production), `educational.ts` (learning content), and `sources/` (6-language implementations) |
+| **Trackers** | `CategoryTracker` extends `BaseTracker` to provide domain-specific methods (compare, swap, visit) that build `ExecutionStep` objects |
+| **Core Infrastructure** | `AlgorithmRegistry` holds all registered algorithms. `Zustand Store` manages state. `source-loader.ts` parses `@step:` annotations into line maps |
+| **UI Components** | `VisualizationPanel` dispatches to the correct `CategoryVisualizer` based on `visualState.kind`. `CodePanel` highlights lines. `PlaybackControls` manages step navigation |
+
 ## Data Flow
 
-```mermaid
-flowchart LR
-    A["Algorithm Module<br/><code>index.ts</code>"] -- "registry.register()" --> B["AlgorithmRegistry"]
-    B -- "selectAlgorithm()" --> C["Zustand Store"]
-    C -- "generateSteps(input)" --> D["ExecutionStep[]"]
-    D -- "step[currentIndex]" --> E{"VisualState.kind"}
-    E -- "array" --> F["ArrayVisualizer"]
-    E -- "graph" --> G["GraphVisualizer"]
-    E -- "grid" --> H["GridVisualizer"]
-    E -- "dp-table" --> I["DPTableVisualizer"]
-    E -- "tree / linked-list<br/>heap / stack-queue<br/>hash-map / string<br/>matrix / set" --> J["Other Visualizers"]
-    E -- "string-palindrome" --> K["PalindromeVisualizer"]
-    E -- "string-frequency" --> L["FrequencyVisualizer"]
-    E -- "string-transform" --> M["TransformVisualizer"]
-    E -- "string-trie" --> N["TrieVisualizer"]
-    E -- "string-distance" --> O["DistanceVisualizer"]
-```
+![Data Flow](assets/data-flow.svg)
 
 ## Core Pattern
 
@@ -132,19 +131,7 @@ Zustand with 4 slices merged into a single `AppStore`, using immer middleware fo
 > [!NOTE]
 > `selectAlgorithm()` and `recompute()` atomically reset `currentStepIndex: 0` and `isPlaying: false` in the same store update as the step array replacement. This prevents a frame where the old step index exceeds the new step array length.
 
-```mermaid
-flowchart TD
-    subgraph AppStore
-        ALG["algorithm-slice"]
-        PB["playback-slice"]
-        ED["editor-slice"]
-        UI["ui-slice"]
-    end
-
-    ALG -- "generates steps on<br/>algorithm select" --> PB
-    PB -- "current step drives<br/>line highlights" --> ED
-    UI -- "controls panel<br/>visibility" --> ALG
-```
+![State Management](assets/state-management.svg)
 
 Access state in components via:
 
@@ -262,24 +249,28 @@ Algorithms could theoretically execute using JS `yield` statements, emitting a U
 ├── hooks/                   # 13 session hook scripts
 ├── skills/                  # 18 reusable prompt skill modules
 └── rules/                   # Coding standards, architecture constraints, workflow rules
-e2e/                        # E2E browser tests (Playwright)
-docs/                       # Documentation
+e2e/                         # E2E browser tests (Playwright)
+docs/                        # Documentation
 src/
-├── algorithms/              # Self-registering algorithm definitions + pipeline stories
+├── algorithms/              # Self-registering algorithm definitions (14 categories)
 │   │                        # All categories use category/technique/algorithm/ nesting
+│   │                        # Per-algorithm directory layout:
+│   │                        #   index.ts, step-generator.ts, educational.ts
+│   │                        #   sources/          (6-language source implementations)
+│   │                        #   __tests__/         (all tests + pipeline story)
 │   ├── sorting/             # e.g. sorting/comparison/bubble-sort/
 │   ├── searching/           # e.g. searching/binary/binary-search/
 │   ├── graph/               # e.g. graph/traversal/bfs/
 │   ├── pathfinding/         # e.g. pathfinding/shortest-path/dijkstra/
-│   ├── dynamic-programming/ # 32 algorithms across 1d-linear, optimization, counting, subsequence, knapsack, string-dp
-│   ├── arrays/              # 44 algorithms across sliding-window, two-pointer, prefix-sum, and more
-│   ├── trees/               # 87 algorithms across traversal, bst-operations, properties, construction, manipulation, advanced
+│   ├── dynamic-programming/ # 32 algorithms across 6 technique subcategories
+│   ├── arrays/              # 44 algorithms across 11 technique subcategories
+│   ├── trees/               # 87 algorithms across 6 technique subcategories
 │   ├── linked-lists/        # e.g. linked-lists/manipulation/reverse-linked-list/
 │   ├── heaps/               # e.g. heaps/construction/build-min-heap/
 │   ├── stacks-queues/       # e.g. stacks-queues/validation/valid-parentheses/
 │   ├── hash-maps/           # e.g. hash-maps/lookup/two-sum/
 │   ├── strings/             # e.g. strings/pattern-matching/kmp-search/
-│   ├── matrices/            # 20 algorithms across traversal, transformation, search, construction, layer-operations
+│   ├── matrices/            # 20 algorithms across 5 technique subcategories
 │   └── sets/                # e.g. sets/operations/set-intersection/
 ├── components/
 │   ├── code-panel/          # Monaco editor with language tabs
@@ -289,13 +280,63 @@ src/
 │   ├── layout/              # AppShell, Header, DesktopLayout, TabletLayout, MobileLayout
 │   ├── playback/            # PlaybackControls with progress bar
 │   ├── shared/              # Button, Badge, IconButton, Select
-│   └── visualization/       # Visualizer components + co-located component stories
+│   └── visualization/       # VisualizationPanel dispatch + category subdirectories
+│       ├── arrays/          #   ArrayVisualizer
+│       ├── dynamic-programming/ # DPTableVisualizer
+│       ├── graph/           #   GraphVisualizer, GridVisualizer
+│       ├── hash-maps/       #   HashMapVisualizer
+│       ├── heaps/           #   HeapVisualizer
+│       ├── linked-lists/    #   LinkedListVisualizer
+│       ├── matrices/        #   MatrixVisualizer
+│       ├── sets/            #   SetVisualizer
+│       ├── stacks-queues/   #   StackQueueVisualizer
+│       ├── strings/         #   StringVisualizer + 5 specialized (Palindrome, Trie, etc.)
+│       └── trees/           #   TreeVisualizer
 ├── hooks/                   # usePlaybackEngine, useKeyboardShortcuts, useResponsiveLayout
 ├── registry/                # AlgorithmRegistry singleton
 ├── store/                   # Zustand slices (algorithm, playback, editor, UI)
-├── trackers/                # Category-specific step trackers (one per category)
+├── trackers/                # Category-specific step trackers in category subdirectories
+│   ├── base-tracker.ts      #   Shared base class
+│   ├── arrays/              #   SortingTracker, SearchingTracker, ArrayTracker
+│   ├── dynamic-programming/ #   DPTracker
+│   ├── graph/               #   GraphTracker, PathfindingTracker
+│   ├── hash-maps/           #   HashMapTracker
+│   ├── heaps/               #   HeapTracker
+│   ├── linked-lists/        #   LinkedListTracker
+│   ├── matrices/            #   5 matrix trackers
+│   ├── sets/                #   5 set trackers
+│   ├── stacks-queues/       #   4 stack/queue trackers
+│   ├── strings/             #   6 string trackers
+│   └── trees/               #   6 tree trackers
 ├── types/                   # TypeScript type definitions
 └── utils/                   # Constants, source file loader
+```
+
+### Algorithm Directory Layout
+
+Each of the 452 algorithm directories follows this structure:
+
+```
+src/algorithms/<category>/<technique>/<algorithm>/
+├── index.ts                 # AlgorithmDefinition + registry.register()
+├── step-generator.ts        # Produces ExecutionStep[] using a tracker
+├── educational.ts           # 7 learning content sections
+├── sources/                 # 6-language source implementations
+│   ├── <algorithm>.ts       #   TypeScript with @step: markers
+│   ├── <algorithm>.py       #   Python
+│   ├── <Algorithm>.java     #   Java
+│   ├── <algorithm>.rs       #   Rust
+│   ├── <Algorithm>.cpp      #   C++
+│   └── <algorithm>.go       #   Go
+└── __tests__/               # All tests and pipeline story
+    ├── <algorithm>.test.ts  #   TypeScript correctness tests
+    ├── step-generator.test.ts  # Step generation tests
+    ├── <Algorithm>Pipeline.stories.tsx  # Storybook pipeline story
+    ├── <algorithm>_test.py  #   Python tests
+    ├── <Algorithm>_test.java #  Java tests
+    ├── <algorithm>_test.rs  #   Rust tests
+    ├── <Algorithm>_test.cpp #   C++ tests
+    └── <algorithm>_test.go  #   Go tests
 ```
 
 ---

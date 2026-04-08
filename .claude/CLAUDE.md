@@ -36,7 +36,7 @@ See `.claude/rules/` for full constraints. Most commonly violated:
 - No single-char variable names, no `any` types — use `unknown` with narrowing
 - `@/` path alias required for all src-relative imports
 - `noUncheckedIndexedAccess` enabled — use tuple types (`[number, number][]`) for coordinate arrays
-- Pipeline stories (`*.Pipeline.stories.tsx`) live in algorithm directories, not `src/components/`
+- Pipeline stories (`*.Pipeline.stories.tsx`) live in algorithm `__tests__/` directories
 - Branch-per-task mandatory — every new task starts on a fresh branch from main
 - All edits to input and pathfinding grids are temporary (non-persistent)
 
@@ -60,7 +60,7 @@ See `.claude/rules/` for full constraints. Most commonly violated:
 - Run CI checks in sequence and fix iteratively until all pass green: `npm run lint` → `npm run format` → `npm run typecheck` → `npm test`
 - Do not stop after fixing just one category — keep going until everything is clean
 - For E2E tests, the dev server starts automatically via hooks — do not start it manually
-- Every new algorithm needs: correctness tests + step generation tests + pipeline story in algorithm directory + E2E registration — see `.claude/rules/testing.md`
+- Every new algorithm needs: correctness tests + step generation tests + pipeline story in `__tests__/` directory + E2E registration — see `.claude/rules/testing.md`
 
 ## Workflow
 

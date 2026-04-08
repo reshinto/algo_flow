@@ -61,7 +61,7 @@ run_single_test() {
   local TEMP_DIR
   TEMP_DIR=$(mktemp -d)
   cp "$TEST_DIR"/*.go "$TEMP_DIR/" 2>/dev/null || true
-  cp "$TEST_DIR"/sources/*.go "$TEMP_DIR/" 2>/dev/null || true
+  cp "$TEST_DIR"/../sources/*.go "$TEMP_DIR/" 2>/dev/null || true
 
   if (cd "$TEMP_DIR" && timeout 30 bash -c "go mod init algo 2>/dev/null && go test ./... 2>&1") > /dev/null 2>&1; then
     echo "PASS: $TEST_DIR"
