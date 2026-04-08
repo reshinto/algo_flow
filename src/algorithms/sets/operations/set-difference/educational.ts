@@ -26,7 +26,32 @@ export const setDifferenceEducational: EducationalContent = {
     "  A[2]=3 → found   → skip\n" +
     "  A[3]=4 → found   → skip\n" +
     "  A[4]=5 → found   → skip\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph A["Set A"]\n' +
+    '    a1["1"]:::input\n' +
+    '    a2["2"]:::input\n' +
+    '    a3["3"]:::excluded\n' +
+    '    a4["4"]:::excluded\n' +
+    '    a5["5"]:::excluded\n' +
+    "  end\n" +
+    '  subgraph B["Set B (exclusion)"]\n' +
+    '    b1["3"]:::excluded\n' +
+    '    b2["4"]:::excluded\n' +
+    '    b3["5"]:::excluded\n' +
+    "  end\n" +
+    '  subgraph R["A \\\\ B"]\n' +
+    '    r1["1"]:::result\n' +
+    '    r2["2"]:::result\n' +
+    "  end\n" +
+    "  A --> R\n" +
+    "  B -. remove .-> R\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef excluded fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Elements shared with B (amber) are excluded; only elements unique to A (cyan) reach the result (green).",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + m)`**\n\n" +

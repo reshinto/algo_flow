@@ -24,7 +24,22 @@ export const kahnsEducational: EducationalContent = {
     "Queue: [E]  → process E → decrement F → F in-degree=0 → Queue: [F]\n" +
     "Queue: [F]  → process F → done\n" +
     "Order: [A, B, C, D, E, F]\n" +
-    "```",
+    "```\n\n" +
+    "### Kahn's In-Degree Reduction on a Package DAG\n\n" +
+    "```mermaid\n" +
+    "graph LR\n" +
+    "  A((A)) --> C((C))\n" +
+    "  B((B)) --> C((C))\n" +
+    "  B((B)) --> D((D))\n" +
+    "  C((C)) --> E((E))\n" +
+    "  D((D)) --> E((E))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "A and B (cyan) start with in-degree 0 and are enqueued first. Processing them decrements C and D to in-degree 0 (amber). Processing C and D finally reduces E (green) to in-degree 0. Output order: [A, B, C, D, E].",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

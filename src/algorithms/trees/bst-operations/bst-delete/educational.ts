@@ -5,7 +5,20 @@ export const bstDeleteEducational: EducationalContent = {
     "**BST Delete (Recursive)** removes a node while preserving the BST property. There are three distinct cases depending on the deleted node's children:\n1. **Leaf:** Simply remove it.\n2. **One child:** Replace the node with its only child.\n3. **Two children:** Replace the node's value with its in-order successor (smallest value in the right subtree), then delete the successor.",
 
   howItWorks:
-    "The algorithm searches for the target recursively. Once found:\n- **Leaf (no children):** Return `null` — the parent's pointer becomes `null`.\n- **One child:** Return the non-null child — the parent links directly to it.\n- **Two children:** Find the in-order successor (leftmost node in right subtree), copy its value into the target node, then recursively delete the successor from the right subtree.\n\nThe 'copy-value then delete' approach avoids restructuring large subtrees.",
+    "The algorithm searches for the target recursively. Once found:\n- **Leaf (no children):** Return `null` — the parent's pointer becomes `null`.\n- **One child:** Return the non-null child — the parent links directly to it.\n- **Two children:** Find the in-order successor (leftmost node in right subtree), copy its value into the target node, then recursively delete the successor from the right subtree.\n\nThe 'copy-value then delete' approach avoids restructuring large subtrees.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((20)) --> B((10))\n" +
+    "  A --> C((30))\n" +
+    "  B --> D((5))\n" +
+    "  B --> E((15))\n" +
+    "  C --> F((25))\n" +
+    "  C --> G((40))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "Deleting 30 (two children): in-order successor is 40 (leftmost of right subtree). Copy 40 → node 30, then recursively delete the original 40 node. Node 25 (the successor) becomes the new right child of 20.",
 
   timeAndSpaceComplexity:
     "**Time: `O(h)`** — search + successor find.\n\n**Space: `O(h)`** — call stack.",

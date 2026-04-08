@@ -16,7 +16,22 @@ export const articulationPointsEducational: EducationalContent = {
     "Non-root:  low[v] >= disc[u]  →  u is articulation point\n" +
     "Root:      childCount > 1     →  u is articulation point\n" +
     "```\n\n" +
-    "The root case is special because the parent check doesn't apply — the root has no parent to provide an alternative path.",
+    "The root case is special because the parent check doesn't apply — the root has no parent to provide an alternative path.\n\n" +
+    "### Example Graph with Articulation Points\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((A)) --- B((B))\n" +
+    "  B((B)) --- C((C))\n" +
+    "  C((C)) --- D((D))\n" +
+    "  D((D)) --- E((E))\n" +
+    "  A((A)) --- C((C))\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Nodes **B** and **D** are articulation points (amber). Removing B disconnects the path from A/C to D/E; removing D isolates E. Nodes A, C, E (green) are not articulation points.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

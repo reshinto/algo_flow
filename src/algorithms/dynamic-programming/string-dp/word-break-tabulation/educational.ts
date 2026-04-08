@@ -22,7 +22,20 @@ export const wordBreakTabulationEducational: EducationalContent = {
     "- `W(0) = 1` — base case\n" +
     "- `W(4) = 1` — `'leet'` ends at 4 and `W(0) = 1`\n" +
     "- `W(8) = 1` — `'code'` ends at 8 and `W(4) = 1`\n\n" +
-    "The lookback distance is variable: it equals the length of the candidate word being checked.",
+    "The lookback distance is variable: it equals the length of the candidate word being checked.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["W(0)=1\\n(empty)"]:::base\n' +
+    '  B["W(1..3)=0\\n(no match)"]:::cached\n' +
+    "  C[\"W(4)=1\\n'leet' ends here\"]:::cached\n" +
+    '  D["W(5..7)=0\\n(no match)"]:::cached\n' +
+    "  E[\"W(8)=1\\n'code' ends here ✓\"]:::current\n" +
+    "  A --> B --> C --> D --> E\n" +
+    "  classDef base fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef cached fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "`W(8)` is set because `'code'` ends at position 8 and `W(4)` — the position before `'code'` starts — is already `1`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × m × k)`**\n\n" +

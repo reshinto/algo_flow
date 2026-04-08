@@ -15,7 +15,31 @@ export const tribonacciTabulationEducational: EducationalContent = {
     "Index:  0  1  2  3  4   5   6   7\n" +
     "Value:  0  1  1  2  4   7  13  24\n" +
     "```\n\n" +
-    "Each cell is filled exactly once. The three-predecessor read pattern means slightly more work per step than Fibonacci, but the overall complexity remains linear.",
+    "Each cell is filled exactly once. The three-predecessor read pattern means slightly more work per step than Fibonacci, but the overall complexity remains linear.\n\n" +
+    "### DP Table Fill for T(6)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  T0["T(0)=0"] --> T3["T(3)=2"]\n' +
+    '  T1["T(1)=1"] --> T3\n' +
+    '  T2["T(2)=1"] --> T3\n' +
+    '  T1 --> T4["T(4)=4"]\n' +
+    "  T2 --> T4\n" +
+    "  T3 --> T4\n" +
+    '  T2 --> T5["T(5)=7"]\n' +
+    "  T3 --> T5\n" +
+    "  T4 --> T5\n" +
+    '  T3 --> T6["T(6)=13"]\n' +
+    "  T4 --> T6\n" +
+    "  T5 --> T6\n" +
+    "  style T0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style T1 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style T2 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style T3 fill:#14532d,stroke:#22c55e\n" +
+    "  style T4 fill:#14532d,stroke:#22c55e\n" +
+    "  style T5 fill:#14532d,stroke:#22c55e\n" +
+    "  style T6 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Unlike Fibonacci's two predecessors, each amber or green node draws three incoming arrows — one from each of `T(i-1)`, `T(i-2)`, and `T(i-3)`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

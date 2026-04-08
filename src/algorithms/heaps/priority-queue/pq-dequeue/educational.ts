@@ -30,7 +30,23 @@ export const pqDequeueEducational: EducationalContent = {
     "                / \\ /\n" +
     "               10 15 8\n" +
     "```\n\n" +
-    "The dequeued value is 2 (minimum). The queue now serves 3 next.",
+    "The dequeued value is 2 (minimum). The queue now serves 3 next.\n\n" +
+    "### Diagram: Priority queue after dequeuing 2 from [2, 5, 3, 10, 15, 8, 7]\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n3((3)) --> n5((5))\n" +
+    "    n3 --> n7((7))\n" +
+    "    n5 --> n10((10))\n" +
+    "    n5 --> n15((15))\n" +
+    "    n7 --> n8((8))\n" +
+    "    style n3 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n7 fill:#f59e0b,stroke:#d97706\n" +
+    "    style n5 fill:#14532d,stroke:#22c55e\n" +
+    "    style n10 fill:#14532d,stroke:#22c55e\n" +
+    "    style n15 fill:#14532d,stroke:#22c55e\n" +
+    "    style n8 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "After dequeuing 2, the last element 7 (amber) moved to the root and sifted down — swapping with child 3. Node 3 (cyan) is now the new minimum, ready to be dequeued next.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)`**\n\n" +

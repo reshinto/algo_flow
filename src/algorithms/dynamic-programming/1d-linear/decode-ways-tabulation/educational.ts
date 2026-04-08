@@ -22,7 +22,24 @@ export const decodeWaysTabulationEducational: EducationalContent = {
     "- `D(3) = D(2) + 0 = 3` — '3' alone (C); '23' > 26 so no two-digit path\n" +
     "- `D(4) = D(3) + D(2) = 5` — wait, '32' > 26 so only single: `D(3)=3`; rechecking: '32'>26, so `D(4)=D(3)=3`\n" +
     "- `D(5) = D(4) + D(3) = 6` — '1' alone or '21' = U\n\n" +
-    "Each cell is computed in `O(1)` with at most two lookbacks.",
+    "Each cell is computed in `O(1)` with at most two lookbacks.\n\n" +
+    "### DP Table for '1232'\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  D0["D(0)=1 empty"] --> D1["D(1)=1 \'1\'→A"]\n' +
+    "  D0 --> D2[\"D(2)=2 '2' or '12'\"]\n" +
+    "  D1 --> D2\n" +
+    "  D1 --> D3[\"D(3)=3 '3' or '23'\"]\n" +
+    "  D2 --> D3\n" +
+    "  D2 --> D4[\"D(4)=3 '2' only\"]\n" +
+    "  D3 --> D4\n" +
+    "  style D0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D1 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D2 fill:#14532d,stroke:#22c55e\n" +
+    "  style D3 fill:#14532d,stroke:#22c55e\n" +
+    "  style D4 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Each node shows the count of valid decodings up to that position. Solid arrows from `D(i-1)` represent the single-digit path; arrows from `D(i-2)` represent the two-digit path when the window is 10–26.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

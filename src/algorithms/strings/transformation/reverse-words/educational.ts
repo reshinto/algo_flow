@@ -28,7 +28,21 @@ export const reverseWordsEducational: EducationalContent = {
     "               ^     ^\n" +
     "Step 2:  [blue, is, sky, the]   (swap sky ↔ is)\n" +
     'Output:  "blue is sky the"\n' +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["the"] --- B["sky"] --- C["is"] --- D["blue"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    '  E["blue"] --- F["is"] --- G["sky"] --- H["the"]\n' +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style H fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "The outer pair (`the` ↔ `blue`) swaps first, then the inner pair (`sky` ↔ `is`) completes the reversal in two pointer moves.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

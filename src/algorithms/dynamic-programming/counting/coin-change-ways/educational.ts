@@ -19,7 +19,20 @@ export const coinChangeWaysEducational: EducationalContent = {
     "```\n\n" +
     "Result: **4 ways** — `{1,1,1,1,1}`, `{1,1,1,2}`, `{1,2,2}`, `{5}`.\n\n" +
     "### Why the Outer Loop Must Be Over Coins\n\n" +
-    "Iterating coins in the outer loop and amounts in the inner loop ensures each combination is counted exactly once. If you swapped the loop order (amounts outer, coins inner), you would count permutations instead — `{1,2}` and `{2,1}` would be counted separately, inflating the result.",
+    "Iterating coins in the outer loop and amounts in the inner loop ensures each combination is counted exactly once. If you swapped the loop order (amounts outer, coins inner), you would count permutations instead — `{1,2}` and `{2,1}` would be counted separately, inflating the result.\n\n" +
+    "### Table Evolution for amount=4, coins=[1,2]\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  Init["Init: W0=1 W1=0 W2=0 W3=0 W4=0"]\n' +
+    '  After1["After coin=1: W0=1 W1=1 W2=1 W3=1 W4=1"]\n' +
+    '  After2["After coin=2: W0=1 W1=1 W2=2 W3=2 W4=3"]\n' +
+    "  Init --> After1\n" +
+    "  After1 --> After2\n" +
+    "  style Init fill:#06b6d4,stroke:#0891b2\n" +
+    "  style After1 fill:#14532d,stroke:#22c55e\n" +
+    "  style After2 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Each row shows the full table state after processing one coin denomination. W(4)=3 means there are 3 ways to make 4: `{1,1,1,1}`, `{1,1,2}`, `{2,2}`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(amount × |coins|)`**\n\n" +

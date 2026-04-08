@@ -14,7 +14,20 @@ export const buildFromPreorderInorderIterativeEducational: EducationalContent = 
     "   - Otherwise, **pop** nodes from the stack as long as they match the inorder sequence (moving the inorder pointer forward). The last popped node becomes the parent for a **right child**.\n" +
     "3. Always **push** the new node onto the stack.\n\n" +
     "### Key Insight\n\n" +
-    "The inorder pointer acts as a boundary detector. When the stack top equals `inorder[pointer]`, we've finished the left subtree of that node and must start building its right subtree.",
+    "The inorder pointer acts as a boundary detector. When the stack top equals `inorder[pointer]`, we've finished the left subtree of that node and must start building its right subtree.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)):::current --> B((2)):::visited\n" +
+    "  A --> C((6)):::visited\n" +
+    "  B --> D((1)):::active\n" +
+    "  B --> E((3)):::active\n" +
+    "  C --> F((5)):::active\n" +
+    "  C --> G((7)):::active\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Tree built from `preorder=[4,2,1,3,6,5,7]` and `inorder=[1,2,3,4,5,6,7]`. Root 4 (cyan) is created first; nodes 2 and 6 (green) are created and pushed while building left spines; leaves 1, 3, 5, 7 (amber) are attached when the inorder boundary is crossed.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

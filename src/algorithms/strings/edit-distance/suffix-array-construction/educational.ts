@@ -33,7 +33,26 @@ export const suffixArrayConstructionEducational: EducationalContent = {
     "**3. Return sorted indices:**\n\n" +
     "The result is the suffix array — a permutation of `[0..n-1]` where `suffixArray[rank]` is the " +
     "starting index of the `rank`-th smallest suffix.\n\n" +
-    "More advanced algorithms (DC3/Skew, SA-IS) achieve `O(n)` construction time.",
+    "More advanced algorithms (DC3/Skew, SA-IS) achieve `O(n)` construction time.\n\n" +
+    '### Example: Suffix array of `"banana"`\n\n' +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '    SA["Suffix Array: [5,3,1,0,4,2]"]\n' +
+    '    R0["rank 0: a (idx 5)"]\n' +
+    '    R1["rank 1: ana (idx 3)"]\n' +
+    '    R2["rank 2: anana (idx 1)"]\n' +
+    '    R3["rank 3: banana (idx 0)"]\n' +
+    '    R4["rank 4: na (idx 4)"]\n' +
+    '    R5["rank 5: nana (idx 2)"]\n' +
+    "    SA --> R0 --> R1 --> R2 --> R3 --> R4 --> R5\n" +
+    "    style R0 fill:#14532d,stroke:#22c55e\n" +
+    "    style R1 fill:#14532d,stroke:#22c55e\n" +
+    "    style R2 fill:#14532d,stroke:#22c55e\n" +
+    "    style R3 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style R4 fill:#f59e0b,stroke:#d97706\n" +
+    "    style R5 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "All 6 suffixes are sorted lexicographically. `a`-prefixed suffixes (green) come first, `banana` (cyan) in the middle, and `na`-prefixed suffixes (amber) last.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log²n)`**\n\n" +

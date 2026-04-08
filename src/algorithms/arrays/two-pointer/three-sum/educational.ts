@@ -28,7 +28,18 @@ export const threeSumEducational: EducationalContent = {
     "Anchor = -1 (index 2): duplicate of index 1 → skip\n" +
     "Anchor =  0 (index 3): left=4(1),  right=5(2) → 0+1+2=3 > 0 → retreat right (pointers meet)\n" +
     "Result: [[-1,-1,2], [-1,0,1]]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["-4"] --> B["-1"] --> C["-1"] --> D["0"] --> E["1"] --> F["2"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#06b6d4,stroke:#0891b2\n" +
+    "  style E fill:#06b6d4,stroke:#0891b2\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Sorted array `[-4, -1, -1, 0, 1, 2]`: amber = fixed anchor (-1 at index 1), cyan = active left/right two-pointer pair (0 and 1). Their sum `-1 + 0 + 1 = 0` yields the triplet `[-1, 0, 1]`. Green = processed or skipped positions.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

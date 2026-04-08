@@ -22,7 +22,26 @@ export const containerWithMostWaterEducational: EducationalContent = {
     "L=1(h=8), R=6(h=8): area = min(8,8)×5 = 40   maxArea=49\n" +
     "... (remaining pairs all < 49)\n" +
     "Final: maxArea=49, leftIndex=1, rightIndex=8\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  L["L→ h=1"] --> A["h=8"]\n' +
+    '  A --> B["h=6"]\n' +
+    '  B --> C["h=2"]\n' +
+    '  C --> D["h=5"]\n' +
+    '  D --> E["h=4"]\n' +
+    '  E --> F["h=8"]\n' +
+    '  F --> R["h=7 ←R"]\n' +
+    "  style L fill:#f59e0b,stroke:#d97706\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style F fill:#06b6d4,stroke:#0891b2\n" +
+    "  style R fill:#f59e0b,stroke:#d97706\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Pointers start at the outer edges (amber). After moving the shorter left bar inward, the best container is found between indices 1 (h=8) and 8 (h=7), cyan, yielding area = 7 × 7 = 49.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

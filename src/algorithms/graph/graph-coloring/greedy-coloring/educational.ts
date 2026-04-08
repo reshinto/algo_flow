@@ -16,7 +16,21 @@ export const greedyColoringEducational: EducationalContent = {
     "Process B → neighbor A has color 0 → assign color 1\n" +
     "Process C → neighbors A(0) and B(1) → assign color 2\n" +
     "```\n\n" +
-    "The result uses 3 colors — optimal for a triangle, which has chromatic number 3.",
+    "The result uses 3 colors — optimal for a triangle, which has chromatic number 3.\n\n" +
+    "### Greedy Coloring on a 4-Node Graph\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((A:0)) --- B((B:1))\n" +
+    "  A((A:0)) --- C((C:1))\n" +
+    "  B((B:1)) --- C((C:1))\n" +
+    "  B((B:1)) --- D((D:0))\n" +
+    "  C((C:1)) --- D((D:0))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Processing order A→B→C→D: A gets color 0 (cyan), B gets color 1 (green), C has neighbors A(0) and B(1) so gets color 2 (amber), D has neighbors B(1) and C(2) so gets color 0 again. Three colors total for this graph.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: O(V²)**\n\n" +

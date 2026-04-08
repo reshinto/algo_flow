@@ -12,6 +12,19 @@ export const longestValidParenthesesEducational: EducationalContent = {
     "   - Otherwise, compute `length = currentIdx − newStackTop` and update `maxLength`.\n" +
     "3. Return `maxLength` after the full scan.\n\n" +
     "### Example trace on `(()())`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    A["stack: -1"] -->|"push idx 0,1"| B["stack: -1 0 1"]\n' +
+    '    B -->|"idx 2 \')\' pop 1\\nlen = 2-0 = 2"| C["stack: -1 0\\nmaxLen=2"]\n' +
+    '    C -->|"push idx 3"| D["stack: -1 0 3"]\n' +
+    '    D -->|"idx 4 \')\' pop 3\\nlen = 4-0 = 4"| E["stack: -1 0\\nmaxLen=4"]\n' +
+    '    E -->|"idx 5 \')\' pop 0\\nlen = 5-(-1) = 6"| F["stack: -1\\nmaxLen=6"]\n' +
+    "    style A fill:#06b6d4,stroke:#0891b2\n" +
+    "    style D fill:#f59e0b,stroke:#d97706\n" +
+    "    style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The sentinel `-1` anchors the base so the first valid run's length is always computable. " +
+    "Each `)` pops the stack and measures `currentIdx − newTop` to extend `maxLength`.\n\n" +
     "```\n" +
     "idx  char  action              stack        maxLength\n" +
     " —    —    init push -1        [-1]         0\n" +

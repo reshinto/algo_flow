@@ -27,7 +27,20 @@ export const buildFromLevelOrderEducational: EducationalContent = {
     "Result: perfectly balanced 7-node BST\n" +
     "```\n\n" +
     "For this to produce a valid BST level-order, the input must already be in BST-compatible level-order " +
-    "(i.e., values must honor BST invariants when inserted in sequence).",
+    "(i.e., values must honor BST invariants when inserted in sequence).\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)):::current --> B((2)):::visited\n" +
+    "  A --> C((6)):::visited\n" +
+    "  B --> D((1)):::active\n" +
+    "  B --> E((3)):::active\n" +
+    "  C --> F((5)):::active\n" +
+    "  C --> G((7)):::active\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Input `[4, 2, 6, 1, 3, 5, 7]` produces this perfectly balanced BST. Root 4 (cyan) is inserted first; level-2 nodes 2 and 6 (green) next; level-3 leaves 1, 3, 5, 7 (amber) last.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)` worst case, `O(n log n)` average**\n\n" +

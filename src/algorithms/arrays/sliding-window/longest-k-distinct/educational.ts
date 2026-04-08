@@ -17,7 +17,22 @@ export const longestKDistinctEducational: EducationalContent = {
     "   - Advance `windowStart`.\n" +
     "4. **Record** — the current window length is `windowEnd - windowStart + 1`; update `maxLength` and `bestStart` if it is larger.\n" +
     "5. Return `{ maxLength, startIndex: bestStart }`.\n\n" +
-    "The invariant is that after the shrink phase, the window always contains at most K distinct values.",
+    "The invariant is that after the shrink phase, the window always contains at most K distinct values.\n\n" +
+    "### Example: `[a, a, b, c, b]`, k = 2\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["a"] --> B["a"] --> C["b"] --> D["c"] --> E["b"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#06b6d4,stroke:#0891b2\n" +
+    '  L["windowStart"] -. left .-> A\n' +
+    '  R["windowEnd"] -. right .-> D\n' +
+    '  note["distinct=3 > k=2\\nshrink left"] -. triggers .-> L\n' +
+    "```\n\n" +
+    "When `windowEnd` reaches `c`, the window `[a, a, b, c]` has 3 distinct values — exceeding k=2. " +
+    "The left pointer advances past `a` entries until only `{b, c}` remain.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

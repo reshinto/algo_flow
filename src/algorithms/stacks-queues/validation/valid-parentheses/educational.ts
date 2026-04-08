@@ -13,16 +13,22 @@ export const validParenthesesEducational: EducationalContent = {
     "   - Otherwise pop the stack top → match found.\n" +
     "3. **End of string** → valid only if the stack is empty (no unclosed openers).\n\n" +
     "### Example trace on `({[]})`\n\n" +
-    "```\n" +
-    "char  action        stack\n" +
-    "(     push          [(]\n" +
-    "{     push          [(, {]\n" +
-    "[     push          [(, {, []\n" +
-    "]     pop  ✓ ([)    [(, {]\n" +
-    "}     pop  ✓ ({)    [(]\n" +
-    ")     pop  ✓ (()    []\n" +
-    "end   stack empty → VALID\n" +
-    "```",
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph Push Phase\n" +
+    '    A["("] -->|push| B["{"]\n' +
+    '    B -->|push| C["["]\n' +
+    "    end\n" +
+    "    subgraph Pop Phase\n" +
+    '    D["]" ] -->|matches top \'[\'| E["}"]\n' +
+    "    E -->|matches top '{'| F[\")\"]\n" +
+    "    F -->|matches top '('| G([\"stack empty → VALID\"])\n" +
+    "    end\n" +
+    "    style G fill:#14532d,stroke:#22c55e\n" +
+    "    style A fill:#06b6d4,stroke:#0891b2\n" +
+    "    style C fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Each opener pushes onto the stack; each closer must match and pop the top. An empty stack at the end confirms every bracket was paired.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

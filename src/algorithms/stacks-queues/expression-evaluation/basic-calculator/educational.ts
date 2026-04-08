@@ -12,17 +12,22 @@ export const basicCalculatorEducational: EducationalContent = {
     "4. **`(`** → push `runningTotal` and `currentSign` onto the stack, then reset both (`runningTotal = 0`, `currentSign = 1`).\n" +
     "5. **`)`** → pop `poppedSign` and `prevTotal` from the stack. Combine: `runningTotal = prevTotal + poppedSign × runningTotal`.\n\n" +
     "### Example trace on `1 + (2 - 3)`\n\n" +
-    "```\n" +
-    "token  action                   runningTotal  currentSign  stack\n" +
-    "1      add  1×1=1               1             1            []\n" +
-    "+      sign = +1                1             1            []\n" +
-    "(      push 1, push +1; reset   0             1            [1, 1]\n" +
-    "2      add  1×2=2               2             1            [1, 1]\n" +
-    "-      sign = -1                2             -1           [1, 1]\n" +
-    "3      add -1×3=-3; total=-1    -1            -1           [1, 1]\n" +
-    ")      pop +1 and 1; 1+(+1×-1)  0             -1           []\n" +
-    "end    return 0\n" +
-    "```",
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph Before paren\n" +
+    '    A(["total=1, sign=+1"]) -->|"( → push & reset"| B(["stack: [1,+1]\\ntotal=0, sign=+1"])\n' +
+    "    end\n" +
+    "    subgraph Inside paren\n" +
+    '    B -->|"2 → total=2"| C(["total=2"])\n' +
+    '    C -->|"- → sign=-1"| D(["total=2, sign=-1"])\n' +
+    '    D -->|"-1×3 → total=-1"| E(["total=-1"])\n' +
+    "    end\n" +
+    '    E -->|"\') → pop +1,1\\n1+(+1×-1)=0\'"| F(["total=0 → return 0"])\n' +
+    "    style A fill:#06b6d4,stroke:#0891b2\n" +
+    "    style B fill:#f59e0b,stroke:#d97706\n" +
+    "    style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The stack saves the outer context at `(`; `)` merges the sub-result back using the saved sign.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

@@ -13,7 +13,21 @@ export const lowestCommonAncestorIterativeEducational: EducationalContent = {
     "**Phase 2 — Trace ancestors:**\n" +
     "4. Walk the ancestry chain from `nodeA` up to root, collecting all ancestors into a set.\n" +
     "5. Walk the ancestry chain from `nodeB` upward; return the first node present in the set.\n\n" +
-    "For the default tree with targets 1 and 3, Phase 1 finds both targets and Phase 2 returns node 2 as the LCA.",
+    "For the default tree with targets 1 and 3, Phase 1 finds both targets and Phase 2 returns node 2 as the LCA.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)) --> B((2))\n" +
+    "  A --> C((6))\n" +
+    "  B --> D((1))\n" +
+    "  B --> E((3))\n" +
+    "  C --> F((5))\n" +
+    "  C --> G((7))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "Nodes 1 and 3 are both children of node 2. Phase 1 builds the parent map via BFS; Phase 2 traces ancestors of 1 upward (1→2→4), then walks 3's chain and finds node 2 as the first match.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

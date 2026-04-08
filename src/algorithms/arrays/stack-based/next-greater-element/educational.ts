@@ -25,7 +25,20 @@ export const nextGreaterElementEducational: EducationalContent = {
     "Scan 8  (idx 4): 10≥8 → push; stack=[3,4]\n" +
     "End: indices 3,4 remain → result[3]=result[4]=-1\n" +
     "Final: [5, 10, 10, -1, -1]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["4"] -->|"NGE=5"| B["5"]\n' +
+    '  C["2"] -->|"NGE=10"| D["10"]\n' +
+    '  B -->|"NGE=10"| D\n' +
+    '  E["-1"] -.->|"no NGE"| D\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#06b6d4,stroke:#0891b2\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Input `[4, 5, 2, 10, 8]`: elements 4, 5, and 2 all resolve to a next greater element (cyan). The last two elements (8 after 10) have no NGE and return -1 (amber = unresolved).",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

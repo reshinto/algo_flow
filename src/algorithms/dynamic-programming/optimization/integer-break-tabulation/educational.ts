@@ -27,7 +27,20 @@ export const integerBreakTabulationEducational: EducationalContent = {
     "- `P(3) = max(1×2, 1×P(2)) = max(2, 1) = 2`\n" +
     "- `P(4) = max(2×2) = 4`  (split as 2+2)\n" +
     "- `P(6) = max(3×3) = 9`  (split as 3+3)\n" +
-    "- `P(10) = max(3×P(7)) = 3×12 = 36`  (split as 3+7, then 7 → 3+4 → 3+2+2)",
+    "- `P(10) = max(3×P(7)) = 3×12 = 36`  (split as 3+7, then 7 → 3+4 → 3+2+2)\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  A["dp[2]=1"]:::base\n' +
+    '  B["dp[3]=2\\n(1×2)"]:::cached\n' +
+    '  C["dp[4]=4\\n(2×2)"]:::cached\n' +
+    '  D["dp[7]=12\\n(3×dp[4])"]:::cached\n' +
+    '  E["dp[10]=36\\n(3×dp[7])"]:::current\n' +
+    "  A --> B --> C --> D --> E\n" +
+    "  classDef base fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef cached fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Each cell reuses an already-optimal sub-split, cascading 3s and 2s all the way to `dp[10] = 36`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

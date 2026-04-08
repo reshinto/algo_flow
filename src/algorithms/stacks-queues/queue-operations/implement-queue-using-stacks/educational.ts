@@ -15,6 +15,23 @@ export const implementQueueUsingStacksEducational: EducationalContent = {
     "   - This reverses the insertion order so the earliest-enqueued element sits at the output stack's top.\n" +
     "3. Pop from the output stack to complete the dequeue.\n\n" +
     "### Example trace on `[1, 2, 3]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    subgraph Before["After push 1,2,3"]\n' +
+    '        IN["inputStack\\ntop→ 3 2 1"]\n' +
+    '        OUT1["outputStack\\n(empty)"]\n' +
+    "    end\n" +
+    '    subgraph After["After transfer (dequeue triggered)"]\n' +
+    '        IN2["inputStack\\n(empty)"]\n' +
+    '        OUT2["outputStack\\ntop→ 1 2 3"]\n' +
+    "    end\n" +
+    '    Before -->|"transfer all"| After\n' +
+    '    OUT2 -->|"pop → 1"| RESULT(["dequeue = 1"])\n' +
+    "    style IN fill:#f59e0b,stroke:#d97706\n" +
+    "    style OUT2 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style RESULT fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Transferring all elements from inputStack to outputStack reverses their order, placing the earliest-enqueued element at the top. Subsequent dequeues pop directly from outputStack without re-transferring.\n\n" +
     "```\n" +
     "push 1 → inputStack: [1]\n" +
     "push 2 → inputStack: [1, 2]\n" +

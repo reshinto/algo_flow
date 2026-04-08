@@ -24,7 +24,30 @@ export const supersetCheckEducational: EducationalContent = {
     "  B[0]=2 → found   → condition holds\n" +
     "  B[1]=4 → found   → condition holds\n" +
     "All elements checked → isSuperset: true\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph A["Set A (superset candidate)"]\n' +
+    '    a1["1"]:::input\n' +
+    '    a2["2"]:::input\n' +
+    '    a3["3"]:::input\n' +
+    '    a4["4"]:::input\n' +
+    '    a5["5"]:::input\n' +
+    "  end\n" +
+    '  subgraph B["Set B (must be contained)"]\n' +
+    '    b1["2"]:::input\n' +
+    '    b2["4"]:::input\n' +
+    "  end\n" +
+    '  subgraph R["Result"]\n' +
+    '    r1["isSuperset: true"]:::result\n' +
+    "  end\n" +
+    "  A --> R\n" +
+    "  B --> R\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef excluded fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "A's hash set is built first; each element of B is looked up against it. Since both 2 and 4 exist in A, A ⊇ B is confirmed. A's extra elements (1, 3, 5) are irrelevant to the check.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + m)`**\n\n" +

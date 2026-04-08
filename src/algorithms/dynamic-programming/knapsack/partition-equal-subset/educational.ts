@@ -22,7 +22,20 @@ export const partitionEqualSubsetEducational: EducationalContent = {
     "After 11: dp = [1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1]\n" +
     "After 5:  dp = [1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1]\n" +
     "```\n\n" +
-    "`dp[11] = 1` → true. The subset [11] (or [1, 5, 5]) sums to 11.",
+    "`dp[11] = 1` → true. The subset [11] (or [1, 5, 5]) sums to 11.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["dp[0]=1\\n(base case)"]:::base\n' +
+    '  B["after 1\\ndp[1]=1"]:::cached\n' +
+    '  C["after 5\\ndp[5]=1, dp[6]=1"]:::cached\n' +
+    '  D["after 11\\ndp[11]=1"]:::cached\n' +
+    '  E["after 5\\ndp[10]=1 — done!"]:::current\n' +
+    "  A --> B --> C --> D --> E\n" +
+    "  classDef base fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef cached fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "The right-to-left inner sweep ensures each number is counted at most once, propagating reachable sums across the boolean table.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × sum)`**\n\n" +

@@ -18,15 +18,20 @@ export const sumOfSubarrayMinimumsEducational: EducationalContent = {
     "**Pass 3 — Sum contributions**:\n" +
     "- `result += arr[i] × left[i] × right[i]`, taken modulo 10⁹ + 7\n\n" +
     "### Example trace on `[3, 1, 2, 4]`\n\n" +
-    "```\n" +
-    "idx  val  left  right  contribution\n" +
-    " 0    3     1     2       3×1×2 =  6\n" +
-    " 1    1     2     4       1×2×4 =  8\n" +
-    " 2    2     1     2       2×1×2 =  4  (wait — right[2]=2: next ≤2 is none, so n−2=2)\n" +
-    " 3    4     1     1       4×1×1 =  4\n" +
-    "                          total = 17 ✓\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    "    subgraph Boundaries\n" +
+    '    A["idx=0 val=3\\nleft=1 right=2"] -->|"3×1×2"| R0["contrib=6"]\n' +
+    '    B["idx=1 val=1\\nleft=2 right=4"] -->|"1×2×4"| R1["contrib=8"]\n' +
+    '    C["idx=2 val=2\\nleft=1 right=2"] -->|"2×1×2"| R2["contrib=4"]\n' +
+    '    D["idx=3 val=4\\nleft=1 right=1"] -->|"4×1×1"| R3["contrib=4"]\n' +
+    "    end\n" +
+    '    R0 & R1 & R2 & R3 -->|"sum"| Total["total = 22"]\n' +
+    "    style B fill:#06b6d4,stroke:#0891b2\n" +
+    "    style C fill:#f59e0b,stroke:#d97706\n" +
+    "    style Total fill:#14532d,stroke:#22c55e\n" +
     "```\n\n" +
-    "*(Correction for idx 2: next element strictly less than 2 doesn't exist, so right[2] = 4−2 = 2 using strict-greater pop. Contribution = 2×1×2 = 4.)*",
+    "Each element contributes `val × left × right` — the count of subarrays where it is the minimum — avoiding the O(n²) enumeration of all subarrays.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

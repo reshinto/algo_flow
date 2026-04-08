@@ -29,7 +29,21 @@ export const dutchNationalFlagEducational: EducationalContent = {
     "| 3    | [0, 2, 1, 2, 1, 0]| 1   | 2   | 4    | arr[1]=2 → swap with high |\n" +
     "| 4    | [0, 1, 1, 2, 2, 0]| 1   | 2   | 3    | arr[1]=1 → wait, see step 3|\n" +
     "| ...  | [0, 0, 1, 1, 2, 2]| —   | —   | —    | complete                  |\n\n" +
-    "**Result**: `[0, 0, 1, 1, 2, 2]`",
+    "**Result**: `[0, 0, 1, 1, 2, 2]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["0"] --> B["0"] --> C["1"] --> D["1"] --> E["2"] --> F["2"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#06b6d4,stroke:#0891b2\n" +
+    "  style F fill:#06b6d4,stroke:#0891b2\n" +
+    '  L["low=2"] -. boundary .-> C\n' +
+    '  H["high=3"] -. boundary .-> E\n' +
+    "```\n\n" +
+    "Final state: green = 0s region (low pointer settled), amber = 1s region (mid traversed), cyan = 2s region (high pointer settled). " +
+    "All three partitions are established in a single pass.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

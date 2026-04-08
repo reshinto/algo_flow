@@ -24,7 +24,17 @@ export const kClosestPointsEducational: EducationalContent = {
     "[-1,-1]   2   → 2 < 18 → replace root\n" +
     "[4,0]    16   → 16 < 18 → replace root\n\n" +
     "Result: [[1,1],[-1,-1],[0,2]]\n" +
-    "```",
+    "```\n\n" +
+    "### Max-Heap (size k=3) — Final State Keyed by dist²\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '    r16("[4,0]\\ndist²=16") --> r4("[0,2]\\ndist²=4")\n' +
+    '    r16 --> r2("[-1,-1]\\ndist²=2")\n' +
+    "    style r16 fill:#f59e0b,stroke:#d97706\n" +
+    "    style r4 fill:#14532d,stroke:#22c55e\n" +
+    "    style r2 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The root (amber) is the farthest of the k=3 candidates — dist²=16. Any incoming point with dist² < 16 evicts it. The two leaves (green) are confirmed close points.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log k)`**\n\n" +

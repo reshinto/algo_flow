@@ -20,7 +20,19 @@ export const happyNumberEducational: EducationalContent = {
     "### Example: `4` (unhappy)\n\n" +
     "```\n" +
     "4 → 16 → 37 → 58 → 89 → 145 → 42 → 20 → 4  ← cycle detected\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["n = 19"]:::input --> B["1²+9²=82\\nseen={19}"]\n' +
+    '  B --> C["8²+2²=68\\nseen={19,82}"]:::checking\n' +
+    '  C --> D["6²+8²=100\\nseen={19,82,68}"]:::checking\n' +
+    '  D --> E["1²+0²+0²=1\\nseen={...100}"]:::checking\n' +
+    '  E --> F["result = 1 → happy!"]:::found\n' +
+    "  classDef input fill:#06b6d4,stroke:#0891b2,color:#fff\n" +
+    "  classDef checking fill:#f59e0b,stroke:#d97706,color:#000\n" +
+    "  classDef found fill:#14532d,stroke:#22c55e,color:#fff\n" +
+    "```\n\n" +
+    "Each node is added to the `seen` set before computing the next sum — reaching `1` confirms happiness before any cycle can form.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)`** per iteration (digit extraction), with a bounded number of iterations before reaching 1 or cycling.\n\n" +

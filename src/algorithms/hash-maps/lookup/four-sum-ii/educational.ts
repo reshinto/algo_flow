@@ -22,7 +22,20 @@ export const fourSumIIEducational: EducationalContent = {
     "  (2+0)=2   → complement=-2 not found\n" +
     "  (2+2)=4   → complement=-4 not found\n" +
     "Result: 2\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["A+B pairs"] -->|enumerate n²| B["map:{-1:1, 0:2, 1:1}"]\n' +
+    '  C["C+D pair: (-1+0)=-1"] -->|complement=1| D["found in map (count 1)"]\n' +
+    '  E["C+D pair: (-1+2)=1"] -->|complement=-1| F["found in map (count 1)"]\n' +
+    '  D --> G["count=2"]\n' +
+    "  F --> G\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Phase 1 builds a frequency map of all A+B sums. Phase 2 checks whether each C+D pair's negation exists in that map, accumulating hit counts.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

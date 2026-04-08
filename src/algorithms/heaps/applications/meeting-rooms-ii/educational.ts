@@ -21,7 +21,17 @@ export const meetingRoomsIIEducational: EducationalContent = {
     "[15,20] → root=7 ≤ 15 → extract, insert 20 → heap: [10, 30, 20] rooms: 3\n\n" +
     "Answer: 3 rooms\n" +
     "```\n\n" +
-    "The min-heap ensures we always check the room that becomes free soonest, minimizing unnecessary room allocation.",
+    "The min-heap ensures we always check the room that becomes free soonest, minimizing unnecessary room allocation.\n\n" +
+    "### Min-Heap of End Times — After Processing [5,10]\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    e7((end:7)) --> e30((end:30))\n" +
+    "    e7 --> e10((end:10))\n" +
+    "    style e7 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style e10 fill:#f59e0b,stroke:#d97706\n" +
+    "    style e30 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The root (cyan) is the earliest-ending room — end time 7. When meeting [15,20] arrives, 7 ≤ 15 so this room is reused. The amber node (end:10) is the next room to check.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log n)`**\n\n" +

@@ -12,14 +12,14 @@ export const linkedListLengthEducational: EducationalContent = {
     "   - Move `current` to the next node.\n" +
     "3. **Return** `count` when `current` becomes null.\n\n" +
     "### Example: Counting [1 → 2 → 3]\n\n" +
-    "```\n" +
-    "Start:       current=1, count=0\n" +
-    "Step 1:      current=2, count=1\n" +
-    "Step 2:      current=3, count=2\n" +
-    "Step 3:      current=null, count=3\n" +
-    "Result:      length = 3\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    A["1 — count=1"] --> B["2 — count=2"] --> C["3 — count=3"] --> D["null"]\n' +
+    "    style A fill:#14532d,stroke:#22c55e\n" +
+    "    style B fill:#14532d,stroke:#22c55e\n" +
+    "    style C fill:#14532d,stroke:#22c55e\n" +
     "```\n\n" +
-    "When `current` reaches `null`, the loop exits and `count` holds the final answer.",
+    "The pointer visits each node (green), incrementing `count` at every step. When it reaches `null`, the final count is 3.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

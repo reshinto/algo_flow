@@ -27,7 +27,25 @@ export const longestCommonSubsequenceEducational: EducationalContent = {
     "**3. Result:** `dp[sourceLength][targetLength]` holds the final LCS length.\n\n" +
     "**4. Backtracking:** To reconstruct the actual subsequence, trace from the bottom-right cell:\n" +
     "- If characters matched, move diagonally up-left and record that character.\n" +
-    "- Otherwise move toward the cell with the larger value (up or left).",
+    "- Otherwise move toward the cell with the larger value (up or left).\n\n" +
+    '### Example: LCS of `"ABCB"` and `"BCAB"`\n\n' +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    A1["A"] --> B1["B"] --> C1["C"] --> B2["B"]\n' +
+    '    B3["B"] --> C2["C"] --> A2["A"] --> B4["B"]\n' +
+    "    B1 -.lcs.- B3\n" +
+    "    C1 -.lcs.- C2\n" +
+    "    B2 -.lcs.- B4\n" +
+    "    style B1 fill:#14532d,stroke:#22c55e\n" +
+    "    style C1 fill:#14532d,stroke:#22c55e\n" +
+    "    style B2 fill:#14532d,stroke:#22c55e\n" +
+    "    style B3 fill:#14532d,stroke:#22c55e\n" +
+    "    style C2 fill:#14532d,stroke:#22c55e\n" +
+    "    style B4 fill:#14532d,stroke:#22c55e\n" +
+    "    style A1 fill:#f59e0b,stroke:#d97706\n" +
+    "    style A2 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "The characters `B`, `C`, `B` (green) appear in order in both strings, forming the LCS of length 3. `A` (amber) is skipped in each string.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × m)`**\n\n" +

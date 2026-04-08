@@ -13,7 +13,23 @@ export const kosarajuSccEducational: EducationalContent = {
     "4. Pop nodes from the finish-order stack (highest finish time first).\n" +
     "5. For each unvisited node, run DFS on the transposed graph — every node reachable forms one SCC.\n\n" +
     "### Why transposing works\n\n" +
-    "If node `u` can reach node `v` in the original graph, `v` can reach `u` in the transposed graph. The node with the highest finish time is always the SCC root — so processing in reverse finish order guarantees that a second-pass DFS never escapes the current SCC.",
+    "If node `u` can reach node `v` in the original graph, `v` can reach `u` in the transposed graph. The node with the highest finish time is always the SCC root — so processing in reverse finish order guarantees that a second-pass DFS never escapes the current SCC.\n\n" +
+    "### Example: Two SCCs Connected by a Bridge Edge\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((A)) --> B((B))\n" +
+    "  B((B)) --> C((C))\n" +
+    "  C((C)) --> A((A))\n" +
+    "  C((C)) --> D((D))\n" +
+    "  D((D)) --> E((E))\n" +
+    "  E((E)) --> D((D))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Pass 1 finishes A last (highest finish time), making it the SCC root for {A, B, C} (cyan/green). The transposed DFS then discovers {D, E} (amber) as a separate SCC.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

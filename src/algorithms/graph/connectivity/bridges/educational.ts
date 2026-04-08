@@ -13,7 +13,21 @@ export const bridgesEducational: EducationalContent = {
     "```\n" +
     "Edge (u, v) is a bridge if:  low[v] > disc[u]\n" +
     "```\n\n" +
-    "This means there is no back edge from `v`'s subtree to `u` or any ancestor of `u` — so `u — v` is the only path connecting the two parts.",
+    "This means there is no back edge from `v`'s subtree to `u` or any ancestor of `u` — so `u — v` is the only path connecting the two parts.\n\n" +
+    "### Example Graph with a Bridge\n\n" +
+    "```mermaid\n" +
+    "graph LR\n" +
+    "  A((A)) --- B((B))\n" +
+    "  B((B)) --- C((C))\n" +
+    "  A((A)) --- C((C))\n" +
+    "  C((C)) --- D((D))\n" +
+    "  D((D)) --- E((E))\n" +
+    "  D((D)) --- F((F))\n" +
+    "  E((E)) --- F((F))\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Edge **C — D** (between the amber nodes) is the bridge. The left cluster {A, B, C} forms a cycle with alternative paths, but removing C — D disconnects it from the right cluster {D, E, F}.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

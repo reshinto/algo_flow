@@ -11,7 +11,26 @@ export const flipImageEducational: EducationalContent = {
     "2. **Odd-width middle:** When `leftCol === rightCol` after the loop, only invert the middle element — no swap needed.\n\n" +
     "### Example: 3 × 3 matrix\n\n" +
     "```\nInput:  [[1,1,0],[1,0,1],[0,0,0]]\nFlip:   [[0,1,1],[1,0,1],[0,0,0]]\nInvert: [[1,0,0],[0,1,0],[1,1,1]]\n```\n\n" +
-    "The two-pointer approach processes each row in a single pass, avoiding a separate reversal step.",
+    "The two-pointer approach processes each row in a single pass, avoiding a separate reversal step.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph Row["Row: [1, 1, 0]"]\n' +
+    '    A["col=0 → 1"] -->|"swap+XOR"| C["col=2 → 0"]\n' +
+    "  end\n" +
+    '  subgraph After["After flip+invert"]\n' +
+    '    D["1→0 flipped+inverted=1"]\n' +
+    '    E["1 (middle, inverted=0)"]\n' +
+    '    F["0→1 flipped+inverted=0"]\n' +
+    "  end\n" +
+    "  A --> D\n" +
+    "  C --> F\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The two pointers meet in the middle — outer pairs are swap-XOR'd in one step, and the middle element (if present) is XOR'd alone.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m × n)`**\n\n" +

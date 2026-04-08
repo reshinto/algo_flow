@@ -10,7 +10,18 @@ export const diameterOfBinaryTreeEducational: EducationalContent = {
     "1. **Height** — the height of this node's subtree (returned up the call stack).\n" +
     "2. **Local diameter** — `leftHeight + rightHeight` represents the longest path through this node.\n\n" +
     "A global variable tracks the maximum local diameter seen across all nodes. " +
-    "The final diameter is recorded when the recursion completes.",
+    "The final diameter is recorded when the recursion completes.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((1)):::visited --> B((2)):::current\n" +
+    "  A --> C((3)):::visited\n" +
+    "  B --> D((4)):::visited\n" +
+    "  B --> E((5)):::visited\n" +
+    "  D --> F((8)):::visited\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "At node 2: leftHeight (through 4 → 8) = 2, rightHeight (through 5) = 1. Local diameter = 3. At node 1: leftHeight = 3, rightHeight = 1, local diameter = 4. The maximum diameter of 4 edges is the answer.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — each node is visited exactly once.\n\n" +

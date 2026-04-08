@@ -16,7 +16,19 @@ export const minSizeSubarraySumEducational: EducationalContent = {
     "### Example with `[2, 3, 1, 2, 4, 3]`, target = `7`\n\n" +
     "- Expand to index 3: `[2,3,1,2]` = 8 ≥ 7 → length 4, shrink → `[3,1,2]` = 6 < 7\n" +
     "- Expand to index 4: `[3,1,2,4]` = 10 ≥ 7 → length 4, shrink → `[1,2,4]` = 7 ≥ 7 → length 3, shrink → `[2,4]` = 6 < 7\n" +
-    "- Expand to index 5: `[2,4,3]` = 9 ≥ 7 → length 3, shrink → `[4,3]` = 7 ≥ 7 → length **2** ✓ — new minimum!",
+    "- Expand to index 5: `[2,4,3]` = 9 ≥ 7 → length 3, shrink → `[4,3]` = 7 ≥ 7 → length **2** ✓ — new minimum!\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["2"] --> B["3"] --> C["1"] --> D["2"] --> E["4"] --> F["3"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "  style F fill:#f59e0b,stroke:#d97706\n" +
+    '  W["[4,3] sum=7\\nlength=2 ✓"] -. min window .-> E\n' +
+    "```\n\n" +
+    "After the full slide, the minimum window is `[4, 3]` at indices 4–5 — just 2 elements summing to 7.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

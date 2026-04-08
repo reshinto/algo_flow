@@ -32,7 +32,21 @@ export const runLengthDecodingEducational: EducationalContent = {
     "        read letter → 'c'\n" +
     "        append 'cccc'\n" +
     "Output: aaabbcccc\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["3a"] -->|"×3"| B["aaa"]\n' +
+    '  C["2b"] -->|"×2"| D["bb"]\n' +
+    '  E["4c"] -->|"×4"| F["cccc"]\n' +
+    '  B --> G["output"]\n' +
+    "  D --> G\n" +
+    "  F --> G\n" +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each encoded group (`count + letter`) expands into a run of repeated characters that are appended to the output buffer.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m)`** where `m` is the length of the decoded output.\n\n" +

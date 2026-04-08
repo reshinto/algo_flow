@@ -15,7 +15,26 @@ export const fibonacciTabulationEducational: EducationalContent = {
     "Index:  0  1  2  3  4  5\n" +
     "Value:  0  1  1  2  3  5\n" +
     "```\n\n" +
-    "Each cell is filled exactly once — no redundant recomputation.",
+    "Each cell is filled exactly once — no redundant recomputation.\n\n" +
+    "### DP Table Fill for F(5)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  F0["F(0)=0"] --> F2["F(2)=1"]\n' +
+    '  F1["F(1)=1"] --> F2\n' +
+    '  F1 --> F3["F(3)=2"]\n' +
+    "  F2 --> F3\n" +
+    '  F2 --> F4["F(4)=3"]\n' +
+    "  F3 --> F4\n" +
+    '  F3 --> F5["F(5)=5"]\n' +
+    "  F4 --> F5\n" +
+    "  style F0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style F1 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style F2 fill:#14532d,stroke:#22c55e\n" +
+    "  style F3 fill:#14532d,stroke:#22c55e\n" +
+    "  style F4 fill:#14532d,stroke:#22c55e\n" +
+    "  style F5 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Cyan nodes are base cases, green nodes are computed table entries, and amber is the target answer being produced.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

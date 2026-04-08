@@ -32,7 +32,21 @@ export const heapExtractMaxEducational: EducationalContent = {
     "           / \\\n" +
     "          3   5\n" +
     "```\n\n" +
-    "Extracted value: `9`. Remaining max-heap: `[8, 7, 6, 3, 5]`.",
+    "Extracted value: `9`. Remaining max-heap: `[8, 7, 6, 3, 5]`.\n\n" +
+    "### Resulting Max-Heap After Extracting 9\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n8((8)) --> n7((7))\n" +
+    "    n8 --> n6((6))\n" +
+    "    n7 --> n3((3))\n" +
+    "    n7 --> n5((5))\n" +
+    "    style n8 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n7 fill:#14532d,stroke:#22c55e\n" +
+    "    style n6 fill:#f59e0b,stroke:#d97706\n" +
+    "    style n3 fill:#14532d,stroke:#22c55e\n" +
+    "    style n5 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The cyan root (8) is the new maximum after 9 was removed. The amber node (6) was the last element (1) that sifted down two levels — it swapped with 8 then with 6 before settling. Green nodes were already in valid positions.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)`**\n\n" +

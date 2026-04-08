@@ -9,7 +9,28 @@ export const subtreeOfAnotherTreeEducational: EducationalContent = {
     "1. **Base cases** — if `subTree` is null, return `true` (empty tree is always a subtree); if `mainTree` is null, return `false`.\n" +
     "2. **Check match** — at every node of `mainTree`, call `isSameTree(mainTree, subTree)`. If it returns `true`, the subtree is found.\n" +
     "3. **Recurse** — if no match at the current node, recursively check `mainTree.left` and `mainTree.right`.\n\n" +
-    "The `isSameTree` helper uses the standard recursive same-tree comparison. For the default input (main tree: 1–7, subtree: left subtree rooted at 2), the algorithm finds a match at node 2.",
+    "The `isSameTree` helper uses the standard recursive same-tree comparison. For the default input (main tree: 1–7, subtree: left subtree rooted at 2), the algorithm finds a match at node 2.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  subgraph Sub [SubTree — searching for]\n" +
+    "    P((2)) --> Q((1))\n" +
+    "    P --> R((3))\n" +
+    "  end\n" +
+    "  subgraph Main [Main Tree]\n" +
+    "    A((4)) --> B((2))\n" +
+    "    A --> C((6))\n" +
+    "    B --> D((1))\n" +
+    "    B --> E((3))\n" +
+    "    C --> F((5))\n" +
+    "    C --> G((7))\n" +
+    "  end\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style P fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "The subtree rooted at 2 (with children 1 and 3) is found within the main tree. `isSameTree` is called at each main-tree node until node 2 produces a full match.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × m)`** where `n` is the main tree size and `m` is the subtree size\n\n" +

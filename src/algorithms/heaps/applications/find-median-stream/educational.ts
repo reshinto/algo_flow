@@ -29,7 +29,26 @@ export const findMedianStreamEducational: EducationalContent = {
     "Insert 1  → 1 ≤ 5, maxHeap: [5, 2, 1] → rebalance, move 5 → minHeap: [5, 8]\n" +
     "           → maxHeap: [2, 1], minHeap: [5, 8]  → median: (2+5)/2 = 3.5\n" +
     "...and so on\n" +
-    "```",
+    "```\n\n" +
+    "### Two-Heap State After Inserting [1, 2, 5, 8]\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '    subgraph maxH[" maxHeap — lower half "]\n' +
+    "        m2((2))\n" +
+    "        m1((1))\n" +
+    "        m2 --> m1\n" +
+    "    end\n" +
+    '    subgraph minH[" minHeap — upper half "]\n' +
+    "        n5((5))\n" +
+    "        n8((8))\n" +
+    "        n5 --> n8\n" +
+    "    end\n" +
+    "    style m2 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n5 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style m1 fill:#14532d,stroke:#22c55e\n" +
+    "    style n8 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The two roots (cyan) are adjacent: maxHeap root=2 and minHeap root=5. With equal sizes, median = (2+5)/2 = 3.5.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)` per insertion**\n\n" +

@@ -13,6 +13,23 @@ export const backspaceStringCompareEducational: EducationalContent = {
     "2. **After processing both strings**, compare the two stacks element by element.\n" +
     "3. **Return true** if both stacks are identical in length and content.\n\n" +
     "### Example trace on `ab#c` vs `ad#c`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph StrA[\"Processing 'ab#c'\"]\n" +
+    '        A1(["push a"]) --> A2(["push b"]) --> A3(["pop b (#)"]) --> A4(["push c"])\n' +
+    '        A4 --> RA(["stack: a c"])\n' +
+    "    end\n" +
+    "    subgraph StrB[\"Processing 'ad#c'\"]\n" +
+    '        B1(["push a"]) --> B2(["push d"]) --> B3(["pop d (#)"]) --> B4(["push c"])\n' +
+    '        B4 --> RB(["stack: a c"])\n' +
+    "    end\n" +
+    '    RA -->|equal?| CMP(["true"])\n' +
+    "    RB -->|equal?| CMP\n" +
+    "    style A3 fill:#f59e0b,stroke:#d97706\n" +
+    "    style B3 fill:#f59e0b,stroke:#d97706\n" +
+    "    style CMP fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Both `'b'` and `'d'` are erased by their following `#`. The resulting stacks `[a, c]` and `[a, c]` are identical, so the comparison returns `true`.\n\n" +
     "```\n" +
     "Processing 'ab#c':      Processing 'ad#c':\n" +
     "char  action  stack     char  action  stack\n" +

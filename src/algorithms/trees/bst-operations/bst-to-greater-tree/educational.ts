@@ -5,7 +5,21 @@ export const bstToGreaterTreeEducational: EducationalContent = {
     "**BST to Greater Tree (Recursive)** transforms each node's value so it equals the sum of all values in the original BST that are **greater than or equal to** the node's value.\n\nThis is achieved by performing a **reverse in-order traversal** (right → root → left) and maintaining a running cumulative sum.",
 
   howItWorks:
-    "Reverse in-order visits nodes from largest to smallest:\n1. Recurse into the right subtree (larger values first).\n2. Add the current node's value to the running sum.\n3. Replace the current node's value with the running sum.\n4. Recurse into the left subtree.\n\nFor the default BST `[1,2,3,4,5,6,7]`, node 7 → 7, node 6 → 13, node 5 → 18, node 4 → 22, etc.",
+    "Reverse in-order visits nodes from largest to smallest:\n1. Recurse into the right subtree (larger values first).\n2. Add the current node's value to the running sum.\n3. Replace the current node's value with the running sum.\n4. Recurse into the left subtree.\n\nFor the default BST `[1,2,3,4,5,6,7]`, node 7 → 7, node 6 → 13, node 5 → 18, node 4 → 22, etc.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4 → 22)) --> B((2 → 27))\n" +
+    "  A --> C((6 → 13))\n" +
+    "  B --> D((1 → 28))\n" +
+    "  B --> E((3 → 25))\n" +
+    "  C --> F((5 → 18))\n" +
+    "  C --> G((7 → 7))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "Reverse in-order processes 7→6→5→4→3→2→1. Running sum accumulates: 7, 13, 18, 22, 25, 27, 28. Each node's new value is the sum of itself plus all greater values in the original BST.",
 
   timeAndSpaceComplexity:
     "**Time: `O(n)`** — every node is visited exactly once.\n\n**Space: `O(h)`** — recursion depth.",

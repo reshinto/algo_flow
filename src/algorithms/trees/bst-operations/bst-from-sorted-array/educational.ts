@@ -10,7 +10,20 @@ export const bstFromSortedArrayEducational: EducationalContent = {
     "3. Create a root node with `array[mid]`.\n" +
     "4. Recursively build the left subtree from `array[left..mid-1]`.\n" +
     "5. Recursively build the right subtree from `array[mid+1..right]`.\n\n" +
-    "The recursion halves the subarray at each level — the same divide-and-conquer strategy as merge sort.",
+    "The recursion halves the subarray at each level — the same divide-and-conquer strategy as merge sort.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)) --> B((2))\n" +
+    "  A --> C((6))\n" +
+    "  B --> D((1))\n" +
+    "  B --> E((3))\n" +
+    "  C --> F((5))\n" +
+    "  C --> G((7))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "Input `[1,2,3,4,5,6,7]`: mid index 3 → root 4. Left half `[1,2,3]` → mid 1 → node 2 with children 1 and 3. Right half `[5,6,7]` → mid 5 → node 6 with children 5 and 7. Result is a perfectly balanced BST of height 3.",
 
   timeAndSpaceComplexity:
     "**Time: `O(n)`** — each element is processed exactly once.\n\n**Space: `O(n)`** — `n` nodes are created; call stack is `O(log n)` for the balanced result.",

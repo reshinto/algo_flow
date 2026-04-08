@@ -13,7 +13,25 @@ export const flattenToLinkedListIterativeEducational: EducationalContent = {
     "5. **Move left to right** — set `current.right = current.left`, then `current.left = null`.\n" +
     "6. **Advance** — move `current` to `current.right` (the former left child).\n" +
     "7. **Repeat** — continue until `current` is null.\n\n" +
-    "This is sometimes called the Morris Flatten because it shares the rightmost-predecessor logic with Morris traversal.",
+    "This is sometimes called the Morris Flatten because it shares the rightmost-predecessor logic with Morris traversal.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((1)) --> B((2))\n" +
+    "  A --> C((5))\n" +
+    "  B --> D((3))\n" +
+    "  B --> E((4))\n" +
+    "  R1((1)) --> R2((2))\n" +
+    "  R2 --> R3((3))\n" +
+    "  R3 --> R4((4))\n" +
+    "  R4 --> R5((5))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style R1 fill:#14532d,stroke:#22c55e\n" +
+    "  style R2 fill:#14532d,stroke:#22c55e\n" +
+    "  style R3 fill:#14532d,stroke:#22c55e\n" +
+    "  style R4 fill:#14532d,stroke:#22c55e\n" +
+    "  style R5 fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "Top: original tree. Bottom: after flattening — all nodes form a right-skewed chain in preorder (1→2→3→4→5), left pointers all null.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

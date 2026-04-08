@@ -11,7 +11,19 @@ export const pathSumEducational: EducationalContent = {
     "2. At a leaf node, check if `remaining === 0`.\n" +
     "3. Otherwise, recurse on both children.\n" +
     "4. Return `true` as soon as any path satisfies the condition.\n\n" +
-    "Early return prevents unnecessary traversal once the target sum is found.",
+    "Early return prevents unnecessary traversal once the target sum is found.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((5)):::root --> B((4)):::visited\n" +
+    "  A --> C((8)):::visited\n" +
+    "  B --> D((11)):::current\n" +
+    "  D --> E((7)):::visited\n" +
+    "  D --> F((2)):::current\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "Target = 22. DFS: 22 → 18 → 7 → leaf 7, remaining=4 ≠ 0. Backtrack to 7 → leaf 2, remaining=0 ✓. Path 5 → 4 → 11 → 2 sums to 22, returns `true` immediately.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** worst case (target not found), `O(depth)` best case (found early).\n\n" +

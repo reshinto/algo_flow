@@ -20,7 +20,19 @@ export const twoPointerSumEducational: EducationalContent = {
     "left=0(1), right=5(11): 1+11=12 > 10 → retreat right\n" +
     "left=0(1), right=4(8):  1+8=9  < 10 → advance left\n" +
     "left=1(2), right=4(8):  2+8=10 == 10 → found! indices (1, 4)\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["1"] --> B["2"] --> C["4"] --> D["6"] --> E["8"] --> F["11"] --> G["15"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#06b6d4,stroke:#0891b2\n" +
+    "  style F fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Array `[1, 2, 4, 6, 8, 11, 15]`, target 10: amber = initial right-pointer positions that were too large (retreated inward). Cyan = the final pair (2 + 8 = 10). Green = elements never reached by either pointer.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

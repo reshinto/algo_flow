@@ -13,7 +13,24 @@ export const flattenToLinkedListEducational: EducationalContent = {
     "5. **Move left to right** — set `right = left`, then set `left = null`.\n" +
     "6. **Find tail** — walk to the rightmost node of the (now-right) former left subtree.\n" +
     "7. **Attach** — connect the saved right subtree at the tail.\n\n" +
-    "After flattening a 7-node tree, the result is: `4 → 2 → 1 → 3 → 6 → 5 → 7` (all right pointers, all left pointers null).",
+    "After flattening a 7-node tree, the result is: `4 → 2 → 1 → 3 → 6 → 5 → 7` (all right pointers, all left pointers null).\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)) --> B((2))\n" +
+    "  A --> C((6))\n" +
+    "  B --> D((1))\n" +
+    "  B --> E((3))\n" +
+    "  C --> F((5))\n" +
+    "  C --> G((7))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "After flattening this 7-node tree, the right-skewed list reads: 4 → 2 → 1 → 3 → 6 → 5 → 7, following preorder traversal order.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

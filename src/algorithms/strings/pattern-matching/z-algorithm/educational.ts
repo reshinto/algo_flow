@@ -19,6 +19,18 @@ export const zAlgorithmEducational: EducationalContent = {
     "Index:    0 1 2 3 4 5 6 7 8 9 ...\n" +
     "Z:        - 1 0 0 7 1 0 0 3 1 ...\n" +
     "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  CONCAT["combine:\\n\\"AAB$AABXAAB\\""]:::start\n' +
+    '  Z4["Z[4]=3\\n\\"AAB\\" matches prefix\\n< pattern length (3)"]:::current\n' +
+    '  Z8["Z[8]=3\\n\\"AAB\\" matches prefix\\n== pattern length!"]:::matched\n' +
+    '  MATCH["match at pos\\n8 - 3 - 1 = 4\\nin original text"]:::matched\n' +
+    "  CONCAT --> Z4 --> Z8 --> MATCH\n" +
+    "  classDef start fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef matched fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "When `Z[pos]` equals the pattern length `m`, the combined string reports a match; the text offset is recovered as `pos - m - 1` (subtracting the pattern and sentinel lengths).\n\n" +
     "**Detect matches** (inline, no second pass):\n\n" +
     "If `Z[pos] == m`, the substring at `pos` in the combined string equals the full pattern, so the match starts at `pos - m - 1` in the text.",
 

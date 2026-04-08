@@ -13,7 +13,23 @@ export const dagShortestPathEducational: EducationalContent = {
     "   * If `tentative < distance(v)`, update `distance(v) = tentative`.\n" +
     "4. After processing all nodes, `distances` holds the shortest path cost from the source to every reachable node.\n\n" +
     "### Why topological order enables one-pass relaxation\n\n" +
-    "Because the graph is acyclic, once a node `u` is processed in topological order, no later node can offer a shorter path back to `u`. This guarantees that when we relax `u`'s edges, `distance(u)` is already finalized.",
+    "Because the graph is acyclic, once a node `u` is processed in topological order, no later node can offer a shorter path back to `u`. This guarantees that when we relax `u`'s edges, `distance(u)` is already finalized.\n\n" +
+    "### DAG Shortest Path: Topological Order Relaxation\n\n" +
+    "```mermaid\n" +
+    "graph LR\n" +
+    '  S((S)) -->|"2"| A((A))\n' +
+    '  S((S)) -->|"6"| B((B))\n' +
+    '  A((A)) -->|"1"| B((B))\n' +
+    '  A((A)) -->|"4"| C((C))\n' +
+    '  B((B)) -->|"-2"| C((C))\n' +
+    '  B((B)) -->|"3"| D((D))\n' +
+    "  style S fill:#06b6d4,stroke:#0891b2\n" +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Topological order: S→A→B→C→D. Processing S relaxes A(2) and B(6). Processing A updates B to min(6, 2+1)=3. Processing B updates C to min(∞, 3+(-2))=1. The negative edge is safe because no cycle exists.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V + E)`**\n\n" +

@@ -32,7 +32,34 @@ export const setSymmetricDifferenceEducational: EducationalContent = {
     "\n" +
     "Phase 3:\n" +
     "  remaining: {1, 2} → result: [5, 6, 1, 2]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph A["Set A"]\n' +
+    '    a1["1"]:::result\n' +
+    '    a2["2"]:::result\n' +
+    '    a3["3"]:::excluded\n' +
+    '    a4["4"]:::excluded\n' +
+    "  end\n" +
+    '  subgraph B["Set B"]\n' +
+    '    b1["3"]:::excluded\n' +
+    '    b2["4"]:::excluded\n' +
+    '    b3["5"]:::result\n' +
+    '    b4["6"]:::result\n' +
+    "  end\n" +
+    '  subgraph R["A △ B"]\n' +
+    '    r1["1"]:::result\n' +
+    '    r2["2"]:::result\n' +
+    '    r3["5"]:::result\n' +
+    '    r4["6"]:::result\n' +
+    "  end\n" +
+    "  A --> R\n" +
+    "  B --> R\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef excluded fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Shared elements 3 and 4 (amber) are eliminated from both sides. Only A-exclusive elements (1, 2) and B-exclusive elements (5, 6) appear in the symmetric difference (green).",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + m)`**\n\n" +

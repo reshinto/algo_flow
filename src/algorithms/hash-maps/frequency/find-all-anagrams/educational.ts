@@ -21,7 +21,20 @@ export const findAllAnagramsEducational: EducationalContent = {
     "...\n" +
     'window [6..8] = "bac" → { b:1, a:1, c:1 } == pattern_freq → record 6\n' +
     "result: [0, 6]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["pattern = \'abc\'"]:::input --> B["patFreq: {a:1,b:1,c:1}"]\n' +
+    "  B --> C[\"window 'cba' == patFreq\"]:::found\n" +
+    '  C --> D["record index 0"]:::found\n' +
+    "  D --> E[\"slide → 'bae' ≠ patFreq\"]:::checking\n" +
+    "  E --> F[\"slide → 'bac' == patFreq\"]:::found\n" +
+    '  F --> G["record index 6 → [0,6]"]:::found\n' +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef checking fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef found fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The window slides one character at a time — one character enters on the right and one leaves on the left — so each map comparison reflects exactly `k` characters.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

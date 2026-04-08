@@ -23,7 +23,21 @@ export const multisetUnionEducational: EducationalContent = {
     "  3 → max(3, 1) = 3 copies\n" +
     "\n" +
     "result: [1, 1, 1, 2, 2, 3, 3, 3]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["A: {1×2, 2×1, 3×3}"]:::input\n' +
+    '  B["B: {1×3, 2×2, 3×1}"]:::input\n' +
+    '  M1["1 → max(2,3) = 3"]:::current\n' +
+    '  M2["2 → max(1,2) = 2"]:::current\n' +
+    '  M3["3 → max(3,1) = 3"]:::current\n' +
+    '  R["result: [1,1,1,2,2,3,3,3]"]:::result\n' +
+    "  A & B --> M1 & M2 & M3 --> R\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The max of each element's frequency across both multisets determines how many copies appear in the union. Element 1 appears 2× in A and 3× in B, so the result takes the larger count of 3.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + m)`**\n\n" +

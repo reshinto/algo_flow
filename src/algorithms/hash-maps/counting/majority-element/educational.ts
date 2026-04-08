@@ -20,7 +20,18 @@ export const majorityElementEducational: EducationalContent = {
     "index 5: 2 → count 3\n" +
     "index 6: 2 → count 4 > 3 → return 2\n" +
     "```\n\n" +
-    "Because a majority element is guaranteed to exist, the scan always terminates with a valid answer.",
+    "Because a majority element is guaranteed to exist, the scan always terminates with a valid answer.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["[2,2,1,1,1,2,2]"]:::input --> B["threshold = 3"]\n' +
+    '  B --> C["2→1, 2→2, 1→1, 1→2, 1→3, 2→3"]:::checking\n' +
+    '  C --> D["index 6: 2→4 > 3"]:::checking\n' +
+    '  D --> E["return 2"]:::found\n' +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef checking fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef found fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The early-exit check fires the moment any count crosses `⌊n/2⌋`, so the scan often terminates before reaching the end of the array.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

@@ -18,7 +18,20 @@ export const knapsack01Educational: EducationalContent = {
     "After item 2 (w=4, v=5): dp = [0, 0, 3, 4, 5, 7, 8, 9, 9]\n" +
     "After item 3 (w=5, v=6): dp = [0, 0, 3, 4, 5, 7, 8, 9, 10]\n" +
     "```\n\n" +
-    "Final answer: `dp[8] = 10` (items 0 and 3 with total weight 7, value 9 — or items 0 and 2 with weight 6, value 8 — the optimum is items 1 and 3: weight 8, value 10).",
+    "Final answer: `dp[8] = 10` (items 0 and 3 with total weight 7, value 9 — or items 0 and 2 with weight 6, value 8 — the optimum is items 1 and 3: weight 8, value 10).\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["dp[0..8] = 0"]:::base\n' +
+    '  B["item 0: w=2,v=3\\ndp[2]=3, dp[3]=3"]:::cached\n' +
+    '  C["item 1: w=3,v=4\\ndp[3]=4, dp[5]=7"]:::cached\n' +
+    '  D["item 2: w=4,v=5\\ndp[4]=5, dp[6]=8"]:::cached\n' +
+    '  E["item 3: w=5,v=6\\ndp[8]=10 ✓"]:::current\n' +
+    "  A --> B --> C --> D --> E\n" +
+    "  classDef base fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef cached fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Each item pass sweeps right-to-left through the table, locking in the best value achievable at every capacity without reusing items.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × capacity)`**\n\n" +

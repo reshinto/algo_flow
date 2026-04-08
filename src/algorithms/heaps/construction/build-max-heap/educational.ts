@@ -26,7 +26,21 @@ export const buildMaxHeapEducational: EducationalContent = {
     "         / \\\n" +
     "        1   3\n" +
     "```\n\n" +
-    "Array form: `[9, 7, 5, 1, 3]` — every parent ≥ its children.",
+    "Array form: `[9, 7, 5, 1, 3]` — every parent ≥ its children.\n\n" +
+    "### Final Max-Heap Structure\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n9((9)) --> n7((7))\n" +
+    "    n9 --> n5((5))\n" +
+    "    n7 --> n1((1))\n" +
+    "    n7 --> n3((3))\n" +
+    "    style n9 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n7 fill:#14532d,stroke:#22c55e\n" +
+    "    style n5 fill:#14532d,stroke:#22c55e\n" +
+    "    style n1 fill:#14532d,stroke:#22c55e\n" +
+    "    style n3 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The cyan root (9) is the global maximum. All green nodes are settled — sift-down pushed 1 and 3 to the bottom while 9 and 7 rose to satisfy the max-heap property.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

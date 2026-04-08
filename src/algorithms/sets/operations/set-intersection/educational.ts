@@ -23,7 +23,33 @@ export const setIntersectionEducational: EducationalContent = {
     "  B[2]=6  → missing → skip\n" +
     "  B[3]=8  → found   → result: [2, 4, 8]\n" +
     "  B[4]=10 → missing → skip\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph A["Set A"]\n' +
+    '    a1["1"]:::input\n' +
+    '    a2["2"]:::input\n' +
+    '    a3["4"]:::input\n' +
+    '    a4["8"]:::input\n' +
+    "  end\n" +
+    '  subgraph B["Set B"]\n' +
+    '    b1["2"]:::input\n' +
+    '    b2["4"]:::input\n' +
+    '    b3["6"]:::excluded\n' +
+    '    b4["8"]:::input\n' +
+    "  end\n" +
+    '  subgraph R["A ∩ B"]\n' +
+    '    r1["2"]:::result\n' +
+    '    r2["4"]:::result\n' +
+    '    r3["8"]:::result\n' +
+    "  end\n" +
+    "  A --> R\n" +
+    "  B --> R\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef excluded fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Only elements present in both A and B (cyan in both subgraphs) appear in the intersection (green). Elements only in B — such as 6 — are amber and skipped.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + m)`**\n\n" +

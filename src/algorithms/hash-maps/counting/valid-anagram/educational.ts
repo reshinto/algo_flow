@@ -15,7 +15,19 @@ export const validAnagramEducational: EducationalContent = {
     "After phase 1: { a:3, n:1, g:1, r:1, m:1 }\n" +
     "Phase 2 consumes each char of nagaram → all counts reach 0 → true\n" +
     "```\n\n" +
-    "A length check short-circuits immediately when the strings differ in size.",
+    "A length check short-circuits immediately when the strings differ in size.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["textA = \'anagram\'"]:::input --> B["Phase 1: {a:3, n:1, g:1, r:1, m:1}"]\n' +
+    "  B --> C[\"textB = 'nagaram'\"]:::input\n" +
+    '  C --> D["Phase 2: consume each char"]:::checking\n' +
+    '  D --> E["all counts → 0"]:::found\n' +
+    '  E --> F["return true"]:::found\n' +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef checking fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef found fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Phase 1 increments counts for `textA`; Phase 2 decrements for `textB`. If any count goes negative, `textB` introduced a character not in `textA` — the strings are not anagrams.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

@@ -15,7 +15,20 @@ export const bellmanFordGridEducational: EducationalContent = {
     "Any shortest path in a graph with V vertices contains at most V-1 edges.\n" +
     "After iteration k, all paths of length ≤ k are correctly computed.\n" +
     "```\n\n" +
-    '> *Each iteration "pushes" shortest-path knowledge one more hop away from the source.*',
+    '> *Each iteration "pushes" shortest-path knowledge one more hop away from the source.*\n\n' +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  S["Start S\\ndist=0"] -->|"relax edge +1"| A["Cell A\\ndist=1"]\n' +
+    '  A -->|"relax edge +1"| B["Cell B\\ndist=2"]\n' +
+    '  B -->|"relax edge +1"| G["Goal G\\ndist=3"]\n' +
+    '  S -->|"longer path"| C["Cell C\\ndist=1"]\n' +
+    '  C -->|"not improved"| G\n' +
+    "  style S fill:#06b6d4,stroke:#0891b2\n" +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "After each full pass over all edges, shortest-path knowledge propagates one hop further from the source; after V−1 passes every reachable cell holds its true minimum distance.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V × E)`**\n\n" +

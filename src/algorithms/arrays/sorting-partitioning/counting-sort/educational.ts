@@ -26,7 +26,25 @@ export const countingSortEducational: EducationalContent = {
     "  count[4]=1 → write 4 once\n" +
     "\n" +
     "Output: [1, 2, 2, 3, 4]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  I1["4"] --> I2["2"] --> I3["2"] --> I4["3"] --> I5["1"]\n' +
+    "  style I1 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style I2 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style I3 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style I4 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style I5 fill:#06b6d4,stroke:#0891b2\n" +
+    '  C["count\\n[0,1,2,1,1]"] -. frequencies .-> I2\n' +
+    '  O1["1"] --> O2["2"] --> O3["2"] --> O4["3"] --> O5["4"]\n' +
+    "  style O1 fill:#14532d,stroke:#22c55e\n" +
+    "  style O2 fill:#14532d,stroke:#22c55e\n" +
+    "  style O3 fill:#14532d,stroke:#22c55e\n" +
+    "  style O4 fill:#14532d,stroke:#22c55e\n" +
+    "  style O5 fill:#14532d,stroke:#22c55e\n" +
+    "  C -. reconstruct .-> O1\n" +
+    "```\n\n" +
+    "Cyan = unsorted input, count array records frequencies, green = reconstructed sorted output.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + k)`**\n\n" +

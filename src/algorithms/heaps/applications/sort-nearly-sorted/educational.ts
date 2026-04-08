@@ -18,7 +18,19 @@ export const sortNearlySortedEducational: EducationalContent = {
     "Process index 5 (value=10): extract min=3 → result=[2,3], insert 10 → heap=[5, 6, 8, 10]\n" +
     "Process index 6 (value=9): extract min=5 → result=[2,3,5], insert 9 → heap=[6, 10, 8, 9]\n\n" +
     "Drain: extract 6, 8, 9, 10 → result=[2,3,5,6,8,9,10]\n" +
-    "```",
+    "```\n\n" +
+    "### Sliding Min-Heap (size k+1=4) — After Seeding with [6, 5, 3, 2]\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    h2((2)) --> h5((5))\n" +
+    "    h2 --> h3((3))\n" +
+    "    h5 --> h6((6))\n" +
+    "    style h2 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style h3 fill:#14532d,stroke:#22c55e\n" +
+    "    style h5 fill:#14532d,stroke:#22c55e\n" +
+    "    style h6 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "The root (cyan) is 2 — the guaranteed next sorted output, since no unseen element can be smaller within the k=3 displacement bound. The amber node (6) is farthest from its sorted position.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log k)`**\n\n" +

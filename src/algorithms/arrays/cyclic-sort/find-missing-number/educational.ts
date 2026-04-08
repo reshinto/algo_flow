@@ -17,7 +17,20 @@ export const findMissingNumberEducational: EducationalContent = {
     "Array pass:  0^3^0^1 = 3\n" +
     "Combined:    0^1^2^3^3^0^1 = 2  ✓\n" +
     "```\n\n" +
-    "**Alternative — Gauss Sum:** Compute `expected = n*(n+1)/2`, subtract the actual array sum. Returns the same answer arithmetically but can overflow for very large `n` in languages without big integers.",
+    "**Alternative — Gauss Sum:** Compute `expected = n*(n+1)/2`, subtract the actual array sum. Returns the same answer arithmetically but can overflow for very large `n` in languages without big integers.\n\n" +
+    "### XOR Cancellation Diagram (`[3, 0, 1]`, missing = 2)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  R["range\\n0^1^2^3"] -->|"XOR"| A["arr[0]=3"]\n' +
+    '  A -->|"3 cancels"| B["arr[1]=0"]\n' +
+    '  B -->|"0 cancels"| C["arr[2]=1"]\n' +
+    '  C -->|"1 cancels"| D["result=2"]\n' +
+    "  style R fill:#06b6d4,stroke:#0891b2\n" +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Values `0`, `1`, and `3` appear in both the range and the array, so they cancel in pairs. Only `2`, absent from the array, survives in the accumulator.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

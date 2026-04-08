@@ -20,7 +20,20 @@ export const minCostClimbingStairsTabulationEducational: EducationalContent = {
     "Cost:  10  15  20   —\n" +
     "dp:     0   0  10  15\n" +
     "```\n\n" +
-    "Answer: `15` (start at step 1 → pay 15 → jump to top).",
+    "Answer: `15` (start at step 1 → pay 15 → jump to top).\n\n" +
+    "### DP Table for costs=[10,15,20]\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  S0["dp[0]=0 free start"] --> S2["dp[2]=10 from s0+cost10"]\n' +
+    '  S1["dp[1]=0 free start"] --> S2\n' +
+    '  S1 --> S3["dp[3]=15 from s1+cost15"]\n' +
+    "  S2 --> S3\n" +
+    "  style S0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style S1 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style S2 fill:#14532d,stroke:#22c55e\n" +
+    "  style S3 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Cyan nodes are the free starting positions, green nodes are filled cost cells, and the amber node is the top — the minimum of arriving from one or two steps below.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

@@ -9,7 +9,33 @@ export const mergeBinaryTreesEducational: EducationalContent = {
     "1. **Tree A is null** — return Tree B's node directly.\n" +
     "2. **Tree B is null** — return Tree A's node directly.\n" +
     "3. **Both exist** — sum their values into Tree A's node, then recursively merge left and right subtrees.\n\n" +
-    "The algorithm modifies Tree A in-place. After merging the default trees (A: values 1–7, B: values 10–70), every node value in the result is the sum of the corresponding positions.",
+    "The algorithm modifies Tree A in-place. After merging the default trees (A: values 1–7, B: values 10–70), every node value in the result is the sum of the corresponding positions.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  subgraph Result [Result]\n" +
+    "    R((11)) --> S((22))\n" +
+    "    R --> T((33))\n" +
+    "    S --> U((44))\n" +
+    "    S --> V((55))\n" +
+    "  end\n" +
+    "  subgraph B [Tree B]\n" +
+    "    P((10)) --> Q((20))\n" +
+    "    P --> BB((30))\n" +
+    "    Q --> BL((40))\n" +
+    "    Q --> BR((50))\n" +
+    "  end\n" +
+    "  subgraph A [Tree A]\n" +
+    "    A((1)) --> C((2))\n" +
+    "    A --> D((3))\n" +
+    "    C --> E((4))\n" +
+    "    C --> F((5))\n" +
+    "  end\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style P fill:#06b6d4,stroke:#0891b2\n" +
+    "  style R fill:#14532d,stroke:#22c55e\n" +
+    "  style S fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "Each overlapping node sums its values (1+10=11, 2+20=22, etc.). Tree A is modified in-place; no new tree allocation is needed.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(min(n, m))`** where `n` and `m` are the sizes of the two trees\n\n" +

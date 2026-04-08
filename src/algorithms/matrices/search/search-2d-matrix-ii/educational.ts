@@ -22,7 +22,22 @@ export const search2DMatrixIIEducational: EducationalContent = {
     "10 13 14 17 24\n" +
     "18 21 23 26 30\n" +
     "```\n\n" +
-    "Start at [0][4] = 15 > 5 → move left. [0][3] = 11 > 5 → left. [0][2] = 7 > 5 → left. [0][1] = 4 < 5 → down. [1][1] = 5 = target → found!",
+    "Start at [0][4] = 15 > 5 → move left. [0][3] = 11 > 5 → left. [0][2] = 7 > 5 → left. [0][1] = 4 < 5 → down. [1][1] = 5 = target → found!\n\n" +
+    "### Diagram: staircase path searching for target = 5\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  Start["Start (0,4)=15 > 5"]\n' +
+    '  Start -->|"move left"| S1["(0,3)=11 > 5"]\n' +
+    '  S1 -->|"move left"| S2["(0,2)=7 > 5"]\n' +
+    '  S2 -->|"move left"| S3["(0,1)=4 < 5"]\n' +
+    '  S3 -->|"move down"| S4["(1,1)=5 = target"]\n' +
+    '  S4 --> Found["Return true"]\n' +
+    "  style Start fill:#06b6d4,stroke:#0891b2\n" +
+    "  style S3 fill:#f59e0b,stroke:#d97706\n" +
+    "  style S4 fill:#f59e0b,stroke:#d97706\n" +
+    "  style Found fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each step either eliminates a full column (move left when too large) or a full row (move down when too small), guaranteeing O(m + n) worst-case steps.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m + n)`**\n\n" +

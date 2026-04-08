@@ -10,7 +10,18 @@ export const sumOfLeftLeavesIterativeEducational: EducationalContent = {
     "2. Pop `[current, isLeft]`.\n" +
     "3. If it's a left leaf (`isLeft && !left && !right`), add to sum.\n" +
     "4. Push right child with `isLeft=false` and left child with `isLeft=true`.\n" +
-    "5. Continue until the stack empties.",
+    "5. Continue until the stack empties.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((3)):::root --> B((9)):::current\n" +
+    "  A --> C((20)):::visited\n" +
+    "  C --> D((15)):::current\n" +
+    "  C --> E((7)):::visited\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "Node 9 is a left leaf (isLeft=true, no children) — adds 9 to sum. Node 15 is a left leaf — adds 15. Node 7 is a right leaf (isLeft=false) — skipped. Total sum = 24.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — all nodes are visited.\n\n" +

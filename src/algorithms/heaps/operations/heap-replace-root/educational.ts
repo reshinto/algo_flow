@@ -38,7 +38,25 @@ export const heapReplaceRootEducational: EducationalContent = {
     "     10  9 8  6\n\n" +
     "Index 3 (value 10): no children in range; stop.\n" +
     "Result: replacedValue=1, newHeap=[3, 7, 5, 10, 9, 8, 6]\n" +
-    "```",
+    "```\n\n" +
+    "### Diagram: After replacing root 1 with 10\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n3((3)) --> n7((7))\n" +
+    "    n3 --> n5((5))\n" +
+    "    n7 --> n10((10))\n" +
+    "    n7 --> n9((9))\n" +
+    "    n5 --> n8((8))\n" +
+    "    n5 --> n6((6))\n" +
+    "    style n3 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n10 fill:#f59e0b,stroke:#d97706\n" +
+    "    style n7 fill:#14532d,stroke:#22c55e\n" +
+    "    style n5 fill:#14532d,stroke:#22c55e\n" +
+    "    style n9 fill:#14532d,stroke:#22c55e\n" +
+    "    style n8 fill:#14532d,stroke:#22c55e\n" +
+    "    style n6 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The new root (cyan, value 3) settled after a single sift-down pass. The incoming value 10 (amber) sank two levels to a leaf position, replacing the extracted minimum 1 in one O(log n) pass.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)`**\n\n" +

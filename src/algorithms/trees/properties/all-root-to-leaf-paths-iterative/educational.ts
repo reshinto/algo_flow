@@ -10,7 +10,18 @@ export const allRootToLeafPathsIterativeEducational: EducationalContent = {
     "2. Pop `[current, pathSoFar]`.\n" +
     "3. At a leaf, push `pathSoFar` to results.\n" +
     "4. Push right child with `pathSoFar + '->' + right.value`, then left child similarly.\n" +
-    "5. Continue until the stack empties.",
+    "5. Continue until the stack empties.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((1)):::root --> B((2)):::visited\n" +
+    "  A --> C((3)):::visited\n" +
+    "  B --> D((4)):::visited\n" +
+    "  B --> E((5)):::visited\n" +
+    "  C --> F((6)):::visited\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    'Stack pops node 1 → pushes nodes 2 and 3. Popping node 2 → pushes leaves 4 and 5 with paths `"1->2->4"` and `"1->2->5"`. Three completed paths are collected: `"1->2->4"`, `"1->2->5"`, and `"1->3->6"`.',
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n * h)`** — same as the recursive version.\n\n" +

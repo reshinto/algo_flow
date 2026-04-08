@@ -18,7 +18,21 @@ export const hammingDistanceEducational: EducationalContent = {
     "pattern: k a t h r i n\n" +
     "diff:    . . ✗ ✗ ✗ . .\n" +
     "```\n" +
-    "Hamming distance = **3** (positions 2, 3, and 4 differ).",
+    "Hamming distance = **3** (positions 2, 3, and 4 differ).\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  P0["k == k ✓"]:::matched\n' +
+    '  P1["a == a ✓"]:::matched\n' +
+    '  P2["r ≠ t ✗\\ndist=1"]:::current\n' +
+    '  P3["o ≠ h ✗\\ndist=2"]:::current\n' +
+    '  P4["l ≠ r ✗\\ndist=3"]:::current\n' +
+    '  P5["i == i ✓"]:::matched\n' +
+    '  P6["n == n ✓\\n→ distance: 3"]:::matched\n' +
+    "  P0 --> P1 --> P2 --> P3 --> P4 --> P5 --> P6\n" +
+    "  classDef matched fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    'Scanning `"karolin"` vs `"kathryn"` position by position: matching characters are counted as equal, differing characters increment the distance counter — no skipping or backtracking.',
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

@@ -25,7 +25,24 @@ export const longestWordInTrieEducational: EducationalContent = {
     "     - Otherwise, form `nextWord = wordSoFar + char`.\n" +
     "     - If `nextWord` is longer than the current best (or same length but lexicographically smaller), update the result.\n" +
     "     - Push `(child, nextWord)` onto the stack to continue deeper.\n" +
-    "3. Return the longest word found.",
+    "3. Return the longest word found.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  R((root)) -->|w| W((w ✓))\n" +
+    "  W -->|o| WO((wo ✓))\n" +
+    "  WO -->|r| WOR((wor ✓))\n" +
+    "  WOR -->|l| WORL((worl ✓))\n" +
+    "  WORL -->|d| WORLD((world ✓))\n" +
+    "  WO -->|e| WOE((woe ✗))\n" +
+    "  style R fill:#06b6d4,stroke:#0891b2\n" +
+    "  style W fill:#14532d,stroke:#22c55e\n" +
+    "  style WO fill:#14532d,stroke:#22c55e\n" +
+    "  style WOR fill:#14532d,stroke:#22c55e\n" +
+    "  style WORL fill:#14532d,stroke:#22c55e\n" +
+    "  style WORLD fill:#14532d,stroke:#22c55e\n" +
+    "  style WOE fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "DFS follows only nodes marked `isEnd` (green), so the path `w→wo→wor→worl→world` is valid and wins. The `woe` branch (amber, not marked `isEnd`) is skipped — breaking the incremental-word constraint.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × m)`**\n\n" +

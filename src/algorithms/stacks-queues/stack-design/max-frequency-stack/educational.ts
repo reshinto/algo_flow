@@ -15,6 +15,24 @@ export const maxFrequencyStackEducational: EducationalContent = {
     "2. Decrement `freqMap[popped]`.\n" +
     "3. If `freqStacks[maxFrequency]` is now empty, decrement `maxFrequency`.\n\n" +
     "### Example trace on `[5, 7, 5, 7, 4, 5]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph After pushing all 6\n" +
+    '        F3["freq 3: [5]"]\n' +
+    '        F2["freq 2: [5, 7]"]\n' +
+    '        F1["freq 1: [5, 7, 4]"]\n' +
+    '        MX["maxFreq = 3"]\n' +
+    "    end\n" +
+    "    subgraph Pop order\n" +
+    '        P1["pop → 5"] --> P2["pop → 7"] --> P3["pop → 5"]\n' +
+    "    end\n" +
+    '    F3 -->|"top of maxFreq stack"| P1\n' +
+    "    style F3 fill:#f59e0b,stroke:#d97706\n" +
+    "    style MX fill:#06b6d4,stroke:#0891b2\n" +
+    "    style P1 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The pop always takes from the highest-frequency stack. When that stack empties, `maxFreq` " +
+    "decrements and the next tier becomes the new target.\n\n" +
     "```\n" +
     "Push 5 → freq[5]=1, maxFreq=1, freqStacks={1:[5]}\n" +
     "Push 7 → freq[7]=1, maxFreq=1, freqStacks={1:[5,7]}\n" +

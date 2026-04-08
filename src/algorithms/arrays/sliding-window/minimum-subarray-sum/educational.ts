@@ -21,7 +21,21 @@ export const minimumSubarraySumEducational: EducationalContent = {
     "| 4 | -1 | -6 (extend) | **-6** ✓ |\n" +
     "| 5 | 7 | 1 (restart) | -6 |\n" +
     "| 6 | -5 | -5 (restart) | -6 |\n\n" +
-    "Result: `minSum = -6`, subarray `[-4, 2, -3, -1]` at indices `[1, 4]`.",
+    "Result: `minSum = -6`, subarray `[-4, 2, -3, -1]` at indices `[1, 4]`.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["3"] --> B["-4"] --> C["2"] --> D["-3"] --> E["-1"] --> F["7"] --> G["-5"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "  style F fill:#06b6d4,stroke:#0891b2\n" +
+    "  style G fill:#06b6d4,stroke:#0891b2\n" +
+    '  W["sum = -6"] -. min subarray .-> B\n' +
+    "```\n\n" +
+    "The amber region `[-4, 2, -3, -1]` is the minimum-sum subarray with sum **-6**. " +
+    "Index 0 (`3`) starts a worse subarray; indices 5–6 are not part of the optimal window.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

@@ -22,7 +22,21 @@ export const perfectSquaresEducational: EducationalContent = {
     "- `S(4) = 1` because `4 = 2²`\n" +
     "- `S(9) = 1` because `9 = 3²`\n" +
     "- `S(12) = 3` because `12 = 4 + 4 + 4`\n\n" +
-    "Each cell is filled exactly once — all previously computed values are reused directly.",
+    "Each cell is filled exactly once — all previously computed values are reused directly.\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  A["dp[0]=0"]:::base\n' +
+    '  B["dp[4]=1\\n(2²)"]:::cached\n' +
+    '  C["dp[8]=2\\n(4+4)"]:::cached\n' +
+    '  D["dp[9]=1\\n(3²)"]:::cached\n' +
+    '  E["dp[12]=3\\n(4+4+4)"]:::current\n' +
+    "  A --> B --> C --> E\n" +
+    "  A --> D\n" +
+    "  classDef base fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef cached fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "`dp[12]` checks all squares ≤ 12 (1, 4, 9) and finds `dp[12-4]+1 = dp[8]+1 = 3` as the minimum.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n · √n)`**\n\n" +

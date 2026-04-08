@@ -15,7 +15,21 @@ export const quickselectEducational: EducationalContent = {
     "   - If `targetIndex < pivotIndex`: recurse on the **left** sub-range `[rangeStart, pivotIndex - 1]`.\n" +
     "   - If `targetIndex > pivotIndex`: recurse on the **right** sub-range `[pivotIndex + 1, rangeEnd]`.\n" +
     "4. Each recursive call processes a strictly smaller range.\n\n" +
-    "The Lomuto partition itself scans the range once from left to right, using a `boundaryIndex` to separate elements ≤ pivot from those > pivot.",
+    "The Lomuto partition itself scans the range once from left to right, using a `boundaryIndex` to separate elements ≤ pivot from those > pivot.\n\n" +
+    "### Example: find 3rd smallest in `[7, 2, 1, 6, 5]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["1"] --> B["2"] --> C["5"] --> D["6"] --> E["7"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#06b6d4,stroke:#0891b2\n" +
+    "  style E fill:#06b6d4,stroke:#0891b2\n" +
+    '  K["k=3 → index 2"] -. target .-> C\n' +
+    '  P["pivot lands\\nat index 2"] -. done .-> C\n' +
+    "```\n\n" +
+    "After one partition pass, pivot `5` lands at index 2 (0-based) — exactly the 3rd smallest. " +
+    "Green elements are confirmed smaller; cyan elements are confirmed larger. No further recursion needed.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)` average, `O(n²)` worst**\n\n" +

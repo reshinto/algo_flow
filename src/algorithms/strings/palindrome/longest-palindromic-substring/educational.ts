@@ -26,7 +26,22 @@ export const longestPalindromicSubstringEducational: EducationalContent = {
     "         ↑     ↑      a == a  ✓  radius = 1\n" +
     "      ↑           ↑   b != d  ✗  stop\n" +
     '  → palindrome: "bab" (length 3)\n' +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "  C[\"center 'b'\\n(index 2)\"]:::start\n" +
+    "  L1[\"left 'a'\\n(index 1)\"]:::current\n" +
+    "  R1[\"right 'a'\\n(index 3)\"]:::current\n" +
+    '  M["a == a ✓\\nexpand"]:::matched\n' +
+    "  L2[\"left 'b'\\n(index 0)\"]:::current\n" +
+    "  R2[\"right 'd'\\n(index 4)\"]:::current\n" +
+    '  STOP["b ≠ d ✗\\nstop → \\"bab\\""]:::matched\n' +
+    "  C --> L1 & R1 --> M --> L2 & R2 --> STOP\n" +
+    "  classDef start fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef matched fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    'Expanding from center `\'b\'` (index 2) in `"babad"`: the first outward pair `a == a` matches and extends the radius, while the second pair `b ≠ d` stops expansion, confirming `"bab"` as the longest palindrome.',
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

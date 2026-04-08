@@ -24,7 +24,23 @@ export const canJumpEducational: EducationalContent = {
     "nums:   3  2  1  0  4\n" +
     "dp:     1  1  1  1  0   → false\n" +
     "```\n\n" +
-    "Index 3 has `nums[3] = 0` and every path leads through it, so index 4 is unreachable.",
+    "Index 3 has `nums[3] = 0` and every path leads through it, so index 4 is unreachable.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["dp[0]=1\\nnums=2"]:::base\n' +
+    '  B["dp[1]=1\\nreached from 0"]:::cached\n' +
+    '  C["dp[2]=1\\nreached from 0"]:::cached\n' +
+    '  D["dp[3]=1\\nreached from 1"]:::cached\n' +
+    '  E["dp[4]=1\\nreached from 1 ✓"]:::current\n' +
+    "  A --> B\n" +
+    "  A --> C\n" +
+    "  B --> D\n" +
+    "  B --> E\n" +
+    "  classDef base fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef cached fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "For `[2,3,1,1,4]`: index 1 has jump 3, so it reaches indices 2, 3, and 4 in a single leap — `dp[4] = 1`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

@@ -21,7 +21,19 @@ export const reverseStringEducational: EducationalContent = {
     "               ^\n" +
     "Step 3:  (centre reached — done)\n" +
     "Output:  o  l  l  e  h\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  S0["[h, e, l, l, o]\\nleft=0 right=4"]:::start\n' +
+    '  S1["swap h ↔ o\\n[o, e, l, l, h]\\nleft=1 right=3"]:::current\n' +
+    '  S2["swap e ↔ l\\n[o, l, l, e, h]\\nleft=2 right=2"]:::current\n' +
+    '  S3["left >= right\\n→ done"]:::matched\n' +
+    "  S0 --> S1 --> S2 --> S3\n" +
+    "  classDef start fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef matched fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    'Two pointers march inward through `"hello"`, swapping outer pairs in place until they meet at the centre — no extra buffer needed.',
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

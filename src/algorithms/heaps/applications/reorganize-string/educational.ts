@@ -24,7 +24,17 @@ export const reorganizeStringEducational: EducationalContent = {
     "Step 4: Extract 'b' (freq=1). result='abab'. Heap empty. Hold nothing.\n" +
     "Step 5: Extract 'c' (freq=1). result='ababc'.\n\n" +
     "Output: 'ababc'\n" +
-    "```",
+    "```\n\n" +
+    '### Max-Heap of (frequency, char) — Initial State for "aabbc"\n\n' +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    fa(\"'a'\\nfreq=2\") --> fb(\"'b'\\nfreq=2\")\n" +
+    "    fa --> fc(\"'c'\\nfreq=1\")\n" +
+    "    style fa fill:#f59e0b,stroke:#d97706\n" +
+    "    style fb fill:#14532d,stroke:#22c55e\n" +
+    "    style fc fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The root (amber) is the most frequent character — 'a' with freq=2. It is extracted first and held aside after appending, preventing two consecutive 'a's.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log k)`** where k ≤ 26 (number of distinct characters)\n\n" +

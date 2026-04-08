@@ -18,7 +18,20 @@ export const subarrayProductLessThanKEducational: EducationalContent = {
     "| 1 | `[10,5]` | 50 | 2 | 3 |\n" +
     "| 2 | `[10,5,2]` → shrink → `[5,2]` | 100→10 | 2 | 5 |\n" +
     "| 3 | `[5,2,6]` | 60 | 3 | 8 |\n\n" +
-    "Wait — `[10,5,2]` = 100 ≥ 100, so shrink: `[5,2]` = 10, then add `[5,2,6]` = 60 < 100. Result: **8** subarrays (LeetCode 713 answer is also 16 for the full 6-element array).",
+    "Wait — `[10,5,2]` = 100 ≥ 100, so shrink: `[5,2]` = 10, then add `[5,2,6]` = 60 < 100. Result: **8** subarrays (LeetCode 713 answer is also 16 for the full 6-element array).\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["10"] --> B["5"] --> C["2"] --> D["6"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    '  L["leftPointer"] -. after shrink .-> B\n' +
+    '  R["rightPointer"] -. expanded .-> D\n' +
+    '  P["product=60 < 100\\n+3 subarrays"] -. count .-> C\n' +
+    "```\n\n" +
+    "After `10` is evicted (product 100 ≥ threshold), the valid window is `[5, 2, 6]` with product 60. " +
+    "All 3 subarrays ending at index 3 (`[6]`, `[2,6]`, `[5,2,6]`) are counted in one step.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

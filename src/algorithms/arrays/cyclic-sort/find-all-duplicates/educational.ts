@@ -22,7 +22,19 @@ export const findAllDuplicatesEducational: EducationalContent = {
     "i=6: value=3 → map=2. arr[2]=-2 (neg) → DUPLICATE: 3\n" +
     "i=7: value=1 → map=0. arr[0]=4 (pos) → negate → arr[0]=-4\n" +
     "Result: [2, 3]\n" +
-    "```",
+    "```\n\n" +
+    "### Sign-Negation Diagram (simplified on `[4, 3, 2, 3]`)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["i=0 val=4"] -->|"mark idx 3"| B["arr[3]: 3→-3"]\n' +
+    '  C["i=1 val=3"] -->|"mark idx 2"| D["arr[2]: 2→-2"]\n' +
+    '  E["i=2 val=2"] -->|"mark idx 1"| F["arr[1]: 3→-3"]\n' +
+    '  G["i=3 val=3"] -->|"idx 2 already neg"| H["DUPLICATE: 3"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style G fill:#f59e0b,stroke:#d97706\n" +
+    "  style H fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "When a mapped index is already negative, the value that maps to it has been seen before — it is a duplicate. The sign acts as a visited flag without extra memory.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

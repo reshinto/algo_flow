@@ -10,7 +10,18 @@ export const maximumDepthEducational: EducationalContent = {
     "1. **Recurses left** — compute depth of the left subtree.\n" +
     "2. **Recurses right** — compute depth of the right subtree.\n" +
     "3. **Returns** `max(leftDepth, rightDepth) + 1` to account for the current node.\n\n" +
-    "The base case returns `0` for a `null` node. The recursion unwinds naturally, passing heights up the call stack.",
+    "The base case returns `0` for a `null` node. The recursion unwinds naturally, passing heights up the call stack.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((3)):::root --> B((9)):::visited\n" +
+    "  A --> C((20)):::current\n" +
+    "  C --> D((15)):::visited\n" +
+    "  C --> E((7)):::visited\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "Node 9 returns depth 1. Node 20 returns `max(1, 1) + 1` = 2. Root returns `max(1, 2) + 1` = 3. Maximum depth is 3.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — every node is visited exactly once.\n\n" +

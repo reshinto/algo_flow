@@ -22,7 +22,21 @@ export const kthSmallestSortedMatrixEducational: EducationalContent = {
     "10  11  13\n" +
     "12  13  15\n" +
     "```\n\n" +
-    "Value range: [1, 15]. Binary search converges to **13** — the 8th smallest.",
+    "Value range: [1, 15]. Binary search converges to **13** — the 8th smallest.\n\n" +
+    "### Diagram: staircase count for mid = 11\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  Start["Start at bottom-left (2,0)=12"]\n' +
+    '  Start -->|"12 > 11, move up"| R1C0["(1,0)=10"]\n' +
+    '  R1C0 -->|"10 ≤ 11, count+=2, move right"| R1C1["(1,1)=11"]\n' +
+    '  R1C1 -->|"11 ≤ 11, count+=2, move right"| R1C2["(1,2)=13"]\n' +
+    '  R1C2 -->|"13 > 11, move up"| R0C2["(0,2)=9"]\n' +
+    '  R0C2 -->|"9 ≤ 11, count+=1, move right"| Done["Out of bounds — count=5"]\n' +
+    "  style Start fill:#06b6d4,stroke:#0891b2\n" +
+    "  style R1C1 fill:#f59e0b,stroke:#d97706\n" +
+    "  style Done fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The staircase walk starts at the bottom-left and zig-zags right/up, counting entire column prefixes ≤ mid in O(n) steps.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × log(max − min))`**\n\n" +

@@ -25,7 +25,24 @@ export const trieInsertSearchEducational: EducationalContent = {
     "   - If no child edge labelled `c` exists → return `false` immediately.\n" +
     "   - Otherwise, follow the edge.\n" +
     "3. After consuming all characters, return `true` only if the current node is `isEnd = true`. " +
-    'This distinguishes exact words from mere prefixes (e.g., `"ap"` is a prefix of `"apple"` but not a stored word).',
+    'This distinguishes exact words from mere prefixes (e.g., `"ap"` is a prefix of `"apple"` but not a stored word).\n\n' +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  R((root)) -->|a| A((a))\n" +
+    "  A -->|p| AP((ap))\n" +
+    "  AP -->|p| APP((app))\n" +
+    "  APP -->|l| APPL((appl))\n" +
+    "  APPL -->|e| APPLE((apple ✓))\n" +
+    "  AP -->|e| APE((ape ✓))\n" +
+    "  style R fill:#06b6d4,stroke:#0891b2\n" +
+    "  style APPLE fill:#14532d,stroke:#22c55e\n" +
+    "  style APE fill:#14532d,stroke:#22c55e\n" +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style AP fill:#f59e0b,stroke:#d97706\n" +
+    "  style APP fill:#f59e0b,stroke:#d97706\n" +
+    "  style APPL fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Inserting `apple` and `ape` shares the prefix path `a → ap` (amber). Searching for `ap` reaches the amber node but finds `isEnd = false` — returning `false` since `ap` is a prefix only, not a stored word.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m)` per operation**\n\n" +

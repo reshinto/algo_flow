@@ -23,7 +23,23 @@ export const minimumJumpsEducational: EducationalContent = {
     "- `dp[2] = 1` — jump from index 0 (reach: 0+2=2 ≥ 2)\n" +
     "- `dp[3] = 2` — jump from index 1 (reach: 1+3=4 ≥ 3), dp[1]+1=2\n" +
     "- `dp[4] = 2` — jump from index 1 (reach: 1+3=4 ≥ 4), dp[1]+1=2\n\n" +
-    "The answer is `dp[4] = 2`: jump index 0→1→4 (or 0→2→4).",
+    "The answer is `dp[4] = 2`: jump index 0→1→4 (or 0→2→4).\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  A["dp[0]=0\\njumps=2"]:::base\n' +
+    '  B["dp[1]=1\\nfrom idx 0"]:::cached\n' +
+    '  C["dp[2]=1\\nfrom idx 0"]:::cached\n' +
+    '  D["dp[3]=2\\nfrom idx 1"]:::cached\n' +
+    '  E["dp[4]=2\\nfrom idx 1 ✓"]:::current\n' +
+    "  A --> B\n" +
+    "  A --> C\n" +
+    "  B --> D\n" +
+    "  B --> E\n" +
+    "  classDef base fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef cached fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Index 1 has `jumps[1] = 3`, covering indices 2, 3, and 4 in one leap — each inherits `dp[1] + 1 = 2`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

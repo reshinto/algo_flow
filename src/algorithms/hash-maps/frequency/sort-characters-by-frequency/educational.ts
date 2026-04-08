@@ -18,7 +18,21 @@ export const sortCharactersByFrequencyEducational: EducationalContent = {
     "scan from bucket[4] → bucket[2]: append 'ee'\n" +
     "scan bucket[1]: append 't' then 'r' (or 'r' then 't')\n" +
     'result: "eetr" (or "eert")\n' +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["\'tree\'"]:::input --> B["freq: {t:1, r:1, e:2}"]\n' +
+    "  B --> C[\"buckets[2] ← 'e'\"]:::checking\n" +
+    "  B --> D[\"buckets[1] ← 't','r'\"]:::checking\n" +
+    "  C --> E[\"scan bucket[2]: append 'ee'\"]:::found\n" +
+    "  D --> F[\"scan bucket[1]: append 't','r'\"]:::found\n" +
+    "  E --> G[\"result: 'eetr'\"]:::found\n" +
+    "  F --> G\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef checking fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef found fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Iterating buckets from highest index to lowest ensures more-frequent characters are always appended before less-frequent ones, with no comparison sort required.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

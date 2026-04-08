@@ -19,6 +19,18 @@ export const stringRotationCheckEducational: EducationalContent = {
     "                  ^^^^^^^^^^^          ← pattern found at index 3\n" +
     "result    = true\n" +
     "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["text: waterbottle"] --> B["concat: waterbottle·waterbottle"]\n' +
+    '  C["pattern: erbottlewat"] --> D{substring search}\n' +
+    "  B --> D\n" +
+    '  D -->|"found at idx 3"| E["true ✓"]\n' +
+    '  D -->|"not found"| F["false ✗"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Doubling the text string guarantees every rotation appears as a contiguous substring — a single `includes` call replaces the need to check all `n` rotation offsets individually.\n\n" +
     "The substring search can be performed with any efficient string-matching algorithm (KMP, Boyer-Moore, or the built-in `includes`/`contains`) in O(n) time.",
 
   timeAndSpaceComplexity:

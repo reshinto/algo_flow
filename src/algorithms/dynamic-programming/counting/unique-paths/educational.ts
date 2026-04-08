@@ -19,7 +19,20 @@ export const uniquePathsEducational: EducationalContent = {
     "```\n\n" +
     "Result: **6 unique paths** from (0,0) to (2,2).\n\n" +
     "### Why a 1-D Array Suffices\n\n" +
-    "At any point during the inner loop, `dp[j]` already holds the correct value for the cell directly above the current cell (from the previous outer-loop iteration). After applying `dp[j] += dp[j-1]`, it becomes the correct value for the current cell. No prior rows are ever needed again, so the 2-D table collapses to a single rolling row.",
+    "At any point during the inner loop, `dp[j]` already holds the correct value for the cell directly above the current cell (from the previous outer-loop iteration). After applying `dp[j] += dp[j-1]`, it becomes the correct value for the current cell. No prior rows are ever needed again, so the 2-D table collapses to a single rolling row.\n\n" +
+    "### Rolling Array Evolution for 3×3 Grid\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  R0["Init row: P(0)=1 P(1)=1 P(2)=1"]\n' +
+    '  R1["After row 1: P(0)=1 P(1)=2 P(2)=3"]\n' +
+    '  R2["After row 2: P(0)=1 P(1)=3 P(2)=6"]\n' +
+    "  R0 --> R1\n" +
+    "  R1 --> R2\n" +
+    "  style R0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style R1 fill:#14532d,stroke:#22c55e\n" +
+    "  style R2 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "The single row is updated left-to-right on each pass. P(2)=6 in the final row is the answer — the number of unique paths from (0,0) to (2,2) in a 3×3 grid.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(rows × columns)`**\n\n" +

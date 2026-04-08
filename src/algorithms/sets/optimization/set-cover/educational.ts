@@ -39,7 +39,28 @@ export const setCoverEducational: EducationalContent = {
     "  S4={6,7,8} covers 1  ← best\n" +
     "  → select S4, uncovered = {}\n\n" +
     "Result: 4 sets selected — [S0, S3, S2, S4]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph U["Universe U = {1..8}"]\n' +
+    '    u1["uncovered: {1..8}"]:::input\n' +
+    "  end\n" +
+    '  subgraph Rounds["Greedy Selection"]\n' +
+    '    r1["R1: S0={1,2,3} covers 3"]:::excluded\n' +
+    '    r2["R2: S3={5,6,7} covers 3"]:::excluded\n' +
+    '    r3["R3: S2={3,4,5} covers 2"]:::excluded\n' +
+    '    r4["R4: S4={6,7,8} covers 1"]:::excluded\n' +
+    "  end\n" +
+    '  subgraph R["Solution"]\n' +
+    '    res["[S0, S3, S2, S4]"]:::result\n' +
+    "  end\n" +
+    "  U --> Rounds\n" +
+    "  Rounds --> R\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef excluded fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each greedy round (amber) picks the set with the highest remaining coverage. After 4 rounds the universe is fully covered and the selected sets (green) form the approximate minimum cover.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × m)`**\n\n" +

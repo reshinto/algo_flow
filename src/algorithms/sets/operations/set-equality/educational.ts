@@ -28,7 +28,28 @@ export const setEqualityEducational: EducationalContent = {
     "  B[2]=1 → found → uniqueCountB=3 → condition holds\n" +
     "\n" +
     "Phase 3: uniqueCountA(3) === uniqueCountB(3) → isEqual: true\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph A["Set A"]\n' +
+    '    a1["3"]:::input\n' +
+    '    a2["1"]:::input\n' +
+    '    a3["2"]:::input\n' +
+    "  end\n" +
+    '  subgraph B["Set B"]\n' +
+    '    b1["2"]:::input\n' +
+    '    b2["3"]:::input\n' +
+    '    b3["1"]:::input\n' +
+    "  end\n" +
+    '  subgraph R["Result"]\n' +
+    '    r1["isEqual: true"]:::result\n' +
+    "  end\n" +
+    "  A --> R\n" +
+    "  B --> R\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Both sets contain the same 3 unique elements — order and duplicates are irrelevant. The count comparison in Phase 3 catches supersets that would otherwise pass the membership check.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + m)`**\n\n" +

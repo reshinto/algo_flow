@@ -11,7 +11,31 @@ export const invertBinaryTreeIterativeEducational: EducationalContent = {
     "3. **Swap** — exchange the node's left and right child pointers.\n" +
     "4. **Enqueue children** — add the non-null children to the queue.\n" +
     "5. **Repeat** — continue until the queue is empty.\n\n" +
-    "Processing level by level means all nodes at depth `d` are swapped before moving to depth `d+1`.",
+    "Processing level by level means all nodes at depth `d` are swapped before moving to depth `d+1`.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  subgraph After [After Invert]\n" +
+    "    P((4)) --> Q((6))\n" +
+    "    P --> R((2))\n" +
+    "    Q --> S((7))\n" +
+    "    Q --> T((5))\n" +
+    "    R --> U((3))\n" +
+    "    R --> V((1))\n" +
+    "  end\n" +
+    "  subgraph Before [Before Invert]\n" +
+    "    A((4)) --> B((2))\n" +
+    "    A --> C((6))\n" +
+    "    B --> D((1))\n" +
+    "    B --> E((3))\n" +
+    "    C --> F((5))\n" +
+    "    C --> G((7))\n" +
+    "  end\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style P fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "BFS processes level 0 (root swap), then level 1 (swap 2↔6's children), then level 2. Each level's swaps are batched before the next.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

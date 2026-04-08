@@ -11,6 +11,22 @@ export const slidingWindowMaximumEducational: EducationalContent = {
     "3. **Enqueue** the current index at the rear.\n" +
     "4. **Record maximum** — once `elementIdx ≥ k − 1`, the front of the deque is the index of the window's maximum.\n\n" +
     "### Example trace on `[1, 3, -1, -3, 5, 3, 6, 7]`, k = 3\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    subgraph Idx2["idx=2, val=-1: deque=[1,2], max=arr[1]=3"]\n' +
+    '        D1(["idx 1\\nval 3"]) --> D2(["idx 2\\nval -1"])\n' +
+    '        D1 -->|front = max| MX1(["max = 3"])\n' +
+    "    end\n" +
+    '    subgraph Idx4["idx=4, val=5: smaller indices evicted, deque=[4]"]\n' +
+    '        D3(["idx 4\\nval 5"])\n' +
+    '        D3 -->|front = max| MX2(["max = 5"])\n' +
+    "    end\n" +
+    '    Idx2 -->|"5 > 3 and 5 > -1, evict all"| Idx4\n' +
+    "    style D1 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style D3 fill:#f59e0b,stroke:#d97706\n" +
+    "    style MX2 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The deque maintains a decreasing sequence of values from front to rear. When a new element is larger than rear entries, those entries are evicted — they can never be the maximum for any future window.\n\n" +
     "```\n" +
     "idx  val  deque (indices)  window max\n" +
     " 0    1   [0]              —\n" +

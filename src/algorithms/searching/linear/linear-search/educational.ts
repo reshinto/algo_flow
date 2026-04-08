@@ -19,7 +19,18 @@ export const linearSearchEducational: EducationalContent = {
     "Index 0: 4 ≠ 7  → continue\n" +
     "Index 1: 2 ≠ 7  → continue\n" +
     "Index 2: 7 = 7  → FOUND at index 2\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["idx=0\\nval=4 ≠ 7"] -->|"advance"| B["idx=1\\nval=2 ≠ 7"]\n' +
+    '  B -->|"advance"| C["idx=2\\nval=7 = 7"]\n' +
+    '  C --> D["✓ Found at index 2"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each element is compared exactly once in order; the search stops as soon as a match is found or the array is exhausted.",
 
   timeAndSpaceComplexity:
     "**Time Complexity**\n\n" +

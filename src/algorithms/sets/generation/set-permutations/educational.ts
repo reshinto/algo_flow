@@ -29,7 +29,25 @@ export const setPermutationsEducational: EducationalContent = {
     "  swap(0,2)=[3,2,1] → permute(1):\n" +
     "    swap(1,1)=[3,2,1] → permute(2) → emit [3,2,1]\n" +
     "    swap(1,2)=[3,1,2] → permute(2) → emit [3,1,2]  ← backtrack\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '  Root["[1,2,3]"]:::current\n' +
+    '  S0["fix 1 →"]:::current\n' +
+    '  S1["fix 2 →"]:::current\n' +
+    '  S2["fix 3 →"]:::current\n' +
+    '  E123["emit [1,2,3]"]:::result\n' +
+    '  E132["emit [1,3,2]"]:::result\n' +
+    '  E213["emit [2,1,3]"]:::result\n' +
+    '  E312["emit [3,1,2]"]:::result\n' +
+    "  Root --> S0 & S1 & S2\n" +
+    "  S0 --> E123 & E132\n" +
+    "  S1 --> E213\n" +
+    "  S2 --> E312\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The root branches once per element placed at position 0 (via swap). Each branch then recurses on the remaining two elements, ultimately emitting all 3! = 6 permutations. Only 4 leaves shown for brevity.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × n!)`**\n\n" +

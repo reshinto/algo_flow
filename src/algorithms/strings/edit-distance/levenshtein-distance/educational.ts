@@ -28,7 +28,23 @@ export const levenshteinDistanceEducational: EducationalContent = {
     "    )\n" +
     "```\n\n" +
     "**3. Result:** `dp[sourceLength][targetLength]` holds the final edit distance.\n\n" +
-    "The edit path can be traced back through the matrix from the bottom-right cell to the top-left, recording which operation was chosen at each step.",
+    "The edit path can be traced back through the matrix from the bottom-right cell to the top-left, recording which operation was chosen at each step.\n\n" +
+    '### Example: Transforming `"cat"` → `"cut"`\n\n' +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    C1["c\\n(match)"] --> A["a\\n(replace→u)"] --> T1["t\\n(match)"]\n' +
+    '    C2["c"] --> U["u"] --> T2["t"]\n' +
+    "    C1 -.match.- C2\n" +
+    "    A -.replace.- U\n" +
+    "    T1 -.match.- T2\n" +
+    "    style C1 fill:#14532d,stroke:#22c55e\n" +
+    "    style C2 fill:#14532d,stroke:#22c55e\n" +
+    "    style T1 fill:#14532d,stroke:#22c55e\n" +
+    "    style T2 fill:#14532d,stroke:#22c55e\n" +
+    "    style A fill:#f59e0b,stroke:#d97706\n" +
+    "    style U fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Characters `c` and `t` (green) match at no cost. Only `a` → `u` (amber) requires a replacement, giving edit distance **1**.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × m)`**\n\n" +

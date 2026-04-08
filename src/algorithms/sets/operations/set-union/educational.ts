@@ -27,7 +27,33 @@ export const setUnionEducational: EducationalContent = {
     "  B[2]=5 → found   → skip\n" +
     "  B[3]=6 → missing → result: [1, 2, 3, 4, 5, 6]\n" +
     "  B[4]=7 → missing → result: [1, 2, 3, 4, 5, 6, 7]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph A["Set A"]\n' +
+    '    a1["1"]:::input\n' +
+    '    a2["2"]:::input\n' +
+    '    a3["3"]:::input\n' +
+    "  end\n" +
+    '  subgraph B["Set B"]\n' +
+    '    b1["3"]:::excluded\n' +
+    '    b2["6"]:::input\n' +
+    '    b3["7"]:::input\n' +
+    "  end\n" +
+    '  subgraph R["A ∪ B"]\n' +
+    '    r1["1"]:::result\n' +
+    '    r2["2"]:::result\n' +
+    '    r3["3"]:::result\n' +
+    '    r4["6"]:::result\n' +
+    '    r5["7"]:::result\n' +
+    "  end\n" +
+    "  A --> R\n" +
+    "  B --> R\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef excluded fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "All elements from A flow into the result. From B, duplicate elements like 3 (amber) are skipped; only new elements like 6 and 7 (cyan) are added to produce the full union (green).",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + m)`**\n\n" +

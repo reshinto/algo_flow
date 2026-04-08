@@ -16,7 +16,18 @@ export const maxProductSubarrayEducational: EducationalContent = {
     "   - If `currentMax == elem`, reset `currentStart` to the current index (subarray restarted).\n" +
     "   - If `currentMax > globalMax`, update `globalMax` and record `bestStart`/`bestEnd`.\n" +
     "3. Return `{ maxProduct: globalMax, startIndex, endIndex }`.\n\n" +
-    "The extend-or-restart decision mirrors Kadane's algorithm, but the dual max/min tracking is unique to the product variant.",
+    "The extend-or-restart decision mirrors Kadane's algorithm, but the dual max/min tracking is unique to the product variant.\n\n" +
+    "### Dual-Tracking Diagram (`[2, -3, -4]`)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["elem=2\\ncurMax=2\\ncurMin=2"] -->|"elem=-3, swap+extend"| B["elem=-3\\ncurMax=-3\\ncurMin=-6"]\n' +
+    '  B -->|"elem=-4, swap+extend"| C["elem=-4\\ncurMax=24\\ncurMin=-12"]\n' +
+    '  C -->|"globalMax"| D["result=24"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "At `elem = -3`, `curMax` and `curMin` swap so the large negative (`-6`) is preserved as `curMin`. At `elem = -4`, multiplying that negative by `-4` flips it to `24` — the maximum product.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

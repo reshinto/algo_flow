@@ -24,7 +24,18 @@ export const longestCommonPrefixEducational: EducationalContent = {
     "col 0: f=f=f  ✓\n" +
     "col 1: l=l=l  ✓\n" +
     'col 2: o≠i    ✗ → prefix = "fl"\n' +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  COL0["col 0\\nf = f = f ✓"]:::matched\n' +
+    '  COL1["col 1\\nl = l = l ✓"]:::matched\n' +
+    '  COL2["col 2\\no ≠ i ✗\\nstop"]:::current\n' +
+    '  RES["prefix = \\"fl\\""]:::matched\n' +
+    "  COL0 --> COL1 --> COL2 --> RES\n" +
+    "  classDef matched fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    'Scanning vertically across `["flower","flow","flight"]`: columns 0 and 1 agree on `f` and `l`, but column 2 exposes the mismatch `o ≠ i`, terminating the search and returning `"fl"`.',
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n * m)`**\n\n" +

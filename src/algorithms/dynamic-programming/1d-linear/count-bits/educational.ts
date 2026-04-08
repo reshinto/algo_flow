@@ -21,7 +21,24 @@ export const countBitsEducational: EducationalContent = {
     "4    100     dp[2]=1   0    1\n" +
     "5    101     dp[2]=1   1    2\n" +
     "```\n\n" +
-    "The lookback is **unusual**: instead of `dp[i-1]` or `dp[i-2]`, it reaches back to `dp[i >> 1]` — half the current index. This is what makes it a bit-manipulation DP rather than a standard recurrence.",
+    "The lookback is **unusual**: instead of `dp[i-1]` or `dp[i-2]`, it reaches back to `dp[i >> 1]` — half the current index. This is what makes it a bit-manipulation DP rather than a standard recurrence.\n\n" +
+    "### Half-Index Dependency Chain for n=5\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  D0["dp[0]=0 (000)"] --> D1["dp[1]=1 (001)"]\n' +
+    '  D0 --> D2["dp[2]=1 (010)"]\n' +
+    "  D1 --> D2\n" +
+    '  D1 --> D3["dp[3]=2 (011)"]\n' +
+    '  D2 --> D4["dp[4]=1 (100)"]\n' +
+    '  D2 --> D5["dp[5]=2 (101)"]\n' +
+    "  style D0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D1 fill:#14532d,stroke:#22c55e\n" +
+    "  style D2 fill:#14532d,stroke:#22c55e\n" +
+    "  style D3 fill:#14532d,stroke:#22c55e\n" +
+    "  style D4 fill:#14532d,stroke:#22c55e\n" +
+    "  style D5 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Each arrow represents a `dp[i >> 1]` lookback — every number derives its popcount from its right-shifted half plus the LSB.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

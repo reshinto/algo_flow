@@ -18,7 +18,28 @@ export const pascalsTriangleEducational: EducationalContent = {
     "    1 4 6 4 1\n" +
     "```\n\n" +
     "Row 4 (0-indexed) inner cells: `1+3=4`, `3+3=6`, `3+1=4`.\n\n" +
-    "To visualize as a rectangular matrix, shorter rows are padded with zeros — so the full output is an `n × n` grid where only the upper-left triangle is filled.",
+    "To visualize as a rectangular matrix, shorter rows are padded with zeros — so the full output is an `n × n` grid where only the upper-left triangle is filled.\n\n" +
+    "### Diagram: building row 3 from row 2\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  subgraph Row2["Row 2 (parent)"]\n' +
+    '    R2C0["1"] --- R2C1["2"] --- R2C2["1"]\n' +
+    "  end\n" +
+    '  subgraph Row3["Row 3 (built)"]\n' +
+    '    R3C0["1"] --- R3C1["3"] --- R3C2["3"] --- R3C3["1"]\n' +
+    "  end\n" +
+    '  R2C0 -->|"edge=1"| R3C0\n' +
+    '  R2C0 -->|"+"| R3C1\n' +
+    '  R2C1 -->|"+"| R3C1\n' +
+    '  R2C1 -->|"+"| R3C2\n' +
+    '  R2C2 -->|"+"| R3C2\n' +
+    '  R2C2 -->|"edge=1"| R3C3\n' +
+    "  style R3C1 fill:#f59e0b,stroke:#d97706\n" +
+    "  style R3C2 fill:#f59e0b,stroke:#d97706\n" +
+    "  style R3C0 fill:#14532d,stroke:#22c55e\n" +
+    "  style R3C3 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Amber cells are inner cells derived by summing two parents above; green cells are edge cells always set to 1.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

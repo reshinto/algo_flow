@@ -18,7 +18,25 @@ export const rotateMatrixEducational: EducationalContent = {
     "4  5  6  →   2  5  8       →    8  5  2\n" +
     "7  8  9      3  6  9            9  6  3\n" +
     "```\n\n" +
-    "The final matrix `[[7,4,1],[8,5,2],[9,6,3]]` is the original rotated 90° clockwise.",
+    "The final matrix `[[7,4,1],[8,5,2],[9,6,3]]` is the original rotated 90° clockwise.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph Input["Input"]\n' +
+    '    I["1 2 3\\n4 5 6\\n7 8 9"]\n' +
+    "  end\n" +
+    '  subgraph T["After Transpose"]\n' +
+    '    TR["1 4 7\\n2 5 8\\n3 6 9"]\n' +
+    "  end\n" +
+    '  subgraph R["After Row-Reverse"]\n' +
+    '    RR["7 4 1\\n8 5 2\\n9 6 3"]\n' +
+    "  end\n" +
+    '  Input -->|"swap [i][j] ↔ [j][i]"| T\n' +
+    '  T -->|"reverse each row"| R\n' +
+    "  style I fill:#06b6d4,stroke:#0891b2\n" +
+    "  style TR fill:#f59e0b,stroke:#d97706\n" +
+    "  style RR fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Transpose turns columns into rows, then reversing each row shifts all elements to their final clockwise positions — element `1` travels from `[0][0]` to `[0][2]` across both passes.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

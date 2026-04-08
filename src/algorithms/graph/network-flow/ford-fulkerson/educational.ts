@@ -17,7 +17,21 @@ export const fordFulkersonEducational: EducationalContent = {
     "S →(3)→ A →(0)→ T   (forward residual)\n" +
     "S ←(7)← A ←(7)← T   (backward residual)\n" +
     "```\n\n" +
-    "Backward edges allow the algorithm to **undo** suboptimal routing decisions in later iterations.",
+    "Backward edges allow the algorithm to **undo** suboptimal routing decisions in later iterations.\n\n" +
+    "### Residual Graph After One Augmentation\n\n" +
+    "```mermaid\n" +
+    "graph LR\n" +
+    '  S((S)) -->|"cap:10"| A((A))\n' +
+    '  A((A)) -->|"cap:7"| T((T))\n' +
+    '  S((S)) -->|"cap:5"| B((B))\n' +
+    '  B((B)) -->|"cap:6"| T((T))\n' +
+    '  A((A)) -->|"cap:3"| B((B))\n' +
+    "  style S fill:#06b6d4,stroke:#0891b2\n" +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style T fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "DFS finds path S→A→T (bottleneck 7). After augmenting: forward edge A→T has residual 0, backward edge T→A has residual 7. A subsequent DFS can route through S→B→T or use the backward edge to reroute flow.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: O(V · E²)**\n\n" +

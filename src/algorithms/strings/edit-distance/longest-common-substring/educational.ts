@@ -19,7 +19,27 @@ export const longestCommonSubstringEducational: EducationalContent = {
     "```\n\n" +
     "**Key insight:** When characters differ the cell resets to 0, because a common substring must be contiguous. This is the critical difference from LCS, where mismatches carry forward the best prior value.\n\n" +
     "**Base cases:** Row 0 and column 0 are initialized to 0, representing an empty source or target.\n\n" +
-    "**Result:** The answer is the maximum value ever written into the matrix, tracked as the cells are filled.",
+    "**Result:** The answer is the maximum value ever written into the matrix, tracked as the cells are filled.\n\n" +
+    '### Example: Longest common substring of `"ABABC"` and `"BABCBA"`\n\n' +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    A1["A"] --> B1["B"] --> A2["A"] --> B2["B"] --> C1["C"]\n' +
+    '    B3["B"] --> A3["A"] --> B4["B"] --> C2["C"] --> B5["B"] --> A4["A"]\n' +
+    "    B1 -.extend.- B3\n" +
+    "    A2 -.extend.- A3\n" +
+    "    B2 -.extend.- B4\n" +
+    "    C1 -.extend.- C2\n" +
+    "    style B1 fill:#14532d,stroke:#22c55e\n" +
+    "    style A2 fill:#14532d,stroke:#22c55e\n" +
+    "    style B2 fill:#14532d,stroke:#22c55e\n" +
+    "    style C1 fill:#14532d,stroke:#22c55e\n" +
+    "    style B3 fill:#14532d,stroke:#22c55e\n" +
+    "    style A3 fill:#14532d,stroke:#22c55e\n" +
+    "    style B4 fill:#14532d,stroke:#22c55e\n" +
+    "    style C2 fill:#14532d,stroke:#22c55e\n" +
+    "    style A1 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "The diagonal run `BABC` (green) extends four cells before the strings diverge. `A` at the start of `ABABC` (amber) has no partner at the same position, so that diagonal resets to 0.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n × m)`**\n\n" +

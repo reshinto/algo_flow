@@ -31,7 +31,25 @@ export const heapifySingleNodeEducational: EducationalContent = {
     "            4   3 8   5\n" +
     "           / \\\n" +
     "          6   9\n" +
-    "```",
+    "```\n\n" +
+    "### Sift-Down Path: Node 9 Descends to Its Final Position\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    r((1)) --> n2((2))\n" +
+    "    r --> n7((7))\n" +
+    "    n2 --> n4((4))\n" +
+    "    n2 --> n3((3))\n" +
+    "    n4 --> n6((6))\n" +
+    "    n4 --> n9((9))\n" +
+    "    style r fill:#14532d,stroke:#22c55e\n" +
+    "    style n2 fill:#14532d,stroke:#22c55e\n" +
+    "    style n7 fill:#14532d,stroke:#22c55e\n" +
+    "    style n3 fill:#14532d,stroke:#22c55e\n" +
+    "    style n6 fill:#14532d,stroke:#22c55e\n" +
+    "    style n4 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n9 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Amber node (9) is the originally out-of-place value — it sifted down through 1→2→4 before settling as a leaf. Cyan node (4) is the final swap position. All green nodes were already satisfying the heap property.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)`**\n\n" +

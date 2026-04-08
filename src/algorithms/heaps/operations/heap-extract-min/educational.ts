@@ -32,7 +32,21 @@ export const heapExtractMinEducational: EducationalContent = {
     "           / \\\n" +
     "          7   9\n" +
     "```\n\n" +
-    "Extracted value: `1`. Remaining min-heap: `[3, 6, 5, 7, 9]`.",
+    "Extracted value: `1`. Remaining min-heap: `[3, 6, 5, 7, 9]`.\n\n" +
+    "### Diagram: Sift-down after extracting 1\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n6((6)) --> n3((3))\n" +
+    "    n6 --> n5((5))\n" +
+    "    n3 --> n7((7))\n" +
+    "    n3 --> n9((9))\n" +
+    "    style n6 fill:#f59e0b,stroke:#d97706\n" +
+    "    style n3 fill:#14532d,stroke:#22c55e\n" +
+    "    style n5 fill:#14532d,stroke:#22c55e\n" +
+    "    style n7 fill:#14532d,stroke:#22c55e\n" +
+    "    style n9 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Node 6 (amber) was moved from the last leaf to the root after extracting 1. It sifts down by swapping with its smallest child (3), restoring heap order.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(log n)`**\n\n" +

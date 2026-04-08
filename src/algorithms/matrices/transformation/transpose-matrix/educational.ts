@@ -25,7 +25,27 @@ export const transposeMatrixEducational: EducationalContent = {
     "1  2  3        1  4\n" +
     "4  5  6   →    2  5\n" +
     "               3  6\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph Orig["Input 3×3"]\n' +
+    '    A["[0][1] = 2"]\n' +
+    '    B["[1][0] = 4"]\n' +
+    "  end\n" +
+    '  subgraph Diag["Main diagonal (unchanged)"]\n' +
+    '    D["[0][0]=1  [1][1]=5  [2][2]=9"]\n' +
+    "  end\n" +
+    '  subgraph Trans["After Transpose"]\n' +
+    '    C["[0][1]=4  [1][0]=2"]\n' +
+    "  end\n" +
+    '  A -->|"swap"| C\n' +
+    '  B -->|"swap"| C\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Only elements strictly above the main diagonal are swapped — diagonal cells stay in place, and each pair is touched exactly once.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m × n)`**\n\n" +

@@ -24,7 +24,17 @@ export const antiDiagonalTraversalEducational: EducationalContent = {
     "| 2       | `[3, 5, 7]`   |\n" +
     "| 3       | `[6, 8]`      |\n" +
     "| 4       | `[9]`         |\n\n" +
-    "Result: `[1, 2, 4, 3, 5, 7, 6, 8, 9]`",
+    "Result: `[1, 2, 4, 3, 5, 7, 6, 8, 9]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  D0["diagSum=0\\n[1]"] --> D1["diagSum=1\\n[2,4]"] --> D2["diagSum=2\\n[3,5,7]"] --> D3["diagSum=3\\n[6,8]"] --> D4["diagSum=4\\n[9]"]\n' +
+    "  style D0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D1 fill:#14532d,stroke:#22c55e\n" +
+    "  style D2 fill:#f59e0b,stroke:#d97706\n" +
+    "  style D3 fill:#14532d,stroke:#22c55e\n" +
+    "  style D4 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each node represents one anti-diagonal where all elements share the same `row + col` sum — the longest diagonal (`diagSum=2`) runs through the matrix center.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m × n)`**\n\n" +

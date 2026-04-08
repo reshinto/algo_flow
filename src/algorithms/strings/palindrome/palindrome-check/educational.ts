@@ -22,7 +22,19 @@ export const palindromeCheckEducational: EducationalContent = {
     "          ↑           ↑      a == a  ✓\n" +
     "             ↑     ↑         c == c  ✓\n" +
     "                ↑            (converged — palindrome!)\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  P1["r == r ✓"]:::matched\n' +
+    '  P2["a == a ✓"]:::matched\n' +
+    '  P3["c == c ✓"]:::matched\n' +
+    '  P4["e\\n(centre)"]:::start\n' +
+    '  DONE["converged\\n→ palindrome"]:::matched\n' +
+    "  P1 --> P2 --> P3 --> P4 --> DONE\n" +
+    "  classDef start fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef matched fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    'Each outer pair of `"racecar"` matches as the two pointers converge inward, confirming the string is a palindrome after three comparisons.',
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

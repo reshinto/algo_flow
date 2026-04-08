@@ -20,7 +20,23 @@ export const pascalsTriangleRowEducational: EducationalContent = {
     "After r=2: [1, 2, 1, 1, 1]   ← dp[1] = 1+1\n" +
     "After r=3: [1, 3, 3, 1, 1]   ← dp[2]=2+1, dp[1]=2+1\n" +
     "After r=4: [1, 4, 6, 4, 1]   ← dp[3]=3+1, dp[2]=3+3, dp[1]=3+1\n" +
-    "```",
+    "```\n\n" +
+    "### In-Place Array Update for Row 4\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  R0["Start: 1 1 1 1 1"]\n' +
+    '  R2["After r=2: 1 2 1 1 1"]\n' +
+    '  R3["After r=3: 1 3 3 1 1"]\n' +
+    '  R4["After r=4: 1 4 6 4 1"]\n' +
+    "  R0 --> R2\n" +
+    "  R2 --> R3\n" +
+    "  R3 --> R4\n" +
+    "  style R0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style R2 fill:#14532d,stroke:#22c55e\n" +
+    "  style R3 fill:#14532d,stroke:#22c55e\n" +
+    "  style R4 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "The single array transforms in-place across outer-loop iterations. The right-to-left inner sweep ensures each `dp[k]` reads the not-yet-overwritten `dp[k-1]` from the previous virtual row.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

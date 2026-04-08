@@ -21,7 +21,24 @@ export const hungarianBipartiteEducational: EducationalContent = {
     "L2 — R2 (unmatched)  →  Match L2–R2\n" +
     "L3 — R1 (matched to L1)  →  Re-route L1 to R2? R2 matched to L2 → Re-route L2 to R3\n" +
     "     →  L2–R3, L1–R2, L3–R1  (all matched!)\n" +
-    "```",
+    "```\n\n" +
+    "### Bipartite Graph with Maximum Matching\n\n" +
+    "```mermaid\n" +
+    "graph LR\n" +
+    "  L1((L1)) --> R1((R1))\n" +
+    "  L1((L1)) --> R2((R2))\n" +
+    "  L2((L2)) --> R2((R2))\n" +
+    "  L2((L2)) --> R3((R3))\n" +
+    "  L3((L3)) --> R1((R1))\n" +
+    "  L3((L3)) --> R3((R3))\n" +
+    "  style L1 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style L2 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style L3 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style R1 fill:#14532d,stroke:#22c55e\n" +
+    "  style R2 fill:#14532d,stroke:#22c55e\n" +
+    "  style R3 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Left nodes (cyan) are workers, right nodes (green) are tasks. Kuhn's algorithm finds augmenting paths to achieve a perfect matching: L1→R2, L2→R3, L3→R1.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(V × E)`**\n\n" +

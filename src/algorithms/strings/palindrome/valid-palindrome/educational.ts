@@ -23,7 +23,21 @@ export const validPalindromeEducational: EducationalContent = {
     "       ↑                                                                                              ↑\n" +
     "       A (alphanumeric)                                                                               a (alphanumeric)\n" +
     "       A.toLower() == a.toLower()  ✓  →  advance both inward, skipping non-alphanumeric chars\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "  L[\"left: 'A'\"]:::current\n" +
+    "  SKL[\"skip ' ', ','\\n(non-alphanum)\"]:::start\n" +
+    "  R[\"right: 'a'\"]:::current\n" +
+    "  SKR[\"skip ':', ' '\\n(non-alphanum)\"]:::start\n" +
+    '  CMP["A.lower == a.lower ✓\\nadvance inward"]:::matched\n' +
+    "  L --> SKL --> CMP\n" +
+    "  R --> SKR --> CMP\n" +
+    "  classDef start fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef matched fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Both pointers skip punctuation and spaces before comparing `A` and `a` case-insensitively — the core of valid palindrome's in-place filtering approach.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

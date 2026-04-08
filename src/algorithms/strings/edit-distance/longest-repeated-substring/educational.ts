@@ -21,7 +21,22 @@ export const longestRepeatedSubstringEducational: EducationalContent = {
     "else:\n" +
     "    dp[rowIdx][colIdx] = 0\n" +
     "```\n\n" +
-    "**Result:** Track the maximum value seen in the matrix and the row index where it occurs. The repeated substring is `text[longestEndIndex - longestLength .. longestEndIndex]`.",
+    "**Result:** Track the maximum value seen in the matrix and the row index where it occurs. The repeated substring is `text[longestEndIndex - longestLength .. longestEndIndex]`.\n\n" +
+    '### Example: Finding the longest repeated substring in `"banana"`\n\n' +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    B["b\\n(idx 0)"] --> A1["a\\n(idx 1)"] --> N1["n\\n(idx 2)"] --> A2["a\\n(idx 3)"] --> N2["n\\n(idx 4)"] --> A3["a\\n(idx 5)"]\n' +
+    "    A1 -.repeated.- A2\n" +
+    "    N1 -.repeated.- N2\n" +
+    "    A2 -.repeated.- A3\n" +
+    "    style A1 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style N1 fill:#14532d,stroke:#22c55e\n" +
+    "    style A2 fill:#14532d,stroke:#22c55e\n" +
+    "    style N2 fill:#14532d,stroke:#22c55e\n" +
+    "    style A3 fill:#14532d,stroke:#22c55e\n" +
+    "    style B fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "The substring `ana` (green) appears at index 1 and again at index 3 — the DP diagonal records a run of 3, making it the longest repeated substring. `b` (amber) has no off-diagonal match.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

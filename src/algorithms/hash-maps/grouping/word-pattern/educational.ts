@@ -21,7 +21,20 @@ export const wordPatternEducational: EducationalContent = {
     " 3    a    dog    same         same          match a↔dog ✓\n" +
     "Result: true\n" +
     "```\n\n" +
-    'Checking both maps prevents the bijection violation where two different chars map to the same word (e.g., pattern=`"aa"`, sentence=`"dog dog"` would fail the `wordToChar` check if using only one map).',
+    'Checking both maps prevents the bijection violation where two different chars map to the same word (e.g., pattern=`"aa"`, sentence=`"dog dog"` would fail the `wordToChar` check if using only one map).\n\n' +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "  A[\"'a' + 'dog'\"] -->|insert both| B[\"charToWord:{a:dog}\\nwordToChar:{dog:a}\"]\n" +
+    "  B --> C[\"'b' + 'cat'\"]\n" +
+    '  C -->|insert both| D["charToWord:{a:dog,b:cat}\\nwordToChar:{dog:a,cat:b}"]\n' +
+    "  D --> E[\"'b' + 'cat'\"]\n" +
+    "  E -->|both match ✓| F[\"'a' + 'dog'\"]\n" +
+    '  F -->|both match ✓| G["return true"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The two-map bijection ensures no two pattern characters share a word and no word maps to two different characters.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

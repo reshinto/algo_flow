@@ -11,6 +11,26 @@ export const removeAllAdjacentDuplicatesEducational: EducationalContent = {
     "3. **No match** — otherwise push the character onto the stack.\n" +
     "4. **End of string** → join the stack contents into the result string.\n\n" +
     "### Example trace on `abbaca`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    subgraph Step 1-2["Push a, b"]\n' +
+    '        S1["stack: a b"]\n' +
+    "    end\n" +
+    '    subgraph Step 3-4["Pop b b, Pop a a"]\n' +
+    '        S2["stack: (empty)"]\n' +
+    "    end\n" +
+    '    subgraph Step 5-6["Push c, a"]\n' +
+    '        S3["stack: c a"]\n' +
+    "    end\n" +
+    '    S1 -->|"b=b pop ✓"| S2\n' +
+    '    S2 -->|"a=a pop ✓"| S2\n' +
+    '    S2 -->|"push c, a"| S3\n' +
+    "    style S3 fill:#14532d,stroke:#22c55e\n" +
+    "    style S2 fill:#f59e0b,stroke:#d97706\n" +
+    "    style S1 fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Each character is either cancelled against the stack top (pop) or added to it (push). " +
+    "Once `bb` and `aa` cancel, only `ca` remains on the stack — the final result.\n\n" +
     "```\n" +
     "char  action   stack\n" +
     "a     push     [a]\n" +

@@ -18,7 +18,17 @@ export const spiralOrderEducational: EducationalContent = {
     "4  5  6\n" +
     "7  8  9\n" +
     "```\n\n" +
-    "Result: `[1, 2, 3, 6, 9, 8, 7, 4, 5]`",
+    "Result: `[1, 2, 3, 6, 9, 8, 7, 4, 5]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  R["→ Right\\n1,2,3"] --> D["↓ Down\\n6,9"] --> L["← Left\\n8,7"] --> U["↑ Up\\n4"] --> C["Center\\n5"]\n' +
+    "  style R fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style L fill:#f59e0b,stroke:#d97706\n" +
+    "  style U fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The outer ring is peeled in four directional passes — right along the top, down the right side, left along the bottom, up the left side — then the boundaries shrink inward until only the center remains.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m × n)`**\n\n" +

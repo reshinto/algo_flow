@@ -21,7 +21,25 @@ export const mergeSortedArraysEducational: EducationalContent = {
     "Step 4: Compare 5 vs 4 → take 4   merged: [1, 2, 3, 4]\n" +
     "Step 5: Compare 5 vs 6 → take 5   merged: [1, 2, 3, 4, 5]\n" +
     "Step 6: Drain secondArray          merged: [1, 2, 3, 4, 5, 6]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph first ["firstArray"]\n' +
+    '    A["1"] --> B["3"] --> C["5"]\n' +
+    "  end\n" +
+    '  subgraph second ["secondArray"]\n' +
+    '    D["2"] --> E["4"] --> F["6"]\n' +
+    "  end\n" +
+    '  A -->|"take 1"| G["merged: 1,2,3,4,5,6"]\n' +
+    '  D -->|"take 2"| G\n' +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style D fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Two pointers (amber = firstArray head, cyan = secondArray head) compare front elements and the smaller one advances into the merged result. All remaining elements (green) drain in sorted order.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + m)`**\n\n" +

@@ -9,6 +9,20 @@ export const implementStackUsingQueuesEducational: EducationalContent = {
     "1. **Push(x):** Enqueue `x` at the rear. Then dequeue and re-enqueue every element that was already in the queue (i.e. `queue.length - 1` rotations). This cycles the old elements behind the new one, leaving `x` at the front.\n" +
     "2. **Pop / top:** The front of the queue is always the most-recently pushed element, so a plain dequeue gives LIFO order.\n\n" +
     "### Example trace on `[1, 2, 3]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    subgraph Push3["push(3): enqueue 3, rotate old elements"]\n' +
+    '        Q1["front→ 2 1 3"] -->|"rotate 2, then 1"| Q2["front→ 3 2 1"]\n' +
+    "    end\n" +
+    '    subgraph Pop["pop: dequeue from front = stack top"]\n' +
+    '        Q2B["front→ 3 2 1"] -->|dequeue| R(["pop = 3"])\n' +
+    "    end\n" +
+    "    Push3 --> Pop\n" +
+    "    style Q2 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style R fill:#14532d,stroke:#22c55e\n" +
+    "    style Q1 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "After each push, the new element is rotated to the front by cycling all prior elements to the rear. The front always equals the stack top, so pop is a simple dequeue.\n\n" +
     "```\n" +
     "push(1): enqueue 1   → queue: [1]   (0 rotations)\n" +
     "push(2): enqueue 2   → queue: [1,2]\n" +

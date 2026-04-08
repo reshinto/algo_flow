@@ -28,7 +28,20 @@ export const bestTimeBuySellEducational: EducationalContent = {
     "| 3   | 3     | 1        | 2               | 4         | no update      |\n" +
     "| 4   | 6     | 1        | 5               | 5         | new max profit |\n" +
     "| 5   | 4     | 1        | 3               | 5         | no update      |\n\n" +
-    "**Result**: Buy on day 1 (price 1), sell on day 4 (price 6), maximum profit = `5`.",
+    "**Result**: Buy on day 1 (price 1), sell on day 4 (price 6), maximum profit = `5`.\n\n" +
+    "### Min-Price Tracking Diagram (`[7, 1, 5, 3, 6, 4]`)\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  D0["day 0\\nprice=7"] -->|"minPrice=7"| D1["day 1\\nprice=1"]\n' +
+    '  D1 -->|"new min=1"| D2["day 2\\nprice=5"]\n' +
+    '  D2 -->|"profit=4"| D3["day 3\\nprice=3"]\n' +
+    '  D3 -->|"profit=2"| D4["day 4\\nprice=6"]\n' +
+    '  D4 -->|"profit=5 ✓"| D5["day 5\\nprice=4"]\n' +
+    "  style D0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D1 fill:#f59e0b,stroke:#d97706\n" +
+    "  style D4 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Day 1 resets `minPrice` to `1` (the best buy point). Day 4 yields the peak profit of `5` — buy at `1`, sell at `6`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

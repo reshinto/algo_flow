@@ -10,7 +10,21 @@ export const binaryTreePruningEducational: EducationalContent = {
     "2. Recurse into the **right** subtree — prune it, potentially returning `null`.\n" +
     "3. If the current node has **value 0** and **both children are null** (leaf with no 1s), return `null` (prune this node).\n" +
     "4. Otherwise, return the current node (keep it).\n\n" +
-    "Because post-order processes leaves first, entire subtrees collapse upward as they are found to contain no 1s.",
+    "Because post-order processes leaves first, entire subtrees collapse upward as they are found to contain no 1s.\n\n" +
+    "**Before and after pruning** — nodes with value 0 and no 1s in their subtree are removed:\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((1)):::visited --> B((0)):::current\n" +
+    "  A --> C((1)):::visited\n" +
+    "  B --> D((0)):::current\n" +
+    "  B --> E((0)):::current\n" +
+    "  C --> F((0)):::current\n" +
+    "  C --> G((1)):::visited\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Green nodes (containing 1) survive; cyan nodes (value 0 with no 1s in subtree) are pruned. Node B and its children D, E are removed; F is also removed, leaving only A → C → G.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — every node is visited exactly once.\n\n" +

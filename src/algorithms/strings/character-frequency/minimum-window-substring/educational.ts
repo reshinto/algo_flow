@@ -19,7 +19,21 @@ export const minimumWindowSubstringEducational: EducationalContent = {
     "**Step 3 — Shrink left pointer** (O(n) amortized):\n\n" +
     "Once `satisfied === required`, record the window if it is the smallest seen so far. Then advance `leftIndex` — remove that character from the window, and if its count drops below the target, decrement `satisfied`. Repeat until `satisfied < required`:\n\n" +
     '```\nWindow "ADOBEC" → record length 6\n→ shrink: remove A → satisfied drops → stop shrinking\n...\nWindow "BANC" → record length 4  ← best\n```\n\n' +
-    "Return the text slice at the recorded best position.",
+    "Return the text slice at the recorded best position.\n\n" +
+    '### Example: Finding minimum window in `"ADOBECODEBANC"` for pattern `"ABC"`\n\n' +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    A["A"] --> D["D"] --> O["O"] --> B["B"] --> E["E"] --> C["C"] --> O2["O"] --> D2["D"] --> E2["E"] --> B2["B"] --> A2["A"] --> N["N"] --> C2["C"]\n' +
+    "    style A fill:#06b6d4,stroke:#0891b2\n" +
+    "    style B fill:#06b6d4,stroke:#0891b2\n" +
+    "    style C fill:#14532d,stroke:#22c55e\n" +
+    "    style B2 fill:#14532d,stroke:#22c55e\n" +
+    "    style A2 fill:#14532d,stroke:#22c55e\n" +
+    "    style N fill:#14532d,stroke:#22c55e\n" +
+    "    style C2 fill:#14532d,stroke:#22c55e\n" +
+    "    style D fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    'The right pointer expands until all of A, B, C are covered. The window `"BANC"` (green) is the shortest valid window found after shrinking from the left.',
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n + m)`**\n\n" +

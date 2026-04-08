@@ -17,7 +17,23 @@ export const slidingWindowMinSumEducational: EducationalContent = {
     "- **Window 2:** `[2, 1, 7]` → sum = `10` (no update)\n" +
     "- **Window 3:** `[1, 7, 8]` → sum = `16` (no update)\n" +
     "- **...slide...**\n" +
-    "- **Window 8:** `[1, 0]` is not full; last window `[1, 1, 0]` → sum = `2` — new minimum at index 7",
+    "- **Window 8:** `[1, 0]` is not full; last window `[1, 1, 0]` → sum = `2` — new minimum at index 7\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["4"] --> B["2"] --> C["1"] --> D["7"] --> E["8"] --> F["1"] --> G["2"] --> H["8"] --> I["1"] --> J["0"]\n' +
+    "  style A fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "  style H fill:#14532d,stroke:#22c55e\n" +
+    "  style I fill:#f59e0b,stroke:#d97706\n" +
+    "  style J fill:#f59e0b,stroke:#d97706\n" +
+    '  W["k=3 window\\nsum=2 ✓"] -. min sum .-> H\n' +
+    "```\n\n" +
+    "The amber window `[1, 1, 0]` (indices 7–9) has the minimum sum of **2** across all k=3 windows.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

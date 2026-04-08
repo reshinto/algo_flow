@@ -17,7 +17,20 @@ export const subarraySumEqualsKEducational: EducationalContent = {
     " 1    1       2            0               found (count=1)       1        {0:1, 1:1, 2:1}\n" +
     " 2    1       3            1               found (count=1)       2        {0:1, 1:1, 2:1, 3:1}\n" +
     "```\n\n" +
-    "Answer: **2** subarrays (`[1,1]` starting at index 0 and `[1,1]` starting at index 1).",
+    "Answer: **2** subarrays (`[1,1]` starting at index 0 and `[1,1]` starting at index 1).\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["input: [1,1,1] k=2"]:::input --> B["map: {0:1}\\ncurrentSum=0"]\n' +
+    '  B --> C["idx=0: sum=1\\nneeded=-1 ✗"]\n' +
+    '  C --> D["map: {0:1, 1:1}"]\n' +
+    '  D --> E["idx=1: sum=2\\nneeded=0 ✓ count+1"]\n' +
+    '  E --> F["map: {0:1, 1:1, 2:1}"]\n' +
+    '  F --> G["idx=2: sum=3\\nneeded=1 ✓ count+1"]\n' +
+    '  G --> H["result: 2"]:::found\n' +
+    "  classDef input fill:#06b6d4,stroke:#0891b2,color:#fff\n" +
+    "  classDef found fill:#14532d,stroke:#22c55e,color:#fff\n" +
+    "```\n\n" +
+    "Each `✓` hit means `map[currentSum - k]` existed — one more subarray ending at that index sums to `k`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

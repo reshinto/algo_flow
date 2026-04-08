@@ -22,7 +22,20 @@ export const serializeDeserializeTreeEducational: EducationalContent = {
     'Serialize: [4, 2, 6, 1, 3, 5, 7] → "4,2,6,1,3,5,7"\n' +
     "(null children omitted at leaf level for brevity)\n" +
     'Deserialize: "4,2,6,1,3,5,7" → balanced 7-node BST\n' +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)):::current --> B((2)):::visited\n" +
+    "  A --> C((6)):::visited\n" +
+    "  B --> D((1)):::active\n" +
+    "  B --> E((3)):::active\n" +
+    "  C --> F((5)):::active\n" +
+    "  C --> G((7)):::active\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "BFS serialization visits nodes level by level: root 4 (cyan) first, then level-2 nodes 2 and 6 (green), then leaves 1, 3, 5, 7 (amber). Deserialization replays the same BFS order, attaching children as the queue is consumed.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)` for both serialization and deserialization**\n\n" +

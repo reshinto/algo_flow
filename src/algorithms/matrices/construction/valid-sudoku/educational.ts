@@ -21,7 +21,24 @@ export const validSudokuEducational: EducationalContent = {
     "------+-------+------\n" +
     "box 6 | box 7 | box 8\n" +
     "```\n\n" +
-    "Row `r`, column `c` → box `floor(r/3) × 3 + floor(c/3)`.",
+    "Row `r`, column `c` → box `floor(r/3) × 3 + floor(c/3)`.\n\n" +
+    "### Diagram: placing digit 5 at row 1, col 1\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  Cell["Cell (1,1) = 5"]\n' +
+    '  Cell -->|"rowsSeen[1]"| RowSet["Row 1 set: {5}"]\n' +
+    '  Cell -->|"colsSeen[1]"| ColSet["Col 1 set: {5}"]\n' +
+    '  Cell -->|"boxIdx = 0"| BoxSet["Box 0 set: {5}"]\n' +
+    '  RowSet --> Check{"Duplicate?"}\n' +
+    "  ColSet --> Check\n" +
+    "  BoxSet --> Check\n" +
+    '  Check -->|"No"| Valid["Record & continue"]\n' +
+    '  Check -->|"Yes"| Invalid["Return false"]\n' +
+    "  style Cell fill:#06b6d4,stroke:#0891b2\n" +
+    "  style Check fill:#f59e0b,stroke:#d97706\n" +
+    "  style Valid fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each filled cell fans out to three set lookups — row, column, and box — then records the digit in all three sets if no duplicate is found.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(1)`**\n\n" +

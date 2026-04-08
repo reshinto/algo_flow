@@ -21,7 +21,23 @@ export const removeDuplicatesEducational: EducationalContent = {
     "read=3: arr[3]=2 == arr[1]=2 → duplicate, skip\n" +
     "read=4: arr[4]=3 != arr[1]=2 → unique! write→2, copy 3  [1, 2, 3*, 2, 3]\n" +
     "Result: uniqueCount=3, result=[1, 2, 3]\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["1"] --> B["1"] --> C["2"] --> D["2"] --> E["3"]\n' +
+    '  A -->|"write=0"| F["1"]\n' +
+    '  C -->|"unique → write=1"| G["2"]\n' +
+    '  E -->|"unique → write=2"| H["3"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#06b6d4,stroke:#0891b2\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "  style G fill:#14532d,stroke:#22c55e\n" +
+    "  style H fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Input `[1, 1, 2, 2, 3]`: cyan elements are unique values accepted by the write pointer; amber elements are duplicates skipped by the read pointer. Green shows the resulting de-duplicated prefix `[1, 2, 3]`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

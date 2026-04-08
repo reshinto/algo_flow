@@ -29,7 +29,25 @@ export const cuckooFilterEducational: EducationalContent = {
     "\n" +
     "Query 3: fp matches bucket → found (true positive)\n" +
     "Query 5: fp not in either bucket → not found (true negative)\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  E3["insert 3"]:::input\n' +
+    '  E11["insert 11"]:::input\n' +
+    '  FP3["fp(3) = 0x7B"]:::current\n' +
+    '  FP11["fp(11) = 0xB3"]:::current\n' +
+    '  B3["bucket[3] ← 0x7B"]:::result\n' +
+    '  B7["bucket[7] ← 0xB3"]:::result\n' +
+    '  Q3["query 3 → bucket[3]=0x7B → found"]:::result\n' +
+    '  Q5["query 5 → no match → absent"]:::input\n' +
+    "  E3 --> FP3 --> B3 --> Q3\n" +
+    "  E11 --> FP11 --> B7\n" +
+    "  Q5\n" +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Element 11 hashes to the same primary bucket as element 3, so cuckoo displacement moves its fingerprint to an alternate bucket. A lookup for any element checks only its two candidate buckets.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(1)` amortized**\n\n" +

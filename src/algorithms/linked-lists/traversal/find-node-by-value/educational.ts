@@ -13,13 +13,14 @@ export const findNodeByValueEducational: EducationalContent = {
     "   - Otherwise, move `current` to the next node.\n" +
     "3. **Return** null if the loop ends without finding a match.\n\n" +
     "### Example: Finding 7 in [4 → 2 → 7 → 1 → 9]\n\n" +
-    "```\n" +
-    "Start:       current=4, target=7\n" +
-    "Step 1:      Compare 4 == 7? No, current=2\n" +
-    "Step 2:      Compare 2 == 7? No, current=7\n" +
-    "Step 3:      Compare 7 == 7? Yes, return node-7\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    A["4"] --> B["2"] --> C["7"] --> D["1"] --> E["9"]\n' +
+    "    style A fill:#14532d,stroke:#22c55e\n" +
+    "    style B fill:#14532d,stroke:#22c55e\n" +
+    "    style C fill:#f59e0b,stroke:#d97706\n" +
     "```\n\n" +
-    "When a match is found, the search terminates and the matching node is returned.",
+    "The pointer walks through nodes 4 and 2 (green, visited) before finding node 7 (amber, match). The search terminates immediately — nodes 1 and 9 are never visited.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

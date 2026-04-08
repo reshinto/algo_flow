@@ -16,7 +16,19 @@ export const buildFromPostorderInorderIterativeEducational: EducationalContent =
     "   - Otherwise, **pop** nodes while they match inorder (decrementing pointer); the last popped becomes the **left-child parent**.\n" +
     "3. Always **push** the new node onto the stack.\n\n" +
     "### Key Insight\n\n" +
-    "Reading both sequences right-to-left converts the postorder problem into a mirror of the preorder iterative approach.",
+    "Reading both sequences right-to-left converts the postorder problem into a mirror of the preorder iterative approach.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)):::current --> B((2)):::visited\n" +
+    "  A --> C((6)):::visited\n" +
+    "  B --> D((1)):::active\n" +
+    "  B --> E((3)):::active\n" +
+    "  C --> F((5)):::active\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Tree reconstructed from `postorder=[1,3,2,5,6,4]` and `inorder=[1,2,3,4,5,6]`. Root 4 (cyan) is identified from `postorder[-1]`; the inorder boundary splits green nodes (left subtree) from right. Amber leaves are attached last as the stack unwinds.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

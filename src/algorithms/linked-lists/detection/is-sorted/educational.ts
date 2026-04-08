@@ -13,18 +13,29 @@ export const isSortedEducational: EducationalContent = {
     "   - Advance `current` to the next node.\n" +
     "3. **Return** `true` if the loop completes without finding an out-of-order pair.\n\n" +
     "### Example: Checking [1 → 3 → 5 → 7]\n\n" +
-    "```\n" +
-    "Step 1:      Compare 1 and 3 (1 ≤ 3) ✓\n" +
-    "Step 2:      Compare 3 and 5 (3 ≤ 5) ✓\n" +
-    "Step 3:      Compare 5 and 7 (5 ≤ 7) ✓\n" +
-    "Result:      Sorted = true\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    A["1"] -->|"1 ≤ 3 ✓"| B["3"]\n' +
+    '    B -->|"3 ≤ 5 ✓"| C["5"]\n' +
+    '    C -->|"5 ≤ 7 ✓"| D["7"]\n' +
+    '    D --> E["null"]\n' +
+    "    style A fill:#14532d,stroke:#22c55e\n" +
+    "    style B fill:#14532d,stroke:#22c55e\n" +
+    "    style C fill:#14532d,stroke:#22c55e\n" +
+    "    style D fill:#14532d,stroke:#22c55e\n" +
     "```\n\n" +
+    "All comparisons pass — the list is sorted. Every node is visited to confirm.\n\n" +
     "### Example: Checking [1 → 5 → 3 → 7]\n\n" +
-    "```\n" +
-    "Step 1:      Compare 1 and 5 (1 ≤ 5) ✓\n" +
-    "Step 2:      Compare 5 and 3 (5 > 3) ✗ — not sorted!\n" +
-    "Result:      Sorted = false\n" +
-    "```",
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    A["1"] -->|"1 ≤ 5 ✓"| B["5"]\n' +
+    '    B -->|"5 > 3 ✗"| C["3"]\n' +
+    '    C --> D["7"]\n' +
+    "    style A fill:#14532d,stroke:#22c55e\n" +
+    "    style B fill:#f59e0b,stroke:#d97706\n" +
+    "    style C fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "The algorithm stops at the first out-of-order pair (5 > 3) and returns `false`.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)` best, worst, and average**\n\n" +

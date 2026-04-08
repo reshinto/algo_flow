@@ -16,7 +16,25 @@ export const heapPeekEducational: EducationalContent = {
     "heapPeek([1, 3, 5, 7, 9, 8, 6]) → 1\n" +
     "```\n\n" +
     "No traversal, no comparison, no mutation — the heap is left completely unchanged.\n\n" +
-    "**Why is index 0 always the min?** By induction: the root is smaller than both children (heap property). Each child is smaller than its own children. This cascades down every path, so no node in any subtree can be smaller than the root.",
+    "**Why is index 0 always the min?** By induction: the root is smaller than both children (heap property). Each child is smaller than its own children. This cascades down every path, so no node in any subtree can be smaller than the root.\n\n" +
+    "### Diagram: Heap peek on [1, 3, 5, 7, 9, 8, 6]\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n1((1)) --> n3((3))\n" +
+    "    n1 --> n5((5))\n" +
+    "    n3 --> n7((7))\n" +
+    "    n3 --> n9((9))\n" +
+    "    n5 --> n8((8))\n" +
+    "    n5 --> n6((6))\n" +
+    "    style n1 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n3 fill:#14532d,stroke:#22c55e\n" +
+    "    style n5 fill:#14532d,stroke:#22c55e\n" +
+    "    style n7 fill:#14532d,stroke:#22c55e\n" +
+    "    style n9 fill:#14532d,stroke:#22c55e\n" +
+    "    style n8 fill:#14532d,stroke:#22c55e\n" +
+    "    style n6 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The root (cyan, value 1) is the only node accessed — peek returns it without touching any other node. The entire heap (all green nodes) remains completely unchanged.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(1)`**\n\n" +

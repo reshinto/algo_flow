@@ -27,7 +27,23 @@ export const heapSortVisualizationEducational: EducationalContent = {
     "Sift-down 4 → heap shrinks, 8 becomes root\n" +
     "Extract 8 → swap with 1 → settled: [_, _, _, _, _, _, _, 8, 9]\n" +
     "... continues until sorted: [1, 2, 3, 4, 5, 6, 7, 8, 9]\n" +
-    "```",
+    "```\n\n" +
+    "### Max-Heap After Heapify — Before First Extraction\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    n9((9)) --> n6((6))\n" +
+    "    n9 --> n8((8))\n" +
+    "    n6 --> n5((5))\n" +
+    "    n6 --> n3((3))\n" +
+    "    n8 --> n7((7))\n" +
+    "    n8 --> n2((2))\n" +
+    "    n5 --> n4((4))\n" +
+    "    style n9 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style n4 fill:#f59e0b,stroke:#d97706\n" +
+    "    style n2 fill:#14532d,stroke:#22c55e\n" +
+    "    style n3 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The root (cyan) is always the current maximum. Node 4 (amber) is the last array element — it will swap with 9 when extraction begins.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log n)` — all cases**\n\n" +

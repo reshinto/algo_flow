@@ -17,7 +17,27 @@ export const reshapeMatrixEducational: EducationalContent = {
     "Input:   [[1, 2],    Output: [[1, 2, 3, 4]]\n" +
     "          [3, 4]]\n" +
     "```\n\n" +
-    "flatIdx 0 → (0,0)→(0,0)=1, flatIdx 1 → (0,1)→(0,1)=2, flatIdx 2 → (1,0)→(0,2)=3, flatIdx 3 → (1,1)→(0,3)=4",
+    "flatIdx 0 → (0,0)→(0,0)=1, flatIdx 1 → (0,1)→(0,1)=2, flatIdx 2 → (1,0)→(0,2)=3, flatIdx 3 → (1,1)→(0,3)=4\n\n" +
+    "### Diagram: 2 × 2 → 1 × 4 via flat index\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  subgraph Src["Source 2×2"]\n' +
+    '    S00["(0,0)=1"] --- S01["(0,1)=2"]\n' +
+    '    S10["(1,0)=3"] --- S11["(1,1)=4"]\n' +
+    "  end\n" +
+    '  subgraph Flat["Flat index"]\n' +
+    '    F0["idx 0"] --- F1["idx 1"] --- F2["idx 2"] --- F3["idx 3"]\n' +
+    "  end\n" +
+    '  subgraph Dst["Destination 1×4"]\n' +
+    '    D00["(0,0)=1"] --- D01["(0,1)=2"] --- D02["(0,2)=3"] --- D03["(0,3)=4"]\n' +
+    "  end\n" +
+    "  S00 --> F0 --> D00\n" +
+    "  S10 --> F2 --> D02\n" +
+    "  style F2 fill:#f59e0b,stroke:#d97706\n" +
+    "  style S10 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D02 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The flat index acts as a bridge: source coordinates and destination coordinates are both derived from the same linear position, highlighted here for element 3 (flatIdx 2).",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m × n)`**\n\n" +

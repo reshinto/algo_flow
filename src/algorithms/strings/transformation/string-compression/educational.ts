@@ -24,7 +24,23 @@ export const stringCompressionEducational: EducationalContent = {
     "Run 3:  c×5  →  write 'c','5'\n" +
     "Run 4:  a×3  →  write 'a','3'\n" +
     "Output: a2b1c5a3  (8 < 11 chars — compressed returned)\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["aa"] -->|"count=2"| B["a2"]\n' +
+    '  C["b"] -->|"count=1"| D["b1"]\n' +
+    '  E["ccccc"] -->|"count=5"| F["c5"]\n' +
+    '  G["aaa"] -->|"count=3"| H["a3"]\n' +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "  style G fill:#f59e0b,stroke:#d97706\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style F fill:#14532d,stroke:#22c55e\n" +
+    "  style H fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each run of identical characters (amber) is collapsed into a `char + count` token (green), reducing `aabcccccaaa` (11 chars) to `a2b1c5a3` (8 chars).",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

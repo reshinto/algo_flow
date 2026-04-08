@@ -13,6 +13,22 @@ export const minStackEducational: EducationalContent = {
     "3. **Top:** Return the top of the main stack.\n" +
     "4. **GetMin:** Return the top of the auxiliary min stack — always O(1).\n\n" +
     "### Example trace on `[5, 3, 7, 1, 8]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph mainStack\n" +
+    '        M["5 → 3 → 7 → 1 → 8"]\n' +
+    "    end\n" +
+    "    subgraph minTracker\n" +
+    '        T["5 → 3 → 3 → 1 → 1"]\n' +
+    "    end\n" +
+    '    M -->|"parallel push"| T\n' +
+    '    T -->|"top = getMin()"| G["getMin = 1"]\n' +
+    "    style M fill:#06b6d4,stroke:#0891b2\n" +
+    "    style T fill:#f59e0b,stroke:#d97706\n" +
+    "    style G fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "When `7` is pushed, the minimum hasn't changed so `3` is duplicated in the tracker. " +
+    "Popping any element from both stacks simultaneously always restores the correct historical minimum.\n\n" +
     "```\n" +
     "push  mainStack       minTracker   getMin\n" +
     "5     [5]             [5]          5\n" +

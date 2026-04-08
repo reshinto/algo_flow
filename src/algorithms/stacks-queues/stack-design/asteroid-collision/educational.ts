@@ -15,6 +15,25 @@ export const asteroidCollisionEducational: EducationalContent = {
     "3. If the asteroid survived the loop, push it onto the stack.\n" +
     "4. Return the stack contents as the final array.\n\n" +
     "### Example trace on `[5, 10, -5]`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    "    subgraph Input\n" +
+    '        I1["→ 5"] --> I2["→ 10"] --> I3["← -5"]\n' +
+    "    end\n" +
+    "    subgraph Collision\n" +
+    '        C1["stack: 5 10"] -->|"10 > 5 → -5 destroyed"| C2["stack: 5 10"]\n' +
+    "    end\n" +
+    "    subgraph Result\n" +
+    '        R1["[5, 10]"]\n' +
+    "    end\n" +
+    "    I3 --> C1\n" +
+    "    C2 --> R1\n" +
+    "    style I1 fill:#06b6d4,stroke:#0891b2\n" +
+    "    style C1 fill:#f59e0b,stroke:#d97706\n" +
+    "    style R1 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The left-mover `-5` challenges the stack top `10`, but `10 > 5` so `-5` is destroyed. " +
+    "Surviving asteroids remain in their original order.\n\n" +
     "```\n" +
     "asteroid  action                         stack\n" +
     "5         push (moving right)            [5]\n" +

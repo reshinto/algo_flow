@@ -10,7 +10,20 @@ export const bstSearchIterativeEducational: EducationalContent = {
     "   - If `current.value === target` — return `current`.\n" +
     "   - If `target < current.value` — move left: `current = current.left`.\n" +
     "   - Otherwise — move right: `current = current.right`.\n" +
-    "3. If the loop exits without a match, return `null`.",
+    "3. If the loop exits without a match, return `null`.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((20)) --> B((10))\n" +
+    "  A --> C((30))\n" +
+    "  B --> D((5))\n" +
+    "  B --> E((15))\n" +
+    "  C --> F((25))\n" +
+    "  C --> G((40))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "Searching for 15: current=20 (15<20, go left) → current=10 (15>10, go right) → current=15 (match, return node). Only one pointer variable advances — no call stack consumed.",
 
   timeAndSpaceComplexity:
     "**Time: `O(log n)` average, `O(n)` worst case** — same as the recursive version.\n\n**Space: `O(1)`** — no call stack; only a single pointer variable is maintained.",

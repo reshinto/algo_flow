@@ -17,7 +17,21 @@ export const containsDuplicateEducational: EducationalContent = {
     "     2           3     not found         insert { 1, 2, 3 }\n" +
     "     3           1     FOUND!            return true\n" +
     "```\n\n" +
-    "The key insight: hash set membership is `O(1)`, so each check is constant time regardless of how many elements have been stored.",
+    "The key insight: hash set membership is `O(1)`, so each check is constant time regardless of how many elements have been stored.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["idx 0: 1"] -->|not in set| B["set:{1}"]\n' +
+    '  B --> C["idx 1: 2"]\n' +
+    '  C -->|not in set| D["set:{1,2}"]\n' +
+    '  D --> E["idx 2: 3"]\n' +
+    '  E -->|not in set| F["set:{1,2,3}"]\n' +
+    '  F --> G["idx 3: 1"]\n' +
+    '  G -->|FOUND in set!| H["return true"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style G fill:#f59e0b,stroke:#d97706\n" +
+    "  style H fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each element is checked against the set before being inserted — the first hit on an existing value exits immediately.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`**\n\n" +

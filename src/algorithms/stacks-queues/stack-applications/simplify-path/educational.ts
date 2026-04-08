@@ -11,6 +11,20 @@ export const simplifyPathEducational: EducationalContent = {
     "3. **Any other string** — a real directory name. Push it onto the stack.\n\n" +
     "After all components are consumed, join the stack elements with `/` and prepend a leading `/`.\n\n" +
     "### Example trace on `/a/./b/../../c/`\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    A["stack: (empty)"] -->|"push a"| B["stack: a"]\n' +
+    '    B -->|"skip ."| B\n' +
+    '    B -->|"push b"| C["stack: a b"]\n' +
+    '    C -->|".. pop b"| D["stack: a"]\n' +
+    '    D -->|".. pop a"| E["stack: (empty)"]\n' +
+    '    E -->|"push c"| F["/c"]\n' +
+    "    style A fill:#06b6d4,stroke:#0891b2\n" +
+    "    style C fill:#f59e0b,stroke:#d97706\n" +
+    "    style F fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each `..` pops one directory off the stack; `.` and empty segments are skipped. " +
+    "The final stack joined with `/` gives the canonical path.\n\n" +
     "```\n" +
     "component  action        stack\n" +
     '""         skip (empty)  []\n' +

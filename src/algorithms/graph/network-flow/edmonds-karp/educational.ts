@@ -11,7 +11,23 @@ export const edmondsKarpEducational: EducationalContent = {
     "4. **Augment flow** by the bottleneck, updating residual capacities both forward and backward.\n" +
     "5. Repeat BFS until no path from `s` to `t` exists in the residual graph.\n\n" +
     "### Why BFS Guarantees Polynomial Runtime\n\n" +
-    "Each edge can become a bottleneck at most `O(V)` times before it is permanently removed from shortest paths. Since there are `E` edges, the total number of augmentations is bounded by `O(VE)`, and each BFS costs `O(V + E)`, giving `O(VE²)` overall.",
+    "Each edge can become a bottleneck at most `O(V)` times before it is permanently removed from shortest paths. Since there are `E` edges, the total number of augmentations is bounded by `O(VE)`, and each BFS costs `O(V + E)`, giving `O(VE²)` overall.\n\n" +
+    "### Network Flow Example (Edmonds-Karp BFS Path)\n\n" +
+    "```mermaid\n" +
+    "graph LR\n" +
+    '  S((S)) -->|"10"| A((A))\n' +
+    '  S((S)) -->|"8"| B((B))\n' +
+    '  A((A)) -->|"6"| C((C))\n' +
+    '  B((B)) -->|"7"| C((C))\n' +
+    '  A((A)) -->|"4"| T((T))\n' +
+    '  C((C)) -->|"9"| T((T))\n' +
+    "  style S fill:#06b6d4,stroke:#0891b2\n" +
+    "  style A fill:#f59e0b,stroke:#d97706\n" +
+    "  style B fill:#f59e0b,stroke:#d97706\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style T fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "BFS from S (cyan) finds the shortest path S→A→T (fewest hops) first, augmenting 4 units. Next BFS finds S→A→C→T, augmenting 6 more. BFS path selection prevents the alternating-path inefficiency of plain Ford-Fulkerson.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: O(VE²)**\n\n" +

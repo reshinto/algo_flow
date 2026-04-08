@@ -15,7 +15,21 @@ export const binaryIndexedTreeEducational: EducationalContent = {
     "```\n" +
     "while i > 0:  sum += bit[i];  i -= i & (-i)\n" +
     "```\n\n" +
-    "**Range sum `[L, R]`** = `query(R+1) - query(L)`.",
+    "**Range sum `[L, R]`** = `query(R+1) - query(L)`.\n\n" +
+    "**Responsibility ranges** for an 8-element BIT — each node covers a power-of-2 span:\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((bit[8])):::visited --> B((bit[4])):::visited\n" +
+    "  A --> C((bit[6])):::active\n" +
+    "  A --> D((bit[7])):::current\n" +
+    "  B --> E((bit[2])):::active\n" +
+    "  B --> F((bit[3])):::current\n" +
+    "  E --> G((bit[1])):::current\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef active fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef current fill:#06b6d4,stroke:#0891b2\n" +
+    "```\n\n" +
+    "Node `bit[8]` covers indices 1–8; `bit[4]` covers 1–4; `bit[6]` covers 5–6. The LSB trick (`i & -i`) determines each node's span.",
 
   timeAndSpaceComplexity:
     "**Update: `O(log n)`** — at most `log₂(n)` additions per update.\n\n" +

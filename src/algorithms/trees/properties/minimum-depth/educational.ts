@@ -11,7 +11,17 @@ export const minimumDepthEducational: EducationalContent = {
     "1. **Null node** — returns 0.\n" +
     "2. **Only one child** — recurse into the existing child only (single-child nodes are not leaves).\n" +
     "3. **Both children** — return `min(leftDepth, rightDepth) + 1`.\n\n" +
-    "The critical insight is case 2: a node with only a right child must count the depth through that right subtree, not return 1.",
+    "The critical insight is case 2: a node with only a right child must count the depth through that right subtree, not return 1.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((2)):::root --> C((3)):::current\n" +
+    "  C --> E((4)):::current\n" +
+    "  E --> F((5)):::visited\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "Node 2 has no left child — case 2 applies, recurse right only. Node 3 has no left child — recurse right only. Node 4 has no right child — recurse left only. Node 5 is the only leaf at depth 4. Minimum depth = 4.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — may visit all nodes in the worst case.\n\n" +

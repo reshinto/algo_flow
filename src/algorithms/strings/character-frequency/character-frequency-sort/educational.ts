@@ -19,6 +19,25 @@ export const characterFrequencySortEducational: EducationalContent = {
     "**Phase 3 — Rebuild output from high to low frequency** (O(n)):\n\n" +
     "Walk the buckets array from index `n` down to `1`. For each character in each bucket, append it to the result `freq` times:\n\n" +
     '```\nresult = "ee" + "t" + "r" = "eetr"\n```\n\n' +
+    '### Example: Sorting `"tree"`\n\n' +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '    subgraph Input["Input: tree"]\n' +
+    '        T["t"] --> R["r"] --> E1["e"] --> E2["e"]\n' +
+    "    end\n" +
+    '    subgraph Buckets["Buckets by freq"]\n' +
+    '        B1["freq=1: t, r"]\n' +
+    '        B2["freq=2: e"]\n' +
+    "    end\n" +
+    '    subgraph Output["Output (high→low)"]\n' +
+    '        O1["ee"] --> O2["t"] --> O3["r"]\n' +
+    "    end\n" +
+    "    Input --> Buckets --> Output\n" +
+    "    style B2 fill:#14532d,stroke:#22c55e\n" +
+    "    style B1 fill:#f59e0b,stroke:#d97706\n" +
+    "    style O1 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    'Bucket `freq=2` (green) is emitted first, producing `"ee"`, then `freq=1` characters (amber) are appended one at a time.\n\n' +
     "Because bucket sort never compares characters against each other, the whole algorithm runs in linear time.",
 
   timeAndSpaceComplexity:

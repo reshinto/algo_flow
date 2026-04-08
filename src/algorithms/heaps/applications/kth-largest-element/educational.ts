@@ -23,7 +23,17 @@ export const kthLargestElementEducational: EducationalContent = {
     "Element 7 > root 5 → replace → heap: [7, 12, 11]\n" +
     "Element 9 > root 7 → replace → heap: [9, 12, 11]\n\n" +
     "Root = 9 → 3rd largest ✓\n" +
-    "```",
+    "```\n\n" +
+    "### Min-Heap (size k=3) — Final State\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "    r9((9)) --> r12((12))\n" +
+    "    r9 --> r11((11))\n" +
+    "    style r9 fill:#f59e0b,stroke:#d97706\n" +
+    "    style r12 fill:#14532d,stroke:#22c55e\n" +
+    "    style r11 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The root (amber) is the smallest of the top-3 — value 9 — which is the 3rd largest in the array. Children (green) are the two larger confirmed top-k values.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n log k)`**\n\n" +

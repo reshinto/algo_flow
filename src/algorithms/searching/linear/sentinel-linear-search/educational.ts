@@ -30,7 +30,18 @@ export const sentinelLinearSearchEducational: EducationalContent = {
     "\n" +
     "Restore: array[7] = 5\n" +
     "currentIndex (4) < n - 1 (7) → genuine match: FOUND at index 4\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["Save last=5\\nWrite sentinel: arr[7]=9"] --> B["idx=0 val=4 ≠ 9"]\n' +
+    '  B -->|"advance"| C["idx=4 val=9 = 9\\nloop exits"]\n' +
+    '  C --> D["Restore arr[7]=5"]\n' +
+    '  D -->|"idx 4 < n-1 7"| E["✓ Genuine match\\nat index 4"]\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C fill:#f59e0b,stroke:#d97706\n" +
+    "  style E fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The sentinel at the array tail guarantees loop termination without a bounds check — each iteration performs only one comparison instead of two.",
 
   timeAndSpaceComplexity:
     "**Time Complexity**\n\n" +

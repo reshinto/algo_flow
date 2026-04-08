@@ -9,7 +9,21 @@ export const bstKthSmallestEducational: EducationalContent = {
     "2. Increment a counter when visiting each node.\n" +
     "3. When `counter === k`, record the current value and stop further recursion.\n" +
     "4. Return the recorded value.\n\n" +
-    "The algorithm stops early once found, avoiding unnecessary traversal of the right subtree.",
+    "The algorithm stops early once found, avoiding unnecessary traversal of the right subtree.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((10)) --> B((5))\n" +
+    "  A --> C((20))\n" +
+    "  B --> D((3))\n" +
+    "  B --> E((7))\n" +
+    "  C --> F((15))\n" +
+    "  C --> G((25))\n" +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style D fill:#14532d,stroke:#22c55e\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style E fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "Finding k=3: in-order visits 3 (count=1), 5 (count=2), 7 (count=3) → return 7. Right subtree of 5 and the entire right subtree of 10 are never visited, demonstrating early-exit savings.",
 
   timeAndSpaceComplexity:
     "**Time: `O(k + h)`** — visits `k` in-order nodes plus the path to reach the first.\n\n**Space: `O(h)`** — call stack.",

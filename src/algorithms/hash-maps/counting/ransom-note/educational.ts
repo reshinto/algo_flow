@@ -17,7 +17,19 @@ export const ransomNoteEducational: EducationalContent = {
     "         consume 'a': count → 0\n" +
     "All counts ≥ 0 → return true\n" +
     "```\n\n" +
-    "The magazine is processed first so its supply is known before any demand is checked.",
+    "The magazine is processed first so its supply is known before any demand is checked.\n\n" +
+    "```mermaid\n" +
+    "flowchart LR\n" +
+    '  A["magazine = \'aab\'"]:::input --> B["Pass 1: {a:2, b:1}"]\n' +
+    "  B --> C[\"consume 'a': a→1\"]:::checking\n" +
+    "  C --> D[\"consume 'a': a→0\"]:::checking\n" +
+    '  D --> E["all counts ≥ 0"]:::found\n' +
+    '  E --> F["return true"]:::found\n' +
+    "  classDef input fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef checking fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef found fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "If any decrement drives a count below zero, the magazine lacks that character and `false` is returned immediately — no further scanning needed.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m + n)`**\n\n" +

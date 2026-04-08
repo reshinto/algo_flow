@@ -10,7 +10,18 @@ export const binaryTreeTiltEducational: EducationalContent = {
     "A post-order DFS computes two things simultaneously:\n\n" +
     "1. **Subtree sum** — sum of all values in the subtree rooted at this node (returned up the stack).\n" +
     "2. **Node tilt** — `abs(leftSum - rightSum)`, accumulated into a running total.\n\n" +
-    "Post-order is essential because tilt requires knowing both children's sums before computing the parent's tilt.",
+    "Post-order is essential because tilt requires knowing both children's sums before computing the parent's tilt.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((4)):::current --> B((2)):::visited\n" +
+    "  A --> C((9)):::visited\n" +
+    "  B --> D((3)):::visited\n" +
+    "  B --> E((5)):::visited\n" +
+    "  C --> F((7)):::visited\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "```\n" +
+    "Post-order processes leaves first: node 2 tilt = `abs(3 - 5)` = 2, node 9 tilt = `abs(7 - 0)` = 7, node 4 tilt = `abs(10 - 16)` = 6. Total tilt = 2 + 7 + 6 = 15.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — each node is visited once.\n\n" +

@@ -16,7 +16,27 @@ export const catalanNumbersEducational: EducationalContent = {
     "Index:  0  1  2   3   4    5\n" +
     "Value:  1  1  2   5  14   42\n" +
     "```\n\n" +
-    "Each cell requires one full inner loop pass, so the total work grows as the sum of 1 + 2 + 3 + … + n = n(n+1)/2 — exactly the O(n²) cost.",
+    "Each cell requires one full inner loop pass, so the total work grows as the sum of 1 + 2 + 3 + … + n = n(n+1)/2 — exactly the O(n²) cost.\n\n" +
+    "### DP Table Fill for C(4)\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  C0["C(0)=1 base"] --> C1["C(1)=1"]\n' +
+    '  C0 --> C2["C(2)=2"]\n' +
+    "  C1 --> C2\n" +
+    '  C0 --> C3["C(3)=5"]\n' +
+    "  C1 --> C3\n" +
+    "  C2 --> C3\n" +
+    '  C0 --> C4["C(4)=14"]\n' +
+    "  C1 --> C4\n" +
+    "  C2 --> C4\n" +
+    "  C3 --> C4\n" +
+    "  style C0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style C1 fill:#14532d,stroke:#22c55e\n" +
+    "  style C2 fill:#14532d,stroke:#22c55e\n" +
+    "  style C3 fill:#14532d,stroke:#22c55e\n" +
+    "  style C4 fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Each node depends on all earlier nodes — `C(n)` sums products of every pair `C(k) × C(n-1-k)`, which is why the inner loop touches all previous results and gives O(n²) total work.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n²)`**\n\n" +

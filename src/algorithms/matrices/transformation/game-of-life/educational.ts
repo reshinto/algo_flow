@@ -15,7 +15,28 @@ export const gameOfLifeEducational: EducationalContent = {
     "- **Phase 1:** For each cell, count live neighbors using `value & 1` (reads only the original state). Encode the next state: `cell |= nextState << 1`.\n" +
     "- **Phase 2:** Decode every cell: `cell >>= 1`.\n\n" +
     "### Example: blinker oscillator\n\n" +
-    "```\nGeneration 0:   Generation 1:\n0 1 0           0 0 0\n0 1 0    →      1 1 1\n0 1 0           0 0 0\n```",
+    "```\nGeneration 0:   Generation 1:\n0 1 0           0 0 0\n0 1 0    →      1 1 1\n0 1 0           0 0 0\n```\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  subgraph Gen0["Generation 0 (blinker)"]\n' +
+    '    A0["0"] --- B0["1"] --- C0["0"]\n' +
+    '    A1["0"] --- B1["1"] --- C1["0"]\n' +
+    '    A2["0"] --- B2["1"] --- C2["0"]\n' +
+    "  end\n" +
+    '  subgraph Gen1["Generation 1"]\n' +
+    '    D0["0"] --- E0["0"] --- F0["0"]\n' +
+    '    D1["1"] --- E1["1"] --- F1["1"]\n' +
+    '    D2["0"] --- E2["0"] --- F2["0"]\n' +
+    "  end\n" +
+    '  Gen0 -->|"apply rules"| Gen1\n' +
+    "  style B0 fill:#14532d,stroke:#22c55e\n" +
+    "  style B1 fill:#f59e0b,stroke:#d97706\n" +
+    "  style B2 fill:#14532d,stroke:#22c55e\n" +
+    "  style D1 fill:#14532d,stroke:#22c55e\n" +
+    "  style E1 fill:#14532d,stroke:#22c55e\n" +
+    "  style F1 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The vertical blinker rotates 90° each generation — the center column collapses to a center row as outer cells die from underpopulation and new cells are born from exactly 3 neighbors.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m × n)`**\n\n" +

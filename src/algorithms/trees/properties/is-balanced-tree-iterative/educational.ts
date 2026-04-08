@@ -11,7 +11,19 @@ export const isBalancedTreeIterativeEducational: EducationalContent = {
     "- **Phase 0:** First visit — push left child if it exists.\n" +
     "- **Phase 1:** Left done — push right child if it exists.\n" +
     "- **Phase 2:** Both children done — compute balance and record height.\n\n" +
-    "Heights are stored in a `Map<node, number>` and retrieved when processing a parent node.",
+    "Heights are stored in a `Map<node, number>` and retrieved when processing a parent node.\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    "  A((1)):::root --> B((2)):::visited\n" +
+    "  A --> C((3)):::visited\n" +
+    "  B --> D((4)):::visited\n" +
+    "  B --> E((5)):::visited\n" +
+    "  C --> F((6)):::current\n" +
+    "  classDef root fill:#06b6d4,stroke:#0891b2\n" +
+    "  classDef visited fill:#14532d,stroke:#22c55e\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "```\n" +
+    "Post-order processes leaves first. Heights map: {4:1, 5:1, 2:2, 6:1, 3:2}. At node 1: leftHeight=2, rightHeight=2, `abs(2-2)=0 ≤ 1` — balanced. The tree passes the check.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(n)`** — each node is processed once.\n\n" +

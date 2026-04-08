@@ -26,7 +26,26 @@ export const toeplitzMatrixEducational: EducationalContent = {
     "1  2\n" +
     "2  2\n" +
     "```\n\n" +
-    "`matrix[1][1] = 2 ≠ matrix[0][0] = 1` — Result: `false`.",
+    "`matrix[1][1] = 2 ≠ matrix[0][0] = 1` — Result: `false`.\n\n" +
+    "### Diagram: verifying a 3 × 4 Toeplitz matrix\n\n" +
+    "```mermaid\n" +
+    "flowchart TD\n" +
+    '  subgraph Row0["Row 0"]\n' +
+    '    R0C0["1"] --- R0C1["2"] --- R0C2["3"] --- R0C3["4"]\n' +
+    "  end\n" +
+    '  subgraph Row1["Row 1"]\n' +
+    '    R1C0["5"] --- R1C1["1"] --- R1C2["2"] --- R1C3["3"]\n' +
+    "  end\n" +
+    '  subgraph Row2["Row 2"]\n' +
+    '    R2C0["9"] --- R2C1["5"] --- R2C2["1"] --- R2C3["2"]\n' +
+    "  end\n" +
+    '  R0C0 -->|"== ?"| R1C1\n' +
+    '  R1C1 -->|"== ?"| R2C2\n' +
+    "  style R0C0 fill:#06b6d4,stroke:#0891b2\n" +
+    "  style R1C1 fill:#f59e0b,stroke:#d97706\n" +
+    "  style R2C2 fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "Each cell is compared with its upper-left neighbor along the same diagonal; cyan is the diagonal origin, amber is the cell under check, green confirms a match.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(m × n)`**\n\n" +

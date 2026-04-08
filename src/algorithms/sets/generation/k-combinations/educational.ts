@@ -31,7 +31,24 @@ export const kCombinationsEducational: EducationalContent = {
     "    ... (continues)\n" +
     "Result: [1,2,3], [1,2,4], [1,2,5], [1,3,4], [1,3,5], [1,4,5],\n" +
     "        [2,3,4], [2,3,5], [2,4,5], [3,4,5]  — C(5,3) = 10 combinations\n" +
-    "```",
+    "```\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '  Root["[ ]"]:::current\n' +
+    '  N1["[1]"]:::current\n' +
+    '  N12["[1,2]"]:::current\n' +
+    '  N13["[1,3]"]:::current\n' +
+    '  E123["[1,2,3] ✓"]:::result\n' +
+    '  E124["[1,2,4] ✓"]:::result\n' +
+    '  E134["[1,3,4] ✓"]:::result\n' +
+    "  Root --> N1\n" +
+    "  N1 --> N12 & N13\n" +
+    "  N12 --> E123 & E124\n" +
+    "  N13 --> E134\n" +
+    "  classDef current fill:#f59e0b,stroke:#d97706\n" +
+    "  classDef result fill:#14532d,stroke:#22c55e\n" +
+    "```\n\n" +
+    "The tree prunes as soon as a branch reaches size k=3 (emitting the result) or runs out of elements to add. Nodes shown are a partial view for elements [1,2,3,4], k=3.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(k × C(n,k))`**\n\n" +

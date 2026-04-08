@@ -18,7 +18,21 @@ export const kruskalsEducational: EducationalContent = {
     "find(B) → root via path compression\n" +
     "if roots differ → union by rank → merge trees\n" +
     "```\n\n" +
-    "Path compression flattens the tree on every `find()` call, making subsequent lookups nearly O(1).",
+    "Path compression flattens the tree on every `find()` call, making subsequent lookups nearly O(1).\n\n" +
+    "### Kruskal's Edge Selection on a Weighted Graph\n\n" +
+    "```mermaid\n" +
+    "graph TD\n" +
+    '  A((A)) -->|"1"| B((B))\n' +
+    '  B((B)) -->|"2"| C((C))\n' +
+    '  A((A)) -->|"4"| C((C))\n' +
+    '  B((B)) -->|"3"| D((D))\n' +
+    '  C((C)) -->|"5"| D((D))\n' +
+    "  style A fill:#06b6d4,stroke:#0891b2\n" +
+    "  style B fill:#14532d,stroke:#22c55e\n" +
+    "  style C fill:#14532d,stroke:#22c55e\n" +
+    "  style D fill:#f59e0b,stroke:#d97706\n" +
+    "```\n\n" +
+    "Edges sorted by weight: A–B(1), B–C(2), B–D(3), A–C(4), C–D(5). Kruskal's picks A–B, B–C, B–D (green/amber) — adding A–C would create a cycle and is rejected. MST weight = 6.",
 
   timeAndSpaceComplexity:
     "**Time Complexity: `O(E log E)`**\n\n" +
