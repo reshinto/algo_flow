@@ -12,7 +12,7 @@ struct TreeNode {
     TreeNode(int val) : value(val), left(nullptr), right(nullptr) {}
 };
 
-TreeNode* buildFromPreorderInorderIterative(std::vector<int>& preorder, std::vector<int>& inorder) {
+TreeNode* buildFromPreorderInorderIterative(const std::vector<int>& preorder, const std::vector<int>& inorder) {
     if (preorder.empty()) return nullptr; // @step:initialize
 
     int firstValue = preorder[0]; // @step:initialize

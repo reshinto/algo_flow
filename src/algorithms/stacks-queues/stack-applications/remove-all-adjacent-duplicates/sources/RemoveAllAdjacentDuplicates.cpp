@@ -18,7 +18,9 @@ std::string removeAllAdjacentDuplicates(const std::string& inputString) {
     return std::string(stack.begin(), stack.end()); // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::cout << removeAllAdjacentDuplicates("abbaca") << std::endl;
     return 0;
 }
+#endif

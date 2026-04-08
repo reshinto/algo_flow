@@ -15,6 +15,7 @@ int fibonacciMemoization(int targetIndex, std::unordered_map<int, int>& memo) {
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::unordered_map<int, int> memo;
     int targetIndex = 8;
@@ -22,3 +23,4 @@ int main() {
     std::cout << "Fibonacci(" << targetIndex << ") = " << result << std::endl;
     return 0;
 }
+#endif

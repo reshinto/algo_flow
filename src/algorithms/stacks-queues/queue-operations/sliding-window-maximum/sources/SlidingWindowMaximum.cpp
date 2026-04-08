@@ -25,6 +25,7 @@ std::vector<int> slidingWindowMaxMonotonic(const std::vector<int>& nums, int win
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> nums = {1, 3, -1, -3, 5, 3, 6, 7};
     auto result = slidingWindowMaxMonotonic(nums, 3);
@@ -32,3 +33,4 @@ int main() {
     std::cout << std::endl;
     return 0;
 }
+#endif

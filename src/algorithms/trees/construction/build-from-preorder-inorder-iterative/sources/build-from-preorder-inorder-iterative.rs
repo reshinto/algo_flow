@@ -16,7 +16,8 @@ fn build_from_preorder_inorder_iterative(preorder: &[i32], inorder: &[i32]) -> O
     let first_value = preorder[0]; // @step:initialize
     let root = Box::new(TreeNode { value: first_value, left: None, right: None }); // @step:build-node
 
-    let mut stack: Vec<*mut TreeNode> = vec![Box::into_raw(root)]; // @step:initialize
+    let root_raw = Box::into_raw(root);
+    let mut stack: Vec<*mut TreeNode> = vec![root_raw]; // @step:initialize
     let mut inorder_pointer: usize = 0; // @step:initialize
 
     for preorder_pointer in 1..preorder.len() {
@@ -54,8 +55,6 @@ fn build_from_preorder_inorder_iterative(preorder: &[i32], inorder: &[i32]) -> O
         }
     }
 
-    // Recover the root from the original raw pointer
-    let root_ptr = if stack.is_empty() { return None; } else { stack[0] };
-    // Walk back through the stack to find the original root
-    unsafe { Some(Box::from_raw(root_ptr)) } // @step:visit
+    // Return the root via the saved raw pointer
+    unsafe { Some(Box::from_raw(root_raw)) } // @step:visit
 }

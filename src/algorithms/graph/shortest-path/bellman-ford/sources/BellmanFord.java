@@ -22,7 +22,7 @@ public class BellmanFord {
                 List<Object[]> neighbors = adjacencyList.getOrDefault(sourceId, Collections.emptyList());
                 for (Object[] neighbor : neighbors) {
                     String targetId = (String) neighbor[0];
-                    double edgeWeight = (Double) neighbor[1];
+                    double edgeWeight = ((Number) neighbor[1]).doubleValue();
                     double sourceDist = distances.getOrDefault(sourceId, Double.MAX_VALUE);
                     if (sourceDist == Double.MAX_VALUE) continue; // @step:visit-edge
                     double tentativeDistance = sourceDist + edgeWeight; // @step:relax-edge
@@ -38,7 +38,7 @@ public class BellmanFord {
             List<Object[]> neighbors = adjacencyList.getOrDefault(sourceId, Collections.emptyList());
             for (Object[] neighbor : neighbors) {
                 String targetId = (String) neighbor[0];
-                double edgeWeight = (Double) neighbor[1];
+                double edgeWeight = ((Number) neighbor[1]).doubleValue();
                 double sourceDist = distances.getOrDefault(sourceId, Double.MAX_VALUE);
                 if (sourceDist == Double.MAX_VALUE) continue;
                 if (sourceDist + edgeWeight < distances.getOrDefault(targetId, Double.MAX_VALUE)) {

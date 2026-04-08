@@ -25,9 +25,11 @@ bool partitionEqualSubset(const std::vector<int>& numbers) {
     return dpTable[target] == 1; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> numbers = {1, 5, 11, 5};
     bool result = partitionEqualSubset(numbers);
     std::cout << "Can partition: " << (result ? "true" : "false") << std::endl;
     return 0;
 }
+#endif

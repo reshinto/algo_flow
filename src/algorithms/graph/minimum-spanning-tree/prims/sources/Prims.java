@@ -5,7 +5,7 @@ public class Prims {
     record MSTEdge(String source, String target, int weight) {}
 
     public static List<MSTEdge> primsAlgorithm(
-            Map<String, List<String[]>> adjacencyList,
+            Map<String, List<Object[]>> adjacencyList,
             String startNodeId) {
         List<MSTEdge> mstEdges = new ArrayList<>(); // @step:initialize
         Set<String> inMstSet = new HashSet<>(); // @step:initialize
@@ -15,8 +15,8 @@ public class Prims {
         PriorityQueue<Object[]> priorityQueue = new PriorityQueue<>(
                 Comparator.comparingInt(entry -> (Integer) entry[0])); // @step:initialize
 
-        for (String[] neighborEntry : adjacencyList.getOrDefault(startNodeId, Collections.emptyList())) { // @step:initialize
-            priorityQueue.offer(new Object[]{Integer.parseInt(neighborEntry[1]), startNodeId, neighborEntry[0]}); // @step:initialize
+        for (Object[] neighborEntry : adjacencyList.getOrDefault(startNodeId, Collections.emptyList())) { // @step:initialize
+            priorityQueue.offer(new Object[]{((Number) neighborEntry[1]).intValue(), startNodeId, neighborEntry[0]}); // @step:initialize
         }
 
         while (!priorityQueue.isEmpty()) {
@@ -32,10 +32,10 @@ public class Prims {
             inMstSet.add(targetId); // @step:visit
             mstEdges.add(new MSTEdge(sourceId, targetId, edgeWeight)); // @step:add-to-mst
 
-            for (String[] neighborEntry : adjacencyList.getOrDefault(targetId, Collections.emptyList())) { // @step:relax-edge
+            for (Object[] neighborEntry : adjacencyList.getOrDefault(targetId, Collections.emptyList())) { // @step:relax-edge
                 if (!inMstSet.contains(neighborEntry[0])) { // @step:relax-edge
                     priorityQueue.offer(new Object[]{ // @step:relax-edge
-                        Integer.parseInt(neighborEntry[1]), targetId, neighborEntry[0]
+                        ((Number) neighborEntry[1]).intValue(), targetId, neighborEntry[0]
                     });
                 }
             }

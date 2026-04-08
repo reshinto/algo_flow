@@ -47,6 +47,7 @@ SetCoverResult setCover(std::vector<int> universe, std::vector<std::vector<int>>
     return {selectedIndices, selectedSets}; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> universe = {1, 2, 3, 4, 5};
     std::vector<std::vector<int>> sets = {{1, 2, 3}, {2, 4}, {3, 4, 5}, {4, 5}};
@@ -56,3 +57,4 @@ int main() {
     std::cout << "\n";
     return 0;
 }
+#endif

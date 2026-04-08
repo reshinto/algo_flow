@@ -70,14 +70,14 @@ fn boundary_traversal(root: &Option<Box<BSTNode>>) -> Vec<i32> {
         Some(r) => r,
     };
 
-    if !is_leaf(root) {
-        result.push(root.value); // @step:initialize
-    }
+    result.push(root.value); // @step:initialize
 
-    add_left_boundary(&root.left, &mut result);  // @step:traverse-left
-    add_leaves(&root.left, &mut result);          // @step:visit
-    add_leaves(&root.right, &mut result);         // @step:visit
-    add_right_boundary(&root.right, &mut result); // @step:traverse-right
+    if !is_leaf(root) {
+        add_left_boundary(&root.left, &mut result);  // @step:traverse-left
+        add_leaves(&root.left, &mut result);          // @step:visit
+        add_leaves(&root.right, &mut result);         // @step:visit
+        add_right_boundary(&root.right, &mut result); // @step:traverse-right
+    }
 
     result // @step:complete
 }

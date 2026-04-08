@@ -63,8 +63,10 @@ int taskSchedulerQueue(const std::vector<std::string>& tasks, int cooldown) {
     return std::max(static_cast<int>(tasks.size()), formulaResult); // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<std::string> tasks = {"A", "A", "A", "B", "B", "B"};
     std::cout << taskSchedulerQueue(tasks, 2) << std::endl;
     return 0;
 }
+#endif

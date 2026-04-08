@@ -1,0 +1,72 @@
+# Multi-language test environment for AlgoFlow
+# Contains: Node 22, Python 3, Java 21, Rust stable, C++17 (g++), Go
+#
+# Build:  docker build -f Dockerfile.test -t algoflow-test .
+# Run:    docker run --rm algoflow-test npm run test:all-languages
+
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# ---------------------------------------------------------------------------
+# System packages + Node 22 via NodeSource
+# ---------------------------------------------------------------------------
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      ca-certificates curl gnupg \
+      # Python
+      python3 \
+      # Java
+      openjdk-21-jdk-headless \
+      # C++
+      g++ \
+      # Utils needed by test scripts
+      coreutils findutils gawk \
+    && mkdir -p /etc/apt/keyrings \
+    && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
+       | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_22.x nodistro main" \
+       > /etc/apt/sources.list.d/nodesource.list \
+    && apt-get update && apt-get install -y --no-install-recommends nodejs \
+    && rm -rf /var/lib/apt/lists/*
+
+# ---------------------------------------------------------------------------
+# Rust (via rustup, no sudo needed)
+# ---------------------------------------------------------------------------
+ENV RUSTUP_HOME=/usr/local/rustup \
+    CARGO_HOME=/usr/local/cargo
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+      | sh -s -- -y --default-toolchain stable --profile minimal \
+    && chmod -R a+rX /usr/local/rustup /usr/local/cargo
+ENV PATH="/usr/local/cargo/bin:${PATH}"
+
+# ---------------------------------------------------------------------------
+# Go (official tarball)
+# ---------------------------------------------------------------------------
+ARG GO_VERSION=1.23.8
+RUN ARCH=$(dpkg --print-architecture) \
+    && curl -fsSL "https://go.dev/dl/go${GO_VERSION}.linux-${ARCH}.tar.gz" \
+       | tar -C /usr/local -xz
+ENV PATH="/usr/local/go/bin:${PATH}"
+
+# ---------------------------------------------------------------------------
+# Verify all toolchains
+# ---------------------------------------------------------------------------
+RUN echo "=== Toolchain versions ===" \
+    && node --version \
+    && python3 --version \
+    && javac --version \
+    && rustc --version \
+    && g++ --version | head -1 \
+    && go version
+
+# ---------------------------------------------------------------------------
+# App setup
+# ---------------------------------------------------------------------------
+WORKDIR /app
+
+COPY package.json package-lock.json .npmrc ./
+RUN npm ci
+
+COPY . .
+
+CMD ["bash"]

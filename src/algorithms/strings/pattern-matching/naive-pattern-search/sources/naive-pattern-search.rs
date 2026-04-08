@@ -10,6 +10,7 @@ fn naive_pattern_search(text: &str, pattern: &str) -> i64 {
     if pattern_chars.is_empty() { return 0; } // @step:initialize
     let pattern_len = pattern_chars.len();
     let text_len = text_chars.len();
+    if pattern_len > text_len { return -1; } // @step:initialize
 
     for text_idx in 0..=(text_len.saturating_sub(pattern_len)) {
         // @step:visit

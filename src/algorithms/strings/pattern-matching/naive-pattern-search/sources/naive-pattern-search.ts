@@ -3,7 +3,7 @@
 // Time: O(n * m) worst case where n = text length, m = pattern length
 // Space: O(1) — no auxiliary data structures
 
-export function naivePatternSearch(text: string, pattern: string): number {
+function naivePatternSearch(text: string, pattern: string): number {
   if (pattern.length === 0) return 0; // @step:initialize
   for (let textIdx = 0; textIdx <= text.length - pattern.length; textIdx++) {
     // @step:visit

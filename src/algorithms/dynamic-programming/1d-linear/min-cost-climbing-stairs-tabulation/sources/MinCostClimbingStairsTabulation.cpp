@@ -22,9 +22,11 @@ int minCostClimbingStairsTabulation(const std::vector<int>& costs) {
     return dpTable[stairCount]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> costs = {10, 15, 20};
     int result = minCostClimbingStairsTabulation(costs);
     std::cout << "Min cost to climb: " << result << std::endl;
     return 0;
 }
+#endif

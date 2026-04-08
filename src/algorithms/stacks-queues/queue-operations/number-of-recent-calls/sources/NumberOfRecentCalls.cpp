@@ -23,6 +23,7 @@ std::vector<int> numberOfRecentCalls(const std::vector<int>& timestamps) {
     return results; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> timestamps = {1, 100, 3001, 3002};
     auto result = numberOfRecentCalls(timestamps);
@@ -30,3 +31,4 @@ int main() {
     std::cout << std::endl;
     return 0;
 }
+#endif

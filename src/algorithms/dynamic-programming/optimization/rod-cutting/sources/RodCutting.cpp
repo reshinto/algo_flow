@@ -22,9 +22,11 @@ int rodCutting(const std::vector<int>& prices) {
     return dpTable[rodLength]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> prices = {1, 5, 8, 9, 10, 17, 17, 20};
     int result = rodCutting(prices);
     std::cout << "Max rod cutting revenue: " << result << std::endl;
     return 0;
 }
+#endif

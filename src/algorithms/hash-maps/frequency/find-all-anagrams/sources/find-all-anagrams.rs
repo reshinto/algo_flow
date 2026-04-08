@@ -40,7 +40,7 @@ fn find_all_anagrams(text: &str, pattern: &str) -> Vec<usize> {
         // Check if current window matches pattern frequency map
         if right_idx >= window_size - 1 {
             if maps_equal(&window_freq, &pattern_freq) {
-                result.push(right_idx - window_size + 1); // @step:key-found
+                result.push(right_idx + 1 - window_size); // @step:key-found
             }
         }
     }

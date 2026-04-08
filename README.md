@@ -83,11 +83,38 @@ See [Input Editors](docs/architecture.md#input-editors) for per-category editor 
 
 ## Scripts, Testing, and Deployment
 
-All complex operational instructions have been modularized:
+### Run All Tests via Docker (No Toolchain Install Required)
 
-- **Available NPM Scripts & Watchers**: Handled in [Testing](docs/testing.md).
-- **Docker Orchestration & Environment Setup**: Handled in [Deployment](docs/deployment.md).
-- **GitHub Actions (CI/CD)**: Pipeline architecture detailed in [Deployment](docs/deployment.md).
+> [!TIP]
+> The Docker test environment has Node 22, Python 3.12, Java 21, Rust, g++, and Go pre-installed. Only Docker is needed on your machine.
+
+```bash
+npm run docker:test:build        # Build once (~1.5 GB, cached)
+npm run docker:test              # Run ALL test suites (TypeScript + 5 languages)
+npm run docker:test:python       # Run Python tests only
+npm run docker:test:java         # Run Java tests only
+npm run docker:test:rust         # Run Rust tests only
+npm run docker:test:cpp          # Run C++ tests only
+npm run docker:test:go           # Run Go tests only
+```
+
+### Run Tests Locally (Requires Toolchains on PATH)
+
+```bash
+npm run test                     # TypeScript unit tests (Vitest)
+npm run test:python              # Python source tests (452 files)
+npm run test:java                # Java source tests (452 files)
+npm run test:rust                # Rust source tests (452 files)
+npm run test:cpp                 # C++ source tests (452 files)
+npm run test:go                  # Go source tests (452 files)
+npm run test:all-languages       # All 5 language suites sequentially
+```
+
+Detailed instructions in:
+
+- **Testing commands, sharding, and coverage**: [Testing](docs/testing.md)
+- **Docker test environment setup**: [Deployment](docs/deployment.md#docker-test-environment)
+- **CI/CD pipeline architecture**: [Deployment](docs/deployment.md#cicd-pipelines)
 
 ## Development System & Hooks
 

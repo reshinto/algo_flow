@@ -42,7 +42,7 @@ fn longest_palindromic_substring(text: &str) -> String {
             let even_length = 2 * even_radius; // @step:updateLongest
             if even_length > longest_length {
                 // @step:updateLongest
-                longest_start = center_index - even_radius + 1; // @step:updateLongest
+                longest_start = center_index + 1 - even_radius; // @step:updateLongest
                 longest_length = even_length; // @step:updateLongest
             }
         }

@@ -34,7 +34,9 @@ std::string minRemoveToMakeValid(const std::string& inputString) {
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::cout << minRemoveToMakeValid("lee(t(c)o)de)") << std::endl;
     return 0;
 }
+#endif

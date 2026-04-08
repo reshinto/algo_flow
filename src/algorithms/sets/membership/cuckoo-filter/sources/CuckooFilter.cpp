@@ -85,6 +85,7 @@ std::vector<QueryResult> cuckooFilter(
     return results; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> elements = {1, 2, 3, 4, 5};
     std::vector<int> queries = {3, 6};
@@ -94,3 +95,4 @@ int main() {
     }
     return 0;
 }
+#endif

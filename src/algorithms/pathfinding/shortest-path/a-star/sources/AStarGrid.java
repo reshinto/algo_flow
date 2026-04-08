@@ -1,7 +1,7 @@
 import java.util.*;
 
 // A* Search — find shortest path using Manhattan distance heuristic
-public class AStar {
+public class AStarGrid {
     public static int[][] aStarGrid(int[][] grid, int[] start, int[] end) {
         int rowCount = grid.length; // @step:initialize
         int colCount = grid[0].length; // @step:initialize

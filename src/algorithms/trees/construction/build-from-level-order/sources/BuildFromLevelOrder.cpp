@@ -26,7 +26,7 @@ TreeNode* bstInsert(TreeNode* current, int value) {
     return current; // @step:visit
 }
 
-TreeNode* buildFromLevelOrder(std::vector<int>& levelOrder) {
+TreeNode* buildFromLevelOrder(const std::vector<int>& levelOrder) {
     if (levelOrder.empty()) return nullptr; // @step:initialize
 
     TreeNode* root = nullptr; // @step:initialize

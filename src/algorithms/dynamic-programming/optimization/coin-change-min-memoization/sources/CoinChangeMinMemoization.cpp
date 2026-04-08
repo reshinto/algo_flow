@@ -37,6 +37,7 @@ int coinChangeMinMemoization(int amount, const std::vector<int>& coins) {
     return minCoins(amount, coins, memo); // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     int amount = 11;
     std::vector<int> coins = {1, 5, 6, 9};
@@ -44,3 +45,4 @@ int main() {
     std::cout << "Min coins for " << amount << ": " << result << std::endl;
     return 0;
 }
+#endif

@@ -25,7 +25,7 @@ fn max_consecutive_ones(input_array: &[i32], max_flips: usize) -> (usize, usize)
             left_pointer += 1; // @step:shrink-window
         }
 
-        let window_length = right_pointer - left_pointer + 1; // @step:compare
+        let window_length = if left_pointer <= right_pointer { right_pointer - left_pointer + 1 } else { 0 }; // @step:compare
         if window_length > max_length {
             // @step:compare
             max_length = window_length; // @step:compare

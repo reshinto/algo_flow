@@ -1,9 +1,4 @@
 // Cartesian Tree Sort — build a min-heap Cartesian tree, then repeatedly extract the minimum root
-struct CartesianNode {
-    value: i64,
-    left_child: Option<Box<CartesianNode>>,
-    right_child: Option<Box<CartesianNode>>,
-}
 
 fn cartesian_tree_sort(input_array: &[i64]) -> Vec<i64> {
     // @step:initialize
@@ -12,67 +7,71 @@ fn cartesian_tree_sort(input_array: &[i64]) -> Vec<i64> {
         return vec![]; // @step:initialize
     }
 
-    // Build the Cartesian tree using a stack-based O(n) construction
+    // Build the Cartesian tree using an index-based O(n) stack construction.
+    // Each node stores left and right child indices (usize::MAX = no child).
     // @step:build-tree
-    let mut node_stack: Vec<Box<CartesianNode>> = Vec::new(); // @step:build-tree
+    let none_idx = usize::MAX;
+    let mut left_child: Vec<usize> = vec![none_idx; array_length]; // @step:build-tree
+    let mut right_child: Vec<usize> = vec![none_idx; array_length]; // @step:build-tree
+    let mut node_stack: Vec<usize> = Vec::new(); // @step:build-tree
 
     for build_index in 0..array_length {
-        let mut new_node = Box::new(CartesianNode {
-            // @step:compare
-            value: input_array[build_index], // @step:compare
-            left_child: None,                // @step:compare
-            right_child: None,               // @step:compare
-        });
+        let current_value = input_array[build_index]; // @step:compare
 
-        // Pop nodes from the stack that are larger than the new node (min-heap property)
-        let mut last_popped: Option<Box<CartesianNode>> = None; // @step:swap
-        while node_stack.last().map_or(false, |top| top.value > new_node.value) {
+        // Pop nodes from the stack that are larger than the current value (min-heap property)
+        let mut last_popped_idx: usize = none_idx; // @step:swap
+        while node_stack.last().map_or(false, |&top| input_array[top] > current_value) {
             // @step:swap
-            last_popped = node_stack.pop(); // @step:swap
+            last_popped_idx = node_stack.pop().unwrap(); // @step:swap
         }
-        new_node.left_child = last_popped; // @step:swap
-        if let Some(top) = node_stack.last_mut() {
-            top.right_child = Some(new_node); // @step:swap
-        } else {
-            node_stack.push(new_node); // @step:swap
+        left_child[build_index] = last_popped_idx; // @step:swap
+
+        // Link the current node as right child of the new top (if any)
+        if let Some(&top) = node_stack.last() {
+            right_child[top] = build_index; // @step:swap
         }
-        if node_stack.last().map_or(true, |top| top.right_child.is_none()) {
-            // already pushed above
-        }
+
+        node_stack.push(build_index); // @step:swap
     }
 
-    // The root of the tree is the leftmost element in the stack (minimum value)
-    let mut tree_root: Option<Box<CartesianNode>> = node_stack.into_iter().next(); // @step:build-tree
+    // The root is the first element remaining in the stack (minimum value overall)
+    let root_idx = if node_stack.is_empty() { none_idx } else { node_stack[0] }; // @step:build-tree
 
-    // Merge two Cartesian sub-trees while maintaining min-heap order
+    // Merge two Cartesian sub-trees (by index) while maintaining min-heap order
     fn merge_trees(
-        left_tree: Option<Box<CartesianNode>>,
-        right_tree: Option<Box<CartesianNode>>,
-    ) -> Option<Box<CartesianNode>> {
-        match (left_tree, right_tree) {
-            (None, right) => right, // @step:extract
-            (left, None) => left,   // @step:extract
-            (Some(mut left), Some(mut right)) => {
-                if left.value <= right.value {
-                    // @step:compare
-                    left.right_child = merge_trees(left.right_child.take(), Some(right)); // @step:extract
-                    Some(left) // @step:extract
-                } else {
-                    right.left_child = merge_trees(Some(left), right.left_child.take()); // @step:extract
-                    Some(right) // @step:extract
-                }
-            }
+        left_idx: usize,
+        right_idx: usize,
+        input_array: &[i64],
+        left_child: &mut Vec<usize>,
+        right_child: &mut Vec<usize>,
+        none_idx: usize,
+    ) -> usize {
+        if left_idx == none_idx { return right_idx; } // @step:extract
+        if right_idx == none_idx { return left_idx; } // @step:extract
+
+        if input_array[left_idx] <= input_array[right_idx] {
+            // @step:compare
+            let merged = merge_trees(right_child[left_idx], right_idx, input_array, left_child, right_child, none_idx);
+            right_child[left_idx] = merged; // @step:extract
+            left_idx // @step:extract
+        } else {
+            let merged = merge_trees(left_idx, left_child[right_idx], input_array, left_child, right_child, none_idx);
+            left_child[right_idx] = merged; // @step:extract
+            right_idx // @step:extract
         }
     }
 
     // Repeatedly extract the minimum (root) and merge its two subtrees
     let mut result_array: Vec<i64> = Vec::new(); // @step:extract
+    let mut current_root = root_idx;
 
-    while let Some(root) = tree_root {
-        result_array.push(root.value); // @step:mark-sorted
+    while current_root != none_idx {
+        result_array.push(input_array[current_root]); // @step:mark-sorted
 
         // Merge left and right subtrees to form the new tree without the extracted root
-        tree_root = merge_trees(root.left_child, root.right_child); // @step:extract
+        let left = left_child[current_root];
+        let right = right_child[current_root];
+        current_root = merge_trees(left, right, input_array, &mut left_child, &mut right_child, none_idx); // @step:extract
     }
 
     result_array // @step:complete

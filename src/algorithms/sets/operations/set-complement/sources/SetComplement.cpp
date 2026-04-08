@@ -31,6 +31,7 @@ std::vector<int> setComplement(std::vector<int> arrayA, std::vector<int> univers
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> arrayA = {1, 2, 3};
     std::vector<int> universalSet = {1, 2, 3, 4, 5};
@@ -39,3 +40,4 @@ int main() {
     std::cout << "\n";
     return 0;
 }
+#endif

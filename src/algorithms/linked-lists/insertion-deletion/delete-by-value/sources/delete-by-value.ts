@@ -4,7 +4,7 @@ interface ListNode {
   next: ListNode | null;
 }
 
-export function deleteByValue(head: ListNode | null, target: number): ListNode | null {
+function deleteByValue(head: ListNode | null, target: number): ListNode | null {
   if (head === null) {
     // @step:initialize
     return null; // @step:complete

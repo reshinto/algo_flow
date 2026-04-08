@@ -24,7 +24,9 @@ int minStack(const std::vector<int>& values) {
     return minTracker.top(); // @step:peek,complete
 }
 
+#ifndef TESTING
 int main() {
     std::cout << minStack({-2, 0, -3}) << std::endl;
     return 0;
 }
+#endif

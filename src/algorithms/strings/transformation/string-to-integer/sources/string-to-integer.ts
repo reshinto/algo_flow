@@ -5,7 +5,7 @@
 const INT32_MIN = -(2 ** 31);
 const INT32_MAX = 2 ** 31 - 1;
 
-export function stringToInteger(text: string): number {
+function stringToInteger(text: string): number {
   let charIndex = 0; // @step:initialize
   const length = text.length; // @step:initialize
 

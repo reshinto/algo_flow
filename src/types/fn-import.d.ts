@@ -43,6 +43,8 @@ declare module "*.ts?fn" {
   export const minCostClimbingStairsTabulation: (...args: any[]) => any;
   export const minimumJumps: (...args: any[]) => any;
   export const perfectSquares: (...args: any[]) => any;
+  export const containsDuplicate: (...args: any[]) => any;
+  export const containsDuplicateII: (...args: any[]) => any;
   // Sorting
   export const bubbleSort: (...args: any[]) => any;
   export const selectionSort: (...args: any[]) => any;

@@ -19,9 +19,11 @@ int tribonacciTabulation(int targetIndex) {
     return dpTable[targetIndex]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     int targetIndex = 7;
     int result = tribonacciTabulation(targetIndex);
     std::cout << "Tribonacci(" << targetIndex << ") = " << result << std::endl;
     return 0;
 }
+#endif

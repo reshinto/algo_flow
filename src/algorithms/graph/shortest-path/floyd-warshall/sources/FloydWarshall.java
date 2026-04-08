@@ -15,7 +15,7 @@ public class FloydWarshall {
                 if (sourceId.equals(targetId)) {
                     distances.get(sourceId).put(targetId, 0.0); // @step:initialize
                 } else {
-                    distances.get(sourceId).put(targetId, Double.MAX_VALUE / 2); // @step:initialize
+                    distances.get(sourceId).put(targetId, Double.POSITIVE_INFINITY); // @step:initialize
                 }
             }
         }
@@ -25,7 +25,7 @@ public class FloydWarshall {
             List<Object[]> neighbors = adjacencyList.getOrDefault(sourceId, Collections.emptyList());
             for (Object[] neighbor : neighbors) {
                 String targetId = (String) neighbor[0];
-                double edgeWeight = (Double) neighbor[1];
+                double edgeWeight = ((Number) neighbor[1]).doubleValue();
                 distances.get(sourceId).put(targetId, edgeWeight); // @step:initialize
             }
         }
@@ -35,9 +35,9 @@ public class FloydWarshall {
             for (String sourceId : nodeIds) {
                 for (String targetId : nodeIds) {
                     double throughIntermediate =
-                        distances.get(sourceId).getOrDefault(intermediateId, Double.MAX_VALUE / 2)
-                        + distances.get(intermediateId).getOrDefault(targetId, Double.MAX_VALUE / 2); // @step:relax-edge
-                    if (throughIntermediate < distances.get(sourceId).getOrDefault(targetId, Double.MAX_VALUE / 2)) {
+                        distances.get(sourceId).getOrDefault(intermediateId, Double.POSITIVE_INFINITY)
+                        + distances.get(intermediateId).getOrDefault(targetId, Double.POSITIVE_INFINITY); // @step:relax-edge
+                    if (throughIntermediate < distances.get(sourceId).getOrDefault(targetId, Double.POSITIVE_INFINITY)) {
                         distances.get(sourceId).put(targetId, throughIntermediate); // @step:update-distance
                     }
                 }

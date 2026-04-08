@@ -22,9 +22,11 @@ int houseRobberTabulation(const std::vector<int>& houses) {
     return dpTable[houses.size() - 1]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> houses = {2, 7, 9, 3, 1};
     int result = houseRobberTabulation(houses);
     std::cout << "Max rob: " << result << std::endl;
     return 0;
 }
+#endif

@@ -32,7 +32,7 @@ public class DagShortestPath {
             List<Object[]> neighbors = adjacencyList.getOrDefault(nodeId, Collections.emptyList());
             for (Object[] neighbor : neighbors) {
                 String neighborId = (String) neighbor[0];
-                double edgeWeight = (Double) neighbor[1];
+                double edgeWeight = ((Number) neighbor[1]).doubleValue();
                 double tentativeDistance = distances.getOrDefault(nodeId, Double.MAX_VALUE) + edgeWeight; // @step:relax-edge
                 if (tentativeDistance < distances.getOrDefault(neighborId, Double.MAX_VALUE)) {
                     distances.put(neighborId, tentativeDistance); // @step:update-distance

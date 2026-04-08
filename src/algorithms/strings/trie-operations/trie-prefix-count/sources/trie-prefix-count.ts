@@ -14,7 +14,7 @@ function createNode(): TrieNodeInternal {
   return { children: new Map(), prefixCount: 0, isEnd: false }; // @step:initialize
 }
 
-export function triePrefixCount(words: string[], prefix: string): number {
+function triePrefixCount(words: string[], prefix: string): number {
   const root = createNode(); // @step:initialize
 
   for (const word of words) {

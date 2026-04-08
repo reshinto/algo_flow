@@ -25,9 +25,11 @@ int minCostClimbingStairsMemoization(const std::vector<int>& costs) {
     return computeMemo(costs, costs.size(), memo);
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> costs = {10, 15, 20};
     int result = minCostClimbingStairsMemoization(costs);
     std::cout << "Min cost to climb: " << result << std::endl;
     return 0;
 }
+#endif

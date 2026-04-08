@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
+
 public class CartesianTreeSort {
     static class CartesianNode { // @step:initialize
         int value; // @step:initialize
@@ -44,30 +45,29 @@ public class CartesianTreeSort {
             treeRoot = nodeStack.pop(); // @step:build-tree
         }
 
-        // Extract elements via inorder traversal
+        // Repeatedly extract the minimum (root) and merge its two subtrees
         List<Integer> resultList = new ArrayList<>(); // @step:extract
-        Deque<CartesianNode[]> traversalStack = new ArrayDeque<>(); // @step:extract
-        if (treeRoot != null) { // @step:extract
-            traversalStack.push(new CartesianNode[]{treeRoot}); // @step:extract
-        }
 
-        while (!traversalStack.isEmpty()) { // @step:extract
-            CartesianNode[] frame = traversalStack.peek(); // @step:extract
-            CartesianNode currentNode = frame[0]; // @step:extract
+        while (treeRoot != null) {
+            resultList.add(treeRoot.value); // @step:mark-sorted
 
-            if (currentNode.leftChild != null) { // @step:extract
-                frame[0] = currentNode.leftChild; // @step:extract
-                currentNode.leftChild = null; // @step:extract
-                traversalStack.push(new CartesianNode[]{currentNode}); // @step:extract
-            } else {
-                traversalStack.pop(); // @step:extract
-                resultList.add(currentNode.value); // @step:mark-sorted
-                if (currentNode.rightChild != null) { // @step:extract
-                    traversalStack.push(new CartesianNode[]{currentNode.rightChild}); // @step:extract
-                }
-            }
+            // Merge left and right subtrees to form the new tree without the extracted root
+            treeRoot = mergeTrees(treeRoot.leftChild, treeRoot.rightChild); // @step:extract
         }
 
         return resultList.stream().mapToInt(Integer::intValue).toArray(); // @step:complete
+    }
+
+    private static CartesianNode mergeTrees(CartesianNode leftTree, CartesianNode rightTree) {
+        if (leftTree == null) return rightTree; // @step:extract
+        if (rightTree == null) return leftTree; // @step:extract
+
+        if (leftTree.value <= rightTree.value) { // @step:compare
+            leftTree.rightChild = mergeTrees(leftTree.rightChild, rightTree); // @step:extract
+            return leftTree; // @step:extract
+        } else {
+            rightTree.leftChild = mergeTrees(leftTree, rightTree.leftChild); // @step:extract
+            return rightTree; // @step:extract
+        }
     }
 }

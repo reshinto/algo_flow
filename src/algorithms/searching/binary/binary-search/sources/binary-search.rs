@@ -1,6 +1,7 @@
 // Binary Search — halve the search range on each iteration
 fn binary_search(sorted_array: &[i32], target_value: i32) -> i32 {
     // @step:initialize
+    if sorted_array.is_empty() { return -1; } // @step:initialize
     let mut low_index = 0usize; // @step:initialize
     let mut high_index = sorted_array.len().saturating_sub(1); // @step:initialize
 

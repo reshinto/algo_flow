@@ -12,7 +12,7 @@ struct TreeNode {
     TreeNode(int val) : value(val), left(nullptr), right(nullptr) {}
 };
 
-TreeNode* buildFromPostorderInorderIterative(std::vector<int>& postorder, std::vector<int>& inorder) {
+TreeNode* buildFromPostorderInorderIterative(const std::vector<int>& postorder, const std::vector<int>& inorder) {
     if (postorder.empty()) return nullptr; // @step:initialize
 
     int lastValue = postorder.back(); // @step:initialize

@@ -1,0 +1,8 @@
+node_modules
+dist
+storybook-static
+coverage
+.git
+playwright-results
+test-results
+.DS_Store

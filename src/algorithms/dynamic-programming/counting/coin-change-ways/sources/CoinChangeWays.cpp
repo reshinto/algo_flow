@@ -18,6 +18,7 @@ long long coinChangeWays(int amount, const std::vector<int>& coins) {
     return dpTable[amount]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     int amount = 5;
     std::vector<int> coins = {1, 2, 5};
@@ -25,3 +26,4 @@ int main() {
     std::cout << "Ways to make " << amount << ": " << result << std::endl;
     return 0;
 }
+#endif

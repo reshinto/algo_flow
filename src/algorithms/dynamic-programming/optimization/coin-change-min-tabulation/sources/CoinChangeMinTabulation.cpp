@@ -25,6 +25,7 @@ int coinChangeMinTabulation(int amount, const std::vector<int>& coins) {
     return dpTable[amount] == INT_MAX ? -1 : dpTable[amount]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     int amount = 11;
     std::vector<int> coins = {1, 5, 6, 9};
@@ -32,3 +33,4 @@ int main() {
     std::cout << "Min coins for " << amount << ": " << result << std::endl;
     return 0;
 }
+#endif

@@ -10,7 +10,7 @@ public class CountAnagramWindows {
         int textLength = text.length;
 
         if (patternLength == 0 || patternLength > textLength) { // @step:initialize
-            return new int[]{0}; // @step:initialize
+            return new int[0]; // @step:initialize
         }
 
         Map<Integer, Integer> patternFrequency = new HashMap<>(); // @step:initialize

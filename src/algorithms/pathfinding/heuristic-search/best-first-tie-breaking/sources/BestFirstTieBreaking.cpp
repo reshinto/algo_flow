@@ -1,5 +1,6 @@
 // Best-First Tie Breaking — A* with cross-product tie-breaking for aesthetically straight paths
 #include <algorithm>
+#include <climits>
 #include <string>
 #include <tuple>
 #include <vector>

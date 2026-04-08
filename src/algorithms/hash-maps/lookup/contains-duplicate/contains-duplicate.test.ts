@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { containsDuplicate } from "./sources/contains-duplicate";
+import { containsDuplicate } from "./sources/contains-duplicate.ts?fn";
 
 describe("containsDuplicate", () => {
   it("returns true for the default input with a repeated value", () => {

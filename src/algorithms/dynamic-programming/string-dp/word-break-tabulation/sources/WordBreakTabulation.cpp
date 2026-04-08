@@ -27,6 +27,7 @@ bool wordBreakTabulation(const std::string& text, const std::vector<std::string>
     return dpTable[textLength] == 1; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::string text = "leetcode";
     std::vector<std::string> dictionary = {"leet", "code"};
@@ -34,3 +35,4 @@ int main() {
     std::cout << "Can break \"" << text << "\": " << (result ? "true" : "false") << std::endl;
     return 0;
 }
+#endif

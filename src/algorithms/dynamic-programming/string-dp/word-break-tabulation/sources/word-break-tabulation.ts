@@ -1,5 +1,5 @@
 // Word Break tabulation — determine if a string can be segmented into dictionary words bottom-up
-export function wordBreakTabulation(text: string, dictionary: string[]): boolean {
+function wordBreakTabulation(text: string, dictionary: string[]): boolean {
   // @step:initialize
   const textLength = text.length; // @step:initialize
   const dpTable = new Array<number>(textLength + 1).fill(0); // @step:initialize

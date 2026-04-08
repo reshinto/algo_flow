@@ -29,9 +29,11 @@ int minimumJumps(const std::vector<int>& jumps) {
     return dpTable[arrayLength - 1] == INT_MAX ? -1 : dpTable[arrayLength - 1]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> jumps = {2, 3, 1, 1, 4};
     int result = minimumJumps(jumps);
     std::cout << "Minimum jumps: " << result << std::endl;
     return 0;
 }
+#endif

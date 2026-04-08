@@ -27,9 +27,11 @@ std::vector<int> implementStackUsingQueues(const std::vector<int>& values) {
     return popResults; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     auto result = implementStackUsingQueues({1, 2, 3, 4});
     for (int val : result) std::cout << val << " ";
     std::cout << std::endl;
     return 0;
 }
+#endif

@@ -89,6 +89,7 @@ std::vector<std::string> designCircularDeque(const std::vector<std::string>& ope
     return results; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<std::string> ops = {"pushBack 1", "pushBack 2", "peekFront", "popFront", "peekRear"};
     auto result = designCircularDeque(ops, 3);
@@ -96,3 +97,4 @@ int main() {
     std::cout << std::endl;
     return 0;
 }
+#endif

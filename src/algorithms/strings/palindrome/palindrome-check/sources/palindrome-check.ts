@@ -2,7 +2,7 @@
 // Returns true if the string reads the same forwards and backwards.
 // Time: O(n), Space: O(1)
 
-export function palindromeCheck(text: string): boolean {
+function palindromeCheck(text: string): boolean {
   let leftIndex = 0; // @step:initialize
   let rightIndex = text.length - 1; // @step:initialize
 

@@ -9,6 +9,8 @@ AlgoFlow uses three layers of testing to ensure algorithm correctness, visual co
 ## Contents
 
 - [Unit Tests](#unit-tests)
+- [Multi-Language Source Tests](#multi-language-source-tests)
+- [Docker Test Environment](#docker-test-environment)
 - [E2E Browser Tests (Playwright)](#e2e-browser-tests-playwright)
 - [Storybook & Visual Regression Testing](#storybook--visual-regression-testing)
 
@@ -26,7 +28,7 @@ npm run test:go              # Run Go source tests
 npm run test:all-languages   # Run all 5 language source test suites
 ```
 
-Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 452 algorithms in 14 categories.
+Tests cover algorithm correctness, step generation, tracker behavior, and store state transitions across all 452 algorithms in 14 categories. Multi-language source tests cover correctness of the Python, Java, Rust, C++, and Go implementations.
 
 ### Vitest Projects Configuration
 
@@ -102,6 +104,102 @@ describe("bubbleSort", () => {
 
 > [!TIP]
 > Coverage thresholds are verified automatically by the `session-end-security-check.sh` Stop hook whenever `src/` files change. The same hook scans for unsafe patterns (`eval`, `innerHTML`, `dangerouslySetInnerHTML`, `new Function`) and runs `npm audit --audit-level=high`. Violations block git operations for the session.
+
+## Multi-Language Source Tests
+
+Every algorithm has source implementations in 6 languages. Each language has its own test suite with standalone test files that verify algorithm correctness.
+
+### Running Language Tests
+
+```bash
+npm run test:python          # Run all 452 Python tests
+npm run test:java            # Run all 452 Java tests
+npm run test:rust            # Run all 452 Rust tests
+npm run test:cpp             # Run all 452 C++ tests
+npm run test:go              # Run all 452 Go tests
+npm run test:all-languages   # Run all 5 language suites sequentially
+```
+
+### Prerequisites
+
+Each script requires its language toolchain on PATH:
+
+| Language | Required Tool | Minimum Version | Install (Ubuntu) | Install (macOS) |
+| -------- | ------------- | --------------- | ----------------- | --------------- |
+| Python   | `python3`     | 3.10+           | `apt install python3` | `brew install python3` |
+| Java     | `javac`, `java` | 17+           | `apt install openjdk-21-jdk-headless` | `brew install openjdk` |
+| Rust     | `rustc`       | 1.70+           | `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \| sh` | same |
+| C++      | `g++`         | C++17 support   | `apt install g++` | Xcode CLT |
+| Go       | `go`          | 1.21+           | [go.dev/dl](https://go.dev/dl/) | `brew install go` |
+
+> [!TIP]
+> To skip installing toolchains locally, use the [Docker test environment](#docker-test-environment) instead — it has everything pre-installed.
+
+### Sharding and Parallel Workers
+
+All language test scripts support `--shard=M/N` for deterministic file splitting and `--workers=W` for parallel execution within a shard:
+
+```bash
+# Run shard 1 of 4 with 2 parallel workers
+bash scripts/test-python.sh --shard=1/4 --workers=2
+
+# Run all tests with 4 parallel workers
+bash scripts/test-rust.sh --workers=4
+```
+
+Each test has a 30-second timeout to prevent hangs from infinite loops.
+
+### CI Configuration
+
+Language tests run as sharded matrix jobs in GitHub Actions. Shard counts are optimized per language based on compilation overhead:
+
+| Language   | Shards | Workers | Toolchain Setup Action |
+| ---------- | ------ | ------- | ---------------------- |
+| Python     | 2      | 2       | `actions/setup-python@v5` (3.12) |
+| Java       | 4      | 2       | `actions/setup-java@v4` (Temurin 21) |
+| Rust       | 8      | 2       | `dtolnay/rust-toolchain@stable` |
+| C++        | 4      | 2       | Pre-installed `g++` on `ubuntu-latest` |
+| Go         | 4      | 2       | `actions/setup-go@v5` (stable) |
+
+Each language has an aggregation status job (e.g., **Python Tests Status**) that gates downstream jobs.
+
+## Docker Test Environment
+
+A self-contained Docker image with all 6 language toolchains pre-installed. No tools need to be installed on your machine — only Docker is required.
+
+### Build the Test Image
+
+```bash
+npm run docker:test:build
+```
+
+This builds `Dockerfile.test` based on Ubuntu 24.04 with Node 22, Python 3.12, Java 21, Rust stable, g++ 13, and Go pre-installed. The image includes the full source tree and `node_modules`.
+
+### Run Tests in Docker
+
+```bash
+npm run docker:test              # Run ALL test suites (TypeScript + 5 languages)
+npm run docker:test:typescript   # TypeScript unit tests only
+npm run docker:test:python       # Python tests only
+npm run docker:test:java         # Java tests only
+npm run docker:test:rust         # Rust tests only
+npm run docker:test:cpp          # C++ tests only
+npm run docker:test:go           # Go tests only
+```
+
+### Advanced Usage
+
+```bash
+# Run with custom shard and worker flags
+docker compose -f docker-compose.test.yml run --rm test-python \
+  bash scripts/test-python.sh --shard=1/4 --workers=4
+
+# Interactive shell inside the container
+docker compose -f docker-compose.test.yml run --rm test-all bash
+```
+
+> [!NOTE]
+> The Docker image is ~1.5 GB and is cached after the first build. Subsequent builds only re-run the `COPY` and `npm ci` layers if dependencies change.
 
 ## E2E Browser Tests (Playwright)
 

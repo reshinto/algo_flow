@@ -21,7 +21,9 @@ fn subarray_product_less_than_k(input_array: &[i32], threshold: i32) -> usize {
         }
 
         // Every subarray ending at right_pointer and starting anywhere in [left_pointer, right_pointer]
-        count += right_pointer - left_pointer + 1; // @step:compare
+        if left_pointer <= right_pointer {
+            count += right_pointer - left_pointer + 1; // @step:compare
+        }
     }
 
     count // @step:complete

@@ -22,6 +22,7 @@ int integerBreakMemoization(int targetNumber, std::unordered_map<int, int>& memo
     return maxProduct; // @step:pop-call
 }
 
+#ifndef TESTING
 int main() {
     std::unordered_map<int, int> memo;
     int targetNumber = 10;
@@ -29,3 +30,4 @@ int main() {
     std::cout << "Integer break(" << targetNumber << "): " << result << std::endl;
     return 0;
 }
+#endif

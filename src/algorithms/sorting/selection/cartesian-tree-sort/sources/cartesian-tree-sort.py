@@ -28,26 +28,32 @@ def cartesian_tree_sort(input_array: list[int]) -> list[int]:  # @step:initializ
             node_stack[-1].right_child = new_node  # @step:swap
         node_stack.append(new_node)  # @step:swap
 
-    tree_root = node_stack[0]  # @step:build-tree
+    tree_root: Optional[CartesianNode] = node_stack[0] if node_stack else None  # @step:build-tree
 
-    # Extract elements via inorder traversal (left → root → right)
-    result_array: list[int] = []  # @step:extract
-    traversal_stack: list[tuple[CartesianNode, bool]] = []  # @step:extract
+    # Merge two Cartesian sub-trees while maintaining min-heap order
+    def merge_trees(
+        left_tree: Optional[CartesianNode],
+        right_tree: Optional[CartesianNode],
+    ) -> Optional[CartesianNode]:
+        if left_tree is None:  # @step:extract
+            return right_tree
+        if right_tree is None:  # @step:extract
+            return left_tree
 
-    if tree_root:  # @step:extract
-        traversal_stack.append((tree_root, False))  # @step:extract
-
-    while traversal_stack:
-        current_node, visited = traversal_stack[-1]  # @step:extract
-
-        if not visited and current_node.left_child:
-            traversal_stack[-1] = (current_node, True)  # @step:extract
-            traversal_stack.append((current_node.left_child, False))  # @step:extract
+        if left_tree.value <= right_tree.value:  # @step:compare
+            left_tree.right_child = merge_trees(left_tree.right_child, right_tree)  # @step:extract
+            return left_tree  # @step:extract
         else:
-            traversal_stack.pop()  # @step:extract
-            result_array.append(current_node.value)  # @step:mark-sorted
+            right_tree.left_child = merge_trees(left_tree, right_tree.left_child)  # @step:extract
+            return right_tree  # @step:extract
 
-            if current_node.right_child:  # @step:extract
-                traversal_stack.append((current_node.right_child, False))  # @step:extract
+    # Repeatedly extract the minimum (root) and merge its two subtrees
+    result_array: list[int] = []  # @step:extract
+
+    while tree_root is not None:
+        result_array.append(tree_root.value)  # @step:mark-sorted
+
+        # Merge left and right subtrees to form the new tree without the extracted root
+        tree_root = merge_trees(tree_root.left_child, tree_root.right_child)  # @step:extract
 
     return result_array  # @step:complete

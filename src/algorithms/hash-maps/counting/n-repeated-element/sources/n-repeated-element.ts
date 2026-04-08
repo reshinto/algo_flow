@@ -10,5 +10,3 @@ function nRepeatedElement(numbers: number[]): number {
   }
   return -1; // @step:complete
 }
-
-export { nRepeatedElement };

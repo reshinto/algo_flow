@@ -10,5 +10,3 @@ function numberOfGoodPairs(numbers: number[]): number {
   }
   return totalPairs; // @step:complete
 }
-
-export { numberOfGoodPairs };

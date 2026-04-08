@@ -1,4 +1,5 @@
 // Remove Duplicates from Sorted List — skip duplicate nodes in a sorted list
+#[derive(PartialEq, Debug)]
 struct ListNode {
     value: i32,
     next: Option<Box<ListNode>>,

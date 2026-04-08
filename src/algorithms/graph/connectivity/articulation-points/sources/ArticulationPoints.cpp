@@ -1,9 +1,10 @@
 // Articulation Points — finds all cut vertices in an undirected graph using DFS with low-link values
+#include <algorithm>
+#include <functional>
+#include <string>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
-#include <string>
-#include <algorithm>
 using namespace std;
 
 class ArticulationPoints {

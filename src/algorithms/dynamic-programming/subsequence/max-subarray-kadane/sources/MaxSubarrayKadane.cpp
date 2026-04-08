@@ -25,9 +25,11 @@ int maxSubarrayKadane(const std::vector<int>& array) {
     return maxSum; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> array = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
     int result = maxSubarrayKadane(array);
     std::cout << "Max subarray sum: " << result << std::endl;
     return 0;
 }
+#endif

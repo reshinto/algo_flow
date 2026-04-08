@@ -23,9 +23,11 @@ std::vector<std::string> firstNonRepeatingCharStream(const std::string& inputStr
     return results; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     auto results = firstNonRepeatingCharStream("aabcbc");
     for (const auto& res : results) std::cout << res << " ";
     std::cout << std::endl;
     return 0;
 }
+#endif

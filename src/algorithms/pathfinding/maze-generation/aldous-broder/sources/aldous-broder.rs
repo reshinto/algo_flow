@@ -1,6 +1,6 @@
 // Aldous-Broder Maze — uniform random spanning tree via random walk
 
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, Debug)]
 enum CellType {
     Empty,
     Wall,
@@ -69,13 +69,11 @@ fn aldous_broder(grid: &mut Vec<Vec<GridCell>>, start: (usize, usize)) -> MazeRe
         if valid_neighbors.is_empty() { break; }
 
         // Pick a random neighbor (random walk) — using simple deterministic pseudo-random
-        let chosen_index = (iterations * 6364136223846793005 + 1442695040888963407) % valid_neighbors.len();
+        let chosen_index = iterations.wrapping_mul(6364136223846793005usize).wrapping_add(1442695040888963407) % valid_neighbors.len();
         let (next_row, next_col) = valid_neighbors[chosen_index]; // @step:visit
 
         if !visited[next_row][next_col] {
             // Carve the wall between current and next
-            let wall_row = current_row + (next_row as i32 - current_row as i32).signum() as usize;
-            let wall_col = current_col + (next_col as i32 - current_col as i32).signum() as usize;
             let wall_row = (current_row as i32 + (next_row as i32 - current_row as i32) / 2) as usize;
             let wall_col = (current_col as i32 + (next_col as i32 - current_col as i32) / 2) as usize;
             grid[wall_row][wall_col].cell_type = CellType::Empty; // @step:carve-cell

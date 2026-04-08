@@ -43,21 +43,22 @@ public class BlockSort {
         return sortedArray; // @step:complete
     }
 
+    private static void reverseSegment(int[] sortedArray, int startIndex, int endIndex) { // @step:rotate
+        int low = startIndex;
+        int high = endIndex;
+        while (low < high) { // @step:swap
+            int temporaryValue = sortedArray[low]; // @step:swap
+            sortedArray[low] = sortedArray[high]; // @step:swap
+            sortedArray[high] = temporaryValue; // @step:swap
+            low++;
+            high--;
+        }
+    }
+
     private static void rotateLeft(int[] sortedArray, int leftStart, int midPoint, int rightEnd) { // @step:rotate
-        int leftIndex = leftStart;
-        int rightIndex = midPoint;
-
-        while (leftIndex < rightIndex && rightIndex <= rightEnd) { // @step:swap
-            int temporaryValue = sortedArray[leftIndex]; // @step:swap
-            sortedArray[leftIndex] = sortedArray[rightIndex]; // @step:swap
-            sortedArray[rightIndex] = temporaryValue; // @step:swap
-            leftIndex++;
-            rightIndex++;
-        }
-
-        if (leftIndex < rightIndex) {
-            rotateLeft(sortedArray, leftIndex, rightIndex, rightEnd);
-        }
+        reverseSegment(sortedArray, leftStart, midPoint - 1);
+        reverseSegment(sortedArray, midPoint, rightEnd);
+        reverseSegment(sortedArray, leftStart, rightEnd);
     }
 
     private static void mergeInPlace(int[] sortedArray, int runStart, int runMid, int runEnd) { // @step:merge

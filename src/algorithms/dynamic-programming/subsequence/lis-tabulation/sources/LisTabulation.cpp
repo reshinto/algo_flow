@@ -29,9 +29,11 @@ int lisLength(const std::vector<int>& sequence) {
     return maxLength; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> sequence = {10, 9, 2, 5, 3, 7, 101, 18};
     int result = lisLength(sequence);
     std::cout << "LIS length: " << result << std::endl;
     return 0;
 }
+#endif

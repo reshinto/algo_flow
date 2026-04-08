@@ -2,7 +2,7 @@
 // Returns the longest substring of `text` that is a palindrome.
 // Time: O(n²), Space: O(1)
 
-export function longestPalindromicSubstring(text: string): string {
+function longestPalindromicSubstring(text: string): string {
   if (text.length === 0) return ""; // @step:initialize
 
   let longestStart = 0; // @step:initialize

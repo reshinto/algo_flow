@@ -21,9 +21,11 @@ long long catalanNumber(int targetIndex) {
     return dpTable[targetIndex]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     int targetIndex = 5;
     long long result = catalanNumber(targetIndex);
     std::cout << "Catalan(" << targetIndex << ") = " << result << std::endl;
     return 0;
 }
+#endif

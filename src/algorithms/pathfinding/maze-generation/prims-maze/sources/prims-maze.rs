@@ -1,6 +1,6 @@
 // Prim's Maze — randomized Prim's algorithm for maze generation
 
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, Debug)]
 enum CellType {
     Empty,
     Wall,
@@ -54,7 +54,7 @@ fn prims_maze(grid: &mut Vec<Vec<GridCell>>, start: (usize, usize)) -> MazeResul
     let mut iteration = 0usize;
     while !frontier.is_empty() {
         // Randomly pick a frontier wall
-        let picked_index = (iteration * 6364136223846793005 + 1442695040888963407) % frontier.len();
+        let picked_index = iteration.wrapping_mul(6364136223846793005usize).wrapping_add(1442695040888963407) % frontier.len();
         iteration += 1;
         let picked = frontier.remove(picked_index); // @step:carve-cell
         let (picked_row, picked_col, origin_row, origin_col) = picked;

@@ -75,7 +75,9 @@ std::string infixToPostfix(const std::string& expression) {
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::cout << infixToPostfix("A+B*C") << std::endl;
     return 0;
 }
+#endif

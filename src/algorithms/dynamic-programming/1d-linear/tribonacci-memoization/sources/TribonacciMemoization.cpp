@@ -17,6 +17,7 @@ int tribonacciMemoization(int targetIndex, std::unordered_map<int, int>& memo) {
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::unordered_map<int, int> memo;
     int targetIndex = 7;
@@ -24,3 +25,4 @@ int main() {
     std::cout << "Tribonacci(" << targetIndex << ") = " << result << std::endl;
     return 0;
 }
+#endif

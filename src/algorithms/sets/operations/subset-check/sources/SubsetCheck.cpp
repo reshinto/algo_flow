@@ -29,9 +29,11 @@ bool subsetCheck(std::vector<int> arrayA, std::vector<int> arrayB) {
     return true; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> arrayA = {1, 2, 3};
     std::vector<int> arrayB = {1, 2, 3, 4, 5};
     std::cout << subsetCheck(arrayA, arrayB) << "\n";
     return 0;
 }
+#endif

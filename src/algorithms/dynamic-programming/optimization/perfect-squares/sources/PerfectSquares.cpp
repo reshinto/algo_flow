@@ -23,9 +23,11 @@ int perfectSquares(int targetNumber) {
     return dpTable[targetNumber]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     int targetNumber = 12;
     int result = perfectSquares(targetNumber);
     std::cout << "Perfect squares for " << targetNumber << ": " << result << std::endl;
     return 0;
 }
+#endif

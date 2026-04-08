@@ -13,11 +13,18 @@ pub fn edmonds_karp(
 ) -> i64 {
     let mut residual_capacity: HashMap<String, HashMap<String, i64>> = HashMap::new(); // @step:initialize
     for (node_id, edges) in adjacency_list {
-        let node_map = residual_capacity.entry(node_id.clone()).or_default();
+        residual_capacity.entry(node_id.clone()).or_default();
         for flow_edge in edges {
-            let prev = *node_map.get(&flow_edge.target).unwrap_or(&0);
-            node_map.insert(flow_edge.target.clone(), prev + flow_edge.capacity); // @step:initialize
             residual_capacity.entry(flow_edge.target.clone()).or_default();
+        }
+    }
+    for (node_id, edges) in adjacency_list {
+        for flow_edge in edges {
+            let prev = *residual_capacity
+                .get(node_id).and_then(|m| m.get(&flow_edge.target)).unwrap_or(&0);
+            residual_capacity
+                .entry(node_id.clone()).or_default()
+                .insert(flow_edge.target.clone(), prev + flow_edge.capacity); // @step:initialize
         }
     }
 

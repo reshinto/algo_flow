@@ -1,0 +1,71 @@
+include!("sources/interpolation-search.rs");
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn finds_value_present_in_array() {
+        assert_eq!(interpolation_search(&[2, 5, 8, 12, 16, 23, 38, 56, 72, 91], 23), 5);
+    }
+
+    #[test]
+    fn returns_minus_one_when_not_found() {
+        assert_eq!(interpolation_search(&[2, 5, 8, 12, 16, 23, 38, 56, 72, 91], 50), -1);
+    }
+
+    #[test]
+    fn handles_empty_array() {
+        assert_eq!(interpolation_search(&[], 5), -1);
+    }
+
+    #[test]
+    fn single_element_found() {
+        assert_eq!(interpolation_search(&[42], 42), 0);
+    }
+
+    #[test]
+    fn single_element_not_found() {
+        assert_eq!(interpolation_search(&[42], 10), -1);
+    }
+
+    #[test]
+    fn finds_first_element() {
+        assert_eq!(interpolation_search(&[2, 5, 8, 12, 16, 23, 38, 56, 72, 91], 2), 0);
+    }
+
+    #[test]
+    fn finds_last_element() {
+        assert_eq!(interpolation_search(&[2, 5, 8, 12, 16, 23, 38, 56, 72, 91], 91), 9);
+    }
+
+    #[test]
+    fn finds_middle_element() {
+        assert_eq!(interpolation_search(&[10, 20, 30, 40, 50], 30), 2);
+    }
+
+    #[test]
+    fn returns_minus_one_for_value_smaller_than_all() {
+        assert_eq!(interpolation_search(&[5, 10, 15, 20], 1), -1);
+    }
+
+    #[test]
+    fn returns_minus_one_for_value_larger_than_all() {
+        assert_eq!(interpolation_search(&[5, 10, 15, 20], 100), -1);
+    }
+
+    #[test]
+    fn handles_uniformly_distributed_data() {
+        assert_eq!(interpolation_search(&[10, 20, 30, 40, 50, 60, 70, 80, 90, 100], 70), 6);
+    }
+
+    #[test]
+    fn handles_duplicate_values() {
+        assert_eq!(interpolation_search(&[5, 5, 5, 5, 5], 5), 0);
+    }
+
+    #[test]
+    fn returns_minus_one_for_target_not_in_uniform_array() {
+        assert_eq!(interpolation_search(&[5, 5, 5, 5, 5], 7), -1);
+    }
+}

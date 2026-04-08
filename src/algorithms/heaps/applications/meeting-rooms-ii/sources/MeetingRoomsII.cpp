@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 
-int meetingRoomsII(std::vector<std::pair<int,int>>& intervals) {
+int meetingRoomsII(const std::vector<std::pair<int,int>>& intervals) {
     if (intervals.empty()) return 0; // @step:initialize
 
     // Sort meetings by start time

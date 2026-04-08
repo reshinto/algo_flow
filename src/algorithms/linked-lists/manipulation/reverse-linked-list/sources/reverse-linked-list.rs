@@ -1,4 +1,5 @@
 // Reverse Linked List — iteratively redirect each node's next pointer to its predecessor
+#[derive(PartialEq, Debug)]
 struct ListNode {
     value: i32,
     next: Option<Box<ListNode>>,

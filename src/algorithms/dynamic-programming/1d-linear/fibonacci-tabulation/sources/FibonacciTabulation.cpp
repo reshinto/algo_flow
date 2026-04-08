@@ -16,9 +16,11 @@ int fibonacciTabulation(int targetIndex) {
     return dpTable[targetIndex]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     int targetIndex = 8;
     int result = fibonacciTabulation(targetIndex);
     std::cout << "Fibonacci(" << targetIndex << ") = " << result << std::endl;
     return 0;
 }
+#endif

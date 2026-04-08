@@ -16,7 +16,7 @@ def smooth_sort(input_array: list[int]) -> list[int]:  # @step:initialize
 
         while current_order >= 2:
             right_child = current_root - 1  # @step:compare
-            left_child = current_root - 1 - leonardo_numbers[current_order - 2]  # @step:compare
+            left_child = current_root - 1 - leonardo_numbers[current_order - 1]  # @step:compare
 
             largest_index = current_root
             if right_child >= 0 and sorted_array[right_child] > sorted_array[largest_index]:
@@ -32,68 +32,87 @@ def smooth_sort(input_array: list[int]) -> list[int]:  # @step:initialize
                 sorted_array[current_root],
             )
 
-            current_order = (current_order - 1) if largest_index == right_child else (current_order - 2)
+            if largest_index == right_child:
+                current_order = current_order - 1
+            else:
+                current_order = current_order - 2
             current_root = largest_index
 
-    def trinkle(root_index: int, order: int, heap_roots: list[tuple[int, int]]) -> None:  # @step:build-heap
+    def trinkle(root_index: int, order: int, prev_positions: list[int], prev_orders: list[int]) -> None:  # @step:build-heap
         current_root = root_index
         current_order = order
+        positions = list(prev_positions)
+        orders = list(prev_orders)
 
-        while heap_roots:
-            prev_root, prev_order = heap_roots[-1]
+        while positions:
+            prev_root_index = positions[-1]
 
-            if sorted_array[current_root] >= sorted_array[prev_root]:  # @step:compare
+            if sorted_array[current_root] >= sorted_array[prev_root_index]:  # @step:compare
                 break
 
             if current_order >= 2:
                 right_child = current_root - 1
-                left_child = current_root - 1 - leonardo_numbers[current_order - 2]
-                if sorted_array[prev_root] <= sorted_array[right_child] or sorted_array[prev_root] <= sorted_array[left_child]:  # @step:compare
+                left_child = current_root - 1 - leonardo_numbers[current_order - 1]
+                if sorted_array[prev_root_index] < sorted_array[right_child] or sorted_array[prev_root_index] < sorted_array[left_child]:  # @step:compare
                     break
 
-            sorted_array[current_root], sorted_array[prev_root] = (  # @step:swap
-                sorted_array[prev_root],
+            sorted_array[current_root], sorted_array[prev_root_index] = (  # @step:swap
+                sorted_array[prev_root_index],
                 sorted_array[current_root],
             )
 
-            heap_roots.pop()
-            current_root = prev_root
-            current_order = prev_order
+            prev_root_order = orders[-1]
+            positions.pop()
+            orders.pop()
+            current_root = prev_root_index
+            current_order = prev_root_order
 
         sift(current_root, current_order)
 
     # Build Leonardo heap forest
-    heap_roots: list[tuple[int, int]] = []
+    heap_positions: list[int] = []
+    heap_orders: list[int] = []
 
     for build_index in range(array_length):  # @step:build-heap
-        root_count = len(heap_roots)
-        if (
-            root_count >= 2
-            and heap_roots[-2][1] == heap_roots[-1][1] + 1
-        ):
-            prev_order = heap_roots[-2][1]
-            heap_roots = heap_roots[:-2]
-            heap_roots.append((build_index, prev_order + 1))
-        elif root_count >= 1 and heap_roots[-1][1] == 1:
-            heap_roots.append((build_index, 0))
+        root_count = len(heap_orders)
+        if root_count >= 2 and heap_orders[root_count - 1] == heap_orders[root_count - 2] + 1:
+            new_order = heap_orders[root_count - 1] + 1
+            heap_positions = heap_positions[:root_count - 2]
+            heap_orders = heap_orders[:root_count - 2]
+            heap_positions.append(build_index)
+            heap_orders.append(new_order)
+        elif root_count >= 1 and heap_orders[root_count - 1] == 1:
+            heap_positions.append(build_index)
+            heap_orders.append(0)
         else:
-            heap_roots.append((build_index, 1))
+            heap_positions.append(build_index)
+            heap_orders.append(1)
 
-        trinkle(build_index, heap_roots[-1][1], heap_roots[:-1])
+        last_index = len(heap_positions) - 1
+        trinkle(
+            heap_positions[last_index],
+            heap_orders[last_index],
+            heap_positions[:last_index],
+            heap_orders[:last_index],
+        )
 
     # Extract phase
     for extract_index in range(array_length - 1, -1, -1):  # @step:extract
-        current_order = heap_roots[-1][1]
-        heap_roots.pop()
+        current_order = heap_orders[-1]
+        heap_positions.pop()
+        heap_orders.pop()
 
         if current_order >= 2:
             right_root = extract_index - 1
-            left_root = extract_index - 1 - leonardo_numbers[current_order - 2]
-            heap_roots.append((left_root, current_order - 2))
-            heap_roots.append((right_root, current_order - 1))
+            left_root = extract_index - 1 - leonardo_numbers[current_order - 1]
+            heap_positions.append(left_root)
+            heap_orders.append(current_order - 2)
+            heap_positions.append(right_root)
+            heap_orders.append(current_order - 1)
 
-            trinkle(left_root, current_order - 2, heap_roots[:-2])
-            trinkle(right_root, current_order - 1, heap_roots[:-1])
+            last_index = len(heap_positions) - 1
+            trinkle(left_root, current_order - 2, heap_positions[:last_index - 1], heap_orders[:last_index - 1])
+            trinkle(right_root, current_order - 1, heap_positions[:last_index], heap_orders[:last_index])
 
         # @step:mark-sorted
 

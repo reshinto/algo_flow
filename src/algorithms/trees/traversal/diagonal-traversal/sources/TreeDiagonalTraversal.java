@@ -7,8 +7,8 @@ class BSTNode {
     BSTNode(int value) { this.value = value; }
 }
 
-class DiagonalTraversal {
-    public List<List<Integer>> diagonalTraversal(BSTNode root) {
+class TreeDiagonalTraversal {
+    public List<List<Integer>> treeDiagonalTraversal(BSTNode root) {
         List<List<Integer>> result = new ArrayList<>(); // @step:initialize
         if (root == null) return result; // @step:initialize
 

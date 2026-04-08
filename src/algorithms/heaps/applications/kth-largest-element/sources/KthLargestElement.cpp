@@ -29,7 +29,7 @@ void siftDown(std::vector<int>& heap, int parentIdx, int size) {
     }
 }
 
-int kthLargestElement(std::vector<int>& array, int kValue) {
+int kthLargestElement(const std::vector<int>& array, int kValue) {
     std::vector<int> minHeap; // @step:initialize
 
     for (int element : array) {

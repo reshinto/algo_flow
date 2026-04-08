@@ -19,7 +19,8 @@ fn build_from_postorder_inorder_iterative(postorder: &[i32], inorder: &[i32]) ->
     let root = Box::new(TreeNode { value: last_value, left: None, right: None }); // @step:build-node
 
     // Use raw pointers in a vec to simulate the stack
-    let mut stack: Vec<*mut TreeNode> = vec![Box::into_raw(root)]; // @step:initialize
+    let root_raw = Box::into_raw(root);
+    let mut stack: Vec<*mut TreeNode> = vec![root_raw]; // @step:initialize
     let mut inorder_pointer = inorder.len() as i32 - 1; // @step:initialize
 
     let postorder_start = postorder.len() as i32 - 2;
@@ -61,14 +62,6 @@ fn build_from_postorder_inorder_iterative(postorder: &[i32], inorder: &[i32]) ->
         }
     }
 
-    // Reconstruct the root from the first element of the original stack
-    let root_ptr = if stack.is_empty() {
-        return None;
-    } else {
-        // Walk back to the original root
-        let mut ptr = stack[0];
-        // The original root is the first pushed pointer — return it wrapped
-        unsafe { Some(Box::from_raw(ptr)) }
-    };
-    root_ptr // @step:visit
+    // Return the root node via the saved raw pointer
+    unsafe { Some(Box::from_raw(root_raw)) } // @step:visit
 }

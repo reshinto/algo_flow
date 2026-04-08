@@ -24,6 +24,7 @@ int knapsack01(const std::vector<int>& weights, const std::vector<int>& values, 
     return dpTable[capacity]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> weights = {2, 3, 4, 5};
     std::vector<int> values = {3, 4, 5, 6};
@@ -32,3 +33,4 @@ int main() {
     std::cout << "Max knapsack value: " << result << std::endl;
     return 0;
 }
+#endif

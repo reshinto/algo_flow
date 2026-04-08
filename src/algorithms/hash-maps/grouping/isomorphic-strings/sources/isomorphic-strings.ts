@@ -1,5 +1,5 @@
 // Isomorphic Strings — check if two strings are isomorphic using bidirectional char mapping
-export function isomorphicStrings(textA: string, textB: string): boolean {
+function isomorphicStrings(textA: string, textB: string): boolean {
   const aToB = new Map<string, string>(); // @step:initialize
   const bToA = new Map<string, string>(); // @step:initialize
   if (textA.length !== textB.length) return false; // @step:initialize

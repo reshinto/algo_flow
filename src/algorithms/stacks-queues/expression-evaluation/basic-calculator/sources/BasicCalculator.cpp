@@ -54,7 +54,9 @@ long long basicCalculator(const std::string& expression) {
     return runningTotal; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::cout << basicCalculator("1 + (2 - 3)") << std::endl;
     return 0;
 }
+#endif

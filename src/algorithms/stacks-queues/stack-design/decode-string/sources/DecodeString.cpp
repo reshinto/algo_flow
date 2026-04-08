@@ -38,7 +38,9 @@ std::string decodeString(const std::string& inputString) {
     return currentString; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::cout << decodeString("3[a2[c]]") << std::endl;
     return 0;
 }
+#endif

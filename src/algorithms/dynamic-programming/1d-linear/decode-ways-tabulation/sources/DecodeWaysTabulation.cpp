@@ -29,9 +29,11 @@ int decodeWaysTabulation(const std::string& digits) {
     return dpTable[digitCount]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::string digits = "226";
     int result = decodeWaysTabulation(digits);
     std::cout << "Decode ways for \"" << digits << "\": " << result << std::endl;
     return 0;
 }
+#endif

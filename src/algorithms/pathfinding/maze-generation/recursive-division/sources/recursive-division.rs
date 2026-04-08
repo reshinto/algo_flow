@@ -1,6 +1,6 @@
 // Recursive Division Maze — builds walls in an open grid, leaving one gap per wall
 
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, Debug)]
 enum CellType {
     Empty,
     Wall,
@@ -53,7 +53,7 @@ fn build_walls_in_region(
     let build_horizontal = region_height >= region_width; // @step:carve-cell
 
     *counter += 1;
-    let pseudo_rand = *counter * 6364136223846793005 + 1442695040888963407;
+    let pseudo_rand = counter.wrapping_mul(6364136223846793005usize).wrapping_add(1442695040888963407);
 
     if build_horizontal {
         let steps = (region_height / 2).max(1);

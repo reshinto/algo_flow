@@ -17,6 +17,7 @@ int climbingStairsMemoization(int numberOfStairs, std::unordered_map<int, int>& 
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::unordered_map<int, int> memo;
     int numberOfStairs = 7;
@@ -24,3 +25,4 @@ int main() {
     std::cout << "Ways to climb " << numberOfStairs << " stairs: " << result << std::endl;
     return 0;
 }
+#endif

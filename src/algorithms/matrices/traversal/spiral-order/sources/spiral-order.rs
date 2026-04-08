@@ -23,6 +23,7 @@ fn spiral_order(matrix: &Vec<Vec<i32>>) -> Vec<i32> {
         for row_idx in top_bound..=bottom_bound {
             result.push(matrix[row_idx][right_bound]); // @step:collect-element
         }
+        if right_bound == 0 { break; } // @step:shrink-boundary
         right_bound -= 1; // @step:shrink-boundary
 
         // Traverse left along bottom row (if still within bounds)

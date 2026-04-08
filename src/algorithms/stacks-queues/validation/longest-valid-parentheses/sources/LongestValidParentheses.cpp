@@ -29,7 +29,9 @@ int longestValidParentheses(const std::string& inputString) {
     return maxLength; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::cout << longestValidParentheses(")()())") << std::endl;
     return 0;
 }
+#endif

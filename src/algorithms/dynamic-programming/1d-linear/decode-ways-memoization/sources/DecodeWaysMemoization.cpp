@@ -34,9 +34,11 @@ int decodeWaysMemoization(const std::string& digits) {
     return decode(digits, digitCount, memo); // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::string digits = "226";
     int result = decodeWaysMemoization(digits);
     std::cout << "Decode ways for \"" << digits << "\": " << result << std::endl;
     return 0;
 }
+#endif

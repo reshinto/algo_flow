@@ -1,4 +1,5 @@
 // Delete by Value — find and remove the first node matching a target value
+#[derive(PartialEq, Debug)]
 struct ListNode {
     value: i32,
     next: Option<Box<ListNode>>,

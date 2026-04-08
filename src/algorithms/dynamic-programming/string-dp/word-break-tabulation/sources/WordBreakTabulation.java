@@ -1,8 +1,7 @@
 // Word Break tabulation — determine if a string can be segmented into dictionary words bottom-up
-import java.util.List;
 
 public class WordBreakTabulation {
-    public static boolean wordBreakTabulation(String text, List<String> dictionary) { // @step:initialize
+    public static boolean wordBreakTabulation(String text, String[] dictionary) { // @step:initialize
         int textLength = text.length(); // @step:initialize
         int[] dpTable = new int[textLength + 1]; // @step:initialize
         dpTable[0] = 1; // @step:fill-table

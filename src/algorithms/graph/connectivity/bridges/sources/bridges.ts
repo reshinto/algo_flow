@@ -1,5 +1,5 @@
 // Bridges (Cut Edges) — finds all bridge edges in an undirected graph using DFS with low-link values
-export function findBridges(
+function findBridges(
   adjacencyList: Record<string, string[]>,
   nodeIds: string[],
 ): [string, string][] {

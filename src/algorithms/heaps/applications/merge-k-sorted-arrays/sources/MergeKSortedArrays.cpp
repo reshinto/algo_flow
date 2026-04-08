@@ -5,7 +5,7 @@
 
 typedef std::tuple<int,int,int> HeapEntry; // (value, arrayIndex, elementIndex)
 
-std::vector<int> mergeKSortedArrays(std::vector<std::vector<int>>& arrays) {
+std::vector<int> mergeKSortedArrays(const std::vector<std::vector<int>>& arrays) {
     std::vector<int> result; // @step:initialize
     std::vector<HeapEntry> heap; // @step:initialize
 

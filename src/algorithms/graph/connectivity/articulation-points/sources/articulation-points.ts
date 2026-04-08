@@ -1,5 +1,5 @@
 // Articulation Points — finds all cut vertices in an undirected graph using DFS with low-link values
-export function findArticulationPoints(
+function findArticulationPoints(
   adjacencyList: Record<string, string[]>,
   nodeIds: string[],
 ): string[] {

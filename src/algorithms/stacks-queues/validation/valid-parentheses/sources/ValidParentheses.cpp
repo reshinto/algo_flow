@@ -23,7 +23,9 @@ bool validParentheses(const std::string& inputString) {
     return stack.empty(); // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::cout << std::boolalpha << validParentheses("({[]})") << std::endl;
     return 0;
 }
+#endif

@@ -2,7 +2,7 @@
 // Returns the reversed version of the input string.
 // Time: O(n)  Space: O(1) auxiliary (O(n) for the output string)
 
-export function reverseString(text: string): string {
+function reverseString(text: string): string {
   const chars = text.split(""); // @step:initialize
 
   let leftIndex = 0; // @step:initialize

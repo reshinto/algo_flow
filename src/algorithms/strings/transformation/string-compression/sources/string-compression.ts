@@ -2,7 +2,7 @@
 // Returns the compressed form "a2b1c5a3" only if shorter than the original; otherwise returns the original.
 // Time: O(n)  Space: O(n) for the output buffer
 
-export function stringCompression(text: string): string {
+function stringCompression(text: string): string {
   if (text.length === 0) return text; // @step:initialize
 
   let compressed = ""; // @step:initialize

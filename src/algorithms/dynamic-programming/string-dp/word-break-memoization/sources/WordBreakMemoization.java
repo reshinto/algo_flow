@@ -1,17 +1,16 @@
 // Word Break memoization — determine if text can be segmented into dictionary words top-down
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class WordBreakMemoization {
-    public static boolean wordBreakMemoization(String text, List<String> dictionary) { // @step:initialize
+    public static boolean wordBreakMemoization(String text, String[] dictionary) { // @step:initialize
         int textLength = text.length(); // @step:initialize
         if (textLength == 0) return true; // @step:initialize
         Map<Integer, Boolean> memo = new HashMap<>(); // @step:initialize
         return canBreak(text, dictionary, 0, memo);
     }
 
-    private static boolean canBreak(String text, List<String> dictionary, int startIndex, Map<Integer, Boolean> memo) {
+    private static boolean canBreak(String text, String[] dictionary, int startIndex, Map<Integer, Boolean> memo) {
         if (startIndex == text.length()) return true; // @step:fill-table
         if (memo.containsKey(startIndex)) return memo.get(startIndex); // @step:read-cache
         // Recursively try each dictionary word starting at this position

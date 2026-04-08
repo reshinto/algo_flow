@@ -30,7 +30,9 @@ std::string removeKDigits(const std::string& num, int removalCount) {
     return result.substr(nonZeroPos); // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::cout << removeKDigits("1432219", 3) << std::endl;
     return 0;
 }
+#endif

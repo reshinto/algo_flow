@@ -1,6 +1,6 @@
 // Binary Tree Maze — for each cell, randomly carve north or east
 
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, Debug)]
 enum CellType {
     Empty,
     Wall,

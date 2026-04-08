@@ -25,6 +25,7 @@ std::vector<int> onlineStockSpan(const std::vector<int>& prices) {
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> prices = {100, 80, 60, 70, 60, 75, 85};
     auto result = onlineStockSpan(prices);
@@ -32,3 +33,4 @@ int main() {
     std::cout << std::endl;
     return 0;
 }
+#endif

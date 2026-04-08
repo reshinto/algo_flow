@@ -15,5 +15,3 @@ function intersectionOfTwoArrays(numbersA: number[], numbersB: number[]): number
   }
   return result; // @step:complete
 }
-
-export { intersectionOfTwoArrays };

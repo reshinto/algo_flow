@@ -59,6 +59,7 @@ std::vector<std::string> designCircularQueue(const std::vector<std::string>& ope
     return results; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<std::string> ops = {"enqueue 1", "enqueue 2", "front", "dequeue", "rear"};
     auto result = designCircularQueue(ops, 3);
@@ -66,3 +67,4 @@ int main() {
     std::cout << std::endl;
     return 0;
 }
+#endif

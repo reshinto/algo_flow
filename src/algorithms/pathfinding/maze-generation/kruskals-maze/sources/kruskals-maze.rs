@@ -1,6 +1,6 @@
 // Kruskal's Maze — Union-Find based maze generation by randomly removing walls
 
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, Debug)]
 enum CellType {
     Empty,
     Wall,
@@ -73,7 +73,7 @@ fn kruskal_maze(grid: &mut Vec<Vec<GridCell>>) -> MazeResult {
     // Shuffle walls (Fisher-Yates with deterministic pseudo-random)
     let wall_count = walls.len();
     for wall_index in (1..wall_count).rev() {
-        let swap_index = (wall_index * 6364136223846793005 + 1442695040888963407) % (wall_index + 1);
+        let swap_index = wall_index.wrapping_mul(6364136223846793005usize).wrapping_add(1442695040888963407) % (wall_index + 1);
         walls.swap(wall_index, swap_index);
     } // @step:merge-cells
 

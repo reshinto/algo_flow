@@ -36,6 +36,7 @@ bool wordBreakMemoization(const std::string& text, const std::vector<std::string
     return canBreak(text, dictionary, 0, memo); // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::string text = "leetcode";
     std::vector<std::string> dictionary = {"leet", "code"};
@@ -43,3 +44,4 @@ int main() {
     std::cout << "Can break \"" << text << "\": " << (result ? "true" : "false") << std::endl;
     return 0;
 }
+#endif

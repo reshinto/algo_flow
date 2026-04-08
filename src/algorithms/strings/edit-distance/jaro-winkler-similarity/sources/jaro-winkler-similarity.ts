@@ -4,7 +4,7 @@
 // Returns a value between 0.0 (completely dissimilar) and 1.0 (identical).
 // Time: O(nm), Space: O(n) where n and m are the string lengths.
 
-export function jaroWinklerSimilarity(source: string, target: string): number {
+function jaroWinklerSimilarity(source: string, target: string): number {
   const sourceLength = source.length; // @step:initialize
   const targetLength = target.length; // @step:initialize
 

@@ -47,8 +47,10 @@ long long sumOfSubarrayMinimums(const std::vector<long long>& arr) {
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<long long> arr = {3, 1, 2, 4};
     std::cout << sumOfSubarrayMinimums(arr) << std::endl;
     return 0;
 }
+#endif

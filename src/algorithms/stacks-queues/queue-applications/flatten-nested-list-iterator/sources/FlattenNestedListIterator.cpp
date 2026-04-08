@@ -32,6 +32,7 @@ std::vector<int> flattenNestedListIterator(std::vector<NestedItem> nestedList) {
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     // Example: [[1,1],2,[1,1]]
     std::vector<NestedItem> nested = {
@@ -44,3 +45,4 @@ int main() {
     std::cout << std::endl;
     return 0;
 }
+#endif

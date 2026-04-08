@@ -28,6 +28,9 @@ This guide walks you through everything you need to set up, understand, and exte
 | npm         | 10+     | Ships with Node 22                            |
 | Git         | 2.30+   | Required for branch workflow                  |
 | Claude Code | Latest  | CLI or IDE extension                          |
+| Docker      | 20+     | Optional — for running multi-language tests without local toolchains |
+
+**For multi-language source tests** (Python, Java, Rust, C++, Go), you can either install each toolchain locally or use the Docker test environment. See [Testing — Docker Test Environment](testing.md#docker-test-environment) for the zero-install option.
 
 ### Plugin Installation
 

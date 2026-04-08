@@ -35,9 +35,11 @@ int houseRobberMemoization(const std::vector<int>& houses) {
     return rob(houses, houses.size() - 1, memo); // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> houses = {2, 7, 9, 3, 1};
     int result = houseRobberMemoization(houses);
     std::cout << "Max rob: " << result << std::endl;
     return 0;
 }
+#endif

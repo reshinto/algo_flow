@@ -1,5 +1,5 @@
 // Is Symmetric Tree (Iterative) — queue-based: enqueue pairs and compare
-import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 
 class SymmetricTreeIterativeNode {
@@ -12,7 +12,7 @@ class IsSymmetricTreeIterative {
     public boolean isSymmetricTreeIterative(SymmetricTreeIterativeNode root) {
         if (root == null) return true; // @step:initialize
 
-        Queue<SymmetricTreeIterativeNode> queue = new ArrayDeque<>(); // @step:initialize
+        Queue<SymmetricTreeIterativeNode> queue = new LinkedList<>(); // @step:initialize
         queue.offer(root.left); // @step:initialize
         queue.offer(root.right); // @step:initialize
 

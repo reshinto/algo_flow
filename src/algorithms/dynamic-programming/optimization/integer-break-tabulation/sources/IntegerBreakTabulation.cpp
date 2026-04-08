@@ -21,9 +21,11 @@ int integerBreakTabulation(int targetNumber) {
     return dpTable[targetNumber]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     int targetNumber = 10;
     int result = integerBreakTabulation(targetNumber);
     std::cout << "Integer break(" << targetNumber << "): " << result << std::endl;
     return 0;
 }
+#endif

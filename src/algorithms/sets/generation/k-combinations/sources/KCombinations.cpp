@@ -33,6 +33,7 @@ std::vector<std::vector<int>> kCombinations(std::vector<int> elements, int choos
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> elements = {1, 2, 3, 4, 5};
     auto result = kCombinations(elements, 3);
@@ -42,3 +43,4 @@ int main() {
     }
     return 0;
 }
+#endif

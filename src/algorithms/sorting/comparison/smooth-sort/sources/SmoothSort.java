@@ -22,8 +22,8 @@ public class SmoothSort {
 
         for (int buildIndex = 0; buildIndex < arrayLength; buildIndex++) { // @step:build-heap
             int rootCount = heapRoots.size();
-            if (rootCount >= 2 && heapRoots.get(rootCount - 2)[1] == heapRoots.get(rootCount - 1)[1] + 1) {
-                int prevOrder = heapRoots.get(rootCount - 2)[1];
+            if (rootCount >= 2 && heapRoots.get(rootCount - 1)[1] == heapRoots.get(rootCount - 2)[1] + 1) {
+                int prevOrder = heapRoots.get(rootCount - 1)[1];
                 heapRoots.remove(rootCount - 1);
                 heapRoots.remove(rootCount - 2);
                 heapRoots.add(new int[]{buildIndex, prevOrder + 1});
@@ -44,7 +44,7 @@ public class SmoothSort {
 
             if (currentOrder >= 2) {
                 int rightRoot = extractIndex - 1;
-                int leftRoot = extractIndex - 1 - leonardoNumbers.get(currentOrder - 2);
+                int leftRoot = extractIndex - 1 - leonardoNumbers.get(currentOrder - 1);
                 heapRoots.add(new int[]{leftRoot, currentOrder - 2});
                 heapRoots.add(new int[]{rightRoot, currentOrder - 1});
 
@@ -63,7 +63,7 @@ public class SmoothSort {
 
         while (currentOrder >= 2) {
             int rightChild = currentRoot - 1; // @step:compare
-            int leftChild = currentRoot - 1 - leonardoNumbers.get(currentOrder - 2); // @step:compare
+            int leftChild = currentRoot - 1 - leonardoNumbers.get(currentOrder - 1); // @step:compare
 
             int largestIndex = currentRoot;
             if (rightChild >= 0 && sortedArray[rightChild] > sortedArray[largestIndex]) {
@@ -98,8 +98,8 @@ public class SmoothSort {
 
             if (currentOrder >= 2) {
                 int rightChild = currentRoot - 1;
-                int leftChild = currentRoot - 1 - leonardoNumbers.get(currentOrder - 2);
-                if (sortedArray[prevRoot] <= sortedArray[rightChild] || sortedArray[prevRoot] <= sortedArray[leftChild]) { // @step:compare
+                int leftChild = currentRoot - 1 - leonardoNumbers.get(currentOrder - 1);
+                if (sortedArray[prevRoot] < sortedArray[rightChild] || sortedArray[prevRoot] < sortedArray[leftChild]) { // @step:compare
                     break;
                 }
             }

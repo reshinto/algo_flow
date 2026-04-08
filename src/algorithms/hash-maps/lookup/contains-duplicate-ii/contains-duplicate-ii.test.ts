@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { containsDuplicateII } from "./sources/contains-duplicate-ii";
+import { containsDuplicateII } from "./sources/contains-duplicate-ii.ts?fn";
 
 describe("containsDuplicateII", () => {
   it("returns true for the default input within maxDistance", () => {

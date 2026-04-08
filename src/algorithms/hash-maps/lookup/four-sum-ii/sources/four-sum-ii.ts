@@ -1,10 +1,5 @@
 // Four Sum II — count tuples (i,j,k,l) such that A[i]+B[j]+C[k]+D[l] === 0
-export function fourSumII(
-  numsA: number[],
-  numsB: number[],
-  numsC: number[],
-  numsD: number[],
-): number {
+function fourSumII(numsA: number[], numsB: number[], numsC: number[], numsD: number[]): number {
   const pairSumCounts = new Map<number, number>(); // @step:initialize
 
   // Phase 1: build map of all A+B pair sums with their occurrence counts

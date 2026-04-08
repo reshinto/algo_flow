@@ -17,6 +17,7 @@ std::vector<int> pascalsTriangleRow(int rowIndex) {
     return dpTable; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     int rowIndex = 4;
     std::vector<int> result = pascalsTriangleRow(rowIndex);
@@ -28,3 +29,4 @@ int main() {
     std::cout << "]" << std::endl;
     return 0;
 }
+#endif

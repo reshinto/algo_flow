@@ -35,9 +35,11 @@ std::vector<int> asteroidCollision(const std::vector<int>& asteroids) {
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     auto result = asteroidCollision({5, 10, -5});
     for (int val : result) std::cout << val << " ";
     std::cout << std::endl;
     return 0;
 }
+#endif

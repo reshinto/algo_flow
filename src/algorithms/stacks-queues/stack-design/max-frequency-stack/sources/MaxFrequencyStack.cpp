@@ -34,9 +34,11 @@ std::vector<int> maxFrequencyStack(const std::vector<int>& values) {
     return popResults; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     auto result = maxFrequencyStack({5, 7, 5, 7, 4, 5});
     for (int val : result) std::cout << val << " ";
     std::cout << std::endl;
     return 0;
 }
+#endif

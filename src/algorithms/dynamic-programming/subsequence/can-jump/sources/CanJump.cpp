@@ -23,9 +23,11 @@ bool canJump(const std::vector<int>& nums) {
     return dpTable[tableSize - 1] == 1; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> nums = {2, 3, 1, 1, 4};
     bool result = canJump(nums);
     std::cout << "Can jump: " << (result ? "true" : "false") << std::endl;
     return 0;
 }
+#endif

@@ -30,6 +30,7 @@ std::vector<std::vector<int>> setPermutations(std::vector<int> elements) {
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> elements = {1, 2, 3};
     auto result = setPermutations(elements);
@@ -39,3 +40,4 @@ int main() {
     }
     return 0;
 }
+#endif

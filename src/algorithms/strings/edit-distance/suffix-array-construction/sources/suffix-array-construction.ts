@@ -3,7 +3,7 @@
 // and returns the array of starting indices in sorted suffix order.
 // Time: O(n log²n) due to string comparisons during sort, Space: O(n)
 
-export function suffixArrayConstruction(text: string): number[] {
+function suffixArrayConstruction(text: string): number[] {
   const textLength = text.length; // @step:initialize
 
   if (textLength === 0) {

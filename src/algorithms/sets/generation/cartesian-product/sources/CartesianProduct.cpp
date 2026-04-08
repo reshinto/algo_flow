@@ -19,6 +19,7 @@ std::vector<std::pair<int,int>> cartesianProduct(std::vector<int> setA, std::vec
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> setA = {1, 2, 3};
     std::vector<int> setB = {4, 5};
@@ -28,3 +29,4 @@ int main() {
     }
     return 0;
 }
+#endif

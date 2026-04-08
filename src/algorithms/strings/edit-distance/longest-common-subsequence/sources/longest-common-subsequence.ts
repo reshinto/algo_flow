@@ -3,7 +3,7 @@
 // A subsequence preserves relative order but need not be contiguous.
 // Time: O(nm), Space: O(nm) where n = source.length, m = target.length
 
-export function longestCommonSubsequence(source: string, target: string): number {
+function longestCommonSubsequence(source: string, target: string): number {
   const sourceLength = source.length; // @step:initialize
   const targetLength = target.length; // @step:initialize
 

@@ -30,6 +30,7 @@ std::vector<int> setDifference(std::vector<int> arrayA, std::vector<int> arrayB)
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> arrayA = {1, 2, 3, 4, 5};
     std::vector<int> arrayB = {3, 4, 5, 6};
@@ -38,3 +39,4 @@ int main() {
     std::cout << "\n";
     return 0;
 }
+#endif

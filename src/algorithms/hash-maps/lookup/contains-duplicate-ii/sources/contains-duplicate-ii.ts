@@ -1,5 +1,5 @@
 // Contains Duplicate II — find if the same value appears within maxDistance index gap
-export function containsDuplicateII(numbers: number[], maxDistance: number): boolean {
+function containsDuplicateII(numbers: number[], maxDistance: number): boolean {
   const indexMap = new Map<number, number>(); // @step:initialize
   for (let currentIndex = 0; currentIndex < numbers.length; currentIndex++) {
     const current = numbers[currentIndex]!;

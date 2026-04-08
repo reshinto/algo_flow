@@ -25,6 +25,7 @@ std::vector<double> movingAverageFromStream(const std::vector<double>& values, i
     return averages; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<double> values = {1.0, 10.0, 3.0, 5.0};
     auto averages = movingAverageFromStream(values, 3);
@@ -32,3 +33,4 @@ int main() {
     std::cout << std::endl;
     return 0;
 }
+#endif

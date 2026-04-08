@@ -30,9 +30,11 @@ std::vector<int> implementQueueUsingStacks(const std::vector<int>& values) {
     return dequeueResults; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     auto result = implementQueueUsingStacks({1, 2, 3, 4});
     for (int val : result) std::cout << val << " ";
     std::cout << std::endl;
     return 0;
 }
+#endif

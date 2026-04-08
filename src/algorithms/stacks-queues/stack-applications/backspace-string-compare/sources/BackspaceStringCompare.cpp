@@ -30,7 +30,9 @@ bool backspaceStringCompare(const std::string& firstString, const std::string& s
     return true; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::cout << std::boolalpha << backspaceStringCompare("ab#c", "ad#c") << std::endl;
     return 0;
 }
+#endif

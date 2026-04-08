@@ -43,9 +43,11 @@ int lisMemoization(const std::vector<int>& sequence) {
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> sequence = {10, 9, 2, 5, 3, 7, 101, 18};
     int result = lisMemoization(sequence);
     std::cout << "LIS length: " << result << std::endl;
     return 0;
 }
+#endif

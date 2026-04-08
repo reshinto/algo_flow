@@ -1,6 +1,6 @@
 // Eller's Maze — row-by-row maze generation with set merging and vertical extensions
 
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, Debug)]
 enum CellType {
     Empty,
     Wall,

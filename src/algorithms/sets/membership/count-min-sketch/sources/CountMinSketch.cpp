@@ -53,6 +53,7 @@ std::vector<EstimatedResult> countMinSketch(
     return results; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> elements = {1, 2, 1, 3, 2, 1};
     std::vector<int> queries = {1, 2, 3, 4};
@@ -62,3 +63,4 @@ int main() {
     }
     return 0;
 }
+#endif

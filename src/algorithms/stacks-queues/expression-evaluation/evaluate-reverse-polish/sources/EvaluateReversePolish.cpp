@@ -31,8 +31,10 @@ long long evaluateReversePolish(const std::vector<std::string>& tokens) {
     return operandStack.top(); // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<std::string> tokens = {"2", "1", "+", "3", "*"};
     std::cout << evaluateReversePolish(tokens) << std::endl;
     return 0;
 }
+#endif

@@ -38,7 +38,9 @@ std::string simplifyPath(const std::string& inputString) {
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::cout << simplifyPath("/home/../usr/./bin/") << std::endl;
     return 0;
 }
+#endif

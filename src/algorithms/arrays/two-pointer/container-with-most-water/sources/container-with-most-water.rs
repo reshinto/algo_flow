@@ -1,5 +1,6 @@
 // Container With Most Water — two pointers converge inward, always moving the shorter bar to maximize area
 fn container_with_most_water(heights: &[i32]) -> (i32, usize, usize) {
+    if heights.is_empty() { return (0, 0, 0); } // @step:initialize
     let mut left_pointer = 0usize; // @step:initialize
     let mut right_pointer = heights.len() - 1; // @step:initialize
     let mut max_area = 0i32; // @step:initialize

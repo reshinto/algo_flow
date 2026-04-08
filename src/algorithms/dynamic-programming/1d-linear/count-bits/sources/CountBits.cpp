@@ -15,6 +15,7 @@ std::vector<int> countBits(int targetNumber) {
     return dpTable; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     int targetNumber = 5;
     std::vector<int> result = countBits(targetNumber);
@@ -26,3 +27,4 @@ int main() {
     std::cout << "]" << std::endl;
     return 0;
 }
+#endif

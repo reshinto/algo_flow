@@ -9,6 +9,7 @@ How to build, deploy, and serve AlgoFlow in production. Covers Docker containeri
 ## Contents
 
 - [Docker](#docker)
+- [Docker Test Environment](#docker-test-environment)
 - [CI/CD Pipelines](#cicd-pipelines)
 
 ## Docker
@@ -43,6 +44,47 @@ The nginx config provides:
 - Cache headers: `expires 1y; Cache-Control: public, immutable` for hashed assets
 - Health check: `wget -qO- http://localhost/` every 30 seconds (5-second start period)
 
+## Docker Test Environment
+
+A separate Docker setup for running all multi-language tests without installing any toolchains on your host machine.
+
+### Quick Start
+
+```bash
+npm run docker:test:build    # Build the test image (once)
+npm run docker:test          # Run all 6 language test suites
+```
+
+### Available Services
+
+| Command | What It Runs |
+| ------- | ------------ |
+| `npm run docker:test` | TypeScript + Python + Java + Rust + C++ + Go |
+| `npm run docker:test:typescript` | Vitest unit tests (911 test files) |
+| `npm run docker:test:python` | Python source tests (452 files) |
+| `npm run docker:test:java` | Java source tests (452 files) |
+| `npm run docker:test:rust` | Rust source tests (452 files) |
+| `npm run docker:test:cpp` | C++ source tests (452 files) |
+| `npm run docker:test:go` | Go source tests (452 directories) |
+
+### Image Contents
+
+`Dockerfile.test` builds on Ubuntu 24.04 with all toolchains pre-installed:
+
+| Toolchain | Version | Install Method |
+| --------- | ------- | -------------- |
+| Node.js   | 22      | NodeSource apt repo |
+| Python    | 3.12    | `apt install python3` |
+| Java      | 21      | `apt install openjdk-21-jdk-headless` |
+| Rust      | stable  | `rustup` via official installer |
+| g++       | 13      | `apt install g++` |
+| Go        | 1.23    | Official tarball from go.dev |
+
+The image copies the full source tree and runs `npm ci`, so it is self-contained. The `docker-compose.test.yml` file defines one service per language, all sharing the same image.
+
+> [!NOTE]
+> This is separate from the production `Dockerfile` (nginx) and `docker-compose.yml` (port 3000). The test image is for development and CI use only.
+
 ## CI/CD Pipelines
 
 Two GitHub Actions workflows are in `.github/workflows/`:
@@ -54,9 +96,13 @@ Triggers on all pull requests to `main`. Runs these jobs in parallel:
 | Job                          | What It Does                                                                                          |
 | ---------------------------- | ----------------------------------------------------------------------------------------------------- |
 | **Type Check & Lint**        | `npm run typecheck`, `npm run lint`, `npm run format:check`                                           |
-| **Unit Tests**               | `npm run test` — sharded 12 ways; results aggregated under the **Unit Tests Status** required check   |
-| **Language Tests**           | `npm run test:all-languages` — runs Python, Java, Rust, C++, and Go source test suites in a matrix   |
-| **E2E Tests**                | `npm run e2e` — sharded 16 ways (15-min timeout per shard); aggregated under the **E2E Status** check |
+| **Unit Tests**               | `npm run test` — sharded 12 ways; aggregated under **Unit Tests Status**                              |
+| **Python Tests**             | `test-python.sh` — sharded 2 ways with 2 workers; aggregated under **Python Tests Status**            |
+| **Java Tests**               | `test-java.sh` — sharded 4 ways with 2 workers; aggregated under **Java Tests Status**                |
+| **Rust Tests**               | `test-rust.sh` — sharded 8 ways with 2 workers; aggregated under **Rust Tests Status**                |
+| **C++ Tests**                | `test-cpp.sh` — sharded 4 ways with 2 workers; aggregated under **C++ Tests Status**                  |
+| **Go Tests**                 | `test-go.sh` — sharded 4 ways with 2 workers; aggregated under **Go Tests Status**                    |
+| **E2E Tests**                | `npm run e2e` — sharded 16 ways (15-min timeout per shard); aggregated under **E2E Status**            |
 | **Storybook Build**          | `npm run storybook:build`                                                                             |
 | **Visual Tests (Chromatic)** | Runs after Storybook build; requires `CHROMATIC_PROJECT_TOKEN` secret                                 |
 

@@ -2,7 +2,7 @@ import type { AlgorithmDefinition } from "@/types";
 import { registry } from "@/registry";
 import { ALGORITHM_ID, CATEGORY } from "@/utils/constants";
 
-import { containsDuplicate } from "./sources/contains-duplicate";
+import { containsDuplicate } from "./sources/contains-duplicate.ts?fn";
 import { generateContainsDuplicateSteps } from "./step-generator";
 import type { ContainsDuplicateInput } from "./step-generator";
 import { containsDuplicateEducational } from "./educational";

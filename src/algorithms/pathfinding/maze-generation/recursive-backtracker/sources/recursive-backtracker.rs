@@ -1,6 +1,6 @@
 // Recursive Backtracker Maze — DFS-based maze carving with random neighbor selection
 
-#[derive(Clone, PartialEq)]
+#[derive(Clone, PartialEq, Debug)]
 enum CellType {
     Empty,
     Wall,
@@ -56,7 +56,7 @@ fn recursive_backtracker_maze(grid: &mut Vec<Vec<GridCell>>, start: (usize, usiz
 
         if !unvisited_neighbors.is_empty() {
             // Randomly choose one unvisited neighbor
-            let chosen_index = (iteration * 6364136223846793005 + 1442695040888963407) % unvisited_neighbors.len();
+            let chosen_index = iteration.wrapping_mul(6364136223846793005usize).wrapping_add(1442695040888963407) % unvisited_neighbors.len();
             iteration += 1;
             let (chosen_row, chosen_col) = unvisited_neighbors[chosen_index]; // @step:carve-cell
 

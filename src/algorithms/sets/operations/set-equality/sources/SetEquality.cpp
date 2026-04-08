@@ -44,9 +44,11 @@ bool setEquality(std::vector<int> arrayA, std::vector<int> arrayB) {
     return isEqual; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     std::vector<int> arrayA = {1, 2, 3};
     std::vector<int> arrayB = {3, 1, 2};
     std::cout << setEquality(arrayA, arrayB) << "\n";
     return 0;
 }
+#endif

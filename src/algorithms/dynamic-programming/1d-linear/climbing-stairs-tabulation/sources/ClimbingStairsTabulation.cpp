@@ -17,9 +17,11 @@ int climbingStairsTabulation(int numberOfStairs) {
     return dpTable[numberOfStairs]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     int numberOfStairs = 7;
     int result = climbingStairsTabulation(numberOfStairs);
     std::cout << "Ways to climb " << numberOfStairs << " stairs: " << result << std::endl;
     return 0;
 }
+#endif

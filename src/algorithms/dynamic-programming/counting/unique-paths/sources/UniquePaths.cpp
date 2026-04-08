@@ -17,9 +17,11 @@ int uniquePaths(int rows, int columns) {
     return dpTable[columns - 1]; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     int rows = 3, columns = 7;
     int result = uniquePaths(rows, columns);
     std::cout << "Unique paths in " << rows << "x" << columns << " grid: " << result << std::endl;
     return 0;
 }
+#endif

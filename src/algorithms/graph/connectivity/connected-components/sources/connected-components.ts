@@ -1,5 +1,5 @@
 // Connected Components — find all connected components in an undirected graph using BFS
-export function connectedComponents(
+function connectedComponents(
   adjacencyList: Record<string, string[]>,
   nodeIds: string[],
 ): string[][] {

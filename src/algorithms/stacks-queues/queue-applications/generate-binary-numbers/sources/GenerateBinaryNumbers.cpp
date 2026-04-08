@@ -17,9 +17,11 @@ std::vector<std::string> generateBinaryNumbers(int count) {
     return result; // @step:complete
 }
 
+#ifndef TESTING
 int main() {
     auto result = generateBinaryNumbers(5);
     for (const auto& val : result) std::cout << val << " ";
     std::cout << std::endl;
     return 0;
 }
+#endif

@@ -25,6 +25,7 @@ fn spiral_matrix_ii(matrix_size: usize) -> Vec<Vec<i32>> {
             matrix[row_idx][right_bound] = current_value; // @step:place-value
             current_value += 1;
         }
+        if right_bound == 0 { break; } // @step:shrink-boundary
         right_bound -= 1;
 
         // Fill left along bottom row (if still within bounds)

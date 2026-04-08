@@ -43,7 +43,7 @@ int heapExtract(std::vector<int>& arr) {
     return minValue;
 }
 
-std::vector<int> sortNearlySorted(std::vector<int>& array, int kValue) {
+std::vector<int> sortNearlySorted(const std::vector<int>& array, int kValue) {
     std::vector<int> result; // @step:initialize
     std::vector<int> heap; // @step:initialize
 

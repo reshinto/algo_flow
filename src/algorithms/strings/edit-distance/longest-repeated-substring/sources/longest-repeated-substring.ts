@@ -5,7 +5,7 @@
 // The diagonal (rowIdx === colIdx) is skipped to avoid trivial self-matches.
 // Time: O(n²), Space: O(n²)
 
-export function longestRepeatedSubstring(text: string): string {
+function longestRepeatedSubstring(text: string): string {
   const textLength = text.length; // @step:initialize
 
   // Allocate (textLength+1) × (textLength+1) DP matrix
